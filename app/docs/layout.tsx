@@ -3,13 +3,8 @@ import type { ReactNode } from "react";
 import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
 
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <>
-    <Button>Hello</Button>
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
@@ -40,8 +35,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       nav={{
         title: (
           <div className="flex items-center justify-center gap-2 font-semibold text-sm">
-            <Image src="/logo.svg" alt="mvpblocks" width={17} height={17} />
-            mvpblocks
+            Mvp Blocks
           </div>
         ),
         transparentMode: "always",
@@ -49,6 +43,5 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       {children}
     </DocsLayout>
-    </>
   );
 }
