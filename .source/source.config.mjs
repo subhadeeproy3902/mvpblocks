@@ -1,9 +1,11 @@
 // source.config.ts
-import { defineCollections } from "fumadocs-mdx/config";
-var test = defineCollections({
-  type: "doc",
+import { defineDocs, defineConfig } from "fumadocs-mdx/config";
+var { docs, meta } = defineDocs({
   dir: "content/docs"
 });
+var source_config_default = defineConfig();
 export {
-  test
+  source_config_default as default,
+  docs,
+  meta
 };
