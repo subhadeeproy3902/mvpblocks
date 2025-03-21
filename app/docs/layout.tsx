@@ -4,9 +4,12 @@ import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
 
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
+    <>
+    <Button>Hello</Button>
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
@@ -46,5 +49,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       {children}
     </DocsLayout>
+    </>
   );
 }
