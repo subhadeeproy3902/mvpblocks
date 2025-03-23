@@ -2,9 +2,11 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import type { ReactNode } from "react";
 import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
+import Image from "next/image";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
+    <>
     <DocsLayout
       tree={source.pageTree}
       {...baseOptions}
@@ -35,7 +37,8 @@ export default function Layout({ children }: { children: ReactNode }) {
       nav={{
         title: (
           <div className="flex items-center justify-center gap-2 font-semibold text-sm">
-            Mvpblocks
+            <Image src="/logo.svg" alt="mvpblocks" width={17} height={17} />
+            mvpblocks
           </div>
         ),
         transparentMode: "always",
@@ -43,5 +46,6 @@ export default function Layout({ children }: { children: ReactNode }) {
     >
       {children}
     </DocsLayout>
+    </>
   );
 }
