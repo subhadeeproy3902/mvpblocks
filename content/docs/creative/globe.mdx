@@ -1,0 +1,211 @@
+---
+title: Globe
+description: Globe is a component that displays a 3D globe with a variety of features and customizations.
+root: creative
+---
+
+import { PreviewContainer } from "@/components/preview";
+import Globe1 from "@/components/library/creative/globe1";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Basic
+
+<PreviewContainer>
+  <Globe1 />
+</PreviewContainer>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install cobe
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install cobe 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add cobe 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add cobe 
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    ```tsx title="globe.tsx"
+      'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import createGlobe from 'cobe';
+import { cn } from '@/lib/utils';
+interface EarthProps {
+  className?: string;
+  theta?: number;
+  dark?: number;
+  scale?: number;
+  diffuse?: number;
+  mapSamples?: number;
+  mapBrightness?: number;
+  baseColor?: [number, number, number];
+  markerColor?: [number, number, number];
+  glowColor?: [number, number, number];
+}
+const Earth: React.FC<EarthProps> = ({
+  className,
+  theta = 0.25,
+  dark = 1,
+  scale = 1.1,
+  diffuse = 1.2,
+  mapSamples = 40000,
+  mapBrightness = 6,
+  baseColor = [0.4, 0.6509, 1],
+  markerColor = [1, 0, 0],
+  glowColor = [0.2745, 0.5765, 0.898],
+}) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+useEffect(() => {
+let width = 0;
+const onResize = () =>
+canvasRef.current && (width = canvasRef.current.offsetWidth);
+window.addEventListener('resize', onResize);
+onResize();
+let phi = 0;
+
+    onResize();
+    const globe = createGlobe(canvasRef.current!, {
+      devicePixelRatio: 2,
+      width: width * 2,
+      height: width * 2,
+      phi: 0,
+      theta: theta,
+      dark: dark,
+      scale: scale,
+      diffuse: diffuse,
+      mapSamples: mapSamples,
+      mapBrightness: mapBrightness,
+      baseColor: baseColor,
+      markerColor: markerColor,
+      glowColor: glowColor,
+      opacity: 1,
+      offset: [0, 0],
+      markers: [
+        // longitude latitude
+      ],
+      onRender: (state: Record<string, any>) => {
+        // Called on every animation frame.
+        // `state` will be an empty object, return updated params.\
+        state.phi = phi;
+        phi += 0.003;
+      },
+    });
+
+    return () => {
+      globe.destroy();
+    };
+
+}, []);
+
+return (
+
+<div
+  className={cn(
+    "flex items-center justify-center z-[10] w-full max-w-[350px] mx-auto",
+    className
+  )}
+>
+  <canvas
+    ref={canvasRef}
+    style={{
+      width: "100%",
+      height: "100%",
+      maxWidth: "100%",
+      aspectRatio: "1",
+    }}
+  />
+</div>
+); };
+
+export default Earth;
+```
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    className: {
+      description:
+        "Optional CSS class for customizing the style and appearance of the Earth component.",
+      type: "string",
+      default: undefined,
+    },
+    theta: {
+      description:
+        "Adjusts the Earth's rotational angle to simulate movement or perspective.",
+      type: "number",
+      default: 0.25,
+    },
+    dark: {
+      description:
+        "Controls the level of darkness, affecting the Earth's lighting and shadowing.",
+      type: "number",
+      default: 1,
+    },
+    scale: {
+      description:
+        "Scales the Earth, making it larger or smaller in the rendered view.",
+      type: "number",
+      default: 1.1,
+    },
+    diffuse: {
+      description:
+        "Influences the intensity of the diffuse lighting, altering the Earth's overall brightness.",
+      type: "number",
+      default: 1.2,
+    },
+    mapSamples: {
+      description:
+        "Defines the number of texture samples for rendering the Earth's map, impacting detail quality.",
+      type: "number",
+      default: 40000,
+    },
+    mapBrightness: {
+      description:
+        "Adjusts the brightness of the Earth's map texture, affecting visibility and color contrast.",
+      type: "number",
+      default: 6,
+    },
+    baseColor: {
+      description:
+        "Sets the base color of the Earth in RGB format, representing its primary hue.",
+      type: "[number, number, number]",
+      default: "[0.4, 0.6509, 1]",
+    },
+    markerColor: {
+      description:
+        "Determines the RGB color of markers placed on the Earth, usually for highlighting locations.",
+      type: "[number, number, number]",
+      default: "[1, 0, 0]",
+    },
+    glowColor: {
+      description:
+        "Defines the RGB color of the Earth's glow effect, enhancing visual appeal and atmosphere.",
+      type: "[number, number, number]",
+      default: "[0.2745, 0.5765, 0.898]",
+    },
+  }}
+/>
