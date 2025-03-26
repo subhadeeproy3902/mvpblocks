@@ -22,10 +22,9 @@ export default function Prelaunch() {
       }, 3000);
     }
   };
-
-  // Set launch date to 30 days from now
-  const launchDate = new Date();
-  launchDate.setDate(launchDate.getDate() + 30);
+  
+  // launch date set to 1st april 2025
+  const launchDate = new Date("2025-04-23T00:00:00Z");
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
