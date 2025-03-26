@@ -15,7 +15,7 @@ export function ComponentCollapse({
   classNameComponentContainer,
   code,
   hasReTrigger = false,
-  highlightedCode,
+  lang,
   name,
 }: ComponentPreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,7 @@ export function ComponentCollapse({
       </div>
       <CollapsibleContent>
         <div className="border-t">
-          <DynamicCodeBlock code={code} lang="ts" />
+          <DynamicCodeBlock code={code} lang={lang} />
         </div>
       </CollapsibleContent>
     </Collapsible>
