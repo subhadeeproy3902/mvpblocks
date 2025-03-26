@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { RootProvider } from 'fumadocs-ui/provider';
+import { RootProvider } from "fumadocs-ui/provider";
+import { launched } from "@/config/site";
+import Prelaunch from "@/components/prelaunch";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -17,10 +19,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  if (!launched) {
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${dm.className}`}>
+        <Prelaunch />
+      </body>
+    </html>;
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
-      <RootProvider>{children}</RootProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );
