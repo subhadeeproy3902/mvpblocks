@@ -1,4 +1,3 @@
-import React from "react";
 import Earth from "@/components/ui/globe";
 
 export default function Globe1() {

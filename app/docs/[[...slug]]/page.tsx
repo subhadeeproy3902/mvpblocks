@@ -21,6 +21,9 @@ import { type ComponentProps, type FC } from "react";
 import type { Metadata } from 'next';
 import { createMetadata } from "@/lib/metadata";
 import { metadataImage } from "@/lib/metadata-image";
+import { EditIcon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -38,6 +41,26 @@ export default async function Page(props: {
   //   path: `content/docs/${page.file.path}`,
   // });
 
+  const path = `content/docs/${page.file.path}`;
+
+  const footer = (
+    <a
+      href={`https://github.com/subhadeeproy3902/mvpblocks/blob/main/${path}`}
+      target="_blank"
+      rel="noreferrer noopener"
+      className={cn(
+        buttonVariants({
+          variant: "secondary",
+          size: "sm",
+          className: "gap-1.5 text-xs",
+        }),
+      )}
+    >
+      <EditIcon className="size-3" />
+      Edit on Github
+    </a>
+  );
+
   const { AutoTypeTable } = createTypeTable();
 
   return (
@@ -45,20 +68,12 @@ export default async function Page(props: {
       toc={page.data.toc}
       full={page.data.full}
       tableOfContent={{
+        footer,
         style: "clerk",
         single: false,
       }}
       breadcrumb={{
         full: true,
-      }}
-      footer={{
-        enabled: true,
-      }}
-      editOnGithub={{
-        owner: "subhadeeproy3902",
-        repo: "mvpblocks",
-        sha: "master",
-        path: `content/docs/${page.file.path}`,
       }}
       article={{
         className: "max-sm:pb-16",
