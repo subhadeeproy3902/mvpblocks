@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import { launched } from "@/config/site";
 import Prelaunch from "@/components/prelaunch";
 
 const dm = DM_Sans({
+  subsets: ["latin"],
+});
+
+const brico = Bricolage_Grotesque({
   subsets: ["latin"],
 });
 
@@ -29,7 +33,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dm.className}`}>
+      <body className={`${brico.className}`}>
         <Prelaunch />
       </body>
     </html>

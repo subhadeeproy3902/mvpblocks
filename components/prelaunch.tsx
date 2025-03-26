@@ -106,7 +106,6 @@ export default function Prelaunch() {
           className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 border border-white/10"
         >
           <div className="flex items-center justify-center mb-6">
-            <div className="w-3 h-3 rounded-full bg-rose-500 animate-pulse mr-3" />
             <h2 className="text-2xl md:text-3xl font-semibold text-rose-50">
               Under Construction
             </h2>
