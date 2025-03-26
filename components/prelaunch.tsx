@@ -125,7 +125,7 @@ export default function Prelaunch() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-rose-600 rounded-full blur-md opacity-70" />
               <div className="relative px-6 py-2.5 bg-gradient-to-r from-rose-500 to-rose-600 rounded-full text-white font-medium">
-                Launching Soon
+                23rd April, 2025
               </div>
             </div>
           </motion.div>
