@@ -1,0 +1,2 @@
+export const siteLink = "https://mvpblocks.vercel.app";
+export const siteName = "Mvpblocks";
