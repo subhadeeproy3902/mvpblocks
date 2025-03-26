@@ -1,0 +1,18 @@
+{
+  "name": "globe2",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://mvpblocks.vercel.app/r/globe.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import Earth from \"@/components/ui/globe\";\r\n\r\nexport default function Globe2() {\r\n  return (\r\n    <>\r\n      <div className=\"flex flex-col items-center justify-center overflow-hidden bg-background\">\r\n        <article className=\"relative mx-auto mb-8 mt-8 h-[500px] min-h-60 max-w-[500px] overflow-hidden rounded-3xl border bg-gradient-to-b from-[#A8E524] to-[#A8E524]/5 p-6 text-3xl tracking-tight text-black md:min-h-80 md:p-8 md:text-4xl md:leading-[1.05] lg:text-5xl\">\r\n          Presenting you with the best UI possible.\r\n          <div className=\"absolute -bottom-24 -right-20 z-10 mx-auto flex w-full max-w-[200px] items-center justify-center transition-all duration-700 hover:scale-105 md:max-w-[450px]\">\r\n            <Earth\r\n              scale={1.1}\r\n              baseColor={[0.65, 0.898, 0.141]}\r\n              markerColor={[0.65, 0.898, 0.141]}\r\n              glowColor={[0.65, 0.898, 0.141]}\r\n            />\r\n          </div>\r\n        </article>\r\n      </div>\r\n    </>\r\n  );\r\n}\r\n",
+      "path": "/components/library/creative/globe2.tsx",
+      "target": "/components/library/globe2.tsx"
+    }
+  ]
+}

@@ -22,5 +22,25 @@ export const blocks: Registry = [
           "../components/library/creative/globe1"
         )
     ),
+  },
+  {
+    name: "globe2",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      `${siteLink}/r/globe.json`,
+    ],
+    files: [
+      {
+        path: "@/components/library/creative/globe2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/library/creative/globe2"
+        )
+    ),
   }
 ];
