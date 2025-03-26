@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx",
+    "build:registry": "bun run ./scripts/build-registry.ts",
+    "sort:registry": "bun run ./scripts/sort-registry.ts"
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.6",
