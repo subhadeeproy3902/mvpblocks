@@ -19,10 +19,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (!launched) {
+  if (launched) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
-        <Prelaunch />
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>;
   }
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
-        <RootProvider>{children}</RootProvider>
+        <Prelaunch />
       </body>
     </html>
   );
