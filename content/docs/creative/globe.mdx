@@ -4,17 +4,21 @@ description: Globe is a component that displays a 3D globe with a variety of fea
 root: creative
 ---
 
-import { PreviewContainer } from "@/components/preview";
 import Globe1 from "@/components/library/creative/globe1";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import { TypeTable } from "fumadocs-ui/components/type-table";
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/utils/code";
 
 ## Basic
 
-<PreviewContainer>
-  <Globe1 />
-</PreviewContainer>
+<ComponentPreview
+  name="globe1"     
+  classNameComponentContainer='min-h-[200px]'
+  code={(await extractSourceCode('globe1')).code}
+  lang="tsx"
+/>
 
 ## Installation
 
@@ -45,11 +49,13 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
   </Step>
 
   <Step>
-    ```tsx title="globe.tsx"
-      'use client';
-import React, { useEffect, useRef, useState } from 'react';
+```tsx title="globe.tsx"
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import createGlobe from 'cobe';
 import { cn } from '@/lib/utils';
+
 interface EarthProps {
   className?: string;
   theta?: number;
@@ -76,13 +82,13 @@ const Earth: React.FC<EarthProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-useEffect(() => {
-let width = 0;
-const onResize = () =>
-canvasRef.current && (width = canvasRef.current.offsetWidth);
-window.addEventListener('resize', onResize);
-onResize();
-let phi = 0;
+  useEffect(() => {
+    let width = 0;
+    const onResize = () =>
+      canvasRef.current && (width = canvasRef.current.offsetWidth);
+    window.addEventListener('resize', onResize);
+    onResize();
+    let phi = 0;
 
     onResize();
     const globe = createGlobe(canvasRef.current!, {
@@ -115,28 +121,27 @@ let phi = 0;
     return () => {
       globe.destroy();
     };
+  }, []);
 
-}, []);
-
-return (
-
-<div
-  className={cn(
-    "flex items-center justify-center z-[10] w-full max-w-[350px] mx-auto",
-    className
-  )}
->
-  <canvas
-    ref={canvasRef}
-    style={{
-      width: "100%",
-      height: "100%",
-      maxWidth: "100%",
-      aspectRatio: "1",
-    }}
-  />
-</div>
-); };
+  return (
+    <div
+      className={cn(
+        'flex items-center justify-center z-[10] w-full max-w-[350px] mx-auto',
+        className
+      )}
+    >
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: '100%',
+          height: '100%',
+          maxWidth: '100%',
+          aspectRatio: '1',
+        }}
+      />
+    </div>
+  );
+};
 
 export default Earth;
 ```
@@ -208,4 +213,15 @@ export default Earth;
       default: "[0.2745, 0.5765, 0.898]",
     },
   }}
+/>
+
+## Examples
+
+### Globe Card
+
+<ComponentPreview
+  name="globe2"     
+  classNameComponentContainer='min-h-[100px]'
+  code={(await extractSourceCode('globe2')).code}
+  lang="tsx"
 />
