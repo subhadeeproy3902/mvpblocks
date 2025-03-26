@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${brico.className}`}>
+      <body className={`${dm.className}`}>
         <RootProvider>{children}</RootProvider>
       </body>
     </html>
