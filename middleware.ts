@@ -3,14 +3,16 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  // If launched is false, redirect all requests to /prelaunch
-  if (!launched) {
-    return NextResponse.redirect(new URL("/prelaunch", request.url));
+  const { pathname } = new URL(request.url);
+
+  // Prevent redirect loops and API calls from being redirected
+  if (!launched && pathname !== "/prelaunch") {
+    return NextResponse.redirect(new URL("/prelaunch", request.url), 307);
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: "/(.*)", // Apply middleware to all routes
+  matcher: "/((?!_next|api|static|favicon.ico).*)",
 };
