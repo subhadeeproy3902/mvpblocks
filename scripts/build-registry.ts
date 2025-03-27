@@ -41,7 +41,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
         type: registryType,
         content: fileContent,
         path: normalizedPath,
-        target: `/components/library/${fileName}`,
+        target: `/components/mvpblocks/${fileName}`,
       };
     }
     const normalizedPath = file.path.startsWith("/")
@@ -55,7 +55,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 
     const getTargetPath = (type: string) => {
       if (type === "registry:ui") return `/components/ui/${fileName}`;
-      return `/components/library/${fileName}`;
+      return `/components/mvpblocks/${fileName}`;
     };
 
     const fileType =
@@ -63,10 +63,10 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 
     // Modify the import paths in the content
     let modifiedContent = fileContent;
-    if (fileContent.includes("@/components/library/")) {
+    if (fileContent.includes("@/components/mvpblocks/")) {
       modifiedContent = fileContent.replace(
-        /@\/components\/library\/.*?([^/]+)$/gm,
-        "@/components/library/$1"
+        /@\/components\/mvpblocks\/.*?([^/]+)$/gm,
+        "@/components/mvpblocks/$1"
       );
     }
 

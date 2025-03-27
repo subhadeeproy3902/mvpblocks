@@ -12,14 +12,14 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "@/components/library/creative/globe1.tsx",
+        path: "@/components/mvpblocks/creative/globe1.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/library/creative/globe1"
+          "../components/mvpblocks/creative/globe1"
         )
     ),
   },
@@ -32,14 +32,14 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "@/components/library/creative/globe2.tsx",
+        path: "@/components/mvpblocks/creative/globe2.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/library/creative/globe2"
+          "../components/mvpblocks/creative/globe2"
         )
     ),
   }
