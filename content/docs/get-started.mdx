@@ -8,33 +8,35 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
 
 ## Install Next Js
 
-### Create a new project
+### System requirements
 
-```bash
+- [Node.js 18.18](https://nodejs.org/) or later.
+- macOS, Windows (including WSL), and Linux are supported.
+
+### Automatic installation
+
+We recommend starting a new Next.js app using [`create-next-app`](/docs/app/api-reference/cli/create-next-app), which sets up everything automatically for you. To create a project, run:
+
+```bash filename="Terminal"
 npx create-next-app@latest
 ```
 
-### On installation You'll see these prompts
+On installation, you'll see the following prompts:
 
-```bash
+```txt filename="Terminal"
 What is your project named? my-app
-Would you like to use TypeScript? Yes
-Would you like to use ESLint? No
-Would you like to use Tailwind CSS? Yes
-Would you like to use src/ directory? Yes
-Would you like to use App Router? (recommended)  Yes
-Would you like to customize the default import alias (@/*)? No
+Would you like to use TypeScript? No / Yes
+Would you like to use ESLint? No / Yes
+Would you like to use Tailwind CSS? No / Yes
+Would you like your code inside a `src/` directory? No / Yes
+Would you like to use App Router? (recommended) No / Yes
+Would you like to use Turbopack for `next dev`?  No / Yes
+Would you like to customize the import alias (`@/*` by default)? No / Yes
+What import alias would you like configured? @/*
 ```
 
-### Start the development server
+After the prompts, [`create-next-app`](/docs/app/api-reference/cli/create-next-app) will create a folder with your project name and install the required dependencies.
 
-```bash
-cd my-app
-```
-
-```bash
-npm run dev
-```
 
 ## Install ShadCN
 
