@@ -1,4 +1,4 @@
-import { DocsLayout, type DocsLayoutProps } from "fumadocs-ui/layouts/docs";
+import { DocsLayout, type DocsLayoutProps } from "fumadocs-ui/layouts/notebook";
 import type { ReactNode } from "react";
 import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         {...baseOptions}
         tree={source.pageTree}
         sidebar={{
-          defaultOpenLevel: 1,
+          defaultOpenLevel: 2,
           tabs: {
             transform(option, node) {
               const meta = source.getNodeMeta(node);

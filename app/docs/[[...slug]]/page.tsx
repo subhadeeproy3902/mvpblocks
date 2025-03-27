@@ -10,7 +10,6 @@ import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { createTypeTable } from "fumadocs-typescript/ui";
-import { UiOverview } from "@/components/ui-overview";
 // import { getGithubLastEdit } from "fumadocs-core/server";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Callout } from "fumadocs-ui/components/callout";
@@ -91,6 +90,16 @@ export default async function Page(props: {
             TypeTable,
             AutoTypeTable,
             Accordion,
+            a: ({ href, ...props }) => {
+              return (
+                // Primary color not underlined
+                <a 
+                  href={href} 
+                  className="text-primary no-underline" 
+                  {...props}
+                />
+              );
+            },
             Accordions,
             File,
             Folder,
@@ -99,7 +108,6 @@ export default async function Page(props: {
             DocsCategory: ({ slugs = params.slug }: { slugs?: string[] }) => (
               <DocsCategory page={source.getPage(slugs)!} from={source} />
             ),
-            UiOverview,
           }}
         />
       </DocsBody>
