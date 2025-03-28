@@ -18,7 +18,6 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe1"),
     ),
   },
-
   {
     name: "globe2",
     type: "registry:block",
@@ -34,4 +33,23 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe2"),
     ),
   },
+  {
+    // retro-card
+    name: "retro-card",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/basic/retro-card.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/mvpblocks/cards/basic/retro-card"
+        ),
+    ),
+  }
 ];

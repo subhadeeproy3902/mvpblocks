@@ -2,3 +2,18 @@
 title: Basic Cards
 description: A collection of basic card designs, featuring various layouts for showcasing content
 ---
+
+import RetroCard from "@/components/mvpblocks/cards/basic/retro-card";
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Examples
+
+### Retro Card
+
+<ComponentPreview
+  name="retro-card"     
+  classNameComponentContainer='min-h-[200px]'
+  code={(await extractSourceCode('retro-card')).code}
+  lang="tsx"
+/>
