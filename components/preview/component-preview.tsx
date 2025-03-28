@@ -9,7 +9,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteLink } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { CheckCheck, Ellipsis, Terminal } from "lucide-react";
+import { CheckCheck, Ellipsis, Fullscreen, Terminal } from "lucide-react";
 import { useState } from "react";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import { ComponentLoader } from "./component-loader";
@@ -82,6 +82,18 @@ export function ComponentPreview({
               <span className="font-mono">npx shadcn add {name}</span>{" "}
             </Button>
             <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
+            <Button size="sm" asChild variant="secondary">
+              <a
+                href={`${siteLink}/preview/${name}`}
+                target="_blank"
+                rel="noreferrer"
+                className={cn("group no-underline transition-all duration-200")}
+              >
+                <Fullscreen
+                  className="h-5 w-5"
+                />
+              </a>
+            </Button>
           </div>
 
           <div className="mb-2 block lg:hidden">
@@ -116,6 +128,23 @@ export function ComponentPreview({
                   <span className="font-mono">Install with CLI</span>{" "}
                 </Button>
                 <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
+                <Button size="icon" asChild variant="default">
+                  <a
+                    href={`${siteLink}/preview/${name}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      "group no-underline transition-all duration-200",
+                    )}
+                  >
+                    <Fullscreen
+                      className={cn(
+                        "h-4 w-4",
+                        "transition-transform duration-200 group-hover:rotate-45",
+                      )}
+                    />
+                  </a>
+                </Button>
               </PopoverContent>
             </Popover>
           </div>
