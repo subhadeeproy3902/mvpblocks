@@ -2,6 +2,8 @@
   "root": true,
   "pages": [
     "---Guide---",
+    "introduction",
+    "get-started",
     "---Components---",
     "basic",
     "cards",

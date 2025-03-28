@@ -10,7 +10,8 @@
     "postinstall": "fumadocs-mdx",
     "build:registry": "bun run ./scripts/build-registry.ts",
     "sort:registry": "bun run ./scripts/sort-registry.ts",
-    "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write"
+    "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write",
+    "sync": "git pull && bun i && bun run build:registry && bun run sort:registry && bun run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
