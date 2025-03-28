@@ -37,8 +37,11 @@ export const baseOptions: BaseLayoutProps = {
   githubUrl: "https://github.com/subhadeeproy3902/mvpblocks",
   nav: {
     title: (
-      <div className="flex items-center justify-center gap-2 text-sm font-semibold">
-        Mvpblocks
+      <div className="flex items-center justify-center gap-2">
+        <img src="/logo.png" alt="logo" className="h-8 w-8 rounded-full" />
+        <span className="bg-gradient-to-b from-foreground via-rose-200 text-2xl md:text-xl font-semibold to-primary bg-clip-text text-transparent">
+          Mvpblocks
+        </span>
       </div>
     ),
     transparentMode: "top",
