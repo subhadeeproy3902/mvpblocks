@@ -17,14 +17,14 @@ export default async function PreviewPage({
 
   try {
     const shouldNotCenter = NOT_CENTERED_COMPONENTS.some((component) =>
-      componentName.startsWith(component)
+      componentName.startsWith(component),
     );
 
     return shouldNotCenter ? (
       <ComponentLoader name={componentName} hasReTrigger={false} />
     ) : (
       <>
-        <header className="fixed top-0 left-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800 p-4 shadow-md">
+        <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800 p-4 shadow-md">
           <div>
             <Button asChild size="sm" variant="default">
               <Link href={`/docs`}>Back to Docs</Link>

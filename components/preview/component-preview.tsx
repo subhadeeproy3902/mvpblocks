@@ -89,9 +89,7 @@ export function ComponentPreview({
                 rel="noreferrer"
                 className={cn("group no-underline transition-all duration-200")}
               >
-                <Fullscreen
-                  className="h-5 w-5"
-                />
+                <Fullscreen className="h-5 w-5" />
               </a>
             </Button>
           </div>

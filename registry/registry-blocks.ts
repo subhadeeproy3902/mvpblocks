@@ -1,6 +1,6 @@
-import { siteLink } from "@/config/site";
 import type { Registry } from "@/registry/schema";
 import * as React from "react";
+import { siteLink } from "@/config/site";
 
 export const blocks: Registry = [
   {
@@ -18,6 +18,7 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe1"),
     ),
   },
+
   {
     name: "globe2",
     type: "registry:block",
@@ -33,6 +34,7 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe2"),
     ),
   },
+
   {
     // retro-card
     name: "retro-card",
@@ -46,10 +48,7 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () =>
-        import(
-          "../components/mvpblocks/cards/basic/retro-card"
-        ),
+      () => import("../components/mvpblocks/cards/basic/retro-card"),
     ),
-  }
+  },
 ];

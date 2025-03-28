@@ -39,7 +39,7 @@ export const baseOptions: BaseLayoutProps = {
     title: (
       <div className="flex items-center justify-center gap-2">
         <img src="/logo.png" alt="logo" className="h-8 w-8 rounded-full" />
-        <span className="bg-primary dark:bg-gradient-to-b from-foreground via-rose-200 text-2xl md:text-xl font-semibold to-primary bg-clip-text text-transparent">
+        <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
           Mvpblocks
         </span>
       </div>

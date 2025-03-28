@@ -1,10 +1,8 @@
 export default function RetroCard() {
   return (
-    <article className="flex flex-col items-start justify-between border-4 border-black dark:border-white bg-background p-6 shadow-[8px_8px_0_0_#000] dark:shadow-[8px_8px_0_0_#fff] max-w-sm w-full transition-shadow duration-300 hover:shadow-[12px_12px_0_0_#000] dark:hover:shadow-[12px_12px_0_0_#fff]">
+    <article className="flex w-full max-w-sm flex-col items-start justify-between border-4 border-black bg-background p-6 shadow-[8px_8px_0_0_#000] transition-shadow duration-300 hover:shadow-[12px_12px_0_0_#000] dark:border-white dark:shadow-[8px_8px_0_0_#fff] dark:hover:shadow-[12px_12px_0_0_#fff]">
       <div className="mb-2 flex items-center gap-x-2 text-xs">
-        <div
-          className="border-2 border-black dark:border-white bg-red-500 px-3 py-1 font-bold text-foreground"
-        >
+        <div className="border-2 border-black bg-red-500 px-3 py-1 font-bold text-foreground dark:border-white">
           May 12, 2024
         </div>
         <a
@@ -34,7 +32,9 @@ export default function RetroCard() {
               <span className="absolute inset-0"></span>Sarah Parker
             </a>
           </p>
-          <p className="font-bold text-gray-700 dark:text-gray-200">Senior UI Engineer</p>
+          <p className="font-bold text-gray-700 dark:text-gray-200">
+            Senior UI Engineer
+          </p>
         </div>
       </div>
     </article>
