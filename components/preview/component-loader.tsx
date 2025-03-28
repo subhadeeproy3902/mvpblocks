@@ -33,7 +33,7 @@ export function ComponentLoader({
 
   if (!Component) {
     return (
-      <div className="text-muted-foreground flex items-center justify-center text-sm">
+      <div className="flex items-center justify-center text-sm text-muted-foreground">
         <RotateCw className="mr-2 h-4 w-4 animate-spin" />
         Loading...
       </div>
@@ -62,14 +62,14 @@ function ComponentDisplay({
     <div
       className={cn(
         "flex min-h-[350px] w-full items-center justify-center rounded-md",
-        className
+        className,
       )}
     >
       {hasReTrigger && (
         <Button
           variant="ghost"
           size="icon"
-          className="text-muted-foreground/80 hover:text-foreground absolute top-2 right-2 cursor-pointer hover:bg-transparent"
+          className="absolute right-2 top-2 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
           onClick={reTrigger}
           aria-label="Refresh component"
         >

@@ -4,7 +4,7 @@ import * as path from "path";
 const REGISTRY_FILE = path.join(
   process.cwd(),
   "registry",
-  "registry-blocks.ts"
+  "registry-blocks.ts",
 );
 
 async function sortRegistry() {

@@ -74,7 +74,7 @@ export function ComponentPreview({
                     className={cn(
                       "h-3.5 w-3.5",
                       "transition-all duration-200",
-                      "group-hover:rotate-12"
+                      "group-hover:rotate-12",
                     )}
                   />
                 </>
@@ -108,7 +108,7 @@ export function ComponentPreview({
                         className={cn(
                           "h-3.5 w-3.5",
                           "transition-all duration-200",
-                          "group-hover:rotate-12"
+                          "group-hover:rotate-12",
                         )}
                       />
                     </>

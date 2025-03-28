@@ -7,9 +7,7 @@ export const blocks: Registry = [
     name: "globe1",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [
-      `${siteLink}/r/globe.json`,
-    ],
+    registryDependencies: [`${siteLink}/r/globe.json`],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe1.tsx",
@@ -17,19 +15,15 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () =>
-        import(
-          "../components/mvpblocks/creative/globe1"
-        )
+      () => import("../components/mvpblocks/creative/globe1"),
     ),
   },
+
   {
     name: "globe2",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [
-      `${siteLink}/r/globe.json`,
-    ],
+    registryDependencies: [`${siteLink}/r/globe.json`],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe2.tsx",
@@ -37,10 +31,7 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () =>
-        import(
-          "../components/mvpblocks/creative/globe2"
-        )
+      () => import("../components/mvpblocks/creative/globe2"),
     ),
-  }
+  },
 ];

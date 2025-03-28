@@ -4,9 +4,8 @@ import { getComponentByName } from "@/registry";
 import "../registry/";
 
 export async function extractSourceCode(
-  componentName: string
-): Promise<{ code: string}> {
-
+  componentName: string,
+): Promise<{ code: string }> {
   const basePath = path.join(process.cwd());
 
   const component = getComponentByName(componentName);
@@ -14,7 +13,7 @@ export async function extractSourceCode(
   if (!component) {
     const errorMsg = "// Component not found in registry";
     return {
-      code: errorMsg
+      code: errorMsg,
     };
   }
 

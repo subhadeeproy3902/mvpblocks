@@ -17,7 +17,7 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { File, Folder, Files } from "fumadocs-ui/components/files";
 import { type ComponentProps, type FC } from "react";
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { metadataImage } from "@/lib/metadata-image";
 import { EditIcon } from "lucide-react";
@@ -93,9 +93,9 @@ export default async function Page(props: {
             a: ({ href, ...props }) => {
               return (
                 // Primary color not underlined
-                <a 
-                  href={href} 
-                  className="text-primary no-underline" 
+                <a
+                  href={href}
+                  className="text-primary no-underline"
                   {...props}
                 />
               );
@@ -128,14 +128,14 @@ export async function generateMetadata(props: {
   if (!page) notFound();
 
   const description =
-    page.data.description ?? 'All your MVP blocks needs in one place!';
+    page.data.description ?? "All your MVP blocks needs in one place!";
 
   return createMetadata(
     metadataImage.withImage(page.slugs, {
       title: page.data.title,
       description,
       openGraph: {
-        url: `/docs/${page.slugs.join('/')}`,
+        url: `/docs/${page.slugs.join("/")}`,
       },
     }),
   );

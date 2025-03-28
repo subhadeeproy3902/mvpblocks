@@ -66,7 +66,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
     if (fileContent.includes("@/components/mvpblocks/")) {
       modifiedContent = fileContent.replace(
         /@\/components\/mvpblocks\/.*?([^/]+)$/gm,
-        "@/components/mvpblocks/$1"
+        "@/components/mvpblocks/$1",
       );
     }
 
@@ -100,7 +100,7 @@ const main = async () => {
         files: filesArray,
       },
       null,
-      2
+      2,
     );
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     await writeFileRecursive(jsonPath, json);

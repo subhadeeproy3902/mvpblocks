@@ -3,6 +3,7 @@ import * as z from "zod";
 export const registryItemTypeSchema = z.enum([
   "registry:block",
   "registry:ui",
+  "registry:hook",
 ]);
 
 export const registryItemFileSchema = z.object({

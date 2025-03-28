@@ -22,16 +22,16 @@ export default function Prelaunch() {
       }, 3000);
     }
   };
-  
+
   // launch date set to 1st april 2025
   const launchDate = new Date("2025-04-23T00:00:00Z");
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black">
       {/* Animated gradient backgrounds */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-rose-500/20 blur-[100px]"
+          className="absolute -left-1/4 top-1/4 h-1/2 w-1/2 rounded-full bg-rose-500/20 blur-[100px]"
           animate={{
             x: [0, 50, 0],
             y: [0, 30, 0],
@@ -43,7 +43,7 @@ export default function Prelaunch() {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-rose-300/20 blur-[100px]"
+          className="absolute -right-1/4 bottom-1/4 h-1/2 w-1/2 rounded-full bg-rose-300/20 blur-[100px]"
           animate={{
             x: [0, -50, 0],
             y: [0, -30, 0],
@@ -55,7 +55,7 @@ export default function Prelaunch() {
           }}
         />
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 rounded-full bg-rose-600/20 blur-[100px]"
+          className="absolute left-1/2 top-1/2 h-1/3 w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose-600/20 blur-[100px]"
           animate={{
             scale: [1, 1.2, 1],
           }}
@@ -73,18 +73,18 @@ export default function Prelaunch() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="mb-8 text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-100 to-rose-500 mb-2">
+          <h1 className="mb-2 bg-gradient-to-r from-rose-100 to-rose-500 bg-clip-text text-4xl font-bold text-transparent md:text-6xl">
             Mvpblocks
           </h1>
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.2, delay: 0.5 }}
-            className="h-px bg-gradient-to-r from-transparent via-rose-400/50 to-transparent mx-auto my-6"
+            className="mx-auto my-6 h-px bg-gradient-to-r from-transparent via-rose-400/50 to-transparent"
           />
-          <p className="text-rose-100/80 text-lg md:text-xl mt-4">
+          <p className="mt-4 text-lg text-rose-100/80 md:text-xl">
             Something amazing is coming your way
           </p>
         </motion.div>
@@ -102,18 +102,18 @@ export default function Prelaunch() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-10 border border-white/10"
+          className="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg md:p-10"
         >
-          <div className="flex items-center justify-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-semibold text-rose-50">
+          <div className="mb-6 flex items-center justify-center">
+            <h2 className="text-2xl font-semibold text-rose-50 md:text-3xl">
               Under Construction
             </h2>
           </div>
 
-          <p className="text-rose-100/80 text-center leading-relaxed">
-            We&apos;re working hard to bring you something extraordinary. Our team is
-            crafting a seamless experience that will transform the way you
-            interact with our platform.
+          <p className="text-center leading-relaxed text-rose-100/80">
+            We&apos;re working hard to bring you something extraordinary. Our
+            team is crafting a seamless experience that will transform the way
+            you interact with our platform.
           </p>
 
           <motion.div
@@ -123,8 +123,8 @@ export default function Prelaunch() {
             transition={{ duration: 0.5, delay: 0.8 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-rose-600 rounded-full blur-md opacity-70" />
-              <div className="relative px-6 py-2.5 bg-gradient-to-r from-rose-500 to-rose-600 rounded-full text-white font-medium">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-rose-500 to-rose-600 opacity-70 blur-md" />
+              <div className="relative rounded-full bg-gradient-to-r from-rose-500 to-rose-600 px-6 py-2.5 font-medium text-white">
                 23rd April, 2025
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function Prelaunch() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-12 text-center text-rose-200/60 text-sm"
+          className="mt-12 text-center text-sm text-rose-200/60"
         >
           © {new Date().getFullYear()} Mvpblocks. All rights reserved.
         </motion.div>
