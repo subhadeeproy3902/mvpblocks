@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  background-color: hsl(var(--primary));
+  color: #fff;
+  text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+}
+::-moz-selection {
+  background-color: hsl(var(--primary));
+  color: #fff;
+  text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+}
 
 @layer base {
   :root {
