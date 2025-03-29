@@ -24,7 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
-        <RootProvider>{children}</RootProvider>
+        <RootProvider>
+          <div className="min-h-screen" vaul-drawer-wrapper="">
+            {children}
+          </div>
+        </RootProvider>
       </body>
     </html>
   );

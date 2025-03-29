@@ -1,0 +1,297 @@
+---
+title: Add a Block
+description: Add a block to this project and get your contribution recognized.
+icon: Plus
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+We are inviting the community to share your components and blocks with other developers and help build a library of high-quality, reusable components.
+
+We aim to build a collection of **ready-to-use, beautifully animated, and well-styled components** that developers can **copy-paste seamlessly** into their projects. Your contributions help make this project even better!
+
+## Setup your workspace
+
+<Steps>
+
+<Step>
+
+### Fork the repository
+
+```bash
+git clone https://github.com/subhadeeproy3902/mvpblocks.git
+```
+
+</Step>
+
+<Step>
+
+### Create a new branch
+
+```bash
+git checkout -b username/my-new-block
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab>
+  ```bash 
+  npm install 
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  pnpm install 
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  yarn 
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  bun install  
+  ```
+  </Tab>
+</Tabs>
+
+</Step>
+
+<Step>
+
+### Start the dev server
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab>
+  ```bash 
+  npm run dev
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  pnpm run dev
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  yarn dev
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  bun run dev
+  ```
+  </Tab>
+</Tabs>
+
+</Step>
+
+</Steps>
+
+## Add a block
+
+A block can be a single component (eg. a variation of a ui component) or a complex component (eg. a dashboard) with multiple components, hooks, and utils.
+
+<Steps>
+
+<Step>
+
+### Create a new block
+
+1. If you are creating a new block of a new category, create a new folder in `components/mvpblocks` with the name of your `category`. For example, `mainsections`.
+
+2. If you are creating a new block in an existing category, create a new folder in `components/mvpblocks/[category]` with the name of your `block`. For example, `hero-1`.
+
+> **Note:** The build script will take care of building the block for the `default` style.
+
+</ Step>
+
+<Step>
+
+### Add your block files
+
+Add your files to the block folder. Here is an example of a block.
+
+<Files>
+  <Folder name="component" defaultOpen>
+    <Folder name="mvpblocks" defaultOpen>
+      <Folder name="your-category" defaultOpen>
+        <File name="your-block.tsx" />
+      </Folder>
+    </Folder>
+    <Folder name="ui" defaultOpen>
+      <File name="button.tsx" />
+      <File name="tabs.tsx" />
+      <File name="dialog.tsx" />
+    </Folder>
+  </Folder>
+</Files>
+
+> **Note:** You can start with one file and add more files later.
+
+</ Step>
+
+</Steps>
+
+## Add your block to the registry
+
+<Steps>
+
+<Step>
+
+### Add your block definition to `registry-blocks.tsx`
+
+To add your block to the registry, you need to add your block definition to `registry-blocks.ts`.
+
+```tsx title="registry/registry-blocks.tsx"
+export const blocks = [
+  // ...
+  {
+    name: "hero-1",
+    author: "subhadeeproy3902", // Your GitHub username
+    type: "registry:block",
+    dependencies: ["lucide-react"], // List of dependencies to install
+    registryDependencies: [`${siteLink}/r/header.json`], // List of registry dependencies to make your block work
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero-1.tsx", // Path to your block file
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero-1"), // Lazy path to your block component
+    ),
+  }
+];
+```
+
+> **Note:** If you are using `ui` or `hooks`, make sure to add them in `registry-ui.ts` or `registry-hooks.ts` respectively. Main block path should be `@/components/mvpblocks/[category]/[block].tsx`.
+
+Make sure you add a name, description, type, registryDependencies, dependencies, files correctly.
+
+</Step>
+
+<Step>
+
+### Run the build script
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab>
+  ```bash 
+  npm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  pnpm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  yarn build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  bun run build:registry
+  ```
+  </Tab>
+</Tabs>
+
+> **Note:** you do not need to run this script for every change. You only need to run it when you update the block definition.
+
+</Step>
+
+<Step>
+
+### View your block
+
+Once the build script is finished, you can view your block at `http://localhost:3000/docs/[blockpath]` or a full screen preview at `http://localhost:3000/preview/[blockname]`.
+
+![img](../../previewimg.png)
+
+</Step>
+
+<Step>
+
+### Build your block
+
+You can now build your block by editing the files in the block folder and viewing the changes in the browser.
+
+If you add more files, make sure to add them to the `files` array in the block definition.
+
+</Step>
+
+</Steps>
+
+## Publish your block
+
+Once you're ready to publish your block, you can submit a pull request to the main repository.
+
+<Steps>
+
+<Step>
+
+### Run the build script
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab>
+  ```bash 
+  npm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  pnpm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  yarn build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  bun run build:registry
+  ```
+  </Tab>
+</Tabs>
+
+</Step>
+
+<Step>
+
+### Capture a screenshot
+
+Capture a screenshot of your block in action. You can use any screenshot tool you prefer.
+You can use the built-in screenshot tool in your operating system or a third-party tool like Snagit or Greenshot.
+
+</Step>
+
+<Step>
+
+### Submit a pull request
+
+Commit your changes and submit a pull request to the main repository.
+
+Your block will be reviewed and merged. Once merged it will be published to the website and available to be installed via the CLI.
+
+</Step>
+
+</Steps>
+
+## Guidelines
+
+Here are some guidelines to follow when contributing to the blocks library.
+
+- The following properties are required for the block definition: `name`, `description`, `type`, `files`.
+- Make sure to list all registry dependencies in `registryDependencies`. A registry dependency is the path of the component in the registry eg. `https://mvpblocks.vercel.app/r/globe.json`.
+- Make sure to list all dependencies in `dependencies`. A dependency is the name of the package in the registry eg. `zod`, `sonner`, etc.
