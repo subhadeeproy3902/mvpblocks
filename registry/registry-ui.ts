@@ -3,18 +3,6 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
-    name: "globe",
-    type: "registry:ui",
-    dependencies: ["lucide-react", "cobe"],
-    files: [
-      {
-        path: "@/components/ui/globe.tsx",
-        type: "registry:ui",
-      },
-    ],
-    component: React.lazy(() => import("../components/ui/globe")),
-  },
-  {
     name: "accordion",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-accordion"],
@@ -265,6 +253,18 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
+  },
+  {
+    name: "globe",
+    type: "registry:ui",
+    dependencies: ["lucide-react", "cobe"],
+    files: [
+      {
+        path: "@/components/ui/globe.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(() => import("../components/ui/globe")),
   },
   {
     name: "hover-card",
