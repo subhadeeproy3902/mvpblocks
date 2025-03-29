@@ -1,61 +1,37 @@
-import * as fs from "fs";
-import * as path from "path";
+import fs from 'fs';
+import path from 'path';
+import { blocks } from '@/registry/registry-blocks';
 
-const REGISTRY_FILE = path.join(
-  process.cwd(),
-  "registry",
-  "registry-blocks.ts",
-);
+// Sort the blocks alphabetically by name
+const sortedBlocks = [...blocks].sort((a, b) => a.name.localeCompare(b.name));
 
-async function sortRegistry() {
-  try {
-    // Read the file
-    const fileContent = fs.readFileSync(REGISTRY_FILE, "utf8");
+// Generate the new file content
+const newFileContent = `import type { Registry } from "@/registry/schema";
+import * as React from "react";
 
-    // Extract the components array content
-    const startMarker = "export const components: Registry = [";
-    const endMarker = "];";
+export const blocks: Registry = [
+${sortedBlocks.map(block => {
+  const componentPath = (block.files?.[0]?.path ?? '').replace('@', '..').replace(/\.tsx$/, '');
+  return `  {
+    name: "${block.name}",
+    type: "${block.type}",
+    dependencies: ${JSON.stringify(block.dependencies)},
+    registryDependencies: ${block.registryDependencies ? JSON.stringify(block.registryDependencies) : '[]'},
+    files: [
+      {
+        path: "${block.files?.[0]?.path ?? ''}",
+        type: "${block.files?.[0]?.type ?? ''}",
+      },
+    ],
+    component: React.lazy(
+      () => import("${componentPath}"),
+    ),
+  }`;
+}).join(',\n')}
+];`;
 
-    const startIndex = fileContent.indexOf(startMarker) + startMarker.length;
-    const endIndex = fileContent.lastIndexOf(endMarker);
+// Write to the file
+const registryFilePath = path.join(__dirname, '../registry/registry-blocks.ts');
+fs.writeFileSync(registryFilePath, newFileContent);
 
-    const beforeComponents = fileContent.slice(0, startIndex);
-    const afterComponents = fileContent.slice(endIndex);
-
-    // Split into individual component objects
-    const componentsString = fileContent.slice(startIndex, endIndex);
-    const componentBlocks = componentsString
-      .split(/},\s*{/)
-      .map((block) => block.trim().replace(/^\[?\{?|\}?\]?$/g, ""));
-
-    // Parse and sort components
-    const components = componentBlocks.map((block) => ({
-      content: block,
-      name: block.match(/name:\s*"([^"]+)"/)?.[1] ?? "",
-    }));
-
-    components.sort((a, b) => a.name.localeCompare(b.name));
-
-    // Rebuild the sorted content
-    const sortedContent = components
-      .map(({ content }, index) => {
-        const prefix = index === 0 ? "\n  {" : "  {";
-        const suffix = index === components.length - 1 ? "}" : "},";
-        return `${prefix}${content}${suffix}\n`;
-      })
-      .join("\n");
-
-    // Combine all parts
-    const newContent = `${beforeComponents}${sortedContent}${afterComponents}`;
-
-    // Write back to file
-    fs.writeFileSync(REGISTRY_FILE, newContent);
-
-    console.log("✅ Registry components sorted successfully!");
-  } catch (error) {
-    console.error("❌ Error sorting registry:", error);
-    process.exit(1);
-  }
-}
-
-sortRegistry();
+console.log('Successfully sorted blocks in registry-blocks.ts');

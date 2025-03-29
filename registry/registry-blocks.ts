@@ -1,13 +1,12 @@
 import type { Registry } from "@/registry/schema";
 import * as React from "react";
-import { siteLink } from "@/config/site";
 
 export const blocks: Registry = [
   {
     name: "globe1",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [`${siteLink}/r/globe.json`],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/globe.json"],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe1.tsx",
@@ -18,12 +17,11 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe1"),
     ),
   },
-
   {
     name: "globe2",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [`${siteLink}/r/globe.json`],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/globe.json"],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe2.tsx",
@@ -34,9 +32,22 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/creative/globe2"),
     ),
   },
-
   {
-    // retro-card
+    name: "hero-1",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero-1"),
+    ),
+  },
+  {
     name: "retro-card",
     type: "registry:block",
     dependencies: [],
@@ -50,5 +61,5 @@ export const blocks: Registry = [
     component: React.lazy(
       () => import("../components/mvpblocks/cards/basic/retro-card"),
     ),
-  },
+  }
 ];
