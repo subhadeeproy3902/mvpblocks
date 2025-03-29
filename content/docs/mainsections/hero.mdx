@@ -1,0 +1,17 @@
+---
+title: Hero
+description: Hero sections are the first thing users see when they visit your site. They are a great way to showcase your product and its features.
+root: mainsections
+---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Dark modern hero
+
+<ComponentPreview
+  name="hero-1"     
+  classNameComponentContainer='max-h-[300px]'
+  code={(await extractSourceCode('hero-1')).code}
+  lang="tsx"
+/>
