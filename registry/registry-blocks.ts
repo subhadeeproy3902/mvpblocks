@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "fitness-hero",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/fitness-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/fitness-hero"),
+    ),
+  },
+  {
     name: "globe1",
     type: "registry:block",
     dependencies: ["lucide-react"],
@@ -35,7 +50,6 @@ export const blocks: Registry = [
   {
     name: "hero-1",
     type: "registry:block",
-    author: "MVP Blocks",
     dependencies: ["lucide-react"],
     registryDependencies: [],
     files: [
