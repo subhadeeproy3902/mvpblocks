@@ -152,7 +152,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        "relative h-[600px] w-full place-content-center place-items-center overflow-y-auto",
+        "relative min-h-screen w-full place-content-center place-items-center overflow-y-auto",
         className,
       )}
     >
