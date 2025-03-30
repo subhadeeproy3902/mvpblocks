@@ -4,6 +4,7 @@ type ComponentPreviewProps = {
   lang: string;
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
+  fromDocs?: boolean;
 };
 
 type ComponentDisplayProps = {
@@ -12,7 +13,8 @@ type ComponentDisplayProps = {
   className?: string;
   reTriggerKey: number;
   reTrigger: () => void;
-  author?: string;
+  fromDocs?: boolean;
+  name?: string;
 };
 
 type CodePreviewProps = {

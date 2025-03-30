@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteLink } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { CheckCheck, Ellipsis, Fullscreen, Terminal } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
 import { ComponentLoader } from "./component-loader";
 import { OpenInV0Button } from "../v0";
@@ -21,7 +21,9 @@ export function ComponentPreview({
   hasReTrigger = false,
   lang,
   name,
+  fromDocs,
 }: ComponentPreviewProps) {
+  const componentRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("preview");
   const [isTerminalCopied, setIsTerminalCopied] = useState(false);
 
@@ -148,11 +150,14 @@ export function ComponentPreview({
           </div>
         </TabsList>
         <TabsContent value="preview">
-          <div className="preview flex min-h-[450px] w-full justify-center pt-4 p-0.5">
+          <div className="preview flex min-h-[450px] w-full justify-center pt-4 p-0.5"
+            ref={componentRef}
+          >
             <ComponentLoader
               name={name}
               hasReTrigger={hasReTrigger}
               classNameComponentContainer={classNameComponentContainer}
+              fromDocs={fromDocs}
             />
           </div>
         </TabsContent>

@@ -11,25 +11,21 @@ type ComponentLoaderProps = {
   name: string;
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
+  fromDocs?: boolean;
 };
 
 export function ComponentLoader({
   classNameComponentContainer,
   hasReTrigger = false,
   name,
+  fromDocs,
 }: ComponentLoaderProps) {
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
   const [loading, setLoading] = useState(true);
-  const [autho, setAuthor] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const component = getComponentByName(name)?.component;
-    const author = getComponentByName(name)?.author;
-    if (author && author !== undefined) {
-      setAuthor(author);
-    }
-    console.log("component", name);
     if (component) {
       setComponent(() => component);
     }
@@ -137,7 +133,8 @@ export function ComponentLoader({
       className={classNameComponentContainer}
       reTriggerKey={reTriggerKey}
       reTrigger={reTrigger}
-      author={autho}
+      name={name}
+      fromDocs={fromDocs}
     />
   );
 }
@@ -148,12 +145,14 @@ function ComponentDisplay({
   hasReTrigger,
   reTrigger,
   reTriggerKey,
-  author,
+  fromDocs,
+  name,
 }: ComponentDisplayProps) {
+  console.log(hasReTrigger);
   return (
     <div
       className={cn(
-        "h-full relative place-content-center place-items-center overflow-x-hidden overflow-y-scroll",
+        "relative h-[600px] w-full place-content-center place-items-center",
         className,
       )}
     >
@@ -168,16 +167,15 @@ function ComponentDisplay({
           <RotateCw className="h-4 w-4" />
         </Button>
       )}
-      {hasReTrigger
-        ? React.cloneElement(component, { key: reTriggerKey })
-        : component}
-
-      {author && (
-        <div className="absolute z-50 top-2 right-2 inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-md backdrop-filter transition-all">
-          <Link href={`https://github.com/${author}`} className="flex items-center gap-1.5">
-            By {author}
-          </Link>
-        </div>
+      {hasReTrigger ? (
+        React.cloneElement(component, { key: reTriggerKey })
+      ) : fromDocs ? (
+        <iframe
+          src={`https://mvpblocks.vercel.app/preview/${name}`}
+          className="h-full w-full"
+        />
+      ) : (
+        component
       )}
     </div>
   );
