@@ -63,6 +63,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "login-form1",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/forms/login-form1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/forms/login-form1"),
+    ),
+  },
+  {
     name: "retro-card",
     type: "registry:block",
     dependencies: [],
