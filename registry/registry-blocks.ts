@@ -35,6 +35,7 @@ export const blocks: Registry = [
   {
     name: "hero-1",
     type: "registry:block",
+    author: "MVP Blocks",
     dependencies: ["lucide-react"],
     registryDependencies: [],
     files: [

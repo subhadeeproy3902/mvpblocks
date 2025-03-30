@@ -21,9 +21,14 @@ export function ComponentLoader({
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
   const [loading, setLoading] = useState(true);
+  const [autho, setAuthor] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const component = getComponentByName(name)?.component;
+    const author = getComponentByName(name)?.author;
+    if (author && author !== undefined) {
+      setAuthor(author);
+    }
     console.log("component", name);
     if (component) {
       setComponent(() => component);
@@ -132,6 +137,7 @@ export function ComponentLoader({
       className={classNameComponentContainer}
       reTriggerKey={reTriggerKey}
       reTrigger={reTrigger}
+      author={autho}
     />
   );
 }
@@ -142,11 +148,12 @@ function ComponentDisplay({
   hasReTrigger,
   reTrigger,
   reTriggerKey,
+  author,
 }: ComponentDisplayProps) {
   return (
     <div
       className={cn(
-        "min-h-screen place-content-center place-items-center",
+        "h-full relative place-content-center place-items-center",
         className,
       )}
     >
@@ -164,6 +171,14 @@ function ComponentDisplay({
       {hasReTrigger
         ? React.cloneElement(component, { key: reTriggerKey })
         : component}
+
+      {author && (
+        <div className="absolute z-50 top-2 right-2 inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-md backdrop-filter transition-all">
+          <Link href={`https://github.com/${author}`} className="flex items-center gap-1.5">
+            By {author}
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

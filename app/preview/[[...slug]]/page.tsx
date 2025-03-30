@@ -22,7 +22,7 @@ export default async function PreviewPage({
         >
           Docs <ArrowRight className="h-4 w-4" />
         </Link>
-        <div className="w-full">
+        <div className="w-full h-screen">
           <ComponentLoader name={componentName} hasReTrigger={false} />
         </div>
       </section>

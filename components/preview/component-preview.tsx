@@ -148,7 +148,7 @@ export function ComponentPreview({
           </div>
         </TabsList>
         <TabsContent value="preview">
-          <div className="preview flex min-h-[450px] w-full justify-center p-4">
+          <div className="preview flex min-h-[450px] w-full justify-center pt-4 p-0.5">
             <ComponentLoader
               name={name}
               hasReTrigger={hasReTrigger}
