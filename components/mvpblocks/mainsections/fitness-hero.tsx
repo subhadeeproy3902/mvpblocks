@@ -5,7 +5,7 @@ export default function FitnessHero() {
       <div className="relative z-10">
         <div className="pb-20 pt-28 md:pt-16 lg:pt-20">
           <div className="container">
-            <div className="grid items-center gap-10 lg:grid-cols-[1fr,minmax(0,_0.6fr)] lg:gap-20 xl:gap-[122px]">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20 xl:gap-[122px]">
               <div className="mx-auto max-w-[500px] lg:mx-0 lg:max-w-none">
                 <div className="flex flex-col items-center justify-center text-center lg:items-start lg:justify-normal lg:text-left">
                   <h1 className="xxl:text-[90px] mb-6 text-4xl font-extrabold leading-[1.11] -tracking-[1px] md:text-5xl lg:text-6xl xl:text-7xl">

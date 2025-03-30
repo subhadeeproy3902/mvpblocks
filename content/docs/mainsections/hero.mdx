@@ -11,7 +11,16 @@ import {extractSourceCode} from "@/lib/code";
 
 <ComponentPreview
   name="hero-1"     
-  classNameComponentContainer='max-h-[500px] h-full overflow-x-auto'
+  classNameComponentContainer='max-h-[500px] h-full'
   code={(await extractSourceCode('hero-1')).code}
+  lang="tsx"
+/>
+
+## Fitness Hero
+
+<ComponentPreview
+  name="fitness-hero"     
+  classNameComponentContainer='max-h-[500px] h-full'
+  code={(await extractSourceCode('fitness-hero')).code}
   lang="tsx"
 />

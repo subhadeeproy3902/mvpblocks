@@ -153,7 +153,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        "h-full relative place-content-center place-items-center",
+        "h-full relative place-content-center place-items-center overflow-x-hidden overflow-y-scroll",
         className,
       )}
     >
