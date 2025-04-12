@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import { RootProvider } from "fumadocs-ui/provider";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -23,13 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dm.className}`}>
-        <RootProvider>
-          <div className="min-h-screen" vaul-drawer-wrapper="">
-            {children}
-          </div>
-        </RootProvider>
-      </body>
+      <body className={`${dm.className}`}>{children}</body>
     </html>
   );
 }
