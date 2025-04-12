@@ -66,11 +66,13 @@ export default async function Page(props: {
     <DocsPage
       toc={page.data.toc}
       full={page.data.full}
-      tableOfContent={{
-        footer,
-        style: "clerk",
-        single: false,
-      }}
+      tableOfContent={
+        params.slug && (params.slug[1] == 'loaders' || params.slug[1] == 'buttons') ? undefined : {
+          footer,
+          single: false,
+          style: "clerk",
+        }
+      }
       breadcrumb={{
         full: true,
       }}
