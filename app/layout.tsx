@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, Bricolage_Grotesque } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const dm = DM_Sans({
-  subsets: ["latin"],
-});
-
-const brico = Bricolage_Grotesque({
   subsets: ["latin"],
 });
 
