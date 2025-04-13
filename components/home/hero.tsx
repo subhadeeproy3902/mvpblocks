@@ -4,13 +4,14 @@ import Image from "next/image";
 import { Card } from "../ui/pixelcards";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { ChevronRightIcon, CloudLightning, MoveRight } from "lucide-react";
+import { CloudLightning, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HomeBadge from "../ui/home-badge";
 import { Beam } from "../ui/gridbeam";
-import { Code, Brush, Sparkles, Shapes } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CardHoverEffect } from "../ui/pulse-card";
+import { motion } from "framer-motion";
 
 const space = Geist({
   subsets: ["latin"],
@@ -110,16 +111,24 @@ export default function Hero() {
         priority
       />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
-        <div className="flex justify-center">
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.1 }}
+        >
           <HomeBadge />
-        </div>
+        </motion.div>
         <div className="mx-auto mt-5 max-w-3xl text-center">
           <Beam />
-          <h1
+          <motion.h1
             className={cn(
               "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
               space.className,
             )}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.2 }}
           >
             Prebuilt UI
             <img
@@ -128,21 +137,37 @@ export default function Hero() {
               className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
             />
             blocks to ship beautiful MVPs fast.
-          </h1>
+          </motion.h1>
         </div>
-        <div className="mx-auto mt-5 max-w-3xl text-center">
+        <motion.div
+          className="mx-auto mt-5 max-w-3xl text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.3 }}
+        >
           <p className="text-xl text-muted-foreground">
             Copy-paste beautiful, responsive components without worrying about
             styling or animations. Build faster, launch sooner.
           </p>
-        </div>
-        <div className="mt-8 flex justify-center gap-3">
-          <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] text-sm">Get started</Button>
+        </motion.div>
+        <motion.div
+          className="mt-8 flex justify-center gap-3"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.4 }}
+        >
+          <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]">
+            Get started
+          </Button>
           <Button variant={"secondary"}>
             About <MoveRight className="ml-2 h-4 w-4" />
           </Button>
-        </div>
-        <div className="mt-5 flex items-center justify-center gap-x-1">
+        </motion.div>
+        <motion.div className="mt-5 flex items-center justify-center gap-x-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.75, delay: 0.75 }}
+        >
           <img
             src="/vector4.png"
             alt="Next.js"
@@ -159,11 +184,16 @@ export default function Hero() {
             alt="Next.js"
             className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
           />
-        </div>
-        <div className="mx-auto hidden xl:block  mt-5 max-w-2xl text-center">
+        </motion.div>
+        <div className="mx-auto mt-5 hidden max-w-2xl text-center xl:block">
           <main className="m-auto flex w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">
             {isScriptLoaded && (
-              <div className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block">
+              <motion.div
+                className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.75 }}
+              >
                 <Card
                   key={cardConfigurations[0].label}
                   label={cardConfigurations[0].label}
@@ -173,10 +203,15 @@ export default function Hero() {
                   desc={cardConfigurations[0].desc}
                   color={cardConfigurations[1].color}
                 />
-              </div>
+              </motion.div>
             )}
             {isScriptLoaded && (
-              <div className="absolute right-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block">
+              <motion.div
+                className="absolute right-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.6 }}
+              >
                 <Card
                   color={cardConfigurations[1].color}
                   icon={cardConfigurations[1].icon}
@@ -185,21 +220,26 @@ export default function Hero() {
                   canvasProps={cardConfigurations[1].canvasProps}
                   number={cardConfigurations[1].number}
                   desc={cardConfigurations[1].desc}
-                  
                 />
-              </div>
+              </motion.div>
             )}
             {cards.map((card, i) => (
-              <CardHoverEffect
+              <motion.div
                 key={i}
-                title={card.title}
-                description={card.description}
-                icon={card.icon}
-                variant={card.variant}
-                glowEffect={true}
-                size={"lg"}
-                showGridLines={card.showGridLines}
-              />
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.7 + i * 0.1 }}
+              >
+                <CardHoverEffect
+                  title={card.title}
+                  description={card.description}
+                  icon={card.icon}
+                  variant={card.variant}
+                  glowEffect={true}
+                  size={"lg"}
+                  showGridLines={card.showGridLines}
+                />
+              </motion.div>
             ))}
           </main>
         </div>

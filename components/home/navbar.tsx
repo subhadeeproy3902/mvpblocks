@@ -38,7 +38,7 @@ export function NavbarDemo() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <Navbar>
+    <Navbar className="z-[150]">
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />

@@ -1,6 +1,5 @@
 import type React from "react";
 import { motion } from "framer-motion";
-import { Blocks } from "lucide-react";
 import { NumberTicker } from "./counter";
 import { VARIANTS } from "./pulse-card";
 
