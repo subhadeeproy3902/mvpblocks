@@ -1,3 +1,5 @@
+declare module 'tailwindcss/lib/util/flattenColorPalette'
+
 type ComponentPreviewProps = {
   name: string;
   code: string;
