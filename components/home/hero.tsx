@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import PixelCards from "../ui/pixelcards";
+import { Card } from "../ui/pixelcards";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronRightIcon, CloudLightning, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HomeBadge from "../ui/home-badge";
 import { Beam } from "../ui/gridbeam";
+import { Code, Brush, Sparkles, Shapes } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CardHoverEffect } from "../ui/pulse-card";
 
 const space = Geist({
   subsets: ["latin"],
@@ -15,7 +18,63 @@ const space = Geist({
   weight: "400",
 });
 
+const PIXEL_SCRIPT_URL =
+  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pixel-RKkUKH2OXWk9adKbDnozmndkwseTQh.js";
+
 export default function Hero() {
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = PIXEL_SCRIPT_URL;
+    script.async = true;
+
+    script.onload = () => setIsScriptLoaded(true);
+    script.onerror = () => console.error("Failed to load pixel canvas script");
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const cards = [
+    {
+      title: "V0 Compatible",
+      description: "Edit and customize visually, instantly.",
+      icon: <CloudLightning className="h-full w-full" />,
+      variant: "rose",
+      showGridLines: true,
+    },
+    {
+      title: "Animated Out of Box",
+      description: "No setup and  smooth UI interactions.",
+      icon: <Sparkles className="h-full w-full" />,
+      variant: "rose",
+      showGridLines: true,
+    },
+  ] as const;
+
+  const cardConfigurations = [
+    {
+      color: "rose",
+      icon: "Blocks",
+      label: "Command",
+      canvasProps: { gap: 3, speed: 80, colors: "#fff, #fda4af, #e11d48" },
+      number: 100,
+      desc: "Components available",
+    },
+    {
+      color: "rose",
+      icon: "f",
+      label: "Dropper",
+      canvasProps: { gap: 3, speed: 80, colors: "#fff, #fda4af, #e11d48" },
+      number: 15,
+      desc: "Categories available",
+    },
+  ];
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
       <Image
@@ -50,59 +109,101 @@ export default function Hero() {
         className="absolute -right-44 bottom-0 z-[2] rotate-90 object-cover object-center"
         priority
       />
-        <div className="container mx-auto px-4 2xl:max-w-[1400px]">
-          <div className="flex justify-center">
-            <HomeBadge />
-          </div>
-          <div className="mx-auto mt-5 max-w-3xl text-center">
-            <Beam />
-            <h1
-              className={cn(
-                "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
-                space.className,
-              )}
-            >
-              Prebuilt UI
-              <img
-                src="/rose.png"
-                alt="Logo"
-                className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
-              />
-              blocks to ship beautiful MVPs fast.
-            </h1>
-          </div>
-          <div className="mx-auto mt-5 max-w-3xl text-center">
-            <p className="text-xl text-muted-foreground">
-              Copy-paste beautiful, responsive components without worrying about
-              styling or animations. Build faster, launch sooner.
-            </p>
-          </div>
-          <div className="mt-8 flex justify-center gap-3">
-            <Button size={"lg"}>Get started</Button>
-            <Button size={"lg"} variant={"outline"}>
-              Learn more
-            </Button>
-          </div>
-          <div className="mt-5 flex items-center justify-center gap-x-1">
-            <img
-              src="/vector4.png"
-              alt="Next.js"
-              className="mr-2 mt-4 hidden w-96 brightness-[4] xl:block"
-            />
-            <span className="text-sm text-gray-500">
-              We use industry standards like{" "}
-            </span>
-            <img src="/nextjs.png" alt="Next.js" className="h-7 w-7" />
-            <img src="/tailwind.png" alt="Next.js" className="h-7 w-7" />
-            <img src="/framer.webp" alt="Next.js" className="h-6 w-6" />
-            <img
-              src="/vector3.png"
-              alt="Next.js"
-              className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
-            />
-          </div>
+      <div className="container mx-auto px-4 2xl:max-w-[1400px]">
+        <div className="flex justify-center">
+          <HomeBadge />
         </div>
-      {/* <PixelCards /> */}
+        <div className="mx-auto mt-5 max-w-3xl text-center">
+          <Beam />
+          <h1
+            className={cn(
+              "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
+              space.className,
+            )}
+          >
+            Prebuilt UI
+            <img
+              src="/rose.png"
+              alt="Logo"
+              className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
+            />
+            blocks to ship beautiful MVPs fast.
+          </h1>
+        </div>
+        <div className="mx-auto mt-5 max-w-3xl text-center">
+          <p className="text-xl text-muted-foreground">
+            Copy-paste beautiful, responsive components without worrying about
+            styling or animations. Build faster, launch sooner.
+          </p>
+        </div>
+        <div className="mt-8 flex justify-center gap-3">
+          <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] text-sm">Get started</Button>
+          <Button variant={"secondary"}>
+            About <MoveRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+        <div className="mt-5 flex items-center justify-center gap-x-1">
+          <img
+            src="/vector4.png"
+            alt="Next.js"
+            className="mr-2 mt-4 hidden w-96 brightness-[4] xl:block"
+          />
+          <span className="text-sm text-gray-500">
+            We use industry standards like{" "}
+          </span>
+          <img src="/nextjs.png" alt="Next.js" className="h-7 w-7" />
+          <img src="/tailwind.png" alt="Next.js" className="h-7 w-7" />
+          <img src="/framer.webp" alt="Next.js" className="h-6 w-6" />
+          <img
+            src="/vector3.png"
+            alt="Next.js"
+            className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
+          />
+        </div>
+        <div className="mx-auto hidden xl:block  mt-5 max-w-2xl text-center">
+          <main className="m-auto flex w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">
+            {isScriptLoaded && (
+              <div className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block">
+                <Card
+                  key={cardConfigurations[0].label}
+                  label={cardConfigurations[0].label}
+                  canvasProps={cardConfigurations[0].canvasProps}
+                  number={cardConfigurations[0].number}
+                  icon={cardConfigurations[0].icon}
+                  desc={cardConfigurations[0].desc}
+                  color={cardConfigurations[1].color}
+                />
+              </div>
+            )}
+            {isScriptLoaded && (
+              <div className="absolute right-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block">
+                <Card
+                  color={cardConfigurations[1].color}
+                  icon={cardConfigurations[1].icon}
+                  key={cardConfigurations[1].label}
+                  label={cardConfigurations[1].label}
+                  canvasProps={cardConfigurations[1].canvasProps}
+                  number={cardConfigurations[1].number}
+                  desc={cardConfigurations[1].desc}
+                  
+                />
+              </div>
+            )}
+            {cards.map((card, i) => (
+              <CardHoverEffect
+                key={i}
+                title={card.title}
+                description={card.description}
+                icon={card.icon}
+                variant={card.variant}
+                glowEffect={true}
+                size={"lg"}
+                showGridLines={card.showGridLines}
+              />
+            ))}
+          </main>
+        </div>
+      </div>
     </div>
   );
 }

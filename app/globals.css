@@ -106,3 +106,12 @@ code {
   font-size: 16px !important;
   line-height: 1.6rem !important;
 }
+
+@keyframes tile {
+  0%, 12.5%, 100% { opacity: 1; }
+  25%, 82.5% { opacity: 0; }
+}
+
+.animate-tile {
+  animation: tile 2s ease-in-out infinite;
+}

@@ -4,7 +4,6 @@ import { default as flattenColorPalette } from 'tailwindcss/lib/util/flattenColo
 import svgToDataUri from 'mini-svg-data-uri'
 
 const config: Config = {
-  darkMode: ["class"],
   content: [
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
@@ -82,6 +81,7 @@ const config: Config = {
         },
       },
       keyframes: {
+        
         "accordion-down": {
           from: {
             height: "0",
