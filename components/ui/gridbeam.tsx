@@ -13,7 +13,7 @@ export const Beam = () => {
       viewBox="0 0 300 150"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute top-16 left-24 ml-24 mt-8"
+      className="absolute top-16 left-24 ml-24 mt-8 hidden xl:block"
     >
       <path
         d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
@@ -60,7 +60,7 @@ export const Beam = () => {
       viewBox="0 0 300 150"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute top-16 right-24 mr-24 mt-8 -scale-x-100"
+      className="absolute top-16 right-24 mr-24 mt-8 -scale-x-100 hidden xl:block"
     >
       <path
         d="M31 .5h32M0 .5h32m30 31h32m-1 0h32m-1 31h32M62.5 32V0m62 63V31"
