@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Card } from "../ui/pixelcards";
+import { PixelCard } from "../ui/pixelcards";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { CloudLightning, MoveRight } from "lucide-react";
@@ -123,7 +123,7 @@ export default function Hero() {
           <Beam />
           <motion.h1
             className={cn(
-              "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
+              "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
               space.className,
             )}
             initial={{ opacity: 0, y: 50 }}
@@ -185,16 +185,16 @@ export default function Hero() {
             className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
           />
         </motion.div>
-        <div className="mx-auto mt-5 hidden max-w-2xl text-center xl:block">
-          <main className="m-auto flex w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">
+        <div className="mx-auto mt-5 max-w-2xl text-center">
+          <main className="m-auto flex flex-col sm:flex-row w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">
             {isScriptLoaded && (
               <motion.div
                 className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.75 }}
+                transition={{ duration: 0.75, delay: 0.5 }}
               >
-                <Card
+                <PixelCard
                   key={cardConfigurations[0].label}
                   label={cardConfigurations[0].label}
                   canvasProps={cardConfigurations[0].canvasProps}
@@ -210,9 +210,9 @@ export default function Hero() {
                 className="absolute right-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.6 }}
+                transition={{ duration: 0.75, delay: 0.5 }}
               >
-                <Card
+                <PixelCard
                   color={cardConfigurations[1].color}
                   icon={cardConfigurations[1].icon}
                   key={cardConfigurations[1].label}
@@ -228,7 +228,7 @@ export default function Hero() {
                 key={i}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.7 + i * 0.1 }}
+                transition={{ duration: 0.75, delay: 1 }}
               >
                 <CardHoverEffect
                   title={card.title}

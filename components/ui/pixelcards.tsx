@@ -45,13 +45,13 @@ const PixelCanvas: React.FC<PixelCanvasProps> = ({
       data-speed={speed}
       data-colors={colors}
       {...(noFocus ? { "data-no-focus": "" } : {})}
-      className="absolute inset-0 size-full"
+      className="absolute inset-0 size-full z-10"
       style={{ position: "absolute", width: "100%", height: "100%" }}
     />
   );
 };
 
-export const Card: React.FC<CardProps> = ({
+export const PixelCard: React.FC<CardProps> = ({
   icon,
   label,
   color,
@@ -93,7 +93,7 @@ export const Card: React.FC<CardProps> = ({
         <img
           src="/category.png"
           alt={label}
-          className="z-50 mb-4 h-28 w-28 opacity-30 group-hover:opacity-80"
+          className="z-50 mb-4 h-32 w-32 opacity-30 group-hover:opacity-80"
         />
       )}
 
