@@ -1,3 +1,4 @@
+import Features from "@/components/home/features";
 import Hero from "@/components/home/hero";
 import { NavbarDemo } from "@/components/home/navbar";
 
@@ -6,6 +7,7 @@ export default function Homepage() {
     <>
       <NavbarDemo />
       <Hero />
+      <Features />
     </>
   );
 }
