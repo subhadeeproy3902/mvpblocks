@@ -60,11 +60,6 @@ export default function Gallery() {
                 <CreativeOTPInputDemo />
               </div>
             </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
-              </div>
-            </div>
             
             <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
               <div className="h-full w-full overflow-hidden rounded-xl">
@@ -76,11 +71,6 @@ export default function Gallery() {
                 <CreativeOTPInputDemo />
               </div>
             </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
-              </div>
-            </div>
             
             <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
               <div className="h-full w-full overflow-hidden rounded-xl">
@@ -90,11 +80,6 @@ export default function Gallery() {
             <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
               <div className="h-full w-full">
                 <CreativeOTPInputDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
               </div>
             </div>
             
