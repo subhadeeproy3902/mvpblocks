@@ -4,6 +4,14 @@ import { useTheme } from "next-themes";
 import Earth from "../ui/globe";
 import ScrambleHover from "../ui/scramble";
 import { Suspense, useEffect, useState } from "react";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const space = Geist({
+  subsets: ["latin"],
+  variable: "--font-carlito",
+  weight: "400",
+});
 
 export default function Features() {
   const { theme } = useTheme();
@@ -33,10 +41,18 @@ export default function Features() {
   }, [theme]);
 
   return (
-    <section className="py-12 text-foreground sm:py-24 md:py-32 relative overflow-hidden">
-      <div className="absolute h-16 rounded-full w-44 blur-3xl select-none bg-primary opacity-40 -top-10 left-1/2 -translate-x-1/2"></div>
-      <div className="bg-gradient-to-r from-transparent to-transparent via-primary/50 h-px w-3/5 left-1/2 -translate-x-1/2 absolute top-0"></div>
+    <section className="relative overflow-hidden py-12 text-foreground sm:py-24 md:py-32">
+      <div className="absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 select-none rounded-full bg-primary opacity-40 blur-3xl"></div>
+      <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
       <div className="container mx-auto flex flex-col items-center gap-6 sm:gap-12">
+        <h2
+          className={cn(
+            "bg-gradient-to-b mb-8 from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
+            space.className,
+          )}
+        >
+          Features
+        </h2>
         <div className="grid grid-cols-12 gap-4">
           {/* Pixel */}
           <div className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4">
