@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CTA() {
   return (
     <section
-      className="flex w-full flex-col items-center justify-center max-w-7xl mx-auto mb-16"
+      className="flex w-full flex-col items-center justify-center max-w-7xl mx-auto mb-24"
     >
       <div className="w-full">
         <div className="relative z-20 h-[400px] w-full overflow-hidden rounded-xl border border-border bg-primary shadow-xl md:h-[400px]">
