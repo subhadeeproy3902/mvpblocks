@@ -33,7 +33,9 @@ export default function Features() {
   }, [theme]);
 
   return (
-    <section className="bg-background py-12 text-foreground sm:py-24 md:py-32">
+    <section className="py-12 text-foreground sm:py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute h-16 rounded-full w-44 blur-3xl select-none bg-primary opacity-40 -top-10 left-1/2 -translate-x-1/2"></div>
+      <div className="bg-gradient-to-r from-transparent to-transparent via-primary/50 h-px w-3/5 left-1/2 -translate-x-1/2 absolute top-0"></div>
       <div className="container mx-auto flex flex-col items-center gap-6 sm:gap-12">
         <div className="grid grid-cols-12 gap-4">
           {/* Pixel */}
