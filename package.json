@@ -49,6 +49,7 @@
     "cmdk": "^1.1.1",
     "cobe": "^0.6.3",
     "date-fns": "^4.1.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.6.0",
     "fumadocs-core": "14.7.2",
