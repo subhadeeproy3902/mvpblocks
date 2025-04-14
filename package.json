@@ -58,6 +58,7 @@
     "fumadocs-typescript": "^3.1.0",
     "fumadocs-ui": "14.7.2",
     "input-otp": "^1.4.2",
+    "lenis": "^1.2.3",
     "lucide-react": "^0.484.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.6.5",
