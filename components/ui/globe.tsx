@@ -69,7 +69,7 @@ const Earth: React.FC<EarthProps> = ({
     return () => {
       globe.destroy();
     };
-  }, []);
+  }, [dark]);
 
   return (
     <div
