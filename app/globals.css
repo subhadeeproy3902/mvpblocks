@@ -267,6 +267,15 @@ code {
   animation: marquee var(--duration) infinite linear;
 }
 
-.x {
-  color: hsla(327, 100%, 85%, 0.04)
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e60a64;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
 }
