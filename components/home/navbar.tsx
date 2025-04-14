@@ -54,10 +54,13 @@ export function NavbarDemo() {
       <MobileNav>
         <MobileNavHeader>
           <NavbarLogo />
+          <div className="flex items-center gap-4">
+          <ModeToggle />
           <MobileNavToggle
             isOpen={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           />
+          </div>
         </MobileNavHeader>
 
         <MobileNavMenu

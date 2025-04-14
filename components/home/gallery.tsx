@@ -3,10 +3,7 @@
 import { Marquee } from "../ui/marquee";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { Spotlight } from "../ui/spotlight";
-import { MagicTrailDemo } from "../mvpblocks/trail";
-import { CreativeOTPInputDemo } from "../otp";
-import { AnimatedListDemo } from "../list-demo";
+import { Spotlight } from "../ui/spotlight";;
 
 const space = Geist({
   subsets: ["latin"],
@@ -17,7 +14,7 @@ const space = Geist({
 export default function Gallery() {
   return (
     <section
-      className="relative mb-32 min-h-screen overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] border-t border-b-0 border-secondary/50 bg-background pt-16"
+      className="relative mb-32 min-h-screen overflow-hidden rounded-tl-[5rem] rounded-tr-[5rem] border-b-0 border-t border-secondary/50 bg-background pt-16"
       style={{
         boxShadow: "inset 0 20px 30px -12px rgba(244, 63, 94, 0.2)",
       }}
@@ -48,60 +45,7 @@ export default function Gallery() {
             inspired to build your own.
           </p>
         </div>
-        <div className="relative mt-16 flex w-full flex-col items-center justify-center overflow-hidden">
-          {/* <Marquee pauseOnHover className="[--duration:20s]">
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <MagicTrailDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full">
-                <CreativeOTPInputDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
-              </div>
-            </div>
-            
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <MagicTrailDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full">
-                <CreativeOTPInputDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
-              </div>
-            </div>
-            
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <MagicTrailDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full">
-                <CreativeOTPInputDemo />
-              </div>
-            </div>
-            <div className="aspect-square h-full w-full rounded-xl border-2 p-2">
-              <div className="h-full w-full overflow-hidden rounded-xl">
-                <AnimatedListDemo />
-              </div>
-            </div>
-            
-          </Marquee> */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-        </div>
+        
       </div>
     </section>
   );
