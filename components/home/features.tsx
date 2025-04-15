@@ -47,7 +47,7 @@ export default function Features() {
       <div className="container mx-auto flex flex-col items-center gap-6 sm:gap-12">
         <h2
           className={cn(
-            "bg-gradient-to-b mb-8 from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-3xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
+            "bg-gradient-to-b mb-8 from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
             space.className,
           )}
         >

@@ -33,24 +33,25 @@ const faqs = [
   },
 ];
 
-
 export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="pb-24 relative overflow-hidden">
-      <div className="absolute h-64 rounded-full w-64 blur-3xl select-none bg-primary/20 top-1/2 -right-20 opacity-80"></div>
-      <div className="absolute h-64 rounded-full w-64 blur-3xl select-none bg-primary/20 top-1/2 -left-20 opacity-80"></div>
-      <div className="container">
+    <section className="relative overflow-hidden pb-24">
+      <div className="absolute -right-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
+      <div className="absolute -left-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
+      <div className="container z-10">
         <div className="flex justify-center">
-        <div className="inline-flex border border-primary/40 gap-2 text-primary px-3 py-1 rounded-full uppercase items-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-3 py-1 uppercase text-primary">
             <span>✶</span>
             <span className="text-sm">Faqs</span>
+          </div>
         </div>
-        </div>
-        <h2 className="mx-auto mt-6 max-w-xl text-center text-6xl font-medium">
+        <h2 className="mx-auto mt-6 max-w-xl text-center text-4xl font-medium md:text-[54px] md:leading-[60px]">
           Questions? We&apos;ve got{" "}
-          <span className="bg-primary text-transparent dark:bg-gradient-to-b from-foreground via-rose-200 to-primary bg-clip-text">answers</span>
+          <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-transparent dark:bg-gradient-to-b">
+            answers
+          </span>
         </h2>
 
         <div className="mx-auto mt-12 flex max-w-xl flex-col gap-6">
@@ -58,7 +59,7 @@ export default function Faqs() {
             <div
               key={faq.question}
               onClick={() => setSelectedIndex(faqIndex)}
-              className="rounded-2xl border border-white/10 p-6 bg-gradient-to-b from-secondary/40 to-secondary/10 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
+              className="rounded-2xl border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
             >
               <div className="flex items-start justify-between">
                 <h3 className="m-0 font-medium">{faq.question}</h3>

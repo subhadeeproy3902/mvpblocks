@@ -168,7 +168,11 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.75, delay: 0.75 }}
         >
-          <img
+          <motion.img
+          // translate x -50
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.25 }}
             src="/vector4.png"
             alt="Next.js"
             className="mr-2 mt-4 hidden w-96 brightness-[4] xl:block"
@@ -179,7 +183,10 @@ export default function Hero() {
           <img src="/nextjs.png" alt="Next.js" className="h-7 w-7" />
           <img src="/tailwind.png" alt="Next.js" className="h-7 w-7" />
           <img src="/framer.webp" alt="Next.js" className="h-6 w-6" />
-          <img
+          <motion.img
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.25 }}
             src="/vector3.png"
             alt="Next.js"
             className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
@@ -228,7 +235,7 @@ export default function Hero() {
                 key={i}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 1 }}
+                transition={{ duration: 1, delay: 1.25 }}
               >
                 <CardHoverEffect
                   title={card.title}
