@@ -95,7 +95,7 @@ export default function Gallery() {
         <div className="mx-auto mt-10 w-full max-w-4xl rounded-[24px] p-2 shadow-sm md:rounded-t-[44px]">
           <CardCaroursalDemo />
         </div>
-        <section className="my-10 mb-20 w-full">
+        <section className="my-10 mb-20 z-50 relative w-full">
           <div className="mt-20 flex flex-col items-center justify-center">
             <div className="mx-auto flex h-[90px] max-w-[480px] items-center justify-center gap-4 rounded-3xl border-2 border-dashed px-6">
               <p className="text-lg opacity-60">
