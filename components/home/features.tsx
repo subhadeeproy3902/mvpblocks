@@ -3,7 +3,8 @@
 import { useTheme } from "next-themes";
 import Earth from "../ui/globe";
 import ScrambleHover from "../ui/scramble";
-import { Suspense, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,8 @@ const space = Geist({
 });
 
 export default function Features() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const { theme } = useTheme();
   const [isHovering, setIsHovering] = useState(false);
 
@@ -43,11 +46,17 @@ export default function Features() {
   return (
     <section className="relative overflow-hidden py-12 text-foreground sm:py-24 md:py-32">
       <div className="absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 select-none rounded-full bg-primary opacity-40 blur-3xl"></div>
-      <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-      <div className="container mx-auto flex flex-col items-center gap-6 sm:gap-12">
+      <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent ease-in-out transition-all"></div>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.5, delay: 0 }}
+        className="container mx-auto flex flex-col items-center gap-6 sm:gap-12"
+      >
         <h2
           className={cn(
-            "bg-gradient-to-b mb-8 from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
+            "mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
             space.className,
           )}
         >
@@ -55,7 +64,13 @@ export default function Features() {
         </h2>
         <div className="grid grid-cols-12 gap-4">
           {/* Pixel */}
-          <div className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4">
+          <motion.div
+            className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4 ease-in-out"
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <div className="z-10 flex flex-col gap-4">
               <h3 className="text-2xl font-semibold leading-none tracking-tight">
                 🎨 Pixel-Perfect Styling
@@ -98,10 +113,16 @@ export default function Features() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Cli */}
-          <div className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4">
+          <motion.div
+            className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4 ease-in-out"
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl font-semibold leading-none tracking-tight">
                 🛠️ CLI & Manual Support
@@ -223,13 +244,17 @@ export default function Features() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Global */}
-          <div
-            className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4"
+          <motion.div
+            className="group relative col-span-12 flex flex-col overflow-hidden rounded-xl border-2 border-secondary/40 p-6 text-card-foreground shadow-xl transition-all md:col-span-6 xl:col-span-4 ease-in-out"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <div className="flex flex-col gap-4">
               <h3 className="text-2xl font-semibold leading-none tracking-tight">
@@ -276,9 +301,9 @@ export default function Features() {
                 <div className="scale-200 bg-radial absolute left-1/2 h-[128px] w-[40%] -translate-x-1/2 rounded-[50%] from-primary/30 from-10% to-primary/0 to-60% opacity-20 dark:opacity-100 sm:h-[256px]"></div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

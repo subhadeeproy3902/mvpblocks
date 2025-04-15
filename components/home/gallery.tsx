@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { Spotlight } from "../ui/spotlight";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const space = Geist({
   subsets: ["latin"],
@@ -15,17 +17,25 @@ const space = Geist({
 
 export default function Gallery() {
   const { theme } = useTheme();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <section
-      className="relative mb-32 min-h-screen overflow-hidden rounded-tl-3xl rounded-tr-3xl md:rounded-tl-[5rem] border-b-0 border-t border-secondary/50 bg-background pt-16 md:rounded-tr-[5rem]"
+      className="relative mb-32 min-h-screen overflow-hidden rounded-tl-3xl rounded-tr-3xl border-b-0 border-t border-secondary/50 bg-background pt-16 md:rounded-tl-[5rem] md:rounded-tr-[5rem]"
       style={{
         boxShadow: "inset 0 20px 30px -12px rgba(244, 63, 94, 0.2)",
       }}
     >
       <Spotlight />
       <div className="mx-auto">
-        <div className="mx-auto max-w-[540px]">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.5, delay: 0 }}
+          className="mx-auto max-w-[540px]"
+        >
           <div className="flex justify-center">
             <button
               type="button"
@@ -48,7 +58,7 @@ export default function Gallery() {
             Discover the most popular blocks used by our community and get
             inspired to build your own.
           </p>
-        </div>
+        </motion.div>
         <div className="relative mt-12 flex w-full flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:20s]">
             <div className="mx-4 overflow-hidden rounded-lg">
@@ -85,7 +95,7 @@ export default function Gallery() {
                   alt="Gallery Image 1"
                   width={800}
                   height={800}
-                  className="object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+                  className="rounded-xl object-cover transition-transform duration-500 hover:scale-105"
                 />
               )}
             </div>
@@ -95,7 +105,7 @@ export default function Gallery() {
                 alt="Gallery Image 1"
                 width={800}
                 height={800}
-                className="object-cover rounded-xl transition-transform duration-500 hover:scale-105"
+                className="rounded-xl object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
           </Marquee>

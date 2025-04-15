@@ -9,8 +9,8 @@ import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -77,7 +77,6 @@ const testimonials = [
   },
 ];
 
-
 const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
 const thirdColumn = testimonials.slice(6, 9);
@@ -136,10 +135,18 @@ const TestimonialsColumn = (props: {
 );
 
 export const Testimonials = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   return (
     <section className="mb-32 bg-background">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto max-w-[540px]">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.5, delay: 0 }}
+          className="mx-auto max-w-[540px]"
+        >
           <div className="flex justify-center">
             <button
               type="button"
@@ -162,7 +169,7 @@ export const Testimonials = () => {
             From intuitive design to powerful features, our app has become an
             essential tool for users around the world.
           </p>
-        </div>
+        </motion.div>
         <div className="my-16 flex max-h-[738px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
           <TestimonialsColumn testimonials={firstColumn} duration={15} />
           <TestimonialsColumn
