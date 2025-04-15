@@ -5,13 +5,11 @@ import Features from "@/components/home/features";
 import Footer from "@/components/home/footer";
 import Gallery from "@/components/home/gallery";
 import Hero from "@/components/home/hero";
-import { NavbarDemo } from "@/components/home/navbar";
 import { Testimonials } from "@/components/home/testimonials";
 
 export default function Homepage() {
   return (
     <>
-      <NavbarDemo />
       <Hero />
       <Features />
       <Gallery />

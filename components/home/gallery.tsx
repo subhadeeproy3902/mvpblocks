@@ -1,10 +1,8 @@
 "use client";
 
-import { Marquee } from "../ui/marquee";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Spotlight } from "../ui/spotlight";
-import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";

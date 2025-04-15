@@ -1,3 +1,4 @@
+import { NavbarDemo } from "@/components/home/navbar";
 import ReactLenis from "lenis/react";
 
 export default function RootLayout({
@@ -5,5 +6,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <ReactLenis root>{ children } </ReactLenis>;
+  return <ReactLenis root><NavbarDemo />{ children } </ReactLenis>;
 }
