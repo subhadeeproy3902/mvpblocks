@@ -85,13 +85,13 @@ export default function AboutUsPage() {
           <AboutFeaturesSection />
         </div>
 
-        <div className="relative md:mb-20">
+        <div className="relative md:mb-20 xl:mb-28">
           <motion.div
             ref={ref}
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.5, delay: 0 }}
-            className="flex max-w-[540px] flex-col items-start justify-start text-left mb-8"
+            className="flex max-w-[540px] flex-col items-start justify-start text-left md:mb-8"
           >
             <h2
               className={cn(
@@ -113,7 +113,7 @@ export default function AboutUsPage() {
             secondImage={theme === "dark" ? "/abt1-dark.png" : "/abt1.png"}
             firstImageClassName="object-cover object-left-top w-full"
             secondImageClassname="object-cover object-left-top w-full"
-            className="rounded-[22px] z-0 hidden xl:block -right-32 top-0 absolute md:rounded-lg"
+            className="rounded-[22px] z-0 hidden xl:block -right-32 -top-16 absolute md:rounded-lg"
             slideMode="hover"
             autoplay={true}
           />
