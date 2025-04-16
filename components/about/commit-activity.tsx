@@ -1,94 +1,150 @@
 "use client"
 
+import { useEffect, useMemo, useState } from "react"
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts"
 import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { format, isAfter, parseISO, subDays, subMonths } from "date-fns"
 
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card"
+
 import {
-  ChartConfig,
   ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+import { fetchUserData } from "@/actions/githubgraphql"
+
+type UserStats = Record<string, number>
+
+function prepareChartData(stats: UserStats, filter: "all" | "month" | "week") {
+  const now = new Date()
+  const entries = Object.entries(stats || {})
+    .map(([date, count]) => ({ date: parseISO(date), count }))
+    .filter(({ date }) => {
+      if (filter === "month") return isAfter(date, subMonths(now, 1))
+      if (filter === "week") return isAfter(date, subDays(now, 7))
+      return true
+    })
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
+
+  return entries.map(({ date, count }) => ({
+    date: format(date, "MMM-dd"),
+    commits: count,
+  }))
+}
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  commits: {
+    label: "Commits",
     color: "hsl(var(--chart-1))",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
-} satisfies ChartConfig
+}
 
-export function Component() {
+export default function CommitActivity() {
+  const [userStats, setUserStats] = useState<UserStats>({})
+  const [filter, setFilter] = useState<"all" | "month" | "week">("all")
+
+  useEffect(() => {
+    const loadData = async () => {
+      const { userStats } = await fetchUserData()
+      setUserStats(userStats)
+    }
+    loadData()
+  }, [])
+
+  const chartData = useMemo(() => prepareChartData(userStats, filter), [userStats, filter])
+
   return (
-    <Card>
+    <Card className="shadow-[0px_-2px_50px_0px_#e91e631c_inset] bg-gradient-to-b from-secondary/40 to-secondary/0">
       <CardHeader>
-        <CardTitle>Line Chart - Dots</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <div className="flex items-center justify-between">
+          <div>
+            <CardTitle>GitHub Commits</CardTitle>
+            <CardDescription>Commits over time</CardDescription>
+          </div>
+          <Select value={filter} onValueChange={(val) => setFilter(val as any)}>
+            <SelectTrigger className="w-[140px]">
+              <SelectValue placeholder="Filter" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All time</SelectItem>
+              <SelectItem value="month">Last month</SelectItem>
+              <SelectItem value="week">Last week</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={{
-                fill: "var(--color-desktop)",
-              }}
-              activeDot={{
-                r: 6,
-              }}
-            />
-          </LineChart>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart
+              data={chartData}
+              margin={{ top: 16, right: 16, bottom: 24, left: 16 }} // Increased bottom margin
+            >
+              <CartesianGrid strokeDasharray="4" horizontal={true} vertical={false} strokeOpacity={0.9} stroke="#ffffff10" />
+              <XAxis
+                dataKey="date"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={12} // Adds space below labels
+                interval="preserveStartEnd"
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                allowDecimals={false}
+                tickMargin={8}
+              />
+              <Tooltip
+                cursor={false}
+                content={({ payload }) => {
+                  if (payload && payload.length) {
+                    const { date, commits } = payload[0].payload
+                    return (
+                      <div className="rounded-md bg-background px-3 py-2 text-sm shadow-md border">
+                        <div className="font-medium">{date}</div>
+                        <div className="text-muted-foreground">{commits} commits</div>
+                      </div>
+                    )
+                  }
+                  return null
+                }}
+              />
+              <Line
+                dataKey="commits"
+                type="monotone"
+                stroke="var(--color-commits)"
+                strokeWidth={2}
+                dot={{ fill: "var(--color-commits)" }}
+                activeDot={{ r: 6 }}
+                isAnimationActive={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   )
 }
