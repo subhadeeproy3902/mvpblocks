@@ -1,0 +1,26 @@
+{
+  ".ts": {
+    "files": 21,
+    "lines": 1489
+  },
+  ".mjs": {
+    "files": 3,
+    "lines": 37
+  },
+  ".tsx": {
+    "files": 101,
+    "lines": 10393
+  },
+  ".css": {
+    "files": 1,
+    "lines": 291
+  },
+  ".json": {
+    "files": 61,
+    "lines": 1120
+  },
+  ".mdx": {
+    "files": 15,
+    "lines": 850
+  }
+}
