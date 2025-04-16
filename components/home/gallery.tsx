@@ -59,7 +59,7 @@ export default function Gallery() {
           src="/trending2.svg"
         />
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto px-2">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
