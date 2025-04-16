@@ -1,5 +1,24 @@
 declare module 'tailwindcss/lib/util/flattenColorPalette'
 
+type UserStats = Record<string, number>;
+type GitHubResponse = {
+  user: {
+    repository: {
+      defaultBranchRef: {
+        target: {
+          history: {
+            edges: {
+              node: {
+                committedDate: string;
+              };
+            }[];
+          };
+        };
+      };
+    };
+  };
+};
+
 type ComponentPreviewProps = {
   name: string;
   code: string;
