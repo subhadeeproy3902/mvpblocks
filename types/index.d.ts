@@ -1,17 +1,43 @@
 declare module 'tailwindcss/lib/util/flattenColorPalette'
 
 type UserStats = Record<string, number>;
+
+type CodeFrequencyStats = Record<
+  string, // date (YYYY-MM-DD)
+  { additions: number; deletions: number }
+>;
+
 type GitHubResponse = {
-  user: {
-    repository: {
-      defaultBranchRef: {
-        target: {
-          history: {
-            edges: {
-              node: {
-                committedDate: string;
-              };
-            }[];
+  repository: {
+    defaultBranchRef: {
+      target: {
+        history: {
+          edges: { node: { committedDate: string } }[];
+          pageInfo: {
+            hasNextPage: boolean;
+            endCursor: string | null;
+          };
+        };
+      };
+    };
+  };
+};
+
+type GitHubCommitNode = {
+  committedDate: string;
+  additions: number;
+  deletions: number;
+};
+
+type GitHubResponse2 = {
+  repository: {
+    defaultBranchRef: {
+      target: {
+        history: {
+          edges: { node: GitHubCommitNode }[];
+          pageInfo: {
+            hasNextPage: boolean;
+            endCursor: string | null;
           };
         };
       };

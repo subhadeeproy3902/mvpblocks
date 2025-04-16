@@ -7,11 +7,13 @@ import { Geist } from "next/font/google";
 import { Spotlight } from "@/components/ui/spotlight";
 import Image from "next/image";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { useTheme } from "next-themes";
 import LocData from "@/components/about/loc";
 import { Card, CardHeader } from "@/components/ui/card";
 import { BorderBeam } from "@/components/ui/border-beam";
 import CommitActivity from "@/components/about/commit-activity";
+import Codefreq from "@/components/about/code-freq";
+import CTA from "@/components/home/cta";
+import AboutFeaturesSection from "@/components/about/about-features";
 
 const space = Geist({
   subsets: ["latin"],
@@ -21,7 +23,7 @@ const space = Geist({
 
 export default function AboutUsPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-background px-2 py-32 md:px-6">
       <Spotlight />
       <div className="mx-auto max-w-7xl">
         <motion.div
@@ -64,11 +66,29 @@ export default function AboutUsPage() {
           />
         </ContainerScroll>
 
+        <div className="relative overflow-hidden">
+          <div className="absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 select-none rounded-full bg-primary opacity-40 blur-3xl"></div>
+          <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent transition-all ease-in-out"></div>
+          <h2
+            className={cn(
+              "mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px] pt-12 sm:pt-24 md:pt-32",
+              space.className,
+            )}
+          >
+            What we provide
+          </h2>
+          <AboutFeaturesSection />
+        </div>
+
+        <div className="relative overflow-hidden">
+          
+        </div>
+
         <Card
-          className="relative bg-background p-4 md:p-6 overflow-hidden"
+          className="relative overflow-hidden bg-background p-4 md:p-6"
           style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
         >
-          <CardHeader className="p-0 mb-6">
+          <CardHeader className="mb-6 p-0">
             <h3 className="text-2xl font-semibold leading-none tracking-tight">
               Project Statistics
             </h3>
@@ -77,12 +97,15 @@ export default function AboutUsPage() {
             </p>
           </CardHeader>
 
-          <div className="grid auto-rows-auto overflow-x-hidden grid-cols-1 gap-4 md:grid-cols-6 md:gap-5 lg:grid-cols-12 lg:gap-6">
-            <div className="col-span-5">
-            <LocData />
+          <div className="grid auto-rows-auto grid-cols-1 gap-4 overflow-x-hidden md:grid-cols-6 md:gap-5 lg:grid-cols-12 lg:gap-6">
+            <div className="col-span-12 md:col-span-5">
+              <LocData />
             </div>
-            <div className="col-span-7 overflow-x-hidden">
-            <CommitActivity />
+            <div className="col-span-12 overflow-x-hidden md:col-span-7">
+              <CommitActivity />
+            </div>
+            <div className="col-span-12 overflow-x-hidden">
+              <Codefreq />
             </div>
           </div>
           <BorderBeam
