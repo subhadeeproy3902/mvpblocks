@@ -1,23 +1,5 @@
 "use server";
 
-type GitHubResponse = {
-  repository: {
-    defaultBranchRef: {
-      target: {
-        history: {
-          edges: { node: { committedDate: string } }[];
-          pageInfo: {
-            hasNextPage: boolean;
-            endCursor: string | null;
-          };
-        };
-      };
-    };
-  };
-};
-
-export type UserStats = Record<string, number>;
-
 const githubGraphql = async ({
   query,
   variables,
@@ -36,9 +18,7 @@ const githubGraphql = async ({
   });
 
   if (!response.ok) {
-    throw new Error(
-      `GitHub API request failed with status ${response.status}`
-    );
+    throw new Error(`GitHub API request failed with status ${response.status}`);
   }
 
   const result = await response.json();
@@ -71,7 +51,7 @@ const query = `
 
 const getAllCommitDates = async (
   login: string,
-  name: string
+  name: string,
 ): Promise<string[]> => {
   let allDates: string[] = [];
   let cursor: string | null = null;
@@ -106,7 +86,74 @@ const groupCommitsByDate = (dates: string[]): UserStats => {
 };
 
 export const fetchUserData = async (): Promise<{ userStats: UserStats }> => {
-  const allCommitDates = await getAllCommitDates("subhadeeproy3902", "mvpblocks");
+  const allCommitDates = await getAllCommitDates(
+    "subhadeeproy3902",
+    "mvpblocks",
+  );
   const userStats = groupCommitsByDate(allCommitDates);
   return { userStats };
+};
+
+const commitQuery = `
+  query GetCommits($login: String!, $name: String!, $cursor: String) {
+    repository(owner: $login, name: $name) {
+      defaultBranchRef {
+        target {
+          ... on Commit {
+            history(first: 100, after: $cursor) {
+              edges {
+                node {
+                  committedDate
+                  additions
+                  deletions
+                }
+              }
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const fetchCodeFrequency = async (): Promise<{
+  codeFrequency: CodeFrequencyStats;
+}> => {
+  let cursor: string | null = null;
+  const frequencyMap: CodeFrequencyStats = {};
+
+  while (true) {
+    const data: GitHubResponse2 = await githubGraphql({
+      query: commitQuery,
+      variables: {
+        login: "subhadeeproy3902",
+        name: "mvpblocks",
+        cursor,
+      },
+    });
+
+    const history = data.repository?.defaultBranchRef?.target?.history;
+    if (!history) break;
+
+    for (const edge of history.edges) {
+      const { committedDate, additions, deletions } = edge.node;
+      const date = committedDate.split("T")[0];
+
+      if (!frequencyMap[date]) {
+        frequencyMap[date] = { additions: 0, deletions: 0 };
+      }
+
+      frequencyMap[date].additions += additions;
+      frequencyMap[date].deletions += deletions;
+    }
+
+    if (!history.pageInfo.hasNextPage) break;
+    cursor = history.pageInfo.endCursor;
+  }
+
+  return { codeFrequency: frequencyMap };
 };
