@@ -55,7 +55,7 @@ export default function LocData() {
   const langList = React.useMemo(() => langData.map((item) => item.language), [])
 
   return (
-    <Card data-chart={id} className="flex flex-col shadow-[0px_-2px_50px_0px_#e91e631c_inset] bg-gradient-to-b from-secondary/40 to-secondary/0">
+    <Card data-chart={id} className="flex flex-col shadow-[0px_-2px_50px_0px_#e91e631c_inset] bg-gradient-to-b from-secondary/40 to-secondary/0 h-full">
       <ChartStyle id={id} config={chartConfig as ChartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
@@ -84,7 +84,7 @@ export default function LocData() {
         </Select>
       </CardHeader>
       <CardContent className="flex flex-1 justify-center pb-0">
-        <ChartContainer id={id} config={chartConfig as ChartConfig} className="mx-auto aspect-square w-full max-w-[300px]">
+        <ChartContainer id={id} config={chartConfig as ChartConfig} className="mx-auto aspect-square w-full max-w-sm">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
