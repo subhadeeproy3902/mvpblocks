@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
@@ -79,13 +77,30 @@ const Keyboard: React.FC = () => {
     { label: "►", width: "10", row: "5" },
   ];
 
-  const [highlightCombo, setHighlightCombo] = useState<"C" | "V">("C");
+  const [highlightCombo, setHighlightCombo] = useState<
+    "CTRL" | "C" | "V" | "NONE"
+  >("CTRL");
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setHighlightCombo((prev) => (prev === "C" ? "V" : "C"));
-    }, 2000);
-    return () => clearInterval(interval);
+    let step = 0;
+    const steps = [
+      { combo: "CTRL", delay: 500 },
+      { combo: "C", delay: 1500 },
+      { combo: "NONE", delay: 1000 },
+      { combo: "CTRL", delay: 500 },
+      { combo: "V", delay: 1500 },
+      { combo: "NONE", delay: 1000 },
+    ];
+
+    const runStep = () => {
+      const current = steps[step];
+      setHighlightCombo(current.combo as any);
+      step = (step + 1) % steps.length;
+      setTimeout(runStep, current.delay);
+    };
+
+    const timeout = setTimeout(runStep, 0);
+    return () => clearTimeout(timeout);
   }, []);
 
   const renderRow = (row: string) => (
@@ -96,19 +111,23 @@ const Keyboard: React.FC = () => {
           const isCtrl = key.label.toLowerCase() === "ctrl";
           const isC = key.label === "C";
           const isV = key.label === "V";
-          const isHighlighted =
-            (highlightCombo === "C" && (isCtrl || isC)) ||
-            (highlightCombo === "V" && (isCtrl || isV));
+
+          let isHighlighted = false;
+          if (highlightCombo === "CTRL" && isCtrl) isHighlighted = true;
+          if (highlightCombo === "C" && (isCtrl || isC)) isHighlighted = true;
+          if (highlightCombo === "V" && (isCtrl || isV)) isHighlighted = true;
+
           return (
             <div
               key={index}
-              className={`h-10 min-w-10 group ${key.flexGrow ? "flex-grow" : ""} ${key.label === "caps" && "w-16"} ${key.label === "tab" && "w-14"}`}
+              className={`group h-10 min-w-10 ${key.flexGrow ? "flex-grow" : ""} ${key.label === "caps" && "w-16"} ${key.label === "tab" && "w-14"}`}
             >
               <button
                 className={cn(
                   `align-center relative top-0 flex h-10 justify-center overflow-hidden rounded px-1 pt-[2px] transition-all duration-75 active:top-1 ${key.label === "caps" ? "w-full" : `w-${key.width}`}`,
-                  isHighlighted ?
-                    "border-green-500 shadow-xl shadow-green-400 bg-gradient-to-b from-primary/0 to-rose-400/50" : "bg-gradient-to-b from-primary/20 to-rose-400",
+                  isHighlighted
+                    ? "border-green-500 bg-gradient-to-b from-primary/0 to-rose-400/50 shadow-xl shadow-green-400"
+                    : "bg-gradient-to-b from-primary/20 to-rose-400",
                 )}
               >
                 <div className="absolute -top-[2px] left-0 flex h-10 w-full items-center justify-between blur-sm">
@@ -116,7 +135,9 @@ const Keyboard: React.FC = () => {
                   <div className="relative -right-5 h-8 w-8 flex-shrink-0 rotate-45 bg-primary/40"></div>
                 </div>
                 <div className="relative flex h-7 flex-grow rounded border border-secondary/0 bg-gradient-to-b from-secondary/0 to-secondary/20 pl-1 pt-1 shadow-[0px_0px_10px_0px_rgba(255,255,255,0.1)_inset]">
-                  <span className="leading-none group-hover:text-foreground">{key.label}</span>
+                  <span className="leading-none group-hover:text-foreground">
+                    {key.label}
+                  </span>
                 </div>
               </button>
             </div>
@@ -126,7 +147,7 @@ const Keyboard: React.FC = () => {
   );
 
   return (
-    <main className="flex items-center scale-110 justify-center text-xs text-foreground/70">
+    <main className="flex scale-[0.8] items-center justify-center text-xs text-foreground/70 md:scale-110">
       <div className="rounded-lg border-2 border-border bg-secondary/80 p-3 shadow-lg">
         <div className="overflow-hidden rounded bg-background p-1">
           {["1", "2", "3", "4", "5"].map((row) => renderRow(row))}
