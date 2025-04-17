@@ -23,8 +23,8 @@ const Keyboard: React.FC = () => {
     { label: "0", width: "10", row: "1" },
     { label: "-", width: "10", row: "1" },
     { label: "=", width: "full", row: "1", flexGrow: true },
-    { label: "delete", width: "full", row: "1", flexGrow: true },
-    { label: "tab", width: "14", row: "2" },
+    { label: "Delete", width: "full", row: "1", flexGrow: true },
+    { label: "Tab", width: "14", row: "2" },
     { label: "Q", width: "10", row: "2" },
     { label: "W", width: "10", row: "2" },
     { label: "E", width: "10", row: "2" },
@@ -38,7 +38,7 @@ const Keyboard: React.FC = () => {
     { label: "[", width: "12", row: "2" },
     { label: "]", width: "12", row: "2" },
     { label: "|", width: "full", row: "2", flexGrow: true },
-    { label: "caps", width: "18", row: "3" },
+    { label: "Caps", width: "18", row: "3" },
     { label: "A", width: "10", row: "3" },
     { label: "S", width: "10", row: "3" },
     { label: "D", width: "10", row: "3" },
@@ -50,8 +50,8 @@ const Keyboard: React.FC = () => {
     { label: "L", width: "10", row: "3" },
     { label: ";", width: "10", row: "3" },
     { label: "'", width: "10", row: "3" },
-    { label: "return", width: "full", row: "3", flexGrow: true },
-    { label: "shift", width: "20", row: "4" },
+    { label: "Enter", width: "full", row: "3", flexGrow: true },
+    { label: "Shift", width: "20", row: "4" },
     { label: "Z", width: "10", row: "4" },
     { label: "X", width: "10", row: "4" },
     { label: "C", width: "10", row: "4" },
@@ -62,16 +62,16 @@ const Keyboard: React.FC = () => {
     { label: ",", width: "10", row: "4" },
     { label: ".", width: "10", row: "4" },
     { label: "/", width: "10", row: "4" },
-    { label: "shift", width: "16", row: "4", flexGrow: true },
+    { label: "Shift", width: "16", row: "4", flexGrow: true },
     { label: "▲", width: "10", row: "4" },
-    { label: "", width: "10", row: "4" },
-    { label: "fn", width: "10", row: "5" },
-    { label: "ctrl", width: "10", row: "5" },
-    { label: "opt", width: "10", row: "5" },
-    { label: "cmd", width: "10", row: "5" },
+    { label: "Prt", width: "10", row: "4" },
+    { label: "Fn", width: "10", row: "5" },
+    { label: "Ctrl", width: "10", row: "5" },
+    { label: "⊞", width: "10", row: "5" },
+    { label: "Alt", width: "10", row: "5" },
     { label: "", width: "full", row: "5", flexGrow: true },
-    { label: "cmd", width: "10", row: "5" },
-    { label: "opt", width: "10", row: "5" },
+    { label: "Alt", width: "10", row: "5" },
+    { label: "Esc", width: "10", row: "5" },
     { label: "◄", width: "10", row: "5" },
     { label: "▼", width: "10", row: "5" },
     { label: "►", width: "10", row: "5" },
@@ -120,11 +120,11 @@ const Keyboard: React.FC = () => {
           return (
             <div
               key={index}
-              className={`group h-10 min-w-10 ${key.flexGrow ? "flex-grow" : ""} ${key.label === "caps" && "w-16"} ${key.label === "tab" && "w-14"}`}
+              className={`group h-10 min-w-10 ${key.flexGrow ? "flex-grow" : ""} ${key.label === "Caps" && "w-16"} ${key.label === "Tab" && "w-14"}`}
             >
               <button
                 className={cn(
-                  `align-center relative top-0 flex h-10 justify-center overflow-hidden rounded px-1 pt-[2px] transition-all duration-75 active:top-1 ${key.label === "caps" ? "w-full" : `w-${key.width}`}`,
+                  `align-center relative top-0 flex h-10 justify-center overflow-hidden rounded px-1 pt-[2px] transition-all duration-75 active:top-1 ${key.label === "Caps" ? "w-full" : `w-${key.width}`}`,
                   isHighlighted
                     ? "border-green-500 bg-gradient-to-b from-primary/0 to-rose-400/50 shadow-xl shadow-green-400"
                     : "bg-gradient-to-b from-primary/20 to-rose-400",
