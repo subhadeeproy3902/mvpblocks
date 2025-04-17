@@ -6,7 +6,7 @@ import { Spotlight } from "../ui/spotlight";
 import { useTheme } from "next-themes";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import CardCaroursalDemo from "../cardcarouseldemo";
+import CardCaroursalDemo from "./cardcarouseldemo";
 import WrapButtonDemo from "../ui/wrap-button";
 import { Globe } from "lucide-react";
 
@@ -23,6 +23,7 @@ export default function Gallery() {
 
   return (
     <section
+    id="trending"
       className="relative mb-32 min-h-screen overflow-hidden rounded-bl-3xl rounded-br-3xl rounded-tl-3xl rounded-tr-3xl border-b border-t border-secondary/50 bg-background pt-16 md:rounded-bl-[5rem] md:rounded-br-[5rem] md:rounded-tl-[5rem] md:rounded-tr-[5rem]"
       style={{
         boxShadow: `

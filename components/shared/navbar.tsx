@@ -27,7 +27,7 @@ export function NavbarDemo() {
     },
     {
       name: "Features",
-      link: "#features",
+      link: "/#features",
     },
     {
       name: "Contact",

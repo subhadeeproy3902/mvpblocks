@@ -44,7 +44,7 @@ export default function Features() {
   }, [theme]);
 
   return (
-    <section className="relative overflow-hidden py-12 text-foreground sm:py-24 md:py-32">
+    <section id="features" className="relative overflow-hidden py-12 text-foreground sm:py-24 md:py-32">
       <div className="absolute -top-10 left-1/2 h-16 w-44 -translate-x-1/2 select-none rounded-full bg-primary opacity-40 blur-3xl"></div>
       <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent ease-in-out transition-all"></div>
       <motion.div

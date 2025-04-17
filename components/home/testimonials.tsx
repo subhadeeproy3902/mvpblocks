@@ -138,7 +138,7 @@ export const Testimonials = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   return (
-    <section className="mb-32 bg-background">
+    <section id="reviews" className="mb-32 bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           ref={ref}

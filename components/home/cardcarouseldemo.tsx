@@ -1,6 +1,6 @@
 import React from "react"
 
-import { CardCarousel } from "./ui/card-carousel"
+import { CardCarousel } from "../ui/card-carousel"
 
 const CardCaroursalDemo = () => {
   const images = [
