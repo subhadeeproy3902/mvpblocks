@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { MagicTrail } from "./ui/mouse-trail";
+import { MagicTrail } from "../../ui/mouse-trail";
 
 export function MagicTrailDemo() {
   const containerRef = useRef<HTMLDivElement>(null);

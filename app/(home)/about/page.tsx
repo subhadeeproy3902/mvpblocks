@@ -1,6 +1,6 @@
 "use client";
 
-import Keyboard from "@/components/home/keyboard";
+import Keyboard from "@/components/about/keyboard";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 import { Geist } from "next/font/google";
