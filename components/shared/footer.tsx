@@ -168,7 +168,9 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://github.com/subhadeeproy3902/mvpblocks/contribute.md"
+                  href="https://github.com/subhadeeproy3902/mvpblocks/blob/main/CONTRIBUTING.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Contribute
