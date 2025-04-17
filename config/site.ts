@@ -1,3 +1,3 @@
 export const siteLink = "https://mvpblocks.vercel.app";
 export const siteName = "Mvpblocks";
-export const launched = true;
+export const launched = false;
