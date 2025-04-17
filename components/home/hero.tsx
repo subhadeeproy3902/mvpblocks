@@ -82,8 +82,9 @@ export default function Hero() {
         src="/vector1.png"
         alt="Vector"
         width={300}
+        draggable={false}
         height={300}
-        className="absolute right-0 top-0 z-[2] object-cover object-center"
+        className="absolute select-none right-0 top-0 z-[2] object-cover object-center"
         priority
       />
       <Image
@@ -91,23 +92,26 @@ export default function Hero() {
         alt="Vector"
         width={300}
         height={300}
-        className="absolute left-0 top-0 z-[2] object-cover object-center"
+        draggable={false}
+        className="absolute select-none left-0 top-0 z-[2] object-cover object-center"
         priority
       />
       <Image
         src="/vector5.png"
         alt="Vector"
         width={300}
+        draggable={false}
         height={300}
-        className="absolute -left-44 bottom-0 z-[2] -rotate-90 object-cover object-center"
+        className="absolute select-none -left-44 bottom-0 z-[2] -rotate-90 object-cover object-center"
         priority
       />
       <Image
         src="/vector6.png"
         alt="Vector"
         width={300}
+        draggable={false}
         height={300}
-        className="absolute -right-44 bottom-0 z-[2] rotate-90 object-cover object-center"
+        className="absolute select-none -right-44 bottom-0 z-[2] rotate-90 object-cover object-center"
         priority
       />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
@@ -134,6 +138,7 @@ export default function Hero() {
             <img
               src="/rose.png"
               alt="Logo"
+              draggable={false}
               className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
             />
             blocks to ship beautiful MVPs fast.
@@ -169,27 +174,28 @@ export default function Hero() {
           transition={{ duration: 0.75, delay: 0.75 }}
         >
           <motion.img
-          // translate x -50
+          draggable={false}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.25 }}
             src="/vector4.png"
             alt="Next.js"
-            className="mr-2 mt-4 hidden w-96 brightness-[4] xl:block"
+            className="mr-2 mt-4 select-none hidden w-96 brightness-[4] xl:block"
           />
           <span className="text-sm text-gray-500">
             We use industry standards like{" "}
           </span>
-          <img src="/nextjs.png" alt="Next.js" className="h-7 w-7" />
-          <img src="/tailwind.png" alt="Next.js" className="h-7 w-7" />
-          <img src="/framer.webp" alt="Next.js" className="h-6 w-6" />
+          <img src="/nextjs.png" draggable={false} alt="Next.js" className="h-7 select-none w-7" />
+          <img src="/tailwind.png" alt="Next.js" className="h-7 w-7 select-none" draggable={false} />
+          <img src="/framer.webp" alt="Next.js" className="h-6 w-6 select-none" draggable={false} />
           <motion.img
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.25 }}
+          draggable={false}
             src="/vector3.png"
             alt="Next.js"
-            className="ml-2 mt-4 hidden w-96 brightness-[4] xl:block"
+            className="ml-2 select-none mt-4 hidden w-96 brightness-[4] xl:block"
           />
         </motion.div>
         <div className="mx-auto mt-5 max-w-2xl text-center">

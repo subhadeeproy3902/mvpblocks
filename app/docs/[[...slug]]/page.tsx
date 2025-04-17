@@ -32,6 +32,8 @@ export default async function Page(props: {
 
   if (!page) notFound();
 
+  console.log(page);
+
   const MDX = page.data.body;
 
   // const time = await getGithubLastEdit({
@@ -67,11 +69,16 @@ export default async function Page(props: {
       toc={page.data.toc}
       full={page.data.full}
       tableOfContent={
-        params.slug && (params.slug[1] == 'loaders' || params.slug[1] == 'buttons') ? undefined : {
-          footer,
-          single: false,
-          style: "clerk",
-        }
+        page.url === "/docs/categories"
+          ? undefined
+          : params.slug &&
+              (params.slug[1] == "loaders" || params.slug[1] == "buttons")
+            ? undefined
+            : {
+                footer,
+                single: false,
+                style: "clerk",
+              }
       }
       breadcrumb={{
         full: true,

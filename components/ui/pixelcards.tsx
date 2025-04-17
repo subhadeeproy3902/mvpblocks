@@ -86,14 +86,16 @@ export const PixelCard: React.FC<CardProps> = ({
       {icon === "Blocks" ? (
         <img
         src="/components.png"
+        draggable={false}
         alt={label}
-        className="z-50 mb-4 h-28 w-28 opacity-30 group-hover:opacity-80"
+        className="z-50 select-none mb-4 h-28 w-28 opacity-30 group-hover:opacity-80"
       />
       ) : (
         <img
           src="/category.png"
+          draggable={false}
           alt={label}
-          className="z-50 mb-4 h-32 w-32 opacity-30 group-hover:opacity-80"
+          className="z-50 mb-4 select-none h-32 w-32 opacity-30 group-hover:opacity-80"
         />
       )}
 
