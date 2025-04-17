@@ -16,6 +16,8 @@ import AboutFeaturesSection from "@/components/about/about-features";
 import { useRef } from "react";
 import { Compare } from "@/components/ui/compare";
 import { useTheme } from "next-themes";
+import CTA from "@/components/shared/cta";
+import Faqs from "@/components/shared/faq";
 
 const space = Geist({
   subsets: ["latin"],
@@ -28,6 +30,7 @@ export default function AboutUsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   return (
+    <>
     <div className="relative min-h-screen w-full overflow-x-hidden bg-background px-2 py-32 md:px-6">
       <Spotlight />
       <div className="mx-auto max-w-7xl">
@@ -158,5 +161,8 @@ export default function AboutUsPage() {
         </Card>
       </div>
     </div>
+    <CTA />
+    <Faqs />
+    </>
   );
 }
