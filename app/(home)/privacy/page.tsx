@@ -31,7 +31,7 @@ export default function PrivacyPage() {
             className="prose max-w-none rounded-2xl border p-6 text-foreground md:p-10"
             style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
           >
-            <div className="mb-8 pb-6 border-b border-slate-200 dark:border-slate-700">
+            <div className="mb-8 border-b">
               <p className="text-lg leading-relaxed">
                 At MVPBlocks, your privacy is not just respected — it&apos;s structurally baked into how we work. We don&apos;t
                 track. We don&apos;t snoop. We don&apos;t ask for more than we need—because we don&apos;t need much at all.
@@ -43,8 +43,8 @@ export default function PrivacyPage() {
             </div>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">1</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">TL;DR</h2>
@@ -61,8 +61,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">2</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">What We Collect</h2>
@@ -97,8 +97,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">3</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">No Cookies Policy</h2>
@@ -113,8 +113,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">4</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">Third-Party Tools</h2>
@@ -133,8 +133,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">5</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">Data Sharing and Selling</h2>
@@ -146,8 +146,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">6</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">Children&apos;s Privacy</h2>
@@ -162,8 +162,8 @@ export default function PrivacyPage() {
             </section>
 
             <section className="mb-10 group">
-              <div className="flex items-center gap-4 mb-4 group-hover:text-rose-600 transition-colors duration-300">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 shrink-0">
+              <div className="flex items-center gap-4 mb-4 group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/30 text-primary dark:text-rose-400 shrink-0">
                   <span className="font-bold">7</span>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight m-0">Security Measures</h2>
