@@ -2,24 +2,28 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React, { MouseEvent, useRef, useState } from "react";
 
 export default function SpotlightCard({
   title,
   desc,
+  href,
 }: {
   title: string;
   desc?: string;
+  href?: string;
 }) {
   const boxWrapper = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = React.useState({
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
+
   React.useEffect(() => {
-    const updateMousePosition = (ev: { clientX: any; clientY: any }) => {
-      setMousePosition({ x: ev.clientX, y: ev.clientY });
+    const updateMousePosition = (e: globalThis.MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", updateMousePosition);
     return () => {
@@ -44,11 +48,9 @@ export default function SpotlightCard({
       onMouseLeave={() => setIsHovered(false)}
       ref={boxWrapper}
       className={cn(
-        "group relative w-full overflow-hidden rounded-lg bg-secondary/10 p-[2px]",
+        "group relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-[2px] shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]",
       )}
     >
-      {/* Cursor Flow Gradient  */}
-
       {isHovered && (
         <div
           className="pointer-events-none absolute h-full w-full rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -56,7 +58,7 @@ export default function SpotlightCard({
             background: `
             radial-gradient(
               250px circle at ${overlayColor.x}px ${overlayColor.y}px,
-              rgba(255, 255, 255, 0.068),
+              #ffffff00 0%,
               transparent 80%
             )
           `,
@@ -64,31 +66,45 @@ export default function SpotlightCard({
         />
       )}
 
-      {/* Hover Spotlight  */}
       <div
-        className="absolute inset-0 rounded-lg bg-fixed opacity-0 group-hover:opacity-100"
+        className="absolute inset-0 rounded-lg bg-fixed"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, #e60a6410 0%,transparent 20%,transparent) fixed `,
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, #e60a6420 0%,transparent 20%,transparent) fixed`,
         }}
       ></div>
-      <div className="relative h-full w-full rounded-lg bg-secondary/10 bg-cover px-8 py-6 text-center">
-        <>
-          <Image
-            src={"/statistic.png"}
-            alt="grid"
-            width={600}
-            className="mx-auto w-fit"
-            height={600}
-          />
-          <h1 className="pt-6 text-2xl font-medium tracking-tight">{title}</h1>
-          {desc && (
-            <p className="pt-2 capitalize text-gray-500">
-              {desc}
-              <br />
-            </p>
-          )}
-        </>
-      </div>
+
+      {href ? (
+        <Link
+          href={href}
+          className="relative h-full w-full rounded-lg text-center no-underline"
+        >
+          <>
+            <h1 className="pt-5 text-2xl font-semibold bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+              {title}
+            </h1>
+            {desc && (
+              <p className="pt-2 capitalize text-gray-500">
+                {desc}
+                <br />
+              </p>
+            )}
+          </>
+        </Link>
+      ) : (
+        <div className="relative h-full w-full rounded-lg text-center no-underline">
+          <>
+            <h1 className="pt-5 text-2xl font-semibold bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+              {title}
+            </h1>
+            {desc && (
+              <p className="pt-2 capitalize text-gray-500">
+                {desc}
+                <br />
+              </p>
+            )}
+          </>
+        </div>
+      )}
     </div>
   );
 }
