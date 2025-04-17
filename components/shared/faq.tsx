@@ -37,7 +37,7 @@ export default function Faqs() {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <section className="relative overflow-hidden pb-24">
+    <section id="faq" className="relative overflow-hidden pb-24">
       <div className="absolute -right-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
       <div className="absolute -left-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
       <div className="container z-10">
