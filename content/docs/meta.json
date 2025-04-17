@@ -8,11 +8,15 @@
     "categories",
     "---Components---",
     "basic",
+    "required",
     "mainsections",
     "forms",
     "cards",
     "chatbot",
+    "dashboards",
     "creative",
-    "marketing"
+    "grids",
+    "timeline",
+    "text-animations"
   ]
 }

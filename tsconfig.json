@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "content/docs/chatbot/conversation.mdx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "content/docs/chatbot/conversation.mdx", "content/docs/mainsections/pricing.mdx", "content/docs/dashboard/admin.mdx"],
   "exclude": ["node_modules"]
 }
