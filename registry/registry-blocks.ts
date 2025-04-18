@@ -91,5 +91,20 @@ export const blocks: Registry = [
     component: React.lazy(
       () => import("../components/mvpblocks/cards/basic/retro-card"),
     ),
+  },
+  {
+    name: "v0-chat",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json","https://mvpblocks.vercel.app/r/textarea.json","https://mvpblocks.vercel.app/r/utils.json","https://mvpblocks.vercel.app/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/chatbot-ui/v0-chat.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/chatbot-ui/v0-chat"),
+    ),
   }
 ];
