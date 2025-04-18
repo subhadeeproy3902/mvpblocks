@@ -279,7 +279,7 @@ code {
   height: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #e60a64;
+  background-color: rgba(100, 100, 100, 0.34);;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-track {

@@ -34,7 +34,7 @@ export function VercelV0Chat() {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-4 p-4 sm:space-y-8">
+    <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-4 p-4 py-24 sm:space-y-8">
       <h1 className="text-center text-2xl font-bold text-foreground sm:text-4xl">
         What can I help you ship?
       </h1>
@@ -74,7 +74,7 @@ export function VercelV0Chat() {
                 type="button"
                 size="sm"
                 variant="outline"
-                className="group flex items-center hover:bg-secondary/50 gap-1 rounded-lg p-2"
+                className="group flex items-center gap-1 rounded-lg p-2 hover:bg-secondary/50"
               >
                 <Paperclip className="h-4 w-4" />
                 <span className="hidden text-xs transition-opacity group-hover:inline">
@@ -112,7 +112,7 @@ export function VercelV0Chat() {
         </div>
 
         <div className="-mx-4 mt-4 px-4 sm:mx-0 sm:px-0">
-          <div className="scrollbar-hide flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-3 sm:overflow-x-auto sm:pb-2">
+          <div className="flex flex-col flex-wrap items-start gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-3 sm:overflow-x-auto sm:pb-2">
             <ActionButton
               icon={<ImageIcon className="h-4 w-4" />}
               label="Clone a Screenshot"
@@ -128,10 +128,6 @@ export function VercelV0Chat() {
             <ActionButton
               icon={<MonitorIcon className="h-4 w-4" />}
               label="Landing Page"
-            />
-            <ActionButton
-              icon={<CircleUserRound className="h-4 w-4" />}
-              label="Sign Up Form"
             />
           </div>
         </div>
@@ -150,7 +146,7 @@ function ActionButton({ icon, label }: ActionButtonProps) {
     <Button
       type="button"
       variant="secondary"
-      className="flex bg-secondary/20 w-full flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border px-3 py-2 transition-colors sm:w-auto sm:px-4"
+      className="flex w-full flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-secondary/20 px-3 py-2 transition-colors sm:w-auto sm:px-4"
     >
       {icon}
       <span className="text-xs">{label}</span>
