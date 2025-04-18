@@ -55,6 +55,8 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 
     const getTargetPath = (type: string) => {
       if (type === "registry:ui") return `/components/ui/${fileName}`;
+      if (type === "registry:hook") return `/hooks/${fileName}`;
+      if (type === "registry:lib") return `/lib/${fileName}`;
       return `/components/mvpblocks/${fileName}`;
     };
 
