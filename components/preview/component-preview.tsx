@@ -84,16 +84,6 @@ export function ComponentPreview({
               <span className="font-mono">npx shadcn add {name}</span>{" "}
             </Button>
             <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
-            <Button size="sm" asChild variant="secondary">
-              <a
-                href={`${siteLink}/preview/${name}`}
-                target="_blank"
-                rel="noreferrer"
-                className={cn("group no-underline transition-all duration-200")}
-              >
-                <Fullscreen className="h-5 w-5" />
-              </a>
-            </Button>
           </div>
 
           <div className="mb-2 block lg:hidden">
@@ -128,29 +118,30 @@ export function ComponentPreview({
                   <span className="font-mono">Install with CLI</span>{" "}
                 </Button>
                 <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
-                <Button size="icon" asChild variant="default">
-                  <a
-                    href={`${siteLink}/preview/${name}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(
-                      "group no-underline transition-all duration-200",
-                    )}
-                  >
-                    <Fullscreen
-                      className={cn(
-                        "h-4 w-4",
-                        "transition-transform duration-200 group-hover:rotate-45",
-                      )}
-                    />
-                  </a>
-                </Button>
               </PopoverContent>
             </Popover>
           </div>
+          <div className="mb-2 ml-2">
+            <Button size="sm" asChild variant="default">
+              <a
+                href={`${siteLink}/preview/${name}`}
+                target="_blank"
+                rel="noreferrer"
+                className={cn("group no-underline transition-all duration-200")}
+              >
+                <Fullscreen
+                  className={cn(
+                    "h-4 w-4",
+                    "transition-transform duration-200 group-hover:rotate-45",
+                  )}
+                />
+              </a>
+            </Button>
+          </div>
         </TabsList>
         <TabsContent value="preview">
-          <div className="preview flex min-h-[450px] w-full justify-center pt-4 p-0.5"
+          <div
+            className="preview flex min-h-[450px] w-full justify-center p-0.5 pt-4"
             ref={componentRef}
           >
             <ComponentLoader
