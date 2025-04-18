@@ -133,6 +133,9 @@ Add your files to the block folder. Here is an example of a block.
       <File name="dialog.tsx" />
     </Folder>
   </Folder>
+  <Folder name="hooks" defaultOpen>
+    <File name="useYourHook.ts" />
+  </Folder>
 </Files>
 
 > **Note:** You can start with one file and add more files later.
@@ -173,7 +176,7 @@ export const blocks = [
 ];
 ```
 
-> **Note:** If you are using `ui` or `hooks`, make sure to add them in `registry-ui.ts` or `registry-hooks.ts` respectively. Main block path should be `@/components/mvpblocks/[category]/[block].tsx`.
+> **Note:** If you are using `ui` or `hooks` or `utils/lib`, make sure to add them in `registry-ui.ts` or `registry-hooks.ts` or `registry-lib.ts` respectively. Main block path should be `@/components/mvpblocks/[category]/[block].tsx`.
 
 Make sure you add a name, description, type, registryDependencies, dependencies, files correctly.
 

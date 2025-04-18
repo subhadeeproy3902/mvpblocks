@@ -1,0 +1,12 @@
+{
+  "name": "use-auto-resize-textarea",
+  "type": "registry:hook",
+  "files": [
+    {
+      "type": "registry:hook",
+      "content": "\"use client\"\r\n\r\nimport { useEffect, useRef, useCallback } from \"react\"\r\n\r\ninterface UseAutoResizeTextareaProps {\r\n  minHeight: number\r\n  maxHeight?: number\r\n}\r\n\r\nexport function useAutoResizeTextarea({ minHeight, maxHeight }: UseAutoResizeTextareaProps) {\r\n  const textareaRef = useRef<HTMLTextAreaElement>(null)\r\n\r\n  const adjustHeight = useCallback(\r\n    (reset?: boolean) => {\r\n      const textarea = textareaRef.current\r\n      if (!textarea) return\r\n\r\n      if (reset) {\r\n        textarea.style.height = `${minHeight}px`\r\n        return\r\n      }\r\n\r\n      // Temporarily shrink to get the right scrollHeight\r\n      textarea.style.height = `${minHeight}px`\r\n\r\n      // Calculate new height\r\n      const newHeight = Math.max(minHeight, Math.min(textarea.scrollHeight, maxHeight ?? Number.POSITIVE_INFINITY))\r\n\r\n      textarea.style.height = `${newHeight}px`\r\n    },\r\n    [minHeight, maxHeight],\r\n  )\r\n\r\n  useEffect(() => {\r\n    // Set initial height\r\n    const textarea = textareaRef.current\r\n    if (textarea) {\r\n      textarea.style.height = `${minHeight}px`\r\n    }\r\n  }, [minHeight])\r\n\r\n  // Adjust height on window resize\r\n  useEffect(() => {\r\n    const handleResize = () => adjustHeight()\r\n    window.addEventListener(\"resize\", handleResize)\r\n    return () => window.removeEventListener(\"resize\", handleResize)\r\n  }, [adjustHeight])\r\n\r\n  return { textareaRef, adjustHeight }\r\n}\r\n",
+      "path": "/hooks/use-auto-resize-textarea.ts",
+      "target": "/hooks/use-auto-resize-textarea.ts"
+    }
+  ]
+}
