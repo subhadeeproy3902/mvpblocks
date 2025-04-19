@@ -93,6 +93,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "star-on-github",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/buttons/star-on-github.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/buttons/star-on-github"),
+    ),
+  },
+  {
     name: "v0-chat",
     type: "registry:block",
     dependencies: ["lucide-react"],

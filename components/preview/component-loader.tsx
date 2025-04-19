@@ -152,7 +152,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        "relative w-full overflow-y-auto flex justify-center items-center border rounded-lg border-secondary/50 preview",
+        "relative w-full overflow-y-auto flex justify-center items-center border rounded-lg border-secondary/50",
         className,
       )}
     >

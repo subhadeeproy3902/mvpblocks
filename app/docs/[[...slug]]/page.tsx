@@ -23,11 +23,13 @@ import { metadataImage } from "@/lib/metadata-image";
 import { EditIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { OpenInV0Button } from '@/components/v0'
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
+  console.log(params.slug);
   const page = source.getPage(params.slug);
 
   if (!page) notFound();
@@ -66,13 +68,22 @@ export default async function Page(props: {
 
   return (
     <DocsPage
-      toc={page.data.toc}
+      toc={
+        page.url === "/docs/categories"
+          ? undefined
+          : params.slug &&
+              (page.url === "/docs/basic/loaders" ||
+                page.url === "/docs/basic/buttons")
+            ? undefined
+            : page.data.toc
+      }
       full={page.data.full}
       tableOfContent={
         page.url === "/docs/categories"
           ? undefined
           : params.slug &&
-              (params.slug[1] == "loaders" || params.slug[1] == "buttons")
+              (page.url === "/docs/basic/loaders" ||
+                page.url === "/docs/basic/buttons")
             ? undefined
             : {
                 footer,

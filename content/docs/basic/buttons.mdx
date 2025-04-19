@@ -2,3 +2,21 @@
 title: Buttons
 description: Creative Buttons with built-in styling, offering flexibility for custom designs and responsive layouts
 ---
+
+import { DrawerCodePreview } from '@/components/preview/drawer-preview';
+import {extractSourceCode} from "@/lib/code";
+
+<div className="grid lg:grid-cols-3 gap-5">
+  <DrawerCodePreview
+    name='star-on-github'
+    responsive
+    code={(await extractSourceCode('star-on-github')).code}
+    lang="tsx"
+  >
+    # Installation
+
+    ```bash
+    npm install framer-motion
+    ```
+  </DrawerCodePreview>
+</div>
