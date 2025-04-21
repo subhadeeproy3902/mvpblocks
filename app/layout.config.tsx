@@ -1,6 +1,7 @@
 import { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { AlbumIcon, Heart, LayoutPanelTop, LayoutTemplate } from "lucide-react";
 import { type LinkItemType } from "fumadocs-ui/layouts/docs";
+import Image from "next/image";
 
 export const linkItems: LinkItemType[] = [
   {
@@ -38,7 +39,7 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <div className="flex items-center justify-center gap-2">
-        <img src="/logo.png" alt="logo" className="h-8 w-8 rounded-full" />
+        <Image src="/logo.png" alt="logo" width={32} height={32} className="h-8 w-8 rounded-full" />
         <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
           Mvpblocks
         </span>

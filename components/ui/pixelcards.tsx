@@ -2,6 +2,7 @@ import type React from "react";
 import { motion } from "framer-motion";
 import { NumberTicker } from "./counter";
 import { VARIANTS } from "./pulse-card";
+import Image from "next/image";
 
 // Define TypeScript interfaces for better type safety
 interface PixelCanvasProps {
@@ -84,17 +85,21 @@ export const PixelCard: React.FC<CardProps> = ({
         transition={hoverTransition}
       />
       {icon === "Blocks" ? (
-        <img
+        <Image
         src="/components.png"
         draggable={false}
         alt={label}
+        width={112}
+        height={112}
         className="z-50 select-none mb-4 h-28 w-28 opacity-30 group-hover:opacity-80"
       />
       ) : (
-        <img
+        <Image
           src="/category.png"
           draggable={false}
           alt={label}
+          width={128}
+          height={128}
           className="z-50 mb-4 select-none h-32 w-32 opacity-30 group-hover:opacity-80"
         />
       )}

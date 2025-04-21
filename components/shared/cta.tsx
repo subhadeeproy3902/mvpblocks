@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CTA() {
   return (
@@ -7,22 +8,12 @@ export default function CTA() {
     >
       <div className="w-full">
         <div className="relative z-20 h-[400px] w-full overflow-hidden rounded-xl border border-border bg-primary shadow-xl md:h-[400px]">
-          <img
+          <Image
             alt="Agent CTA Background"
-            decoding="async"
-            data-nimg="fill"
-            className="absolute inset-0 h-full w-full object-cover object-right md:object-center"
-            style={{
-              position: "absolute",
-              height: "100%",
-              width: "100%",
-              left: "0",
-              top: "0",
-              right: "0",
-              bottom: "0",
-              color: "transparent",
-            }}
-            sizes="100vw"
+            fill
+            priority
+            className="absolute inset-0 object-cover object-right md:object-center"
+            sizes="(max-width: 768px) 100vw, 1280px"
             src="/cta-bg.webp"
           />
           <div className="absolute inset-0 -top-32 flex flex-col items-center justify-center md:-top-40">

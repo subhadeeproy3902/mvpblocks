@@ -76,6 +76,7 @@ const KNOWN_NPM_DEPENDENCIES = [
   'vaul',
   'zod',
   '@eslint/eslintrc',
+  '@next/bundle-analyzer',
   '@types/node',
   '@types/react',
   '@types/react-dom',
@@ -85,6 +86,7 @@ const KNOWN_NPM_DEPENDENCIES = [
   'postcss',
   'prettier',
   'prettier-plugin-tailwindcss',
+  'sharp',
   'tailwindcss',
   'typescript'
 ];
@@ -114,6 +116,7 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
   '@/components/ui/context-menu': 'https://mvpblocks.vercel.app/r/context-menu.json',
   '@/components/ui/countdown-timer': 'https://mvpblocks.vercel.app/r/countdown-timer.json',
   '@/components/ui/counter': 'https://mvpblocks.vercel.app/r/counter.json',
+  '@/components/ui/deferred-component': 'https://mvpblocks.vercel.app/r/deferred-component.json',
   '@/components/ui/dialog': 'https://mvpblocks.vercel.app/r/dialog.json',
   '@/components/ui/drawer': 'https://mvpblocks.vercel.app/r/drawer.json',
   '@/components/ui/dropdown-menu': 'https://mvpblocks.vercel.app/r/dropdown-menu.json',
@@ -125,6 +128,7 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
   '@/components/ui/input-otp': 'https://mvpblocks.vercel.app/r/input-otp.json',
   '@/components/ui/input': 'https://mvpblocks.vercel.app/r/input.json',
   '@/components/ui/label': 'https://mvpblocks.vercel.app/r/label.json',
+  '@/components/ui/lazy-image': 'https://mvpblocks.vercel.app/r/lazy-image.json',
   '@/components/ui/marquee': 'https://mvpblocks.vercel.app/r/marquee.json',
   '@/components/ui/menubar': 'https://mvpblocks.vercel.app/r/menubar.json',
   '@/components/ui/minimal-card': 'https://mvpblocks.vercel.app/r/minimal-card.json',
@@ -170,6 +174,7 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
 
   // Lib utilities
   '@/lib/code': 'https://mvpblocks.vercel.app/r/code.json',
+  '@/lib/load-script': 'https://mvpblocks.vercel.app/r/load-script.json',
   '@/lib/metadata-image': 'https://mvpblocks.vercel.app/r/metadata-image.json',
   '@/lib/metadata': 'https://mvpblocks.vercel.app/r/metadata.json',
   '@/lib/source': 'https://mvpblocks.vercel.app/r/source.json',

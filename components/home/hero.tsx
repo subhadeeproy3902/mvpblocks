@@ -26,17 +26,30 @@ export default function Hero() {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = PIXEL_SCRIPT_URL;
-    script.async = true;
+    // Use Intersection Observer to load the script only when the component is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          import('@/lib/load-script').then(({ loadScript }) => {
+            loadScript(PIXEL_SCRIPT_URL).then(() => {
+              setIsScriptLoaded(true);
+            }).catch((error) => {
+              console.error("Error loading pixel script:", error);
+            });
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    script.onload = () => setIsScriptLoaded(true);
-    script.onerror = () => console.error("Failed to load pixel canvas script");
-
-    document.body.appendChild(script);
+    const heroElement = document.getElementById('hero-section');
+    if (heroElement) {
+      observer.observe(heroElement);
+    }
 
     return () => {
-      document.body.removeChild(script);
+      observer.disconnect();
     };
   }, []);
 
@@ -77,7 +90,7 @@ export default function Hero() {
   ];
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
+    <div id="hero-section" className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
       <Image
         src="/vector1.png"
         alt="Vector"
@@ -185,18 +198,24 @@ export default function Hero() {
           <span className="text-sm text-gray-500">
             We use industry standards like{" "}
           </span>
-          <img src="/nextjs.png" draggable={false} alt="Next.js" className="h-7 select-none w-7" />
-          <img src="/tailwind.png" alt="Next.js" className="h-7 w-7 select-none" draggable={false} />
-          <img src="/framer.webp" alt="Next.js" className="h-6 w-6 select-none" draggable={false} />
-          <motion.img
+          <Image src="/nextjs.png" draggable={false} alt="Next.js" width={28} height={28} className="h-7 select-none w-7" />
+          <Image src="/tailwind.png" alt="Tailwind CSS" width={28} height={28} className="h-7 w-7 select-none" draggable={false} />
+          <Image src="/framer.webp" alt="Framer Motion" width={24} height={24} className="h-6 w-6 select-none" draggable={false} />
+          <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.25 }}
-          draggable={false}
-            src="/vector3.png"
-            alt="Next.js"
-            className="ml-2 select-none mt-4 hidden w-96 brightness-[4] xl:block"
-          />
+          className="ml-2 select-none mt-4 hidden w-96 xl:block"
+          >
+            <Image
+              src="/vector3.png"
+              alt="Vector graphic"
+              width={384}
+              height={100}
+              draggable={false}
+              className="brightness-[4]"
+            />
+          </motion.div>
         </motion.div>
         <div className="mx-auto mt-5 max-w-2xl text-center">
           <main className="m-auto flex flex-col sm:flex-row w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">

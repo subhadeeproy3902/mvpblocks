@@ -77,6 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head />
       <body className={`${dm.className}`}>
         <PreviewPageDetector />
         <ThemeProvider
@@ -88,6 +89,30 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <SpeedInsights />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Performance monitoring
+              const perfObserver = new PerformanceObserver((list) => {
+                list.getEntries().forEach((entry) => {
+                  if (entry.entryType === 'largest-contentful-paint') {
+                    console.log('LCP:', entry.startTime);
+                  }
+                  if (entry.entryType === 'layout-shift') {
+                    console.log('CLS contribution:', entry.value);
+                  }
+                  if (entry.entryType === 'first-input') {
+                    console.log('FID:', entry.processingStart - entry.startTime);
+                  }
+                });
+              });
+
+              perfObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+              perfObserver.observe({ type: 'layout-shift', buffered: true });
+              perfObserver.observe({ type: 'first-input', buffered: true });
+            `,
+          }}
+        />
       </body>
     </html>
   );
