@@ -148,7 +148,6 @@ function ComponentDisplay({
   fromDocs,
   name,
 }: ComponentDisplayProps) {
-  console.log(hasReTrigger);
   return (
     <div
       className={cn(

@@ -82,6 +82,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             tabs: {
               transform(option, node) {
                 const meta = source.getNodeMeta(node);
+                console.log(meta);
                 if (!meta) return option;
 
                 return {

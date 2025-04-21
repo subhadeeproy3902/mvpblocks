@@ -23,7 +23,6 @@ async function writeFileRecursive(filePath: string, data: string) {
     // console.log(`File written to ${filePath}`);
   } catch (error) {
     console.error(`Error writing file ${filePath}`);
-    console.error(error);
   }
 }
 
@@ -106,7 +105,6 @@ const main = async () => {
     );
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     await writeFileRecursive(jsonPath, json);
-    // console.log(json);
   }
 };
 

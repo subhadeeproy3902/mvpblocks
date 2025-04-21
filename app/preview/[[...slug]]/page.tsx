@@ -22,7 +22,6 @@ export default async function PreviewPage({
       </section>
     );
   } catch (error) {
-    console.error("error", error);
     return notFound();
   }
 }
