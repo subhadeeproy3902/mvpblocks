@@ -8,17 +8,6 @@ type ComponentType = z.infer<typeof registryItemTypeSchema>;
 
 // Known npm package dependencies that might be used in components
 const KNOWN_NPM_DEPENDENCIES = [
-  'lucide-react',
-  'framer-motion',
-  'react-day-picker',
-  'date-fns',
-  'cmdk',
-  'embla-carousel-react',
-  'recharts',
-  'cobe',
-  'vaul',
-  'zod',
-  'react-hook-form',
   '@hookform/resolvers',
   '@radix-ui/react-accordion',
   '@radix-ui/react-alert-dialog',
@@ -47,40 +36,110 @@ const KNOWN_NPM_DEPENDENCIES = [
   '@radix-ui/react-toggle',
   '@radix-ui/react-toggle-group',
   '@radix-ui/react-tooltip',
+  '@tailwindcss/typography',
+  '@tsparticles/engine',
+  '@tsparticles/react',
+  '@tsparticles/slim',
+  '@types/mdx',
+  '@vercel/speed-insights',
+  'class-variance-authority',
+  'clsx',
+  'cmdk',
+  'cobe',
+  'date-fns',
+  'dotted-map',
+  'embla-carousel-autoplay',
+  'embla-carousel-react',
+  'framer-motion',
+  'fumadocs-core',
+  'fumadocs-mdx',
+  'fumadocs-twoslash',
+  'fumadocs-typescript',
+  'fumadocs-ui',
+  'input-otp',
+  'lenis',
+  'lucide-react',
+  'mini-svg-data-uri',
+  'motion',
+  'next',
+  'next-themes',
+  'react',
+  'react-day-picker',
+  'react-dom',
+  'react-hook-form',
+  'react-resizable-panels',
+  'recharts',
+  'sonner',
+  'swiper',
+  'tailwind-merge',
+  'tailwindcss-animate',
+  'vaul',
+  'zod',
+  '@eslint/eslintrc',
+  '@types/node',
+  '@types/react',
+  '@types/react-dom',
+  'autoprefixer',
+  'eslint',
+  'eslint-config-next',
+  'postcss',
+  'prettier',
+  'prettier-plugin-tailwindcss',
+  'tailwindcss',
+  'typescript'
 ];
 
 // Known registry dependencies mapping
-const REGISTRY_DEPENDENCIES = {
+const REGISTRY_DEPENDENCIES: Record<string, string> = {
   // UI components
-  '@/components/ui/button': 'https://mvpblocks.vercel.app/r/button.json',
   '@/components/ui/accordion': 'https://mvpblocks.vercel.app/r/accordion.json',
-  '@/components/ui/alert': 'https://mvpblocks.vercel.app/r/alert.json',
   '@/components/ui/alert-dialog': 'https://mvpblocks.vercel.app/r/alert-dialog.json',
+  '@/components/ui/alert': 'https://mvpblocks.vercel.app/r/alert.json',
   '@/components/ui/aspect-ratio': 'https://mvpblocks.vercel.app/r/aspect-ratio.json',
   '@/components/ui/avatar': 'https://mvpblocks.vercel.app/r/avatar.json',
   '@/components/ui/badge': 'https://mvpblocks.vercel.app/r/badge.json',
+  '@/components/ui/border-beam': 'https://mvpblocks.vercel.app/r/border-beam.json',
   '@/components/ui/breadcrumb': 'https://mvpblocks.vercel.app/r/breadcrumb.json',
+  '@/components/ui/button': 'https://mvpblocks.vercel.app/r/button.json',
   '@/components/ui/calendar': 'https://mvpblocks.vercel.app/r/calendar.json',
+  '@/components/ui/card-carousel': 'https://mvpblocks.vercel.app/r/card-carousel.json',
   '@/components/ui/card': 'https://mvpblocks.vercel.app/r/card.json',
   '@/components/ui/carousel': 'https://mvpblocks.vercel.app/r/carousel.json',
   '@/components/ui/chart': 'https://mvpblocks.vercel.app/r/chart.json',
   '@/components/ui/checkbox': 'https://mvpblocks.vercel.app/r/checkbox.json',
   '@/components/ui/collapsible': 'https://mvpblocks.vercel.app/r/collapsible.json',
   '@/components/ui/command': 'https://mvpblocks.vercel.app/r/command.json',
+  '@/components/ui/compare': 'https://mvpblocks.vercel.app/r/compare.json',
+  '@/components/ui/container-scroll-animation': 'https://mvpblocks.vercel.app/r/container-scroll-animation.json',
   '@/components/ui/context-menu': 'https://mvpblocks.vercel.app/r/context-menu.json',
+  '@/components/ui/countdown-timer': 'https://mvpblocks.vercel.app/r/countdown-timer.json',
+  '@/components/ui/counter': 'https://mvpblocks.vercel.app/r/counter.json',
   '@/components/ui/dialog': 'https://mvpblocks.vercel.app/r/dialog.json',
   '@/components/ui/drawer': 'https://mvpblocks.vercel.app/r/drawer.json',
   '@/components/ui/dropdown-menu': 'https://mvpblocks.vercel.app/r/dropdown-menu.json',
   '@/components/ui/form': 'https://mvpblocks.vercel.app/r/form.json',
   '@/components/ui/globe': 'https://mvpblocks.vercel.app/r/globe.json',
+  '@/components/ui/gridbeam': 'https://mvpblocks.vercel.app/r/gridbeam.json',
+  '@/components/ui/home-badge': 'https://mvpblocks.vercel.app/r/home-badge.json',
   '@/components/ui/hover-card': 'https://mvpblocks.vercel.app/r/hover-card.json',
+  '@/components/ui/input-otp': 'https://mvpblocks.vercel.app/r/input-otp.json',
   '@/components/ui/input': 'https://mvpblocks.vercel.app/r/input.json',
   '@/components/ui/label': 'https://mvpblocks.vercel.app/r/label.json',
+  '@/components/ui/marquee': 'https://mvpblocks.vercel.app/r/marquee.json',
   '@/components/ui/menubar': 'https://mvpblocks.vercel.app/r/menubar.json',
+  '@/components/ui/minimal-card': 'https://mvpblocks.vercel.app/r/minimal-card.json',
+  '@/components/ui/mode-toggle': 'https://mvpblocks.vercel.app/r/mode-toggle.json',
+  '@/components/ui/mouse-trail': 'https://mvpblocks.vercel.app/r/mouse-trail.json',
   '@/components/ui/navigation-menu': 'https://mvpblocks.vercel.app/r/navigation-menu.json',
+  '@/components/ui/pagination': 'https://mvpblocks.vercel.app/r/pagination.json',
+  '@/components/ui/pixelcards': 'https://mvpblocks.vercel.app/r/pixelcards.json',
   '@/components/ui/popover': 'https://mvpblocks.vercel.app/r/popover.json',
   '@/components/ui/progress': 'https://mvpblocks.vercel.app/r/progress.json',
+  '@/components/ui/pulse-card': 'https://mvpblocks.vercel.app/r/pulse-card.json',
   '@/components/ui/radio-group': 'https://mvpblocks.vercel.app/r/radio-group.json',
+  '@/components/ui/resizable-navbar': 'https://mvpblocks.vercel.app/r/resizable-navbar.json',
+  '@/components/ui/resizable': 'https://mvpblocks.vercel.app/r/resizable.json',
+  '@/components/ui/scramble': 'https://mvpblocks.vercel.app/r/scramble.json',
   '@/components/ui/scroll-area': 'https://mvpblocks.vercel.app/r/scroll-area.json',
   '@/components/ui/select': 'https://mvpblocks.vercel.app/r/select.json',
   '@/components/ui/separator': 'https://mvpblocks.vercel.app/r/separator.json',
@@ -89,22 +148,32 @@ const REGISTRY_DEPENDENCIES = {
   '@/components/ui/skeleton': 'https://mvpblocks.vercel.app/r/skeleton.json',
   '@/components/ui/slider': 'https://mvpblocks.vercel.app/r/slider.json',
   '@/components/ui/sonner': 'https://mvpblocks.vercel.app/r/sonner.json',
+  '@/components/ui/sparkles': 'https://mvpblocks.vercel.app/r/sparkles.json',
+  '@/components/ui/spotlight-cards': 'https://mvpblocks.vercel.app/r/spotlight-cards.json',
+  '@/components/ui/spotlight': 'https://mvpblocks.vercel.app/r/spotlight.json',
   '@/components/ui/switch': 'https://mvpblocks.vercel.app/r/switch.json',
   '@/components/ui/table': 'https://mvpblocks.vercel.app/r/table.json',
   '@/components/ui/tabs': 'https://mvpblocks.vercel.app/r/tabs.json',
   '@/components/ui/textarea': 'https://mvpblocks.vercel.app/r/textarea.json',
   '@/components/ui/toast': 'https://mvpblocks.vercel.app/r/toast.json',
-  '@/components/ui/toggle': 'https://mvpblocks.vercel.app/r/toggle.json',
+  '@/components/ui/toaster': 'https://mvpblocks.vercel.app/r/toaster.json',
   '@/components/ui/toggle-group': 'https://mvpblocks.vercel.app/r/toggle-group.json',
+  '@/components/ui/toggle': 'https://mvpblocks.vercel.app/r/toggle.json',
   '@/components/ui/tooltip': 'https://mvpblocks.vercel.app/r/tooltip.json',
+  '@/components/ui/world-map': 'https://mvpblocks.vercel.app/r/world-map.json',
+  '@/components/ui/wrap-button': 'https://mvpblocks.vercel.app/r/wrap-button.json',
 
   // Hooks
-  '@/hooks/use-toast': 'https://mvpblocks.vercel.app/r/use-toast.json',
-  '@/hooks/use-mobile': 'https://mvpblocks.vercel.app/r/use-mobile.json',
   '@/hooks/use-auto-resize-textarea': 'https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json',
+  '@/hooks/use-mobile': 'https://mvpblocks.vercel.app/r/use-mobile.json',
+  '@/hooks/use-toast': 'https://mvpblocks.vercel.app/r/use-toast.json',
 
   // Lib utilities
-  '@/lib/utils': 'https://mvpblocks.vercel.app/r/utils.json',
+  '@/lib/code': 'https://mvpblocks.vercel.app/r/code.json',
+  '@/lib/metadata-image': 'https://mvpblocks.vercel.app/r/metadata-image.json',
+  '@/lib/metadata': 'https://mvpblocks.vercel.app/r/metadata.json',
+  '@/lib/source': 'https://mvpblocks.vercel.app/r/source.json',
+  '@/lib/utils': 'https://mvpblocks.vercel.app/r/utils.json'
 };
 
 // Function to determine component type based on path
@@ -341,10 +410,86 @@ function addComponentToRegistry(filePath: string): void {
   console.log(`- Registry Dependencies: ${registryDependencies.length > 0 ? registryDependencies.join(', ') : 'None'}`);
 }
 
+// Function to scan project directories and update dependencies
+function updateDependenciesMappings() {
+  console.log('Scanning project for components and dependencies...');
+
+  // Paths to scan for components
+  const componentPaths = [
+    { dir: 'components/ui' },
+    { dir: 'hooks' },
+    { dir: 'lib' },
+  ];
+
+  // Scan each directory
+  for (const { dir } of componentPaths) {
+    if (!fs.existsSync(dir)) {
+      continue;
+    }
+
+    // Get all files in the directory (recursively)
+    const files = getAllFiles(dir);
+
+    // Process each file
+    for (const file of files) {
+      if (file.endsWith('.tsx') || file.endsWith('.ts')) {
+        const normalizedPath = file.replace(/\\/g, '/');
+        const componentName = path.basename(normalizedPath, path.extname(normalizedPath));
+
+        // Add to REGISTRY_DEPENDENCIES if not already there
+        const importPath = `@/${normalizedPath}`;
+        const registryUrl = `https://mvpblocks.vercel.app/r/${componentName}.json`;
+
+        if (!REGISTRY_DEPENDENCIES[importPath]) {
+          REGISTRY_DEPENDENCIES[importPath] = registryUrl;
+          console.log(`Added new component to registry dependencies: ${componentName}`);
+        }
+      }
+    }
+  }
+
+  // Scan package.json for npm dependencies
+  try {
+    const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+    const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+
+    // Add all dependencies to KNOWN_NPM_DEPENDENCIES if not already there
+    for (const dep of Object.keys(dependencies)) {
+      if (!KNOWN_NPM_DEPENDENCIES.includes(dep)) {
+        KNOWN_NPM_DEPENDENCIES.push(dep);
+        console.log(`Added new npm dependency: ${dep}`);
+      }
+    }
+  } catch (error) {
+    console.warn('Could not read package.json to update npm dependencies');
+  }
+}
+
+// Helper function to get all files in a directory recursively
+function getAllFiles(dir: string, fileList: string[] = []) {
+  const files = fs.readdirSync(dir);
+
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      getAllFiles(filePath, fileList);
+    } else {
+      fileList.push(filePath);
+    }
+  }
+
+  return fileList;
+}
+
 // Main function
 function main() {
   // Get the file path from command line arguments
   const args = process.argv.slice(2);
+
+  // Update dependencies mappings first
+  updateDependenciesMappings();
 
   if (args.length === 0) {
     console.error('Please provide a file path.');

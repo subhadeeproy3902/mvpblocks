@@ -69,3 +69,28 @@ bun run add-component components/mvpblocks/basics/buttons/btn-gradient1.tsx
 - The component name is derived from the file name (without extension)
 - The script automatically detects dependencies based on the component path
 - If a component with the same name already exists in the registry, it will not be added again
+
+## Updating Dependencies
+
+When you install new npm packages or add new UI components, hooks, or utilities, you can update the auto-register script to recognize these new dependencies by running:
+
+```bash
+# Using npm
+npm run update-dependencies
+
+# Using bun
+bun run update-dependencies
+```
+
+This will:
+
+1. Scan your package.json for all npm dependencies
+2. Scan your components/ui, hooks, and lib directories for all components
+3. Update the auto-register.ts script with the new dependencies
+
+The script will run automatically after you install new packages with npm/bun/yarn/pnpm, but you can also run it manually whenever you:
+
+- Add new UI components
+- Add new hooks
+- Add new utilities
+- Want to make sure all dependencies are up-to-date
