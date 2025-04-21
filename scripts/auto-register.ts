@@ -49,74 +49,62 @@ const KNOWN_NPM_DEPENDENCIES = [
   '@radix-ui/react-tooltip',
 ];
 
-// Map of UI components to their registry dependency URLs
-const UI_COMPONENT_TO_REGISTRY_DEPENDENCY = {
-  'button': 'https://mvpblocks.vercel.app/r/button.json',
-  'accordion': 'https://mvpblocks.vercel.app/r/accordion.json',
-  'alert': 'https://mvpblocks.vercel.app/r/alert.json',
-  'alert-dialog': 'https://mvpblocks.vercel.app/r/alert-dialog.json',
-  'aspect-ratio': 'https://mvpblocks.vercel.app/r/aspect-ratio.json',
-  'avatar': 'https://mvpblocks.vercel.app/r/avatar.json',
-  'badge': 'https://mvpblocks.vercel.app/r/badge.json',
-  'breadcrumb': 'https://mvpblocks.vercel.app/r/breadcrumb.json',
-  'calendar': 'https://mvpblocks.vercel.app/r/calendar.json',
-  'card': 'https://mvpblocks.vercel.app/r/card.json',
-  'carousel': 'https://mvpblocks.vercel.app/r/carousel.json',
-  'chart': 'https://mvpblocks.vercel.app/r/chart.json',
-  'checkbox': 'https://mvpblocks.vercel.app/r/checkbox.json',
-  'collapsible': 'https://mvpblocks.vercel.app/r/collapsible.json',
-  'command': 'https://mvpblocks.vercel.app/r/command.json',
-  'context-menu': 'https://mvpblocks.vercel.app/r/context-menu.json',
-  'dialog': 'https://mvpblocks.vercel.app/r/dialog.json',
-  'drawer': 'https://mvpblocks.vercel.app/r/drawer.json',
-  'dropdown-menu': 'https://mvpblocks.vercel.app/r/dropdown-menu.json',
-  'form': 'https://mvpblocks.vercel.app/r/form.json',
-  'globe': 'https://mvpblocks.vercel.app/r/globe.json',
-  'hover-card': 'https://mvpblocks.vercel.app/r/hover-card.json',
-  'input': 'https://mvpblocks.vercel.app/r/input.json',
-  'label': 'https://mvpblocks.vercel.app/r/label.json',
-  'menubar': 'https://mvpblocks.vercel.app/r/menubar.json',
-  'navigation-menu': 'https://mvpblocks.vercel.app/r/navigation-menu.json',
-  'popover': 'https://mvpblocks.vercel.app/r/popover.json',
-  'progress': 'https://mvpblocks.vercel.app/r/progress.json',
-  'radio-group': 'https://mvpblocks.vercel.app/r/radio-group.json',
-  'scroll-area': 'https://mvpblocks.vercel.app/r/scroll-area.json',
-  'select': 'https://mvpblocks.vercel.app/r/select.json',
-  'separator': 'https://mvpblocks.vercel.app/r/separator.json',
-  'sheet': 'https://mvpblocks.vercel.app/r/sheet.json',
-  'sidebar': 'https://mvpblocks.vercel.app/r/sidebar.json',
-  'skeleton': 'https://mvpblocks.vercel.app/r/skeleton.json',
-  'slider': 'https://mvpblocks.vercel.app/r/slider.json',
-  'sonner': 'https://mvpblocks.vercel.app/r/sonner.json',
-  'switch': 'https://mvpblocks.vercel.app/r/switch.json',
-  'table': 'https://mvpblocks.vercel.app/r/table.json',
-  'tabs': 'https://mvpblocks.vercel.app/r/tabs.json',
-  'textarea': 'https://mvpblocks.vercel.app/r/textarea.json',
-  'toast': 'https://mvpblocks.vercel.app/r/toast.json',
-  'toggle': 'https://mvpblocks.vercel.app/r/toggle.json',
-  'toggle-group': 'https://mvpblocks.vercel.app/r/toggle-group.json',
-  'tooltip': 'https://mvpblocks.vercel.app/r/tooltip.json',
-};
-
-// Map of component paths to their registry dependency URLs
-const COMPONENT_PATH_TO_REGISTRY_DEPENDENCY = {
+// Known registry dependencies mapping
+const REGISTRY_DEPENDENCIES = {
+  // UI components
   '@/components/ui/button': 'https://mvpblocks.vercel.app/r/button.json',
-  '@/lib/utils': 'https://mvpblocks.vercel.app/r/utils.json',
+  '@/components/ui/accordion': 'https://mvpblocks.vercel.app/r/accordion.json',
+  '@/components/ui/alert': 'https://mvpblocks.vercel.app/r/alert.json',
+  '@/components/ui/alert-dialog': 'https://mvpblocks.vercel.app/r/alert-dialog.json',
+  '@/components/ui/aspect-ratio': 'https://mvpblocks.vercel.app/r/aspect-ratio.json',
+  '@/components/ui/avatar': 'https://mvpblocks.vercel.app/r/avatar.json',
+  '@/components/ui/badge': 'https://mvpblocks.vercel.app/r/badge.json',
+  '@/components/ui/breadcrumb': 'https://mvpblocks.vercel.app/r/breadcrumb.json',
+  '@/components/ui/calendar': 'https://mvpblocks.vercel.app/r/calendar.json',
+  '@/components/ui/card': 'https://mvpblocks.vercel.app/r/card.json',
+  '@/components/ui/carousel': 'https://mvpblocks.vercel.app/r/carousel.json',
+  '@/components/ui/chart': 'https://mvpblocks.vercel.app/r/chart.json',
+  '@/components/ui/checkbox': 'https://mvpblocks.vercel.app/r/checkbox.json',
+  '@/components/ui/collapsible': 'https://mvpblocks.vercel.app/r/collapsible.json',
+  '@/components/ui/command': 'https://mvpblocks.vercel.app/r/command.json',
+  '@/components/ui/context-menu': 'https://mvpblocks.vercel.app/r/context-menu.json',
+  '@/components/ui/dialog': 'https://mvpblocks.vercel.app/r/dialog.json',
+  '@/components/ui/drawer': 'https://mvpblocks.vercel.app/r/drawer.json',
+  '@/components/ui/dropdown-menu': 'https://mvpblocks.vercel.app/r/dropdown-menu.json',
+  '@/components/ui/form': 'https://mvpblocks.vercel.app/r/form.json',
+  '@/components/ui/globe': 'https://mvpblocks.vercel.app/r/globe.json',
+  '@/components/ui/hover-card': 'https://mvpblocks.vercel.app/r/hover-card.json',
+  '@/components/ui/input': 'https://mvpblocks.vercel.app/r/input.json',
+  '@/components/ui/label': 'https://mvpblocks.vercel.app/r/label.json',
+  '@/components/ui/menubar': 'https://mvpblocks.vercel.app/r/menubar.json',
+  '@/components/ui/navigation-menu': 'https://mvpblocks.vercel.app/r/navigation-menu.json',
+  '@/components/ui/popover': 'https://mvpblocks.vercel.app/r/popover.json',
+  '@/components/ui/progress': 'https://mvpblocks.vercel.app/r/progress.json',
+  '@/components/ui/radio-group': 'https://mvpblocks.vercel.app/r/radio-group.json',
+  '@/components/ui/scroll-area': 'https://mvpblocks.vercel.app/r/scroll-area.json',
+  '@/components/ui/select': 'https://mvpblocks.vercel.app/r/select.json',
+  '@/components/ui/separator': 'https://mvpblocks.vercel.app/r/separator.json',
+  '@/components/ui/sheet': 'https://mvpblocks.vercel.app/r/sheet.json',
+  '@/components/ui/sidebar': 'https://mvpblocks.vercel.app/r/sidebar.json',
+  '@/components/ui/skeleton': 'https://mvpblocks.vercel.app/r/skeleton.json',
+  '@/components/ui/slider': 'https://mvpblocks.vercel.app/r/slider.json',
+  '@/components/ui/sonner': 'https://mvpblocks.vercel.app/r/sonner.json',
+  '@/components/ui/switch': 'https://mvpblocks.vercel.app/r/switch.json',
+  '@/components/ui/table': 'https://mvpblocks.vercel.app/r/table.json',
+  '@/components/ui/tabs': 'https://mvpblocks.vercel.app/r/tabs.json',
+  '@/components/ui/textarea': 'https://mvpblocks.vercel.app/r/textarea.json',
+  '@/components/ui/toast': 'https://mvpblocks.vercel.app/r/toast.json',
+  '@/components/ui/toggle': 'https://mvpblocks.vercel.app/r/toggle.json',
+  '@/components/ui/toggle-group': 'https://mvpblocks.vercel.app/r/toggle-group.json',
+  '@/components/ui/tooltip': 'https://mvpblocks.vercel.app/r/tooltip.json',
+
+  // Hooks
   '@/hooks/use-toast': 'https://mvpblocks.vercel.app/r/use-toast.json',
   '@/hooks/use-mobile': 'https://mvpblocks.vercel.app/r/use-mobile.json',
   '@/hooks/use-auto-resize-textarea': 'https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json',
-};
 
-// Map of hook components to their registry dependency URLs
-const HOOK_TO_REGISTRY_DEPENDENCY = {
-  'use-toast': 'https://mvpblocks.vercel.app/r/use-toast.json',
-  'use-mobile': 'https://mvpblocks.vercel.app/r/use-mobile.json',
-  'use-auto-resize-textarea': 'https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json',
-};
-
-// Map of lib utilities to their registry dependency URLs
-const LIB_TO_REGISTRY_DEPENDENCY = {
-  'utils': 'https://mvpblocks.vercel.app/r/utils.json',
+  // Lib utilities
+  '@/lib/utils': 'https://mvpblocks.vercel.app/r/utils.json',
 };
 
 // Function to determine component type based on path
@@ -175,33 +163,87 @@ function detectNpmDependencies(fileContent: string): string[] {
 }
 
 // Function to detect registry dependencies from file content
-function detectRegistryDependencies(fileContent: string): string[] {
+function detectRegistryDependencies(fileContent: string, filePath: string): string[] {
   const dependencies: string[] = [];
 
-  // Simple approach: check for specific import paths
-  if (fileContent.includes('@/components/ui/button')) {
-    dependencies.push('https://mvpblocks.vercel.app/r/button.json');
+  // Check for known registry dependencies
+  for (const [importPath, url] of Object.entries(REGISTRY_DEPENDENCIES)) {
+    if (fileContent.includes(importPath)) {
+      dependencies.push(url);
+    }
   }
 
-  if (fileContent.includes('@/lib/utils')) {
-    dependencies.push('https://mvpblocks.vercel.app/r/utils.json');
-  }
+  // Detect local component imports (relative imports)
+  const importRegex = /import\s+(?:(?:\{[^}]*\})|(?:[^\s{}]+))\s+from\s+['"]\.\/(.*?)['"];?/g;
+  let match;
+  while ((match = importRegex.exec(fileContent)) !== null) {
+    const importedFile = match[1];
+    // Get the directory of the current file
+    const dirPath = path.dirname(filePath);
+    // Construct the path to the imported file
+    let importedFilePath = path.join(dirPath, importedFile);
 
-  if (fileContent.includes('@/hooks/use-toast')) {
-    dependencies.push('https://mvpblocks.vercel.app/r/use-toast.json');
-  }
+    // Add .tsx extension if not present
+    if (!importedFilePath.endsWith('.tsx') && !importedFilePath.endsWith('.ts')) {
+      importedFilePath += '.tsx';
+    }
 
-  if (fileContent.includes('@/hooks/use-mobile')) {
-    dependencies.push('https://mvpblocks.vercel.app/r/use-mobile.json');
-  }
+    // Check if the file exists
+    if (fs.existsSync(importedFilePath)) {
+      // Get the component name from the file path
+      const componentName = path.basename(importedFilePath, path.extname(importedFilePath));
+      // Add as registry dependency
+      dependencies.push(`https://mvpblocks.vercel.app/r/${componentName}.json`);
 
-  if (fileContent.includes('@/hooks/use-auto-resize-textarea')) {
-    dependencies.push('https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json');
-  }
+      // Recursively process the imported file to get its dependencies
+      try {
+        const importedFileContent = fs.readFileSync(importedFilePath, 'utf-8');
+        // Detect dependencies of the imported file
+        const importedFileDependencies = detectRegistryDependencies(importedFileContent, importedFilePath);
+        // Add unique dependencies
+        for (const dep of importedFileDependencies) {
+          if (!dependencies.includes(dep)) {
+            dependencies.push(dep);
+          }
+        }
 
-  // Add more checks for other components as needed
+        // Also register the imported component if it's not already in the registry
+        addComponentToRegistryIfNeeded(importedFilePath);
+      } catch (error) {
+        console.warn(`Warning: Could not process imported file ${importedFilePath}`);
+      }
+    }
+  }
 
   return dependencies;
+}
+
+// Function to check if a component is already in the registry
+function isComponentInRegistry(componentName: string, componentType: ComponentType): boolean {
+  const registryFilePath = getRegistryFilePath(componentType);
+  const registryContent = fs.readFileSync(registryFilePath, 'utf-8');
+  return registryContent.includes(`name: "${componentName}"`);
+}
+
+// Function to add a component to the registry if it's not already there
+function addComponentToRegistryIfNeeded(filePath: string): void {
+  // Normalize the file path to use forward slashes
+  const normalizedPath = filePath.replace(/\\/g, '/');
+
+  // Determine component type
+  const componentType = determineComponentType(normalizedPath);
+
+  // Generate component name
+  const componentName = generateComponentName(normalizedPath);
+
+  // Check if component already exists in registry
+  if (isComponentInRegistry(componentName, componentType)) {
+    console.log(`Component "${componentName}" already exists in registry.`);
+    return;
+  }
+
+  // Add the component to the registry
+  addComponentToRegistry(filePath);
 }
 
 // Function to add component to registry
@@ -214,7 +256,7 @@ function addComponentToRegistry(filePath: string): void {
 
   // Detect dependencies
   const npmDependencies = detectNpmDependencies(fileContent);
-  const registryDependencies = detectRegistryDependencies(fileContent);
+  const registryDependencies = detectRegistryDependencies(fileContent, filePath);
 
   // Determine component type
   const componentType = determineComponentType(normalizedPath);

@@ -51,6 +51,8 @@ bun run add-component components/mvpblocks/basics/buttons/btn-gradient1.tsx
 2. Automatically detects dependencies:
    - Detects npm package dependencies (like `lucide-react`) from import statements
    - Detects registry dependencies (like UI components, hooks, and utilities) from import statements
+   - Detects and registers local component dependencies (like importing a component from the same directory)
+   - Recursively processes dependencies to ensure all required components are registered
 
 3. Adds the component to the appropriate registry file:
    - `registry-blocks.ts` for blocks
