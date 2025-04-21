@@ -12,7 +12,9 @@
     "sort:registry": "bun run ./scripts/sort-registry.ts",
     "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write",
     "sync": "git pull && bun i && bun run build:registry && bun run sort:registry && bun run dev",
-    "count": "bun run generate-loc.ts"
+    "count": "bun run generate-loc.ts",
+    "register": "bun run ./scripts/auto-register.ts",
+    "add-component": "powershell -File ./scripts/register-component.ps1"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",

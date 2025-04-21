@@ -3,38 +3,22 @@ title: Buttons
 description: Creative Buttons with built-in styling, offering flexibility for custom designs and responsive layouts
 ---
 
-import { DrawerCodePreview } from '@/components/preview/drawer-preview';
-import {extractSourceCode} from "@/lib/code";
+import { DrawerCodePreview } from "@/components/preview/drawer-preview";
+import { extractSourceCode } from "@/lib/code";
 
-<div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
   <DrawerCodePreview
-    name='star-on-github'
+    name="star-on-github"
     responsive
-    code={(await extractSourceCode('star-on-github')).code}
+    code={(await extractSourceCode("star-on-github")).code}
     lang="tsx"
     classNameComponentContainer="p-16 pt-24"
-  >
-    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
-  <Tab>
-  ```bash 
-  npm run build:registry
-  ```
-  </Tab>
-  <Tab>
-  ```bash 
-  pnpm run build:registry
-  ```
-  </Tab>
-  <Tab>
-  ```bash 
-  yarn build:registry
-  ```
-  </Tab>
-  <Tab>
-  ```bash 
-  bun run build:registry
-  ```
-  </Tab>
-</Tabs>
-  </DrawerCodePreview>
+  />
+  <DrawerCodePreview
+    name="btn-gradient1"
+    responsive
+    code={(await extractSourceCode("btn-gradient1")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
 </div>

@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "btn-gradient1",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/buttons/btn-gradient1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/buttons/btn-gradient1"),
+    ),
+  },
+  {
     name: "fitness-hero",
     type: "registry:block",
     dependencies: [],

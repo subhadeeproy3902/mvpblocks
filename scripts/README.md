@@ -34,6 +34,12 @@ chmod +x ./scripts/register-component.sh
 ./scripts/register-component.sh "components/mvpblocks/basics/buttons/my-button.tsx"
 ```
 
+## Example
+
+```bash
+bun run add-component components/mvpblocks/basics/buttons/btn-gradient1.tsx
+```
+
 ## What the Script Does
 
 1. Identifies the type of component based on its path:
