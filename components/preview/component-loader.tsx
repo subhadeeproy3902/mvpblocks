@@ -38,13 +38,13 @@ export function ComponentLoader({
 
   if (loading) {
     return (
-      <div className="flex h-full w-full items-center justify-center">
-        <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
-          <div className="rounded-full p-3">
-            <RotateCw className="h-6 w-6 animate-spin text-foreground" />
-          </div>
+      <div className="flex h-full w-full items-center justify-center p-16">
+      <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
+        <div className="rounded-full p-3">
+          <RotateCw className="h-6 w-6 animate-spin text-foreground" />
         </div>
       </div>
+    </div>
     );
   }
 
@@ -152,7 +152,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        "relative w-full overflow-y-auto flex justify-center items-center border rounded-lg border-secondary/50 component-preview",
+        "component-preview relative flex w-full items-center justify-center overflow-y-auto rounded-lg border border-secondary/50",
         className,
       )}
       id="preview"

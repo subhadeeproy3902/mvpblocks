@@ -16,7 +16,7 @@ export default async function PreviewPage({
   try {
     return (
       <section className="min-h-screen rounded-md" id="preview">
-        <div className="w-full min-h-screen overflow-x-hidden">
+        <div className="w-full min-h-screen flex flex-col justify-center items-center overflow-x-hidden">
           <ComponentLoader name={componentName} hasReTrigger={false} />
         </div>
       </section>

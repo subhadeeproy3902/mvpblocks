@@ -95,7 +95,7 @@ export const blocks: Registry = [
   {
     name: "star-on-github",
     type: "registry:block",
-    dependencies: [],
+    dependencies: ["lucide-react"],
     registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
     files: [
       {
