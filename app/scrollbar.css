@@ -1,6 +1,6 @@
 /* Default scrollbar styles for all pages */
 ::-webkit-scrollbar {
-  width: 8px !important;
+  width: 4px !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -12,21 +12,27 @@
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Hide scrollbars for preview page */
+/* Hide scrollbars for preview page and component-preview */
 html.preview-page ::-webkit-scrollbar,
-html.preview-page *::-webkit-scrollbar {
+html.preview-page *::-webkit-scrollbar,
+.component-preview::-webkit-scrollbar,
+.component-preview *::-webkit-scrollbar {
   width: 0 !important;
   display: none !important;
 }
 
 /* For Firefox */
 html.preview-page,
-html.preview-page * {
+html.preview-page *,
+.component-preview,
+.component-preview * {
   scrollbar-width: none !important;
 }
 
 /* For other browsers */
 html.preview-page,
-html.preview-page * {
+html.preview-page *,
+.component-preview,
+.component-preview * {
   -ms-overflow-style: none !important;
 }

@@ -141,7 +141,7 @@ export function ComponentPreview({
         </TabsList>
         <TabsContent value="preview">
           <div
-            className="preview flex min-h-[450px] w-full justify-center p-0.5 pt-4"
+            className="preview flex min-h-[450px] w-full justify-center p-0.5 pt-4 component-preview"
             ref={componentRef}
           >
             <ComponentLoader

@@ -27,7 +27,7 @@ export function ComponentCollapse({
       className="not-prose relative w-full rounded-md border"
     >
       <div className="flex flex-col space-y-4">
-        <div className="flex min-h-[100px] flex-1 items-center justify-center px-4">
+        <div className="flex min-h-[100px] flex-1 items-center justify-center px-4 component-preview">
           <ComponentLoader
             name={name}
             hasReTrigger={hasReTrigger}

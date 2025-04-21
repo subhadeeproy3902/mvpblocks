@@ -132,7 +132,7 @@ export function DrawerCodePreview({
       </div>
 
       <CardContent className="p-0">
-        <div className="bg-gradient-to-br from-background to-muted/30 p-6 flex justify-center items-center">
+        <div className="bg-gradient-to-br from-background to-muted/30 p-6 flex justify-center items-center component-preview">
           <div className={cn("w-full max-w-md transition-all duration-200", responsive && "flex justify-center")}>
             <ComponentLoader
               name={name}
