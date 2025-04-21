@@ -24,6 +24,8 @@ import { EditIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { OpenInV0Button } from '@/components/v0'
+import Script from "next/script";
+import { siteConfig } from "@/config/site";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -62,38 +64,71 @@ export default async function Page(props: {
 
   const { AutoTypeTable } = createTypeTable();
 
+  // Generate breadcrumb items for structured data
+  const breadcrumbItems = [{ name: "Home", url: siteConfig.url }];
+
+  if (params.slug) {
+    // Add each segment of the path to breadcrumbs
+    let currentPath = "/docs";
+    breadcrumbItems.push({ name: "Documentation", url: `${siteConfig.url}${currentPath}` });
+
+    for (let i = 0; i < params.slug.length; i++) {
+      currentPath += `/${params.slug[i]}`;
+      const pageAtPath = source.getPage(params.slug.slice(0, i + 1));
+      if (pageAtPath) {
+        breadcrumbItems.push({
+          name: pageAtPath.data.title,
+          url: `${siteConfig.url}${currentPath}`,
+        });
+      }
+    }
+  }
+
   return (
-    <DocsPage
-      toc={
-        page.url === "/docs/categories"
-          ? undefined
-          : params.slug &&
-              (page.url === "/docs/basic/loaders" ||
-                page.url === "/docs/basic/buttons")
+    <>
+      <Script id="breadcrumb-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": breadcrumbItems.map((item, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "name": item.name,
+            "item": item.url,
+          })),
+        })}
+      </Script>
+      <DocsPage
+        toc={
+          page.url === "/docs/categories"
             ? undefined
-            : page.data.toc
-      }
-      full={page.data.full}
-      tableOfContent={
-        page.url === "/docs/categories"
-          ? undefined
-          : params.slug &&
-              (page.url === "/docs/basic/loaders" ||
-                page.url === "/docs/basic/buttons")
+            : params.slug &&
+                (page.url === "/docs/basic/loaders" ||
+                  page.url === "/docs/basic/buttons")
+              ? undefined
+              : page.data.toc
+        }
+        full={page.data.full}
+        tableOfContent={
+          page.url === "/docs/categories"
             ? undefined
-            : {
-                footer,
-                single: false,
-                style: "clerk",
-              }
-      }
-      breadcrumb={{
-        full: true,
-      }}
-      article={{
-        className: "max-sm:pb-16",
-      }}
-    >
+            : params.slug &&
+                (page.url === "/docs/basic/loaders" ||
+                  page.url === "/docs/basic/buttons")
+              ? undefined
+              : {
+                  footer,
+                  single: false,
+                  style: "clerk",
+                }
+        }
+        breadcrumb={{
+          full: true,
+        }}
+        article={{
+          className: "max-sm:pb-16",
+        }}
+      >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
@@ -128,6 +163,7 @@ export default async function Page(props: {
         />
       </DocsBody>
     </DocsPage>
+    </>
   );
 }
 

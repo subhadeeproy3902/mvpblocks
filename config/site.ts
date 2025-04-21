@@ -1,12 +1,12 @@
 export const siteLink = "https://mvpblocks.vercel.app";
-export const siteName = "Mvpblocks";
+export const siteName = "MVPBlocks";
 export const launched = true;
 export const siteConfig = {
-  name: "Mvpblocks",
-  url: "https://blocks.mvp-subha.me",
-  ogImage: "https://blocks.mvp-subha.me/og",
+  name: "MVPBlocks",
+  url: "https://mvpblocks.vercel.app",
+  ogImage: "/og.png",
   description:
-    "Copy, paste, customize—and launch your idea faster than ever.",
+    "Copy, paste, customize—and launch your idea faster than ever. MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
   links: {
     twitter: "https://x.com/mvp_Subha",
     github: "https://github.com/subhadeeproy3902/mvpblocks",
@@ -20,7 +20,22 @@ export const siteConfig = {
     "Components",
     "Next.js",
     "React",
+    "MVP",
+    "Component Library",
+    "Open Source",
+    "UI Components",
+    "Web Development",
+    "Frontend",
+    "Developer Tools",
   ],
+  author: {
+    name: "Subhadeep Roy",
+    url: "https://github.com/subhadeeproy3902",
+  },
+  creator: "MVPBlocks",
+  publisher: "MVPBlocks",
+  locale: "en-US",
+  category: "technology",
 };
 
 export type SiteConfig = typeof siteConfig;
