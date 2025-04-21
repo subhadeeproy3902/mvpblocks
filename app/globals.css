@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scrollbar styles moved to scrollbar.css */
+
 ::selection {
   background-color: hsl(var(--primary));
   color: #fff;
@@ -146,12 +148,12 @@ code {
 }
 
 .glass:where(.dark,.dark *) {
-  display: flex !important; 
+  display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   border-radius: 16px !important;
   background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(30, 0, 0, 0.1) 60%, #2a0e0e 100%) !important;
-  
+
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(2px) !important;
   display: flex !important;
@@ -271,19 +273,6 @@ code {
 
 .animate-marquee{
   animation: marquee var(--duration) infinite linear;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(100, 100, 100, 0.34);;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .spin {

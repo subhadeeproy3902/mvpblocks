@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import "./scrollbar.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { PreviewPageDetector } from "@/components/preview-page-detector";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -21,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
+        <PreviewPageDetector />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
