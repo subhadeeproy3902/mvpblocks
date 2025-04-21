@@ -1,96 +1,108 @@
-"use client"
+"use client";
 
-import { VerifiedIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
+import { VerifiedIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface ReplyProps {
-  authorName: string
-  authorHandle: string
-  authorImage: string
-  content: string
-  isVerified?: boolean
-  timestamp: string
+  authorName: string;
+  authorHandle: string;
+  authorImage: string;
+  content: string;
+  isVerified?: boolean;
+  timestamp: string;
 }
 
 interface TweetCardProps {
-  authorName?: string
-  authorHandle: string
-  authorImage: string
-  content: string[]
-  isVerified?: boolean
-  timestamp: string
-  reply?: ReplyProps
+  authorName: string;
+  authorHandle: string;
+  authorImage: string;
+  content: string[];
+  isVerified?: boolean;
+  timestamp: string;
+  reply?: ReplyProps;
 }
 
 export default function TweetCard({
-  authorName = "Dorian",
-  authorHandle = "dorian_baffier",
-  authorImage = "https://pbs.twimg.com/profile_images/1854916060807675904/KtBJsyWr_400x400.jpg",
+  authorName = "Subhadeep",
+  authorHandle = "mvp_Subha",
+  authorImage = "https://pbs.twimg.com/profile_images/1763223695898681344/2mvSadJl_400x400.jpg",
   content = [
-    "All components from KokonutUI can now be open in @v0 🎉",
-    "1. Click on 'Open in V0'",
-    "2. Customize with prompts",
+    "Mvpblocks is the best ever UI component collection library 🎉",
+    "1. Can be opened in v0",
+    "2. Can be installed with CLI",
     "3. Deploy to your app",
   ],
   isVerified = true,
-  timestamp = "Jan 18, 2025",
+  timestamp = "Mar 3, 2025",
   reply = {
     authorName: "shadcn",
     authorHandle: "shadcn",
-    authorImage: "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
+    authorImage:
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
     content: "Awesome.",
     isVerified: true,
-    timestamp: "Jan 18",
+    timestamp: "March 3",
   },
 }: TweetCardProps) {
   return (
-    <Link href="https://x.com/dorian_baffier/status/1880291036410572934" target="_blank">
+    <Link
+      href="https://x.com/mvp_Subha"
+      target="_blank"
+    >
       <div
         className={cn(
-          "w-full min-w-[400px] md:min-w-[500px] max-w-xl p-1.5 rounded-2xl relative isolate overflow-hidden",
+          "relative isolate w-full min-w-[400px] max-w-xl overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]",
           "bg-white/5 dark:bg-black/90",
           "bg-linear-to-br from-black/5 to-black/[0.02] dark:from-white/5 dark:to-white/[0.02]",
           "backdrop-blur-xl backdrop-saturate-[180%]",
           "border border-black/10 dark:border-white/10",
           "shadow-[0_8px_16px_rgb(0_0_0_/_0.15)] dark:shadow-[0_8px_16px_rgb(0_0_0_/_0.25)]",
-          "will-change-transform translate-z-0",
+          "translate-z-0 will-change-transform",
         )}
       >
         <div
           className={cn(
-            "w-full p-5 rounded-xl relative",
+            "relative w-full rounded-xl p-5",
             "bg-linear-to-br from-black/[0.05] to-transparent dark:from-white/[0.08] dark:to-transparent",
             "backdrop-blur-md backdrop-saturate-150",
             "border border-black/[0.05] dark:border-white/[0.08]",
             "text-black/90 dark:text-white",
             "shadow-xs",
-            "will-change-transform translate-z-0",
-            "before:absolute before:inset-0 before:bg-linear-to-br before:from-black/[0.02] before:to-black/[0.01] dark:before:from-white/[0.03] dark:before:to-white/[0.01] before:opacity-0 before:transition-opacity before:pointer-events-none",
+            "translate-z-0 will-change-transform",
+            "before:bg-linear-to-br before:pointer-events-none before:absolute before:inset-0 before:from-black/[0.02] before:to-black/[0.01] before:opacity-0 before:transition-opacity dark:before:from-white/[0.03] dark:before:to-white/[0.01]",
             "hover:before:opacity-100",
           )}
         >
           <div className="flex gap-3">
             <div className="shrink-0">
-              <div className="h-10 w-10 rounded-full overflow-hidden">
-                <img src={authorImage} alt={authorName} className="h-full w-full object-cover" />
+              <div className="h-10 w-10 overflow-hidden rounded-full">
+                <img
+                  src={authorImage}
+                  alt={authorName}
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
 
             <div className="flex-1">
-              <div className="flex justify-between items-start">
+              <div className="flex items-start justify-between">
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1">
-                    <span className="font-semibold text-black dark:text-white/90 hover:underline cursor-pointer">
+                    <span className="cursor-pointer font-semibold text-black hover:underline dark:text-white/90">
                       {authorName}
                     </span>
-                    {isVerified && <VerifiedIcon className="h-4 w-4 text-blue-400" />}
+                    {isVerified && (
+                      <VerifiedIcon className="h-4 w-4 text-blue-400" />
+                    )}
                   </div>
-                  <span className="text-black dark:text-white/60 text-sm">@{authorHandle}</span>
+                  <span className="text-sm text-black dark:text-white/60">
+                    @{authorHandle}
+                  </span>
                 </div>
                 <button
                   type="button"
-                  className="h-8 w-8 text-black dark:text-white/80 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 rounded-lg p-1 flex items-center justify-center"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg p-1 text-black hover:bg-black/5 hover:text-black dark:text-white/80 dark:hover:bg-white/5 dark:hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +110,7 @@ export default function TweetCard({
                     height="1227"
                     fill="none"
                     viewBox="0 0 1200 1227"
-                    className="w-4 h-4"
+                    className="h-4 w-4"
                   >
                     <title>X</title>
                     <path
@@ -113,32 +125,51 @@ export default function TweetCard({
 
           <div className="mt-2">
             {content.map((item, index) => (
-              <p key={index} className="text-black dark:text-white/90 text-base">
+              <p
+                key={index}
+                className="text-base text-black dark:text-white/90"
+              >
                 {item}
               </p>
             ))}
-            <span className="text-black dark:text-white/50 text-sm mt-2 block">{timestamp}</span>
+            <span className="mt-2 block text-sm text-black dark:text-white/50">
+              {timestamp}
+            </span>
           </div>
 
           {reply && (
-            <div className="mt-4 pt-4 border-t border-black/[0.08] dark:border-white/[0.08]">
+            <div className="mt-4 border-t border-black/[0.08] pt-4 dark:border-white/[0.08]">
               <div className="flex gap-3">
                 <div className="shrink-0">
-                  <div className="h-10 w-10 rounded-full overflow-hidden">
-                    <img src={reply.authorImage} alt={reply.authorName} className="h-full w-full object-cover" />
+                  <div className="h-10 w-10 overflow-hidden rounded-full">
+                    <img
+                      src={reply.authorImage}
+                      alt={reply.authorName}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-1">
-                    <span className="font-semibold text-black dark:text-white/90 hover:underline cursor-pointer">
+                    <span className="cursor-pointer font-semibold text-black hover:underline dark:text-white/90">
                       {reply.authorName}
                     </span>
-                    {reply.isVerified && <VerifiedIcon className="h-4 w-4 text-blue-400" />}
-                    <span className="text-black dark:text-white/60 text-sm">@{reply.authorHandle}</span>
-                    <span className="text-black dark:text-white/60 text-sm">·</span>
-                    <span className="text-black dark:text-white/60 text-sm">{reply.timestamp}</span>
+                    {reply.isVerified && (
+                      <VerifiedIcon className="h-4 w-4 text-blue-400" />
+                    )}
+                    <span className="text-sm text-black dark:text-white/60">
+                      @{reply.authorHandle}
+                    </span>
+                    <span className="text-sm text-black dark:text-white/60">
+                      ·
+                    </span>
+                    <span className="text-sm text-black dark:text-white/60">
+                      {reply.timestamp}
+                    </span>
                   </div>
-                  <p className="text-black dark:text-white/80 text-sm mt-1">{reply.content}</p>
+                  <p className="mt-1 text-sm text-black dark:text-white/80">
+                    {reply.content}
+                  </p>
                 </div>
               </div>
             </div>
@@ -146,5 +177,5 @@ export default function TweetCard({
         </div>
       </div>
     </Link>
-  )
+  );
 }

@@ -123,6 +123,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "twittercard",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/twitter/twittercard.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/cards/twitter/twittercard"),
+    ),
+  },
+  {
     name: "v0-chat",
     type: "registry:block",
     dependencies: ["lucide-react"],
