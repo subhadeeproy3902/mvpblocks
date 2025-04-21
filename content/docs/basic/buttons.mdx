@@ -14,10 +14,27 @@ import {extractSourceCode} from "@/lib/code";
     lang="tsx"
     classNameComponentContainer="p-16 pt-24"
   >
-    # Installation
-
-    ```bash
-    npm install framer-motion
-    ```
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab>
+  ```bash 
+  npm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  pnpm run build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  yarn build:registry
+  ```
+  </Tab>
+  <Tab>
+  ```bash 
+  bun run build:registry
+  ```
+  </Tab>
+</Tabs>
   </DrawerCodePreview>
 </div>
