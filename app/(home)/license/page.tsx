@@ -138,7 +138,7 @@ export default function LicensePage() {
             </section>
 
             <section className="mb-10">
-              <div className="rounded-xl border border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]">
+              <div className="rounded-xl border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]">
                 <h2 className="m-0 text-xl font-bold text-slate-800 dark:text-slate-200">
                   Disclaimer of Warranty
                 </h2>
@@ -229,7 +229,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`;
   return (
     <Button
       onClick={handleCopy}
-      className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium h-8"
+      className="inline-flex h-8 items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium"
     >
       {copied ? (
         <>
