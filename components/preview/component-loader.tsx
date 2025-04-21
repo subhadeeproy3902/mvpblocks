@@ -38,8 +38,8 @@ export function ComponentLoader({
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
           <div className="rounded-full p-3">
             <RotateCw className="h-6 w-6 animate-spin text-foreground" />
           </div>
