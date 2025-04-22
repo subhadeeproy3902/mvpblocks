@@ -1,0 +1,14 @@
+{
+  "name": "bouncing-loader",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "export default function BounceLoader() {\r\n  return (\r\n    <div className=\"flex items-center justify-center space-x-2\">\r\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary [animation-delay:-0.3s]\"></div>\r\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary [animation-delay:-0.13s]\"></div>\r\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary\"></div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/basics/loaders/bouncing-loader.tsx",
+      "target": "/components/mvpblocks/bouncing-loader.tsx"
+    }
+  ]
+}

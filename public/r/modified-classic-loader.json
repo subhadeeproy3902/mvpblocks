@@ -1,0 +1,14 @@
+{
+  "name": "modified-classic-loader",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "export default function ModifiedClassicLoader() {\r\n  return (\r\n    <div className=\"animate-spin ease-linear rounded-full w-10 h-10 border-t-2 border-b-2 border-primary ml-3\"></div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/basics/loaders/modified-classic-loader.tsx",
+      "target": "/components/mvpblocks/modified-classic-loader.tsx"
+    }
+  ]
+}

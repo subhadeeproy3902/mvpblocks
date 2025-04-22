@@ -1,0 +1,14 @@
+{
+  "name": "concentric-loader",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "export default function ConcentricLoader() {\r\n  return (\r\n    <div className=\"flex w-full flex-col items-center justify-center gap-4\">\r\n      <div className=\"flex h-20 w-20 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-blue-400 text-4xl text-blue-400\">\r\n        <div className=\"flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-transparent border-t-red-400 text-2xl text-red-400\"></div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/basics/loaders/concentric-loader.tsx",
+      "target": "/components/mvpblocks/concentric-loader.tsx"
+    }
+  ]
+}

@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "bouncing-loader",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/bouncing-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/bouncing-loader"),
+    ),
+  },
+  {
     name: "btn-gradient1",
     type: "registry:block",
     dependencies: [],
@@ -15,6 +30,36 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/basics/buttons/btn-gradient1"),
+    ),
+  },
+  {
+    name: "classic-loader",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/classic-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/classic-loader"),
+    ),
+  },
+  {
+    name: "concentric-loader",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/concentric-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/concentric-loader"),
     ),
   },
   {
@@ -93,6 +138,36 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "modified-classic-loader",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/modified-classic-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/modified-classic-loader"),
+    ),
+  },
+  {
+    name: "pulsating-loader",
+    type: "registry:block",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/pulsating-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/pulsating-loader"),
+    ),
+  },
+  {
     name: "retro-card",
     type: "registry:block",
     dependencies: [],
@@ -105,6 +180,36 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/cards/basic/retro-card"),
+    ),
+  },
+  {
+    name: "ripple-loader",
+    type: "registry:block",
+    dependencies: ["framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/ripple-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/ripple-loader"),
+    ),
+  },
+  {
+    name: "spiral-loader",
+    type: "registry:block",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/loaders/spiral-loader.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/loaders/spiral-loader"),
     ),
   },
   {
