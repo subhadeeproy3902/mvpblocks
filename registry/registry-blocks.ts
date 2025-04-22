@@ -200,7 +200,7 @@ export const blocks: Registry = [
   {
     name: "spiral-loader",
     type: "registry:block",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion"],
     registryDependencies: [],
     files: [
       {

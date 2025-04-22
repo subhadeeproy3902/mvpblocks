@@ -2,3 +2,58 @@
 title: Loaders
 description: Beautiful loaders to keep users engaged while waiting for content to load
 ---
+
+import { DrawerCodePreview } from "@/components/preview/drawer-preview";
+import { extractSourceCode } from "@/lib/code";
+
+<div className="grid gap-5 gap-y-8 md:grid-cols-2 xl:grid-cols-3">
+  <DrawerCodePreview
+    name="classic-loader"
+    responsive
+    code={(await extractSourceCode("classic-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="modified-classic-loader"
+    responsive
+    code={(await extractSourceCode("modified-classic-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="concentric-loader"
+    responsive
+    code={(await extractSourceCode("concentric-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="bouncing-loader"
+    responsive
+    code={(await extractSourceCode("bouncing-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="pulsating-loader"
+    responsive
+    code={(await extractSourceCode("pulsating-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="ripple-loader"
+    responsive
+    code={(await extractSourceCode("ripple-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+  <DrawerCodePreview
+    name="spiral-loader"
+    responsive
+    code={(await extractSourceCode("spiral-loader")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+</div>
