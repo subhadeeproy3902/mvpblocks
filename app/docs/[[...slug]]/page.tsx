@@ -23,7 +23,7 @@ import { metadataImage } from "@/lib/metadata-image";
 import { EditIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { OpenInV0Button } from '@/components/v0'
+import { OpenInV0Button } from "@/components/v0";
 import Script from "next/script";
 import { siteConfig } from "@/config/site";
 
@@ -70,7 +70,10 @@ export default async function Page(props: {
   if (params.slug) {
     // Add each segment of the path to breadcrumbs
     let currentPath = "/docs";
-    breadcrumbItems.push({ name: "Documentation", url: `${siteConfig.url}${currentPath}` });
+    breadcrumbItems.push({
+      name: "Documentation",
+      url: `${siteConfig.url}${currentPath}`,
+    });
 
     for (let i = 0; i < params.slug.length; i++) {
       currentPath += `/${params.slug[i]}`;
@@ -90,38 +93,22 @@ export default async function Page(props: {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": breadcrumbItems.map((item, index) => ({
+          itemListElement: breadcrumbItems.map((item, index) => ({
             "@type": "ListItem",
-            "position": index + 1,
-            "name": item.name,
-            "item": item.url,
+            position: index + 1,
+            name: item.name,
+            item: item.url,
           })),
         })}
       </Script>
       <DocsPage
-        toc={
-          page.url === "/docs/categories"
-            ? undefined
-            : params.slug &&
-                (page.url === "/docs/basic/loaders" ||
-                  page.url === "/docs/basic/buttons")
-              ? undefined
-              : page.data.toc
-        }
+        toc={page.data.toc}
         full={page.data.full}
-        tableOfContent={
-          page.url === "/docs/categories"
-            ? undefined
-            : params.slug &&
-                (page.url === "/docs/basic/loaders" ||
-                  page.url === "/docs/basic/buttons")
-              ? undefined
-              : {
-                  footer,
-                  single: false,
-                  style: "clerk",
-                }
-        }
+        tableOfContent={{
+          footer,
+          single: false,
+          style: "clerk",
+        }}
         breadcrumb={{
           full: true,
         }}
@@ -129,40 +116,42 @@ export default async function Page(props: {
           className: "max-sm:pb-16",
         }}
       >
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
-      <DocsBody>
-        <MDX
-          components={{
-            ...defaultMdxComponents,
-            ...((await import("lucide-react")) as unknown as MDXComponents),
-            Tabs,
-            Tab,
-            TypeTable,
-            AutoTypeTable,
-            Accordion,
-            a: ({ href, ...props }) => {
-              return (
-                // Primary color not underlined
-                <a
-                  href={href}
-                  className="text-primary no-underline"
-                  {...props}
-                />
-              );
-            },
-            Accordions,
-            File,
-            Folder,
-            Files,
-            blockquote: Callout as unknown as FC<ComponentProps<"blockquote">>,
-            DocsCategory: ({ slugs = params.slug }: { slugs?: string[] }) => (
-              <DocsCategory page={source.getPage(slugs)!} from={source} />
-            ),
-          }}
-        />
-      </DocsBody>
-    </DocsPage>
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsDescription>{page.data.description}</DocsDescription>
+        <DocsBody>
+          <MDX
+            components={{
+              ...defaultMdxComponents,
+              ...((await import("lucide-react")) as unknown as MDXComponents),
+              Tabs,
+              Tab,
+              TypeTable,
+              AutoTypeTable,
+              Accordion,
+              a: ({ href, ...props }) => {
+                return (
+                  // Primary color not underlined
+                  <a
+                    href={href}
+                    className="text-primary no-underline"
+                    {...props}
+                  />
+                );
+              },
+              Accordions,
+              File,
+              Folder,
+              Files,
+              blockquote: Callout as unknown as FC<
+                ComponentProps<"blockquote">
+              >,
+              DocsCategory: ({ slugs = params.slug }: { slugs?: string[] }) => (
+                <DocsCategory page={source.getPage(slugs)!} from={source} />
+              ),
+            }}
+          />
+        </DocsBody>
+      </DocsPage>
     </>
   );
 }
