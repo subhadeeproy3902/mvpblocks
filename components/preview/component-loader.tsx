@@ -6,6 +6,8 @@ import { AlertCircle, ArrowLeft, RefreshCw, RotateCw } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import Link from "next/link";
+import { AuthorBadge } from "../ui/author-badge";
+import { Badge } from "../ui/badge";
 
 type ComponentLoaderProps = {
   name: string;
@@ -23,12 +25,21 @@ export function ComponentLoader({
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
   const [loading, setLoading] = useState(true);
+  const [author, setAuthor] = useState<string | null>(null);
 
   useEffect(() => {
-    const component = getComponentByName(name)?.component;
+    const componentInfo = getComponentByName(name);
+    const component = componentInfo?.component;
+
     if (component) {
       setComponent(() => component);
     }
+
+    // Check if the component has an author
+    if (componentInfo?.author) {
+      setAuthor(componentInfo.author);
+    }
+
     setLoading(false);
   }, [name]);
 
@@ -135,9 +146,21 @@ export function ComponentLoader({
       reTrigger={reTrigger}
       name={name}
       fromDocs={fromDocs}
+      author={author}
     />
   );
 }
+
+type ComponentDisplayProps = {
+  className?: string;
+  component: React.ReactElement;
+  hasReTrigger?: boolean;
+  reTrigger?: () => void;
+  reTriggerKey?: number;
+  fromDocs?: boolean;
+  name: string;
+  author?: string | null;
+};
 
 function ComponentDisplay({
   className,
@@ -147,6 +170,7 @@ function ComponentDisplay({
   reTriggerKey,
   fromDocs,
   name,
+  author
 }: ComponentDisplayProps) {
   return (
     <div
@@ -156,6 +180,9 @@ function ComponentDisplay({
       )}
       id="preview"
     >
+      {/* Author badge */}
+      {author && <AuthorBadge username={author} />}
+
       {hasReTrigger && (
         <Button
           variant="ghost"
