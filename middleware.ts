@@ -6,8 +6,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = new URL(request.url);
 
   // Prevent redirect loops and API calls from being redirected
-  if (!launched && pathname !== "/prelaunch") {
-    return NextResponse.redirect(new URL("/prelaunch", request.url), 307);
+  if (!launched && pathname !== "/waitlist") {
+    return NextResponse.redirect(new URL("/waitlist", request.url), 307);
   }
 
   return NextResponse.next();
