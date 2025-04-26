@@ -6,6 +6,7 @@ import "./scrollbar.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PreviewPageDetector } from "@/components/preview-page-detector";
+import { Toaster } from "@/components/ui/toaster";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -87,6 +88,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
         <SpeedInsights />
         <script
