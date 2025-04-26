@@ -63,18 +63,33 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "cta-1",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/cta/cta-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/cta/cta-1"),
+    ),
+  },
+  {
     name: "fitness-hero",
     type: "registry:block",
     dependencies: [],
     registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
     files: [
       {
-        path: "@/components/mvpblocks/mainsections/fitness-hero.tsx",
+        path: "@/components/mvpblocks/mainsections/hero/fitness-hero.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/fitness-hero"),
+      () => import("../components/mvpblocks/mainsections/hero/fitness-hero"),
     ),
   },
   {
@@ -129,12 +144,12 @@ export const blocks: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/components/mvpblocks/mainsections/hero-1.tsx",
+        path: "@/components/mvpblocks/mainsections/hero/hero-1.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/hero-1"),
+      () => import("../components/mvpblocks/mainsections/hero/hero-1"),
     ),
   },
   {

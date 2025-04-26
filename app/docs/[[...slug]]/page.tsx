@@ -102,6 +102,9 @@ export default async function Page(props: {
         })}
       </Script>
       <DocsPage
+        article={{
+          className: "max-w-6xl max-sm:pb-16"
+        }}
         toc={page.data.toc}
         full={page.data.full}
         tableOfContent={{
@@ -111,9 +114,6 @@ export default async function Page(props: {
         }}
         breadcrumb={{
           full: true,
-        }}
-        article={{
-          className: "max-sm:pb-16",
         }}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
