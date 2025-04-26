@@ -3,3 +3,16 @@ title: Footers
 description: Footers are used to provide additional information or context at the end of a document. They can include details such as page numbers, copyright information, or links to related content.
 root: required
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## 4 Column Footer
+
+<ComponentPreview
+  name="footer-4col"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode('footer-4col')).code}
+  lang="tsx"
+  fromDocs={true}
+/>

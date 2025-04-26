@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import Link from "next/link";
 import { AuthorBadge } from "../ui/author-badge";
 import { Badge } from "../ui/badge";
+import { siteLink } from "@/config/site";
 
 type ComponentLoaderProps = {
   name: string;
@@ -198,7 +199,7 @@ function ComponentDisplay({
         React.cloneElement(component, { key: reTriggerKey })
       ) : fromDocs ? (
         <iframe
-          src={`https://mvpblocks.vercel.app/preview/${name}`}
+          src={`${siteLink}/preview/${name}`}
           className="h-full w-full"
         />
       ) : (

@@ -1,4 +1,7 @@
-export const siteLink = "https://mvpblocks.vercel.app";
+export const siteLink =
+  process.env.NODE_ENV !== "development"
+    ? "https://mvpblocks.vercel.app"
+    : "http://localhost:3000";
 export const siteName = "MVPBlocks";
 export const launched = true;
 export const siteConfig = {

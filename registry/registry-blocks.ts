@@ -78,6 +78,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "footer-4col",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-4col.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-4col"),
+    ),
+  },
+  {
     name: "globe1",
     type: "registry:block",
     dependencies: ["lucide-react"],
