@@ -3,3 +3,16 @@ title: Features
 description: Feature sections highlight the key features of your product or service, showcasing what makes it unique and valuable. They help users understand the benefits of using your product and encourage them to take action.
 root: mainsections
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Grid Features
+
+<ComponentPreview
+  name="feature-1"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('feature-1')).code}
+  lang="tsx"
+  fromDocs={true}
+/>

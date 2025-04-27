@@ -78,6 +78,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "feature-1",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/features/feature-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/features/feature-1"),
+    ),
+  },
+  {
     name: "fitness-hero",
     type: "registry:block",
     dependencies: [],
