@@ -93,6 +93,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "dot-card",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/basic/dot-card.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/cards/basic/dot-card"),
+    ),
+  },
+  {
     name: "feature-1",
     type: "registry:block",
     dependencies: [],

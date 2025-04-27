@@ -7,13 +7,20 @@ import RetroCard from "@/components/mvpblocks/cards/basic/retro-card";
 import {ComponentPreview} from "@/components/preview/component-preview";
 import {extractSourceCode} from "@/lib/code";
 
-## Examples
+## Dot Card
 
-### Retro Card
+<ComponentPreview
+  name="dot-card"     
+  classNameComponentContainer='min-h-[600px]'
+  code={(await extractSourceCode('dot-card')).code}
+  lang="tsx"
+/>
+
+## Retro Card
 
 <ComponentPreview
   name="retro-card"     
-  classNameComponentContainer='min-h-[200px]'
+  classNameComponentContainer='min-h-[600px]'
   code={(await extractSourceCode('retro-card')).code}
   lang="tsx"
 />
