@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import Link from "next/link";
 import { AuthorBadge } from "../ui/author-badge";
-import { Badge } from "../ui/badge";
 import { siteLink } from "@/config/site";
 
 type ComponentLoaderProps = {

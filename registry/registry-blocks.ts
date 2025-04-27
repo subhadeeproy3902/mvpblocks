@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "animated-btn1",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/buttons/animated-btn1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/buttons/animated-btn1"),
+    ),
+  },
+  {
     name: "bouncing-loader",
     type: "registry:block",
     dependencies: [],
@@ -90,6 +105,21 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/mainsections/features/feature-1"),
+    ),
+  },
+  {
+    name: "feature-2",
+    type: "registry:block",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/features/feature-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/features/feature-2"),
     ),
   },
   {
