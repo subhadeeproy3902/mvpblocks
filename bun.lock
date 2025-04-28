@@ -73,6 +73,7 @@
         "tailwind-merge": "^3.2.0",
         "tailwindcss-animate": "^1.0.7",
         "vaul": "^1.1.2",
+        "verifymailjs": "^1.1.5",
         "zod": "^3.24.2",
       },
       "devDependencies": {
@@ -1717,6 +1718,8 @@
     "util-deprecate": ["util-deprecate@1.0.2", "", {}, "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="],
 
     "vaul": ["vaul@1.1.2", "", { "dependencies": { "@radix-ui/react-dialog": "^1.1.1" }, "peerDependencies": { "react": "^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc", "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc" } }, "sha512-ZFkClGpWyI2WUQjdLJ/BaGuV6AVQiJ3uELGk3OYtP+B6yCO7Cmn9vPFXVJkRaGkOJu3m8bQMgtyzNHixULceQA=="],
+
+    "verifymailjs": ["verifymailjs@1.1.5", "", {}, "sha512-1Fhi2UKxJNRmIhNFQmHOo6c5deSwPOfjnsfPzhJo8AvPUf//vlrn201uQhptqRtDDDHH+Hz9eBswRpHGOBJj7g=="],
 
     "vfile": ["vfile@6.0.3", "", { "dependencies": { "@types/unist": "^3.0.0", "vfile-message": "^4.0.0" } }, "sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q=="],
 
