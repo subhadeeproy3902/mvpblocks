@@ -2,12 +2,11 @@ name: Run Email Script
 
 on:
   schedule:
-    - cron: '0 0 23 5 *'  # This cron job runs at 00:00 on May 23rd every year
+    - cron: '0 1 29 4 *'  # This cron job runs at 1:00 AM on April 29th
 
 jobs:
   run-email-script:
     runs-on: ubuntu-latest
-    if: ${{ contains('2025', format('{0:yyyy}', github.event.schedule)) }}  # Only run in 2025
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
