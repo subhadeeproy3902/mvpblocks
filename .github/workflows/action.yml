@@ -3,7 +3,6 @@ name: Run Email Script
 on:
   schedule:
     - cron: 0 0 23 5 2025  # This cron job runs at 00:00 on May 23rd, 2025
-  workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
   run-email-script:
