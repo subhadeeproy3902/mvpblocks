@@ -2,11 +2,13 @@ import { createMDX } from "fumadocs-mdx/next";
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const withMDX = createMDX();
+
 const isAnalyze = process.env.ANALYZE === 'true';
 
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
     remotePatterns: [
       {
@@ -22,6 +24,9 @@ const config = {
   },
 };
 
+// Compose the configurations
+const finalConfig = withMDX(config);
+
 export default isAnalyze
-  ? withBundleAnalyzer({ enabled: true })(withMDX(config))
-  : withMDX(config);
+  ? withBundleAnalyzer({ enabled: true })(finalConfig)
+  : finalConfig;

@@ -8,7 +8,10 @@ type ComponentType = z.infer<typeof registryItemTypeSchema>;
 
 // Known npm package dependencies that might be used in components
 const KNOWN_NPM_DEPENDENCIES = [
+  '@ai-sdk/groq',
   '@hookform/resolvers',
+  '@mdx-js/loader',
+  '@mdx-js/react',
   '@radix-ui/react-accordion',
   '@radix-ui/react-alert-dialog',
   '@radix-ui/react-aspect-ratio',
@@ -42,6 +45,7 @@ const KNOWN_NPM_DEPENDENCIES = [
   '@tsparticles/slim',
   '@types/mdx',
   '@vercel/speed-insights',
+  'ai',
   'class-variance-authority',
   'clsx',
   'cmdk',
@@ -77,6 +81,7 @@ const KNOWN_NPM_DEPENDENCIES = [
   'tailwind-merge',
   'tailwindcss-animate',
   'vaul',
+  'verifymailjs',
   'zod',
   '@eslint/eslintrc',
   '@next/bundle-analyzer',
@@ -172,6 +177,7 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
 
   // Hooks
   '@/hooks/use-auto-resize-textarea': 'https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json',
+  '@/hooks/use-media-query': 'https://mvpblocks.vercel.app/r/use-media-query.json',
   '@/hooks/use-mobile': 'https://mvpblocks.vercel.app/r/use-mobile.json',
   '@/hooks/use-toast': 'https://mvpblocks.vercel.app/r/use-toast.json',
 
