@@ -6,161 +6,28 @@ import { registry } from "@/registry";
 import {z} from "zod";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 35;
+export const maxDuration = 30;
 
-// Helper function to format code with proper indentation using tabs
-const formatCodeWithTabs = (code: string): string => {
-  if (!code) return code;
-
-  // First, detect if the code already uses tabs for indentation
-  const hasTabs = code.includes('\t');
-
-  // If it already has tabs, ensure consistent indentation
-  if (hasTabs) {
-    // Normalize tab usage for consistency
-    return normalizeTabIndentation(code);
-  }
-
-  // Detect the indentation level (2 or 4 spaces)
-  const indentationMatch = code.match(/^( +)\S/m);
-  const indentSize = indentationMatch ? indentationMatch[1].length : 2;
-
-  // Split the code into lines
-  const lines = code.split('\n');
-
-  // Process each line
-  const formattedLines = lines.map(line => {
-    // Count leading spaces
-    const leadingSpaces = line.match(/^[ ]+/)?.[0]?.length || 0;
-
-    // Replace spaces with tabs
-    if (leadingSpaces > 0) {
-      const tabCount = Math.floor(leadingSpaces / indentSize);
-      const remainingSpaces = leadingSpaces % indentSize;
-      const tabs = '\t'.repeat(tabCount);
-      const spaces = ' '.repeat(remainingSpaces);
-      return tabs + spaces + line.slice(leadingSpaces);
-    }
-
-    return line;
-  });
-
-  // Join the lines back together
-  let result = formattedLines.join('\n');
-
-  // Apply additional formatting for JSX/TSX code
-  if (code.includes('className=') || code.includes('return (') || code.includes('import {') || code.includes('export default')) {
-    result = formatJsxCode(result);
-  }
-
-  return result;
-};
-
-// Helper function to normalize tab indentation
-const normalizeTabIndentation = (code: string): string => {
-  // Split the code into lines
-  const lines = code.split('\n');
-
-  // Track nesting level
-  let nestingLevel = 0;
-  const formattedLines = lines.map(line => {
-    // Trim the line to remove any existing indentation
-    const trimmedLine = line.trim();
-
-    // Skip empty lines
-    if (!trimmedLine) return '';
-
-    // Decrease nesting level for closing tags/brackets
-    if (/^<\/|^}|^]|^\)/.test(trimmedLine)) {
-      nestingLevel = Math.max(0, nestingLevel - 1);
-    }
-
-    // Create proper indentation
-    const indentation = '\t'.repeat(nestingLevel);
-
-    // Increase nesting level for opening tags/brackets
-    if (/<[^/][^>]*>$|{$|\[$|\($/.test(trimmedLine)) {
-      nestingLevel++;
-    }
-
-    return indentation + trimmedLine;
-  });
-
-  return formattedLines.join('\n');
-};
-
-// Helper function to format JSX/TSX code
-const formatJsxCode = (code: string): string => {
-  // Split the code into lines
-  const lines = code.split('\n');
-
-  // Track JSX nesting level
-  let jsxNestingLevel = 0;
-
-  const formattedLines = lines.map(line => {
-    // Get the trimmed line for analysis
-    const trimmedLine = line.trim();
-
-    // Skip empty lines
-    if (!trimmedLine) return '';
-
-    // Adjust nesting for JSX closing tags
-    if (trimmedLine.startsWith('</')) {
-      jsxNestingLevel = Math.max(0, jsxNestingLevel - 1);
-    }
-
-    // Handle JSX expressions - adjust nesting for braces
-    if (trimmedLine.includes('{') && !trimmedLine.includes('}')) {
-      // Opening brace without closing - increase nesting
-      jsxNestingLevel++;
-    } else if (trimmedLine.includes('}') && !trimmedLine.includes('{')) {
-      // Closing brace without opening - decrease nesting
-      jsxNestingLevel = Math.max(0, jsxNestingLevel - 1);
-    }
-
-    // Calculate proper indentation
-    const properIndentation = '\t'.repeat(jsxNestingLevel);
-
-    // Create the properly indented line
-    const formattedLine = properIndentation + trimmedLine;
-
-    // Adjust nesting for JSX opening tags
-    if (trimmedLine.match(/<[a-zA-Z][^/]*>$/) && !trimmedLine.match(/<\/[a-zA-Z].*>$/)) {
-      jsxNestingLevel++;
-    }
-
-    return formattedLine;
-  });
-
-  return formattedLines.join('\n');
-};
-
-// Helper function to get component code from the file system
 const getComponentCode = async (item: any) => {
   if (!item || !item.files || item.files.length === 0) {
     return null;
   }
 
   const filePath = item.files[0].path;
-  // Remove leading @ and / if present
   const normalizedPath = filePath.replace(/^@\//, "").replace(/^\//, "");
   const fullPath = path.join(process.cwd(), normalizedPath);
 
   try {
-    const code = await fs.readFile(fullPath, "utf-8");
-    // Format the code with tabs
-    const formattedCode = formatCodeWithTabs(code);
+    const code = await fs.readFile(fullPath, "utf-8")
 
     return {
       name: item.name,
       type: item.type,
       path: filePath,
-      code: formattedCode,
+      code: code,
       dependencies: item.dependencies || [],
       registryDependencies: item.registryDependencies || [],
-      // Add direct link to the component
       link: `https://mvpblocks.vercel.app/r/${item.name}.json`,
-      // Add installation command
       installCommand: `npx shadcn@latest add https://mvpblocks.vercel.app/r/${item.name}.json`
     };
   } catch (error) {
@@ -169,12 +36,9 @@ const getComponentCode = async (item: any) => {
   }
 };
 
-// Helper function to find similar components
 const findSimilarComponents = (name: string, maxResults = 5) => {
-  // Convert the search term to lowercase for case-insensitive comparison
   const searchTerm = name.toLowerCase();
 
-  // Map of component types to more readable descriptions
   const typeDescriptions = {
     "registry:block": "Block Component",
     "registry:ui": "UI Component",
@@ -182,30 +46,26 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     "registry:lib": "Utility Library"
   };
 
-  // Dynamically extract categories from component names and paths
   const extractCategories = () => {
     const categories = new Set<string>();
 
     registry.forEach(item => {
-      // Extract from component name
       const nameParts = item.name.split(/[-_]/);
       nameParts.forEach(part => {
-        if (part.length > 3) { // Only consider parts with more than 3 characters
+        if (part.length > 3) {
           categories.add(part.toLowerCase());
         }
       });
 
-      // Extract from file path
       if (item.files && item.files.length > 0) {
         const pathParts = item.files[0].path.split(/[\/\\]/);
         pathParts.forEach(part => {
-          if (part.length > 3 && !part.includes('.')) { // Ignore file extensions
+          if (part.length > 3 && !part.includes('.')) {
             categories.add(part.toLowerCase());
           }
         });
       }
 
-      // Add explicit categories if available
       if (item.categories) {
         item.categories.forEach(category => {
           categories.add(category.toLowerCase());
@@ -216,27 +76,20 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     return Array.from(categories);
   };
 
-  // Get all categories from the registry
   const allCategories = extractCategories();
 
-  // Find categories that match the search term
   const matchingCategories = allCategories.filter(category =>
     searchTerm.includes(category) || category.includes(searchTerm)
   );
 
-  // Calculate similarity score between two strings
   const calculateSimilarity = (str1: string, str2: string): number => {
     const s1 = str1.toLowerCase();
     const s2 = str2.toLowerCase();
 
-    // Exact match
     if (s1 === s2) return 1;
-
-    // One contains the other
     if (s1.includes(s2)) return 0.9;
     if (s2.includes(s1)) return 0.8;
 
-    // Check for word similarity (e.g., "btn" and "button")
     const isAbbreviation = (short: string, long: string): boolean => {
       if (short.length >= long.length) return false;
 
@@ -253,7 +106,6 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     if (isAbbreviation(s1, s2)) return 0.7;
     if (isAbbreviation(s2, s1)) return 0.6;
 
-    // Calculate character overlap
     let commonChars = 0;
     for (const char of s1) {
       if (s2.includes(char)) commonChars++;
@@ -262,28 +114,20 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     return commonChars / Math.max(s1.length, s2.length) * 0.5;
   };
 
-  // Score each component based on similarity to search term
   const componentsWithScores = registry.map(item => {
     const itemName = item.name.toLowerCase();
     const itemPath = item.files && item.files.length > 0
       ? item.files[0].path.toLowerCase()
       : '';
 
-    // Calculate name similarity
     const nameSimilarity = calculateSimilarity(searchTerm, itemName);
-
-    // Calculate path similarity
     const pathSimilarity = itemPath
       ? calculateSimilarity(searchTerm, itemPath)
       : 0;
-
-    // Check if component matches any of the matching categories
     const categoryMatch = matchingCategories.some(category =>
       itemName.includes(category) ||
       (itemPath && itemPath.includes(category))
     );
-
-    // Calculate final score
     const score = (nameSimilarity * 10) + (pathSimilarity * 5) + (categoryMatch ? 3 : 0);
 
     return {
@@ -293,7 +137,6 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     };
   });
 
-  // Filter out non-matching items and sort by relevance score
   const results = componentsWithScores
     .filter(({ hasMatch }) => hasMatch)
     .sort((a, b) => b.score - a.score)
@@ -302,19 +145,16 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
       name: item.name,
       type: typeDescriptions[item.type as keyof typeof typeDescriptions] || item.type,
       path: item.files && item.files.length > 0 ? item.files[0].path : null,
-      // Include dependencies to help with suggesting alternatives
       dependencies: item.dependencies || [],
       registryDependencies: item.registryDependencies || [],
-      // Add direct link to the component
       link: `https://mvpblocks.vercel.app/r/${item.name}.json`
     }));
 
   return results.length > 0 ? results : null;
 };
 
-// Create a system prompt with knowledge about MVPBlocks components
 const createSystemPrompt = async () => {
-  return `You are mvp.ai, the official AI assistant for MVPBlocks — a fully open-source, developer-first component library built using Next.js and TailwindCSS.
+  return `You are mvp.ai, the official AI assistant for MVPBlocks — a fully open-source, developer-first component library built using Next.js and TailwindCSS. You can even generate a high-quality UI design with modern aesthetics just like v0.dev only if the user asks for it and you dont find any context of that in Mvpblocks. Be frank and use emojis a bit.
 
 > "Copy, paste, customize — and launch your idea faster than ever."
 
@@ -337,8 +177,6 @@ When a user asks about a component:
 
 3️⃣ You can also use the listComponents tool to show all available components by type
 
-4️⃣ For UI design requests, use the generateUIDesign tool to create beautiful interfaces
-   - This tool helps create professional designs with modern aesthetics
 
 ✅ For existing components, provide:
   - 📌 What it does
@@ -349,6 +187,10 @@ When a user asks about a component:
   - 💬 Related components
   - 🔗 Direct link to the component on MVPBlocks website
   - 🧩 The actual implementation code with proper indentation
+
+📦 For Dependencies:
+  - NPM dependencies: Install via package manager (e.g., \`npm install [dependency-name]\`)
+  - Registry dependencies: Reference by URL in component registration (e.g., \`https://mvpblocks.vercel.app/r/[component-name].json\`)
 
 📋 Code Formatting Requirements:
   - Always format code with proper indentation using tabs
@@ -392,7 +234,7 @@ When a user asks about a component:
   - Use modern design patterns like cards, grids, and flexbox
   - Incorporate subtle animations and transitions when appropriate
   - Ensure text is readable with proper contrast
-  - Use the generateUIDesign tool to create professional UI layouts
+  - Make sure the design is way better than v0.dev
 
 📌 Never suggest importing from a package — use only direct paths.
 📌 Never make up props or code for existing components, but you should create new components when requested.
@@ -411,9 +253,9 @@ export async function POST(req: Request) {
       model: groq("meta-llama/llama-4-scout-17b-16e-instruct"),
       system: systemPrompt,
       messages,
-      maxRetries: 3,
       maxSteps: 6,
-      maxTokens: 800,
+      maxRetries: 3,
+      maxTokens: 4096,
       tools: {
         fetchComponent: tool({
           description: 'Fetch the required component asked by the user from the registry',
@@ -454,7 +296,6 @@ export async function POST(req: Request) {
             });
           },
         }),
-
         getDependencyCode: tool({
           description: 'Get the code for a registry dependency',
           parameters: z.object({
@@ -501,226 +342,6 @@ export async function POST(req: Request) {
             }
           },
         }),
-
-        generateUIDesign: tool({
-          description: 'Generate a high-quality UI design with modern aesthetics',
-          parameters: z.object({
-            designType: z.string().describe('The type of UI design to generate (e.g., dashboard, landing page, form)'),
-            colorScheme: z.string().optional().describe('Optional color scheme to use (e.g., primary, dark, light, custom)'),
-            features: z.array(z.string()).optional().describe('Optional array of features the UI should have'),
-            complexity: z.enum(['simple', 'moderate', 'complex']).optional().describe('The complexity level of the UI design'),
-          }),
-          execute: async ({ designType, colorScheme = 'primary', features = [], complexity = 'moderate' }) => {
-            try {
-              // Define UI design patterns based on design type
-              const designPatterns: Record<string, any> = {
-                'dashboard': {
-                  layout: 'grid',
-                  components: ['card', 'chart', 'stats-card', 'table', 'tabs', 'avatar'],
-                  structure: [
-                    { section: 'header', components: ['page-header', 'avatar', 'dropdown-menu'] },
-                    { section: 'sidebar', components: ['sidebar', 'navigation-menu'] },
-                    { section: 'main', components: ['card', 'chart', 'stats-card'] },
-                    { section: 'footer', components: ['footer'] }
-                  ]
-                },
-                'landing': {
-                  layout: 'flex',
-                  components: ['hero', 'feature-card', 'testimonial', 'pricing-table', 'cta-section'],
-                  structure: [
-                    { section: 'header', components: ['navigation-menu', 'button'] },
-                    { section: 'hero', components: ['hero', 'button'] },
-                    { section: 'features', components: ['feature-card', 'card-carousel'] },
-                    { section: 'testimonials', components: ['testimonial', 'avatar'] },
-                    { section: 'pricing', components: ['pricing-table', 'card'] },
-                    { section: 'cta', components: ['cta-section', 'button'] },
-                    { section: 'footer', components: ['footer'] }
-                  ]
-                },
-                'form': {
-                  layout: 'flex',
-                  components: ['form', 'input', 'textarea', 'checkbox', 'radio', 'select', 'button'],
-                  structure: [
-                    { section: 'header', components: ['form-header'] },
-                    { section: 'fields', components: ['input', 'textarea', 'checkbox', 'radio', 'select'] },
-                    { section: 'actions', components: ['button'] }
-                  ]
-                },
-                'chatbot': {
-                  layout: 'flex',
-                  components: ['card', 'input', 'button', 'avatar', 'chat-bubble', 'scroll-area'],
-                  structure: [
-                    { section: 'header', components: ['chat-header', 'avatar'] },
-                    { section: 'messages', components: ['chat-bubble', 'scroll-area'] },
-                    { section: 'input', components: ['input', 'button'] }
-                  ]
-                },
-                'profile': {
-                  layout: 'flex',
-                  components: ['card', 'avatar', 'tabs', 'form', 'button'],
-                  structure: [
-                    { section: 'header', components: ['profile-header', 'avatar'] },
-                    { section: 'tabs', components: ['tabs'] },
-                    { section: 'content', components: ['form', 'card'] },
-                    { section: 'actions', components: ['button'] }
-                  ]
-                }
-              };
-
-              // Find the closest design pattern
-              let designPattern = designPatterns[designType.toLowerCase()];
-              if (!designPattern) {
-                // Find similar design type
-                const designTypes = Object.keys(designPatterns);
-                const matchingType = designTypes.find(type =>
-                  type.includes(designType.toLowerCase()) || designType.toLowerCase().includes(type)
-                );
-
-                designPattern = matchingType ? designPatterns[matchingType] : designPatterns['dashboard'];
-              }
-
-              // Adjust complexity
-              if (complexity === 'simple') {
-                // Simplify the structure
-                designPattern.structure = designPattern.structure.slice(0, Math.ceil(designPattern.structure.length * 0.7));
-              } else if (complexity === 'complex') {
-                // Add more components for complex designs
-                designPattern.components.push('tooltip', 'popover', 'dialog', 'drawer');
-              }
-
-              // Find components in the registry that match the design pattern
-              const componentSuggestions = await Promise.all(
-                designPattern.components.map(async (componentName: string) => {
-                  const similarComponents = findSimilarComponents(componentName, 3);
-                  return {
-                    type: componentName,
-                    options: similarComponents || []
-                  };
-                })
-              );
-
-              // Filter out empty suggestions
-              const validSuggestions = componentSuggestions.filter(
-                suggestion => suggestion.options && suggestion.options.length > 0
-              );
-
-              return JSON.stringify({
-                designType,
-                colorScheme,
-                features,
-                complexity,
-                layout: designPattern.layout,
-                structure: designPattern.structure,
-                componentSuggestions: validSuggestions,
-                message: `Generated UI design for ${designType} with ${complexity} complexity and ${colorScheme} color scheme.`
-              });
-            } catch (error) {
-              console.error('Error generating UI design:', error);
-              return JSON.stringify({
-                error: 'Failed to generate UI design',
-                message: 'An error occurred while generating the UI design'
-              });
-            }
-          },
-        }),
-
-        findBuildingBlocks: tool({
-          description: 'Find suitable building blocks for a new component',
-          parameters: z.object({
-            componentType: z.string().describe('The type of component to generate (e.g., chatbot, form, card)'),
-            requiredFeatures: z.array(z.string()).optional().describe('Optional array of features the component should have'),
-          }),
-          execute: async ({ componentType, requiredFeatures = [] }) => {
-            try {
-              // Convert to lowercase for case-insensitive matching
-              const typeToMatch = componentType.toLowerCase();
-              const featuresToMatch = requiredFeatures.map(f => f.toLowerCase());
-
-              // Define common component types and their related building blocks
-              const componentTypeMap: Record<string, string[]> = {
-                'chatbot': ['input', 'textarea', 'button', 'card', 'avatar', 'scroll-area', 'use-auto-resize-textarea'],
-                'form': ['input', 'textarea', 'button', 'checkbox', 'radio', 'select', 'form', 'label'],
-                'card': ['card', 'avatar', 'button', 'badge'],
-                'modal': ['dialog', 'drawer', 'button'],
-                'navigation': ['navigation-menu', 'tabs', 'sidebar'],
-                'table': ['table', 'pagination', 'checkbox', 'dropdown-menu'],
-                'dashboard': ['card', 'chart', 'tabs', 'table'],
-                'gallery': ['card-carousel', 'image', 'aspect-ratio'],
-                'auth': ['form', 'input', 'button', 'card'],
-                'landing': ['hero', 'card', 'button', 'wrap-button']
-              };
-
-              // Find matching component types
-              const matchingTypes = Object.keys(componentTypeMap).filter(type =>
-                type.includes(typeToMatch) || typeToMatch.includes(type)
-              );
-
-              // If no direct match, find components that might be related
-              let suggestedBuildingBlocks: string[] = [];
-
-              if (matchingTypes.length > 0) {
-                // Use the matched component types
-                matchingTypes.forEach(type => {
-                  suggestedBuildingBlocks.push(...componentTypeMap[type]);
-                });
-              } else {
-                // Try to find components based on the component type name
-                const similarComponents = findSimilarComponents(componentType, 10);
-                if (similarComponents) {
-                  suggestedBuildingBlocks = similarComponents.map(c => c.name);
-                }
-              }
-
-              // Add components based on required features
-              if (featuresToMatch.length > 0) {
-                featuresToMatch.forEach(feature => {
-                  const featureComponents = findSimilarComponents(feature, 5);
-                  if (featureComponents) {
-                    suggestedBuildingBlocks.push(...featureComponents.map(c => c.name));
-                  }
-                });
-              }
-
-              // Remove duplicates
-              suggestedBuildingBlocks = [...new Set(suggestedBuildingBlocks)];
-
-              // Get detailed information about each building block
-              const buildingBlockDetails = await Promise.all(
-                suggestedBuildingBlocks.map(async (name) => {
-                  const component = registry.find((item) => item.name === name);
-                  if (!component) return null;
-
-                  return {
-                    name: component.name,
-                    type: component.type,
-                    path: component.files?.[0]?.path || null,
-                    link: `https://mvpblocks.vercel.app/r/${component.name}.json`,
-                    installCommand: `npx shadcn@latest add https://mvpblocks.vercel.app/r/${component.name}.json`,
-                    dependencies: component.dependencies || [],
-                    registryDependencies: component.registryDependencies || []
-                  };
-                })
-              );
-
-              // Filter out null values
-              const validBuildingBlocks = buildingBlockDetails.filter(block => block !== null);
-
-              return JSON.stringify({
-                componentType,
-                requiredFeatures,
-                suggestedBuildingBlocks: validBuildingBlocks,
-                message: `Found ${validBuildingBlocks.length} potential building blocks for a ${componentType} component.`
-              });
-            } catch (error) {
-              console.error('Error finding building blocks:', error);
-              return JSON.stringify({
-                error: 'Failed to find building blocks',
-                message: 'An error occurred while searching for building blocks'
-              });
-            }
-          },
-        }),
-
         generateComponent: tool({
           description: 'Generate a new component by combining existing components',
           parameters: z.object({
@@ -772,7 +393,6 @@ export async function POST(req: Request) {
             }
           },
         }),
-
         listComponents: tool({
           description: 'List all components by type or category',
           parameters: z.object({
@@ -931,7 +551,7 @@ export async function POST(req: Request) {
       },
       toolCallStreaming: true,
       experimental_transform: smoothStream({
-        chunking: "line",
+        chunking: "word",
       }),
     });
 
