@@ -298,3 +298,23 @@ code {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
+/* Sidebar badge styles */
+.sidebar-badge {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Make sure badges don't overlap with text */
+[data-sidebar="menu-button"] {
+  position: relative;
+  padding-right: 70px !important;
+}
+
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
+}
