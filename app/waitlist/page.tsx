@@ -1,21 +1,29 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, Sparkles, Code, Star, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { Particles } from "@/components/ui/particles";
+import { Spotlight } from "@/components/ui/spotlight";
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import { useTheme } from "next-themes";
+import { Bricolage_Grotesque } from "next/font/google";
+import { cn } from "@/lib/utils";
 
+const brico = Bricolage_Grotesque({
+  subsets: ["latin"],
+});
+
+// Sample users for the waitlist display
 const users = [
-  {
-    imgUrl: "https://avatars.githubusercontent.com/u/71373838",
-  },
-  {
-    imgUrl: "https://avatars.githubusercontent.com/u/111780029",
-  },
-  {
-    imgUrl: "https://avatars.githubusercontent.com/u/115650165",
-  },
+  { imgUrl: "https://avatars.githubusercontent.com/u/71373838" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/111780029" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/115650165" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/24496380" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/6290720" },
 ];
 
 export default function WaitlistPage() {
@@ -23,6 +31,23 @@ export default function WaitlistPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { resolvedTheme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+ 
+  useEffect(() => {
+    setColor(resolvedTheme === "dark" ? "#ffffff" : "#e60a64");
+  }, [resolvedTheme]);
+
+  // Track mouse position for spotlight effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,28 +82,40 @@ export default function WaitlistPage() {
   };
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-xl px-4 py-16 text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 0.3 }}
-          className="absolute -top-[45%] left-1/2 -z-10 h-[375px] w-[750px] -translate-x-1/2 rounded-[100%] border border-emerald-400/20 bg-background bg-[radial-gradient(closest-side,#0A100F_85%,#10b981)] blur transition-all duration-500 hover:blur-none sm:h-[768px] sm:w-[1536px] lg:-top-[205%] lg:h-[1200px] lg:w-[2400px]"
-        />
+    <main className="relative flex min-h-screen xl:h-screen items-center justify-center overflow-hidden">
+      <Spotlight />
+      <div className="absolute top-2 right-4 z-50">
+        <ModeToggle />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x)_var(--y),rgba(236,72,153,0.05)_0,transparent_60%)]"
+        style={
+          {
+            "--x": `${mousePosition.x}px`,
+            "--y": `${mousePosition.y}px`,
+          } as React.CSSProperties
+        }
+      />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="absolute -bottom-[55%] left-1/2 -z-10 h-[375px] w-[750px] -translate-x-1/2 rounded-[100%] border border-emerald-400/20 bg-background bg-[radial-gradient(closest-side,#0A100F_85%,#10b981)] blur-sm transition-all duration-500 hover:blur-none sm:h-[768px] sm:w-[1536px] lg:-bottom-[210%] lg:h-[1200px] lg:w-[2400px]"
-        />
+      {/* Animated particles */}
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        refresh
+        color={color}
+      />
+
+      <div className="relative z-[100] mx-auto max-w-2xl px-4 py-16 text-center">
+        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/10 bg-gradient-to-r from-emerald-600/15 to-emerald-700/5 px-4 py-2 backdrop-blur-sm"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-gradient-to-r from-primary/15 to-primary/5 px-4 py-2 backdrop-blur-sm"
         >
-          <span className="text-sm">TeraCodes</span>
+          <img src="https://i.postimg.cc/vHnf0qZF/logo.webp" alt="logo" className="h-6 w-6 spin" />
+          <span className="text-sm font-medium">Mvpblocks</span>
           <motion.div
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
@@ -87,26 +124,64 @@ export default function WaitlistPage() {
           </motion.div>
         </motion.div>
 
+        {/* Main heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-glow-white mb-4 cursor-crosshair bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl"
+          className={cn("mb-4 cursor-crosshair bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl", brico.className)}
         >
-          The Future of <br /> Code{" "}
-          <span className="text-4xl text-primary opacity-90 sm:text-6xl">{`</>`}</span>
+          Join the{" "}
+          <span className="bg-primary text-transparent dark:bg-gradient-to-b from-foreground via-rose-300 to-primary bg-clip-text">
+            Waitlist
+          </span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mb-8 mt-2 text-muted-foreground sm:text-lg"
+          className="mb-12 mt-2 text-muted-foreground sm:text-lg"
         >
-          Be first in line to access our revolutionary platform. Join our
-          exclusive waitlist today.
+          Be the first to access our revolutionary component library.
+          <br className="hidden sm:block" /> Build your MVP faster than ever
+          before.
         </motion.p>
 
+        {/* Stats cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-3"
+        >
+          <div className={cn(" flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+            <Code className="mb-2 h-5 w-5 text-primary" />
+            <span className="text-xl font-bold">100+</span>
+            <span className="text-xs text-muted-foreground">Components</span>
+          </div>
+
+          <div className={cn("flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+            <ExternalLink className="mb-2 h-5 w-5 text-primary" />
+            <span className="text-xl font-bold">Open Source</span>
+            <span className="text-xs text-muted-foreground">MIT License</span>
+          </div>
+
+          <div className={cn("flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+            <Star className="mb-2 h-5 w-5 text-primary" />
+            <span className="text-xl font-bold">Premium</span>
+            <span className="text-xs text-muted-foreground">Quality</span>
+          </div>
+
+          <div className={cn("flex sm:hidden flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+            <Code className="mb-2 h-5 w-5 text-primary" />
+            <span className="text-xl font-bold">15+</span>
+            <span className="text-xs text-muted-foreground">Categories</span>
+          </div>
+        </motion.div>
+
+        {/* Form */}
         <motion.form
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -133,13 +208,13 @@ export default function WaitlistPage() {
                       setEmail(e.target.value)
                     }
                     required
-                    className="w-full rounded-xl border border-border bg-white/5 px-6 py-4 text-white backdrop-blur-sm transition-all placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+                    className="w-full rounded-xl border border-primary/20 bg-white/5 px-6 py-4 text-foreground backdrop-blur-md transition-all placeholder:text-muted-foreground/70 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   {error && (
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="rounded-xl border border-destructive/40 bg-red-900/25 px-4 py-1 text-sm capitalize text-red-600 sm:absolute"
+                      className="mt-2 rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-1 text-sm text-destructive sm:absolute"
                     >
                       {error}
                     </motion.p>
@@ -148,9 +223,13 @@ export default function WaitlistPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="rounded-xl bg-gradient-to-r from-primary to-emerald-600 px-8 py-4 font-semibold text-black transition-all duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-primary/50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isSubmitting ? "Joining..." : "Join Waitlist"}
+                  <span className="relative z-10 flex items-center gap-2">
+                    {isSubmitting ? "Joining..." : "Join Waitlist"}
+                    <Sparkles className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
+                  </span>
+                  <span className="absolute inset-0 z-0 bg-gradient-to-r from-rose-500 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
                 </button>
               </>
             ) : (
@@ -160,36 +239,42 @@ export default function WaitlistPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.6 }}
-                className="text-glow flex-1 cursor-pointer rounded-xl border border-border bg-gradient-to-r from-primary/5 via-transparent to-primary/5 px-6 py-4 font-medium text-primary backdrop-blur-sm transition-all duration-300 hover:saturate-150 active:brightness-125"
+                className={cn("flex-1 cursor-pointer rounded-xl border border-primary/20 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 px-6 py-4 font-medium text-primary backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] active:brightness-125", resolvedTheme === "dark" ? "glass" : "glass2")}
               >
-                Thanks for joining!! 🎉
+                <span className="flex items-center justify-center gap-2">
+                  Thanks for joining!{" "}
+                  <Sparkles className="h-4 w-4 animate-pulse" />
+                </span>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.form>
 
+        {/* User avatars */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-10 flex items-center justify-center gap-1"
         >
-          <div className="flex -space-x-2">
-            {users.map((_, i) => (
+          <div className="flex -space-x-3">
+            {users.map((user, i) => (
               <motion.div
                 key={i}
                 initial={{ scale: 0, x: -10 }}
                 animate={{ scale: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 1 + i * 0.2 }}
-                className="size-8 rounded-full border-2 border-background bg-gradient-to-r from-emerald-400 to-emerald-700"
+                className="size-10 rounded-full border-2 border-background bg-gradient-to-r from-primary to-rose-500 p-[2px]"
               >
-                <Image
-                  src={users[i].imgUrl}
-                  alt="Avatar"
-                  className="rounded-full transition-all duration-300 hover:rotate-12 active:rotate-0 active:scale-110"
-                  width={40}
-                  height={40}
-                />
+                <div className="overflow-hidden rounded-full">
+                  <Image
+                    src={user.imgUrl}
+                    alt="Avatar"
+                    className="rounded-full transition-all duration-300 hover:rotate-6 hover:scale-110"
+                    width={40}
+                    height={40}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -199,10 +284,34 @@ export default function WaitlistPage() {
             transition={{ duration: 0.5, delay: 1.3 }}
             className="ml-2 text-muted-foreground"
           >
-            +100 already joined ✨
+            <span className="font-semibold text-primary">100+</span> already
+            joined ✨
           </motion.span>
         </motion.div>
       </div>
+
+      {/* Add keyframes for particle animation */}
+      <style jsx global>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0) translateX(0);
+            opacity: 0.3;
+          }
+          25% {
+            transform: translateY(-20px) translateX(10px);
+            opacity: 0.8;
+          }
+          50% {
+            transform: translateY(-40px) translateX(-10px);
+            opacity: 0.4;
+          }
+          75% {
+            transform: translateY(-20px) translateX(10px);
+            opacity: 0.6;
+          }
+        }
+      `}</style>
     </main>
   );
 }

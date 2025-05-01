@@ -147,8 +147,8 @@ code {
   mask-image: linear-gradient(#0000 15%, #000);
 }
 
-.glass:where(.dark,.dark *) {
-  display: flex !important;
+.glass:where(.dark, .dark *) {
+  display: flex;
   justify-content: center !important;
   align-items: center !important;
   border-radius: 16px !important;
@@ -156,18 +156,15 @@ code {
 
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(2px) !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
-.glass:where(.dark,.dark *).rose {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 200, 220, 0.08) 0%,
-    rgba(80, 10, 40, 0.2) 40%,
-    hsl(340, 30%, 10%) 100%
-  ) !important;
+.glass:where(.dark, .dark *).rose {
+  background: radial-gradient(circle at center,
+      rgba(255, 200, 220, 0.08) 0%,
+      rgba(80, 10, 40, 0.2) 40%,
+      hsl(340, 30%, 10%) 100%) !important;
   box-shadow:
     inset 0 2px 4px rgba(255, 255, 255, 0.08),
     inset 0 -4px 6px rgba(0, 0, 0, 0.6),
@@ -180,18 +177,16 @@ code {
   transition: all 0.3s ease !important;
 }
 
-.glass:where(.dark,.dark *).rose::after {
+.glass:where(.dark, .dark *).rose::after {
   content: '' !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   width: 80px !important;
   height: 80px !important;
-  background: radial-gradient(
-    circle,
-    rgba(255, 102, 145, 0.3) 0%,
-    transparent 70%
-  ) !important;
+  background: radial-gradient(circle,
+      rgba(181, 162, 168, 0.3) 0%,
+      transparent 70%) !important;
   transform: translate(-50%, -50%) !important;
   border-radius: 50% !important;
   filter: blur(12px) !important;
@@ -199,17 +194,15 @@ code {
   z-index: 0 !important;
 }
 
-.glass{
+.glass {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 220, 230, 0.3) 60%,
-    #f9f2f4 100%
-  );
+  background: radial-gradient(circle at center,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 220, 230, 0.3) 60%,
+      #f9f2f4 100%);
   border: 1px solid rgba(255, 150, 180, 0.1);
   backdrop-filter: blur(3px) saturate(180%);
   transition: all 0.3s ease;
@@ -218,12 +211,10 @@ code {
 }
 
 .glass.rose {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 220, 235, 0.3) 0%,
-    rgba(255, 190, 210, 0.15) 40%,
-    #fef4f7 100%
-  );
+  background: radial-gradient(circle at center,
+      rgba(255, 220, 235, 0.3) 0%,
+      rgba(255, 190, 210, 0.15) 40%,
+      #fef4f7 100%);
   box-shadow:
     inset 0 2px 4px rgba(255, 200, 220, 0.2),
     inset 0 -4px 6px rgba(255, 180, 200, 0.3),
@@ -242,11 +233,9 @@ code {
   left: 50%;
   width: 80px;
   height: 80px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 160, 190, 0.3) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(255, 160, 190, 0.3) 0%,
+      transparent 70%);
   transform: translate(-50%, -50%);
   border-radius: 50%;
   filter: blur(10px);
@@ -258,20 +247,23 @@ code {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
 }
+
 @keyframes marquee-vertical {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
 }
 
-.animate-marquee{
+.animate-marquee {
   animation: marquee var(--duration) infinite linear;
 }
 
@@ -315,6 +307,15 @@ code {
   padding-right: 70px !important;
 }
 
-[data-radix-scroll-area-viewport] > div {
+[data-radix-scroll-area-viewport]>div {
   display: block !important;
+}
+
+.glass2 {
+  border-radius: 16px;
+  background: radial-gradient(circle, #00000000 0%, #ff9e9e1a 60%, #ffb9d1 100%) !important;
+  border: 1px solid #ffffff0d;
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  transition: all .3s;
 }
