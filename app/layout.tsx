@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/config/site";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import "./scrollbar.css";

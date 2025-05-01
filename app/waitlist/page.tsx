@@ -19,11 +19,10 @@ const brico = Bricolage_Grotesque({
 
 // Sample users for the waitlist display
 const users = [
-  { imgUrl: "https://avatars.githubusercontent.com/u/71373838" },
   { imgUrl: "https://avatars.githubusercontent.com/u/111780029" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/123104247" },
   { imgUrl: "https://avatars.githubusercontent.com/u/115650165" },
-  { imgUrl: "https://avatars.githubusercontent.com/u/24496380" },
-  { imgUrl: "https://avatars.githubusercontent.com/u/6290720" },
+  { imgUrl: "https://avatars.githubusercontent.com/u/71373838" },
 ];
 
 export default function WaitlistPage() {
