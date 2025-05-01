@@ -6,7 +6,11 @@ export function middleware(request: NextRequest) {
   const { pathname } = new URL(request.url);
 
   // Prevent redirect loops and API calls from being redirected
-  if (!launched && pathname !== "/waitlist") {
+  if (
+    !launched &&
+    pathname !== "/waitlist" &&
+    process.env.NODE_ENV !== "development"
+  ) {
     return NextResponse.redirect(new URL("/waitlist", request.url), 307);
   }
 
