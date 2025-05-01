@@ -3,7 +3,7 @@
 **The Ultimate Open Source Component Library for MVPs.**  
 Copy, paste, customize—and launch your idea faster than ever.
 
-![MVPBlocks banner](./app/opengraph-image.webp)
+![MVPBlocks banner](./app/opengraph-image.png)
 
 ## ⚡ What is MVPBlocks?
 
