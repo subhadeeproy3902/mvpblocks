@@ -3,7 +3,7 @@ export const siteLink =
     ? "https://mvpblocks.vercel.app"
     : "http://localhost:3000";
 export const siteName = "MVPBlocks";
-export const launched = true;
+export const launched = false;
 export const siteConfig = {
   name: "MVPBlocks",
   url: "https://mvpblocks.vercel.app",
