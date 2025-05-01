@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "MVPBlocks",
     images: [
       {
-        url: "/og.webp",
+        url: "https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png",
         width: 1200,
         height: 630,
         alt: "MVPBlocks - The Ultimate Open Source Component Library for MVPs"
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "MVPBlocks",
     description: "Copy, paste, customize—and launch your idea faster than ever.",
     creator: "@mvp_Subha",
-    images: ["/og.webp"],
+    images: ["https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png"],
   },
   robots: {
     index: true,
