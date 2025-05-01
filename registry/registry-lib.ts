@@ -10,5 +10,5 @@ export const lib: Registry = [
         type: "registry:lib",
       },
     ],
-  }
-]
+  },
+];

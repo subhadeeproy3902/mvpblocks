@@ -18,7 +18,8 @@ export default function DotCard() {
               Build with Us
             </h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Start building your next project with our pre-built components. Let&apos; build MVPs fast
+              Start building your next project with our pre-built components.
+              Let&apos; build MVPs fast
             </p>
           </div>
         </div>

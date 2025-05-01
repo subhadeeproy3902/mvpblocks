@@ -1,7 +1,7 @@
 import { Github } from "lucide-react";
 
 export default function LoginForm1() {
-  return(
+  return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background sm:px-4">
       <div className="w-full space-y-4 sm:max-w-md">
         <div className="text-center">
@@ -108,5 +108,5 @@ export default function LoginForm1() {
         </div>
       </div>
     </main>
-  )
+  );
 }

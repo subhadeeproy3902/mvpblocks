@@ -79,7 +79,6 @@ const SIZES = {
   },
 };
 
-
 export function CardHoverEffect({
   icon,
   title,

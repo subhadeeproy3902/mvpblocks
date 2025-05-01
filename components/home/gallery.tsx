@@ -24,7 +24,7 @@ export default function Gallery() {
 
   return (
     <section
-    id="trending"
+      id="trending"
       className="relative mb-32 min-h-screen overflow-hidden rounded-bl-3xl rounded-br-3xl rounded-tl-3xl rounded-tr-3xl border-b border-t border-secondary/50 bg-background pt-16 md:rounded-bl-[5rem] md:rounded-br-[5rem] md:rounded-tl-[5rem] md:rounded-tr-[5rem]"
       style={{
         boxShadow: `
@@ -34,10 +34,10 @@ export default function Gallery() {
       }}
     >
       <Spotlight />
-      <div className="absolute rotate-180 bottom-0 w-full h-full z-0">
-      <Spotlight />
+      <div className="absolute bottom-0 z-0 h-full w-full rotate-180">
+        <Spotlight />
       </div>
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block">
+      <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 lg:block">
         <Image
           alt="Trending graphic 1"
           width={100}
@@ -46,7 +46,7 @@ export default function Gallery() {
           src="/trending1.svg"
         />
       </div>
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
+      <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block">
         <Image
           alt="Trending graphic 2"
           width={100}
@@ -89,7 +89,7 @@ export default function Gallery() {
         <div className="mx-auto mt-10 w-full max-w-4xl rounded-[24px] p-2 shadow-sm md:rounded-t-[44px]">
           <CardCaroursalDemo />
         </div>
-        <section className="my-10 mb-20 z-50 relative w-full">
+        <section className="relative z-50 my-10 mb-20 w-full">
           <div className="mt-20 flex flex-col items-center justify-center">
             <div className="mx-auto flex h-[90px] max-w-[480px] items-center justify-center gap-4 rounded-3xl border-2 border-dashed px-6">
               <p className="text-lg opacity-60">

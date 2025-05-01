@@ -1,15 +1,15 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function SpiralLoader() {
-  const dots = 8
-  const radius = 20
+  const dots = 8;
+  const radius = 20;
 
   return (
     <div className="relative h-16 w-16">
       {[...Array(dots)].map((_, index) => {
-        const angle = (index / dots) * (2 * Math.PI)
-        const x = radius * Math.cos(angle)
-        const y = radius * Math.sin(angle)
+        const angle = (index / dots) * (2 * Math.PI);
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
 
         return (
           <motion.div
@@ -27,11 +27,11 @@ export default function SpiralLoader() {
               duration: 1.5,
               repeat: Infinity,
               delay: (index / dots) * 1.5,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
-        )
+        );
       })}
     </div>
-  )
+  );
 }

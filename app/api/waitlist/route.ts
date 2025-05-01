@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     if (result.isValid === false) {
       return NextResponse.json(
         { error: "Invalid email address" },
-        { status: 422 }
+        { status: 422 },
       );
     }
 
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     if (existingUser) {
       return NextResponse.json(
         { error: "Email already registered" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -103,12 +103,12 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { message: "Email submitted successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error : " + error },
-      { status: 500 }
+      { status: 500 },
     );
   } finally {
     await client.close();

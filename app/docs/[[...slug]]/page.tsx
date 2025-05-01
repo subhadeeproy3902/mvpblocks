@@ -103,7 +103,7 @@ export default async function Page(props: {
       </Script>
       <DocsPage
         article={{
-          className: "max-w-6xl max-sm:pb-16"
+          className: "max-w-6xl max-sm:pb-16",
         }}
         toc={page.data.toc}
         full={page.data.full}

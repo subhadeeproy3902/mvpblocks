@@ -44,7 +44,9 @@ export function NavbarDemo() {
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
           <NavbarButton variant="gradient">
-            <Link href="https://github.com/subhadeeproy3902/mvpblocks">Github</Link>
+            <Link href="https://github.com/subhadeeproy3902/mvpblocks">
+              Github
+            </Link>
           </NavbarButton>
           <ModeToggle />
         </div>
@@ -55,11 +57,11 @@ export function NavbarDemo() {
         <MobileNavHeader>
           <NavbarLogo />
           <div className="flex items-center gap-4">
-          <ModeToggle />
-          <MobileNavToggle
-            isOpen={isMobileMenuOpen}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          />
+            <ModeToggle />
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
           </div>
         </MobileNavHeader>
 

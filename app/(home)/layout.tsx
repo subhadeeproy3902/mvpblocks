@@ -20,26 +20,23 @@ export default function RootLayout({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": siteConfig.name,
-          "url": siteConfig.url,
-          "description": siteConfig.description,
-          "potentialAction": {
+          name: siteConfig.name,
+          url: siteConfig.url,
+          description: siteConfig.description,
+          potentialAction: {
             "@type": "SearchAction",
-            "target": `${siteConfig.url}/docs/search?q={search_term_string}`,
-            "query-input": "required name=search_term_string"
+            target: `${siteConfig.url}/docs/search?q={search_term_string}`,
+            "query-input": "required name=search_term_string",
           },
-          "creator": {
+          creator: {
             "@type": "Individual",
-            "name": "Subhadeep Roy",
-            "logo": {
+            name: "Subhadeep Roy",
+            logo: {
               "@type": "ImageObject",
-              "url": `${siteConfig.url}/logo.webp`
+              url: `${siteConfig.url}/logo.webp`,
             },
-            "sameAs": [
-              siteConfig.links.twitter,
-              siteConfig.links.github
-            ]
-          }
+            sameAs: [siteConfig.links.twitter, siteConfig.links.github],
+          },
         })}
       </Script>
     </ReactLenis>

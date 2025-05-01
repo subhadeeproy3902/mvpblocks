@@ -46,7 +46,7 @@ const PixelCanvas: React.FC<PixelCanvasProps> = ({
       data-speed={speed}
       data-colors={colors}
       {...(noFocus ? { "data-no-focus": "" } : {})}
-      className="absolute inset-0 size-full z-10"
+      className="absolute inset-0 z-10 size-full"
       style={{ position: "absolute", width: "100%", height: "100%" }}
     />
   );
@@ -86,13 +86,13 @@ export const PixelCard: React.FC<CardProps> = ({
       />
       {icon === "Blocks" ? (
         <Image
-        src="/components.webp"
-        draggable={false}
-        alt={label}
-        width={112}
-        height={112}
-        className="z-50 select-none mb-4 h-28 w-28 opacity-30 group-hover:opacity-80"
-      />
+          src="/components.webp"
+          draggable={false}
+          alt={label}
+          width={112}
+          height={112}
+          className="z-50 mb-4 h-28 w-28 select-none opacity-30 group-hover:opacity-80"
+        />
       ) : (
         <Image
           src="/category.webp"
@@ -100,7 +100,7 @@ export const PixelCard: React.FC<CardProps> = ({
           alt={label}
           width={128}
           height={128}
-          className="z-50 mb-4 select-none h-32 w-32 opacity-30 group-hover:opacity-80"
+          className="z-50 mb-4 h-32 w-32 select-none opacity-30 group-hover:opacity-80"
         />
       )}
 
@@ -111,7 +111,7 @@ export const PixelCard: React.FC<CardProps> = ({
             style={{
               background: `conic-gradient(from ${variantConfig.shine}, transparent 360deg)`,
               filter: "blur(40px)",
-              transform: "translateX(-50%) scaleX(-1)"
+              transform: "translateX(-50%) scaleX(-1)",
             }}
           />
         </div>

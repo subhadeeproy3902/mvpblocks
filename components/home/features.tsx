@@ -186,7 +186,7 @@ export default function Features() {
                       </div>
                     </div>
                   </div>
-                  <div className="glass rose relative z-10 row-span-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out dark:outline-background/30 group-hover:scale-90">
+                  <div className="glass rose relative z-10 row-span-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-90 dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
                         <Image
@@ -218,8 +218,7 @@ export default function Features() {
                   <div className="fade-right-lg z-1 row-span-2 rounded-xl bg-gradient-to-b from-black/5 to-transparent transition-all duration-1000 ease-in-out dark:from-white/5"></div>
                   <div className="glass rose relative z-10 row-span-2 row-start-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-[.8] dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
-                      <div className="text-light relative z-10">
-                      </div>
+                      <div className="text-light relative z-10"></div>
                     </div>
                   </div>
                   <div className="fade-right-lg z-1 row-span-2 rounded-xl bg-gradient-to-b from-black/5 to-transparent transition-all duration-1000 ease-in-out dark:from-white/5"></div>

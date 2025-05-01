@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function PulsatingDots() {
   return (
@@ -12,7 +12,7 @@ export default function PulsatingDots() {
           }}
           transition={{
             duration: 1,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             repeat: Infinity,
           }}
         />
@@ -24,7 +24,7 @@ export default function PulsatingDots() {
           }}
           transition={{
             duration: 1,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             repeat: Infinity,
             delay: 0.3,
           }}
@@ -37,12 +37,12 @@ export default function PulsatingDots() {
           }}
           transition={{
             duration: 1,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             repeat: Infinity,
             delay: 0.6,
           }}
         />
       </div>
     </div>
-  )
+  );
 }

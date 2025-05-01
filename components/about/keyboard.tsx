@@ -147,7 +147,7 @@ const Keyboard: React.FC = () => {
   );
 
   return (
-    <div className="flex xl:-ml-12 xl:mt-0 md:mt-16 z-10 scale-[0.55] items-center justify-center text-xs text-foreground/70 md:scale-100 lg:scale-125">
+    <div className="z-10 flex scale-[0.55] items-center justify-center text-xs text-foreground/70 md:mt-16 md:scale-100 lg:scale-125 xl:-ml-12 xl:mt-0">
       <div className="rounded-lg border-2 border-border bg-secondary/80 p-3 shadow-lg">
         <div className="overflow-hidden rounded bg-background p-1">
           {["1", "2", "3", "4", "5"].map((row) => renderRow(row))}

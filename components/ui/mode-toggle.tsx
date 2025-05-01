@@ -3,7 +3,6 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
-
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
 
@@ -11,7 +10,7 @@ export function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="text-primary rounded-full z-50"
+      className="z-50 rounded-full text-primary"
       onClick={() => setTheme((theme) => (theme === "dark" ? "light" : "dark"))}
     >
       {theme === "dark" ? <Sun /> : <Moon />}

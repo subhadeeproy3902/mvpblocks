@@ -30,7 +30,7 @@ export default function CTA1() {
             <p className="my-auto mt-3 max-w-2xl text-base text-gray-300 md:text-lg">
               If you need to get in touch, there are several ways to contact us.
             </p>
-            <div className="justify-between text-lg mt-8 flex w-full flex-col gap-4 md:flex-row">
+            <div className="mt-8 flex w-full flex-col justify-between gap-4 text-lg md:flex-row">
               <a
                 className="flex items-center gap-2 text-white"
                 href="mailto:subha9.5roy350@gmail.com"

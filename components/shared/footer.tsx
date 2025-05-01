@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden rounded-t-3xl md:rounded-t-[4rem] border-t bg-muted/30">
+    <footer className="relative overflow-hidden rounded-t-3xl border-t bg-muted/30 md:rounded-t-[4rem]">
       <div className="absolute inset-0 -z-10">
         <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-primary/30 blur-3xl dark:bg-primary/10"></div>
         <div className="absolute right-0 top-1/4 h-72 w-72 rounded-full bg-blue-500/30 blur-3xl dark:bg-blue-500/10"></div>
@@ -179,12 +179,17 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t relative border-muted/50 pt-8">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-1/2 bg-gradient-to-r from-transparent via-primary/70 to-transparent"></div>
+        <div className="relative border-t border-muted/50 pt-8">
+          <div className="absolute left-1/2 top-0 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/70 to-transparent"></div>
           <div className="flex flex-col items-center justify-between text-sm text-muted-foreground md:flex-row">
-            <p>©{new Date().getFullYear()} <span className="font-medium text-foreground">Mvpblocks</span>. All rights reserved.</p>
+            <p>
+              ©{new Date().getFullYear()}{" "}
+              <span className="font-medium text-foreground">Mvpblocks</span>.
+              All rights reserved.
+            </p>
             <div className="mt-4 flex items-center space-x-1 md:mt-0">
-              <span>Building in public at
+              <span>
+                Building in public at
                 <Link
                   href="http://mvp-subha.me"
                   target="_blank"

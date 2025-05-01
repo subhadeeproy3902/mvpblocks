@@ -50,12 +50,12 @@ export function ComponentLoader({
   if (loading) {
     return (
       <div className="flex h-full w-full items-center justify-center p-16">
-      <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
-        <div className="rounded-full p-3">
-          <RotateCw className="h-6 w-6 animate-spin text-foreground" />
+        <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
+          <div className="rounded-full p-3">
+            <RotateCw className="h-6 w-6 animate-spin text-foreground" />
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 
@@ -170,7 +170,7 @@ function ComponentDisplay({
   reTriggerKey,
   fromDocs,
   name,
-  author
+  author,
 }: ComponentDisplayProps) {
   return (
     <div
@@ -197,10 +197,7 @@ function ComponentDisplay({
       {hasReTrigger ? (
         React.cloneElement(component, { key: reTriggerKey })
       ) : fromDocs ? (
-        <iframe
-          src={`${siteLink}/preview/${name}`}
-          className="h-full w-full"
-        />
+        <iframe src={`${siteLink}/preview/${name}`} className="h-full w-full" />
       ) : (
         component
       )}
