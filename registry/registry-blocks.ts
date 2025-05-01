@@ -18,6 +18,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "bolt",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/chatbot-ui/bolt.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/chatbot-ui/bolt"),
+    ),
+  },
+  {
     name: "bouncing-loader",
     type: "registry:block",
     dependencies: [],
