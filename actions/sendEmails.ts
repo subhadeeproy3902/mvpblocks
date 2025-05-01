@@ -59,7 +59,7 @@ export async function sendReleaseEmails() {
 
             <!-- CTA Button -->
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://mvpblocks.vercel.app/"
+                <a href="https://blocks.mvp-subha.me/"
                    style="display: inline-block; background-color: #ec4a60; color: #ffffff; text-decoration: none; padding: 14px 45px; border-radius: 8px; font-weight: bold; transition: all 0.3s ease;">
                     Launch MVPBlocks
                 </a>
@@ -77,7 +77,7 @@ export async function sendReleaseEmails() {
             <div style="margin-top: 15px; text-align: center;">
                 <a href="https://github.com/subhadeeproy3902/mvpblocks" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">GitHub</a>
                 <a href="https://x.com/mvp_Subha" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Twitter</a>
-                <a href="https://mvpblocks.vercel.app/" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Website</a>
+                <a href="https://blocks.mvp-subha.me/" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Website</a>
             </div>
         </div>
     </div>

@@ -27,8 +27,8 @@ const getComponentCode = async (item: any) => {
       code: code,
       dependencies: item.dependencies || [],
       registryDependencies: item.registryDependencies || [],
-      link: `https://mvpblocks.vercel.app/r/${item.name}.json`,
-      installCommand: `npx shadcn@latest add https://mvpblocks.vercel.app/r/${item.name}.json`
+      link: `https://blocks.mvp-subha.me/r/${item.name}.json`,
+      installCommand: `npx shadcn@latest add https://blocks.mvp-subha.me/r/${item.name}.json`
     };
   } catch (error) {
     console.error(`Error reading file ${fullPath}:`, error);
@@ -147,7 +147,7 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
       path: item.files && item.files.length > 0 ? item.files[0].path : null,
       dependencies: item.dependencies || [],
       registryDependencies: item.registryDependencies || [],
-      link: `https://mvpblocks.vercel.app/r/${item.name}.json`
+      link: `https://blocks.mvp-subha.me/r/${item.name}.json`
     }));
 
   return results.length > 0 ? results : null;
@@ -190,7 +190,7 @@ When a user asks about a component:
 
 📦 For Dependencies:
   - NPM dependencies: Install via package manager (e.g., \`npm install [dependency-name]\`)
-  - Registry dependencies: Reference by URL in component registration (e.g., \`https://mvpblocks.vercel.app/r/[component-name].json\`)
+  - Registry dependencies: Reference by URL in component registration (e.g., \`https://blocks.mvp-subha.me/r/[component-name].json\`)
 
 📋 Code Formatting Requirements:
   - Always format code with proper indentation using tabs
@@ -494,8 +494,8 @@ export async function POST(req: Request) {
                 type: item.type,
                 path: item.files?.[0]?.path || null,
                 categories: detectedCategories,
-                link: `https://mvpblocks.vercel.app/r/${item.name}.json`,
-                installCommand: `npx shadcn@latest add https://mvpblocks.vercel.app/r/${item.name}.json`,
+                link: `https://blocks.mvp-subha.me/r/${item.name}.json`,
+                installCommand: `npx shadcn@latest add https://blocks.mvp-subha.me/r/${item.name}.json`,
                 dependencies: item.dependencies || [],
                 registryDependencies: item.registryDependencies || []
               };

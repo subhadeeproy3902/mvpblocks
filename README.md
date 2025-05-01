@@ -48,11 +48,11 @@ We LOVE contributions. And we believe in equality—if you contribute a block, *
 - Mobile responsiveness and TailwindCSS are all we ask.
 - Submitting a block? Follow this guide:
 
-🔗 [Add Your Own Block →](https://mvpblocks.vercel.app/docs/add-a-block)
+🔗 [Add Your Own Block →](https://blocks.mvp-subha.me/docs/add-a-block)
 
 ## 🌐 Explore MVPBlocks
 
-Head over to [**mvpblocks.vercel.app**](https://mvpblocks.vercel.app) to:
+Head over to [**blocks.mvp-subha.me**](https://blocks.mvp-subha.me) to:
 
 - 🔍 Browse through 100+ unique blocks
 - 🎯 Filter by category (Auth, Dashboard, Hero, Pricing, and more)
@@ -74,7 +74,7 @@ Whether you have questions, ideas, or just wanna hang out—come join us!
 - If you contribute a block, you retain authorship. We believe in **equality and attribution**.
 - Please don’t use MVPBlocks content for piracy or unethical purposes.
 - No need to contact us for using blocks—just give credit if possible.
-- Refer to our full [Terms & Conditions](https://mvpblocks.vercel.app/terms) page for more.
+- Refer to our full [Terms & Conditions](https://blocks.mvp-subha.me/terms) page for more.
 
 ## 🛡️ License
 

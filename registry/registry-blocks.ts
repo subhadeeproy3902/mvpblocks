@@ -21,7 +21,7 @@ export const blocks: Registry = [
     name: "bolt",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/chatbot-ui/bolt.tsx",
@@ -51,7 +51,7 @@ export const blocks: Registry = [
     name: "btn-gradient1",
     type: "registry:block",
     dependencies: [],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/basics/buttons/btn-gradient1.tsx",
@@ -141,7 +141,7 @@ export const blocks: Registry = [
     name: "feature-2",
     type: "registry:block",
     dependencies: ["framer-motion","react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/utils.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/features/feature-2.tsx",
@@ -156,7 +156,7 @@ export const blocks: Registry = [
     name: "fitness-hero",
     type: "registry:block",
     dependencies: [],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/hero/fitness-hero.tsx",
@@ -186,7 +186,7 @@ export const blocks: Registry = [
     name: "globe1",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/globe.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/globe.json"],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe1.tsx",
@@ -201,7 +201,7 @@ export const blocks: Registry = [
     name: "globe2",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/globe.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/globe.json"],
     files: [
       {
         path: "@/components/mvpblocks/creative/globe2.tsx",
@@ -321,7 +321,7 @@ export const blocks: Registry = [
     name: "star-on-github",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/button.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/basics/buttons/star-on-github.tsx",
@@ -336,7 +336,7 @@ export const blocks: Registry = [
     name: "twittercard",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/utils.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
         path: "@/components/mvpblocks/cards/twitter/twittercard.tsx",
@@ -351,7 +351,7 @@ export const blocks: Registry = [
     name: "v0-chat",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://mvpblocks.vercel.app/r/use-auto-resize-textarea.json","https://mvpblocks.vercel.app/r/textarea.json","https://mvpblocks.vercel.app/r/utils.json","https://mvpblocks.vercel.app/r/button.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json","https://blocks.mvp-subha.me/r/textarea.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/chatbot-ui/v0-chat.tsx",

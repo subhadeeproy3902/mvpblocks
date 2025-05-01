@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
       <div style="margin-top: 15px; text-align: center;">
         <a href="https://github.com/subhadeeproy3902/mvpblocks" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">GitHub</a>
         <a href="https://x.com/mvp_Subha" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Twitter</a>
-        <a href="https://mvpblocks.vercel.app" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Website</a>
+        <a href="https://blocks.mvp-subha.me" style="color: #ec4a60; text-decoration: none; margin: 0 10px; display: inline-block;">Website</a>
       </div>
     </div>
   </div>

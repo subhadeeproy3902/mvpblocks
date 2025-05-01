@@ -30,14 +30,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Subhadeep Roy" }],
   creator: "Subhadeep Roy",
   publisher: "Subhadeep Roy",
-  metadataBase: new URL("https://mvpblocks.vercel.app"),
+  metadataBase: new URL("https://blocks.mvp-subha.me"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "MVPBlocks",
     description: "Copy, paste, customize—and launch your idea faster than ever. MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
-    url: "https://mvpblocks.vercel.app",
+    url: "https://blocks.mvp-subha.me",
     siteName: "MVPBlocks",
     images: [
       {

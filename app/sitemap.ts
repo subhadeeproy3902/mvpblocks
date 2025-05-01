@@ -3,7 +3,7 @@ import { source } from '@/lib/source';
 import { siteConfig } from '@/config/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url || 'https://mvpblocks.vercel.app';
+  const baseUrl = siteConfig.url || 'https://blocks.mvp-subha.me';
   
   // Get all documentation pages
   const docPages = source.getPages().map((page: { slugs: string[] }) => ({

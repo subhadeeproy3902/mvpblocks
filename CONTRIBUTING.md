@@ -8,7 +8,7 @@ Here’s how you can help:
 
 - 🧱 **Add a new Block**  
   Want to contribute your own cool component?  
-  👉 [Follow this short guide](https://mvpblocks.vercel.app/docs/add-a-block)
+  👉 [Follow this short guide](https://blocks.mvp-subha.me/docs/add-a-block)
 
 - 🛠 **Fix minor bugs or typos**  
   Even the smallest change matters—grammar, formatting, spelling, or visual polish.

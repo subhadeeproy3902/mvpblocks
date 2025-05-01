@@ -3,7 +3,7 @@
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [
-    "https://mvpblocks.vercel.app/r/button.json"
+    "https://blocks.mvp-subha.me/r/button.json"
   ],
   "files": [
     {

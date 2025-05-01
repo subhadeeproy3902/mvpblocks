@@ -5,7 +5,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://mvpblocks.vercel.app/r/utils.json"
+    "https://blocks.mvp-subha.me/r/utils.json"
   ],
   "files": [
     {

@@ -51,21 +51,21 @@ function main() {
   newRegistryDeps += '  // UI components\n';
   for (const component of uiComponents) {
     const componentName = path.basename(component, path.extname(component));
-    newRegistryDeps += `  '@/components/ui/${componentName}': 'https://mvpblocks.vercel.app/r/${componentName}.json',\n`;
+    newRegistryDeps += `  '@/components/ui/${componentName}': 'https://blocks.mvp-subha.me/r/${componentName}.json',\n`;
   }
   
   // Add hooks
   newRegistryDeps += '\n  // Hooks\n';
   for (const hook of hooks) {
     const hookName = path.basename(hook, path.extname(hook));
-    newRegistryDeps += `  '@/hooks/${hookName}': 'https://mvpblocks.vercel.app/r/${hookName}.json',\n`;
+    newRegistryDeps += `  '@/hooks/${hookName}': 'https://blocks.mvp-subha.me/r/${hookName}.json',\n`;
   }
   
   // Add libs
   newRegistryDeps += '\n  // Lib utilities\n';
   for (const lib of libs) {
     const libName = path.basename(lib, path.extname(lib));
-    newRegistryDeps += `  '@/lib/${libName}': 'https://mvpblocks.vercel.app/r/${libName}.json',\n`;
+    newRegistryDeps += `  '@/lib/${libName}': 'https://blocks.mvp-subha.me/r/${libName}.json',\n`;
   }
   
   // Remove trailing comma
