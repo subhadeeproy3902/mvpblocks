@@ -134,7 +134,7 @@ const TestimonialsColumn = (props: {
   </div>
 );
 
-export const Testimonials = () => {
+const Testimonials = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   return (
@@ -187,3 +187,5 @@ export const Testimonials = () => {
     </section>
   );
 };
+
+export default Testimonials;

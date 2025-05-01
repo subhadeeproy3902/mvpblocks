@@ -42,4 +42,4 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
-.source
+.source/index.ts
