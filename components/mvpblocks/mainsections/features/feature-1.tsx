@@ -1,45 +1,40 @@
-import { Code, Terminal, Paintbrush, Rocket, Book, PlusCircle } from "lucide-react";
+import {
+  Code,
+  Terminal,
+  Paintbrush,
+  Rocket,
+  Book,
+  PlusCircle,
+} from "lucide-react";
 
 const features = [
   {
-    icon: (
-      <Code className="h-6 w-6" />
-    ),
+    icon: <Code className="h-6 w-6" />,
     title: "Developer-Friendly",
     desc: "Tailored for developers to create and iterate fast, with minimal overhead and maximum flexibility.",
   },
   {
-    icon: (
-      <Terminal className="h-6 w-6" />
-    ),
+    icon: <Terminal className="h-6 w-6" />,
     title: "CLI Support",
     desc: "Command-line interface support for seamless development and workflow integration.",
   },
   {
-    icon: (
-      <Paintbrush className="h-6 w-6" />
-    ),
+    icon: <Paintbrush className="h-6 w-6" />,
     title: "Easily Customizable",
     desc: "Every block is built to be editable. From layout to logic, style to structure—make it your own.",
   },
   {
-    icon: (
-      <Rocket className="h-6 w-6" />
-    ),
+    icon: <Rocket className="h-6 w-6" />,
     title: "v0 Support",
     desc: "Launch fast with confidence. Perfect for MVPs, prototypes, and weekend projects.",
   },
   {
-    icon: (
-      <Book className="h-6 w-6" />
-    ),
+    icon: <Book className="h-6 w-6" />,
     title: "Full Documentation",
     desc: "Comprehensive documentation to understand every feature and maximize your development experience.",
   },
   {
-    icon: (
-      <PlusCircle className="h-6 w-6" />
-    ),
+    icon: <PlusCircle className="h-6 w-6" />,
     title: "Contribute Yours",
     desc: "Add your own blocks to the library and become part of the MVPBlocks community.",
   },
@@ -72,9 +67,9 @@ export default function Feature1() {
             {features.map((item, idx) => (
               <li
                 key={idx}
-                className="transform-gpu space-y-3 rounded-xl bg-transparent p-4 border [box-shadow:0_-20px_80px_-20px_#ff7aa42f_inset]"
+                className="transform-gpu space-y-3 rounded-xl border bg-transparent p-4 [box-shadow:0_-20px_80px_-20px_#ff7aa42f_inset]"
               >
-                <div className="w-fit transform-gpu rounded-full p-4 text-primary border [box-shadow:0_-20px_80px_-20px_#ff7aa43f_inset] dark:[box-shadow:0_-20px_80px_-20px_#ff7aa40f_inset]">
+                <div className="w-fit transform-gpu rounded-full border p-4 text-primary [box-shadow:0_-20px_80px_-20px_#ff7aa43f_inset] dark:[box-shadow:0_-20px_80px_-20px_#ff7aa40f_inset]">
                   {item.icon}
                 </div>
                 <h4 className="font-geist text-lg font-bold tracking-tighter">

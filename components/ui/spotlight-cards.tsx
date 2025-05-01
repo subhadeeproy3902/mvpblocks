@@ -79,7 +79,7 @@ export default function SpotlightCard({
           className="relative h-full w-full rounded-lg text-center no-underline"
         >
           <>
-            <h1 className="pt-5 text-2xl font-semibold bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+            <h1 className="bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
               {title}
             </h1>
             {desc && (
@@ -93,7 +93,7 @@ export default function SpotlightCard({
       ) : (
         <div className="relative h-full w-full rounded-lg text-center no-underline">
           <>
-            <h1 className="pt-5 text-2xl font-semibold bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+            <h1 className="bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
               {title}
             </h1>
             {desc && (

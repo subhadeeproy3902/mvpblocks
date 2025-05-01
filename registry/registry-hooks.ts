@@ -30,5 +30,5 @@ export const hooks: Registry = [
         type: "registry:hook",
       },
     ],
-  }
+  },
 ];

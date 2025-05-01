@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 export default function Head() {
   return (
@@ -11,22 +11,21 @@ export default function Head() {
         type="font/woff2"
         crossOrigin="anonymous"
       />
-      
+
       {/* Preload critical images */}
-      <link
-        rel="preload"
-        href="/logo.webp"
-        as="image"
-        type="image/png"
-      />
-      
+      <link rel="preload" href="/logo.webp" as="image" type="image/png" />
+
       {/* DNS prefetch for external resources */}
       <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-      
+
       {/* Preconnect to critical origins */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
     </>
   );
 }

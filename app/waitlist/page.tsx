@@ -33,7 +33,7 @@ export default function WaitlistPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { resolvedTheme } = useTheme();
   const [color, setColor] = useState("#ffffff");
- 
+
   useEffect(() => {
     setColor(resolvedTheme === "dark" ? "#ffffff" : "#e60a64");
   }, [resolvedTheme]);
@@ -81,9 +81,9 @@ export default function WaitlistPage() {
   };
 
   return (
-    <main className="relative flex min-h-screen xl:h-screen items-center justify-center overflow-hidden">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden xl:h-screen">
       <Spotlight />
-      <div className="absolute top-2 right-4 z-[150]">
+      <div className="absolute right-4 top-2 z-[150]">
         <ModeToggle />
       </div>
       <div
@@ -113,7 +113,11 @@ export default function WaitlistPage() {
           transition={{ duration: 0.5 }}
           className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-gradient-to-r from-primary/15 to-primary/5 px-4 py-2 backdrop-blur-sm"
         >
-          <img src="https://i.postimg.cc/vHnf0qZF/logo.webp" alt="logo" className="h-6 w-6 spin" />
+          <img
+            src="https://i.postimg.cc/vHnf0qZF/logo.webp"
+            alt="logo"
+            className="spin h-6 w-6"
+          />
           <span className="text-sm font-medium">Mvpblocks</span>
           <motion.div
             animate={{ x: [0, 5, 0] }}
@@ -128,10 +132,13 @@ export default function WaitlistPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className={cn("mb-4 cursor-crosshair bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl", brico.className)}
+          className={cn(
+            "mb-4 cursor-crosshair bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 bg-clip-text text-4xl font-bold text-transparent sm:text-7xl",
+            brico.className,
+          )}
         >
           Join the{" "}
-          <span className="bg-primary text-transparent dark:bg-gradient-to-b from-foreground via-rose-300 to-primary bg-clip-text">
+          <span className="bg-primary from-foreground via-rose-300 to-primary bg-clip-text text-transparent dark:bg-gradient-to-b">
             Waitlist
           </span>
         </motion.h1>
@@ -155,25 +162,45 @@ export default function WaitlistPage() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mb-12 grid grid-cols-2 gap-6 sm:grid-cols-3"
         >
-          <div className={cn(" flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+          <div
+            className={cn(
+              "flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md",
+              resolvedTheme === "dark" ? "glass" : "glass2",
+            )}
+          >
             <Code className="mb-2 h-5 w-5 text-primary" />
             <span className="text-xl font-bold">100+</span>
             <span className="text-xs text-muted-foreground">Components</span>
           </div>
 
-          <div className={cn("flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+          <div
+            className={cn(
+              "flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md",
+              resolvedTheme === "dark" ? "glass" : "glass2",
+            )}
+          >
             <ExternalLink className="mb-2 h-5 w-5 text-primary" />
             <span className="text-xl font-bold">Open Source</span>
             <span className="text-xs text-muted-foreground">BSD 3-Clause</span>
           </div>
 
-          <div className={cn("flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+          <div
+            className={cn(
+              "flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md",
+              resolvedTheme === "dark" ? "glass" : "glass2",
+            )}
+          >
             <Star className="mb-2 h-5 w-5 text-primary" />
             <span className="text-xl font-bold">Premium</span>
             <span className="text-xs text-muted-foreground">Quality</span>
           </div>
 
-          <div className={cn("flex sm:hidden flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md", resolvedTheme === "dark" ? "glass" : "glass2")}>
+          <div
+            className={cn(
+              "flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md sm:hidden",
+              resolvedTheme === "dark" ? "glass" : "glass2",
+            )}
+          >
             <Code className="mb-2 h-5 w-5 text-primary" />
             <span className="text-xl font-bold">15+</span>
             <span className="text-xs text-muted-foreground">Categories</span>
@@ -222,7 +249,7 @@ export default function WaitlistPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || submitted}
-                  className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-primary/50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-rose-500 to-rose-700 px-8 py-4 font-semibold text-primary-foreground text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-primary/50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? "Joining..." : "Join Waitlist"}
@@ -238,7 +265,10 @@ export default function WaitlistPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.6 }}
-                className={cn("flex-1 cursor-pointer rounded-xl border border-primary/20 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 px-6 py-4 font-medium text-primary backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] active:brightness-125", resolvedTheme === "dark" ? "glass" : "glass2")}
+                className={cn(
+                  "flex-1 cursor-pointer rounded-xl border border-primary/20 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 px-6 py-4 font-medium text-primary backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] active:brightness-125",
+                  resolvedTheme === "dark" ? "glass" : "glass2",
+                )}
               >
                 <span className="flex items-center justify-center gap-2">
                   Thanks for joining!{" "}

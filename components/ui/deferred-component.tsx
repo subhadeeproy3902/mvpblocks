@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from "react";
 
 interface DeferredComponentProps {
   children: ReactNode;
@@ -18,17 +18,22 @@ export function DeferredComponent({
 
   useEffect(() => {
     setIsClient(true);
-    
+
     // Use requestIdleCallback if available, otherwise setTimeout
-    const renderTimeout = 
-      'requestIdleCallback' in window
-        ? window.requestIdleCallback(() => setShouldRender(true), { timeout: delay })
+    const renderTimeout =
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback(() => setShouldRender(true), {
+            timeout: delay,
+          })
         : setTimeout(() => setShouldRender(true), delay);
-    
+
     return () => {
-      if ('requestIdleCallback' in window && typeof renderTimeout === 'number') {
+      if (
+        "requestIdleCallback" in window &&
+        typeof renderTimeout === "number"
+      ) {
         window.cancelIdleCallback(renderTimeout);
-      } else if (typeof renderTimeout === 'number') {
+      } else if (typeof renderTimeout === "number") {
         clearTimeout(renderTimeout);
       }
     };

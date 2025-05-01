@@ -43,10 +43,20 @@ export default function EndSlider() {
           onMouseLeave={() => setSlowDownAnimation(false)}
         >
           {Array.from({ length: 10 }).map((_, index) => (
-            <div key={index} className={cn("flex items-center gap-4 font-semibold bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55", space.className)}>
-              <img src="/metalrose.webp" alt="Metal Rose" className="h-32 w-32 mr-4" />
+            <div
+              key={index}
+              className={cn(
+                "flex items-center gap-4 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center font-semibold text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55",
+                space.className,
+              )}
+            >
+              <img
+                src="/metalrose.webp"
+                alt="Metal Rose"
+                className="mr-4 h-32 w-32"
+              />
               <span className={cn(slowDownAnimation && "text-primary")}>
-              Ready. Set. Ship.
+                Ready. Set. Ship.
               </span>
             </div>
           ))}

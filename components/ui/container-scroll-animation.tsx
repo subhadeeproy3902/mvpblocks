@@ -34,7 +34,7 @@ export const ContainerScroll = ({
 
   return (
     <div
-      className="relative lg:min-h-screen lg:py-16 sm:mt-0 md:-mt-10 flex items-center justify-center p-2 md:p-20 mt-2"
+      className="relative mt-2 flex items-center justify-center p-2 sm:mt-0 md:-mt-10 md:p-20 lg:min-h-screen lg:py-16"
       ref={containerRef}
     >
       <div
@@ -57,7 +57,7 @@ export const Header = ({ translate, titleComponent }: any) => {
       style={{
         translateY: translate,
       }}
-      className="div mx-auto w0 text-center"
+      className="div w0 mx-auto text-center"
     >
       {titleComponent}
     </motion.div>

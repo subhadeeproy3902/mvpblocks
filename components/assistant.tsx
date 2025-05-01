@@ -140,7 +140,7 @@ export default function AssistantDialog() {
         aria-label="Trigger Assistant"
         className="fixed bottom-3 right-3 cursor-pointer focus-visible:outline-none sm:bottom-5 sm:right-5"
       >
-        <div className="rounded-full flex justify-content items-center bg-fd-accent p-2">
+        <div className="justify-content flex items-center rounded-full bg-fd-accent p-2">
           Ask AI
           <SparklesIcon className="ml-1.5 size-4" />
         </div>
@@ -177,7 +177,8 @@ export default function AssistantDialog() {
             Welcome to the mvp.ai Assistant
           </h3>
           <p className="text-balance text-fd-muted-foreground">
-            Ask me anything about MVPBlocks components, UI design, or implementation details.
+            Ask me anything about MVPBlocks components, UI design, or
+            implementation details.
             <br /> Your chat history is not saved between sessions.
           </p>
           <p className="hidden text-xs text-fd-muted-foreground sm:block">
@@ -190,7 +191,9 @@ export default function AssistantDialog() {
               <button
                 aria-label="Example: Button component"
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
-                onClick={() => submitExample("Show me how to use the button component")}
+                onClick={() =>
+                  submitExample("Show me how to use the button component")
+                }
               >
                 <MousePointerClickIcon className="size-4" />
                 Button component
@@ -198,7 +201,9 @@ export default function AssistantDialog() {
               <button
                 aria-label="Example: Hero section"
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
-                onClick={() => submitExample("Create a hero section for my landing page")}
+                onClick={() =>
+                  submitExample("Create a hero section for my landing page")
+                }
               >
                 <GlobeIcon className="size-4" />
                 Hero section
@@ -206,7 +211,11 @@ export default function AssistantDialog() {
               <button
                 aria-label="Example: Form validation"
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
-                onClick={() => submitExample("How to implement form validation with MVPBlocks")}
+                onClick={() =>
+                  submitExample(
+                    "How to implement form validation with MVPBlocks",
+                  )
+                }
               >
                 <FileCodeIcon className="size-4" />
                 Form validation

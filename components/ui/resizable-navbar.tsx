@@ -68,7 +68,11 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     <motion.div
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("fixed inset-x-0 top-2 z-50 w-full", className, visible && "top-0")}
+      className={cn(
+        "fixed inset-x-0 top-2 z-50 w-full",
+        className,
+        visible && "top-0",
+      )}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -102,7 +106,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full bg-white/80 dark:bg-neutral-950 px-4 py-2 md:flex",
+        "relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full bg-white/80 px-4 py-2 dark:bg-neutral-950 md:flex",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className,
       )}
@@ -231,9 +235,9 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <Link href="/" className="flex z-50 items-center justify-center gap-2">
+    <Link href="/" className="z-50 flex items-center justify-center gap-2">
       <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
-      <span className="bg-primary text-transparent dark:bg-gradient-to-b from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold md:text-xl">
+      <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
         Mvpblocks
       </span>
     </Link>

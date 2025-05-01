@@ -42,9 +42,9 @@ export default function BoltChat() {
 
         <div className="mx-auto mb-6 w-full max-w-lg">
           <div className="relative h-[26px]">
-            <div className="duration-350 bg-secondary/50 absolute left-2 top-0 flex w-[calc(100%-1rem)] flex-wrap justify-between truncate rounded-t-lg border px-2 py-1 text-xs opacity-100 backdrop-blur transition-opacity">
+            <div className="duration-350 absolute left-2 top-0 flex w-[calc(100%-1rem)] flex-wrap justify-between truncate rounded-t-lg border bg-secondary/50 px-2 py-1 text-xs opacity-100 backdrop-blur transition-opacity">
               <span>150K daily tokens remaining.</span>
-              <button className="mr-4 inline-block text-primary bg-transparent font-semibold hover:underline">
+              <button className="mr-4 inline-block bg-transparent font-semibold text-primary hover:underline">
                 Subscribe to Pro for 66x more usage
               </button>
             </div>
@@ -68,7 +68,7 @@ export default function BoltChat() {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mt-8 mx-auto max-w-3xl w-full">
+        <div className="mx-auto mt-8 flex w-full max-w-3xl flex-wrap justify-center gap-2">
           {EXAMPLE_ACTIONS.map((action, index) => (
             <Button
               key={index}

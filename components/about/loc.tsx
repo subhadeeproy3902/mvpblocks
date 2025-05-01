@@ -1,24 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Pie, PieChart, Sector } from "recharts"
-import type { PieSectorDataItem } from "recharts/types/polar/Pie"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import * as React from "react";
+import { Pie, PieChart, Sector } from "recharts";
+import type { PieSectorDataItem } from "recharts/types/polar/Pie";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   type ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import locData from "@/custom-loc.json" // assuming this file is placed in your project root or adjust the path accordingly
+} from "@/components/ui/select";
+import locData from "@/custom-loc.json"; // assuming this file is placed in your project root or adjust the path accordingly
 
 const colors = [
   "--chart-3",
@@ -29,13 +35,13 @@ const colors = [
   "--chart-6",
   "--chart-7",
   "--chart-8",
-]
+];
 
 const langData = Object.entries(locData).map(([ext, { lines }], i) => ({
   language: ext,
   lines,
   fill: `hsl(var(${colors[i % colors.length]}))`,
-}))
+}));
 
 const chartConfig = Object.fromEntries(
   langData.map((item) => [
@@ -44,18 +50,27 @@ const chartConfig = Object.fromEntries(
       label: item.language.toUpperCase().replace(".", ""),
       color: `hsl(var(${colors[langData.indexOf(item) % colors.length]}))`,
     },
-  ])
-)
+  ]),
+);
 
 export default function LocData() {
-  const id = "pie-loc"
-  const [activeLang, setActiveLang] = React.useState(langData[0].language)
+  const id = "pie-loc";
+  const [activeLang, setActiveLang] = React.useState(langData[0].language);
 
-  const activeIndex = React.useMemo(() => langData.findIndex((item) => item.language === activeLang), [activeLang])
-  const langList = React.useMemo(() => langData.map((item) => item.language), [])
+  const activeIndex = React.useMemo(
+    () => langData.findIndex((item) => item.language === activeLang),
+    [activeLang],
+  );
+  const langList = React.useMemo(
+    () => langData.map((item) => item.language),
+    [],
+  );
 
   return (
-    <Card data-chart={id} className="flex flex-col shadow-[0px_-2px_50px_0px_#e91e631c_inset] bg-gradient-to-b from-secondary/40 to-secondary/0 h-full">
+    <Card
+      data-chart={id}
+      className="flex h-full flex-col bg-gradient-to-b from-secondary/40 to-secondary/0 shadow-[0px_-2px_50px_0px_#e91e631c_inset]"
+    >
       <ChartStyle id={id} config={chartConfig as ChartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
@@ -63,12 +78,19 @@ export default function LocData() {
           <CardDescription>Languages Used</CardDescription>
         </div>
         <Select value={activeLang} onValueChange={setActiveLang}>
-          <SelectTrigger className="ml-auto h-10 w-[160px] rounded-lg pl-2.5" aria-label="Select language">
+          <SelectTrigger
+            className="ml-auto h-10 w-[160px] rounded-lg pl-2.5"
+            aria-label="Select language"
+          >
             <SelectValue placeholder="Select language" />
           </SelectTrigger>
           <SelectContent align="end" className="rounded-xl">
             {langList.map((key) => (
-              <SelectItem key={key} value={key} className="rounded-lg [&_span]:flex">
+              <SelectItem
+                key={key}
+                value={key}
+                className="rounded-lg [&_span]:flex"
+              >
                 <div className="flex items-center gap-2 text-xs">
                   <span
                     className="flex h-3 w-3 shrink-0 rounded-sm"
@@ -84,9 +106,16 @@ export default function LocData() {
         </Select>
       </CardHeader>
       <CardContent className="flex flex-1 justify-center pb-0">
-        <ChartContainer id={id} config={chartConfig as ChartConfig} className="mx-auto aspect-square w-full max-w-sm">
+        <ChartContainer
+          id={id}
+          config={chartConfig as ChartConfig}
+          className="mx-auto aspect-square w-full max-w-sm"
+        >
           <PieChart>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
             <Pie
               data={langData}
               dataKey="lines"
@@ -94,10 +123,17 @@ export default function LocData() {
               innerRadius={60}
               strokeWidth={5}
               activeIndex={activeIndex}
-              activeShape={({ outerRadius = 0, ...props }: PieSectorDataItem) => (
+              activeShape={({
+                outerRadius = 0,
+                ...props
+              }: PieSectorDataItem) => (
                 <g>
                   <Sector {...props} outerRadius={outerRadius + 10} />
-                  <Sector {...props} outerRadius={outerRadius + 25} innerRadius={outerRadius + 12} />
+                  <Sector
+                    {...props}
+                    outerRadius={outerRadius + 25}
+                    innerRadius={outerRadius + 12}
+                  />
                 </g>
               )}
             >
@@ -125,5 +161,5 @@ export default function LocData() {
         </ChartContainer>
       </CardContent>
     </Card>
-  )
+  );
 }

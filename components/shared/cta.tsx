@@ -3,9 +3,7 @@ import Image from "next/image";
 
 export default function CTA() {
   return (
-    <section
-      className="flex w-full flex-col items-center justify-center max-w-7xl mx-auto mb-24"
-    >
+    <section className="mx-auto mb-24 flex w-full max-w-7xl flex-col items-center justify-center">
       <div className="w-full">
         <div className="relative z-20 h-[400px] w-full overflow-hidden rounded-xl border border-border bg-primary shadow-xl md:h-[400px]">
           <Image
@@ -17,8 +15,8 @@ export default function CTA() {
             src="/cta-bg.webp"
           />
           <div className="absolute inset-0 -top-32 flex flex-col items-center justify-center md:-top-40">
-            <h1 className="max-w-xs text-4xl font-medium tracking-tighter bg-gradient-to-r from-zinc-200/60 via-zinc-50 to-zinc-200/60 text-transparent bg-clip-text text-center md:max-w-xl md:text-7xl">
-            Build. Customize. Deploy Quickly.
+            <h1 className="max-w-xs bg-gradient-to-r from-zinc-200/60 via-zinc-50 to-zinc-200/60 bg-clip-text text-center text-4xl font-medium tracking-tighter text-transparent md:max-w-xl md:text-7xl">
+              Build. Customize. Deploy Quickly.
             </h1>
             <div className="absolute bottom-16 flex flex-col items-center justify-center gap-2">
               <Link
@@ -28,7 +26,7 @@ export default function CTA() {
                 Start with Mvpblocks Today
               </Link>
               <span className="text-sm text-white">
-              Built to keep you hooked.
+                Built to keep you hooked.
               </span>
             </div>
           </div>

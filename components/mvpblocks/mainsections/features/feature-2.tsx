@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +10,8 @@ const features = [
   {
     step: "Step 1",
     title: "Build Faster",
-    content: "Create your MVP in record time with our pre-built blocks and components.",
+    content:
+      "Create your MVP in record time with our pre-built blocks and components.",
     icon: <Rocket className="h-6 w-6 text-primary" />,
     image:
       "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop",
@@ -36,11 +37,12 @@ const features = [
   {
     step: "Step 4",
     title: "Add Yours!",
-    content: "Contribute your own blocks and become part of the MVPBlocks community.",
+    content:
+      "Contribute your own blocks and become part of the MVPBlocks community.",
     icon: <Code className="h-6 w-6 text-primary" />,
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-  }
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+  },
 ];
 
 export default function FeatureSteps() {
@@ -63,13 +65,14 @@ export default function FeatureSteps() {
   return (
     <div className={"p-8 md:p-12"}>
       <div className="mx-auto w-full max-w-7xl">
-        <div className="relative mx-auto max-w-2xl sm:text-center mb-12">
+        <div className="relative mx-auto mb-12 max-w-2xl sm:text-center">
           <div className="relative z-10">
             <h2 className="font-geist text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
               Build Your MVP in Three Steps
             </h2>
             <p className="font-geist mt-3 text-foreground/60">
-              MVPBlocks helps you create, customize, and deploy your product faster than ever before.
+              MVPBlocks helps you create, customize, and deploy your product
+              faster than ever before.
             </p>
           </div>
           <div
@@ -92,7 +95,7 @@ export default function FeatureSteps() {
                 animate={{
                   opacity: index === currentFeature ? 1 : 0.3,
                   x: 0,
-                  scale: index === currentFeature ? 1.05 : 1
+                  scale: index === currentFeature ? 1.05 : 1,
                 }}
                 transition={{ duration: 0.5 }}
               >
@@ -121,7 +124,7 @@ export default function FeatureSteps() {
 
           <div
             className={cn(
-              "relative order-1 h-[200px] overflow-hidden rounded-xl border border-primary/20 md:order-2 md:h-[300px] lg:h-[400px] [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)]",
+              "relative order-1 h-[200px] overflow-hidden rounded-xl border border-primary/20 [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)] md:order-2 md:h-[300px] lg:h-[400px]",
             )}
           >
             <AnimatePresence mode="wait">

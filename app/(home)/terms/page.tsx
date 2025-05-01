@@ -16,22 +16,28 @@ export default function TermsPage() {
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           <div className="relative mb-12 text-center">
-            <h1 className={cn("relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]", space.className)}>
+            <h1
+              className={cn(
+                "relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+                space.className,
+              )}
+            >
               Terms and Conditions
             </h1>
-            <p className="mt-4 text-gray-500">
-              Last updated: April 17, 2025
-            </p>
+            <p className="mt-4 text-gray-500">Last updated: April 17, 2025</p>
           </div>
 
-          <div className="prose max-w-none rounded-2xl text-foreground border p-6 md:p-10"
-          style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}>
+          <div
+            className="prose max-w-none rounded-2xl border p-6 text-foreground md:p-10"
+            style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
+          >
             <div className="mb-8 border-b">
               <p className="text-lg leading-relaxed">
                 Welcome to MVPBlocks! By accessing and using our platform, you
-                agree to comply with these Terms and Conditions (&quot;Terms&quot;).
-                Please read them carefully. If you do not agree to these Terms,
-                you should immediately cease using the platform.
+                agree to comply with these Terms and Conditions
+                (&quot;Terms&quot;). Please read them carefully. If you do not
+                agree to these Terms, you should immediately cease using the
+                platform.
               </p>
             </div>
 
@@ -117,11 +123,12 @@ export default function TermsPage() {
                   2.3 Respect for Other Users
                 </h3>
                 <p>
-                  MVPBlocks encourages collaboration and sharing. However, it&apos;s
-                  important that you respect the work and intellectual property
-                  of others in the community. Any attempt to infringe upon the
-                  rights of other users, whether intentionally or not, will
-                  result in immediate termination of access to the platform.
+                  MVPBlocks encourages collaboration and sharing. However,
+                  it&apos;s important that you respect the work and intellectual
+                  property of others in the community. Any attempt to infringe
+                  upon the rights of other users, whether intentionally or not,
+                  will result in immediate termination of access to the
+                  platform.
                 </p>
               </div>
             </section>
@@ -184,8 +191,8 @@ export default function TermsPage() {
                 <ul>
                   <li className="mb-2">
                     Engage in activities that could damage, disable, or impair
-                    the platform&apos;s functionality or interfere with other users&apos;
-                    access.
+                    the platform&apos;s functionality or interfere with other
+                    users&apos; access.
                   </li>
                   <li className="mb-2">
                     Upload or distribute malware, viruses, or any other harmful
@@ -254,12 +261,12 @@ export default function TermsPage() {
               </div>
               <div className="pl-14">
                 <p>
-                  MVPBlocks is provided &quot;as is&quot; and &quot;as available.&quot; While we
-                  strive to provide a reliable and functional platform, we do
-                  not guarantee that MVPBlocks will always be error-free or
-                  available without interruptions. We do not warrant the
-                  accuracy, reliability, or completeness of any information or
-                  materials on the platform.
+                  MVPBlocks is provided &quot;as is&quot; and &quot;as
+                  available.&quot; While we strive to provide a reliable and
+                  functional platform, we do not guarantee that MVPBlocks will
+                  always be error-free or available without interruptions. We do
+                  not warrant the accuracy, reliability, or completeness of any
+                  information or materials on the platform.
                 </p>
                 <p>
                   You agree to use MVPBlocks at your own risk. MVPBlocks is not

@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import React from "react"
-import Image from "next/image"
-import { Swiper, SwiperSlide } from "swiper/react"
+import React from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css"
-import "swiper/css/effect-coverflow"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
-import { SparklesIcon } from "lucide-react"
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { SparklesIcon } from "lucide-react";
 import {
   Autoplay,
   EffectCoverflow,
   Navigation,
   Pagination,
-} from "swiper/modules"
+} from "swiper/modules";
 
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 
 interface CarouselProps {
-  images: { src: string; alt: string }[]
-  autoplayDelay?: number
-  showPagination?: boolean
-  showNavigation?: boolean
+  images: { src: string; alt: string }[];
+  autoplayDelay?: number;
+  showPagination?: boolean;
+  showNavigation?: boolean;
 }
 
 export const CardCarousel: React.FC<CarouselProps> = ({
@@ -57,12 +57,12 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   .swiper-3d .swiper-slide-shadow-right{
     background: none;
   }
-  `
+  `;
   return (
     <section className="w-ace-y-4">
       <style>{css}</style>
-      <div className="mx-auto w-full max-w-4xl rounded-[24px] border-secondary/50 p-2 shadow-sm md:rounded-t-[44px] border">
-        <div className="relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b from-secondary/10 to-card shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] p-2 md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
+      <div className="mx-auto w-full max-w-4xl rounded-[24px] border border-secondary/50 p-2 shadow-sm md:rounded-t-[44px]">
+        <div className="relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b from-secondary/10 to-card p-2 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
           <Badge
             variant="outline"
             className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
@@ -73,7 +73,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
           <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
             <div className="flex gap-2">
               <div>
-                <h3 className="text-4xl opacity-85 font-bold tracking-tight">
+                <h3 className="text-4xl font-bold tracking-tight opacity-85">
                   Card Carousel
                 </h3>
                 <p>Seamless Images carousel animation.</p>
@@ -143,5 +143,5 @@ export const CardCarousel: React.FC<CarouselProps> = ({
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

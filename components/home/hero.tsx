@@ -30,20 +30,22 @@ export default function Hero() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          import('@/lib/load-script').then(({ loadScript }) => {
-            loadScript(PIXEL_SCRIPT_URL).then(() => {
-              setIsScriptLoaded(true);
-            }).catch((error) => {
-              console.error("Error loading pixel script:", error);
-            });
+          import("@/lib/load-script").then(({ loadScript }) => {
+            loadScript(PIXEL_SCRIPT_URL)
+              .then(() => {
+                setIsScriptLoaded(true);
+              })
+              .catch((error) => {
+                console.error("Error loading pixel script:", error);
+              });
           });
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    const heroElement = document.getElementById('hero-section');
+    const heroElement = document.getElementById("hero-section");
     if (heroElement) {
       observer.observe(heroElement);
     }
@@ -90,14 +92,17 @@ export default function Hero() {
   ];
 
   return (
-    <div id="hero-section" className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
+    <div
+      id="hero-section"
+      className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6"
+    >
       <Image
         src="/vector1.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
-        className="absolute select-none right-0 top-0 z-[2] object-cover object-center"
+        className="absolute right-0 top-0 z-[2] select-none object-cover object-center"
         priority
       />
       <Image
@@ -106,7 +111,7 @@ export default function Hero() {
         width={300}
         height={300}
         draggable={false}
-        className="absolute select-none left-0 top-0 z-[2] object-cover object-center"
+        className="absolute left-0 top-0 z-[2] select-none object-cover object-center"
         priority
       />
       <Image
@@ -115,7 +120,7 @@ export default function Hero() {
         width={300}
         draggable={false}
         height={300}
-        className="absolute select-none -left-44 bottom-0 z-[2] -rotate-90 object-cover object-center"
+        className="absolute -left-44 bottom-0 z-[2] -rotate-90 select-none object-cover object-center"
         priority
       />
       <Image
@@ -124,7 +129,7 @@ export default function Hero() {
         width={300}
         draggable={false}
         height={300}
-        className="absolute select-none -right-44 bottom-0 z-[2] rotate-90 object-cover object-center"
+        className="absolute -right-44 bottom-0 z-[2] rotate-90 select-none object-cover object-center"
         priority
       />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
@@ -181,31 +186,53 @@ export default function Hero() {
             About <MoveRight className="ml-2 h-4 w-4" />
           </Button>
         </motion.div>
-        <motion.div className="mt-5 flex items-center justify-center gap-x-1"
+        <motion.div
+          className="mt-5 flex items-center justify-center gap-x-1"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.75, delay: 0.75 }}
         >
           <motion.img
-          draggable={false}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1.25 }}
+            draggable={false}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 1.25 }}
             src="/vector4.webp"
             alt="Next.js"
-            className="mr-2 mt-4 select-none hidden w-96 brightness-[4] xl:block"
+            className="mr-2 mt-4 hidden w-96 select-none brightness-[4] xl:block"
           />
           <span className="text-sm text-gray-500">
             We use industry standards like{" "}
           </span>
-          <Image src="/nextjs.webp" draggable={false} alt="Next.js" width={28} height={28} className="h-7 select-none w-7" />
-          <Image src="/tailwind.webp" alt="Tailwind CSS" width={28} height={28} className="h-7 w-7 select-none" draggable={false} />
-          <Image src="/framer.webp" alt="Framer Motion" width={24} height={24} className="h-6 w-6 select-none" draggable={false} />
+          <Image
+            src="/nextjs.webp"
+            draggable={false}
+            alt="Next.js"
+            width={28}
+            height={28}
+            className="h-7 w-7 select-none"
+          />
+          <Image
+            src="/tailwind.webp"
+            alt="Tailwind CSS"
+            width={28}
+            height={28}
+            className="h-7 w-7 select-none"
+            draggable={false}
+          />
+          <Image
+            src="/framer.webp"
+            alt="Framer Motion"
+            width={24}
+            height={24}
+            className="h-6 w-6 select-none"
+            draggable={false}
+          />
           <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 1.25 }}
-          className="ml-2 select-none mt-4 hidden w-96 xl:block"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 1.25 }}
+            className="ml-2 mt-4 hidden w-96 select-none xl:block"
           >
             <Image
               src="/vector3.webp"
@@ -218,7 +245,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
         <div className="mx-auto mt-5 max-w-2xl text-center">
-          <main className="m-auto flex flex-col sm:flex-row w-full items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] xl:p-4">
+          <main className="m-auto flex w-full flex-col items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] sm:flex-row xl:p-4">
             {isScriptLoaded && (
               <motion.div
                 className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
