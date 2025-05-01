@@ -232,7 +232,7 @@ export const MobileNavToggle = ({
 export const NavbarLogo = () => {
   return (
     <Link href="/" className="flex z-50 items-center justify-center gap-2">
-      <img src="/logo.png" alt="logo" className="h-8 w-8 rounded-full" />
+      <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
       <span className="bg-primary text-transparent dark:bg-gradient-to-b from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold md:text-xl">
         Mvpblocks
       </span>

@@ -86,7 +86,7 @@ export const PixelCard: React.FC<CardProps> = ({
       />
       {icon === "Blocks" ? (
         <Image
-        src="/components.png"
+        src="/components.webp"
         draggable={false}
         alt={label}
         width={112}
@@ -95,7 +95,7 @@ export const PixelCard: React.FC<CardProps> = ({
       />
       ) : (
         <Image
-          src="/category.png"
+          src="/category.webp"
           draggable={false}
           alt={label}
           width={128}

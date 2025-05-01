@@ -160,7 +160,7 @@ export default function Features() {
                           />
                         ) : (
                           <Image
-                            src="/features-nextjs-light.png"
+                            src="/features-nextjs-light.webp"
                             alt="Next.js logo light"
                             width={32}
                             height={32}
@@ -176,7 +176,7 @@ export default function Features() {
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10 flex h-8 w-8 items-center justify-center">
                         <Image
-                          src="/tailwind.png"
+                          src="/tailwind.webp"
                           alt="Tailwind CSS logo"
                           width={32}
                           height={32}
@@ -205,7 +205,7 @@ export default function Features() {
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
                         <Image
-                          src="/typescript.png"
+                          src="/typescript.webp"
                           alt="TypeScript logo"
                           width={32}
                           height={32}

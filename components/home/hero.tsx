@@ -92,7 +92,7 @@ export default function Hero() {
   return (
     <div id="hero-section" className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6">
       <Image
-        src="/vector1.png"
+        src="/vector1.webp"
         alt="Vector"
         width={300}
         draggable={false}
@@ -101,7 +101,7 @@ export default function Hero() {
         priority
       />
       <Image
-        src="/vector2.png"
+        src="/vector2.webp"
         alt="Vector"
         width={300}
         height={300}
@@ -110,7 +110,7 @@ export default function Hero() {
         priority
       />
       <Image
-        src="/vector5.png"
+        src="/vector5.webp"
         alt="Vector"
         width={300}
         draggable={false}
@@ -119,7 +119,7 @@ export default function Hero() {
         priority
       />
       <Image
-        src="/vector6.png"
+        src="/vector6.webp"
         alt="Vector"
         width={300}
         draggable={false}
@@ -149,7 +149,7 @@ export default function Hero() {
           >
             Prebuilt UI
             <img
-              src="/rose.png"
+              src="/rose.webp"
               alt="Logo"
               draggable={false}
               className="mx-4 mb-2 inline-block h-12 w-12 md:h-16 md:w-16"
@@ -191,15 +191,15 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 1.25 }}
-            src="/vector4.png"
+            src="/vector4.webp"
             alt="Next.js"
             className="mr-2 mt-4 select-none hidden w-96 brightness-[4] xl:block"
           />
           <span className="text-sm text-gray-500">
             We use industry standards like{" "}
           </span>
-          <Image src="/nextjs.png" draggable={false} alt="Next.js" width={28} height={28} className="h-7 select-none w-7" />
-          <Image src="/tailwind.png" alt="Tailwind CSS" width={28} height={28} className="h-7 w-7 select-none" draggable={false} />
+          <Image src="/nextjs.webp" draggable={false} alt="Next.js" width={28} height={28} className="h-7 select-none w-7" />
+          <Image src="/tailwind.webp" alt="Tailwind CSS" width={28} height={28} className="h-7 w-7 select-none" draggable={false} />
           <Image src="/framer.webp" alt="Framer Motion" width={24} height={24} className="h-6 w-6 select-none" draggable={false} />
           <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -208,7 +208,7 @@ export default function Hero() {
           className="ml-2 select-none mt-4 hidden w-96 xl:block"
           >
             <Image
-              src="/vector3.png"
+              src="/vector3.webp"
               alt="Vector graphic"
               width={384}
               height={100}

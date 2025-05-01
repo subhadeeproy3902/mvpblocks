@@ -20,21 +20,21 @@ export default function FitnessHero() {
                   <div className="mb-8 flex flex-wrap items-center gap-[10px] lg:mb-[50px]">
                     <div className="flex">
                       <img
-                        src="https://mvpblocks.vercel.app/assets/fitness-hero/1.jpg"
+                        src="https://mvpblocks.vercel.app/assets/fitness-hero/1.webp"
                         alt="hero-avatar-img-1"
                         width="58"
                         height="58"
                         className="-ml-[15px] h-[58px] w-[58px] rounded-[50%] first:-ml-0"
                       />
                       <img
-                        src="https://mvpblocks.vercel.app/assets/fitness-hero/2.jpg"
+                        src="https://mvpblocks.vercel.app/assets/fitness-hero/2.webp"
                         alt="hero-avatar-img-2"
                         width="58"
                         height="58"
                         className="-ml-[15px] h-[58px] w-[58px] rounded-[50%] first:-ml-0"
                       />
                       <img
-                        src="https://mvpblocks.vercel.app/assets/fitness-hero/3.jpg"
+                        src="https://mvpblocks.vercel.app/assets/fitness-hero/3.webp"
                         alt="hero-avatar-img-2"
                         width="58"
                         height="58"
@@ -105,7 +105,7 @@ export default function FitnessHero() {
               <div>
                 <div className="relative z-10 mx-auto h-auto max-w-[280px] sm:max-w-[500px] lg:ml-auto lg:mr-0">
                   <img
-                    src="https://mvpblocks.vercel.app/assets/fitness-hero/image.png"
+                    src="https://mvpblocks.vercel.app/assets/fitness-hero/image.webp"
                     alt="hero-mobille"
                     width="612"
                     height="1272"

@@ -5,7 +5,7 @@ export default function LoginForm1() {
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background sm:px-4">
       <div className="w-full space-y-4 sm:max-w-md">
         <div className="text-center">
-          <img src="/logo.png" width={80} className="mx-auto" />
+          <img src="/logo.webp" width={80} className="mx-auto" />
           <div className="mt-5 space-y-2">
             <h3 className="text-2xl font-bold sm:text-3xl">
               Log in to your account

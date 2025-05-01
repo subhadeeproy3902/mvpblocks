@@ -65,7 +65,7 @@ export default function AboutUsPage() {
         </motion.div>
         <ContainerScroll>
           <Image
-            src="/about.png"
+            src="/about.webp"
             alt="hero"
             height={720}
             width={1400}
@@ -112,8 +112,8 @@ export default function AboutUsPage() {
           <div className="relative xl:flex xl:h-[400px] h-full max-w-5xl mx-auto md:flex-row flex-col items-center justify-start xl:mb-8">
           <Keyboard />
           <Compare
-            firstImage={theme === "dark" ? "/abt2.png" : "/abt2-dark.png"}
-            secondImage={theme === "dark" ? "/abt1-dark.png" : "/abt1.png"}
+            firstImage={theme === "dark" ? "/abt2.webp" : "/abt2-dark.webp"}
+            secondImage={theme === "dark" ? "/abt1-dark.webp" : "/abt1.webp"}
             firstImageClassName="object-cover object-left-top w-full"
             secondImageClassname="object-cover object-left-top w-full"
             className="rounded-[22px] z-0 hidden xl:block -right-32 -top-16 absolute md:rounded-lg"

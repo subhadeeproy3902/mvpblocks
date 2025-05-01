@@ -52,7 +52,7 @@ export default function Footer4Col() {
           <div>
             <div className="flex justify-center gap-2 text-primary sm:justify-start">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />

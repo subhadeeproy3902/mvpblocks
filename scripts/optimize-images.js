@@ -3,7 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 const PUBLIC_DIR = path.join(process.cwd(), 'public');
-const EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+const EXTENSIONS = ['.webp', '.jpeg', '.webp', '.webp'];
 const MAX_WIDTH = 1920;
 
 async function optimizeImage(filePath) {

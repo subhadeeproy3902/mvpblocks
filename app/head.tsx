@@ -15,7 +15,7 @@ export default function Head() {
       {/* Preload critical images */}
       <link
         rel="preload"
-        href="/logo.png"
+        href="/logo.webp"
         as="image"
         type="image/png"
       />

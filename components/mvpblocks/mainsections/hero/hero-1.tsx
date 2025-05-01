@@ -47,7 +47,7 @@ export default function Hero1() {
           </div>
           <div className="mx-10 mt-32">
             <img
-              src="https://i.postimg.cc/0yk8Vz7t/dashboard.png"
+              src="https://i.postimg.cc/0yk8Vz7t/dashboard.webp"
               className="w-full rounded-lg border shadow-lg"
               alt=""
             />

@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="col-span-2">
             <div className="mb-4 flex items-center justify-start gap-2">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />

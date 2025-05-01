@@ -37,7 +37,7 @@ export function AuthorBadge({ username, className }: AuthorBadgeProps) {
           {username}
         </span>
         <Avatar className="h-5 w-5 border border-secondary/50">
-          <AvatarImage src={`https://github.com/${username}.png`} alt={username} />
+          <AvatarImage src={`https://github.com/${username}.webp`} alt={username} />
           <AvatarFallback className="text-[8px]">{initials}</AvatarFallback>
         </Avatar>
       </Badge>

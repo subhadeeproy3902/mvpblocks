@@ -33,7 +33,7 @@ export default function RootLayout({
             "name": "Subhadeep Roy",
             "logo": {
               "@type": "ImageObject",
-              "url": `${siteConfig.url}/logo.png`
+              "url": `${siteConfig.url}/logo.webp`
             },
             "sameAs": [
               siteConfig.links.twitter,
