@@ -83,7 +83,7 @@ export default function WaitlistPage() {
   return (
     <main className="relative flex min-h-screen xl:h-screen items-center justify-center overflow-hidden">
       <Spotlight />
-      <div className="absolute top-2 right-4 z-50">
+      <div className="absolute top-2 right-4 z-[150]">
         <ModeToggle />
       </div>
       <div
@@ -224,7 +224,7 @@ export default function WaitlistPage() {
                   disabled={isSubmitting || submitted}
                   className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] px-8 py-4 font-semibold text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] focus:outline-none focus:ring-2 focus:ring-primary/50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? "Joining..." : "Join Waitlist"}
                     <Sparkles className="h-4 w-4 transition-all duration-300 group-hover:rotate-12" />
                   </span>
