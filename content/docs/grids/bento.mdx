@@ -3,3 +3,61 @@ title: Bento Grids
 description: Bento grids are a flexible and responsive layout system that allows you to create complex grid structures with ease. They are designed to adapt to various screen sizes and orientations, making them ideal for modern web applications.
 root: grids
 ---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+
+# Bento Grids
+
+Bento grids are a popular design pattern inspired by Japanese bento boxes, where content is organized in a visually appealing grid layout with items of different sizes. This creates a dynamic and engaging user interface that can showcase various types of content in an organized manner.
+
+## Features
+
+- **Responsive Design**: Automatically adapts to different screen sizes
+- **Flexible Layout**: Combine different sized grid items for visual interest
+- **Customizable**: Easily modify colors, content, and styling to match your brand
+- **Interactive Elements**: Includes hover effects and animations for better user engagement
+
+## Basic Bento Grid
+
+<ComponentPreview
+  name="bento-grid-1"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("bento-grid-1")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Usage
+
+```jsx
+import BentoGrid1 from "@/components/mvpblocks/grids/bento-grid-1";
+
+export default function MyPage() {
+  return (
+    <div>
+      <BentoGrid1 />
+    </div>
+  );
+}
+```
+
+## Customization
+
+You can customize the Bento grid by modifying the items array in the component:
+
+```jsx
+const items = [
+  {
+    title: "Custom Title",
+    description: "Your custom description here.",
+    icon: <YourIcon className="h-5 w-5" />,
+    size: "medium", // "small", "medium", or "large"
+  },
+  // Add more items as needed
+];
+```
+
+## Accessibility
+
+The Bento grid components are built with accessibility in mind, ensuring that all users can navigate and interact with the content effectively.
