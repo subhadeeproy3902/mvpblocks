@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "fumadocs-mdx && bun run update-dependencies",
+    "postinstall": "fumadocs-mdx",
     "build:registry": "bun run ./scripts/build-registry.ts",
     "sort:registry": "bun run ./scripts/sort-registry.ts",
     "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write",
@@ -16,7 +16,7 @@
     "register": "bun run ./scripts/auto-register.ts",
     "add-component": "powershell -File ./scripts/register-component.ps1",
     "update-dependencies": "bun run ./scripts/update-dependencies.ts",
-    "optimize-images": "node ./scripts/optimize-images.js",
+    "optimise-image": "bun run ./scripts/convert-to-webp.js",
     "analyze": "ANALYZE=true next build",
     "email": "bun actions/sendEmails.ts"
   },

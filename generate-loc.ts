@@ -1,6 +1,7 @@
 import { execSync } from "child_process";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 import * as path from "path";
+import * as fs from "fs";
 
 // Allowed extensions to track
 const allowedExtensions = [".ts", ".tsx", ".js", ".jsx", ".json", ".css", ".mjs", ".mdx"];
@@ -27,6 +28,12 @@ function main() {
     if (!allowedExtensions.includes(ext)) continue;
 
     try {
+      // Check if file exists before trying to read it
+      if (!fs.existsSync(filePath)) {
+        console.warn(`File tracked by git but not found: ${filePath}`);
+        continue;
+      }
+      
       const content = readFileSync(filePath, "utf8");
       const lines = countLines(content);
 
