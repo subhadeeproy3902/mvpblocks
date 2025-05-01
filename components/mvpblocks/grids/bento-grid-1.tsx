@@ -8,7 +8,7 @@ interface BentoGridItemProps {
   description: string;
   icon: React.ReactNode;
   className?: string;
-  size?: "small" | "large";
+  size?: "small" | "medium" | "large";
 }
 
 const BentoGridItem = ({
@@ -16,6 +16,7 @@ const BentoGridItem = ({
   description,
   icon,
   className,
+  size = "small",
 }: BentoGridItemProps) => {
   const variants = {
     hidden: { opacity: 0, y: 20 },
@@ -26,13 +27,13 @@ const BentoGridItem = ({
     <motion.div
       variants={variants}
       className={cn(
-        "group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background px-6 py-8 shadow-md transition-all duration-500 hover:border-primary/30",
+        "group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary/30",
         className,
       )}
     >
       <div className="absolute -right-1/2 top-0 z-0 size-full cursor-pointer bg-[linear-gradient(to_right,#3d16165e_1px,transparent_1px),linear-gradient(to_bottom,#3d16165e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
-      <div className="group-hover:text-primary/10 absolute bottom-3 right-1 scale-[6] text-primary/5 transition-all duration-700 group-hover:scale-[6.2]">
+      <div className="absolute bottom-3 right-1 scale-[6] text-primary/5 transition-all duration-700 group-hover:scale-[6.2] group-hover:text-primary/10">
         {icon}
       </div>
 
@@ -56,16 +57,30 @@ const BentoGridItem = ({
 
 const items = [
   {
+    title: "Developer Experience",
+    description:
+      "Built with developers in mind, making implementation a breeze.",
+    icon: <Code className="size-6" />,
+    size: "large" as const,
+  },
+  {
+    title: "Accessibility",
+    description:
+      "Built with a11y best practices to ensure your app is usable by everyone.",
+    icon: <Layers className="size-6" />,
+    size: "small" as const,
+  },
+  {
     title: "Responsive Design",
     description: "Create layouts that adapt to any screen size with ease.",
     icon: <Layers className="size-6" />,
-    size: "small" as const,
+    size: "medium" as const,
   },
   {
     title: "Customizable",
     description: "Tailor components to match your brand's unique style.",
     icon: <Palette className="size-6" />,
-    size: "small" as const,
+    size: "medium" as const,
   },
   {
     title: "Performance",
@@ -78,13 +93,6 @@ const items = [
     description:
       "Comprehensive guides and examples to help you get started quickly.",
     icon: <FileText className="size-6" />,
-    size: "small" as const,
-  },
-  {
-    title: "Developer Experience",
-    description:
-      "Built with developers in mind, making implementation a breeze.",
-    icon: <Code className="size-6" />,
     size: "large" as const,
   },
 ];
@@ -103,7 +111,7 @@ export default function BentoGrid1() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <h2 className="mb-12 bg-gradient-to-br from-secondary/50 via-foreground/80 to-secondary/50 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-5xl">
-        Features Overview
+        Bento Grids
       </h2>
       <motion.div
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-6"
@@ -119,7 +127,11 @@ export default function BentoGrid1() {
             icon={item.icon}
             size={item.size}
             className={cn(
-              item.size === "large" ? "col-span-4" : "col-span-2",
+              item.size === "large"
+                ? "col-span-4"
+                : item.size === "medium"
+                  ? "col-span-3"
+                  : "col-span-2",
               "h-full",
             )}
           />
