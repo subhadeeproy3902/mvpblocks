@@ -3,12 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { VerificationResult, verifyEmail } from "verifymailjs";
 
-const uri = process.env.MONGODB_URI!;
-const resend = new Resend(process.env.RESEND_API_KEY!);
-
-const client = new MongoClient(uri, {
-  appName: "blocks-waitlist",
-});
+let client: MongoClient | null = null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,6 +23,32 @@ export async function POST(request: NextRequest) {
         { status: 422 },
       );
     }
+
+    // Check for environment variables
+    const uri = process.env.MONGODB_URI;
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!uri) {
+      return NextResponse.json(
+        { error: "Database configuration error" },
+        { status: 500 },
+      );
+    }
+
+    if (!resendApiKey) {
+      return NextResponse.json(
+        { error: "Email service configuration error" },
+        { status: 500 },
+      );
+    }
+
+    if (!client) {
+      client = new MongoClient(uri, {
+        appName: "blocks-waitlist",
+      });
+    }
+
+    const resend = new Resend(resendApiKey);
 
     await client.connect();
     const database = client.db("waitlist");
@@ -111,6 +132,8 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     );
   } finally {
-    await client.close();
+    if (client) {
+      await client.close();
+    }
   }
 }
