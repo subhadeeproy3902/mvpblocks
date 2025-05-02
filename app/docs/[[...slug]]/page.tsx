@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { createTypeTable } from "fumadocs-typescript/ui";
-// import { getGithubLastEdit } from "fumadocs-core/server";
+import { getLastModified } from "@/lib/github";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Callout } from "fumadocs-ui/components/callout";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -23,7 +23,6 @@ import { metadataImage } from "@/lib/metadata-image";
 import { EditIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { OpenInV0Button } from "@/components/v0";
 import Script from "next/script";
 import { siteConfig } from "@/config/site";
 
@@ -32,17 +31,13 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
+  
 
   if (!page) notFound();
   const MDX = page.data.body;
 
-  // const time = await getGithubLastEdit({
-  //   owner: "subhadeeproy3902",
-  //   repo: "mvpblocks",
-  //   path: `content/docs/${page.file.path}`,
-  // });
-
   const path = `content/docs/${page.file.path}`;
+  const lastModified = await getLastModified(page);
 
   const footer = (
     <a
@@ -64,11 +59,9 @@ export default async function Page(props: {
 
   const { AutoTypeTable } = createTypeTable();
 
-  // Generate breadcrumb items for structured data
   const breadcrumbItems = [{ name: "Home", url: siteConfig.url }];
 
   if (params.slug) {
-    // Add each segment of the path to breadcrumbs
     let currentPath = "/docs";
     breadcrumbItems.push({
       name: "Documentation",
@@ -115,6 +108,7 @@ export default async function Page(props: {
         breadcrumb={{
           full: true,
         }}
+        lastUpdate={lastModified ? new Date(lastModified) : undefined}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
         <DocsDescription>{page.data.description}</DocsDescription>
