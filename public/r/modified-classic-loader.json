@@ -6,7 +6,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "export default function ModifiedClassicLoader() {\r\n  return (\r\n    <div className=\"animate-spin ease-linear rounded-full w-10 h-10 border-t-2 border-b-2 border-primary ml-3\"></div>\r\n  );\r\n}\r\n",
+      "content": "export default function ModifiedClassicLoader() {\r\n  return (\r\n    <div className=\"ml-3 h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-primary ease-linear\"></div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/basics/loaders/modified-classic-loader.tsx",
       "target": "/components/mvpblocks/modified-classic-loader.tsx"
     }

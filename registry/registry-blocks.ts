@@ -155,7 +155,7 @@ export const blocks: Registry = [
   {
     name: "feature-2",
     type: "registry:block",
-    dependencies: ["framer-motion", "react"],
+    dependencies: ["framer-motion","react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -269,10 +269,7 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () =>
-        import(
-          "../components/mvpblocks/basics/loaders/modified-classic-loader"
-        ),
+      () => import("../components/mvpblocks/basics/loaders/modified-classic-loader"),
     ),
   },
   {
@@ -369,12 +366,7 @@ export const blocks: Registry = [
     name: "v0-chat",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [
-      "https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json",
-      "https://blocks.mvp-subha.me/r/textarea.json",
-      "https://blocks.mvp-subha.me/r/utils.json",
-      "https://blocks.mvp-subha.me/r/button.json",
-    ],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json","https://blocks.mvp-subha.me/r/textarea.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/chatbot-ui/v0-chat.tsx",
@@ -384,5 +376,5 @@ export const blocks: Registry = [
     component: React.lazy(
       () => import("../components/mvpblocks/chatbot-ui/v0-chat"),
     ),
-  },
+  }
 ];

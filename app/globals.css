@@ -319,3 +319,7 @@ code {
   justify-content: center;
   transition: all .3s;
 }
+
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  word-break: break-all;
+}
