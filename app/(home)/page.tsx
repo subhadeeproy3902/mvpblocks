@@ -1,9 +1,20 @@
+"use client";
+
 import Features from "@/components/home/features";
-import Gallery from "@/components/home/gallery";
 import Hero from "@/components/home/hero";
-import { Testimonials } from "@/components/home/testimonials";
-import CTA from "@/components/shared/cta";
-import Faqs from "@/components/shared/faq";
+import dynamic from "next/dynamic";
+
+const Gallery = dynamic(() => import("@/components/home/gallery"), {
+  ssr: false,
+});
+
+const Testimonials = dynamic(() => import("@/components/home/testimonials"), {
+  ssr: false,
+});
+const CTA = dynamic(() => import("@/components/shared/cta"), {
+  ssr: false,
+});
+const Faqs = dynamic(() => import("@/components/shared/faq"));
 
 export default function Homepage() {
   return (
