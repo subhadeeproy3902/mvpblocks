@@ -3,21 +3,6 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
-    name: "bento-grid-1",
-    type: "registry:block",
-    dependencies: ["lucide-react", "framer-motion"],
-    registryDependencies: [],
-    files: [
-      {
-        path: "@/components/mvpblocks/grids/bento-grid-1.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/grids/bento-grid-1"),
-    ),
-  },
-  {
     name: "animated-btn1",
     type: "registry:block",
     dependencies: [],
@@ -30,6 +15,21 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/basics/buttons/animated-btn1"),
+    ),
+  },
+  {
+    name: "bento-grid-1",
+    type: "registry:block",
+    dependencies: ["lucide-react","framer-motion"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/grids/bento-grid-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/grids/bento-grid-1"),
     ),
   },
   {
@@ -165,6 +165,21 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/mainsections/features/feature-2"),
+    ),
+  },
+  {
+    name: "feature-3",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/features/feature-3.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/features/feature-3"),
     ),
   },
   {
