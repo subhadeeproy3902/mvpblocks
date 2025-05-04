@@ -6,7 +6,6 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Simple types
 interface TeamMember {
   name: string;
   role: string;
@@ -72,7 +71,6 @@ const defaultMembers: TeamMember[] = [
   },
 ];
 
-// Main component
 export default function Team1({
   title = "Meet Our Team",
   subtitle = "We're a diverse group of passionate individuals working together to build amazing products.",
@@ -81,19 +79,19 @@ export default function Team1({
 }: TeamProps) {
   return (
     <section className={cn("py-16 md:py-24 max-w-7xl mx-auto", className)}>
+      <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
+      <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
       <div className="container px-4 md:px-6">
-        {/* Header */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {title}
           </h2>
-          <p className="text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
             {subtitle}
           </p>
         </div>
 
-        {/* Team Grid - fixed height rows for equity */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="flex flex-wrap justify-center items-center gap-8">
           {members.map((member) => (
             <TeamMemberCard key={member.name} member={member} />
           ))}
@@ -105,10 +103,8 @@ export default function Team1({
 
 // Team member card component
 function TeamMemberCard({ member }: { member: TeamMember }) {
-  // All cards have identical structure for perfect alignment
   return (
-    <div className="group h-[420px] overflow-hidden rounded-xl bg-card shadow-sm">
-      {/* Fixed height image container */}
+    <div className="group h-[420px] w-96 overflow-hidden rounded-xl bg-card shadow-sm">
       <div className="relative h-[200px] w-full overflow-hidden">
         <Image
           src={member.imageUrl}
@@ -119,9 +115,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
         />
       </div>
 
-      {/* Content - fixed layout */}
       <div className="flex h-[220px] flex-col p-5">
-        {/* Location tag */}
         {member.location && (
           <div className="mb-1 flex items-center text-xs text-muted-foreground">
             <div className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
@@ -131,15 +125,11 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 
         <h3 className="mb-1 text-xl font-bold">{member.name}</h3>
         <p className="mb-2 text-sm font-medium text-primary">{member.role}</p>
-
-        {/* Bio with fixed height and scrolling if needed */}
-        <div className="mb-4 h-[80px] overflow-y-auto">
+        <div className="mb-4">
           <p className="text-sm text-muted-foreground">
             {member.bio}
           </p>
         </div>
-
-        {/* Social links - always at bottom */}
         <div className="mt-auto">
           {member.socialLinks && (
             <div className="flex space-x-3">
