@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import Image from "next/image";
