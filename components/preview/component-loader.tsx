@@ -197,7 +197,7 @@ function ComponentDisplay({
       {hasReTrigger ? (
         React.cloneElement(component, { key: reTriggerKey })
       ) : fromDocs ? (
-        <iframe src={`${siteLink}/preview/${name}`} className="h-full w-full" />
+        <iframe src={`${siteLink}/preview/${name}`} className={`${className} w-full`} />
       ) : (
         component
       )}

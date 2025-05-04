@@ -19,6 +19,7 @@ export const blocks: Registry = [
   },
   {
     name: "bento-grid-1",
+    author: "Xeven777",
     type: "registry:block",
     dependencies: ["lucide-react","framer-motion"],
     registryDependencies: [],
@@ -421,5 +422,20 @@ export const blocks: Registry = [
     component: React.lazy(
       () => import("../components/mvpblocks/chatbot-ui/v0-chat"),
     ),
+  },
+  {
+    name: "team-1",
+    type: "registry:block",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/team/team-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/team/team-1"),
+    )
   }
 ];
