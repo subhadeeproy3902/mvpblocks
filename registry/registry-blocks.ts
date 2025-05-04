@@ -363,6 +363,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "trading",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/trading.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/trading"),
+    ),
+  },
+  {
     name: "twittercard",
     type: "registry:block",
     dependencies: ["lucide-react"],
@@ -375,6 +390,21 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/cards/twitter/twittercard"),
+    ),
+  },
+  {
+    name: "typewriter-1",
+    type: "registry:block",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/typewriter-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/typewriter-1"),
     ),
   },
   {
