@@ -7,6 +7,16 @@ root: mainsections
 import {ComponentPreview} from "@/components/preview/component-preview";
 import {extractSourceCode} from "@/lib/code";
 
+## Lucy Hero
+
+<ComponentPreview
+  name="mockup-hero"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('mockup-hero')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
 ## Trading Hero
 
 <ComponentPreview

@@ -303,6 +303,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "mockup-hero",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","next-themes","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/mockup-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/mockup-hero"),
+    ),
+  },
+  {
     name: "modified-classic-loader",
     type: "registry:block",
     dependencies: [],
@@ -315,6 +330,21 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/basics/loaders/modified-classic-loader"),
+    ),
+  },
+  {
+    name: "phone-mockup",
+    type: "registry:block",
+    dependencies: ["framer-motion","next-themes","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/phone-mockup.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/phone-mockup"),
     ),
   },
   {
