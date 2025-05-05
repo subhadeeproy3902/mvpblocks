@@ -38,6 +38,7 @@ import {
   AlertTriangleIcon,
   RefreshCwIcon,
 } from "lucide-react";
+import { Button } from "./ui/button";
 
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
@@ -136,15 +137,12 @@ export default function AssistantDialog() {
 
   const TriggerButton = useMemo(
     () => (
-      <button
+      <Button
         aria-label="Trigger Assistant"
-        className="fixed bottom-3 right-3 cursor-pointer focus-visible:outline-none sm:bottom-5 sm:right-5"
+        className="fixed bottom-3 w-12 h-12 right-3 cursor-pointer focus-visible:outline-none p-0 sm:bottom-5 sm:right-5 rounded-full bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] text-3xl"
       >
-        <div className="justify-content flex items-center rounded-full bg-fd-accent p-2">
-          Ask AI
-          <SparklesIcon className="ml-1.5 size-4" />
-        </div>
-      </button>
+        <SparklesIcon />
+      </Button>
     ),
     [],
   );
