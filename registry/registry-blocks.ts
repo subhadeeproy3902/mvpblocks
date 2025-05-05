@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "about-us-1",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/border-beam.json","https://blocks.mvp-subha.me/r/pulse-card.json","https://blocks.mvp-subha.me/r/spotlight.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/about/about-us-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/about/about-us-1"),
+    ),
+  },
+  {
     name: "animated-btn1",
     type: "registry:block",
     dependencies: [],

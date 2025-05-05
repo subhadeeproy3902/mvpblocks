@@ -1,6 +1,5 @@
 {
   "name": "bento-grid-1",
-  "author": "Xeven777",
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

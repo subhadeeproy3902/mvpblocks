@@ -3,3 +3,18 @@ title: About
 description: About sections provide a brief overview of your product or service, highlighting its key features and benefits. They help users understand what your product is about and why they should use it.
 root: mainsections
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## About Us 1
+
+A modern, aesthetic About Us section with gradient blurry patches, interactive elements, and a team showcase. Features glass morphism effects, animated sections, and hover interactions.
+
+<ComponentPreview
+  name="about-us-1"
+  classNameComponentContainer="min-h-[600px]"
+  code={(await extractSourceCode('about-us-1')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
