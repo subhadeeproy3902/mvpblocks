@@ -123,6 +123,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "contact-us-1",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/globe.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/sparkles.json","https://blocks.mvp-subha.me/r/textarea.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/contact/contact-us-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/contact/contact-us-1"),
+    ),
+  },
+  {
     name: "cta-1",
     type: "registry:block",
     dependencies: ["lucide-react"],
