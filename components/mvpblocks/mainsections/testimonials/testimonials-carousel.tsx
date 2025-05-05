@@ -154,7 +154,7 @@ export default function TestimonialsCarousel({
                     className="mb-4 text-primary"
                   >
                     <div className="relative">
-                      <Quote className="h-10 w-10" />
+                      <Quote className="h-10 w-10 -rotate-180" />
                     </div>
                   </motion.div>
 

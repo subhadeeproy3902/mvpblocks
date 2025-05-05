@@ -408,6 +408,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "team-2",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/team/team-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/team/team-2"),
+    ),
+  },
+  {
     name: "testimonials-carousel",
     type: "registry:block",
     dependencies: ["embla-carousel-react","framer-motion","lucide-react","react"],
