@@ -3,3 +3,16 @@ title: Testimonials
 description: Testimonials sections showcase positive feedback and reviews from customers or users. They help build trust and credibility for your product or service, encouraging potential customers to make a purchase or take action.
 root: mainsections
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Testimonials Carousel
+
+<ComponentPreview
+  name="testimonials-carousel"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('testimonials-carousel')).code}
+  lang="tsx"
+  fromDocs={true}
+/>

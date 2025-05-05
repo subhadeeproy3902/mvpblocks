@@ -408,6 +408,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "testimonials-carousel",
+    type: "registry:block",
+    dependencies: ["embla-carousel-react","framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/avatar.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/testimonials/testimonials-carousel.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/testimonials/testimonials-carousel"),
+    ),
+  },
+  {
     name: "trading",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react"],
