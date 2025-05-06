@@ -3,3 +3,16 @@ title: Pricing
 description: Pricing sections provide information about the cost of your product or service. They can include details about different pricing tiers, features included in each tier, and any discounts or promotions available.
 root: mainsections
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Simple Pricing
+
+<ComponentPreview
+  name="simple-pricing"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('simple-pricing')).code}
+  lang="tsx"
+  fromDocs={true}
+/>

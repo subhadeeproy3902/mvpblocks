@@ -423,6 +423,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "simple-pricing",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react","@number-flow/react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/badge.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/card.json","https://blocks.mvp-subha.me/r/tabs.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/simple-pricing.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/simple-pricing"),
+    ),
+  },
+  {
     name: "spiral-loader",
     type: "registry:block",
     dependencies: ["framer-motion"],
