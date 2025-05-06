@@ -153,6 +153,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "cta-2",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/cta/cta-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/cta/cta-2"),
+    ),
+  },
+  {
     name: "dot-card",
     type: "registry:block",
     dependencies: [],
