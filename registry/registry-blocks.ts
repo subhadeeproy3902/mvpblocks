@@ -138,6 +138,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "conversation1",
+    type: "registry:block",
+    dependencies: ["lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/chatbot-ui/conversation1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/chatbot-ui/conversation1"),
+    ),
+  },
+  {
     name: "cta-1",
     type: "registry:block",
     dependencies: ["lucide-react"],
