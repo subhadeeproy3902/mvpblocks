@@ -1,92 +1,18 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { motion, useAnimation, useInView, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useAnimation, useInView, useScroll, useTransform, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import PhoneMockup from "@/components/ui/phone-mockup";
 import { useTheme } from "next-themes";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-const FloatingParticles = ({ count = 20, isDark = false }) => {
-  const particles = Array.from({ length: count }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 3 + 1,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-    variant: Math.floor(Math.random() * 5),
-  }));
-
-  const getParticleStyle = (variant: number, isDark: boolean) => {
-    switch(variant) {
-      case 0:
-        return isDark ? "bg-primary/15" : "bg-primary/10";
-      case 1:
-        return isDark ? "bg-blue-300/10" : "bg-rose-200/8";
-      case 2:
-        return isDark ? "bg-indigo-400/10" : "bg-rose-300/5";
-      case 3:
-        return isDark ? "bg-violet-300/10" : "bg-amber-200/8";
-      case 4:
-        return isDark ? "bg-sky-300/10" : "bg-orange-200/5";
-      default:
-        return isDark ? "bg-primary/15" : "bg-primary/10";
-    }
-  };
-
-  const getGlowEffect = (variant: number, isDark: boolean) => {
-    switch(variant) {
-      case 0:
-        return isDark ? '0 0 4px rgba(229, 62, 62, 0.1)' : '0 0 4px rgba(229, 62, 62, 0.05)';
-      case 1:
-        return isDark ? '0 0 4px rgba(100, 150, 255, 0.1)' : '0 0 4px rgba(229, 62, 62, 0.05)';
-      case 2:
-        return isDark ? '0 0 4px rgba(120, 119, 198, 0.1)' : '0 0 4px rgba(229, 62, 62, 0.05)';
-      case 3:
-        return isDark ? '0 0 4px rgba(150, 120, 220, 0.1)' : '0 0 4px rgba(251, 191, 36, 0.05)';
-      case 4:
-        return isDark ? '0 0 4px rgba(100, 200, 255, 0.1)' : '0 0 4px rgba(249, 115, 22, 0.05)';
-      default:
-        return isDark ? '0 0 4px rgba(229, 62, 62, 0.1)' : '0 0 4px rgba(229, 62, 62, 0.05)';
-    }
-  };
-
-  return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className={`absolute rounded-full ${getParticleStyle(particle.variant, isDark)}`}
-          style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            boxShadow: getGlowEffect(particle.variant, isDark),
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0, 0.5, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
 export default function LucyHero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const heroRef = useRef<HTMLDivElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(heroRef, { once: false, amount: 0.3 });
   const controls = useAnimation();
   const { scrollYProgress } = useScroll({
@@ -97,6 +23,14 @@ export default function LucyHero() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
+
+  const [isHovered, setIsHovered] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const rotateX = useTransform(mouseY, [-0.5, 0, 0.5], [20, 0, -20]);
+  const rotateY = useTransform(mouseX, [-0.5, 0, 0.5], [-20, 0, 20]);
+
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
@@ -106,7 +40,7 @@ export default function LucyHero() {
   const GradientText = ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <span
       className={cn(
-        "bg-gradient-to-r dark:from-primary dark:via-rose-400 dark:to-indigo-400 from-primary via-rose-400 to-rose-300 bg-clip-text text-transparent",
+        "bg-gradient-to-r dark:from-primary dark:via-rose-300 dark:to-red-400 from-primary via-rose-400 to-rose-300 bg-clip-text text-transparent",
         className
       )}
     >
@@ -117,7 +51,7 @@ export default function LucyHero() {
   return (
     <div
       ref={heroRef}
-      className="relative min-h-screen w-full overflow-hidden bg-background px-4 py-16"
+      className="relative min-h-screen w-full overflow-hidden bg-background py-16"
     >
       <motion.div
         className="absolute inset-0 z-0"
@@ -132,12 +66,12 @@ export default function LucyHero() {
         <div className="absolute inset-0 opacity-5 backdrop-blur-[100px]"></div>
         <div className="absolute inset-0 dark:opacity-[0.02] opacity-[0.03] dark:[background-image:linear-gradient(rgba(200,200,255,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(200,200,255,0.05)_1px,transparent_1px)] [background-image:linear-gradient(rgba(229,62,62,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(229,62,62,0.05)_1px,transparent_1px)] [background-size:40px_40px]"></div>
       </motion.div>
-      <FloatingParticles count={30} isDark={isDark} />
+
       <motion.div
         className="container relative z-10 mx-auto max-w-7xl"
         style={{ y: contentY }}
       >
-        <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-16 md:grid-cols-2">
           <motion.div
             variants={{
               hidden: { opacity: 0, x: -50 },
@@ -152,7 +86,7 @@ export default function LucyHero() {
             }}
             initial="hidden"
             animate={controls}
-            className="flex flex-col"
+            className="flex flex-col md:text-left text-center"
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
               <h2 className=
@@ -170,19 +104,18 @@ export default function LucyHero() {
 
             <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 justify-center md:justify-start"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-                <div className="absolute -inset-0.5 rounded-full bg-primary/20 blur-md"></div>
                 <Button
-                  className="relative rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-[0_0_15px_rgba(229,62,62,0.3)]"
+                  className="relative rounded-full"
                 >
-                  <Sparkles className="mr-2 h-4 w-4" />
                   Explore
+                  <Sparkles className="h-4 w-4" />
                 </Button>
               </motion.div>
 
@@ -203,7 +136,7 @@ export default function LucyHero() {
 
             <motion.div
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
-              className="mt-10 flex flex-wrap gap-3"
+              className="mt-10 flex flex-wrap gap-3 justify-center md:justify-start"
             >
               {["Web3 Ready", "AI Powered", "Developer First"].map((feature, index) => (
                 <motion.div
@@ -238,50 +171,51 @@ export default function LucyHero() {
             }}
             initial="hidden"
             animate={controls}
+            ref={mockupRef}
             className="relative mx-auto flex justify-center"
+            style={{
+              transformStyle: "preserve-3d",
+              perspective: "1000px"
+            }}
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              mouseX.set(x);
+              mouseY.set(y);
+
+              if (!isHovered) {
+                setIsHovered(true);
+              }
+            }}
+            onMouseLeave={() => {
+              mouseX.set(0);
+              mouseY.set(0);
+              setIsHovered(false);
+            }}
           >
-            <div className="absolute inset-0 z-0">
-              <motion.div
-                initial={{ opacity: 0, rotate: 0 }}
-                animate={{
-                  opacity: [0, 0.2, 0.1],
-                  rotate: 360
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20"
+            <motion.div
+              className="z-10 relative"
+              style={{
+                transformStyle: "preserve-3d",
+                rotateX: rotateX,
+                rotateY: rotateY,
+                scale: isHovered ? 1.05 : 1,
+                transition: "scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
+              }}
+            >
+              <PhoneMockup
+                imageUrl={isDark ? "/mobile-dark.webp" : "/mobile-light.webp"}
+                alt="LU-cy mobile app"
+                glowColor={isDark ? "rgba(229, 62, 62, 0.5)" : "rgba(229, 62, 62, 0.25)"}
+                className="max-w-[380px]"
               />
-
-              <motion.div
-                initial={{ opacity: 0, rotate: 0 }}
-                animate={{
-                  opacity: [0, 0.15, 0.05],
-                  rotate: -360
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute left-1/2 top-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15"
-              />
-            </div>
-
-            <PhoneMockup
-              imageUrl="/mobile-light.webp"
-              darkImageUrl="/mobile-dark.webp"
-              alt="LU-cy mobile app"
-              glowColor={isDark ? "rgba(229, 62, 62, 0.4)" : "rgba(229, 62, 62, 0.2)"}
-              className="z-10"
-              floatingElements={true}
-              rotate3d={true}
-            />
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
     </div>
   );
 }
+
+
