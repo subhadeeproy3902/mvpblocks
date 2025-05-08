@@ -346,6 +346,18 @@ code {
   word-break: break-all;
 }
 
-.dropshadow {
-  filter: drop-shadow(0 20px 3.5rem hsla(244, 82%, 22%, 0.5));
+.fadein-blur {
+  animation: fadein-blur 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  animation-delay: 1s;
+}
+
+@keyframes fadein-blur {
+  0% {
+    opacity: 0;
+    filter: blur(16px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
 }
