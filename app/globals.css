@@ -7,13 +7,17 @@
 ::selection {
   background-color: hsl(var(--primary));
   color: #fff;
-  text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 1px #fff;
 }
 
 ::-moz-selection {
   background-color: hsl(var(--primary));
   color: #fff;
-  text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 1px #fff;
 }
 
 @layer base {
@@ -24,7 +28,7 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 349.00 72.35% 52.76%;
+    --primary: 349 72.35% 52.76%;
     --primary-foreground: 355.7 100% 97.3%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -46,7 +50,7 @@
     --chart-6: 348 72% 52%;
     --chart-7: 347 77% 50%;
     --chart-8: 352 83% 91%;
-    --fd-primary: 349.00 72.35% 52.76%;
+    --fd-primary: 349 72.35% 52.76%;
     --fd-primary-foreground: 355.7 100% 97.3%;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -65,7 +69,7 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 9%;
     --popover-foreground: 0 0% 95%;
-    --primary: 349.00 72.35% 52.76%;
+    --primary: 349 72.35% 52.76%;
     --primary-foreground: 355.7 100% 97.3%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -86,7 +90,7 @@
     --chart-6: 348 72% 52%;
     --chart-7: 347 77% 50%;
     --chart-8: 352 83% 91%;
-    --fd-primary: 349.00 72.35% 52.76%;
+    --fd-primary: 349 72.35% 52.76%;
     --fd-primary-foreground: 355.7 100% 97.3%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -98,7 +102,6 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-
 
 @layer base {
   * {
@@ -117,7 +120,6 @@ code {
 }
 
 @keyframes tile {
-
   0%,
   12.5%,
   100% {
@@ -136,7 +138,7 @@ code {
 
 .bg-radial {
   --tw-gradient-position: in oklab;
-  background-image: radial-gradient(var(--tw-gradient-stops))
+  background-image: radial-gradient(var(--tw-gradient-stops));
 }
 
 .fade-left-lg {
@@ -152,7 +154,12 @@ code {
   justify-content: center !important;
   align-items: center !important;
   border-radius: 16px !important;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(30, 0, 0, 0.1) 60%, #2a0e0e 100%) !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(30, 0, 0, 0.1) 60%,
+    #2a0e0e 100%
+  ) !important;
 
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(2px) !important;
@@ -161,10 +168,12 @@ code {
 }
 
 .glass:where(.dark, .dark *).rose {
-  background: radial-gradient(circle at center,
-      rgba(255, 200, 220, 0.08) 0%,
-      rgba(80, 10, 40, 0.2) 40%,
-      hsl(340, 30%, 10%) 100%) !important;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 200, 220, 0.08) 0%,
+    rgba(80, 10, 40, 0.2) 40%,
+    hsl(340, 30%, 10%) 100%
+  ) !important;
   box-shadow:
     inset 0 2px 4px rgba(255, 255, 255, 0.08),
     inset 0 -4px 6px rgba(0, 0, 0, 0.6),
@@ -178,15 +187,17 @@ code {
 }
 
 .glass:where(.dark, .dark *).rose::after {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   width: 80px !important;
   height: 80px !important;
-  background: radial-gradient(circle,
-      rgba(181, 162, 168, 0.3) 0%,
-      transparent 70%) !important;
+  background: radial-gradient(
+    circle,
+    rgba(181, 162, 168, 0.3) 0%,
+    transparent 70%
+  ) !important;
   transform: translate(-50%, -50%) !important;
   border-radius: 50% !important;
   filter: blur(12px) !important;
@@ -199,10 +210,12 @@ code {
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  background: radial-gradient(circle at center,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 220, 230, 0.3) 60%,
-      #f9f2f4 100%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 220, 230, 0.3) 60%,
+    #f9f2f4 100%
+  );
   border: 1px solid rgba(255, 150, 180, 0.1);
   backdrop-filter: blur(3px) saturate(180%);
   transition: all 0.3s ease;
@@ -211,10 +224,12 @@ code {
 }
 
 .glass.rose {
-  background: radial-gradient(circle at center,
-      rgba(255, 220, 235, 0.3) 0%,
-      rgba(255, 190, 210, 0.15) 40%,
-      #fef4f7 100%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 220, 235, 0.3) 0%,
+    rgba(255, 190, 210, 0.15) 40%,
+    #fef4f7 100%
+  );
   box-shadow:
     inset 0 2px 4px rgba(255, 200, 220, 0.2),
     inset 0 -4px 6px rgba(255, 180, 200, 0.3),
@@ -227,15 +242,17 @@ code {
 }
 
 .glass.rose::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle,
-      rgba(255, 160, 190, 0.3) 0%,
-      transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 160, 190, 0.3) 0%,
+    transparent 70%
+  );
   transform: translate(-50%, -50%);
   border-radius: 50%;
   filter: blur(10px);
@@ -307,19 +324,28 @@ code {
   padding-right: 70px !important;
 }
 
-[data-radix-scroll-area-viewport]>div {
+[data-radix-scroll-area-viewport] > div {
   display: block !important;
 }
 
 .glass2 {
   border-radius: 16px;
-  background: radial-gradient(circle, #00000000 0%, #ff9e9e1a 60%, #ffb9d1 100%) !important;
+  background: radial-gradient(
+    circle,
+    #00000000 0%,
+    #ff9e9e1a 60%,
+    #ffb9d1 100%
+  ) !important;
   border: 1px solid #ffffff0d;
   backdrop-filter: blur(2px);
   justify-content: center;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   word-break: break-all;
+}
+
+.dropshadow {
+  filter: drop-shadow(0 20px 3.5rem hsla(244, 82%, 22%, 0.5));
 }

@@ -27,6 +27,8 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "4xl": "2rem",
+        "45px": "45px",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -104,6 +106,7 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "slow-spin": "spin 20s linear infinite",
       },
     },
   },
