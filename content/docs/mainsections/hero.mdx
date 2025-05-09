@@ -4,15 +4,25 @@ description: Hero sections are the first thing users see when they visit your si
 root: mainsections
 ---
 
-import {ComponentPreview} from "@/components/preview/component-preview";
-import {extractSourceCode} from "@/lib/code";
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
 
 ## Lucy Hero
 
 <ComponentPreview
   name="mockup-hero"
   classNameComponentContainer="h-[600px]"
-  code={(await extractSourceCode('mockup-hero')).code}
+  code={(await extractSourceCode("mockup-hero")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## App Hero
+
+<ComponentPreview
+  name="app-hero"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("app-hero")).code}
   lang="tsx"
   fromDocs={true}
 />
@@ -22,7 +32,7 @@ import {extractSourceCode} from "@/lib/code";
 <ComponentPreview
   name="trading"
   classNameComponentContainer="h-[600px]"
-  code={(await extractSourceCode('trading')).code}
+  code={(await extractSourceCode("trading")).code}
   lang="tsx"
   fromDocs={true}
 />
@@ -32,7 +42,7 @@ import {extractSourceCode} from "@/lib/code";
 <ComponentPreview
   name="hero-1"
   classNameComponentContainer="h-[600px]"
-  code={(await extractSourceCode('hero-1')).code}
+  code={(await extractSourceCode("hero-1")).code}
   lang="tsx"
   fromDocs={true}
 />
@@ -42,7 +52,17 @@ import {extractSourceCode} from "@/lib/code";
 <ComponentPreview
   name="fitness-hero"
   classNameComponentContainer="h-[600px]"
-  code={(await extractSourceCode('fitness-hero')).code}
+  code={(await extractSourceCode("fitness-hero")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Gradient Hero
+
+<ComponentPreview
+  name="gradient-hero"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("gradient-hero")).code}
   lang="tsx"
   fromDocs={true}
 />
