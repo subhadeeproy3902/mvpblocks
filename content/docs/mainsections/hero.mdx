@@ -7,22 +7,45 @@ root: mainsections
 import { ComponentPreview } from "@/components/preview/component-preview";
 import { extractSourceCode } from "@/lib/code";
 
-## Lucy Hero
-
-<ComponentPreview
-  name="mockup-hero"
-  classNameComponentContainer="h-[600px]"
-  code={(await extractSourceCode("mockup-hero")).code}
-  lang="tsx"
-  fromDocs={true}
-/>
-
 ## App Hero
 
 <ComponentPreview
   name="app-hero"
   classNameComponentContainer="h-[600px]"
   code={(await extractSourceCode("app-hero")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Spline Hero
+
+<ComponentPreview
+  name="3dglobe"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("3dglobe")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+>_ Apply the below CSS for the above hero:
+
+```css
+.neumorphic-button::after {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300 bg-gradient-to-br from-[#9b87f5]/20 to-transparent rounded-full;
+}
+  
+.neumorphic-button:hover::after {
+  @apply opacity-100;
+}
+``` 
+
+## Lucy Hero
+
+<ComponentPreview
+  name="mockup-hero"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("mockup-hero")).code}
   lang="tsx"
   fromDocs={true}
 />
