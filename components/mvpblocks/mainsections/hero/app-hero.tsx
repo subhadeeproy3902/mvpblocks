@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  Code,
   Database,
   Sparkles,
   Zap,
-  Check,
   ArrowUpRight,
 } from "lucide-react";
 
@@ -127,7 +125,7 @@ export default function AppHero() {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center overflow-hidden bg-black text-white">
+    <section className="relative flex min-h-screen w-full flex-col items-center overflow-hidden bg-black py-16 text-white sm:px-6 lg:px-8 lg:py-2">
       <div className="absolute inset-0 z-0 h-full w-full rotate-180 items-center px-5 py-24 opacity-80 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       <svg
         id="noice"
@@ -162,7 +160,7 @@ export default function AppHero() {
 
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+          <div className="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.22)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
         </div>
 
         {/* Enhanced glow spots */}
@@ -202,7 +200,7 @@ export default function AppHero() {
         </div>
       </div>
 
-      <div className="fadein-blur absolute right-1/2 top-1/2 z-0 h-[500px] w-[500px] -translate-y-2/3 translate-x-1/2">
+      <div className="fadein-blur relative z-0 mx-auto mb-10 h-[300px] w-[300px] lg:absolute lg:right-1/2 lg:top-1/2 lg:mx-0 lg:mb-0 lg:h-[500px] lg:w-[500px] lg:-translate-y-2/3 lg:translate-x-1/2">
         <img
           src="/Adobe Express - file(1).png"
           alt="Nexus Platform 3D Visualization"
@@ -210,7 +208,7 @@ export default function AppHero() {
         />
         <motion.div
           variants={tooltipVariants}
-          className="absolute -left-20 top-1/4 rounded-lg border border-purple-500/30 bg-black/80 p-2 backdrop-blur-md"
+          className="absolute -left-4 top-4 rounded-lg border border-purple-500/30 bg-black/80 p-2 backdrop-blur-md lg:-left-20 lg:top-1/4"
         >
           <div className="flex items-center gap-2">
             <Zap className="h-4 w-4 text-purple-400" />
@@ -222,7 +220,7 @@ export default function AppHero() {
 
         <motion.div
           variants={tooltipVariants}
-          className="absolute -right-24 top-1/2 rounded-lg border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md"
+          className="absolute -right-4 top-1/2 rounded-lg border border-blue-500/30 bg-black/80 p-2 backdrop-blur-md lg:-right-24"
         >
           <div className="flex items-center gap-2">
             <Database className="h-4 w-4 text-blue-400" />
@@ -234,7 +232,7 @@ export default function AppHero() {
 
         <motion.div
           variants={tooltipVariants}
-          className="absolute bottom-1/4 left-8 rounded-lg border border-indigo-500/30 bg-black/80 p-2 backdrop-blur-md"
+          className="absolute bottom-4 left-4 rounded-lg border border-indigo-500/30 bg-black/80 p-2 backdrop-blur-md lg:bottom-1/4 lg:left-8"
         >
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-indigo-400" />
@@ -250,10 +248,10 @@ export default function AppHero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mb-10 flex w-full max-w-[1450px] flex-grow flex-col items-center justify-end px-4 sm:px-8"
+        className="relative z-10 mb-10 flex w-full max-w-[1450px] flex-grow flex-col items-center justify-center px-4 text-center sm:px-8 lg:mb-0 lg:items-start lg:justify-end lg:text-left"
       >
-        <motion.div className="flex w-full flex-row items-center justify-between">
-          <div>
+        <motion.div className="flex w-full flex-col items-center justify-between lg:flex-row lg:items-start">
+          <div className="w-full lg:w-auto">
             <motion.div
               variants={itemVariants}
               className="mb-4 inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-300"
@@ -266,7 +264,7 @@ export default function AppHero() {
 
             <motion.h1
               variants={itemVariants}
-              className="mb-6 bg-gradient-to-r from-foreground/70 via-foreground to-slate-500/80 bg-clip-text text-4xl leading-tight text-transparent sm:text-5xl md:text-6xl"
+              className="mb-6 bg-gradient-to-r from-foreground/70 via-foreground to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
             >
               The Bridge Between <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -277,7 +275,7 @@ export default function AppHero() {
             {/* Animated Stats Row */}
             <motion.div
               variants={itemVariants}
-              className="mb-6 flex flex-wrap gap-4 md:gap-6"
+              className="mb-6 flex flex-wrap justify-center gap-4 md:gap-6 lg:justify-start"
             >
               <div className="rounded-lg border border-purple-500/20 bg-black/40 px-4 py-2 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">
@@ -302,7 +300,7 @@ export default function AppHero() {
             {/* Integration badges */}
             <motion.div
               variants={itemVariants}
-              className="mb-4 flex flex-wrap items-center gap-2"
+              className="mb-8 flex flex-wrap items-center justify-center gap-2 lg:justify-start"
             >
               <span className="text-xs font-medium text-gray-400">
                 Integrates with:
@@ -326,10 +324,10 @@ export default function AppHero() {
             </motion.div>
           </div>
 
-          <div className="flex flex-col items-end justify-end">
+          <div className="mt-6 flex flex-col items-center lg:mt-0 lg:items-end">
             <motion.p
               variants={itemVariants}
-              className="mb-8 max-w-md text-end text-lg leading-relaxed text-slate-300/90"
+              className="mb-8 max-w-md px-6 text-center text-lg leading-relaxed text-slate-300/90 lg:text-end"
             >
               Nexus connects AI tools with Web3 infrastructure, giving
               developers the power to build beyond limits. One platform. Endless
@@ -337,7 +335,7 @@ export default function AppHero() {
             </motion.p>
             <motion.div
               variants={itemVariants}
-              className="mb-8 flex flex-wrap gap-4"
+              className="mb-8 flex flex-col flex-wrap gap-4 sm:flex-row lg:justify-end"
             >
               <Button
                 className="group rounded-full border-t border-purple-400 bg-gradient-to-b from-purple-700 to-slate-950/80 px-6 py-6 text-white shadow-lg shadow-purple-600/20 transition-all hover:shadow-purple-600/40"
@@ -359,7 +357,7 @@ export default function AppHero() {
             {/* Social proof */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 backdrop-blur-sm"
+              className="mx-auto flex items-center gap-3 rounded-full border border-slate-800 bg-slate-900/50 px-3 py-1 backdrop-blur-sm lg:mx-0 lg:ml-auto"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
@@ -380,9 +378,9 @@ export default function AppHero() {
           </div>
         </motion.div>
       </motion.main>
-      <div className="absolute -bottom-40 right-96 h-96 w-20 -rotate-45 rounded-full bg-gray-200/30 blur-[80px]"></div>
-      <div className="absolute -bottom-52 h-96 w-20 -rotate-45 rounded-full bg-gray-300/20 blur-[80px]"></div>
-      <div className="absolute -bottom-60 right-96 h-96 w-10 -translate-x-40 -rotate-45 rounded-full bg-gray-300/20 blur-[80px]"></div>
+      <div className="absolute -bottom-40 left-1/2 right-auto h-96 w-20 -translate-x-1/2 -rotate-45 rounded-full bg-gray-200/30 blur-[80px] lg:left-auto lg:right-96 lg:translate-x-0"></div>
+      <div className="absolute -bottom-52 left-1/2 right-auto h-96 w-20 -translate-x-1/2 -rotate-45 rounded-full bg-gray-300/20 blur-[80px] lg:left-auto lg:right-auto lg:translate-x-0"></div>
+      <div className="absolute -bottom-60 left-1/2 right-auto h-96 w-10 -translate-x-20 -rotate-45 rounded-full bg-gray-300/20 blur-[80px] lg:left-auto lg:right-96 lg:-translate-x-40"></div>
     </section>
   );
 }
