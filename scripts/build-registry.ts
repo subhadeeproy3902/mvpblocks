@@ -88,7 +88,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 
 const main = async () => {
   for (let i = 0; i < registry.length; i++) {
-    const component = registry[i];
+    const component = { ...registry[i] }; // Create a copy of the component object
     const files = component.files;
     delete component.component; // Delete `component` property since not needed in the public registry
     if (!files) throw new Error("No files found for component");

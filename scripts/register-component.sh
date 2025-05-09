@@ -14,5 +14,5 @@ fi
 echo "Registering component: $COMPONENT_PATH"
 bun run register "$COMPONENT_PATH"
 
-echo -e "\nComponent successfully registered, built, and sorted!"
+echo -e "\nComponent successfully registered and built!"
 echo "You can now use your component in the project."

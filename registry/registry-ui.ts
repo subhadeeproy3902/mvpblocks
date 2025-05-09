@@ -3,6 +3,36 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "pricing-card",
+    type: "registry:ui",
+    dependencies: ["lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/payment-modal.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/radio-group.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/pricing-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/pricing-card").then(mod => ({ default: mod.PricingCard })),
+    ),
+  },
+  {
+    name: "payment-modal",
+    type: "registry:ui",
+    dependencies: ["react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/radio-group.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/payment-modal.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/payment-modal").then(mod => ({ default: mod.PaymentModal })),
+    ),
+  },
+  {
     name: "accordion",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-accordion"],

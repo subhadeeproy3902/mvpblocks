@@ -217,13 +217,16 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
 
 // Function to determine component type based on path
 function determineComponentType(filePath: string): ComponentType {
-  if (filePath.includes("/components/mvpblocks/")) {
+  // Normalize the file path to use forward slashes
+  const normalizedPath = filePath.replace(/\\/g, "/");
+
+  if (normalizedPath.includes("/components/mvpblocks/") || normalizedPath.includes("components/mvpblocks/")) {
     return "registry:block";
-  } else if (filePath.includes("/components/ui/")) {
+  } else if (normalizedPath.includes("/components/ui/") || normalizedPath.includes("components/ui/")) {
     return "registry:ui";
-  } else if (filePath.includes("/hooks/")) {
+  } else if (normalizedPath.includes("/hooks/") || normalizedPath.includes("hooks/")) {
     return "registry:hook";
-  } else if (filePath.includes("/lib/")) {
+  } else if (normalizedPath.includes("/lib/") || normalizedPath.includes("lib/")) {
     return "registry:lib";
   }
 
@@ -276,13 +279,85 @@ function detectNpmDependencies(fileContent: string): string[] {
 function detectRegistryDependencies(
   fileContent: string,
   filePath: string,
+  visitedFiles: Set<string> = new Set(),
 ): string[] {
+  // Add current file to visited files to prevent infinite recursion
+  visitedFiles.add(filePath);
+
   const dependencies: string[] = [];
+
+  // Check for utils import specifically since it's commonly used
+  if (fileContent.includes('from "@/lib/utils"') || fileContent.includes("from '@/lib/utils'")) {
+    const utilsUrl = "https://blocks.mvp-subha.me/r/utils.json";
+    if (!dependencies.includes(utilsUrl)) {
+      dependencies.push(utilsUrl);
+    }
+  }
+
+  // Detect imports from UI components using regex
+  // This handles both destructured imports and default imports
+  const uiImportRegex = /import\s+(?:(?:\{[^}]*\})|(?:[^\s{}]+))\s+from\s+["']@\/components\/ui\/([^"']+)["'];?/g;
+  let uiMatch;
+  while ((uiMatch = uiImportRegex.exec(fileContent)) !== null) {
+    const componentName = uiMatch[1].replace(/\.tsx?$/, "");
+    const url = `https://blocks.mvp-subha.me/r/${componentName}.json`;
+
+    if (!dependencies.includes(url)) {
+      dependencies.push(url);
+
+      // Process nested dependencies from UI components
+      try {
+        const componentFilePath = `components/ui/${componentName}.tsx`;
+        if (fs.existsSync(componentFilePath) && !visitedFiles.has(componentFilePath)) {
+          const componentContent = fs.readFileSync(componentFilePath, "utf-8");
+          // Recursively detect dependencies in the imported component
+          const nestedDependencies = detectRegistryDependencies(
+            componentContent,
+            componentFilePath,
+            new Set([...visitedFiles])
+          );
+          // Add unique dependencies
+          for (const dep of nestedDependencies) {
+            if (!dependencies.includes(dep)) {
+              dependencies.push(dep);
+            }
+          }
+        }
+      } catch (error) {
+        console.warn(`Warning: Could not process UI component ${componentName}`);
+      }
+    }
+  }
 
   // Check for known registry dependencies
   for (const [importPath, url] of Object.entries(REGISTRY_DEPENDENCIES)) {
-    if (fileContent.includes(importPath)) {
+    if (fileContent.includes(importPath) && !dependencies.includes(url)) {
       dependencies.push(url);
+
+      // Also check for nested dependencies from imported components
+      if (importPath.startsWith("@/") && !visitedFiles.has(importPath)) {
+        try {
+          // Convert import path to file path
+          const componentFilePath = importPath.replace("@/", "");
+          if (fs.existsSync(componentFilePath)) {
+            const componentContent = fs.readFileSync(componentFilePath, "utf-8");
+            // Recursively detect dependencies in the imported component
+            const nestedDependencies = detectRegistryDependencies(
+              componentContent,
+              componentFilePath,
+              new Set([...visitedFiles])
+            );
+            // Add unique dependencies
+            for (const dep of nestedDependencies) {
+              if (!dependencies.includes(dep)) {
+                dependencies.push(dep);
+              }
+            }
+          }
+        } catch (error) {
+          console.warn(`Warning: Could not process imported component ${importPath}`);
+        }
+      }
     }
   }
 
@@ -317,21 +392,25 @@ function detectRegistryDependencies(
 
       // Recursively process the imported file to get its dependencies
       try {
-        const importedFileContent = fs.readFileSync(importedFilePath, "utf-8");
-        // Detect dependencies of the imported file
-        const importedFileDependencies = detectRegistryDependencies(
-          importedFileContent,
-          importedFilePath,
-        );
-        // Add unique dependencies
-        for (const dep of importedFileDependencies) {
-          if (!dependencies.includes(dep)) {
-            dependencies.push(dep);
+        // Skip if we've already visited this file to prevent infinite recursion
+        if (!visitedFiles.has(importedFilePath)) {
+          const importedFileContent = fs.readFileSync(importedFilePath, "utf-8");
+          // Detect dependencies of the imported file
+          const importedFileDependencies = detectRegistryDependencies(
+            importedFileContent,
+            importedFilePath,
+            new Set([...visitedFiles])
+          );
+          // Add unique dependencies
+          for (const dep of importedFileDependencies) {
+            if (!dependencies.includes(dep)) {
+              dependencies.push(dep);
+            }
           }
-        }
 
-        // Also register the imported component if it's not already in the registry
-        addComponentToRegistryIfNeeded(importedFilePath);
+          // Also register the imported component if it's not already in the registry
+          addComponentToRegistryIfNeeded(importedFilePath);
+        }
       } catch (error) {
         console.warn(
           `Warning: Could not process imported file ${importedFilePath}`,
@@ -387,6 +466,7 @@ function addComponentToRegistry(filePath: string): void {
   const registryDependencies = detectRegistryDependencies(
     fileContent,
     filePath,
+    new Set(),
   );
 
   // Determine component type
@@ -428,6 +508,7 @@ function addComponentToRegistry(filePath: string): void {
           : "lib";
 
   // Find the position to insert the new component
+  // Make sure we're looking for the correct array name in the registry file
   const arrayStartRegex = new RegExp(
     `export const ${registryArrayName}[^\\[]*\\[`,
   );
@@ -483,8 +564,17 @@ function addComponentToRegistry(filePath: string): void {
     `- NPM Dependencies: ${npmDependencies.length > 0 ? npmDependencies.join(", ") : "None"}`,
   );
   console.log(
-    `- Registry Dependencies: ${registryDependencies.length > 0 ? registryDependencies.join(", ") : "None"}`,
+    `- Registry Dependencies: ${registryDependencies.length > 0 ? registryDependencies.length + " dependencies detected" : "None"}`,
   );
+
+  // Log each registry dependency for better visibility
+  if (registryDependencies.length > 0) {
+    console.log("  Registry Dependencies:");
+    registryDependencies.forEach(dep => {
+      const depName = dep.split("/").pop()?.replace(".json", "") || "";
+      console.log(`  - ${depName}`);
+    });
+  }
 }
 
 // Function to scan project directories and update dependencies
@@ -591,15 +681,10 @@ function main() {
 
   // Add component to registry
   addComponentToRegistry(filePath);
-
-  // Run build and sort scripts
   console.log("Running build:registry script...");
   execSync("bun run build:registry", { stdio: "inherit" });
 
-  console.log("Running sort:registry script...");
-  execSync("bun run sort:registry", { stdio: "inherit" });
-
-  console.log("All done! Component registered, built, and sorted.");
+  console.log("All done! Component registered and built.");
 }
 
 main();

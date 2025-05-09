@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { execSync } from "child_process";
 
 // Main function to update auto-register.ts with new dependencies
 function main() {

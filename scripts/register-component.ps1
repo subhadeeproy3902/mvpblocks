@@ -11,5 +11,5 @@ if (-not (Test-Path $ComponentPath)) {
 Write-Host "Registering component: $ComponentPath"
 bun run register $ComponentPath
 
-Write-Host "`nComponent successfully registered, built, and sorted!" -ForegroundColor Green
+Write-Host "`nComponent successfully registered and built!" -ForegroundColor Green
 Write-Host "You can now use your component in the project."

@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "pricing-with-modals",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/pricing-card.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/payment-modal.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/radio-group.json","https://blocks.mvp-subha.me/r/label.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/pricing-with-modals.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/pricing-with-modals"),
+    ),
+  },
+  {
     name: "3dglobe",
     type: "registry:block",
     dependencies: ["framer-motion"],
@@ -20,8 +35,12 @@ export const blocks: Registry = [
   {
     name: "about-us-1",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/border-beam.json","https://blocks.mvp-subha.me/r/pulse-card.json","https://blocks.mvp-subha.me/r/spotlight.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/border-beam.json",
+      "https://blocks.mvp-subha.me/r/pulse-card.json",
+      "https://blocks.mvp-subha.me/r/spotlight.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/about/about-us-1.tsx",
@@ -35,8 +54,13 @@ export const blocks: Registry = [
   {
     name: "about-us-2",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","next-themes","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/border-beam.json","https://blocks.mvp-subha.me/r/counter.json","https://blocks.mvp-subha.me/r/spotlight.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react", "next-themes", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/border-beam.json",
+      "https://blocks.mvp-subha.me/r/counter.json",
+      "https://blocks.mvp-subha.me/r/spotlight.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/about/about-us-2.tsx",
@@ -65,8 +89,12 @@ export const blocks: Registry = [
   {
     name: "app-hero",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    author: "Xeven777",
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/hero/app-hero.tsx",
@@ -80,7 +108,8 @@ export const blocks: Registry = [
   {
     name: "bento-grid-1",
     type: "registry:block",
-    dependencies: ["lucide-react","framer-motion"],
+    author: "Xeven777",
+    dependencies: ["lucide-react", "framer-motion"],
     registryDependencies: [],
     files: [
       {
@@ -170,8 +199,15 @@ export const blocks: Registry = [
   {
     name: "contact-us-1",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/globe.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/sparkles.json","https://blocks.mvp-subha.me/r/textarea.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/globe.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/label.json",
+      "https://blocks.mvp-subha.me/r/sparkles.json",
+      "https://blocks.mvp-subha.me/r/textarea.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/contact/contact-us-1.tsx",
@@ -185,8 +221,12 @@ export const blocks: Registry = [
   {
     name: "conversation1",
     type: "registry:block",
-    dependencies: ["lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/chatbot-ui/conversation1.tsx",
@@ -260,7 +300,7 @@ export const blocks: Registry = [
   {
     name: "feature-2",
     type: "registry:block",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -349,9 +389,13 @@ export const blocks: Registry = [
   },
   {
     name: "gradient-hero",
+    author: "Xeven777",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/hero/gradient-hero.tsx",
@@ -395,8 +439,11 @@ export const blocks: Registry = [
   {
     name: "mockup-hero",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","next-themes","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react", "next-themes", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/hero/mockup-hero.tsx",
@@ -419,13 +466,16 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/basics/loaders/modified-classic-loader"),
+      () =>
+        import(
+          "../components/mvpblocks/basics/loaders/modified-classic-loader"
+        ),
     ),
   },
   {
     name: "phone-mockup",
     type: "registry:block",
-    dependencies: ["framer-motion","next-themes","react"],
+    dependencies: ["framer-motion", "next-themes", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -433,9 +483,7 @@ export const blocks: Registry = [
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/phone-mockup"),
-    ),
+    component: React.lazy(() => import("../components/ui/phone-mockup")),
   },
   {
     name: "pulsating-loader",
@@ -485,8 +533,19 @@ export const blocks: Registry = [
   {
     name: "simple-pricing",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react","@number-flow/react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/badge.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/card.json","https://blocks.mvp-subha.me/r/tabs.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: [
+      "framer-motion",
+      "lucide-react",
+      "react",
+      "@number-flow/react",
+    ],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/badge.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/card.json",
+      "https://blocks.mvp-subha.me/r/tabs.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/pricing/simple-pricing.tsx",
@@ -494,7 +553,8 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/pricing/simple-pricing"),
+      () =>
+        import("../components/mvpblocks/mainsections/pricing/simple-pricing"),
     ),
   },
   {
@@ -545,7 +605,7 @@ export const blocks: Registry = [
   {
     name: "team-2",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -560,8 +620,16 @@ export const blocks: Registry = [
   {
     name: "testimonials-carousel",
     type: "registry:block",
-    dependencies: ["embla-carousel-react","framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/avatar.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: [
+      "embla-carousel-react",
+      "framer-motion",
+      "lucide-react",
+      "react",
+    ],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/avatar.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/testimonials/testimonials-carousel.tsx",
@@ -569,13 +637,16 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/testimonials/testimonials-carousel"),
+      () =>
+        import(
+          "../components/mvpblocks/mainsections/testimonials/testimonials-carousel"
+        ),
     ),
   },
   {
     name: "trading",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react"],
+    dependencies: ["framer-motion", "lucide-react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
@@ -605,7 +676,7 @@ export const blocks: Registry = [
   {
     name: "typewriter-1",
     type: "registry:block",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion", "react"],
     registryDependencies: [],
     files: [
       {
@@ -621,7 +692,12 @@ export const blocks: Registry = [
     name: "v0-chat",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json","https://blocks.mvp-subha.me/r/textarea.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json",
+      "https://blocks.mvp-subha.me/r/textarea.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/chatbot-ui/v0-chat.tsx",
@@ -631,6 +707,5 @@ export const blocks: Registry = [
     component: React.lazy(
       () => import("../components/mvpblocks/chatbot-ui/v0-chat"),
     ),
-  }
+  },
 ];
-
