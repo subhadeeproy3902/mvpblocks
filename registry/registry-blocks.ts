@@ -5,7 +5,7 @@ export const blocks: Registry = [
   {
     name: "3dglobe",
     type: "registry:block",
-    dependencies: ["react"],
+    dependencies: ["framer-motion"],
     registryDependencies: [],
     files: [
       {
@@ -315,23 +315,6 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/required/footers/footer-4col"),
-    ),
-  },
-  {
-    name: "github-globe",
-    type: "registry:block",
-    dependencies: ["react","@react-three/drei","@react-three/fiber","three","three-globe"],
-    registryDependencies: [],
-    files: [
-      {
-        path: "@/components/ui/github-globe.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/ui/github-globe").then(module => ({ 
-        default: module.World || module.Globe || Object.values(module)[0] 
-      })),
     ),
   },
   {
