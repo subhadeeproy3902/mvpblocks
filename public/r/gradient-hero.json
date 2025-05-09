@@ -1,5 +1,6 @@
 {
   "name": "gradient-hero",
+  "author": "Xeven777",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

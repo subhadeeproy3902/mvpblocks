@@ -1,6 +1,7 @@
 {
   "name": "app-hero",
   "type": "registry:block",
+  "author": "Xeven777",
   "dependencies": [
     "framer-motion",
     "lucide-react"

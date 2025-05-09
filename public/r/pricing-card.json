@@ -1,0 +1,24 @@
+{
+  "name": "pricing-card",
+  "type": "registry:ui",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/payment-modal.json",
+    "https://blocks.mvp-subha.me/r/dialog.json",
+    "https://blocks.mvp-subha.me/r/label.json",
+    "https://blocks.mvp-subha.me/r/radio-group.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\"\r\n\r\nimport { useState } from \"react\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport { Check } from \"lucide-react\"\r\nimport { PaymentModal } from \"./payment-modal\"\r\n\r\ninterface PricingCardProps {\r\n  name: string\r\n  price: number\r\n  period: string\r\n  features: string[]\r\n  featured?: boolean\r\n}\r\n\r\nexport function PricingCard({ name, price, period, features, featured }: PricingCardProps) {\r\n  const [showPaymentModal, setShowPaymentModal] = useState(false)\r\n\r\n  return (\r\n    <>\r\n      <div className=\"relative p-6 bg-zinc-900 rounded-lg border border-zinc-800\">\r\n        {featured && (\r\n          <div className=\"absolute -top-2 right-4 bg-white text-black px-3 py-1 rounded-full text-sm font-medium\">\r\n            Featured\r\n          </div>\r\n        )}\r\n        <div className=\"space-y-6\">\r\n          <div>\r\n            <h3 className=\"text-lg font-medium text-white\">{name}</h3>\r\n            <div className=\"mt-2 flex items-baseline\">\r\n              <span className=\"text-5xl font-bold tracking-tight text-white\">€{price}</span>\r\n              <span className=\"ml-1 text-sm font-medium text-zinc-400\">/{period}</span>\r\n            </div>\r\n          </div>\r\n          <Button className=\"w-full bg-blue-600 hover:bg-blue-700\" onClick={() => setShowPaymentModal(true)}>\r\n            Get {name}\r\n          </Button>\r\n          <ul className=\"space-y-3\">\r\n            {features.map((feature, index) => (\r\n              <li key={index} className=\"flex items-center gap-2\">\r\n                <Check className=\"h-4 w-4 text-zinc-400\" />\r\n                <span className=\"text-sm text-zinc-300\">{feature}</span>\r\n              </li>\r\n            ))}\r\n          </ul>\r\n        </div>\r\n      </div>\r\n\r\n      <PaymentModal\r\n        isOpen={showPaymentModal}\r\n        onClose={() => setShowPaymentModal(false)}\r\n        plan={{ name, price, period }}\r\n      />\r\n    </>\r\n  )\r\n}\r\n",
+      "path": "/components/ui/pricing-card.tsx",
+      "target": "/components/ui/pricing-card.tsx"
+    }
+  ]
+}

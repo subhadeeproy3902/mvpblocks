@@ -1,6 +1,7 @@
 {
   "name": "bento-grid-1",
   "type": "registry:block",
+  "author": "Xeven777",
   "dependencies": [
     "lucide-react",
     "framer-motion"
