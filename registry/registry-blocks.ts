@@ -329,7 +329,9 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/ui/github-globe"),
+      () => import("../components/ui/github-globe").then(module => ({ 
+        default: module.World || module.Globe || Object.values(module)[0] 
+      })),
     ),
   },
   {
@@ -648,3 +650,4 @@ export const blocks: Registry = [
     ),
   }
 ];
+
