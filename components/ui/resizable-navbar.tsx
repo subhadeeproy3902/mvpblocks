@@ -273,13 +273,14 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
-  return (
-    <Tag
-      href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
-    >
-      {children}
-    </Tag>
+  // Use createElement instead of JSX to avoid the children type issue
+  return React.createElement(
+    Tag,
+    {
+      href: href || undefined,
+      className: cn(baseStyles, variantStyles[variant], className),
+      ...props
+    },
+    children
   );
 };
