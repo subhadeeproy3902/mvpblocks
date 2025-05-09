@@ -5,6 +5,7 @@ export const blocks: Registry = [
   {
     name: "app-hero",
     type: "registry:block",
+    author: "Xeven777",
     dependencies: ["framer-motion", "lucide-react"],
     registryDependencies: [
       "https://blocks.mvp-subha.me/r/button.json",
@@ -22,6 +23,7 @@ export const blocks: Registry = [
   },
   {
     name: "gradient-hero",
+    author: "Xeven777",
     type: "registry:block",
     dependencies: ["framer-motion", "lucide-react"],
     registryDependencies: [
@@ -55,6 +57,26 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/mainsections/about/about-us-1"),
+    ),
+  },
+  {
+    name: "about-us-2",
+    type: "registry:block",
+    dependencies: ["framer-motion", "lucide-react", "next-themes", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/border-beam.json",
+      "https://blocks.mvp-subha.me/r/counter.json",
+      "https://blocks.mvp-subha.me/r/spotlight.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/about/about-us-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/about/about-us-2"),
     ),
   },
   {
