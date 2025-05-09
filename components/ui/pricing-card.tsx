@@ -18,28 +18,28 @@ export function PricingCard({ name, price, period, features, featured }: Pricing
 
   return (
     <>
-      <div className="relative p-6 bg-zinc-900 rounded-lg border border-zinc-800">
+      <div className="relative p-6 rounded-lg border border-zinc-800">
         {featured && (
-          <div className="absolute -top-2 right-4 bg-white text-black px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute -top-2 right-4 bg-black text-white dark:bg-white  dark:text-black px-3 py-1 rounded-full text-sm font-medium">
             Featured
           </div>
         )}
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-medium text-white">{name}</h3>
+            <h3 className="text-lg font-medium">{name}</h3>
             <div className="mt-2 flex items-baseline">
-              <span className="text-5xl font-bold tracking-tight text-white">€{price}</span>
+              <span className="text-5xl font-bold tracking-tight">€{price}</span>
               <span className="ml-1 text-sm font-medium text-zinc-400">/{period}</span>
             </div>
           </div>
-          <Button className="w-full bg-blue-600 hover:bg-blue-700" onClick={() => setShowPaymentModal(true)}>
+          <Button className="w-full" onClick={() => setShowPaymentModal(true)}>
             Get {name}
           </Button>
           <ul className="space-y-3">
             {features.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-zinc-400" />
-                <span className="text-sm text-zinc-300">{feature}</span>
+                <Check className="h-4 w-4 text-green-500" />
+                <span className="text-sm text-zinc-500">{feature}</span>
               </li>
             ))}
           </ul>
