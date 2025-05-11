@@ -18,6 +18,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: "faq-2",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/faqs/faq-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/faqs/faq-2"),
+    ),
+  },
+  {
     name: "testimonials-marquee",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react"],
@@ -135,21 +150,6 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/mainsections/cta/cta-3"),
-    ),
-  },
-  {
-    name: "faq-2",
-    type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json"],
-    files: [
-      {
-        path: "@/components/mvpblocks/mainsections/faqs/faq-2.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/faqs/faq-2"),
     ),
   },
   {
