@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "typewriter",
+    type: "registry:ui",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/ui/typewriter.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/typewriter"),
+    ),
+  },
+  {
     name: "pricing-card",
     type: "registry:ui",
     dependencies: ["lucide-react","react"],

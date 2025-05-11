@@ -3,6 +3,36 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "typewriter-demo",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/typewriter.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/typewriter-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/typewriter-demo"),
+    ),
+  },
+  {
+    name: "trading",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/typewriter.json","https://blocks.mvp-subha.me/r/border-beam.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/trading.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/trading"),
+    ),
+  },
+  {
     name: "cta-3",
     type: "registry:block",
     dependencies: ["lucide-react"],
@@ -45,21 +75,6 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/mainsections/faqs/faq-1"),
-    ),
-  },
-  {
-    name: "trading",
-    type: "registry:block",
-    dependencies: ["framer-motion","lucide-react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/border-beam.json"],
-    files: [
-      {
-        path: "@/components/mvpblocks/mainsections/hero/trading.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/hero/trading"),
     ),
   },
   {
@@ -717,21 +732,6 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/cards/twitter/twittercard"),
-    ),
-  },
-  {
-    name: "typewriter-1",
-    type: "registry:block",
-    dependencies: ["framer-motion", "react"],
-    registryDependencies: [],
-    files: [
-      {
-        path: "@/components/mvpblocks/text-animations/typewriter-1.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/text-animations/typewriter-1"),
     ),
   },
   {

@@ -1,7 +1,7 @@
 import { ArrowRight, Command } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import TextGenerateEffect from "../../text-animations/typewriter-1";
+import TextGenerateEffect from "@/components/ui/typewriter";
 import { BorderBeam } from "@/components/ui/border-beam";
 
 export default function Trading() {

@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
-export default function TextGenerateEffect ({
+export default function TextGenerateEffect({
   words,
   className = "",
 }: {
