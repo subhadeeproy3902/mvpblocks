@@ -3,3 +3,198 @@ title: Scroll Velocity
 description: Scroll velocity animations create a dynamic and engaging effect as elements move on the screen. This technique can be used to draw attention to specific content or enhance the overall user experience.
 root: text-animations
 ---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+<ComponentPreview
+  name="scrollbasedvelocity-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("scrollbasedvelocity-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install framer-motion 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add framer-motion 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add framer-motion 
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    `components/ui/scrollbasedvelocity.tsx`
+
+    ```tsx title="scrollbasedvelocity.tsx"
+    "use client";
+    
+    import React, { useEffect, useRef, useState } from "react";
+    import {
+      motion,
+      useAnimationFrame,
+      useMotionValue,
+      useScroll,
+      useSpring,
+      useTransform,
+      useVelocity,
+    } from "framer-motion";
+    import { cn } from "@/lib/utils";
+    
+    interface VelocityScrollProps {
+      text: string;
+      default_velocity?: number;
+      className?: string;
+    }
+    
+    interface ParallaxProps {
+      children: string;
+      baseVelocity: number;
+      className?: string;
+    }
+    
+    export const wrap = (min: number, max: number, v: number) => {
+      const rangeSize = max - min;
+      return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+    };
+    
+    export const VelocityScroll: React.FC<VelocityScrollProps> = ({
+      text,
+      default_velocity = 5,
+      className,
+    }) => {
+      const ParallaxText: React.FC<ParallaxProps> = ({
+        children,
+        baseVelocity = 100,
+        className,
+      }) => {
+        const baseX = useMotionValue(0);
+        const { scrollY } = useScroll();
+        const scrollVelocity = useVelocity(scrollY);
+        const smoothVelocity = useSpring(scrollVelocity, {
+          damping: 50,
+          stiffness: 400,
+        });
+    
+        const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+          clamp: false,
+        });
+    
+        const [repetitions, setRepetitions] = useState(1);
+        const containerRef = useRef<HTMLDivElement>(null);
+        const textRef = useRef<HTMLSpanElement>(null);
+    
+        useEffect(() => {
+          const calculateRepetitions = () => {
+            if (containerRef.current && textRef.current) {
+              const containerWidth = containerRef.current.offsetWidth;
+              const textWidth = textRef.current.offsetWidth;
+              const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;
+              setRepetitions(newRepetitions);
+            }
+          };
+    
+          calculateRepetitions();
+    
+          window.addEventListener("resize", calculateRepetitions);
+          return () => window.removeEventListener("resize", calculateRepetitions);
+        }, [children]);
+    
+        const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
+    
+        const directionFactor = useRef<number>(1);
+        useAnimationFrame((t, delta) => {
+          let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+    
+          if (velocityFactor.get() < 0) {
+            directionFactor.current = -1;
+          } else if (velocityFactor.get() > 0) {
+            directionFactor.current = 1;
+          }
+    
+          moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    
+          baseX.set(baseX.get() + moveBy);
+        });
+    
+        return (
+          <div
+            className="w-full overflow-hidden whitespace-nowrap"
+            ref={containerRef}
+          >
+            <motion.div className={cn("inline-block", className)} style={{ x }}>
+              {Array.from({ length: repetitions }).map((_, i) => (
+                <span key={i} ref={i === 0 ? textRef : null}>
+                  {children}{" "}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        );
+      };
+    
+      return (
+        <section className="relative w-full">
+          <ParallaxText baseVelocity={default_velocity} className={className}>
+            {text}
+          </ParallaxText>
+          <ParallaxText baseVelocity={-default_velocity} className={className}>
+            {text}
+          </ParallaxText>
+        </section>
+      );
+    };
+    ```
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to be animated.",
+      type: "string",
+      default: "Hello World!",
+    },
+    default_velocity: {
+      description: "The default velocity of the animation.",
+      type: "number",
+      default: 5,
+    },
+    className: {
+      description:
+        "Optional CSS class for customizing the style and appearance of the text.",
+      type: "string",
+      default: undefined,
+    },
+  }}
+/>
+
+

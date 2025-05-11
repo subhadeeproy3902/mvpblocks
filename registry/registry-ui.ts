@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "scrollbasedvelocity",
+    type: "registry:ui",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/scrollbasedvelocity.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/scrollbasedvelocity"),
+    ),
+  },
+  {
     name: "typewriter",
     type: "registry:ui",
     dependencies: ["framer-motion","react"],

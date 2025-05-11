@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "scrollbasedvelocity-demo",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/scrollbasedvelocity.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/scrollbasedvelocity-demo.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/scrollbasedvelocity-demo"),
+    ),
+  },
+  {
     name: "gradient-typewriter",
     type: "registry:block",
     dependencies: [],

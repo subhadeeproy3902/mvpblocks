@@ -1,0 +1,19 @@
+{
+  "name": "scrollbasedvelocity",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useRef, useState } from \"react\";\r\nimport {\r\n  motion,\r\n  useAnimationFrame,\r\n  useMotionValue,\r\n  useScroll,\r\n  useSpring,\r\n  useTransform,\r\n  useVelocity,\r\n} from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface VelocityScrollProps {\r\n  text: string;\r\n  default_velocity?: number;\r\n  className?: string;\r\n}\r\n\r\ninterface ParallaxProps {\r\n  children: string;\r\n  baseVelocity: number;\r\n  className?: string;\r\n}\r\n\r\nexport const wrap = (min: number, max: number, v: number) => {\r\n  const rangeSize = max - min;\r\n  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;\r\n};\r\n\r\nexport const VelocityScroll: React.FC<VelocityScrollProps> = ({\r\n  text,\r\n  default_velocity = 5,\r\n  className,\r\n}) => {\r\n  const ParallaxText: React.FC<ParallaxProps> = ({\r\n    children,\r\n    baseVelocity = 100,\r\n    className,\r\n  }) => {\r\n    const baseX = useMotionValue(0);\r\n    const { scrollY } = useScroll();\r\n    const scrollVelocity = useVelocity(scrollY);\r\n    const smoothVelocity = useSpring(scrollVelocity, {\r\n      damping: 50,\r\n      stiffness: 400,\r\n    });\r\n\r\n    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {\r\n      clamp: false,\r\n    });\r\n\r\n    const [repetitions, setRepetitions] = useState(1);\r\n    const containerRef = useRef<HTMLDivElement>(null);\r\n    const textRef = useRef<HTMLSpanElement>(null);\r\n\r\n    useEffect(() => {\r\n      const calculateRepetitions = () => {\r\n        if (containerRef.current && textRef.current) {\r\n          const containerWidth = containerRef.current.offsetWidth;\r\n          const textWidth = textRef.current.offsetWidth;\r\n          const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;\r\n          setRepetitions(newRepetitions);\r\n        }\r\n      };\r\n\r\n      calculateRepetitions();\r\n\r\n      window.addEventListener(\"resize\", calculateRepetitions);\r\n      return () => window.removeEventListener(\"resize\", calculateRepetitions);\r\n    }, [children]);\r\n\r\n    const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);\r\n\r\n    const directionFactor = useRef<number>(1);\r\n    useAnimationFrame((t, delta) => {\r\n      let moveBy = directionFactor.current * baseVelocity * (delta / 1000);\r\n\r\n      if (velocityFactor.get() < 0) {\r\n        directionFactor.current = -1;\r\n      } else if (velocityFactor.get() > 0) {\r\n        directionFactor.current = 1;\r\n      }\r\n\r\n      moveBy += directionFactor.current * moveBy * velocityFactor.get();\r\n\r\n      baseX.set(baseX.get() + moveBy);\r\n    });\r\n\r\n    return (\r\n      <div\r\n        className=\"w-full overflow-hidden whitespace-nowrap\"\r\n        ref={containerRef}\r\n      >\r\n        <motion.div className={cn(\"inline-block\", className)} style={{ x }}>\r\n          {Array.from({ length: repetitions }).map((_, i) => (\r\n            <span key={i} ref={i === 0 ? textRef : null}>\r\n              {children}{\" \"}\r\n            </span>\r\n          ))}\r\n        </motion.div>\r\n      </div>\r\n    );\r\n  };\r\n\r\n  return (\r\n    <section className=\"relative w-full\">\r\n      <ParallaxText baseVelocity={default_velocity} className={className}>\r\n        {text}\r\n      </ParallaxText>\r\n      <ParallaxText baseVelocity={-default_velocity} className={className}>\r\n        {text}\r\n      </ParallaxText>\r\n    </section>\r\n  );\r\n};\r\n",
+      "path": "/components/ui/scrollbasedvelocity.tsx",
+      "target": "/components/ui/scrollbasedvelocity.tsx"
+    }
+  ]
+}

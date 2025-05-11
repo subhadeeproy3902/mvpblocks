@@ -1,0 +1,17 @@
+{
+  "name": "scrollbasedvelocity-demo",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/scrollbasedvelocity.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\r\n\r\nimport { VelocityScroll } from \"@/components/ui/scrollbasedvelocity\";\r\n\r\nexport default function ScrollBasedVelocityDemo() {\r\n  return (\r\n    <VelocityScroll\r\n      className=\"font-display text-center text-4xl font-bold -tracking-widest md:text-7xl md:leading-[5rem]\"\r\n      text=\"Welcome to Mvpblocks\"\r\n      default_velocity={5}\r\n    />\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/scrollbasedvelocity-demo.tsx",
+      "target": "/components/mvpblocks/scrollbasedvelocity-demo.tsx"
+    }
+  ]
+}

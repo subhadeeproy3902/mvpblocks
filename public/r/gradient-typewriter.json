@@ -8,7 +8,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import TextGenerateEffect from \"@/components/ui/typewriter\";\r\n\r\nexport default function GradientTypewriter() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <TextGenerateEffect\r\n        words=\"Gradient Text\"\r\n        className=\"text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent\"\r\n      />\r\n    </div>\r\n  );\r\n}",
+      "content": "import TextGenerateEffect from \"@/components/ui/typewriter\";\r\n\r\nexport default function GradientTypewriter() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <TextGenerateEffect\r\n        words=\"Gradient Text\"\r\n        className=\"text-6xl font-bold bg-gradient-to-r from-rose-400 to-red-600 bg-clip-text text-transparent\"\r\n      />\r\n    </div>\r\n  );\r\n}",
       "path": "/components/mvpblocks/text-animations/gradient-typewriter.tsx",
       "target": "/components/mvpblocks/gradient-typewriter.tsx"
     }
