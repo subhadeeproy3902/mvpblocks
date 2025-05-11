@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function CTA3 () {
   return (
-    <section className="py-24 md:py-32 px-4 md:px-6 relative">
+    <section className="py-24 px-4 md:px-6 relative">
       <div className="max-w-7xl mx-auto">
         <div className="bg-[#1A2649]/80 overflow-hidden shadow-2xl border border-[#1A3C6C]/30 rounded-2xl relative hover:border-[#2E9BFF]/30 hover:shadow-[0_0_30px_rgba(88,192,255,0.2)] transition-all duration-500">
           <div className="grid lg:grid-cols-2 gap-0 relative z-10">

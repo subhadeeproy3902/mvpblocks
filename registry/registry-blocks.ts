@@ -3,6 +3,36 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "cta-3",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/cta/cta-3.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/cta/cta-3"),
+    ),
+  },
+  {
+    name: "faq-2",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/faqs/faq-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/faqs/faq-2"),
+    ),
+  },
+  {
     name: "faq-1",
     type: "registry:block",
     dependencies: ["@radix-ui/react-accordion","framer-motion","lucide-react"],
