@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "faq-1",
+    type: "registry:block",
+    dependencies: ["@radix-ui/react-accordion","framer-motion","lucide-react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/accordion.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/faqs/faq-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/faqs/faq-1"),
+    ),
+  },
+  {
     name: "trading",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react"],

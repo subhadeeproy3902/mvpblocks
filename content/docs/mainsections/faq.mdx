@@ -3,3 +3,16 @@ title: FAQs
 description: FAQs are essential for addressing common questions and concerns users may have about your product or service. They help improve user experience by providing quick answers and reducing the need for customer support.
 root: mainsections
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## FAQ 1
+
+<ComponentPreview
+  name="faq-1"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('faq-1')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
