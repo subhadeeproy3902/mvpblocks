@@ -20,7 +20,7 @@ import { type ComponentProps, type FC } from "react";
 import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { metadataImage } from "@/lib/metadata-image";
-import { EditIcon } from "lucide-react";
+import { EditIcon, AlertCircle, Lightbulb } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
@@ -40,21 +40,76 @@ export default async function Page(props: {
   const lastModified = await getLastModified(page);
 
   const footer = (
-    <a
-      href={`https://github.com/subhadeeproy3902/mvpblocks/blob/main/${path}`}
-      target="_blank"
-      rel="noreferrer noopener"
-      className={cn(
-        buttonVariants({
-          variant: "secondary",
-          size: "sm",
-          className: "gap-1.5 text-xs",
-        }),
-      )}
-    >
-      <EditIcon className="size-3" />
-      Edit on Github
-    </a>
+    <div className="flex flex-col space-y-2">
+      <h3 className="font-medium mb-1">Contribute</h3>
+      <div className="flex flex-col space-y-2">
+        <a
+          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=bug&template=bug_report.md&title=[bug]:+${encodeURIComponent(`/docs/${params.slug?.join('/') || ''}`)}&body=${encodeURIComponent(`**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '${siteConfig.url}/docs/${params.slug?.join('/') || ''}'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Desktop (please complete the following information):**
+ - OS: [e.g. iOS]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+
+**Smartphone (please complete the following information):**
+ - Device: [e.g. iPhone6]
+ - OS: [e.g. iOS8.1]
+ - Browser [e.g. stock browser, safari]
+ - Version [e.g. 22]
+
+**Additional context**
+Add any other context about the problem here.`)}`}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <AlertCircle className="size-4" />
+          Report an issue
+        </a>
+        <a
+          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=enhancement&template=feature_request.md&title=[feat]:+New+feature+request&body=${encodeURIComponent(`**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.`)}`}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Lightbulb className="size-4" />
+          Request a feature
+        </a>
+        <a
+          href={`https://github.com/subhadeeproy3902/mvpblocks/blob/main/${path}`}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <EditIcon className="size-4" />
+          Edit this page
+        </a>
+      </div>
+    </div>
   );
 
   const { AutoTypeTable } = createTypeTable();
