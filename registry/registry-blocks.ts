@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "gradient-typewriter",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/typewriter.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/gradient-typewriter.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/gradient-typewriter"),
+    ),
+  },
+  {
     name: "typewriter-demo",
     type: "registry:block",
     dependencies: [],
