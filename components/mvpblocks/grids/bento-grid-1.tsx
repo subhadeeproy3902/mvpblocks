@@ -110,9 +110,6 @@ export default function BentoGrid1() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <h2 className="mb-12 bg-gradient-to-br from-secondary/50 via-foreground/80 to-secondary/50 bg-clip-text text-center text-4xl font-bold tracking-tight text-transparent md:text-5xl">
-        Bento Grids
-      </h2>
       <motion.div
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-6"
         variants={containerVariants}

@@ -24,7 +24,7 @@ import { extractSourceCode } from "@/lib/code";
   fromDocs={true}
 />
 
-## Usage
+### Usage
 
 ```jsx
 import BentoGrid1 from "@/components/mvpblocks/grids/bento-grid-1";
@@ -38,7 +38,7 @@ export default function MyPage() {
 }
 ```
 
-## Customization
+### Customization
 
 You can customize the Bento grid by modifying the items array in the component:
 
@@ -53,3 +53,13 @@ const items = [
   // Add more items as needed
 ];
 ```
+
+## Bento with details
+
+<ComponentPreview
+  name="bento-grid-2"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("bento-grid-2")).code}
+  lang="tsx"
+  fromDocs={true}
+/>

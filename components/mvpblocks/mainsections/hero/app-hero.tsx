@@ -264,7 +264,7 @@ export default function AppHero() {
 
             <motion.h1
               variants={itemVariants}
-              className="mb-6 bg-gradient-to-r from-foreground/70 via-foreground to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
+              className="mb-6 bg-gradient-to-r from-white/70 via-white to-slate-500/80 bg-clip-text text-3xl leading-tight text-transparent sm:text-4xl md:text-5xl lg:text-6xl"
             >
               The Bridge Between <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -347,7 +347,7 @@ export default function AppHero() {
 
               <Button
                 variant="outline"
-                className="rounded-full border-purple-500/30 bg-transparent text-white hover:bg-purple-500/10"
+                className="rounded-full border-purple-500/30 bg-transparent text-white hover:bg-purple-500/10 hover:text-white"
                 size="lg"
               >
                 View Demo

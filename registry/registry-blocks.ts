@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "bento-grid-2",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/card.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/grids/bento-grid-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/grids/bento-grid-2"),
+    ),
+  },
+  {
     name: "faq-3",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react","react"],
