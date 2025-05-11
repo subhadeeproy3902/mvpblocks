@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "faq-3",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/faqs/faq-3.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/faqs/faq-3"),
+    ),
+  },
+  {
     name: "scrollbasedvelocity-demo",
     type: "registry:block",
     dependencies: [],
