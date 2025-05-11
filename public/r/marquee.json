@@ -1,0 +1,48 @@
+{
+  "name": "marquee",
+  "type": "registry:ui",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "import { cn } from \"@/lib/utils\";\r\nimport { ComponentPropsWithoutRef } from \"react\";\r\n\r\ninterface MarqueeProps extends ComponentPropsWithoutRef<\"div\"> {\r\n  /**\r\n   * Optional CSS class name to apply custom styles\r\n   */\r\n  className?: string;\r\n  /**\r\n   * Whether to reverse the animation direction\r\n   * @default false\r\n   */\r\n  reverse?: boolean;\r\n  /**\r\n   * Whether to pause the animation on hover\r\n   * @default false\r\n   */\r\n  pauseOnHover?: boolean;\r\n  /**\r\n   * Content to be displayed in the marquee\r\n   */\r\n  children: React.ReactNode;\r\n  /**\r\n   * Whether to animate vertically instead of horizontally\r\n   * @default false\r\n   */\r\n  vertical?: boolean;\r\n  /**\r\n   * Number of times to repeat the content\r\n   * @default 4\r\n   */\r\n  repeat?: number;\r\n}\r\n\r\nexport function Marquee({\r\n  className,\r\n  reverse = false,\r\n  pauseOnHover = false,\r\n  children,\r\n  vertical = false,\r\n  repeat = 4,\r\n  ...props\r\n}: MarqueeProps) {\r\n  return (\r\n    <div\r\n      {...props}\r\n      className={cn(\r\n        \"group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]\",\r\n        {\r\n          \"flex-row\": !vertical,\r\n          \"flex-col\": vertical,\r\n        },\r\n        className,\r\n      )}\r\n    >\r\n      {Array(repeat)\r\n        .fill(0)\r\n        .map((_, i) => (\r\n          <div\r\n            key={i}\r\n            className={cn(\"flex shrink-0 justify-around [gap:var(--gap)]\", {\r\n              \"animate-marquee flex-row\": !vertical,\r\n              \"animate-marquee-vertical flex-col\": vertical,\r\n              \"group-hover:[animation-play-state:paused]\": pauseOnHover,\r\n              \"[animation-direction:reverse]\": reverse,\r\n            })}\r\n          >\r\n            {children}\r\n          </div>\r\n        ))}\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/ui/marquee.tsx",
+      "target": "/components/ui/marquee.tsx"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "animation": {
+            "marquee": "marquee var(--duration) linear infinite",
+            "marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+          },
+          "keyframes": {
+            "marquee": {
+              "from": {
+                "transform": "translateX(0)"
+              },
+              "to": {
+                "transform": "translateX(calc(-100% - var(--gap)))"
+              }
+            },
+            "marquee-vertical": {
+              "from": {
+                "transform": "translateY(0)"
+              },
+              "to": {
+                "transform": "translateY(calc(-100% - var(--gap)))"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

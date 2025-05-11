@@ -3,9 +3,49 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "marquee",
+    type: "registry:ui",
+    dependencies: ["react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/marquee.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(() =>
+      import("../components/ui/marquee").then((mod) => ({
+        default: mod.Marquee,
+      })),
+    ),
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            animation: {
+              marquee: "marquee var(--duration) linear infinite",
+              "marquee-vertical":
+                "marquee-vertical var(--duration) linear infinite",
+            },
+            keyframes: {
+              marquee: {
+                from: { transform: "translateX(0)" },
+                to: { transform: "translateX(calc(-100% - var(--gap)))" },
+              },
+              "marquee-vertical": {
+                from: { transform: "translateY(0)" },
+                to: { transform: "translateY(calc(-100% - var(--gap)))" },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     name: "scrollbasedvelocity",
     type: "registry:ui",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -13,14 +53,16 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/scrollbasedvelocity"),
+    component: React.lazy(() =>
+      import("../components/ui/scrollbasedvelocity").then((mod) => ({
+        default: mod.VelocityScroll,
+      })),
     ),
   },
   {
     name: "typewriter",
     type: "registry:ui",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion", "react"],
     registryDependencies: [],
     files: [
       {
@@ -28,38 +70,53 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/typewriter"),
-    ),
+    component: React.lazy(() => import("../components/ui/typewriter")),
   },
   {
     name: "pricing-card",
     type: "registry:ui",
-    dependencies: ["lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/payment-modal.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/radio-group.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/payment-modal.json",
+      "https://blocks.mvp-subha.me/r/dialog.json",
+      "https://blocks.mvp-subha.me/r/label.json",
+      "https://blocks.mvp-subha.me/r/radio-group.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/ui/pricing-card.tsx",
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/pricing-card").then(mod => ({ default: mod.PricingCard })),
+    component: React.lazy(() =>
+      import("../components/ui/pricing-card").then((mod) => ({
+        default: mod.PricingCard,
+      })),
     ),
   },
   {
     name: "payment-modal",
     type: "registry:ui",
     dependencies: ["react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/radio-group.json","https://blocks.mvp-subha.me/r/utils.json"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/dialog.json",
+      "https://blocks.mvp-subha.me/r/label.json",
+      "https://blocks.mvp-subha.me/r/radio-group.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/ui/payment-modal.tsx",
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/payment-modal").then(mod => ({ default: mod.PaymentModal })),
+    component: React.lazy(() =>
+      import("../components/ui/payment-modal").then((mod) => ({
+        default: mod.PaymentModal,
+      })),
     ),
   },
   {

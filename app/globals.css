@@ -259,18 +259,8 @@ code {
   }
 }
 
-@keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
-  }
-}
-
-.animate-marquee {
-  animation: marquee var(--duration) infinite linear;
+.shiki .highlighted {
+  background: hsl(var(--secondary)/50);
 }
 
 .spin {

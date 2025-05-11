@@ -6,6 +6,214 @@ root: mainsections
 
 import {ComponentPreview} from "@/components/preview/component-preview";
 import {extractSourceCode} from "@/lib/code";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Testimonials Marquee
+
+<ComponentPreview
+  name="testimonials-marquee"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('testimonials-marquee')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion lucide-react
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install framer-motion lucide-react
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add framer-motion lucide-react
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add framer-motion lucide-react
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    `components/ui/marquee.tsx`
+
+    ```tsx title="marquee.tsx"
+    import { cn } from "@/lib/utils";
+    import { ComponentPropsWithoutRef } from "react";
+
+    interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
+      /**
+       * Optional CSS class name to apply custom styles
+       */
+      className?: string;
+      /**
+       * Whether to reverse the animation direction
+       * @default false
+       */
+      reverse?: boolean;
+      /**
+       * Whether to pause the animation on hover
+       * @default false
+       */
+      pauseOnHover?: boolean;
+      /**
+       * Content to be displayed in the marquee
+       */
+      children: React.ReactNode;
+      /**
+       * Whether to animate vertically instead of horizontally
+       * @default false
+       */
+      vertical?: boolean;
+      /**
+       * Number of times to repeat the content
+       * @default 4
+       */
+      repeat?: number;
+    }
+
+    export function Marquee({
+      className,
+      reverse = false,
+      pauseOnHover = false,
+      children,
+      vertical = false,
+      repeat = 4,
+      ...props
+    }: MarqueeProps) {
+      return (
+        <div
+          {...props}
+          className={cn(
+            "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
+            {
+              "flex-row": !vertical,
+              "flex-col": vertical,
+            },
+            className,
+          )}
+        >
+          {Array(repeat)
+            .fill(0)
+            .map((_, i) => (
+              <div
+                key={i}
+                className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+                  "animate-marquee flex-row": !vertical,
+                  "animate-marquee-vertical flex-col": vertical,
+                  "group-hover:[animation-play-state:paused]": pauseOnHover,
+                  "[animation-direction:reverse]": reverse,
+                })}
+              >
+                {children}
+              </div>
+            ))}
+        </div>
+      );
+    }
+    ```
+  </Step>
+
+  <Step>
+  #### Update the import paths to match your project setup.
+  </Step>
+
+  <Step>
+  #### Update `tailwind.config.ts`
+
+  ```ts
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    theme: {
+      extend: {
+        animation: {
+          marquee: "marquee var(--duration) linear infinite", // [!code highlight]
+          "marquee-vertical": "marquee-vertical var(--duration) linear infinite", // [!code highlight]
+        }, // [!code highlight]
+        keyframes: { // [!code highlight]
+          marquee: { // [!code highlight]
+            from: { transform: "translateX(0)" }, // [!code highlight]
+            to: { transform: "translateX(calc(-100% - var(--gap)))" }, // [!code highlight]
+          }, // [!code highlight]
+          "marquee-vertical": { // [!code highlight]
+            from: { transform: "translateY(0)" }, // [!code highlight]
+            to: { transform: "translateY(calc(-100% - var(--gap)))" }, // [!code highlight]
+          }, // [!code highlight]
+        }, // [!code highlight]
+      },
+    },
+  };
+  ```
+  </Step>
+</Steps>
+
+### Props
+
+#### Highlight Props
+
+<TypeTable
+  type={{
+    children: {
+      description: "The content to be highlighted.",
+      type: "React.ReactNode",
+      default: "undefined",
+    },
+    className: {
+      description: "Optional CSS class for customizing the style and appearance of the highlight.",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
+
+#### TestimonialCard Props
+
+<TypeTable
+  type={{
+    name: {
+      description: "The name of the testimonial author.",
+      type: "string",
+      default: "undefined",
+    },
+    role: {
+      description: "The role or occupation of the testimonial author.",
+      type: "string",
+      default: "undefined",
+    },
+    img: {
+      description: "The URL or path to the image of the testimonial author.",
+      type: "string",
+      default: "undefined",
+    },
+    description: {
+      description: "The testimonial text or content.",
+      type: "React.ReactNode",
+      default: "undefined",
+    },
+    className: {
+      description: "Optional CSS class for customizing the style and appearance of the testimonial card.",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
+
 
 ## Testimonials Carousel
 
