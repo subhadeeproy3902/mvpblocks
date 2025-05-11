@@ -260,7 +260,7 @@ code {
 }
 
 .shiki .highlighted {
-  background: hsl(var(--secondary)/50);
+  background: hsl(var(--secondary)/50%);
 }
 
 .spin {
