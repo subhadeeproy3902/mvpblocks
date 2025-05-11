@@ -2,6 +2,7 @@ import { ArrowRight, Command } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import TextGenerateEffect from "../../text-animations/typewriter-1";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 export default function Trading() {
   return (
@@ -9,14 +10,14 @@ export default function Trading() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container relative px-4 py-20 max-w-6xl mx-auto"
+      className="container relative mx-auto max-w-6xl px-4 py-20"
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="w-fit mb-4 inline-block rounded-full px-4 py-1.5 bg-white/5 backdrop-blur-lg border"
-        style={{boxShadow: "0 0 10px 0 #e60a6430 inset"}}
+        className="mb-4 inline-block w-fit rounded-full border bg-white/5 px-4 py-1.5 backdrop-blur-lg"
+        style={{ boxShadow: "0 0 10px 0 #e60a6430 inset" }}
       >
         <span className="text-sm font-medium">
           <Command className="mr-2 inline-block h-4 w-4" />
@@ -52,7 +53,10 @@ export default function Trading() {
           transition={{ delay: 0.5 }}
           className="flex flex-col items-start gap-4 sm:flex-row"
         >
-          <Button size="lg" className="bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] rounded-full">
+          <Button
+            size="lg"
+            className="rounded-full bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]"
+          >
             Start Trading Now
           </Button>
           <Button size="lg" variant="link">
@@ -65,15 +69,26 @@ export default function Trading() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="relative mx-auto mt-20 max-w-5xl"
+        className="rounded-xl relative mx-auto mt-20 max-w-5xl overflow-hidden"
       >
-        <div className="glass overflow-hidden rounded-xl">
+        <div className="overflow-hidden rounded-xl">
           <img
-            src="/assets/trading-hero/db.png"
+            src="/assets/trading-hero/db.jpg"
             alt="CryptoTrade Dashboard"
             className="h-auto w-full"
           />
         </div>
+        <BorderBeam
+          duration={6}
+          size={400}
+          className="from-transparent via-red-500 to-transparent"
+        />
+        <BorderBeam
+          duration={6}
+          delay={3}
+          size={400}
+          className="from-transparent via-blue-500 to-transparent"
+        />
       </motion.div>
     </motion.section>
   );
