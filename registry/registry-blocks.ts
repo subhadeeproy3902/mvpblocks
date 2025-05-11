@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "geometric-hero",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/geometric-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/geometric-hero"),
+    ),
+  },
+  {
     name: "testimonials-marquee",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react"],

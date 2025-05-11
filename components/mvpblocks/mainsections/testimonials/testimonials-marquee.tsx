@@ -16,7 +16,7 @@ export function Highlight({
   return (
     <span
       className={cn(
-        "bg-blue-500/10 p-1 py-0.5 font-bold text-blue-500",
+        "bg-[#f0abfc] p-1 py-0.5 font-bold text-[#d946ef] dark:bg-[#f0abfc] dark:text-[#d946ef]",
         className,
       )}
     >
@@ -46,22 +46,22 @@ export function TestimonialCard({
     <div
       className={cn(
         "mb-4 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4",
-        // theme styles
-        "border border-border bg-card/50 shadow-sm",
-        // hover effect
-        "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
+        // light styles
+        "border border-neutral-200 bg-white",
+        // dark styles
+        "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
         className,
       )}
       {...props}
     >
-      <div className="select-none text-sm font-normal text-muted-foreground">
+      <div className="select-none text-sm font-normal text-neutral-700 dark:text-neutral-400">
         {description}
         <div className="flex flex-row py-1">
-          <Star className="size-4 fill-blue-500 text-blue-500" />
-          <Star className="size-4 fill-blue-500 text-blue-500" />
-          <Star className="size-4 fill-blue-500 text-blue-500" />
-          <Star className="size-4 fill-blue-500 text-blue-500" />
-          <Star className="size-4 fill-blue-500 text-blue-500" />
+          <Star className="size-4 fill-yellow-500 text-yellow-500" />
+          <Star className="size-4 fill-yellow-500 text-yellow-500" />
+          <Star className="size-4 fill-yellow-500 text-yellow-500" />
+          <Star className="size-4 fill-yellow-500 text-yellow-500" />
+          <Star className="size-4 fill-yellow-500 text-yellow-500" />
         </div>
       </div>
 
@@ -71,12 +71,12 @@ export function TestimonialCard({
           height={40}
           src={img || ""}
           alt={name}
-          className="size-10 rounded-full ring-1 ring-blue-500/20 ring-offset-2"
+          className="size-10 rounded-full ring-1 ring-border ring-offset-4"
         />
 
         <div>
-          <p className="font-medium text-foreground">{name}</p>
-          <p className="text-xs font-normal text-muted-foreground">{role}</p>
+          <p className="font-medium text-neutral-500">{name}</p>
+          <p className="text-xs font-normal text-neutral-400">{role}</p>
         </div>
       </div>
     </div>
@@ -84,213 +84,201 @@ export function TestimonialCard({
 }
 const testimonials = [
   {
-    name: "Jordan Hayes",
-    role: "CTO at Quantum Innovations",
-    img: "https://randomuser.me/api/portraits/men/22.jpg",
+    name: "Alex Rivera",
+    role: "UI/UX Lead at InnovateTech",
+    img: "https://randomuser.me/api/portraits/men/91.jpg",
     description: (
       <p>
-        NexaUI has completely transformed our development workflow.
+        Using EldoraUI has revolutionized our design process.
         <Highlight>
-          The component system saved us weeks of custom coding and design work.
+          Its reusable, animated components make it easy to deliver cutting-edge
+          designs.
         </Highlight>{" "}
-        Our team can now focus on business logic instead of UI details.
+        A must-have for any design team.
       </p>
     ),
   },
   {
-    name: "Maya Rodriguez",
-    role: "Lead Developer at Skyline Digital",
-    img: "https://randomuser.me/api/portraits/women/33.jpg",
+    name: "Samantha Lee",
+    role: "Frontend Engineer at NextGen Solutions",
+    img: "https://randomuser.me/api/portraits/women/12.jpg",
     description: (
       <p>
-        I was skeptical at first, but NexaUI proved me wrong.
+        EldoraUI&apos;s templates have drastically improved our development
+        speed.
         <Highlight>
-          The accessibility features and responsive design are top-notch.
+          We&apos;ve reduced project timelines by 70%, delivering high-quality
+          UIs effortlessly.
         </Highlight>{" "}
-        It&apos;s rare to find a framework that prioritizes both aesthetics and
-        functionality.
+        Highly recommend it to fellow developers.
       </p>
     ),
   },
   {
-    name: "Ethan Park",
-    role: "Startup Founder at Elevate Labs",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
+    name: "Raj Patel",
+    role: "Founder at Startup Studio",
+    img: "https://randomuser.me/api/portraits/men/45.jpg",
     description: (
       <p>
-        As a non-technical founder, NexaUI has been a game-changer for our MVP.
-        <Highlight>We launched three months ahead of schedule.</Highlight> The
-        modular components allowed us to iterate quickly based on user feedback.
+        As a startup founder, I need tools that help us grow fast without
+        sacrificing quality. EldoraUI&apos;s stunning designs and simple
+        integration have made it an essential part of our workflow.
+        <Highlight>Our clients love our modern interfaces.</Highlight>
       </p>
     ),
   },
   {
-    name: "Zoe Bennett",
-    role: "UX Architect at Fusion Systems",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Emily Chen",
+    role: "Product Designer at Global Systems",
+    img: "https://randomuser.me/api/portraits/women/83.jpg",
     description: (
       <p>
-        NexaUI&apos;s attention to detail is impressive.
+        EldoraUI&apos;s prebuilt components have made it so easy to create
+        intuitive and compliant designs.
         <Highlight>
-          The micro-interactions and animations create a polished experience.
+          It&apos;s perfect for tackling complex workflows with style.
         </Highlight>{" "}
-        It&apos;s become our go-to solution for client projects with tight
-        deadlines.
+        A must-have for any product designer.
       </p>
     ),
   },
   {
-    name: "Victor Nguyen",
-    role: "Product Lead at FinEdge",
-    img: "https://randomuser.me/api/portraits/men/55.jpg",
+    name: "Michael Brown",
+    role: "Creative Director at FinTech Innovations",
+    img: "https://randomuser.me/api/portraits/men/1.jpg",
     description: (
       <p>
-        Our financial dashboard needed a complete overhaul, and NexaUI
-        delivered.
+        EldoraUI&apos;s animations and design elements have elevated our fintech
+        app&apos;s user experience.
         <Highlight>
-          The data visualization components are both beautiful and functional.
+          The feedback on our new design is phenomenal.
         </Highlight>{" "}
-        User engagement has increased by 47% since the redesign.
+        It&apos;s a game-changer for user-centric applications.
       </p>
     ),
   },
   {
-    name: "Amara Johnson",
-    role: "Frontend Specialist at Nimbus Tech",
-    img: "https://randomuser.me/api/portraits/women/67.jpg",
+    name: "Linda Wu",
+    role: "Web Developer at LogiChain Solutions",
+    img: "https://randomuser.me/api/portraits/women/5.jpg",
     description: (
       <p>
-        The documentation for NexaUI is exceptional.
+        EldoraUI&apos;s component library has simplified web development for our
+        logistics dashboard.
         <Highlight>
-          I was able to implement complex UI patterns in just a few hours.
+          Building custom layouts has never been this efficient.
         </Highlight>{" "}
-        The TypeScript support is also a major productivity booster.
       </p>
     ),
   },
   {
-    name: "Leo Tanaka",
-    role: "Creative Technologist at Prism Agency",
-    img: "https://randomuser.me/api/portraits/men/78.jpg",
+    name: "Carlos Gomez",
+    role: "Digital Marketing Specialist at EcoTech",
+    img: "https://randomuser.me/api/portraits/men/14.jpg",
     description: (
       <p>
-        NexaUI has the perfect balance of flexibility and structure.
+        EldoraUI&apos;s responsive designs have helped us create marketing sites
+        that look amazing on every device.
         <Highlight>
-          We can maintain brand consistency while still creating unique
-          experiences.
+          It&apos;s revolutionized how we approach branding online.
         </Highlight>{" "}
-        Our clients are consistently impressed with the results.
       </p>
     ),
   },
   {
-    name: "Sophia Martinez",
-    role: "E-commerce Director at StyleHub",
-    img: "https://randomuser.me/api/portraits/women/89.jpg",
+    name: "Aisha Khan",
+    role: "E-commerce Product Manager at FashionForward",
+    img: "https://randomuser.me/api/portraits/women/56.jpg",
     description: (
       <p>
-        Our conversion rates have increased by 28% since implementing NexaUI.
+        EldoraUI&apos;s beautifully crafted components have completely
+        transformed our fashion storefront.
         <Highlight>
-          The checkout flow components are optimized for both desktop and
-          mobile.
+          Customers love the dynamic shopping experience.
         </Highlight>{" "}
-        The dark mode support was also a huge hit with our customers.
       </p>
     ),
   },
   {
-    name: "Aiden Wilson",
-    role: "Healthcare Solutions Architect",
-    img: "https://randomuser.me/api/portraits/men/92.jpg",
+    name: "Tom Chen",
+    role: "Healthcare App Designer at HealthTech Solutions",
+    img: "https://randomuser.me/api/portraits/men/18.jpg",
     description: (
       <p>
-        NexaUI&apos;s accessibility features were crucial for our healthcare
-        platform.
+        EldoraUI has made it easy to create user-friendly, accessible interfaces
+        for our healthcare apps.
         <Highlight>
-          We passed compliance requirements with minimal additional work.
+          It&apos;s a crucial part of our design system.
         </Highlight>{" "}
-        The form components are especially well-designed for complex data entry.
       </p>
     ),
   },
   {
-    name: "Olivia Chen",
-    role: "EdTech Product Manager at LearnSphere",
-    img: "https://randomuser.me/api/portraits/women/29.jpg",
+    name: "Sofia Patel",
+    role: "EdTech Founder at EduSafe Innovations",
+    img: "https://randomuser.me/api/portraits/women/73.jpg",
     description: (
       <p>
-        Our educational platform needed to work for students of all ages and
-        abilities.
+        EldoraUI&apos;s education-focused templates have doubled our
+        platform&apos;s usability.
         <Highlight>
-          NexaUI&apos;s inclusive design principles made this possible without
-          compromise.
+          It&apos;s tailor-made for addressing student and teacher needs.
         </Highlight>{" "}
-        The interactive components have significantly improved student
-        engagement.
       </p>
     ),
   },
 ];
 
-export default function Testimonials() {
+export function Testimonials() {
   return (
-    <section className="container relative py-10">
-      {/* Decorative elements */}
-      <div className="absolute -left-20 top-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
-      <div className="absolute -right-20 bottom-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h2 className="mb-4 text-center text-4xl font-bold leading-[1.2] tracking-tighter text-foreground md:text-5xl">
-          What Our Users Are Saying
+    <div className="relative z-10 h-[600px] w-full overflow-hidden rounded-lg border bg-background">
+      <section className="container py-10">
+        <h2 className="mb-4 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
+          What People Are Saying
         </h2>
-        <h3 className="mx-auto mb-8 max-w-lg text-balance text-center text-lg font-medium tracking-tight text-muted-foreground">
+        <h3 className="mx-auto mb-8 max-w-lg text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
           Don&apos;t just take our word for it. Here&apos;s what{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
-            real developers
+          <span className="bg-gradient bg-clip-text text-transparent">
+            real people
           </span>{" "}
           are saying about{" "}
-          <span className="font-semibold text-blue-500">NexaUI</span>
+          <span className="from-fg-onAccent text-purple-600">Eldora UI</span>
         </h3>
-      </motion.div>
-
-      <div className="relative mt-6 max-h-screen overflow-hidden">
-        <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
-          {Array(Math.ceil(testimonials.length / 3))
-            .fill(0)
-            .map((_, i) => (
-              <Marquee
-                vertical
-                key={i}
-                className={cn({
-                  "[--duration:60s]": i === 1,
-                  "[--duration:30s]": i === 2,
-                  "[--duration:70s]": i === 3,
-                })}
-              >
-                {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: Math.random() * 0.8,
-                      duration: 1.2,
-                    }}
-                  >
-                    <TestimonialCard {...card} />
-                  </motion.div>
-                ))}
-              </Marquee>
-            ))}
+        <div className="relative mt-6 max-h-screen overflow-hidden">
+          <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
+            {Array(Math.ceil(testimonials.length / 3))
+              .fill(0)
+              .map((_, i) => (
+                <Marquee
+                  vertical
+                  key={i}
+                  className={cn({
+                    "[--duration:60s]": i === 1,
+                    "[--duration:30s]": i === 2,
+                    "[--duration:70s]": i === 3,
+                  })}
+                >
+                  {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: Math.random() * 0.8,
+                        duration: 1.2,
+                      }}
+                    >
+                      <TestimonialCard {...card} />
+                    </motion.div>
+                  ))}
+                </Marquee>
+              ))}
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-background from-20%"></div>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-background from-20%"></div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-background from-20%"></div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-background from-20%"></div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
