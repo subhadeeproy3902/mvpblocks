@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "animated-ai-chat",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/chatbot-ui/animated-ai-chat.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/chatbot-ui/animated-ai-chat"),
+    ),
+  },
+  {
     name: "multi-step-form-preview",
     type: "registry:block",
     dependencies: [],
