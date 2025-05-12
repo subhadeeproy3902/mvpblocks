@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "sparkles-logo",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/sparkles.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/logo-cloud/sparkles-logo.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/logo-cloud/sparkles-logo"),
+    ),
+  },
+  {
     name: "animated-ai-chat",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react","react"],
