@@ -27,7 +27,7 @@ import { extractSourceCode } from "@/lib/code";
   fromDocs={true}
 />
 
->_ Apply the below CSS for the above hero:
+> Apply the below CSS for the above hero:
 
 ```css
 .neumorphic-button::after {
@@ -39,6 +39,16 @@ import { extractSourceCode } from "@/lib/code";
   @apply opacity-100;
 }
 ``` 
+
+## Notebook Hero
+
+<ComponentPreview
+  name="notebook"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("notebook")).code}
+  lang="tsx"
+  fromDocs={true}
+/>
 
 ## Geometric Hero
 
