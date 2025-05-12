@@ -300,7 +300,7 @@ export const GET = metadataImage.createAPI((page) => {
             color: "rgba(255, 255, 255, 0.85)",
             marginTop: "10px",
             textAlign: "center",
-            maxWidth: "600px",
+            maxWidth: "900px",
             lineHeight: 1.4,
             position: "relative",
             zIndex: 10,
