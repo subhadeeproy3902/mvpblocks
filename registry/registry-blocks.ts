@@ -870,19 +870,6 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: "phone-mockup",
-    type: "registry:block",
-    dependencies: ["framer-motion", "next-themes", "react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
-    files: [
-      {
-        path: "@/components/ui/phone-mockup.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(() => import("../components/ui/phone-mockup")),
-  },
-  {
     name: "pulsating-loader",
     type: "registry:block",
     dependencies: ["framer-motion"],
