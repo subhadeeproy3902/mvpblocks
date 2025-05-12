@@ -14,4 +14,11 @@ import { extractSourceCode } from "@/lib/code";
     lang="tsx"
     classNameComponentContainer="p-16 pt-24"
   />
+  <DrawerCodePreview
+    name="delete-project"
+    responsive
+    code={(await extractSourceCode("delete-project")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
 </div>

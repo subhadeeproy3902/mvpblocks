@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "delete-project",
+    type: "registry:block",
+    dependencies: ["lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/dialog.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/modals/delete-project.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/modals/delete-project"),
+    ),
+  },
+  {
     name: "toc-dialog",
     type: "registry:block",
     dependencies: ["react"],
