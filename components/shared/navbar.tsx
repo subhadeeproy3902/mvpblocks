@@ -85,7 +85,7 @@ export function NavbarDemo() {
               variant="gradient"
               className="w-full"
             >
-              <Link href="/">Github</Link>
+              <Link href="https://github.com/subhadeeproy3902/mvpblocks">Github</Link>
             </NavbarButton>
           </div>
         </MobileNavMenu>
