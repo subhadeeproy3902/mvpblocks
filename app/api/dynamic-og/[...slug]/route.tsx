@@ -296,7 +296,7 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Description with enhanced styling */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 36,
             color: "rgba(255, 255, 255, 0.85)",
             marginTop: "10px",
             textAlign: "center",
