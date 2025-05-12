@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "toc-dialog",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/dialog.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/modals/toc-dialog.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/modals/toc-dialog"),
+    ),
+  },
+  {
     name: "working-chatbot",
     type: "registry:block",
     dependencies: ["lucide-react","react","react-markdown","sonner"],

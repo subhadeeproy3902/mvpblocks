@@ -2,3 +2,16 @@
 title: Modals
 description: Modals are overlay elements that display content on top of the main interface. They are commonly used for alerts, confirmations, and additional information without navigating away from the current page.
 ---
+
+import { DrawerCodePreview } from "@/components/preview/drawer-preview";
+import { extractSourceCode } from "@/lib/code";
+
+<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+  <DrawerCodePreview
+    name="toc-dialog"
+    responsive
+    code={(await extractSourceCode("toc-dialog")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
+</div>
