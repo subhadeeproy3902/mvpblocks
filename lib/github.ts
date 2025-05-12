@@ -11,7 +11,6 @@ export const getLastModified = async (page: { file: { path: string } }) => {
 
     return lastEdit;
   } catch (error) {
-    console.error("Error fetching last modified:", error);
     return null;
   }
 };

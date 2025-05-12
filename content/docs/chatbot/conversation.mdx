@@ -5,8 +5,292 @@ description: Interactive chatbot conversation designs for engaging user interact
 
 import {ComponentPreview} from "@/components/preview/component-preview";
 import {extractSourceCode} from "@/lib/code";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
 
-## Conversation 1
+## Working Chatbot
+
+<ComponentPreview
+  name="working-chatbot"
+  code={(await extractSourceCode('working-chatbot')).code}
+  lang="tsx"
+  className="min-h-screen"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install react-markdown sonner ai @ai-sdk/groq
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install react-markdown sonner ai @ai-sdk/groq
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add react-markdown sonner ai @ai-sdk/groq
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add react-markdown sonner ai @ai-sdk/groq
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Make a `api` folder in your `app` directory and add a `chat` folder inside it.
+
+    ```txt
+    app/
+    └── api/
+        └── chat/
+            └── route.ts
+    ```
+
+    `app/api/chat/route.ts`
+
+    ```tsx title="route.ts"
+    import { groq } from "@ai-sdk/groq";
+    import { smoothStream, streamText } from "ai";
+
+    export const dynamic = "force-dynamic";
+    export const maxDuration = 30;
+
+    export async function POST(req: Request) {
+      try {
+        const { messages } = await req.json();
+
+        const result = streamText({
+          // Add your desired model here
+          model: groq("meta-llama/llama-4-scout-17b-16e-instruct"), // [!code highlight]
+          messages,
+          maxSteps: 6,
+          maxRetries: 3,
+          maxTokens: 4096,
+          experimental_transform: smoothStream({
+            // Chunking can be "word" or "line"
+            chunking: "word", // [!code highlight]
+          }),
+        });
+        return result.toDataStreamResponse();
+      } catch (error) {
+        console.error("Unhandled error in chat API:", error);
+        throw error;
+      }
+    }
+    ```
+
+    > Refer: [Vercel AI GROQ SDK](https://ai-sdk.dev/providers/ai-sdk-providers/groq) for more information on chunking.
+
+  </Step>
+
+  <Step>
+    #### Add your Api Key
+
+    ```txt title=".env"
+    GROQ_API_KEY=your-groq-api-key
+    ```
+  </Step>
+
+  <Step>
+    #### Change the existing `api` route in the component from `api/demo-chat` to `api/chat`.
+
+    ```diff
+    - import { useChat } from "ai";
+    + import { useChat } from "ai/react";
+
+    - const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    -   api: "/api/demo-chat",
+    - });
+    + const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    +   api: "/api/chat",
+    + });
+    ```
+  </Step>
+
+  <Step>
+    #### Add markdown css
+
+    ```css title="globals.css"
+    /* Markdown CSS */
+    /* Headings */
+    .markdown-body h1 {
+      font-size: 2.5rem; /* 40px */
+    }
+
+    .markdown-body h2 {
+      font-size: 2rem; /* 32px */
+    }
+
+    .markdown-body h3 {
+      font-size: 1.75rem; /* 28px */
+    }
+
+    .markdown-body h4 {
+      font-size: 1.5rem; /* 24px */
+    }
+
+    .markdown-body h5 {
+      font-size: 1.25rem; /* 20px */
+    }
+
+    .markdown-body h6 {
+      font-size: 1rem; /* 16px */
+    }
+
+    /* Headings */
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6 {
+      font-weight: 600;
+      line-height: 1.15;
+      color: #fff0e8;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    /* Paragraphs */
+    .markdown-body p {
+      margin-bottom: 10px;
+    }
+
+    /* Links */
+    .markdown-body a {
+      @apply text-rose-500;
+      text-decoration: none;
+    }
+
+    .markdown-body a:hover {
+      text-decoration: underline;
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+      padding-left: 20px;
+    }
+    .markdown-body ul li {
+      list-style-type: disc;
+    }
+
+    .markdown-body blockquote {
+      border-left: 4px solid #955d73;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 15px;
+      color: #a33d73;
+    }
+
+    .markdown-body pre {
+      background-color: #464646dc;
+      border-left: 3px solid #e60a64;
+      color: white;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    .markdown-body code {
+      padding: 2px 4px;
+      font-size: 90%;
+      border-radius: 3px;
+    }
+
+    /* Tables */
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .markdown-body th,
+    .markdown-body td {
+      border: 1px solid hsl(0, 0%, 32%);
+      padding: 8px;
+      text-align: left;
+    }
+
+    .markdown-body th {
+      background-color: #626161;
+    }
+    ```
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    `hooks/use-auto-resize-textarea".ts`
+
+    ```tsx title="use-auto-resize-textarea".ts"
+    "use client";
+
+    import { useEffect, useRef, useCallback } from "react";
+
+    interface UseAutoResizeTextareaProps {
+      minHeight: number;
+      maxHeight?: number;
+    }
+
+    export function useAutoResizeTextarea({
+      minHeight,
+      maxHeight,
+    }: UseAutoResizeTextareaProps) {
+      const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+      const adjustHeight = useCallback(
+        (reset?: boolean) => {
+          const textarea = textareaRef.current;
+          if (!textarea) return;
+
+          if (reset) {
+            textarea.style.height = `${minHeight}px`;
+            return;
+          }
+
+          // Temporarily shrink to get the right scrollHeight
+          textarea.style.height = `${minHeight}px`;
+
+          // Calculate new height
+          const newHeight = Math.max(
+            minHeight,
+            Math.min(textarea.scrollHeight, maxHeight ?? Number.POSITIVE_INFINITY),
+          );
+
+          textarea.style.height = `${newHeight}px`;
+        },
+        [minHeight, maxHeight],
+      );
+
+      useEffect(() => {
+        // Set initial height
+        const textarea = textareaRef.current;
+        if (textarea) {
+          textarea.style.height = `${minHeight}px`;
+        }
+      }, [minHeight]);
+
+      // Adjust height on window resize
+      useEffect(() => {
+        const handleResize = () => adjustHeight();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, [adjustHeight]);
+
+      return { textareaRef, adjustHeight };
+    }
+    ```
+  </Step>
+</Steps>
+
+## Conversation Example
 
 <ComponentPreview
   name="conversation1"

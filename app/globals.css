@@ -348,3 +348,105 @@ code {
 .neumorphic-button:hover::after {
   @apply opacity-100;
 }
+
+/* Markdown CSS */
+/* Headings */
+.markdown-body h1 {
+  font-size: 2.5rem; /* 40px */
+}
+
+.markdown-body h2 {
+  font-size: 2rem; /* 32px */
+}
+
+.markdown-body h3 {
+  font-size: 1.75rem; /* 28px */
+}
+
+.markdown-body h4 {
+  font-size: 1.5rem; /* 24px */
+}
+
+.markdown-body h5 {
+  font-size: 1.25rem; /* 20px */
+}
+
+.markdown-body h6 {
+  font-size: 1rem; /* 16px */
+}
+
+/* Headings */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff0e8;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* Paragraphs */
+.markdown-body p {
+  margin-bottom: 10px;
+}
+
+/* Links */
+.markdown-body a {
+  @apply text-rose-500;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 20px;
+}
+.markdown-body ul li {
+  list-style-type: disc;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid #955d73;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 15px;
+  color: #a33d73;
+}
+
+.markdown-body pre {
+  background-color: #464646dc;
+  border-left: 3px solid #e60a64;
+  color: white;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.markdown-body code {
+  padding: 2px 4px;
+  font-size: 90%;
+  border-radius: 3px;
+}
+
+/* Tables */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid hsl(0, 0%, 32%);
+  padding: 8px;
+  text-align: left;
+}
+
+.markdown-body th {
+  background-color: #626161;
+}

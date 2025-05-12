@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "working-chatbot",
+    type: "registry:block",
+    dependencies: ["lucide-react","react","react-markdown","sonner"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/textarea.json","https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/chatbot-ui/working-chatbot.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/chatbot-ui/working-chatbot"),
+    ),
+  },
+  {
     name: "notebook",
     type: "registry:block",
     dependencies: ["lucide-react"],

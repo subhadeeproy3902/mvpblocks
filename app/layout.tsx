@@ -5,7 +5,7 @@ import "./scrollbar.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PreviewPageDetector } from "@/components/preview-page-detector";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -90,33 +90,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Toaster />
+          <Toaster richColors />
         </ThemeProvider>
         <SpeedInsights />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Performance monitoring
-              const perfObserver = new PerformanceObserver((list) => {
-                list.getEntries().forEach((entry) => {
-                  if (entry.entryType === 'largest-contentful-paint') {
-                    console.log('LCP:', entry.startTime);
-                  }
-                  if (entry.entryType === 'layout-shift') {
-                    console.log('CLS contribution:', entry.value);
-                  }
-                  if (entry.entryType === 'first-input') {
-                    console.log('FID:', entry.processingStart - entry.startTime);
-                  }
-                });
-              });
-
-              perfObserver.observe({ type: 'largest-contentful-paint', buffered: true });
-              perfObserver.observe({ type: 'layout-shift', buffered: true });
-              perfObserver.observe({ type: 'first-input', buffered: true });
-            `,
-          }}
-        />
       </body>
     </html>
   );

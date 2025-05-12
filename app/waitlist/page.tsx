@@ -72,7 +72,6 @@ export default function WaitlistPage() {
         setError(data.error);
       }
     } catch (error) {
-      console.error(error);
       setError("Error submitting email. Please try again.");
     } finally {
       setEmail("");

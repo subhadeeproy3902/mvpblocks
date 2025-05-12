@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { Send, Mic, User, Bot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -89,11 +89,6 @@ export default function Conversation1() {
   const [messages, setMessages] = useState(initialMessages)
   const [input, setInput] = useState("")
   const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages])
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault()
@@ -160,8 +155,6 @@ export default function Conversation1() {
                 <span>AI is typing...</span>
               </div>
             )}
-
-            <div ref={messagesEndRef} />
           </div>
 
           <div className="border-t border-border p-4">
