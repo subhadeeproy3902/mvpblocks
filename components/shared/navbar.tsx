@@ -14,6 +14,7 @@ import {
 import { useState } from "react";
 import { ModeToggle } from "../ui/mode-toggle";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export function NavbarDemo() {
   const navItems = [
@@ -81,11 +82,11 @@ export function NavbarDemo() {
           ))}
           <div className="flex w-full flex-col gap-4">
             <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
               variant="gradient"
               className="w-full"
+              onClick={() => redirect("https://github.com/subhadeeproy3902/mvpblocks")}
             >
-              <Link href="https://github.com/subhadeeproy3902/mvpblocks">Github</Link>
+              Github
             </NavbarButton>
           </div>
         </MobileNavMenu>
