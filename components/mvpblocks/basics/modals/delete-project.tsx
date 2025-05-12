@@ -18,7 +18,7 @@ import { Label } from "@/components/ui/label";
 
 const PROJECT_NAME = "Mvpblocks";
 
-export default function Component() {
+export default function DeleteProject() {
   const id = useId();
   const [inputValue, setInputValue] = useState("");
 

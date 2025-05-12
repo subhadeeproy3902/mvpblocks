@@ -13,7 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export default function Component() {
+export default function TocDialog() {
   const [hasReadToBottom, setHasReadToBottom] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 

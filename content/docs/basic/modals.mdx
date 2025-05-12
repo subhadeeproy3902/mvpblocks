@@ -21,4 +21,11 @@ import { extractSourceCode } from "@/lib/code";
     lang="tsx"
     classNameComponentContainer="p-16 pt-24"
   />
+  <DrawerCodePreview
+    name="signup-modal"
+    responsive
+    code={(await extractSourceCode("signup-modal")).code}
+    lang="tsx"
+    classNameComponentContainer="p-16 pt-24"
+  />
 </div>
