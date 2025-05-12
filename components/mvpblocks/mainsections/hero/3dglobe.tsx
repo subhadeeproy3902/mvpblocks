@@ -89,7 +89,7 @@ export default function Globe3D() {
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
             <Image
-              src="https://i.postimg.cc/gchKhZm1/2a6fe555-3b84-4d92-916e-70f34b15331b.png"
+              src="/lunexa-db.png"
               alt="Lunexa Dashboard"
               width={1920}
               height={1080}
