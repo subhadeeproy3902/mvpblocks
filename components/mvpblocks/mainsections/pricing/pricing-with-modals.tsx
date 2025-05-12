@@ -38,7 +38,7 @@ const plans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen py-20 px-4 relative">
+    <div className="min-h-screen py-20 px-4 relative w-full">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
