@@ -18,7 +18,7 @@ export default function CTA1() {
             width="1840"
             height="694"
             className="absolute top-0"
-            src="/assets/cta/grid.svg"
+            src="https://blocks.mvp-subha.me/assets/cta/grid.svg"
           />
           <div className="relative isolate overflow-hidden px-4 py-12 sm:px-24">
             <p className="w-fit rounded-xl bg-white px-4 py-1 text-center text-base font-semibold uppercase leading-7 text-black lg:text-left">
