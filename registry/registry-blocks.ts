@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "multi-step-form-preview",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/multi-step-form.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/progress.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/forms/multi-step-form-preview.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/forms/multi-step-form-preview"),
+    ),
+  },
+  {
     name: "signin-modal",
     type: "registry:block",
     dependencies: ["react"],

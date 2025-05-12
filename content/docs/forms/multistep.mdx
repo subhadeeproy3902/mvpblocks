@@ -3,3 +3,411 @@ title: Multi Step Forms
 description: Multi-step forms are used to break down long forms into smaller, manageable sections. They improve user experience by guiding users through the form completion process step by step.
 root: forms
 ---
+
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Features
+
+- **Step-by-Step Progress**: Visual indicators show users their progress through the form
+- **Form Validation**: Built-in validation using React Hook Form and Zod
+- **Smooth Animations**: Transitions between steps with Framer Motion
+- **Responsive Design**: Works on all screen sizes
+- **Customizable**: Easily modify steps, fields, and validation rules
+
+## Preview
+
+<ComponentPreview
+  name="multi-step-form"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('multi-step-form')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+      ```bash
+      npm install framer-motion react-hook-form zod @hookform/resolvers
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion react-hook-form zod @hookform/resolvers
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion react-hook-form zod @hookform/resolvers
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion react-hook-form zod @hookform/resolvers
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    `components/ui/multi-step-form.tsx`
+
+    ```tsx title="multi-step-form.tsx"
+    "use client";
+
+    import React, { useState } from "react";
+    import { motion, AnimatePresence } from "framer-motion";
+    import { z } from "zod";
+    import { useForm } from "react-hook-form";
+    import { zodResolver } from "@hookform/resolvers/zod";
+    import { cn } from "@/lib/utils";
+    import { Button } from "@/components/ui/button";
+    import { Input } from "@/components/ui/input";
+    import { Label } from "@/components/ui/label";
+    import { Progress } from "@/components/ui/progress";
+    import { CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+
+    // Define the form schema for each step
+    const personalInfoSchema = z.object({
+      firstName: z.string().min(2, "First name must be at least 2 characters"),
+      lastName: z.string().min(2, "Last name must be at least 2 characters"),
+      email: z.string().email("Please enter a valid email address"),
+    });
+
+    const addressSchema = z.object({
+      address: z.string().min(5, "Address must be at least 5 characters"),
+      city: z.string().min(2, "City must be at least 2 characters"),
+      zipCode: z.string().min(5, "Zip code must be at least 5 characters"),
+    });
+
+    const accountSchema = z.object({
+      username: z.string().min(3, "Username must be at least 3 characters"),
+      password: z
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+        .regex(/[0-9]/, "Password must contain at least one number"),
+      confirmPassword: z.string(),
+    }).refine(data => data.password === data.confirmPassword, {
+      message: "Passwords do not match",
+      path: ["confirmPassword"],
+    });
+
+    // Combine all schemas for the final form data
+    const formSchema = z.object({
+      ...personalInfoSchema.shape,
+      ...addressSchema.shape,
+      ...accountSchema._def.schema.shape,
+    });
+
+    type FormData = z.infer<typeof formSchema>;
+
+    interface MultiStepFormProps {
+      className?: string;
+      onSubmit?: (data: FormData) => void;
+    }
+
+    export default function MultiStepForm({ className, onSubmit }: MultiStepFormProps) {
+      const [step, setStep] = useState(0);
+      const [formData, setFormData] = useState<Partial<FormData>>({});
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [isComplete, setIsComplete] = useState(false);
+
+      // Define the steps
+      const steps = [
+        {
+          id: "personal",
+          title: "Personal Information",
+          description: "Tell us about yourself",
+          schema: personalInfoSchema,
+          fields: [
+            { name: "firstName", label: "First Name", type: "text", placeholder: "John" },
+            { name: "lastName", label: "Last Name", type: "text", placeholder: "Doe" },
+            { name: "email", label: "Email", type: "email", placeholder: "john.doe@example.com" },
+          ],
+        },
+        {
+          id: "address",
+          title: "Address Information",
+          description: "Where do you live?",
+          schema: addressSchema,
+          fields: [
+            { name: "address", label: "Address", type: "text", placeholder: "123 Main St" },
+            { name: "city", label: "City", type: "text", placeholder: "New York" },
+            { name: "zipCode", label: "Zip Code", type: "text", placeholder: "10001" },
+          ],
+        },
+        {
+          id: "account",
+          title: "Account Setup",
+          description: "Create your account",
+          schema: accountSchema,
+          fields: [
+            { name: "username", label: "Username", type: "text", placeholder: "johndoe" },
+            { name: "password", label: "Password", type: "password", placeholder: "••••••••" },
+            { name: "confirmPassword", label: "Confirm Password", type: "password", placeholder: "••••••••" },
+          ],
+        },
+      ];
+
+      // Get the current step schema
+      const currentStepSchema = steps[step].schema;
+
+      // Setup form with the current step schema
+      const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+      } = useForm<any>({
+        resolver: zodResolver(currentStepSchema as z.ZodType<any>),
+        defaultValues: formData,
+      });
+
+      // Calculate progress percentage
+      const progress = ((step + 1) / steps.length) * 100;
+
+      // Handle next step
+      const handleNextStep = (data: any) => {
+        const updatedData = { ...formData, ...data };
+        setFormData(updatedData);
+
+        if (step < steps.length - 1) {
+          setStep(step + 1);
+          // Reset form with the updated data for the next step
+          reset(updatedData);
+        } else {
+          // Final step submission
+          setIsSubmitting(true);
+          setTimeout(() => {
+            if (onSubmit) {
+              onSubmit(updatedData as FormData);
+            }
+            setIsComplete(true);
+            setIsSubmitting(false);
+          }, 1500);
+        }
+      };
+
+      // Handle previous step
+      const handlePrevStep = () => {
+        if (step > 0) {
+          setStep(step - 1);
+        }
+      };
+
+      // Animation variants
+      const variants = {
+        hidden: { opacity: 0, x: 50 },
+        visible: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -50 },
+      };
+
+      return (
+        <div className={cn("w-full max-w-md mx-auto p-6 rounded-lg shadow-lg bg-card/40", className)}>
+          {!isComplete ? (
+            <>
+              {/* Progress bar */}
+              <div className="mb-8">
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-medium">Step {step + 1} of {steps.length}</span>
+                  <span className="text-sm font-medium">{Math.round(progress)}%</span>
+                </div>
+                <Progress value={progress} className="h-2" />
+              </div>
+
+              {/* Step indicators */}
+              <div className="flex justify-between mb-8">
+                {steps.map((s, i) => (
+                  <div key={s.id} className="flex flex-col items-center">
+                    <div
+                      className={cn(
+                        "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold",
+                        i < step
+                          ? "bg-primary text-primary-foreground"
+                          : i === step
+                          ? "bg-primary text-primary-foreground ring-2 ring-primary/30"
+                          : "bg-secondary text-secondary-foreground"
+                      )}
+                    >
+                      {i < step ? <CheckCircle2 className="h-4 w-4" /> : i + 1}
+                    </div>
+                    <span className="text-xs mt-1 hidden sm:block">{s.title}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Form */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={step}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={variants}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="mb-6">
+                    <h2 className="text-xl font-bold">{steps[step].title}</h2>
+                    <p className="text-sm text-muted-foreground">{steps[step].description}</p>
+                  </div>
+
+                  <form onSubmit={handleSubmit(handleNextStep)} className="space-y-4">
+                    {steps[step].fields.map((field) => (
+                      <div key={field.name} className="space-y-2">
+                        <Label htmlFor={field.name}>{field.label}</Label>
+                        <Input
+                          id={field.name}
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          {...register(field.name as any)}
+                          className={cn(errors[field.name as string] && "border-destructive")}
+                        />
+                        {errors[field.name as string] && (
+                          <p className="text-sm text-destructive">
+                            {errors[field.name as string]?.message as string}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+
+                    <div className="flex justify-between pt-4">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={handlePrevStep}
+                        disabled={step === 0}
+                        className={cn(step === 0 && "invisible")}
+                      >
+                        <ArrowLeft className="mr-2 h-4 w-4" /> Back
+                      </Button>
+                      <Button type="submit" disabled={isSubmitting}>
+                        {step === steps.length - 1 ? (
+                          isSubmitting ? "Submitting..." : "Submit"
+                        ) : (
+                          <>
+                            Next <ArrowRight className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </form>
+                </motion.div>
+              </AnimatePresence>
+            </>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-center py-10"
+            >
+              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
+                <CheckCircle2 className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Form Submitted!</h2>
+              <p className="text-muted-foreground mb-6">
+                Thank you for completing the form. We&apos;ll be in touch soon.
+              </p>
+              <Button onClick={() => {
+                setStep(0);
+                setFormData({});
+                setIsComplete(false);
+                reset({});
+              }}>
+                Start Over
+              </Button>
+            </motion.div>
+          )}
+        </div>
+      );
+    }
+    ```
+  </Step>
+</Steps>
+
+### Usage
+
+The multi-step form component can be customized to fit your specific needs. Here's how to use it:
+
+```tsx
+<MultiStepForm
+  className="max-w-md mx-auto"
+  onSubmit={(data) => {
+    // Handle form submission
+    console.log("Form data:", data);
+  }}
+/>
+```
+
+### Customization
+
+You can customize the form steps, fields, and validation rules by modifying the component code. The form is built using React Hook Form and Zod for validation, making it easy to add or modify fields and validation rules.
+
+#### Adding Custom Steps
+
+To add or modify steps, update the `steps` array in the component:
+
+```tsx
+const steps = [
+  {
+    id: "personal",
+    title: "Personal Information",
+    description: "Tell us about yourself",
+    schema: personalInfoSchema,
+    fields: [
+      { name: "firstName", label: "First Name", type: "text", placeholder: "John" },
+      { name: "lastName", label: "Last Name", type: "text", placeholder: "Doe" },
+      { name: "email", label: "Email", type: "email", placeholder: "john.doe@example.com" },
+    ],
+  },
+  // Add more steps here
+];
+```
+
+#### Customizing Validation
+
+The form uses Zod for validation. You can customize the validation rules by modifying the schema for each step:
+
+```tsx
+const personalInfoSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+});
+```
+
+### Accessibility
+
+The multi-step form is built with accessibility in mind:
+
+- Proper form labels and ARIA attributes
+- Keyboard navigation support
+- Error messages for form validation
+- Focus management between steps
+
+### Props
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional CSS classes to apply to the form container.",
+      type: "string",
+      default: "undefined",
+    },
+    onSubmit: {
+      description: "Callback function called when the form is submitted.",
+      type: "(data: FormData) => void",
+      default: "undefined",
+    },
+  }}
+/>

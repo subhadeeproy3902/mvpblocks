@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "multi-step-form",
+    type: "registry:ui",
+    dependencies: ["framer-motion","lucide-react","react","react-hook-form","zod"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/progress.json"],
+    files: [
+      {
+        path: "@/components/ui/multi-step-form.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/multi-step-form"),
+    ),
+  },
+  {
     name: "marquee",
     type: "registry:ui",
     dependencies: ["react"],
