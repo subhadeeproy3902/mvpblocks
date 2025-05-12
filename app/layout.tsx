@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PreviewPageDetector } from "@/components/preview-page-detector";
 import { Toaster } from "@/components/ui/sonner";
+import Clarity from "@/components/Clarity";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -82,6 +83,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={`${dm.className}`}>
+        {process.env.NODE_ENV === "production" ? <Clarity /> : null}
         <PreviewPageDetector />
         <ThemeProvider
           attribute="class"
