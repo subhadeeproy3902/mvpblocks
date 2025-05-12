@@ -3,6 +3,36 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "mockup-hero",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","next-themes","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/phone-mockup.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/mockup-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/mockup-hero"),
+    ),
+  },
+  {
+    name: "app-hero",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/app-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/app-hero"),
+    ),
+  },
+  {
     name: "contact-us-2",
     type: "registry:block",
     author: "ParnaRoyChowdhury777",
@@ -491,25 +521,6 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: "app-hero",
-    type: "registry:block",
-    author: "Xeven777",
-    dependencies: ["framer-motion", "lucide-react"],
-    registryDependencies: [
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/utils.json",
-    ],
-    files: [
-      {
-        path: "@/components/mvpblocks/mainsections/hero/app-hero.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/hero/app-hero"),
-    ),
-  },
-  {
     name: "bento-grid-1",
     type: "registry:block",
     author: "Xeven777",
@@ -838,24 +849,6 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/mvpblocks/forms/login-form1"),
-    ),
-  },
-  {
-    name: "mockup-hero",
-    type: "registry:block",
-    dependencies: ["framer-motion", "lucide-react", "next-themes", "react"],
-    registryDependencies: [
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/utils.json",
-    ],
-    files: [
-      {
-        path: "@/components/mvpblocks/mainsections/hero/mockup-hero.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/mainsections/hero/mockup-hero"),
     ),
   },
   {

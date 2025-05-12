@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "phone-mockup",
+    type: "registry:ui",
+    dependencies: ["framer-motion","next-themes","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/phone-mockup.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/phone-mockup"),
+    ),
+  },
+  {
     name: "multi-step-form",
     type: "registry:ui",
     dependencies: ["framer-motion","lucide-react","react","react-hook-form","zod"],
