@@ -25,7 +25,7 @@ export default function DeleteProject() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Delete project</Button>
+        <Button variant="destructive">Delete project</Button>
       </DialogTrigger>
       <DialogContent>
         <div className="flex flex-col items-center gap-2">
