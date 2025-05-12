@@ -3,5 +3,5 @@ import { source } from "@/lib/source";
 
 export const metadataImage = createMetadataImage({
   source,
-  imageRoute: "og",
+  imageRoute: "/api/dynamic-og",
 });
