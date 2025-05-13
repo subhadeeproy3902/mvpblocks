@@ -14,6 +14,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/waitlist", request.url), 307);
   }
 
+  // If launched is true then waitlist cant be accessed
+  if (
+    launched &&
+    pathname === "/waitlist" &&
+    process.env.NODE_ENV !== "development"
+  ) {
+    return NextResponse.redirect(new URL("/", request.url), 307);
+  }
+
   return NextResponse.next();
 }
 
