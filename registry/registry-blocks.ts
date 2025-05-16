@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "congusted-pricing",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react","@number-flow/react","canvas-confetti"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/switch.json","https://blocks.mvp-subha.me/r/use-media-query.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/congusted-pricing.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/congusted-pricing"),
+    ),
+  },
+  {
     name: "mockup-hero",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react","next-themes","react"],
