@@ -3,6 +3,36 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "waitlist",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","next-themes","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/particles.json","https://blocks.mvp-subha.me/r/spotlight.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/pages/waitlist.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/pages/waitlist"),
+    ),
+  },
+  {
+    name: "basic-pagination",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/pagination.json","https://blocks.mvp-subha.me/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/pagination/basic-pagination.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/pagination/basic-pagination"),
+    ),
+  },
+  {
     name: "congusted-pricing",
     type: "registry:block",
     dependencies: ["framer-motion","lucide-react","react","@number-flow/react","canvas-confetti"],

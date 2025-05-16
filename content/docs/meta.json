@@ -10,6 +10,7 @@
     "basic",
     "required",
     "mainsections",
+    "pages",
     "forms",
     "cards",
     "chatbot",

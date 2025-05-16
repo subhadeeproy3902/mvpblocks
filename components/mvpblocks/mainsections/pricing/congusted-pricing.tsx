@@ -90,7 +90,7 @@ interface PricingProps {
   description?: string;
 }
 
-export function Pricing() {
+export default function CongestedPricing() {
   const [isMonthly, setIsMonthly] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const switchRef = useRef<HTMLButtonElement>(null);
