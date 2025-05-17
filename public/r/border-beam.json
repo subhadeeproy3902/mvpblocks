@@ -1,0 +1,16 @@
+{
+  "name": "border-beam",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\nimport { motion, MotionStyle, Transition } from \"motion/react\";\r\n\r\ninterface BorderBeamProps {\r\n  /**\r\n   * The size of the border beam.\r\n   */\r\n  size?: number;\r\n  /**\r\n   * The duration of the border beam.\r\n   */\r\n  duration?: number;\r\n  /**\r\n   * The delay of the border beam.\r\n   */\r\n  delay?: number;\r\n  /**\r\n   * The color of the border beam from.\r\n   */\r\n  colorFrom?: string;\r\n  /**\r\n   * The color of the border beam to.\r\n   */\r\n  colorTo?: string;\r\n  /**\r\n   * The motion transition of the border beam.\r\n   */\r\n  transition?: Transition;\r\n  /**\r\n   * The class name of the border beam.\r\n   */\r\n  className?: string;\r\n  /**\r\n   * The style of the border beam.\r\n   */\r\n  style?: React.CSSProperties;\r\n  /**\r\n   * Whether to reverse the animation direction.\r\n   */\r\n  reverse?: boolean;\r\n  /**\r\n   * The initial offset position (0-100).\r\n   */\r\n  initialOffset?: number;\r\n}\r\n\r\nexport const BorderBeam = ({\r\n  className,\r\n  size = 50,\r\n  delay = 0,\r\n  duration = 6,\r\n  colorFrom = \"#ffaa40\",\r\n  colorTo = \"#9c40ff\",\r\n  transition,\r\n  style,\r\n  reverse = false,\r\n  initialOffset = 0,\r\n}: BorderBeamProps) => {\r\n  return (\r\n    <div className=\"pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]\">\r\n      <motion.div\r\n        className={cn(\r\n          \"absolute aspect-square\",\r\n          \"bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent\",\r\n          className,\r\n        )}\r\n        style={\r\n          {\r\n            width: size,\r\n            offsetPath: `rect(0 auto auto 0 round ${size}px)`,\r\n            \"--color-from\": colorFrom,\r\n            \"--color-to\": colorTo,\r\n            ...style,\r\n          } as MotionStyle\r\n        }\r\n        initial={{ offsetDistance: `${initialOffset}%` }}\r\n        animate={{\r\n          offsetDistance: reverse\r\n            ? [`${100 - initialOffset}%`, `${-initialOffset}%`]\r\n            : [`${initialOffset}%`, `${100 + initialOffset}%`],\r\n        }}\r\n        transition={{\r\n          repeat: Infinity,\r\n          ease: \"linear\",\r\n          duration,\r\n          delay: -delay,\r\n          ...transition,\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n};\r\n",
+      "path": "/components/ui/border-beam.tsx",
+      "target": "/components/ui/border-beam.tsx"
+    }
+  ]
+}

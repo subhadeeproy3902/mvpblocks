@@ -3,6 +3,23 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "border-beam",
+    type: "registry:ui",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/border-beam.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/border-beam").then((mod) => ({
+        default: mod.BorderBeam
+      })),
+    ),
+  },
+  {
     name: "phone-mockup",
     type: "registry:ui",
     dependencies: ["framer-motion","next-themes","react"],
