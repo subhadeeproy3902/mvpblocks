@@ -3,6 +3,23 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "pulse-card",
+    type: "registry:ui",
+    dependencies: ["framer-motion","react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/pulse-card.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/pulse-card").then((mod) => ({
+        default: mod.CardHoverEffect,
+      })),
+    ),
+  },
+  {
     name: "border-beam",
     type: "registry:ui",
     dependencies: [],
