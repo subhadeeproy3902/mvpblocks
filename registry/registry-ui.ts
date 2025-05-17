@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "spotlight",
+    type: "registry:ui",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/ui/spotlight.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/spotlight").then(mod => ({ default: mod.Spotlight })),
+    ),
+  },
+  {
     name: "pulse-card",
     type: "registry:ui",
     dependencies: ["framer-motion","react"],
