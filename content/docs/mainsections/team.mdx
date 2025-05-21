@@ -4,8 +4,8 @@ description: Team sections provide information about the people behind your prod
 root: mainsections
 ---
 
-import {ComponentPreview} from "@/components/preview/component-preview";
-import {extractSourceCode} from "@/lib/code";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
 
 ## Team 1
 
@@ -24,6 +24,18 @@ A modern grid-based team layout with hover effects and social links. Features a 
   name="team-2"
   classNameComponentContainer="min-h-[600px]"
   code={(await extractSourceCode('team-2')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Team 3
+
+A visually engaging team section highlighting each member's role and expertise, designed for clarity and easy navigation. Includes interactive elements and adapts seamlessly to different themes.
+
+<ComponentPreview
+  name="team-3"
+  classNameComponentContainer="min-h-[600px]"
+  code={(await extractSourceCode('team-3')).code}
   lang="tsx"
   fromDocs={true}
 />
