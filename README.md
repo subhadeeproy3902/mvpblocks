@@ -96,7 +96,7 @@ Together, let’s build a better internet—one block at a time.
 
 Thanks to all contributors for helping this project grow! 🍻
 
-<img src="https://contrib.rocks/image?repo=subhadeeproy3902/mvpblocks" width=800 />
+<img src="https://contrib.rocks/image?repo=subhadeeproy3902/mvpblocks" width=400 />
 
 ---
 
