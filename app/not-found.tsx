@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AlertCircle, Home, Search, FileText } from "lucide-react";
+import { AlertCircle, Home, FileText } from "lucide-react";
 import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
 import { Geist } from "next/font/google";
@@ -14,9 +14,9 @@ const space = Geist({
 
 export default function NotFound() {
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-background">
+    <div className="relative h-screen w-full overflow-hidden bg-background">
       <Spotlight />
-      <div className="flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="flex h-full flex-col items-center justify-center p-4">
         <Card className="mx-auto max-w-2xl shadow-lg">
           <CardHeader className="flex flex-col items-center space-y-4 pb-6 text-center">
             <div className="rounded-full bg-red-100 p-4 dark:bg-red-900/20">
@@ -56,65 +56,6 @@ export default function NotFound() {
                 </Link>
               </Button>
             </div>
-
-            {/* Popular Links */}
-            <div className="space-y-3">
-              <h3 className="font-semibold text-foreground">Popular Pages</h3>
-              <div className="grid gap-2">
-                <Link
-                  href="/docs/introduction"
-                  className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
-                    <FileText className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-medium">Introduction</div>
-                    <div className="text-sm text-muted-foreground">Get started with MVPBlocks</div>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/docs/get-started"
-                  className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
-                    <Search className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-medium">Get Started</div>
-                    <div className="text-sm text-muted-foreground">Quick setup guide</div>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/docs/categories"
-                  className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
-                    <FileText className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-medium">Component Categories</div>
-                    <div className="text-sm text-muted-foreground">Explore all components</div>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/about"
-                  className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-muted"
-                >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
-                    <FileText className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-medium">About MVPBlocks</div>
-                    <div className="text-sm text-muted-foreground">Learn more about our mission</div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
             {/* Help Section */}
             <div className="rounded-lg bg-muted/50 p-4">
               <h3 className="font-semibold text-foreground mb-2">Need Help?</h3>
