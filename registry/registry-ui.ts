@@ -14,7 +14,9 @@ export const ui: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/ui/particles"),
+      () => import("../components/ui/particles").then((mod) => ({
+        default: mod.Particles,
+      })),
     ),
   },
   {
