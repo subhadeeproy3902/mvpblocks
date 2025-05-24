@@ -82,10 +82,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      {process.env.NODE_ENV === "production" ? <GoogleAnalytics /> : null}
       <body className={`${dm.className}`}>
         {process.env.NODE_ENV === "production" ? <Clarity /> : null}
-        {process.env.NODE_ENV === "production" ? <GoogleAnalytics /> : null}
         <PreviewPageDetector />
         <ThemeProvider
           attribute="class"

@@ -1,29 +1,25 @@
+
 "use client";
 
 import Script from "next/script";
 
 const GoogleAnalytics = () => {
-  const gid = process.env.GA_MEASUREMENT_ID;
-
-  if (!gid) {
-    return null;
-  }
+  const gid = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!;
 
   return (
     <>
       <Script
-        strategy="lazyOnload"
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${gid}`}
+        strategy="afterInteractive"
       />
-      <Script strategy="lazyOnload" id="google-analytics">
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gid}', {
-            page_title: document.title,
-            page_location: window.location.href,
-          });
+
+          gtag('config', '${gid}');
         `}
       </Script>
     </>
@@ -31,3 +27,4 @@ const GoogleAnalytics = () => {
 };
 
 export default GoogleAnalytics;
+
