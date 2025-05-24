@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const ui: Registry = [
   {
+    name: "particles",
+    type: "registry:ui",
+    dependencies: ["react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/particles.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/particles"),
+    ),
+  },
+  {
     name: "spotlight",
     type: "registry:ui",
     dependencies: ["react"],
