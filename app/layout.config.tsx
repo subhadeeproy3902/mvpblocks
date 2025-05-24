@@ -1,6 +1,5 @@
 import { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { AlbumIcon, Heart, LayoutPanelTop, LayoutTemplate } from "lucide-react";
-import { type LinkItemType } from "fumadocs-ui/layouts/docs";
+import { BookA, Film, Home, LayoutPanelTop, LayoutTemplate } from "lucide-react";
 import Image from "next/image";
 
 export const baseOptions: BaseLayoutProps = {
@@ -25,16 +24,22 @@ export const baseOptions: BaseLayoutProps = {
 
   links: [
     {
-      text: "Get Started",
-      url: "/docs/get-started",
+      text: "Home",
+      url: "/",
       active: "nested-url",
-      icon: <AlbumIcon />,
+      icon: <Home />,
     },
     {
-      text: "Components",
-      url: "/docs/application/animated-dock",
+      text: "About",
+      url: "/about",
       active: "nested-url",
-      icon: <LayoutPanelTop />,
+      icon: <BookA />,
+    },
+    {
+      text: "Showcase",
+      url: "/showcase",
+      active: "nested-url",
+      icon: <Film />,
     },
   ],
 };
