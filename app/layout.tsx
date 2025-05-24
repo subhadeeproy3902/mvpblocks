@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PreviewPageDetector } from "@/components/preview-page-detector";
 import { Toaster } from "@/components/ui/sonner";
 import Clarity from "@/components/Clarity";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const dm = DM_Sans({
   subsets: ["latin"],
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   publisher: "Subhadeep Roy",
   metadataBase: new URL("https://blocks.mvp-subha.me"),
   alternates: {
-    canonical: "/",
+    canonical: "https://blocks.mvp-subha.me",
   },
   openGraph: {
     title: "MVPBlocks",
@@ -84,6 +85,7 @@ export default function RootLayout({
       <head />
       <body className={`${dm.className}`}>
         {process.env.NODE_ENV === "production" ? <Clarity /> : null}
+        {process.env.NODE_ENV === "production" ? <GoogleAnalytics /> : null}
         <PreviewPageDetector />
         <ThemeProvider
           attribute="class"

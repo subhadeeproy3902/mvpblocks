@@ -224,6 +224,9 @@ export async function generateMetadata(props: {
     metadataImage.withImage(page.slugs, {
       title: page.data.title,
       description,
+      alternates: {
+        canonical: `https://blocks.mvp-subha.me/docs/${page.slugs.join("/")}`,
+      },
       openGraph: {
         url: `/docs/${page.slugs.join("/")}`,
       },
