@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ShowcaseCard } from "./showcase-card";
 import { showcaseData } from "@/lib/showcase";
+import { AddCard } from "./add-card";
 
 export function ShowcaseGrid() {
   return (
@@ -21,7 +22,9 @@ export function ShowcaseGrid() {
             index={index}
           />
         ))}
+        <AddCard />
       </motion.div>
     </div>
   );
 }
+
