@@ -16,7 +16,6 @@
     "add-component": "powershell -File ./scripts/register-component.ps1",
     "update-dependencies": "bun run ./scripts/update-dependencies.ts",
     "optimise-image": "bun run ./scripts/convert-to-webp.js",
-    "analyze": "ANALYZE=true next build",
     "email": "bun actions/sendEmails.ts"
   },
   "dependencies": {
@@ -103,7 +102,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@next/bundle-analyzer": "^15.3.1",
     "@types/node": "^20.17.32",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.3",
