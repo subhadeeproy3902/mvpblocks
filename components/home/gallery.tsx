@@ -33,7 +33,9 @@ export default function Gallery() {
     `,
       }}
     >
-      <Spotlight />
+      <div className="absolute z-0 h-full w-full">
+        <Spotlight />
+      </div>
       <div className="absolute bottom-0 z-0 h-full w-full rotate-180">
         <Spotlight />
       </div>
