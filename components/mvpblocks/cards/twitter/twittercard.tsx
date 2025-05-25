@@ -26,7 +26,7 @@ interface TweetCardProps {
 export default function TweetCard({
   authorName = "Subhadeep",
   authorHandle = "mvp_Subha",
-  authorImage = "https://pbs.twimg.com/profile_images/1763223695898681344/2mvSadJl_400x400.webp",
+  authorImage = "https://pbs.twimg.com/profile_images/1763223695898681344/2mvSadJl_400x400.jpg",
   content = [
     "Mvpblocks is the best ever UI component collection library 🎉",
     "1. Can be opened in v0",
@@ -39,7 +39,7 @@ export default function TweetCard({
     authorName: "shadcn",
     authorHandle: "shadcn",
     authorImage:
-      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.webp",
+      "https://pbs.twimg.com/profile_images/1593304942210478080/TUYae5z7_400x400.jpg",
     content: "Awesome.",
     isVerified: true,
     timestamp: "March 3",
