@@ -13,14 +13,28 @@ const PUBLIC_FOLDER_BASE_PATH = "public/r";
  */
 type File = z.infer<typeof registryItemFileSchema>;
 
+async function shouldWriteFile(filePath: string, newContent: string): Promise<boolean> {
+  try {
+    // Try to read existing file
+    const existingContent = await fs.readFile(filePath, 'utf-8');
+    // Only write if content is different
+    return existingContent !== newContent;
+  } catch {
+    // If file doesn't exist, we should write it
+    return true;
+  }
+}
+
 async function writeFileRecursive(filePath: string, data: string) {
   const dir = path.dirname(filePath);
 
   try {
-    await fs.mkdir(dir, { recursive: true });
-
-    await fs.writeFile(filePath, data, "utf-8");
-    // console.log(`File written to ${filePath}`);
+    // Check if we need to write the file
+    if (await shouldWriteFile(filePath, data)) {
+      await fs.mkdir(dir, { recursive: true });
+      await fs.writeFile(filePath, data, "utf-8");
+      console.log(`Updated ${filePath}`);
+    }
   } catch (error) {
     console.error(`Error writing file ${filePath}`);
   }
@@ -87,14 +101,15 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 };
 
 const main = async () => {
+  let changesCount = 0;
+
   for (let i = 0; i < registry.length; i++) {
-    const component = { ...registry[i] }; // Create a copy of the component object
+    const component = { ...registry[i] };
     const files = component.files;
-    delete component.component; // Delete `component` property since not needed in the public registry
+    delete component.component;
     if (!files) throw new Error("No files found for component");
 
     const filesArray = await getComponentFiles(files, component.type);
-
     const json = JSON.stringify(
       {
         ...component,
@@ -103,14 +118,25 @@ const main = async () => {
       null,
       2,
     );
+    
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
-    await writeFileRecursive(jsonPath, json);
+    const hasChanged = await shouldWriteFile(jsonPath, json);
+    if (hasChanged) {
+      await writeFileRecursive(jsonPath, json);
+      changesCount++;
+    }
   }
+
+  return changesCount;
 };
 
 main()
-  .then(() => {
-    console.log("✅ Done - Registry built");
+  .then((changes) => {
+    if (changes > 0) {
+      console.log(`✅ Done - Updated ${changes} registry file(s)`);
+    } else {
+      console.log('✅ Done - No changes needed');
+    }
   })
   .catch((err) => {
     console.error(err);
