@@ -1,11 +1,16 @@
-import { PricingCard } from "@/components/ui/pricing-card"
+import { PricingCard } from "@/components/ui/pricing-card";
 
 const plans = [
   {
     name: "Starter",
     price: 15,
     period: "month",
-    features: ["Up to 10,000 data points per month", "Email support", "Community forum access", "Cancel anytime"],
+    features: [
+      "Up to 10,000 data points per month",
+      "Email support",
+      "Community forum access",
+      "Cancel anytime",
+    ],
   },
   {
     name: "Pro",
@@ -34,29 +39,32 @@ const plans = [
       "Everything in Pro Plan",
     ],
   },
-]
+];
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen py-20 px-4 relative w-full">
+    <div className="relative min-h-screen w-full px-4 py-20">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -right-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
       </div>
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold">Simple pricing for advanced people</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Our pricing is designed for advanced people who need more features and more flexibility.
+      <div className="mx-auto max-w-6xl space-y-12">
+        <div className="space-y-4 text-center">
+          <h1 className="text-4xl font-bold">
+            Simple pricing for advanced people
+          </h1>
+          <p className="mx-auto max-w-2xl text-gray-400">
+            Our pricing is designed for advanced people who need more features
+            and more flexibility.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {plans.map((plan) => (
             <PricingCard key={plan.name} {...plan} />
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

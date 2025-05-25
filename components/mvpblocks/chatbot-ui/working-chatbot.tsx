@@ -8,7 +8,7 @@ import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
 import { useChat } from "ai/react";
 import Image from "next/image";
 import Markdown from "react-markdown";
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 function AiInput({
   value,
@@ -106,7 +106,7 @@ export default function WorkingChatbot() {
       originalHandleSubmit(e);
     },
     [originalHandleSubmit, input],
-  )
+  );
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -116,7 +116,7 @@ export default function WorkingChatbot() {
       }
     },
     [handleSubmit],
-  )
+  );
 
   return (
     <div className="mx-auto flex h-svh w-full max-w-4xl flex-col pb-0.5">
@@ -140,7 +140,7 @@ export default function WorkingChatbot() {
                   </div>
                 ) : (
                   <div className="relative mb-4 flex rounded-xl bg-neutral-50 px-2 py-6 dark:bg-neutral-900 sm:px-4">
-                    <Bot className="mr-2 flex text-primary size-8 p-1 bg-secondary rounded-full sm:mr-4" />{" "}
+                    <Bot className="mr-2 flex size-8 rounded-full bg-secondary p-1 text-primary sm:mr-4" />{" "}
                     <div className="markdown-body w-full max-w-3xl overflow-x-auto rounded-xl">
                       <Markdown>{m.content}</Markdown>
                       {responseTimes[m.id] && (

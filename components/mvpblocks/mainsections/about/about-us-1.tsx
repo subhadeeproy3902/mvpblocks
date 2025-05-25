@@ -68,11 +68,14 @@ const defaultValues: AboutUsProps["values"] = [
 export default function AboutUs1() {
   const aboutData = {
     title: "About Us",
-    subtitle: "Building the future of web development with beautiful, reusable components.",
-    mission: "Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.",
-    vision: "We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.",
+    subtitle:
+      "Building the future of web development with beautiful, reusable components.",
+    mission:
+      "Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.",
+    vision:
+      "We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.",
     values: defaultValues,
-    className: "relative overflow-hidden py-20"
+    className: "relative overflow-hidden py-20",
   };
 
   const missionRef = useRef(null);
@@ -82,7 +85,7 @@ export default function AboutUs1() {
   const valuesInView = useInView(valuesRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="relative overflow-hidden pt-20 w-full">
+    <section className="relative w-full overflow-hidden pt-20">
       <Spotlight
         gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.08) 0, hsla(341, 100%, 55%, 0.04) 50%, hsla(336, 100%, 45%, 0) 80%)"
         gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.08) 0, hsla(335, 100%, 55%, 0.04) 80%, transparent 100%)"
@@ -100,11 +103,13 @@ export default function AboutUs1() {
           <h1 className="bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
             {aboutData.title}
           </h1>
-          <p className="mt-6 text-xl text-muted-foreground">{aboutData.subtitle}</p>
+          <p className="mt-6 text-xl text-muted-foreground">
+            {aboutData.subtitle}
+          </p>
         </motion.div>
 
         {/* Mission & Vision Section */}
-        <div ref={missionRef} className="relative mb-24 max-w-7xl mx-auto">
+        <div ref={missionRef} className="relative mx-auto mb-24 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={
@@ -115,7 +120,7 @@ export default function AboutUs1() {
           >
             <motion.div
               whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              className="group block relative overflow-hidden rounded-2xl p-10 bg-gradient-to-br backdrop-blur-3xl border border-border/40"
+              className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
             >
               <BorderBeam
                 duration={8}
@@ -123,7 +128,7 @@ export default function AboutUs1() {
                 className="from-transparent via-primary/40 to-transparent"
               />
 
-              <div className="mb-6 inline-flex flex-1 h-16 aspect-square w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm">
+              <div className="mb-6 inline-flex aspect-square h-16 w-16 flex-1 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm">
                 <Rocket className="h-8 w-8 text-primary" />
               </div>
 
@@ -140,7 +145,7 @@ export default function AboutUs1() {
 
             <motion.div
               whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-              className="group block relative overflow-hidden rounded-2xl p-10 bg-gradient-to-br backdrop-blur-3xl border border-border/40"
+              className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
             >
               <BorderBeam
                 duration={8}

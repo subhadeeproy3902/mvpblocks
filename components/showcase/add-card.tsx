@@ -14,10 +14,10 @@ export function AddCard() {
         href="https://github.com/subhadeeproy3902/mvpblocks/discussions/19"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex flex-col justify-center items-center h-full w-full cursor-pointer"
+        className="flex h-full w-full cursor-pointer flex-col items-center justify-center"
       >
-      <PlusCircle className="mb-4 h-12 w-12 text-primary opacity-70" />
-      <h3 className="mb-2 text-xl font-semibold">Add yours</h3>
+        <PlusCircle className="mb-4 h-12 w-12 text-primary opacity-70" />
+        <h3 className="mb-2 text-xl font-semibold">Add yours</h3>
       </Link>
     </motion.div>
   );

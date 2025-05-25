@@ -62,7 +62,7 @@ export default function ContactUs2() {
               id="name"
               type="text"
               required
-              className="flex bg-slate-950 focus:border-slate-500 focus:outline-none hover:outline-none outline-none h-10 w-full rounded-md border border-slate-700 bg-background px-3 py-2 text-sm shadow-inner shadow-slate-800 hover:border-slate-600 hover:transition-all"
+              className="flex h-10 w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none hover:border-slate-600 hover:outline-none hover:transition-all focus:border-slate-500 focus:outline-none"
               placeholder="Enter your name"
               name="name"
             />
@@ -74,7 +74,7 @@ export default function ContactUs2() {
               id="email"
               placeholder="Enter your email"
               type="email"
-              className="bg-slate-950 focus:border-slate-500 focus:outline-none hover:outline-none outline-none hover:transition-al flex h-10 w-full rounded-md border border-slate-700 bg-background px-3 py-2 text-sm shadow-inner shadow-slate-800 file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-slate-400 disabled:cursor-not-allowed disabled:opacity-50"
+              className="hover:transition-al flex h-10 w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-slate-400 hover:outline-none focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
               name="email"
               required
             />
@@ -86,7 +86,7 @@ export default function ContactUs2() {
             <label htmlFor="message" className="text-lg" />
             Message
             <textarea
-              className="bg-slate-950 focus:border-slate-500 focus:outline-none hover:outline-none outline-none mb-5 flex min-h-[100px] w-full rounded-md border border-slate-700 bg-background px-3 py-2 text-sm text-white shadow-inner shadow-slate-800 ring-offset-background placeholder:text-muted-foreground hover:border-slate-400 hover:transition-all disabled:cursor-not-allowed disabled:opacity-50"
+              className="mb-5 flex min-h-[100px] w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm text-white shadow-inner shadow-slate-800 outline-none ring-offset-background placeholder:text-muted-foreground hover:border-slate-400 hover:outline-none hover:transition-all focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
               id="message"
               placeholder="Enter your message"
               name="message"

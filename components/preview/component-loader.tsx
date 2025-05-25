@@ -187,7 +187,7 @@ function ComponentDisplay({
         <Button
           variant="ghost"
           size="icon"
-          className="cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground absolute top-0 left-0"
+          className="absolute left-0 top-0 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
           onClick={reTrigger}
           aria-label="Refresh component"
         >
@@ -197,7 +197,10 @@ function ComponentDisplay({
       {hasReTrigger ? (
         React.cloneElement(component, { key: reTriggerKey })
       ) : fromDocs ? (
-        <iframe src={`${siteLink}/preview/${name}`} className={`${className} w-full`} />
+        <iframe
+          src={`${siteLink}/preview/${name}`}
+          className={`${className} w-full`}
+        />
       ) : (
         component
       )}

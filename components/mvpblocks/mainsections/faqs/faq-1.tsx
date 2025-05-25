@@ -67,7 +67,10 @@ export default function Faq1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Frequently Asked <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">Questions</span>
+            Frequently Asked{" "}
+            <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">
+              Questions
+            </span>
           </motion.h2>
           <motion.p
             className="mx-auto max-w-2xl text-muted-foreground"
@@ -75,7 +78,8 @@ export default function Faq1() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Everything you need to know about MVPBlocks and how to use our components to build your next project quickly.
+            Everything you need to know about MVPBlocks and how to use our
+            components to build your next project quickly.
           </motion.p>
         </div>
 
@@ -108,7 +112,7 @@ export default function Faq1() {
                   value={item.id}
                   className={cn(
                     "my-1 overflow-hidden rounded-lg border-none bg-card/50 px-2 shadow-sm transition-all",
-                    "data-[state=open]:bg-card/80 data-[state=open]:shadow-md"
+                    "data-[state=open]:bg-card/80 data-[state=open]:shadow-md",
                   )}
                 >
                   <AccordionPrimitive.Header className="flex">
@@ -117,15 +121,15 @@ export default function Faq1() {
                         "group flex flex-1 items-center justify-between gap-4 py-4 text-left text-base font-medium",
                         "outline-none transition-all duration-300 hover:text-primary",
                         "focus-visible:ring-2 focus-visible:ring-primary/50",
-                        "data-[state=open]:text-primary"
+                        "data-[state=open]:text-primary",
                       )}
                     >
                       {item.title}
                       <PlusIcon
                         size={18}
                         className={cn(
-                          "text-primary/70 shrink-0 transition-transform duration-300 ease-out",
-                          "group-data-[state=open]:rotate-45"
+                          "shrink-0 text-primary/70 transition-transform duration-300 ease-out",
+                          "group-data-[state=open]:rotate-45",
                         )}
                         aria-hidden="true"
                       />
@@ -135,7 +139,7 @@ export default function Faq1() {
                     className={cn(
                       "overflow-hidden pb-4 pt-0 text-muted-foreground",
                       "data-[state=open]:animate-accordion-down",
-                      "data-[state=closed]:animate-accordion-up"
+                      "data-[state=closed]:animate-accordion-up",
                     )}
                   >
                     <div className="border-t border-border/30 pt-3">

@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { Pacifico } from "next/font/google"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { Pacifico } from "next/font/google";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const pacifico = Pacifico({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-pacifico",
-})
+});
 
 function ElegantShape({
   className,
@@ -21,12 +21,12 @@ function ElegantShape({
   rotate = 0,
   gradient = "from-white/[0.08]",
 }: {
-  className?: string
-  delay?: number
-  width?: number
-  height?: number
-  rotate?: number
-  gradient?: string
+  className?: string;
+  delay?: number;
+  width?: number;
+  height?: number;
+  rotate?: number;
+  gradient?: string;
 }) {
   return (
     <motion.div
@@ -68,7 +68,7 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-white/80 dark:border-white/80",
+            "border-2 border-white/80 backdrop-blur-[2px] dark:border-white/80",
             "shadow-[0_8px_32px_0_rgba(255,255,255,0.4)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.5)]",
             "after:absolute after:inset-0 after:rounded-full",
             "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.6),transparent_70%)]",
@@ -77,7 +77,7 @@ function ElegantShape({
         />
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export default function HeroGeometric({
@@ -85,9 +85,9 @@ export default function HeroGeometric({
   title1 = "Build Faster",
   title2 = "Ship Sooner",
 }: {
-  badge?: string
-  title1?: string
-  title2?: string
+  badge?: string;
+  title1?: string;
+  title2?: string;
 }) {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -100,11 +100,11 @@ export default function HeroGeometric({
         ease: [0.25, 0.4, 0.25, 1],
       },
     }),
-  }
+  };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background dark:bg-black">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-rose-500/20 dark:from-primary/30 dark:to-rose-500/30 blur-3xl" />
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-background dark:bg-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-rose-500/20 blur-3xl dark:from-primary/30 dark:to-rose-500/30" />
 
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
@@ -113,7 +113,7 @@ export default function HeroGeometric({
           height={140}
           rotate={12}
           gradient="from-indigo-500/70"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+          className="left-[-10%] top-[15%] md:left-[-5%] md:top-[20%]"
         />
 
         <ElegantShape
@@ -122,7 +122,7 @@ export default function HeroGeometric({
           height={120}
           rotate={-15}
           gradient="from-rose-400"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+          className="right-[-5%] top-[70%] md:right-[0%] md:top-[75%]"
         />
 
         <ElegantShape
@@ -131,7 +131,7 @@ export default function HeroGeometric({
           height={80}
           rotate={-8}
           gradient="from-violet-400"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+          className="bottom-[5%] left-[5%] md:bottom-[10%] md:left-[10%]"
         />
 
         <ElegantShape
@@ -140,7 +140,7 @@ export default function HeroGeometric({
           height={60}
           rotate={20}
           gradient="from-amber-500/70 dark:from-amber-400/90"
-          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+          className="right-[15%] top-[10%] md:right-[20%] md:top-[15%]"
         />
 
         <ElegantShape
@@ -149,32 +149,41 @@ export default function HeroGeometric({
           height={40}
           rotate={-25}
           gradient="from-cyan-500/70 dark:from-cyan-400/90"
-          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+          className="left-[20%] top-[5%] md:left-[25%] md:top-[10%]"
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-6">
+        <div className="mx-auto max-w-3xl text-center">
           <motion.div
             custom={0}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/50 border border-primary/30 backdrop-blur-sm mb-8 md:mb-12 shadow-sm items-center"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card/50 px-4 py-1.5 shadow-sm backdrop-blur-sm md:mb-12"
           >
             <img src="/logo.webp" alt="logo" className="h-6 w-6" />
-            <span className="text-sm font-medium text-foreground tracking-wide">{badge}</span>
+            <span className="text-sm font-medium tracking-wide text-foreground">
+              {badge}
+            </span>
           </motion.div>
 
-          <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight mx-4">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/80">{title1}</span>
+          <motion.div
+            custom={1}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 className="mx-4 mb-6 text-4xl font-bold tracking-tight sm:text-6xl md:mb-8 md:text-8xl">
+              <span className="bg-gradient-to-b from-foreground to-foreground/80 bg-clip-text text-transparent">
+                {title1}
+              </span>
               <br />
               <span
                 className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-rose-500 p-4",
+                  "bg-gradient-to-r from-primary via-primary/90 to-rose-500 bg-clip-text p-4 text-transparent",
                   pacifico.className,
-                  "font-bold"
+                  "font-bold",
                 )}
               >
                 {title2}
@@ -182,9 +191,15 @@ export default function HeroGeometric({
             </h1>
           </motion.div>
 
-          <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto px-4">
-              Accelerate your development with our modern, accessible, and customizable UI components.
+          <motion.div
+            custom={2}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <p className="mx-auto mb-10 max-w-xl px-4 text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+              Accelerate your development with our modern, accessible, and
+              customizable UI components.
             </p>
           </motion.div>
 
@@ -193,11 +208,11 @@ export default function HeroGeometric({
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col justify-center gap-4 sm:flex-row"
           >
             <Button
               size="lg"
-              className="rounded-full bg-gradient-to-r from-primary to-rose-500 hover:from-primary/90 hover:to-rose-500/90 shadow-md shadow-primary/10 border-none"
+              className="rounded-full border-none bg-gradient-to-r from-primary to-rose-500 shadow-md shadow-primary/10 hover:from-primary/90 hover:to-rose-500/90"
             >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -205,7 +220,7 @@ export default function HeroGeometric({
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full border-primary/30 hover:bg-primary/5 shadow-sm"
+              className="rounded-full border-primary/30 shadow-sm hover:bg-primary/5"
             >
               View Components
             </Button>
@@ -213,7 +228,7 @@ export default function HeroGeometric({
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-background dark:from-black via-transparent to-background/80 dark:to-black/80 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/80 dark:from-black dark:to-black/80" />
     </div>
-  )
+  );
 }

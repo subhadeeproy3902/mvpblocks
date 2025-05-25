@@ -58,7 +58,11 @@ export default function Faqs() {
           {faqs.map((faq, faqIndex) => (
             <div
               key={faq.question}
-              onClick={() => selectedIndex === faqIndex ? setSelectedIndex(-1) : setSelectedIndex(faqIndex)}
+              onClick={() =>
+                selectedIndex === faqIndex
+                  ? setSelectedIndex(-1)
+                  : setSelectedIndex(faqIndex)
+              }
               className="rounded-2xl border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
             >
               <div className="flex items-start justify-between">

@@ -26,7 +26,7 @@ export default function NotFound() {
               <h1
                 className={cn(
                   "text-6xl font-bold tracking-tight text-foreground",
-                  space.className
+                  space.className,
                 )}
               >
                 404
@@ -34,8 +34,10 @@ export default function NotFound() {
               <h2 className="text-2xl font-semibold tracking-tight text-foreground">
                 Page Not Found
               </h2>
-              <p className="text-muted-foreground max-w-md">
-                Sorry, we couldn&apos;t find the page you&apos;re looking for. The page might have been moved, deleted, or you entered the wrong URL.
+              <p className="max-w-md text-muted-foreground">
+                Sorry, we couldn&apos;t find the page you&apos;re looking for.
+                The page might have been moved, deleted, or you entered the
+                wrong URL.
               </p>
             </div>
           </CardHeader>
@@ -58,8 +60,8 @@ export default function NotFound() {
             </div>
             {/* Help Section */}
             <div className="rounded-lg bg-muted/50 p-4">
-              <h3 className="font-semibold text-foreground mb-2">Need Help?</h3>
-              <p className="text-sm text-muted-foreground mb-3">
+              <h3 className="mb-2 font-semibold text-foreground">Need Help?</h3>
+              <p className="mb-3 text-sm text-muted-foreground">
                 If you believe this is an error, please let us know.
               </p>
               <div className="flex gap-2">

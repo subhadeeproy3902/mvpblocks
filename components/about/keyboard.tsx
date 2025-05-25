@@ -24,7 +24,13 @@ const Keyboard: React.FC = () => {
     { label: "0", width: "10", row: "1", code: "Digit0" },
     { label: "-", width: "10", row: "1", code: "Minus" },
     { label: "=", width: "full", row: "1", flexGrow: true, code: "Equal" },
-    { label: "Delete", width: "full", row: "1", flexGrow: true, code: "Backspace" },
+    {
+      label: "Delete",
+      width: "full",
+      row: "1",
+      flexGrow: true,
+      code: "Backspace",
+    },
     { label: "Tab", width: "14", row: "2", code: "Tab" },
     { label: "Q", width: "10", row: "2", code: "KeyQ" },
     { label: "W", width: "10", row: "2", code: "KeyW" },
@@ -63,7 +69,13 @@ const Keyboard: React.FC = () => {
     { label: ",", width: "10", row: "4", code: "Comma" },
     { label: ".", width: "10", row: "4", code: "Period" },
     { label: "/", width: "10", row: "4", code: "Slash" },
-    { label: "Shift", width: "16", row: "4", flexGrow: true, code: "ShiftRight" },
+    {
+      label: "Shift",
+      width: "16",
+      row: "4",
+      flexGrow: true,
+      code: "ShiftRight",
+    },
     { label: "▲", width: "10", row: "4", code: "ArrowUp" },
     { label: "Prt", width: "10", row: "4", code: "PrintScreen" },
     { label: "Fn", width: "10", row: "5", code: "Fn" },
@@ -92,7 +104,7 @@ const Keyboard: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       e.preventDefault();
       setDemoMode(false); // Disable demo mode when user starts typing
-      setPressedKeys(prev => {
+      setPressedKeys((prev) => {
         const newSet = new Set(prev);
         newSet.add(e.code);
         return newSet;
@@ -101,7 +113,7 @@ const Keyboard: React.FC = () => {
 
     // Handle key release events
     const handleKeyUp = (e: KeyboardEvent) => {
-      setPressedKeys(prev => {
+      setPressedKeys((prev) => {
         const newSet = new Set(prev);
         newSet.delete(e.code);
 
@@ -115,8 +127,8 @@ const Keyboard: React.FC = () => {
     };
 
     // Add event listeners
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
     // Demo animation when no keys are pressed
     let step = 0;
@@ -144,8 +156,8 @@ const Keyboard: React.FC = () => {
 
     // Cleanup
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
       if (animationTimer) clearTimeout(animationTimer);
     };
   }, [demoMode]);

@@ -181,14 +181,14 @@ export default function Hero() {
           transition={{ duration: 0.75, delay: 0.4 }}
         >
           <Link href="/docs/introduction">
-          <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]">
-            Get started
-          </Button>
+            <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]">
+              Get started
+            </Button>
           </Link>
           <Link href="/about">
-          <Button variant={"secondary"}>
+            <Button variant={"secondary"}>
               About <MoveRight className="ml-2 h-4 w-4" />
-          </Button>
+            </Button>
           </Link>
         </motion.div>
         <motion.div

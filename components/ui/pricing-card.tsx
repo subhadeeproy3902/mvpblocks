@@ -1,26 +1,32 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Check } from "lucide-react"
-import { PaymentModal } from "./payment-modal"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
+import { PaymentModal } from "./payment-modal";
 
 interface PricingCardProps {
-  name: string
-  price: number
-  period: string
-  features: string[]
-  featured?: boolean
+  name: string;
+  price: number;
+  period: string;
+  features: string[];
+  featured?: boolean;
 }
 
-export function PricingCard({ name, price, period, features, featured }: PricingCardProps) {
-  const [showPaymentModal, setShowPaymentModal] = useState(false)
+export function PricingCard({
+  name,
+  price,
+  period,
+  features,
+  featured,
+}: PricingCardProps) {
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   return (
     <>
-      <div className="relative p-6 rounded-lg border border-zinc-800">
+      <div className="relative rounded-lg border border-zinc-800 p-6">
         {featured && (
-          <div className="absolute -top-2 right-4 bg-black text-white dark:bg-white  dark:text-black px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute -top-2 right-4 rounded-full bg-black px-3 py-1 text-sm font-medium text-white dark:bg-white dark:text-black">
             Featured
           </div>
         )}
@@ -28,8 +34,12 @@ export function PricingCard({ name, price, period, features, featured }: Pricing
           <div>
             <h3 className="text-lg font-medium">{name}</h3>
             <div className="mt-2 flex items-baseline">
-              <span className="text-5xl font-bold tracking-tight">€{price}</span>
-              <span className="ml-1 text-sm font-medium text-zinc-400">/{period}</span>
+              <span className="text-5xl font-bold tracking-tight">
+                €{price}
+              </span>
+              <span className="ml-1 text-sm font-medium text-zinc-400">
+                /{period}
+              </span>
             </div>
           </div>
           <Button className="w-full" onClick={() => setShowPaymentModal(true)}>
@@ -52,5 +62,5 @@ export function PricingCard({ name, price, period, features, featured }: Pricing
         plan={{ name, price, period }}
       />
     </>
-  )
+  );
 }

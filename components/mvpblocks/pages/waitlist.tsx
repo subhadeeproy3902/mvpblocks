@@ -48,7 +48,7 @@ export default function WaitlistPage() {
   };
 
   return (
-    <main className="relative w-full flex min-h-screen items-center justify-center overflow-hidden xl:h-screen">
+    <main className="relative flex min-h-screen w-full items-center justify-center overflow-hidden xl:h-screen">
       <Spotlight />
 
       <Particles

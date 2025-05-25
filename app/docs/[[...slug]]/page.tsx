@@ -31,7 +31,6 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  
 
   if (!page) notFound();
   const MDX = page.data.body;
@@ -41,15 +40,15 @@ export default async function Page(props: {
 
   const footer = (
     <div className="flex flex-col space-y-2">
-      <h3 className="font-medium mb-1">Contribute</h3>
+      <h3 className="mb-1 font-medium">Contribute</h3>
       <div className="flex flex-col space-y-2">
         <a
-          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=bug&template=bug_report.md&title=[bug]:+${encodeURIComponent(`/docs/${params.slug?.join('/') || ''}`)}&body=${encodeURIComponent(`**Describe the bug**
+          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=bug&template=bug_report.md&title=[bug]:+${encodeURIComponent(`/docs/${params.slug?.join("/") || ""}`)}&body=${encodeURIComponent(`**Describe the bug**
 A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '${siteConfig.url}/docs/${params.slug?.join('/') || ''}'
+1. Go to '${siteConfig.url}/docs/${params.slug?.join("/") || ""}'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
@@ -75,7 +74,7 @@ If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.`)}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <AlertCircle className="size-4" />
           Report an issue
@@ -94,7 +93,7 @@ A clear and concise description of any alternative solutions or features you've 
 Add any other context or screenshots about the feature request here.`)}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <Lightbulb className="size-4" />
           Request a feature
@@ -103,7 +102,7 @@ Add any other context or screenshots about the feature request here.`)}`}
           href={`https://github.com/subhadeeproy3902/mvpblocks/blob/main/${path}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <EditIcon className="size-4" />
           Edit this page

@@ -46,7 +46,7 @@ export default function Globe3D() {
             precision and ease.
           </p>
 
-          <div className="mb-10 sm:mb-0 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:mb-0 sm:flex-row">
             <Link
               href="/docs/get-started"
               className="neumorphic-button hover:shadow-[0_0_20px_rgba(155, 135, 245, 0.5)] relative w-full overflow-hidden rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-white/5 px-8 py-4 text-white shadow-lg transition-all duration-300 hover:border-[#9b87f5]/30 sm:w-auto"
@@ -80,11 +80,11 @@ export default function Globe3D() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         >
-          <div className="w-full flex h-40 md:h-64 relative overflow-hidden">
+          <div className="relative flex h-40 w-full overflow-hidden md:h-64">
             <img
               src="https://blocks.mvp-subha.me/assets/earth.png"
               alt="Earth"
-              className="absolute px-4 top-0 left-1/2 -translate-x-1/2 mx-auto -z-10 opacity-80"
+              className="absolute left-1/2 top-0 -z-10 mx-auto -translate-x-1/2 px-4 opacity-80"
             />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">

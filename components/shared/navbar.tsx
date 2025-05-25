@@ -88,7 +88,9 @@ export function NavbarDemo() {
             <NavbarButton
               variant="gradient"
               className="w-full"
-              onClick={() => redirect("https://github.com/subhadeeproy3902/mvpblocks")}
+              onClick={() =>
+                redirect("https://github.com/subhadeeproy3902/mvpblocks")
+              }
             >
               Github
             </NavbarButton>

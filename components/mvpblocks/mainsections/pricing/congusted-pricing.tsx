@@ -126,17 +126,18 @@ export default function CongestedPricing() {
 
   return (
     <div className="container py-20">
-      <div className="text-center space-y-4 mb-12">
+      <div className="mb-12 space-y-4 text-center">
         <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
           Simple, transparent pricing for all.
         </h2>
-        <p className="text-muted-foreground text-lg whitespace-pre-line">
-          Choose the plan that works for you\nAll plans include access to our platform, lead generation tools, and dedicated support.
+        <p className="whitespace-pre-line text-lg text-muted-foreground">
+          Choose the plan that works for you\nAll plans include access to our
+          platform, lead generation tools, and dedicated support.
         </p>
       </div>
 
-      <div className="flex justify-center mb-10">
-        <label className="relative inline-flex items-center cursor-pointer">
+      <div className="mb-10 flex justify-center">
+        <label className="relative inline-flex cursor-pointer items-center">
           <Label>
             <Switch
               ref={switchRef as any}
@@ -151,7 +152,7 @@ export default function CongestedPricing() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 sm:2 gap-4">
+      <div className="sm:2 grid grid-cols-1 gap-4 md:grid-cols-3">
         {plans.map((plan, index) => (
           <motion.div
             key={index}
@@ -176,26 +177,26 @@ export default function CongestedPricing() {
               opacity: { duration: 0.5 },
             }}
             className={cn(
-              `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
-              plan.isPopular ? "border-primary border-2" : "border-border",
+              `relative rounded-2xl border-[1px] bg-background p-6 text-center lg:flex lg:flex-col lg:justify-center`,
+              plan.isPopular ? "border-2 border-primary" : "border-border",
               "flex flex-col",
               !plan.isPopular && "mt-5",
               index === 0 || index === 2
-                ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
+                ? "-translate-z-[50px] rotate-y-[10deg] z-0 translate-x-0 translate-y-0 transform"
                 : "z-10",
               index === 0 && "origin-right",
-              index === 2 && "origin-left"
+              index === 2 && "origin-left",
             )}
           >
             {plan.isPopular && (
-              <div className="absolute top-0 right-0 bg-primary py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
-                <Star className="text-primary-foreground h-4 w-4 fill-current" />
-                <span className="text-primary-foreground ml-1 font-sans font-semibold">
+              <div className="absolute right-0 top-0 flex items-center rounded-bl-xl rounded-tr-xl bg-primary px-2 py-0.5">
+                <Star className="h-4 w-4 fill-current text-primary-foreground" />
+                <span className="ml-1 font-sans font-semibold text-primary-foreground">
                   Popular
                 </span>
               </div>
             )}
-            <div className="flex-1 flex flex-col">
+            <div className="flex flex-1 flex-col">
               <p className="text-base font-semibold text-muted-foreground">
                 {plan.name}
               </p>
@@ -230,16 +231,16 @@ export default function CongestedPricing() {
                 {isMonthly ? "billed monthly" : "billed annually"}
               </p>
 
-              <ul className="mt-5 gap-2 flex flex-col">
+              <ul className="mt-5 flex flex-col gap-2">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
                     <span className="text-left">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <hr className="w-full my-4" />
+              <hr className="my-4 w-full" />
 
               <Link
                 href={plan.href}
@@ -248,10 +249,10 @@ export default function CongestedPricing() {
                     variant: "outline",
                   }),
                   "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-primary-foreground",
+                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:bg-primary hover:text-primary-foreground hover:ring-2 hover:ring-primary hover:ring-offset-1",
                   plan.isPopular
                     ? "bg-primary text-primary-foreground"
-                    : "bg-background text-foreground"
+                    : "bg-background text-foreground",
                 )}
               >
                 {plan.buttonText}

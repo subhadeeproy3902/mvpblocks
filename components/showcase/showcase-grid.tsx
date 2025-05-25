@@ -16,15 +16,10 @@ export function ShowcaseGrid() {
         className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
         {showcaseData.map((item, index) => (
-          <ShowcaseCard
-            key={item.name}
-            item={item}
-            index={index}
-          />
+          <ShowcaseCard key={item.name} item={item} index={index} />
         ))}
         <AddCard />
       </motion.div>
     </div>
   );
 }
-

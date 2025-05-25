@@ -1,5 +1,11 @@
 import { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { BookA, Film, Home, LayoutPanelTop, LayoutTemplate } from "lucide-react";
+import {
+  BookA,
+  Film,
+  Home,
+  LayoutPanelTop,
+  LayoutTemplate,
+} from "lucide-react";
 import Image from "next/image";
 
 export const baseOptions: BaseLayoutProps = {

@@ -13,8 +13,8 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/particles").then((mod) => ({
+    component: React.lazy(() =>
+      import("../components/ui/particles").then((mod) => ({
         default: mod.Particles,
       })),
     ),
@@ -30,14 +30,16 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/spotlight").then(mod => ({ default: mod.Spotlight })),
+    component: React.lazy(() =>
+      import("../components/ui/spotlight").then((mod) => ({
+        default: mod.Spotlight,
+      })),
     ),
   },
   {
     name: "pulse-card",
     type: "registry:ui",
-    dependencies: ["framer-motion","react"],
+    dependencies: ["framer-motion", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -45,8 +47,8 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/pulse-card").then((mod) => ({
+    component: React.lazy(() =>
+      import("../components/ui/pulse-card").then((mod) => ({
         default: mod.CardHoverEffect,
       })),
     ),
@@ -62,16 +64,16 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/border-beam").then((mod) => ({
-        default: mod.BorderBeam
+    component: React.lazy(() =>
+      import("../components/ui/border-beam").then((mod) => ({
+        default: mod.BorderBeam,
       })),
     ),
   },
   {
     name: "phone-mockup",
     type: "registry:ui",
-    dependencies: ["framer-motion","next-themes","react"],
+    dependencies: ["framer-motion", "next-themes", "react"],
     registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
     files: [
       {
@@ -79,24 +81,32 @@ export const ui: Registry = [
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/phone-mockup"),
-    ),
+    component: React.lazy(() => import("../components/ui/phone-mockup")),
   },
   {
     name: "multi-step-form",
     type: "registry:ui",
-    dependencies: ["framer-motion","lucide-react","react","react-hook-form","zod"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/progress.json"],
+    dependencies: [
+      "framer-motion",
+      "lucide-react",
+      "react",
+      "react-hook-form",
+      "zod",
+    ],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/label.json",
+      "https://blocks.mvp-subha.me/r/progress.json",
+    ],
     files: [
       {
         path: "@/components/ui/multi-step-form.tsx",
         type: "registry:ui",
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/multi-step-form"),
-    ),
+    component: React.lazy(() => import("../components/ui/multi-step-form")),
   },
   {
     name: "marquee",

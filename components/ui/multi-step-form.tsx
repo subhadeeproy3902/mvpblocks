@@ -25,18 +25,20 @@ const addressSchema = z.object({
   zipCode: z.string().min(5, "Zip code must be at least 5 characters"),
 });
 
-const accountSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters")
-    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .regex(/[0-9]/, "Password must contain at least one number"),
-  confirmPassword: z.string(),
-}).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
-  path: ["confirmPassword"],
-});
+const accountSchema = z
+  .object({
+    username: z.string().min(3, "Username must be at least 3 characters"),
+    password: z
+      .string()
+      .min(8, "Password must be at least 8 characters")
+      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .regex(/[0-9]/, "Password must contain at least one number"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
 // Combine all schemas for the final form data
 const formSchema = z.object({
@@ -52,7 +54,10 @@ interface MultiStepFormProps {
   onSubmit?: (data: FormData) => void;
 }
 
-export default function MultiStepForm({ className, onSubmit }: MultiStepFormProps) {
+export default function MultiStepForm({
+  className,
+  onSubmit,
+}: MultiStepFormProps) {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,9 +71,24 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
       description: "Tell us about yourself",
       schema: personalInfoSchema,
       fields: [
-        { name: "firstName", label: "First Name", type: "text", placeholder: "John" },
-        { name: "lastName", label: "Last Name", type: "text", placeholder: "Doe" },
-        { name: "email", label: "Email", type: "email", placeholder: "john.doe@example.com" },
+        {
+          name: "firstName",
+          label: "First Name",
+          type: "text",
+          placeholder: "John",
+        },
+        {
+          name: "lastName",
+          label: "Last Name",
+          type: "text",
+          placeholder: "Doe",
+        },
+        {
+          name: "email",
+          label: "Email",
+          type: "email",
+          placeholder: "john.doe@example.com",
+        },
       ],
     },
     {
@@ -77,9 +97,19 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
       description: "Where do you live?",
       schema: addressSchema,
       fields: [
-        { name: "address", label: "Address", type: "text", placeholder: "123 Main St" },
+        {
+          name: "address",
+          label: "Address",
+          type: "text",
+          placeholder: "123 Main St",
+        },
         { name: "city", label: "City", type: "text", placeholder: "New York" },
-        { name: "zipCode", label: "Zip Code", type: "text", placeholder: "10001" },
+        {
+          name: "zipCode",
+          label: "Zip Code",
+          type: "text",
+          placeholder: "10001",
+        },
       ],
     },
     {
@@ -88,9 +118,24 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
       description: "Create your account",
       schema: accountSchema,
       fields: [
-        { name: "username", label: "Username", type: "text", placeholder: "johndoe" },
-        { name: "password", label: "Password", type: "password", placeholder: "••••••••" },
-        { name: "confirmPassword", label: "Confirm Password", type: "password", placeholder: "••••••••" },
+        {
+          name: "username",
+          label: "Username",
+          type: "text",
+          placeholder: "johndoe",
+        },
+        {
+          name: "password",
+          label: "Password",
+          type: "password",
+          placeholder: "••••••••",
+        },
+        {
+          name: "confirmPassword",
+          label: "Confirm Password",
+          type: "password",
+          placeholder: "••••••••",
+        },
       ],
     },
   ];
@@ -149,35 +194,44 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
   };
 
   return (
-    <div className={cn("w-full max-w-md mx-auto p-6 rounded-lg shadow-lg bg-card/40", className)}>
+    <div
+      className={cn(
+        "mx-auto w-full max-w-md rounded-lg bg-card/40 p-6 shadow-lg",
+        className,
+      )}
+    >
       {!isComplete ? (
         <>
           {/* Progress bar */}
           <div className="mb-8">
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium">Step {step + 1} of {steps.length}</span>
-              <span className="text-sm font-medium">{Math.round(progress)}%</span>
+            <div className="mb-2 flex justify-between">
+              <span className="text-sm font-medium">
+                Step {step + 1} of {steps.length}
+              </span>
+              <span className="text-sm font-medium">
+                {Math.round(progress)}%
+              </span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
 
           {/* Step indicators */}
-          <div className="flex justify-between mb-8">
+          <div className="mb-8 flex justify-between">
             {steps.map((s, i) => (
               <div key={s.id} className="flex flex-col items-center">
                 <div
                   className={cn(
-                    "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold",
+                    "flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold",
                     i < step
                       ? "bg-primary text-primary-foreground"
                       : i === step
-                      ? "bg-primary text-primary-foreground ring-2 ring-primary/30"
-                      : "bg-secondary text-secondary-foreground"
+                        ? "bg-primary text-primary-foreground ring-2 ring-primary/30"
+                        : "bg-secondary text-secondary-foreground",
                   )}
                 >
                   {i < step ? <CheckCircle2 className="h-4 w-4" /> : i + 1}
                 </div>
-                <span className="text-xs mt-1 hidden sm:block">{s.title}</span>
+                <span className="mt-1 hidden text-xs sm:block">{s.title}</span>
               </div>
             ))}
           </div>
@@ -194,10 +248,15 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
             >
               <div className="mb-6">
                 <h2 className="text-xl font-bold">{steps[step].title}</h2>
-                <p className="text-sm text-muted-foreground">{steps[step].description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {steps[step].description}
+                </p>
               </div>
 
-              <form onSubmit={handleSubmit(handleNextStep)} className="space-y-4">
+              <form
+                onSubmit={handleSubmit(handleNextStep)}
+                className="space-y-4"
+              >
                 {steps[step].fields.map((field) => (
                   <div key={field.name} className="space-y-2">
                     <Label htmlFor={field.name}>{field.label}</Label>
@@ -206,7 +265,9 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
                       type={field.type}
                       placeholder={field.placeholder}
                       {...register(field.name as any)}
-                      className={cn(errors[field.name as string] && "border-destructive")}
+                      className={cn(
+                        errors[field.name as string] && "border-destructive",
+                      )}
                     />
                     {errors[field.name as string] && (
                       <p className="text-sm text-destructive">
@@ -228,7 +289,11 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
                   </Button>
                   <Button type="submit" disabled={isSubmitting}>
                     {step === steps.length - 1 ? (
-                      isSubmitting ? "Submitting..." : "Submit"
+                      isSubmitting ? (
+                        "Submitting..."
+                      ) : (
+                        "Submit"
+                      )
                     ) : (
                       <>
                         Next <ArrowRight className="ml-2 h-4 w-4" />
@@ -245,21 +310,23 @@ export default function MultiStepForm({ className, onSubmit }: MultiStepFormProp
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-center py-10"
+          className="py-10 text-center"
         >
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
+          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
             <CheckCircle2 className="h-8 w-8 text-primary" />
           </div>
-          <h2 className="text-2xl font-bold mb-2">Form Submitted!</h2>
-          <p className="text-muted-foreground mb-6">
+          <h2 className="mb-2 text-2xl font-bold">Form Submitted!</h2>
+          <p className="mb-6 text-muted-foreground">
             Thank you for completing the form. We&apos;ll be in touch soon.
           </p>
-          <Button onClick={() => {
-            setStep(0);
-            setFormData({});
-            setIsComplete(false);
-            reset({});
-          }}>
+          <Button
+            onClick={() => {
+              setStep(0);
+              setFormData({});
+              setIsComplete(false);
+              reset({});
+            }}
+          >
             Start Over
           </Button>
         </motion.div>

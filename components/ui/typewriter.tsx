@@ -11,9 +11,7 @@ export default function TextGenerateEffect({
 }) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
-  const displayText = useTransform(rounded, (latest) =>
-    words.slice(0, latest)
-  );
+  const displayText = useTransform(rounded, (latest) => words.slice(0, latest));
 
   useEffect(() => {
     const controls = animate(count, words.length, {
@@ -24,9 +22,5 @@ export default function TextGenerateEffect({
     return controls.stop;
   }, [words]);
 
-  return (
-    <motion.span className={className}>
-      {displayText}
-    </motion.span>
-  );
-};
+  return <motion.span className={className}>{displayText}</motion.span>;
+}

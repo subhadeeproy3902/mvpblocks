@@ -43,10 +43,7 @@ export default function BasicPagination({
 
     // Calculate range of pages to show around current page
     const leftSiblingIndex = Math.max(currentPage - siblingsCount, firstPage);
-    const rightSiblingIndex = Math.min(
-      currentPage + siblingsCount,
-      lastPage
-    );
+    const rightSiblingIndex = Math.min(currentPage + siblingsCount, lastPage);
 
     // Determine whether to show ellipses
     const shouldShowLeftDots = leftSiblingIndex > firstPage + 1;
@@ -115,9 +112,7 @@ export default function BasicPagination({
     }
 
     // Default variant
-    return isActive
-      ? "bg-primary text-primary-foreground"
-      : "hover:bg-muted";
+    return isActive ? "bg-primary text-primary-foreground" : "hover:bg-muted";
   };
 
   const PaginationComponent = (
@@ -142,7 +137,7 @@ export default function BasicPagination({
               }}
               className={cn(
                 currentPage <= 1 ? "pointer-events-none opacity-50" : "",
-                variant === "rounded" ? "rounded-full" : ""
+                variant === "rounded" ? "rounded-full" : "",
               )}
             />
           </motion.div>
@@ -188,7 +183,7 @@ export default function BasicPagination({
                   className={cn(
                     getButtonStyle(isActive),
                     variant === "outline" && "border",
-                    "transition-all duration-200"
+                    "transition-all duration-200",
                   )}
                 >
                   {pageNum}
@@ -216,8 +211,10 @@ export default function BasicPagination({
                 }
               }}
               className={cn(
-                currentPage >= totalPages ? "pointer-events-none opacity-50" : "",
-                variant === "rounded" ? "rounded-full" : ""
+                currentPage >= totalPages
+                  ? "pointer-events-none opacity-50"
+                  : "",
+                variant === "rounded" ? "rounded-full" : "",
               )}
             />
           </motion.div>
@@ -230,28 +227,107 @@ export default function BasicPagination({
   if (showDemo) {
     // Sample data for pagination demo
     const demoItems = [
-      { id: 1, title: "Getting Started with MVPBlocks", category: "Tutorial", date: "Jan 15, 2023" },
-      { id: 2, title: "Building Responsive UIs", category: "Design", date: "Feb 3, 2023" },
-      { id: 3, title: "Advanced Animation Techniques", category: "Animation", date: "Mar 12, 2023" },
-      { id: 4, title: "State Management Patterns", category: "Development", date: "Apr 5, 2023" },
-      { id: 5, title: "Optimizing Performance", category: "Performance", date: "May 20, 2023" },
-      { id: 6, title: "Accessibility Best Practices", category: "Accessibility", date: "Jun 8, 2023" },
-      { id: 7, title: "Component Composition", category: "Architecture", date: "Jul 17, 2023" },
-      { id: 8, title: "Testing Strategies", category: "Testing", date: "Aug 22, 2023" },
-      { id: 9, title: "Deployment Workflows", category: "DevOps", date: "Sep 14, 2023" },
-      { id: 10, title: "Theme Customization", category: "Design", date: "Oct 30, 2023" },
-      { id: 11, title: "API Integration Patterns", category: "Development", date: "Nov 11, 2023" },
-      { id: 12, title: "Building Design Systems", category: "Design", date: "Dec 5, 2023" },
-      { id: 13, title: "Mobile-First Approach", category: "Design", date: "Jan 19, 2024" },
-      { id: 14, title: "Server-Side Rendering", category: "Performance", date: "Feb 8, 2024" },
-      { id: 15, title: "Authentication Flows", category: "Security", date: "Mar 22, 2024" },
+      {
+        id: 1,
+        title: "Getting Started with MVPBlocks",
+        category: "Tutorial",
+        date: "Jan 15, 2023",
+      },
+      {
+        id: 2,
+        title: "Building Responsive UIs",
+        category: "Design",
+        date: "Feb 3, 2023",
+      },
+      {
+        id: 3,
+        title: "Advanced Animation Techniques",
+        category: "Animation",
+        date: "Mar 12, 2023",
+      },
+      {
+        id: 4,
+        title: "State Management Patterns",
+        category: "Development",
+        date: "Apr 5, 2023",
+      },
+      {
+        id: 5,
+        title: "Optimizing Performance",
+        category: "Performance",
+        date: "May 20, 2023",
+      },
+      {
+        id: 6,
+        title: "Accessibility Best Practices",
+        category: "Accessibility",
+        date: "Jun 8, 2023",
+      },
+      {
+        id: 7,
+        title: "Component Composition",
+        category: "Architecture",
+        date: "Jul 17, 2023",
+      },
+      {
+        id: 8,
+        title: "Testing Strategies",
+        category: "Testing",
+        date: "Aug 22, 2023",
+      },
+      {
+        id: 9,
+        title: "Deployment Workflows",
+        category: "DevOps",
+        date: "Sep 14, 2023",
+      },
+      {
+        id: 10,
+        title: "Theme Customization",
+        category: "Design",
+        date: "Oct 30, 2023",
+      },
+      {
+        id: 11,
+        title: "API Integration Patterns",
+        category: "Development",
+        date: "Nov 11, 2023",
+      },
+      {
+        id: 12,
+        title: "Building Design Systems",
+        category: "Design",
+        date: "Dec 5, 2023",
+      },
+      {
+        id: 13,
+        title: "Mobile-First Approach",
+        category: "Design",
+        date: "Jan 19, 2024",
+      },
+      {
+        id: 14,
+        title: "Server-Side Rendering",
+        category: "Performance",
+        date: "Feb 8, 2024",
+      },
+      {
+        id: 15,
+        title: "Authentication Flows",
+        category: "Security",
+        date: "Mar 22, 2024",
+      },
     ];
 
     // Items per page
     const itemsPerPage = 3;
 
     // Enhanced pagination component with content
-    const EnhancedPagination = ({ variant = "default" }: { variant?: "default" | "outline" | "rounded" }) => {
+    const EnhancedPagination = ({
+      variant = "default",
+    }: {
+      variant?: "default" | "outline" | "rounded";
+    }) => {
       const [page, setPage] = useState(1);
 
       // Calculate total pages
@@ -259,7 +335,10 @@ export default function BasicPagination({
 
       // Get current items
       const startIndex = (page - 1) * itemsPerPage;
-      const currentItems = demoItems.slice(startIndex, startIndex + itemsPerPage);
+      const currentItems = demoItems.slice(
+        startIndex,
+        startIndex + itemsPerPage,
+      );
 
       return (
         <div className="space-y-6">
@@ -272,8 +351,14 @@ export default function BasicPagination({
             transition={{ duration: 0.3 }}
           >
             <div className="mb-4 flex items-center justify-between border-b pb-2">
-              <h4 className="text-sm font-medium text-muted-foreground">Showing {startIndex + 1}-{Math.min(startIndex + itemsPerPage, demoItems.length)} of {demoItems.length} items</h4>
-              <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">Page {page} of {totalPages}</span>
+              <h4 className="text-sm font-medium text-muted-foreground">
+                Showing {startIndex + 1}-
+                {Math.min(startIndex + itemsPerPage, demoItems.length)} of{" "}
+                {demoItems.length} items
+              </h4>
+              <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                Page {page} of {totalPages}
+              </span>
             </div>
 
             <div className="space-y-4">
@@ -282,13 +367,18 @@ export default function BasicPagination({
                   key={item.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: (item.id % itemsPerPage) * 0.1 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: (item.id % itemsPerPage) * 0.1,
+                  }}
                   className="flex items-center justify-between rounded-md border p-3 hover:bg-muted/50"
                 >
                   <div>
                     <h3 className="font-medium">{item.title}</h3>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">{item.category}</span>
+                      <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                        {item.category}
+                      </span>
                       <span>{item.date}</span>
                     </div>
                   </div>
@@ -320,7 +410,7 @@ export default function BasicPagination({
                     }}
                     className={cn(
                       page <= 1 ? "pointer-events-none opacity-50" : "",
-                      variant === "rounded" ? "rounded-full" : ""
+                      variant === "rounded" ? "rounded-full" : "",
                     )}
                   />
                 </motion.div>
@@ -354,7 +444,7 @@ export default function BasicPagination({
                             className={cn(
                               getButtonStyle(isActive),
                               variant === "outline" && "border",
-                              "transition-all duration-200"
+                              "transition-all duration-200",
                             )}
                           >
                             {pageNum}
@@ -390,7 +480,7 @@ export default function BasicPagination({
                             className={cn(
                               getButtonStyle(isActive),
                               variant === "outline" && "border",
-                              "transition-all duration-200"
+                              "transition-all duration-200",
                             )}
                           >
                             {pageNum}
@@ -444,7 +534,7 @@ export default function BasicPagination({
                         className={cn(
                           getButtonStyle(isActive),
                           variant === "outline" && "border",
-                          "transition-all duration-200"
+                          "transition-all duration-200",
                         )}
                       >
                         {pageNum}
@@ -470,8 +560,10 @@ export default function BasicPagination({
                       if (page < totalPages) setPage(page + 1);
                     }}
                     className={cn(
-                      page >= totalPages ? "pointer-events-none opacity-50" : "",
-                      variant === "rounded" ? "rounded-full" : ""
+                      page >= totalPages
+                        ? "pointer-events-none opacity-50"
+                        : "",
+                      variant === "rounded" ? "rounded-full" : "",
                     )}
                   />
                 </motion.div>
@@ -485,9 +577,13 @@ export default function BasicPagination({
     return (
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="mb-12 text-center">
-          <h2 className="mb-2 text-3xl font-bold tracking-tight">Pagination Examples</h2>
+          <h2 className="mb-2 text-3xl font-bold tracking-tight">
+            Pagination Examples
+          </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Interactive pagination components that demonstrate real content navigation. Each example shows how pagination can be used to navigate through a collection of items.
+            Interactive pagination components that demonstrate real content
+            navigation. Each example shows how pagination can be used to
+            navigate through a collection of items.
           </p>
         </div>
 

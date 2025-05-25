@@ -1,4 +1,3 @@
-
 "use client";
 
 import Script from "next/script";
@@ -27,4 +26,3 @@ const GoogleAnalytics = () => {
 };
 
 export default GoogleAnalytics;
-

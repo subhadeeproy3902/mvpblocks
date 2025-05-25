@@ -1,5 +1,5 @@
-import { useId } from "react"
-import { Button } from "@/components/ui/button"
+import { useId } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,12 +7,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function SignupModal() {
-  const id = useId()
+  const id = useId();
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -71,13 +71,13 @@ export default function SignupModal() {
           </Button>
         </form>
 
-        <div className="before:bg-border after:bg-border flex items-center gap-3 before:h-px before:flex-1 after:h-px after:flex-1">
-          <span className="text-muted-foreground text-xs">Or</span>
+        <div className="flex items-center gap-3 before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+          <span className="text-xs text-muted-foreground">Or</span>
         </div>
 
         <Button variant="outline">Continue with Google</Button>
 
-        <p className="text-muted-foreground text-center text-xs">
+        <p className="text-center text-xs text-muted-foreground">
           By signing up you agree to our{" "}
           <a className="underline hover:no-underline" href="#">
             Terms
@@ -86,5 +86,5 @@ export default function SignupModal() {
         </p>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

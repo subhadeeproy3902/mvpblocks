@@ -28,7 +28,14 @@ interface StatItemProps {
   color?: string;
 }
 
-const StatItem = ({ value, label, icon, delay = 0, decimalPlaces = 0, color = "from-primary to-primary/70" }: StatItemProps) => {
+const StatItem = ({
+  value,
+  label,
+  icon,
+  delay = 0,
+  decimalPlaces = 0,
+  color = "from-primary to-primary/70",
+}: StatItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const { resolvedTheme } = useTheme();
@@ -41,21 +48,25 @@ const StatItem = ({ value, label, icon, delay = 0, decimalPlaces = 0, color = "f
       transition={{ duration: 0.6, delay: delay, ease: "easeOut" }}
       className={cn(
         "group relative overflow-hidden rounded-xl border border-border/30 bg-card p-6",
-        resolvedTheme === "dark" ? "shadow-xl shadow-black/5" : "shadow-lg shadow-black/[0.03]"
+        resolvedTheme === "dark"
+          ? "shadow-xl shadow-black/5"
+          : "shadow-lg shadow-black/[0.03]",
       )}
     >
       <div
         className={cn(
           "absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:blur-3xl",
-          color
+          color,
         )}
       />
 
       <div className="flex items-center gap-4">
-        <div className={cn(
-          "flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-white",
-          color
-        )}>
+        <div
+          className={cn(
+            "flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-white",
+            color,
+          )}
+        >
           {icon}
         </div>
 
@@ -119,13 +130,23 @@ export default function AboutUs2() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-16 w-full md:py-24">
+    <section className="relative w-full overflow-hidden py-16 md:py-24">
       {/* Background pattern */}
       <div className="absolute inset-0 -z-10 opacity-[0.02] dark:opacity-[0.05]">
         <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" />
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
@@ -170,10 +191,7 @@ export default function AboutUs2() {
         </div>
 
         {/* Stats Section */}
-        <div
-          ref={statsRef}
-          className="mb-20"
-        >
+        <div ref={statsRef} className="mb-20">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, index) => (
               <StatItem
@@ -190,14 +208,13 @@ export default function AboutUs2() {
         </div>
 
         {/* About Content Section */}
-        <div
-          ref={aboutRef}
-          className="relative mx-auto mb-20"
-        >
+        <div ref={aboutRef} className="relative mx-auto mb-20">
           <div className="grid gap-16 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={
+                aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+              }
               transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
               className="relative space-y-6"
             >
@@ -208,15 +225,17 @@ export default function AboutUs2() {
               <h2 className="text-2xl font-bold tracking-tight">Our Mission</h2>
 
               <p className="text-base leading-relaxed text-muted-foreground">
-                To empower businesses with innovative digital solutions that drive growth,
-                enhance user experiences, and create lasting value in an ever-evolving
-                technological landscape.
+                To empower businesses with innovative digital solutions that
+                drive growth, enhance user experiences, and create lasting value
+                in an ever-evolving technological landscape.
               </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={
+                aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+              }
               transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               className="relative space-y-6"
             >
@@ -227,9 +246,9 @@ export default function AboutUs2() {
               <h2 className="text-2xl font-bold tracking-tight">Our Vision</h2>
 
               <p className="text-base leading-relaxed text-muted-foreground">
-                To be the leading provider of transformative digital experiences,
-                recognized globally for our commitment to excellence, innovation,
-                and client success.
+                To be the leading provider of transformative digital
+                experiences, recognized globally for our commitment to
+                excellence, innovation, and client success.
               </p>
             </motion.div>
           </div>
@@ -244,7 +263,10 @@ export default function AboutUs2() {
               <Building className="h-5 w-5" />
             </div>
             <p className="text-base leading-relaxed text-muted-foreground">
-              We are a passionate team of experts dedicated to delivering exceptional solutions that help businesses thrive in the digital landscape. Our commitment to innovation and quality has made us a trusted partner for organizations worldwide.
+              We are a passionate team of experts dedicated to delivering
+              exceptional solutions that help businesses thrive in the digital
+              landscape. Our commitment to innovation and quality has made us a
+              trusted partner for organizations worldwide.
             </p>
           </motion.div>
         </div>
@@ -253,7 +275,9 @@ export default function AboutUs2() {
         <div ref={timelineRef} className="relative mx-auto max-w-4xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={timelineInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            animate={
+              timelineInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mb-10 text-center text-2xl font-bold tracking-tight md:text-3xl"
           >
@@ -262,16 +286,42 @@ export default function AboutUs2() {
 
           <div className="relative ml-4 border-l border-border/60 pl-8 md:ml-0 md:border-none md:pl-0">
             {[
-              { year: "2008", title: "Founded", description: "Our company was established with a vision to transform digital experiences." },
-              { year: "2015", title: "Global Expansion", description: "Expanded operations to serve clients across 20+ countries worldwide." },
-              { year: "2019", title: "Innovation Award", description: "Recognized for our cutting-edge solutions and technological innovation." },
-              { year: "2023", title: "New Horizons", description: "Launched new service offerings to meet evolving market demands." }
+              {
+                year: "2008",
+                title: "Founded",
+                description:
+                  "Our company was established with a vision to transform digital experiences.",
+              },
+              {
+                year: "2015",
+                title: "Global Expansion",
+                description:
+                  "Expanded operations to serve clients across 20+ countries worldwide.",
+              },
+              {
+                year: "2019",
+                title: "Innovation Award",
+                description:
+                  "Recognized for our cutting-edge solutions and technological innovation.",
+              },
+              {
+                year: "2023",
+                title: "New Horizons",
+                description:
+                  "Launched new service offerings to meet evolving market demands.",
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
-                animate={timelineInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.5, delay: 0.1 * index, ease: "easeOut" }}
+                animate={
+                  timelineInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                }
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1 * index,
+                  ease: "easeOut",
+                }}
                 className="relative mb-10 md:grid md:grid-cols-5 md:gap-8"
               >
                 <div className="md:col-span-1">
@@ -281,7 +331,9 @@ export default function AboutUs2() {
                 </div>
                 <div className="md:col-span-4">
                   <h3 className="text-lg font-bold md:text-xl">{item.title}</h3>
-                  <p className="mt-1 text-muted-foreground">{item.description}</p>
+                  <p className="mt-1 text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
             ))}

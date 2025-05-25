@@ -139,7 +139,7 @@ export default function AssistantDialog() {
     () => (
       <Button
         aria-label="Trigger Assistant"
-        className="fixed bottom-3 w-12 h-12 right-3 cursor-pointer focus-visible:outline-none p-0 sm:bottom-5 sm:right-5 rounded-full bg-gradient-to-b from-rose-500 to-rose-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] text-3xl"
+        className="fixed bottom-3 right-3 h-12 w-12 cursor-pointer rounded-full bg-gradient-to-b from-rose-500 to-rose-700 p-0 text-3xl text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] focus-visible:outline-none sm:bottom-5 sm:right-5"
       >
         <SparklesIcon />
       </Button>

@@ -2,8 +2,8 @@ import MultiStepForm from "@/components/ui/multi-step-form";
 
 export default function MultiStepFormPreview() {
   return (
-    <div className="w-full max-w-lg mx-auto">
-      <MultiStepForm 
+    <div className="mx-auto w-full max-w-lg">
+      <MultiStepForm
         onSubmit={(data) => {
           console.log("Form submitted:", data);
         }}

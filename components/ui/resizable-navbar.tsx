@@ -279,8 +279,8 @@ export const NavbarButton = ({
     {
       href: href || undefined,
       className: cn(baseStyles, variantStyles[variant], className),
-      ...props
+      ...props,
     },
-    children
+    children,
   );
 };

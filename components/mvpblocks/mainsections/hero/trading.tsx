@@ -69,7 +69,7 @@ export default function Trading() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="rounded-xl relative mx-auto mt-20 max-w-5xl overflow-hidden"
+        className="relative mx-auto mt-20 max-w-5xl overflow-hidden rounded-xl"
       >
         <div className="overflow-hidden rounded-xl">
           <img

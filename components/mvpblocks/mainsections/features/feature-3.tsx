@@ -1,4 +1,3 @@
-
 import {
   Building2,
   Lightbulb,
@@ -24,21 +23,24 @@ const leftFeatures: FeatureItem[] = [
   {
     icon: Building2,
     title: "Taught by Professionals",
-    description: "Learn directly from top engineers and founders with real-world experience.",
+    description:
+      "Learn directly from top engineers and founders with real-world experience.",
     position: "left",
     cornerStyle: "sm:translate-x-4 sm:rounded-br-[2px]",
   },
   {
     icon: User2,
     title: "Coding Hostels",
-    description: "Join virtual hostels to study, collaborate, and vibe with fellow learners.",
+    description:
+      "Join virtual hostels to study, collaborate, and vibe with fellow learners.",
     position: "left",
     cornerStyle: "sm:-translate-x-4 sm:rounded-br-[2px]",
   },
   {
     icon: Trophy,
     title: "Bounties",
-    description: "Win rewards for solving challenges, contributing to projects, and helping peers.",
+    description:
+      "Win rewards for solving challenges, contributing to projects, and helping peers.",
     position: "left",
     cornerStyle: "sm:translate-x-4 sm:rounded-tr-[2px]",
   },
@@ -48,21 +50,24 @@ const rightFeatures: FeatureItem[] = [
   {
     icon: ScreenShare,
     title: "Revision Classes",
-    description: "Stay sharp with weekly revision sessions and topic refreshers.",
+    description:
+      "Stay sharp with weekly revision sessions and topic refreshers.",
     position: "right",
     cornerStyle: "sm:-translate-x-4 sm:rounded-bl-[2px]",
   },
   {
     icon: User,
     title: "Peer Code Reviews",
-    description: "Improve faster with feedback from mentors and batchmates on your actual code.",
+    description:
+      "Improve faster with feedback from mentors and batchmates on your actual code.",
     position: "right",
     cornerStyle: "sm:translate-x-4 sm:rounded-bl-[2px]",
   },
   {
     icon: Lightbulb,
     title: "Leet Lab",
-    description: "Ace coding interviews with daily DSA problems, contests, and tracking.",
+    description:
+      "Ace coding interviews with daily DSA problems, contests, and tracking.",
     position: "right",
     cornerStyle: "sm:-translate-x-4 sm:rounded-tl-[2px]",
   },
@@ -74,17 +79,17 @@ const FeatureCard = ({ feature }: { feature: FeatureItem }) => {
 
   return (
     <div>
-      <div className={cn(
-        "relative rounded-2xl px-4 pb-4 pt-4 text-sm",
-        "bg-secondary/50 ring ring-border",
-        feature.cornerStyle
-      )}>
+      <div
+        className={cn(
+          "relative rounded-2xl px-4 pb-4 pt-4 text-sm",
+          "bg-secondary/50 ring ring-border",
+          feature.cornerStyle,
+        )}
+      >
         <div className="mb-3 text-[2rem] text-primary">
           <Icon />
         </div>
-        <h2 className="mb-2.5 text-2xl text-foreground">
-          {feature.title}
-        </h2>
+        <h2 className="mb-2.5 text-2xl text-foreground">{feature.title}</h2>
         <p className="text-pretty text-base text-muted-foreground">
           {feature.description}
         </p>
@@ -97,7 +102,6 @@ const FeatureCard = ({ feature }: { feature: FeatureItem }) => {
 };
 
 export default function Feature3() {
-
   return (
     <section className="pb-8 pt-20" id="features">
       <div className="mx-6 max-w-[1120px] pb-16 pt-2 max-[300px]:mx-4 min-[1150px]:mx-auto">
