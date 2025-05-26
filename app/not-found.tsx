@@ -52,7 +52,7 @@ export default function NotFound() {
                 </Link>
               </Button>
               <Button asChild variant="outline" className="h-12">
-                <Link href="/docs" className="flex items-center gap-2">
+                <Link href="/docs/introduction" className="flex items-center gap-2">
                   <FileText className="h-4 w-4" />
                   Browse Docs
                 </Link>
