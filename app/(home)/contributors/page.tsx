@@ -5,18 +5,18 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
+import { ExternalLink, Github, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Contributor, fetchContributors } from "@/actions/fetchContributors";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
+import WorldMap from "@/components/ui/world-map";
 
 const space = Geist({
   subsets: ["latin"],
   variable: "--font-carlito",
   weight: "400",
 });
+
 
 export default function Contributors() {
   const [contributors, setContributors] = useState<Contributor[]>([]);
@@ -104,119 +104,133 @@ export default function Contributors() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <h1 className="group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 cursor-pointer">
+            <h1 className="group inline-flex cursor-pointer items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25">
               {contributors.length} Contributors
             </h1>
-            <h1 className="group inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 cursor-pointer">
+            <h1 className="group inline-flex cursor-pointer items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25">
               {totalContributions} Contributions
             </h1>
           </motion.div>
         </motion.div>
       </div>
 
-      <div className="flex w-full flex-wrap items-center justify-center gap-8">
-        {contributors.map((contributor) => (
-          <CardContainer
-            className="inter-var w-96 bg-transparent"
-            key={contributor.login}
-          >
-            <CardBody className="group/card relative flex h-[32rem] w-auto flex-col justify-between rounded-xl border border-black/[0.1] bg-gray-50 p-6 dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] sm:w-[30rem]">
-              <div>
-                <CardItem
-                  translateZ="50"
-                  className="text-xl font-bold text-neutral-600 dark:text-white"
-                >
-                  {contributor.name || contributor.login}
-                </CardItem>
+      <div className="relative p-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {contributors.map((contributor) => (
+            <div
+              key={contributor.id}
+              className="group relative transform cursor-pointer transition-all duration-500 hover:scale-105"
+            >
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-red-500 via-pink-500 to-red-400 opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200 "></div>
 
-                <CardItem
-                  as="p"
-                  translateZ="60"
-                  className="mt-2 line-clamp-3 h-[4.5rem] max-w-sm overflow-hidden text-sm text-neutral-500 dark:text-neutral-300"
-                >
-                  {contributor.bio}
-                </CardItem>
+              <div className="relative rounded-2xl border border-red-200/30 bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-red-900/20 p-4 backdrop-blur-sm group-hover:border-red-400/60">
+                {/* Floating particles effect */}
+                <div className="absolute right-2 top-2 h-2 w-2 animate-ping rounded-full bg-red-400 opacity-75"></div>
+                <div className="absolute right-6 top-4 h-1 w-1 animate-pulse rounded-full bg-pink-400"></div>
 
-                <CardItem translateZ="100" className="mt-4 w-full">
-                  <Image
-                    src={contributor.avatar_url}
-                    height="1000"
-                    width="1000"
-                    className="h-60 w-full rounded-xl object-cover group-hover/card:shadow-xl"
-                    alt="thumbnail"
-                  />
-                </CardItem>
-              </div>
+                <div className="flex flex-col items-center space-y-3 text-center">
+                  {/* Avatar with glow effect */}
+                  <div className="relative">
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-red-500 to-pink-500 opacity-0 blur transition duration-500 group-hover:opacity-75"></div>
+                    <Image
+                      src={contributor.avatar_url}
+                      height="1000"
+                      width="1000"
+                      alt="thumbnail"
+                      className="border-3 relative h-16 w-16 transform rounded-full border-gray-700 transition-all duration-300 group-hover:scale-110 group-hover:border-red-400"
+                    />
+                    <div className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-gray-900 bg-green-500">
+                      <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-white"></div>
+                    </div>
+                  </div>
 
-              <div className="mt-6 flex items-center justify-between">
-                <CardItem
-                  translateZ={20}
-                  as="a"
-                  href="https://twitter.com/mannupaaji"
-                  target="__blank"
-                  className="rounded-xl px-4 py-2 text-xs font-normal dark:text-white"
-                >
-                  {contributor.contributions} contributions
-                </CardItem>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="mb-1 text-lg font-bold text-white transition-colors duration-300 group-hover:text-red-300">
+                      {contributor.name}
+                    </h3>
+                    <p className="mb-2 text-xs text-gray-400 transition-colors group-hover:text-red-400">
+                      @{contributor.login}
+                    </p>
 
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
-                >
-                  <a href={contributor.html_url} target="__blank">
-                    <Github className="h-4 w-4" />
-                  </a>
-                </CardItem>
-              </div>
-            </CardBody>
-          </CardContainer>
-        ))}
-      </div>
-
-      <section className="mx-auto mb-24 flex w-full max-w-7xl flex-col items-center justify-center">
-        <div className="w-full">
-          <div className="relative z-20 h-[400px] w-full overflow-hidden rounded-xl border border-border bg-primary shadow-xl md:h-[400px]">
-            <Image
-              alt="Agent CTA Background"
-              fill
-              priority
-              className="absolute inset-0 object-cover object-right md:object-center"
-              sizes="(max-width: 768px) 100vw, 1280px"
-              src="/cta-bg.webp"
-            />
-            <div className="absolute inset-0 -top-32 flex flex-col items-center justify-center md:-top-40">
-              <h1 className="max-w-xs bg-gradient-to-r from-zinc-200/60 via-zinc-50 to-zinc-200/60 bg-clip-text text-center text-4xl font-medium tracking-tighter text-transparent md:max-w-xl md:text-7xl">
-                Want to contribute?
-              </h1>
-              <div className="absolute bottom-20 flex flex-col items-center justify-center gap-2">
-                <span className="text-sm text-white">
-                  We welcome contributions from the community! If you have ideas
-                  or implementations for pagination components, consider
-                  contributing to MVPBlocks.
-                </span>
-
-                <div className="mt-4 flex items-center justify-center gap-2">
-                  <Link
-                    className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md cursor-pointer"
-                    href="https://github.com/subhadeeproy3902/mvpblocks"
-                    target="_blank"
-                  >
-                    Contribute on GitHub
-                  </Link>
-                  <Link
-                    className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md cursor-pointer"
-                    href="https://github.com/subhadeeproy3902/mvpblocks/issues"
-                    target="_blank"
-                  >
-                    View Issues
-                  </Link>
+                    <div className="flex items-center justify-center space-x-1">
+                      <Zap className="h-3 w-3 text-yellow-400" />
+                      <span className="text-xs font-bold text-red-400">
+                        {contributor.contributions}
+                      </span>
+                      <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <Link href={contributor.html_url} target="_blank">
+                          <ExternalLink className="h-3 w-3 animate-bounce text-red-400" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+
+      <div className="w-full bg-white pt-40 dark:bg-[#0B0A09] ">
+        <div className="mx-auto max-w-7xl text-center">
+          <p className="text-xl font-bold text-black dark:text-white md:text-4xl">
+            Want to Contribute{" "}
+            <span className="text-neutral-400">
+              {"Connectivity".split("").map((word, idx) => (
+                <motion.span
+                  key={idx}
+                  className="inline-block"
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: idx * 0.04 }}
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </span>
+          </p>
+          <p className="mx-auto max-w-2xl py-4 text-sm text-neutral-500 md:text-lg">
+            We welcome contributions from the community! If you have ideas or
+            implementations for pagination components, consider contributing to
+            MVPBlocks.
+          </p>
+        </div>
+        <WorldMap
+          dots={[
+            {
+              start: {
+                lat: 64.2008,
+                lng: -149.4937,
+              }, // Alaska (Fairbanks)
+              end: {
+                lat: 34.0522,
+                lng: -118.2437,
+              }, // Los Angeles
+            },
+            {
+              start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
+              end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+            },
+            {
+              start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+              end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
+            },
+            {
+              start: { lat: 51.5074, lng: -0.1278 }, // London
+              end: { lat: 28.6139, lng: 77.209 }, // New Delhi
+            },
+            {
+              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+              end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
+            },
+            {
+              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+              end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+            },
+          ]}
+        />
+      </div>
+
     </div>
   );
 }
