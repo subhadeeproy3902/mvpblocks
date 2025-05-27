@@ -1155,4 +1155,67 @@ export const blocks: Registry = [
       () => import("../components/mvpblocks/chatbot-ui/v0-chat"),
     ),
   },
+  {
+    name: "admin-dashboard",
+    author: "subhadeeproy3902",
+    type: "registry:block",
+    dependencies: ["framer-motion", "lucide-react", "next-themes", "react", "next"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/sidebar.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/separator.json",
+      "https://blocks.mvp-subha.me/r/breadcrumb.json",
+    ],
+    files: [
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/index.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/performance-metrics.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header.tsx",
+        type: "registry:block",
+      },
+      {
+        path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/index.ts",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/dashboards/admin-dashboard-1"),
+    ),
+  },
 ];
