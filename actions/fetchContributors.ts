@@ -6,6 +6,7 @@ export type Contributor = {
     html_url: string;
     contributions: number;
     name?: string;
+    bio?: string;
   };
   
   

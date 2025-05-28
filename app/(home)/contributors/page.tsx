@@ -17,7 +17,6 @@ const space = Geist({
   weight: "400",
 });
 
-
 export default function Contributors() {
   const [contributors, setContributors] = useState<Contributor[]>([]);
   const [totalContributions, setTotalContributions] = useState(0);
@@ -119,49 +118,45 @@ export default function Contributors() {
           {contributors.map((contributor) => (
             <div
               key={contributor.id}
-              className="group relative transform cursor-pointer transition-all duration-500 hover:scale-105"
+              className="group relative transform cursor-pointer transition-all duration-300 hover:scale-105"
             >
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-red-500 via-pink-500 to-red-400 opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200 "></div>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-200/30 shadow-lg transition-all duration-300 hover:shadow-xl">
+                {/* Full width image */}
+                <div className="relative w-full overflow-hidden">
+                  <Image
+                    src={contributor.avatar_url}
+                    height={100}
+                    width={330}
+                    alt={`${contributor.name} avatar`}
+                    className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
 
-              <div className="relative rounded-2xl border border-red-200/30 bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-red-900/20 p-4 backdrop-blur-sm group-hover:border-red-400/60">
-                {/* Floating particles effect */}
-                <div className="absolute right-2 top-2 h-2 w-2 animate-ping rounded-full bg-red-400 opacity-75"></div>
-                <div className="absolute right-6 top-4 h-1 w-1 animate-pulse rounded-full bg-pink-400"></div>
+                <div className="space-y-3 p-4">
+                  <h3 className="text-center text-xl font-bold text-white">
+                    {contributor.name}
+                  </h3>
 
-                <div className="flex flex-col items-center space-y-3 text-center">
-                  {/* Avatar with glow effect */}
-                  <div className="relative">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-red-500 to-pink-500 opacity-0 blur transition duration-500 group-hover:opacity-75"></div>
-                    <Image
-                      src={contributor.avatar_url}
-                      height="1000"
-                      width="1000"
-                      alt="thumbnail"
-                      className="border-3 relative h-16 w-16 transform rounded-full border-gray-700 transition-all duration-300 group-hover:scale-110 group-hover:border-red-400"
-                    />
-                    <div className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-gray-900 bg-green-500">
-                      <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-white"></div>
-                    </div>
-                  </div>
+                  <p className="h-10 text-center text-sm text-gray-600">
+                    {contributor.bio.length < 70
+                      ? contributor.bio
+                      : contributor.bio?.slice(0, 70) + "..."}
+                  </p>
 
-                  <div className="min-w-0 flex-1">
-                    <h3 className="mb-1 text-lg font-bold text-white transition-colors duration-300 group-hover:text-red-300">
-                      {contributor.name}
-                    </h3>
-                    <p className="mb-2 text-xs text-gray-400 transition-colors group-hover:text-red-400">
-                      @{contributor.login}
-                    </p>
-
-                    <div className="flex items-center justify-center space-x-1">
-                      <Zap className="h-3 w-3 text-yellow-400" />
-                      <span className="text-xs font-bold text-red-400">
+                  <div className="flex items-center justify-center gap-6">
+                    <Link
+                      href={contributor.html_url}
+                      target="_blank"
+                      className="inline-flex items-center space-x-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-gray-800"
+                    >
+                      <Github className="h-4 w-4" />
+                      <span>GitHub </span>
+                    </Link>
+                    <div className="flex items-center justify-center gap-2">
+                      <Zap className="h-4 w-4 text-yellow-500" />
+                      <span className="text-sm font-semibold text-gray-700">
                         {contributor.contributions}
                       </span>
-                      <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <Link href={contributor.html_url} target="_blank">
-                          <ExternalLink className="h-3 w-3 animate-bounce text-red-400" />
-                        </Link>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -170,8 +165,7 @@ export default function Contributors() {
           ))}
         </div>
       </div>
-
-      <div className="w-full bg-white pt-40 dark:bg-[#0B0A09] ">
+      <div className="w-full bg-white pt-40 dark:bg-[#0B0A09]">
         <div className="mx-auto max-w-7xl text-center">
           <p className="text-xl font-bold text-black dark:text-white md:text-4xl">
             Want to Contribute{" "}
@@ -230,7 +224,6 @@ export default function Contributors() {
           ]}
         />
       </div>
-
     </div>
   );
 }
