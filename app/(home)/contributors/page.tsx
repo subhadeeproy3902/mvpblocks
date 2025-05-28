@@ -138,7 +138,7 @@ export default function Contributors() {
                   </h3>
 
                   <p className="h-10 text-center text-sm text-gray-600">
-                    {contributor.bio.length < 70
+                    {contributor.bio?.length < 70
                       ? contributor.bio
                       : contributor.bio?.slice(0, 70) + "..."}
                   </p>
