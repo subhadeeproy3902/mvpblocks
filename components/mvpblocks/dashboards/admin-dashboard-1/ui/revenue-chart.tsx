@@ -32,7 +32,7 @@ export const RevenueChart = memo(() => {
       </div>
 
       {/* Fixed Chart Area */}
-      <div className="h-64 relative mb-4 bg-muted/20 rounded-lg p-4">
+      <div className="h-64 relative mb-4 rounded-lg p-4">
         <div className="h-full flex items-end justify-between gap-3">
           {chartData.map((item, index) => (
             <div key={item.month} className="flex-1 flex flex-col items-center group">

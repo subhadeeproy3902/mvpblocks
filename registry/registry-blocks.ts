@@ -1157,7 +1157,6 @@ export const blocks: Registry = [
   },
   {
     name: "admin-dashboard",
-    author: "subhadeeproy3902",
     type: "registry:block",
     dependencies: ["framer-motion", "lucide-react", "next-themes", "react", "next"],
     registryDependencies: [

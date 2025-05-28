@@ -7,6 +7,12 @@ import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -14,7 +20,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Bell, Search, Filter, Download, RefreshCw } from "lucide-react";
+import { Bell, Search, Filter, Download, RefreshCw, MoreHorizontal } from "lucide-react";
 
 interface DashboardHeaderProps {
   searchQuery: string;
@@ -32,7 +38,7 @@ export const DashboardHeader = memo(({
   isRefreshing 
 }: DashboardHeaderProps) => {
   return (
-    <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+    <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center gap-2 border-b bg-background/95 backdrop-blur transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />
@@ -55,7 +61,8 @@ export const DashboardHeader = memo(({
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-2"
         >
-          <div className="relative">
+          {/* Search Input - Hide on Mobile */}
+          <div className="relative hidden md:block">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search..."
@@ -65,30 +72,51 @@ export const DashboardHeader = memo(({
             />
           </div>
           
-          <Button variant="outline" size="sm">
-            <Filter className="w-4 h-4 mr-2" />
-            Filter
-          </Button>
-          
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={onExport}
-          >
-            <Download className="w-4 h-4 mr-2" />
-            Export
-          </Button>
-          
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={onRefresh}
-            disabled={isRefreshing}
-          >
-            <RefreshCw className={`w-4 h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
-            Refresh
-          </Button>
-          
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-2">
+            <Button variant="outline" size="sm">
+              <Filter className="w-4 h-4 mr-2" />
+              Filter
+            </Button>
+            
+            <Button variant="outline" size="sm" onClick={onExport}>
+              <Download className="w-4 h-4 mr-2" />
+              Export
+            </Button>
+            
+            <Button variant="outline" size="sm" onClick={onRefresh} disabled={isRefreshing}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
+
+          {/* Mobile Menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className="md:hidden">
+              <Button variant="outline" size="icon">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={() => onSearchChange("")}>
+                <Search className="mr-2 h-4 w-4" />
+                Search
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Filter className="mr-2 h-4 w-4" />
+                Filter
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={onExport}>
+                <Download className="mr-2 h-4 w-4" />
+                Export
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={onRefresh}>
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Refresh
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button variant="outline" size="sm">
             <Bell className="w-4 h-4" />
           </Button>

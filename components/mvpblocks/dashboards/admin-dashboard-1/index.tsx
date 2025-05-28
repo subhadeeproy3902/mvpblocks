@@ -84,33 +84,33 @@ export default function AdminDashboard() {
           isRefreshing={isRefreshing}
         />
 
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="min-h-[100vh] flex-1 rounded-xl md:min-h-min p-6">
-            <div className="mx-auto max-w-6xl space-y-6">
-              <div>
-                <h1 className="text-3xl font-bold tracking-tight">Welcome Admin</h1>
-                <p className="text-muted-foreground">
+        <div className="flex flex-1 flex-col gap-2 sm:gap-4 p-2 sm:p-4 pt-0">
+          <div className="min-h-[calc(100vh-4rem)] flex-1 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6">
+            <div className="mx-auto max-w-6xl space-y-4 sm:space-y-6">
+              <div className="px-2 sm:px-0">
+                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Welcome Admin</h1>
+                <p className="text-sm sm:text-base text-muted-foreground">
                   Here&apos;s what&apos;s happening with your platform today.
                 </p>
               </div>
 
               {/* Stats Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {stats.map((stat, index) => (
                   <DashboardCard key={stat.title} stat={stat} index={index} />
                 ))}
               </div>
 
               {/* Main Content Grid */}
-              <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6 xl:grid-cols-3">
                 {/* Charts Section */}
-                <div className="xl:col-span-2 space-y-6">
+                <div className="space-y-4 sm:space-y-6 xl:col-span-2">
                   <RevenueChart />
                   <UsersTable onAddUser={handleAddUser} />
                 </div>
 
                 {/* Sidebar Section */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <QuickActions onAddUser={handleAddUser} onExport={handleExport} />
                   <SystemStatus />
                   <RecentActivity />
