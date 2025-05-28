@@ -21,7 +21,7 @@ export const source = loader({
         node.name = (
           <>
             {node.name}
-            <span className="border-primary border bg-primary text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="ml-1 border-primary border bg-primary text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
               New
             </span>
           </>
@@ -30,7 +30,7 @@ export const source = loader({
         node.name = (
           <>
             {node.name}
-            <span className="border-yellow-600 border bg-yellow-600 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="ml-1 border-yellow-600 border bg-yellow-600 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
               Pro
             </span>
           </>
@@ -40,7 +40,7 @@ export const source = loader({
         node.name = (
           <>
             {node.name}
-            <span className="border-green-600 border bg-green-600 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="ml-1 border-green-500 border bg-green-500 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
               Updated
             </span>
           </>
