@@ -14,9 +14,9 @@ const dm = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "MVPBlocks",
+  title: "Mvpblocks",
   description:
-    "Copy, paste, customize—and launch your idea faster than ever. MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
+    "Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
   keywords: [
     "UI blocks",
     "Templates",
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
     canonical: "https://blocks.mvp-subha.me",
   },
   openGraph: {
-    title: "MVPBlocks",
+    title: "Mvpblocks",
     description:
-      "Copy, paste, customize—and launch your idea faster than ever. MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
+      "Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
     url: "https://blocks.mvp-subha.me",
-    siteName: "MVPBlocks",
+    siteName: "Mvpblocks",
     images: [
       {
         url: "https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png",
         width: 1200,
         height: 630,
-        alt: "MVPBlocks - The Ultimate Open Source Component Library for MVPs",
+        alt: "Mvpblocks - The Ultimate Open Source Component Library for MVPs",
       },
     ],
     locale: "en_US",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MVPBlocks",
+    title: "Mvpblocks",
     description:
       "Copy, paste, customize—and launch your idea faster than ever.",
     creator: "@mvp_Subha",
@@ -72,10 +72,7 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  other: {
-    "google-site-verification": "ZJ-yJ82Yvyo_Ec0CIQ7UmII5Yj6G6_YdlZUfRMZAeR0",
-  },
+  }
 };
 
 export default function RootLayout({
