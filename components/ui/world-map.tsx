@@ -39,7 +39,7 @@ export default function WorldMap({
     radius: 0.22,
     color: theme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
+    backgroundColor: theme === "dark" ? "bg-[#0B0A09]" : "white",
   });
 
   const projectPoint = (lat: number, lng: number) => {
@@ -157,7 +157,7 @@ export default function WorldMap({
                       alt="Avatar"
                     />
                     <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200">
-                      {dot.start.fallback || "SH"}
+                     
                     </AvatarFallback>
                   </Avatar>
                 </div>
@@ -207,7 +207,7 @@ export default function WorldMap({
                       alt="Avatar"
                     />
                     <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200">
-                      {dot.end.fallback || "SH"}
+                      
                     </AvatarFallback>
                   </Avatar>
                 </div>
