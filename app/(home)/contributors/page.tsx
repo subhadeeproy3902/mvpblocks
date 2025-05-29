@@ -118,7 +118,7 @@ export default function Contributors() {
           {contributors.map((contributor) => (
             <div
               key={contributor.id}
-              className="group relative transform cursor-pointer transition-all duration-300 hover:scale-105"
+              className="group relative transform cursor-pointer transition-all duration-300"
             >
               <div className="relative overflow-hidden rounded-2xl border border-gray-200/30 shadow-lg transition-all duration-300 hover:shadow-xl">
                 {/* Full width image */}
@@ -128,7 +128,7 @@ export default function Contributors() {
                     height={100}
                     width={330}
                     alt={`${contributor.name} avatar`}
-                    className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
+                    className="object-cover w-full object-center transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 
