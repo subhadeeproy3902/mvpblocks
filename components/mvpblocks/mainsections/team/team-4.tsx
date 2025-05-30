@@ -57,11 +57,78 @@ export interface ElegantTeamProps extends TeamSectionProps {
   }>;
 }
 
+const elegantTeamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: 'Emmy Rosum',
+    role: 'Co-Founder and CEO',
+    department: 'management',
+    image:
+      'https://img.freepik.com/premium-psd/3d-avatar-character_975163-690.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 2,
+    name: 'Orlando Diggs',
+    role: 'Co-Founder and COO',
+    department: 'management',
+    image:
+      'https://img.freepik.com/premium-psd/3d-avatar-character_975163-678.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 3,
+    name: 'Sophie Chamberlain',
+    role: 'Head of Sales',
+    department: 'sales',
+    image:
+      'https://img.freepik.com/premium-psd/3d-avatar-character_975163-725.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 4,
+    name: 'Lana Steiner',
+    role: 'VP of Customer Success',
+    department: 'customer',
+    image:
+      'https://img.freepik.com/premium-photo/female-character-3d-rendering-isolated-background_150525-107.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 5,
+    name: 'Emily Donnavan',
+    role: 'Product Lead',
+    department: 'product',
+    image:
+      'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671163.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 6,
+    name: 'Sasha Kindred',
+    role: 'VP of Marketing',
+    department: 'marketing',
+    image:
+      'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671132.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 7,
+    name: 'Jessica Dobrev',
+    role: 'Backend Lead',
+    department: 'operations',
+    image:
+      'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671159.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 8,
+    name: 'Drew Cano',
+    role: 'Head of UX',
+    department: 'design',
+    image:
+      'https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671136.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+];
+
 export default function Team4({
   title = 'Meet the team that makes the magic happen',
   subtitle = 'Meet our diverse team of world-class creators, designers, and problem solvers.',
-  description,
-  teamMembers,
+  description = '',
+  teamMembers = elegantTeamMembers,
   backgroundColor = '#ffffff',
   textColor = '#000000',
   accentColor = '#000000',
