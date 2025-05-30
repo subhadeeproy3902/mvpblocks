@@ -31,11 +31,9 @@ type TeamMember = {
 type TeamSectionProps = {
   title?: string;
   subtitle?: string;
-  description?: string;
   teamMembers: TeamMember[];
   backgroundColor?: string;
   textColor?: string;
-  accentColor?: string;
   secondaryColor?: string;
   className?: string;
 };
@@ -127,11 +125,9 @@ const elegantTeamMembers: TeamMember[] = [
 export default function Team4({
   title = 'Meet the team that makes the magic happen',
   subtitle = 'Meet our diverse team of world-class creators, designers, and problem solvers.',
-  description = '',
   teamMembers = elegantTeamMembers,
   backgroundColor = '#ffffff',
   textColor = '#000000',
-  accentColor = '#000000',
   secondaryColor = '#666666',
   className,
   departments = [
