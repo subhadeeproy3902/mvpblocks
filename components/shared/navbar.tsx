@@ -34,10 +34,6 @@ export function NavbarDemo() {
       name: "Showcase",
       link: "/showcase",
     },
-    {
-      name: "Contributors",
-      link: "/contributors",
-    }
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

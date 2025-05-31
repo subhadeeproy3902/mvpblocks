@@ -2,17 +2,15 @@
 
 import { useState } from "react";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { TrendingUp, Users, Activity, DollarSign, Eye } from "lucide-react";
-import {
-  DashboardCard,
-  RevenueChart,
-  AdminSidebar,
-  UsersTable,
-  QuickActions,
-  SystemStatus,
-  RecentActivity,
-  DashboardHeader,
-} from "./ui";
+import { Users, Activity, DollarSign, Eye } from "lucide-react";
+import { DashboardCard } from "./ui/dashboard-card";
+import { RevenueChart } from "./ui/revenue-chart";
+import { UsersTable } from "./ui/users-table";
+import { QuickActions } from "./ui/quick-actions";
+import { SystemStatus } from "./ui/system-status";
+import { RecentActivity } from "./ui/recent-activity";
+import { DashboardHeader } from "./ui/dashboard-header";
+import { AdminSidebar } from "./ui/admin-sidebar";
 
 // Dashboard stats data
 const stats = [

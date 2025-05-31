@@ -1,0 +1,18 @@
+{
+  "name": "system-status",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { memo } from \"react\";\nimport { motion } from \"framer-motion\";\nimport { Shield, Database, Zap, Activity } from \"lucide-react\";\n\nconst statusItems = [\n  { label: \"Server Status\", status: \"Online\", color: \"text-green-500\", icon: Shield, percentage: 100 },\n  { label: \"Database\", status: \"Healthy\", color: \"text-green-500\", icon: Database, percentage: 95 },\n  { label: \"API Response\", status: \"Fast\", color: \"text-green-500\", icon: Zap, percentage: 98 },\n  { label: \"Storage\", status: \"85% Used\", color: \"text-yellow-500\", icon: Activity, percentage: 85 },\n];\n\nexport const SystemStatus = memo(() => {\n  return (\n    <div className=\"bg-card/40 border border-border rounded-xl p-6\">\n      <h3 className=\"text-xl font-semibold mb-4\">System Status</h3>\n      <div className=\"space-y-4\">\n        {statusItems.map((item, index) => {\n          const Icon = item.icon;\n          return (\n            <motion.div \n              key={item.label} \n              initial={{ opacity: 0, x: 20 }}\n              animate={{ opacity: 1, x: 0 }}\n              transition={{ delay: index * 0.1 }}\n              className=\"flex items-center justify-between p-3 rounded-lg hover:bg-accent/50 transition-colors cursor-pointer\"\n            >\n              <div className=\"flex items-center gap-3\">\n                <Icon className={`w-4 h-4 ${item.color}`} />\n                <span className=\"text-sm font-medium\">{item.label}</span>\n              </div>\n              <div className=\"flex items-center gap-3\">\n                <div className=\"w-16 h-2 bg-muted rounded-full overflow-hidden\">\n                  <motion.div\n                    initial={{ width: 0 }}\n                    animate={{ width: `${item.percentage}%` }}\n                    transition={{ duration: 1, delay: index * 0.1 }}\n                    className={`h-full rounded-full ${item.color.replace('text-', 'bg-')}`}\n                  />\n                </div>\n                <span className={`text-sm font-medium ${item.color} min-w-[60px] text-right`}>\n                  {item.status}\n                </span>\n              </div>\n            </motion.div>\n          );\n        })}\n      </div>\n    </div>\n  );\n});\n\nSystemStatus.displayName = \"SystemStatus\";\n",
+      "path": "/components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status.tsx",
+      "target": "/components/mvpblocks/system-status.tsx"
+    }
+  ]
+}
