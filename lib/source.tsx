@@ -16,12 +16,12 @@ export const source = loader({
         pro: boolean;
         updated: boolean;
       };
-      
+
       if (data.new)
         node.name = (
           <>
             {node.name}
-            <span className="ml-1 border-primary border bg-primary text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="py-0.2 mx-[5px] ml-1 rounded-md border border-primary bg-primary px-2 text-xs text-white">
               New
             </span>
           </>
@@ -30,17 +30,16 @@ export const source = loader({
         node.name = (
           <>
             {node.name}
-            <span className="ml-1 border-yellow-600 border bg-yellow-600 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="py-0.2 mx-[5px] ml-1 rounded-md border border-yellow-600 bg-yellow-600 px-2 text-xs text-white">
               Pro
             </span>
           </>
         );
-      
       else if (data.updated)
         node.name = (
           <>
             {node.name}
-            <span className="ml-1 border-green-500 border bg-green-500 text-white text-xs py-0.2 px-2 rounded-md mx-[5px]">
+            <span className="py-0.2 mx-[5px] ml-1 rounded-md border border-green-500 bg-green-500 px-2 text-xs text-white">
               Updated
             </span>
           </>

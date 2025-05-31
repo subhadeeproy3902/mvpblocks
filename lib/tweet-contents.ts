@@ -27,5 +27,5 @@ export const tweetContents = [
 
   "🚗 Went from zero to launch in a single afternoon using Mvpblocks. No joke.\nblocks.mvp-subha.me\n@mvp_Subha",
 
-  "🎨 Design consistency without the micromanagement. Mvpblocks is actually cracked.\nblocks.mvp-subha.me\n@mvp_Subha"
+  "🎨 Design consistency without the micromanagement. Mvpblocks is actually cracked.\nblocks.mvp-subha.me\n@mvp_Subha",
 ];

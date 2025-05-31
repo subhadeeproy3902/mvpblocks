@@ -1,0 +1,37 @@
+{
+  "name": "admin-dashboard-1",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/sidebar.json",
+    "https://blocks.mvp-subha.me/r/utils.json",
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/input.json",
+    "https://blocks.mvp-subha.me/r/separator.json",
+    "https://blocks.mvp-subha.me/r/sheet.json",
+    "https://blocks.mvp-subha.me/r/skeleton.json",
+    "https://blocks.mvp-subha.me/r/tooltip.json",
+    "https://blocks.mvp-subha.me/r/use-mobile.json",
+    "https://blocks.mvp-subha.me/r/dashboard-card.json",
+    "https://blocks.mvp-subha.me/r/revenue-chart.json",
+    "https://blocks.mvp-subha.me/r/users-table.json",
+    "https://blocks.mvp-subha.me/r/quick-actions.json",
+    "https://blocks.mvp-subha.me/r/system-status.json",
+    "https://blocks.mvp-subha.me/r/recent-activity.json",
+    "https://blocks.mvp-subha.me/r/dashboard-header.json",
+    "https://blocks.mvp-subha.me/r/dropdown-menu.json",
+    "https://blocks.mvp-subha.me/r/breadcrumb.json",
+    "https://blocks.mvp-subha.me/r/admin-sidebar.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport { SidebarInset, SidebarProvider } from \"@/components/ui/sidebar\";\nimport { Users, Activity, DollarSign, Eye } from \"lucide-react\";\nimport { DashboardCard } from \"./ui/dashboard-card\";\nimport { RevenueChart } from \"./ui/revenue-chart\";\nimport { UsersTable } from \"./ui/users-table\";\nimport { QuickActions } from \"./ui/quick-actions\";\nimport { SystemStatus } from \"./ui/system-status\";\nimport { RecentActivity } from \"./ui/recent-activity\";\nimport { DashboardHeader } from \"./ui/dashboard-header\";\nimport { AdminSidebar } from \"./ui/admin-sidebar\";\n\n// Dashboard stats data\nconst stats = [\n  {\n    title: \"Total Users\",\n    value: \"12,345\",\n    change: \"+12%\",\n    changeType: \"positive\" as const,\n    icon: Users,\n    color: \"text-blue-500\",\n    bgColor: \"bg-blue-500/10\",\n  },\n  {\n    title: \"Revenue\",\n    value: \"$45,678\",\n    change: \"+8.2%\",\n    changeType: \"positive\" as const,\n    icon: DollarSign,\n    color: \"text-green-500\",\n    bgColor: \"bg-green-500/10\",\n  },\n  {\n    title: \"Active Sessions\",\n    value: \"2,456\",\n    change: \"+15%\",\n    changeType: \"positive\" as const,\n    icon: Activity,\n    color: \"text-purple-500\",\n    bgColor: \"bg-purple-500/10\",\n  },\n  {\n    title: \"Page Views\",\n    value: \"34,567\",\n    change: \"-2.4%\",\n    changeType: \"negative\" as const,\n    icon: Eye,\n    color: \"text-orange-500\",\n    bgColor: \"bg-orange-500/10\",\n  },\n];\n\nexport default function AdminDashboard() {\n  const [isRefreshing, setIsRefreshing] = useState(false);\n  const [searchQuery, setSearchQuery] = useState(\"\");\n\n  const handleRefresh = async () => {\n    setIsRefreshing(true);\n    await new Promise((resolve) => setTimeout(resolve, 1000));\n    setIsRefreshing(false);\n  };\n\n  const handleExport = () => {\n    console.log(\"Exporting data...\");\n  };\n\n  const handleAddUser = () => {\n    console.log(\"Adding new user...\");\n  };\n\n  return (\n    <SidebarProvider>\n      <AdminSidebar />\n      <SidebarInset>\n        <DashboardHeader\n          searchQuery={searchQuery}\n          onSearchChange={setSearchQuery}\n          onRefresh={handleRefresh}\n          onExport={handleExport}\n          isRefreshing={isRefreshing}\n        />\n\n        <div className=\"flex flex-1 flex-col gap-2 p-2 pt-0 sm:gap-4 sm:p-4\">\n          <div className=\"min-h-[calc(100vh-4rem)] flex-1 rounded-lg p-3 sm:rounded-xl sm:p-4 md:p-6\">\n            <div className=\"mx-auto max-w-6xl space-y-4 sm:space-y-6\">\n              <div className=\"px-2 sm:px-0\">\n                <h1 className=\"text-2xl font-bold tracking-tight sm:text-3xl\">\n                  Welcome Admin\n                </h1>\n                <p className=\"text-sm text-muted-foreground sm:text-base\">\n                  Here&apos;s what&apos;s happening with your platform today.\n                </p>\n              </div>\n\n              {/* Stats Cards */}\n              <div className=\"grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4\">\n                {stats.map((stat, index) => (\n                  <DashboardCard key={stat.title} stat={stat} index={index} />\n                ))}\n              </div>\n\n              {/* Main Content Grid */}\n              <div className=\"grid grid-cols-1 gap-4 sm:gap-6 xl:grid-cols-3\">\n                {/* Charts Section */}\n                <div className=\"space-y-4 sm:space-y-6 xl:col-span-2\">\n                  <RevenueChart />\n                  <UsersTable onAddUser={handleAddUser} />\n                </div>\n\n                {/* Sidebar Section */}\n                <div className=\"space-y-4 sm:space-y-6\">\n                  <QuickActions\n                    onAddUser={handleAddUser}\n                    onExport={handleExport}\n                  />\n                  <SystemStatus />\n                  <RecentActivity />\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
+      "path": "/components/mvpblocks/dashboards/admin-dashboard-1/index.tsx",
+      "target": "/components/mvpblocks/index.tsx"
+    }
+  ]
+}

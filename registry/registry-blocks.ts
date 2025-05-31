@@ -5,8 +5,28 @@ export const blocks: Registry = [
   {
     name: "admin-dashboard-1",
     type: "registry:block",
-    dependencies: ["lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/sidebar.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/separator.json","https://blocks.mvp-subha.me/r/sheet.json","https://blocks.mvp-subha.me/r/skeleton.json","https://blocks.mvp-subha.me/r/tooltip.json","https://blocks.mvp-subha.me/r/use-mobile.json","https://blocks.mvp-subha.me/r/dashboard-card.json","https://blocks.mvp-subha.me/r/revenue-chart.json","https://blocks.mvp-subha.me/r/users-table.json","https://blocks.mvp-subha.me/r/quick-actions.json","https://blocks.mvp-subha.me/r/system-status.json","https://blocks.mvp-subha.me/r/recent-activity.json","https://blocks.mvp-subha.me/r/dashboard-header.json","https://blocks.mvp-subha.me/r/dropdown-menu.json","https://blocks.mvp-subha.me/r/breadcrumb.json","https://blocks.mvp-subha.me/r/admin-sidebar.json"],
+    dependencies: ["lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/sidebar.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/separator.json",
+      "https://blocks.mvp-subha.me/r/sheet.json",
+      "https://blocks.mvp-subha.me/r/skeleton.json",
+      "https://blocks.mvp-subha.me/r/tooltip.json",
+      "https://blocks.mvp-subha.me/r/use-mobile.json",
+      "https://blocks.mvp-subha.me/r/dashboard-card.json",
+      "https://blocks.mvp-subha.me/r/revenue-chart.json",
+      "https://blocks.mvp-subha.me/r/users-table.json",
+      "https://blocks.mvp-subha.me/r/quick-actions.json",
+      "https://blocks.mvp-subha.me/r/system-status.json",
+      "https://blocks.mvp-subha.me/r/recent-activity.json",
+      "https://blocks.mvp-subha.me/r/dashboard-header.json",
+      "https://blocks.mvp-subha.me/r/dropdown-menu.json",
+      "https://blocks.mvp-subha.me/r/breadcrumb.json",
+      "https://blocks.mvp-subha.me/r/admin-sidebar.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/index.tsx",
@@ -14,22 +34,37 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/index"),
+      () =>
+        import("../components/mvpblocks/dashboards/admin-dashboard-1/index"),
     ),
   },
   {
     name: "dashboard-header",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/sidebar.json","https://blocks.mvp-subha.me/r/separator.json","https://blocks.mvp-subha.me/r/sheet.json","https://blocks.mvp-subha.me/r/skeleton.json","https://blocks.mvp-subha.me/r/tooltip.json","https://blocks.mvp-subha.me/r/use-mobile.json","https://blocks.mvp-subha.me/r/dropdown-menu.json","https://blocks.mvp-subha.me/r/breadcrumb.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/sidebar.json",
+      "https://blocks.mvp-subha.me/r/separator.json",
+      "https://blocks.mvp-subha.me/r/sheet.json",
+      "https://blocks.mvp-subha.me/r/skeleton.json",
+      "https://blocks.mvp-subha.me/r/tooltip.json",
+      "https://blocks.mvp-subha.me/r/use-mobile.json",
+      "https://blocks.mvp-subha.me/r/dropdown-menu.json",
+      "https://blocks.mvp-subha.me/r/breadcrumb.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header.tsx",
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header").then((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header"
+      ).then((mod) => ({
         default: mod.DashboardHeader,
       })),
     ),
@@ -37,7 +72,7 @@ export const blocks: Registry = [
   {
     name: "recent-activity",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: [],
     files: [
       {
@@ -45,8 +80,10 @@ export const blocks: Registry = [
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity").then((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity"
+      ).then((mod) => ({
         default: mod.RecentActivity,
       })),
     ),
@@ -54,7 +91,7 @@ export const blocks: Registry = [
   {
     name: "system-status",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: [],
     files: [
       {
@@ -62,8 +99,10 @@ export const blocks: Registry = [
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status").then ((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status"
+      ).then((mod) => ({
         default: mod.SystemStatus,
       })),
     ),
@@ -71,16 +110,21 @@ export const blocks: Registry = [
   {
     name: "quick-actions",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions.tsx",
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions").then ((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions"
+      ).then((mod) => ({
         default: mod.QuickActions,
       })),
     ),
@@ -88,16 +132,21 @@ export const blocks: Registry = [
   {
     name: "users-table",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table.tsx",
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table").then ((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table"
+      ).then((mod) => ({
         default: mod.UsersTable,
       })),
     ),
@@ -105,7 +154,7 @@ export const blocks: Registry = [
   {
     name: "dashboard-card",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: [],
     files: [
       {
@@ -113,8 +162,10 @@ export const blocks: Registry = [
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card").then ((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card"
+      ).then((mod) => ({
         default: mod.DashboardCard,
       })),
     ),
@@ -122,16 +173,21 @@ export const blocks: Registry = [
   {
     name: "revenue-chart",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart.tsx",
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart").then ((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart"
+      ).then((mod) => ({
         default: mod.RevenueChart,
       })),
     ),
@@ -139,16 +195,28 @@ export const blocks: Registry = [
   {
     name: "admin-sidebar",
     type: "registry:block",
-    dependencies: ["lucide-react","next-themes","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/sidebar.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/separator.json","https://blocks.mvp-subha.me/r/sheet.json","https://blocks.mvp-subha.me/r/skeleton.json","https://blocks.mvp-subha.me/r/tooltip.json","https://blocks.mvp-subha.me/r/use-mobile.json"],
+    dependencies: ["lucide-react", "next-themes", "react"],
+    registryDependencies: [
+      "https://blocks.mvp-subha.me/r/sidebar.json",
+      "https://blocks.mvp-subha.me/r/utils.json",
+      "https://blocks.mvp-subha.me/r/button.json",
+      "https://blocks.mvp-subha.me/r/input.json",
+      "https://blocks.mvp-subha.me/r/separator.json",
+      "https://blocks.mvp-subha.me/r/sheet.json",
+      "https://blocks.mvp-subha.me/r/skeleton.json",
+      "https://blocks.mvp-subha.me/r/tooltip.json",
+      "https://blocks.mvp-subha.me/r/use-mobile.json",
+    ],
     files: [
       {
         path: "@/components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar.tsx",
         type: "registry:block",
       },
     ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar").then((mod) => ({
+    component: React.lazy(() =>
+      import(
+        "../components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar"
+      ).then((mod) => ({
         default: mod.AdminSidebar,
       })),
     ),
@@ -156,7 +224,7 @@ export const blocks: Registry = [
   {
     name: "header-2",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: [],
     files: [
       {
@@ -171,7 +239,7 @@ export const blocks: Registry = [
   {
     name: "header-1",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","next-themes","react"],
+    dependencies: ["framer-motion", "lucide-react", "next-themes", "react"],
     registryDependencies: [],
     files: [
       {

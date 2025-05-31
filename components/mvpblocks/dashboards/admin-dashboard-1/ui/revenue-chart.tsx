@@ -16,41 +16,51 @@ const chartData = [
 
 export const RevenueChart = memo(() => {
   return (
-    <div className="bg-card/40 border border-border rounded-xl p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="rounded-xl border border-border bg-card/40 p-6">
+      <div className="mb-6 flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-green-500" />
+          <h3 className="flex items-center gap-2 text-lg font-semibold">
+            <BarChart3 className="h-5 w-5 text-green-500" />
             Revenue Analytics
           </h3>
-          <p className="text-sm text-muted-foreground">Monthly revenue performance</p>
+          <p className="text-sm text-muted-foreground">
+            Monthly revenue performance
+          </p>
         </div>
         <Button variant="outline" size="sm">
-          <Calendar className="w-4 h-4 mr-2" />
+          <Calendar className="mr-2 h-4 w-4" />
           Last 6 months
         </Button>
       </div>
 
       {/* Fixed Chart Area */}
-      <div className="h-64 relative mb-4 rounded-lg p-4">
-        <div className="h-full flex items-end justify-between gap-3">
+      <div className="relative mb-4 h-64 rounded-lg p-4">
+        <div className="flex h-full items-end justify-between gap-3">
           {chartData.map((item, index) => (
-            <div key={item.month} className="flex-1 flex flex-col items-center group">
+            <div
+              key={item.month}
+              className="group flex flex-1 flex-col items-center"
+            >
               <motion.div
                 initial={{ height: 0 }}
                 animate={{ height: `${(item.value / 6000) * 180}px` }}
                 transition={{ duration: 1, delay: index * 0.1 }}
-                className={`w-full ${item.color} rounded-t-lg hover:opacity-80 transition-opacity relative cursor-pointer min-h-[20px]`}
+                className={`w-full ${item.color} relative min-h-[20px] cursor-pointer rounded-t-lg transition-opacity hover:opacity-80`}
               >
                 {/* Tooltip */}
-                <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-popover border border-border rounded-lg px-3 py-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 shadow-lg">
-                  <div className="font-medium">${item.value.toLocaleString()}</div>
-                  <div className={`text-xs ${item.growth > 0 ? 'text-green-500' : 'text-red-500'}`}>
-                    {item.growth > 0 ? '+' : ''}{item.growth}%
+                <div className="absolute -top-16 left-1/2 z-10 -translate-x-1/2 transform whitespace-nowrap rounded-lg border border-border bg-popover px-3 py-2 text-sm opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                  <div className="font-medium">
+                    ${item.value.toLocaleString()}
+                  </div>
+                  <div
+                    className={`text-xs ${item.growth > 0 ? "text-green-500" : "text-red-500"}`}
+                  >
+                    {item.growth > 0 ? "+" : ""}
+                    {item.growth}%
                   </div>
                 </div>
               </motion.div>
-              <div className="text-xs text-center mt-2 text-muted-foreground font-medium">
+              <div className="mt-2 text-center text-xs font-medium text-muted-foreground">
                 {item.month}
               </div>
             </div>
@@ -59,7 +69,7 @@ export const RevenueChart = memo(() => {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border/50">
+      <div className="grid grid-cols-3 gap-4 border-t border-border/50 pt-4">
         <div className="text-center">
           <div className="text-2xl font-bold text-green-500">$27K</div>
           <div className="text-xs text-muted-foreground">Total Revenue</div>

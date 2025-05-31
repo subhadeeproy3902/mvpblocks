@@ -21,8 +21,16 @@ const navItems: NavItem[] = [
     href: "/products",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Analytics", href: "/analytics", description: "Track your metrics" },
-      { name: "Dashboard", href: "/dashboard", description: "Manage your data" },
+      {
+        name: "Analytics",
+        href: "/analytics",
+        description: "Track your metrics",
+      },
+      {
+        name: "Dashboard",
+        href: "/dashboard",
+        description: "Manage your data",
+      },
       { name: "Reports", href: "/reports", description: "Generate insights" },
     ],
   },
@@ -49,7 +57,8 @@ export default function Header1() {
     animate: { y: 0, opacity: 1 },
     scrolled: {
       backdropFilter: "blur(20px)",
-      backgroundColor: theme === "dark" ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.8)",
+      backgroundColor:
+        theme === "dark" ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.8)",
       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
     },
   };
@@ -66,7 +75,7 @@ export default function Header1() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed left-0 right-0 top-0 z-50 transition-all duration-300"
       variants={headerVariants}
       initial="initial"
       animate={isScrolled ? "scrolled" : "animate"}
@@ -81,38 +90,40 @@ export default function Header1() {
         boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between lg:h-20">
           <motion.div
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-rose-500 to-rose-700 rounded-lg flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-rose-700">
+                <Sparkles className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-rose-700 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-rose-500 to-rose-700 bg-clip-text text-xl font-bold text-transparent">
                 Acme Inc.
               </span>
             </Link>
           </motion.div>
 
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden items-center space-x-8 lg:flex">
             {navItems.map((item) => (
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name)}
+                onMouseEnter={() =>
+                  item.hasDropdown && setActiveDropdown(item.name)
+                }
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link
                   href={item.href}
-                  className="flex items-center space-x-1 text-foreground hover:text-rose-500 transition-colors duration-200 font-medium"
+                  className="flex items-center space-x-1 font-medium text-foreground transition-colors duration-200 hover:text-rose-500"
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && (
-                    <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+                    <ChevronDown className="h-4 w-4 transition-transform duration-200" />
                   )}
                 </Link>
 
@@ -120,7 +131,7 @@ export default function Header1() {
                   <AnimatePresence>
                     {activeDropdown === item.name && (
                       <motion.div
-                        className="absolute top-full left-0 mt-2 w-64 bg-background/95 backdrop-blur-lg border border-border rounded-xl shadow-xl overflow-hidden"
+                        className="absolute left-0 top-full mt-2 w-64 overflow-hidden rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-lg"
                         variants={dropdownVariants}
                         initial="hidden"
                         animate="visible"
@@ -131,7 +142,7 @@ export default function Header1() {
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="block px-4 py-3 hover:bg-muted transition-colors duration-200"
+                            className="block px-4 py-3 transition-colors duration-200 hover:bg-muted"
                           >
                             <div className="font-medium text-foreground">
                               {dropdownItem.name}
@@ -151,36 +162,33 @@ export default function Header1() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden items-center space-x-4 lg:flex">
             <Link
               href="/login"
-              className="text-foreground hover:text-rose-500 transition-colors duration-200 font-medium"
+              className="font-medium text-foreground transition-colors duration-200 hover:text-rose-500"
             >
               Sign In
             </Link>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/signup"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-rose-500 to-rose-700 text-white px-6 py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-200"
+                className="inline-flex items-center space-x-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>Get Started</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </div>
 
           <motion.button
-            className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors duration-200"
+            className="rounded-lg p-2 transition-colors duration-200 hover:bg-muted lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="h-6 w-6" />
             )}
           </motion.button>
         </div>
@@ -188,35 +196,35 @@ export default function Header1() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="lg:hidden overflow-hidden"
+              className="overflow-hidden lg:hidden"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="py-4 space-y-2 bg-background/95 backdrop-blur-lg border border-border rounded-xl mt-4 shadow-xl">
+              <div className="mt-4 space-y-2 rounded-xl border border-border bg-background/95 py-4 shadow-xl backdrop-blur-lg">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-3 text-foreground hover:bg-muted transition-colors duration-200 font-medium"
+                    className="block px-4 py-3 font-medium text-foreground transition-colors duration-200 hover:bg-muted"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <div className="px-4 py-2 space-y-2">
+                <div className="space-y-2 px-4 py-2">
                   <Link
                     href="/login"
-                    className="block w-full text-center py-2.5 text-foreground hover:bg-muted rounded-lg transition-colors duration-200 font-medium"
+                    className="block w-full rounded-lg py-2.5 text-center font-medium text-foreground transition-colors duration-200 hover:bg-muted"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </Link>
                   <Link
                     href="/signup"
-                    className="block w-full text-center py-2.5 bg-gradient-to-r from-rose-500 to-rose-700 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200"
+                    className="block w-full rounded-lg bg-gradient-to-r from-rose-500 to-rose-700 py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Get Started

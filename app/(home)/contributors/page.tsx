@@ -128,7 +128,7 @@ export default function Contributors() {
                     height={100}
                     width={330}
                     alt={`${contributor.name} avatar`}
-                    className="object-cover w-full object-center transition-transform duration-300 group-hover:scale-110"
+                    className="w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 

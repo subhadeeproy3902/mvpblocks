@@ -77,17 +77,17 @@ export default function Header2() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm"
+            ? "border-b border-border/50 bg-background/80 shadow-sm backdrop-blur-md"
             : "bg-transparent"
         }`}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
             <motion.div
               className="flex items-center space-x-3"
               variants={itemVariants}
@@ -96,19 +96,23 @@ export default function Header2() {
             >
               <Link href="/" className="flex items-center space-x-3">
                 <div className="relative">
-                  <div className="w-9 h-9 bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 rounded-xl flex items-center justify-center shadow-lg">
-                    <Zap className="w-5 h-5 text-white" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 shadow-lg">
+                    <Zap className="h-5 w-5 text-white" />
                   </div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <div className="absolute -right-1 -top-1 h-3 w-3 animate-pulse rounded-full bg-green-400"></div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-lg font-bold text-foreground">Acme Inc.</span>
-                  <span className="text-xs text-muted-foreground -mt-1">Build faster</span>
+                  <span className="text-lg font-bold text-foreground">
+                    Acme Inc.
+                  </span>
+                  <span className="-mt-1 text-xs text-muted-foreground">
+                    Build faster
+                  </span>
                 </div>
               </Link>
             </motion.div>
 
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden items-center space-x-1 lg:flex">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}
@@ -119,16 +123,20 @@ export default function Header2() {
                 >
                   <Link
                     href={item.href}
-                    className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 rounded-lg"
+                    className="relative rounded-lg px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
                   >
                     {hoveredItem === item.name && (
                       <motion.div
-                        className="absolute inset-0 bg-muted rounded-lg"
+                        className="absolute inset-0 rounded-lg bg-muted"
                         layoutId="navbar-hover"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 30,
+                        }}
                       />
                     )}
                     <span className="relative z-10">{item.name}</span>
@@ -138,48 +146,48 @@ export default function Header2() {
             </nav>
 
             <motion.div
-              className="hidden lg:flex items-center space-x-3"
+              className="hidden items-center space-x-3 lg:flex"
               variants={itemVariants}
             >
               <motion.button
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-muted"
+                className="rounded-lg p-2 text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Search className="w-5 h-5" />
+                <Search className="h-5 w-5" />
               </motion.button>
-              
+
               <Link
                 href="/login"
-                className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200"
+                className="px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
               >
                 Sign In
               </Link>
-              
+
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <Link
                   href="/signup"
-                  className="inline-flex items-center space-x-2 bg-foreground text-background px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-foreground/90 transition-all duration-200 shadow-sm"
+                  className="inline-flex items-center space-x-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:bg-foreground/90"
                 >
                   <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </motion.div>
             </motion.div>
 
             <motion.button
-              className="lg:hidden p-2 text-foreground hover:bg-muted rounded-lg transition-colors duration-200"
+              className="rounded-lg p-2 text-foreground transition-colors duration-200 hover:bg-muted lg:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               variants={itemVariants}
               whileTap={{ scale: 0.95 }}
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="h-6 w-6" />
               )}
             </motion.button>
           </div>
@@ -190,26 +198,26 @@ export default function Header2() {
         {isMobileMenuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="fixed top-16 right-4 w-80 bg-background border border-border rounded-2xl shadow-2xl z-50 lg:hidden overflow-hidden"
+              className="fixed right-4 top-16 z-50 w-80 overflow-hidden rounded-2xl border border-border bg-background shadow-2xl lg:hidden"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
             >
-              <div className="p-6 space-y-6">
+              <div className="space-y-6 p-6">
                 <div className="space-y-1">
                   {navItems.map((item) => (
                     <motion.div key={item.name} variants={mobileItemVariants}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-3 text-foreground hover:bg-muted rounded-lg transition-colors duration-200 font-medium"
+                        className="block rounded-lg px-4 py-3 font-medium text-foreground transition-colors duration-200 hover:bg-muted"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -217,18 +225,21 @@ export default function Header2() {
                     </motion.div>
                   ))}
                 </div>
-                
-                <motion.div className="border-t border-border pt-6 space-y-3" variants={mobileItemVariants}>
+
+                <motion.div
+                  className="space-y-3 border-t border-border pt-6"
+                  variants={mobileItemVariants}
+                >
                   <Link
                     href="/login"
-                    className="block w-full text-center py-3 text-foreground hover:bg-muted rounded-lg transition-colors duration-200 font-medium"
+                    className="block w-full rounded-lg py-3 text-center font-medium text-foreground transition-colors duration-200 hover:bg-muted"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </Link>
                   <Link
                     href="/signup"
-                    className="block w-full text-center py-3 bg-foreground text-background rounded-lg font-medium hover:bg-foreground/90 transition-all duration-200"
+                    className="block w-full rounded-lg bg-foreground py-3 text-center font-medium text-background transition-all duration-200 hover:bg-foreground/90"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Get Started

@@ -58,7 +58,7 @@ export default function AdminDashboard() {
 
   const handleRefresh = async () => {
     setIsRefreshing(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsRefreshing(false);
   };
 
@@ -82,18 +82,20 @@ export default function AdminDashboard() {
           isRefreshing={isRefreshing}
         />
 
-        <div className="flex flex-1 flex-col gap-2 sm:gap-4 p-2 sm:p-4 pt-0">
-          <div className="min-h-[calc(100vh-4rem)] flex-1 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6">
+        <div className="flex flex-1 flex-col gap-2 p-2 pt-0 sm:gap-4 sm:p-4">
+          <div className="min-h-[calc(100vh-4rem)] flex-1 rounded-lg p-3 sm:rounded-xl sm:p-4 md:p-6">
             <div className="mx-auto max-w-6xl space-y-4 sm:space-y-6">
               <div className="px-2 sm:px-0">
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Welcome Admin</h1>
-                <p className="text-sm sm:text-base text-muted-foreground">
+                <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                  Welcome Admin
+                </h1>
+                <p className="text-sm text-muted-foreground sm:text-base">
                   Here&apos;s what&apos;s happening with your platform today.
                 </p>
               </div>
 
               {/* Stats Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
                 {stats.map((stat, index) => (
                   <DashboardCard key={stat.title} stat={stat} index={index} />
                 ))}
@@ -109,7 +111,10 @@ export default function AdminDashboard() {
 
                 {/* Sidebar Section */}
                 <div className="space-y-4 sm:space-y-6">
-                  <QuickActions onAddUser={handleAddUser} onExport={handleExport} />
+                  <QuickActions
+                    onAddUser={handleAddUser}
+                    onExport={handleExport}
+                  />
                   <SystemStatus />
                   <RecentActivity />
                 </div>

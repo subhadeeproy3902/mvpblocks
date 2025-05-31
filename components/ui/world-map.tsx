@@ -156,9 +156,7 @@ export default function WorldMap({
                       src={dot.start.avatar || "/placeholder.svg"}
                       alt="Avatar"
                     />
-                    <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200">
-                     
-                    </AvatarFallback>
+                    <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200"></AvatarFallback>
                   </Avatar>
                 </div>
               </foreignObject>
@@ -206,9 +204,7 @@ export default function WorldMap({
                       src={dot.end.avatar || "/placeholder.svg"}
                       alt="Avatar"
                     />
-                    <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200">
-                      
-                    </AvatarFallback>
+                    <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200"></AvatarFallback>
                   </Avatar>
                 </div>
               </foreignObject>

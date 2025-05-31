@@ -13,10 +13,13 @@ const PUBLIC_FOLDER_BASE_PATH = "public/r";
  */
 type File = z.infer<typeof registryItemFileSchema>;
 
-async function shouldWriteFile(filePath: string, newContent: string): Promise<boolean> {
+async function shouldWriteFile(
+  filePath: string,
+  newContent: string,
+): Promise<boolean> {
   try {
     // Try to read existing file
-    const existingContent = await fs.readFile(filePath, 'utf-8');
+    const existingContent = await fs.readFile(filePath, "utf-8");
     // Only write if content is different
     return existingContent !== newContent;
   } catch {
@@ -118,7 +121,7 @@ const main = async () => {
       null,
       2,
     );
-    
+
     const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
     const hasChanged = await shouldWriteFile(jsonPath, json);
     if (hasChanged) {
@@ -135,7 +138,7 @@ main()
     if (changes > 0) {
       console.log(`✅ Done - Updated ${changes} registry file(s)`);
     } else {
-      console.log('✅ Done - No changes needed');
+      console.log("✅ Done - No changes needed");
     }
   })
   .catch((err) => {
