@@ -9,7 +9,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { VelocityScroll } from \"@/components/ui/scrollbasedvelocity\";\r\n\r\nexport default function ScrollBasedVelocityDemo() {\r\n  return (\r\n    <VelocityScroll\r\n      className=\"px-6 text-center text-4xl font-bold tracking-tight md:text-7xl md:leading-[5rem]\"\r\n      text=\"Welcome to Mvpblocks\"\r\n      default_velocity={5}\r\n    />\r\n  );\r\n}\r\n",
+      "content": "import { VelocityScroll } from \"@/components/ui/scrollbasedvelocity\";\n\nexport default function ScrollBasedVelocityDemo() {\n  return (\n    <VelocityScroll\n      className=\"px-6 text-center text-4xl font-bold tracking-tight md:text-7xl md:leading-[5rem]\"\n      text=\"Welcome to Mvpblocks\"\n      default_velocity={5}\n    />\n  );\n}\n",
       "path": "/components/mvpblocks/text-animations/scrollbasedvelocity-demo.tsx",
       "target": "/components/mvpblocks/scrollbasedvelocity-demo.tsx"
     }

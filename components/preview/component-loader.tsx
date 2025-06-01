@@ -181,7 +181,7 @@ function ComponentDisplay({
       id="preview"
     >
       {/* Author badge */}
-      {author && <AuthorBadge username={author} />}
+      {author && fromDocs && <AuthorBadge username={author} />}
 
       {hasReTrigger && (
         <Button

@@ -1,13 +1,4 @@
 "use client";
-import avatar1 from "@/assets/avatar-1.webp";
-import avatar2 from "@/assets/avatar-2.webp";
-import avatar3 from "@/assets/avatar-3.webp";
-import avatar4 from "@/assets/avatar-4.webp";
-import avatar5 from "@/assets/avatar-5.webp";
-import avatar6 from "@/assets/avatar-6.webp";
-import avatar7 from "@/assets/avatar-7.webp";
-import avatar8 from "@/assets/avatar-8.webp";
-import avatar9 from "@/assets/avatar-9.webp";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -23,55 +14,55 @@ const space = Geist({
 const testimonials = [
   {
     text: "Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.",
-    imageSrc: avatar1.src,
+    imageSrc: "/assets/avatar-1.webp",
     name: "Arjun Mehta",
     username: "@arjdev",
   },
   {
     text: "Honestly shocked at how smooth the animations and styling are out of the box. Just works.",
-    imageSrc: avatar2.src,
+    imageSrc: "/assets/avatar-2.webp",
     name: "Sara Lin",
     username: "@sara.codes",
   },
   {
     text: "Our team launched a client site in 2 days using Mvpblocks. Saved so much time.",
-    imageSrc: avatar3.src,
+    imageSrc: "/assets/avatar-3.webp",
     name: "Devon Carter",
     username: "@devninja",
   },
   {
     text: "Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.",
-    imageSrc: avatar4.src,
+    imageSrc: "/assets/avatar-4.webp",
     name: "Priya Shah",
     username: "@priyacodes",
   },
   {
     text: "Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.",
-    imageSrc: avatar5.src,
+    imageSrc: "/assets/avatar-5.webp",
     name: "Leo Martin",
     username: "@leobuilds",
   },
   {
     text: "Mvpblocks helped us prototype multiple landing pages without writing CSS once.",
-    imageSrc: avatar6.src,
+    imageSrc: "/assets/avatar-6.webp",
     name: "Chloe Winters",
     username: "@chloewinters",
   },
   {
     text: "As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.",
-    imageSrc: avatar7.src,
+    imageSrc: "/assets/avatar-7.webp",
     name: "Ayaan Malik",
     username: "@ayaan_dev",
   },
   {
     text: "Can’t believe how polished the components look. Clients are impressed every time.",
-    imageSrc: avatar8.src,
+    imageSrc: "/assets/avatar-8.webp",
     name: "Monica Reeves",
     username: "@monicareeves",
   },
   {
     text: "This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.",
-    imageSrc: avatar9.src,
+    imageSrc: "/assets/avatar-9.webp",
     name: "James Roy",
     username: "@jamesrdev",
   },
