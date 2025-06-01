@@ -1455,6 +1455,64 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'pricing-2',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/pricing/pricing-2.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/pricing/pricing-2'),
+    ),
+  },
+  {
+    name: 'pricing-3',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/pricing/pricing-3.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/pricing/pricing-3'),
+    ),
+  },
+  {
+    name: 'pricing-4',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/pricing/pricing-4.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/pricing/pricing-4'),
+    ),
+  },
+  {
     name: 'testimonials-carousel',
     type: 'registry:block',
     dependencies: [
