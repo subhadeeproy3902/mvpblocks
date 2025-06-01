@@ -44,3 +44,6 @@ next-env.d.ts
 .vercel
 .source/index.ts
 .source/index.ts
+
+# package-lock
+package-lock.json
