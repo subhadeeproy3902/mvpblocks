@@ -4,8 +4,8 @@ description: Pricing sections provide information about the cost of your product
 root: mainsections
 ---
 
-import {ComponentPreview} from "@/components/preview/component-preview";
-import {extractSourceCode} from "@/lib/code";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
 
 ## Simple Pricing
 
@@ -33,6 +33,36 @@ import {extractSourceCode} from "@/lib/code";
   name="pricing-with-modals"
   classNameComponentContainer="h-[600px]"
   code={(await extractSourceCode('pricing-with-modals')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Modern Pricing
+
+<ComponentPreview
+  name="pricing-2"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('pricing-2')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Basic Pricing
+
+<ComponentPreview
+  name="pricing-3"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('pricing-3')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+## Beautiful Pricing
+
+<ComponentPreview
+  name="pricing-4"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('pricing-4')).code}
   lang="tsx"
   fromDocs={true}
 />
