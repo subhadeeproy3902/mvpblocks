@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import { useState } from 'react';
 
 type TeamMember = {
@@ -138,11 +137,10 @@ export default function Team9({
                       isActive ? 'h-3/5' : 'h-4/5',
                     )}
                   >
-                    <Image
+                    <img
                       src={member.image || '/placeholder.svg'}
                       alt={member.name}
-                      fill
-                      className="object-cover object-top"
+                      className="object-cover object-top aspect-square"
                     />
                   </div>
 

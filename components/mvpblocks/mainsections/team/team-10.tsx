@@ -1,7 +1,6 @@
 'use client';
 
 import type React from 'react';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
@@ -102,8 +101,6 @@ export default function TeamSectionVariant6({
   title = 'Our team of experts are here to help',
   subtitle = 'Get support 24/7, with our award-winning support network of growth experts.',
   teamMembers = dami_data,
-  backgroundColor = '',
-  textColor = '#111827',
   accentColor = '#4f46e5',
   secondaryColor = '#6b7280',
   className,
@@ -148,11 +145,10 @@ export default function TeamSectionVariant6({
 
   return (
     <section
-      className={cn('py-16 w-full', className)}
-      style={{ backgroundColor, color: textColor }}
+      className={cn('w-full', className)}
     >
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
+        <div className="rounded-2xl shadow-sm p-8 md:p-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">{title}</h2>
             <p
@@ -189,7 +185,7 @@ export default function TeamSectionVariant6({
             {canScrollLeft && (
               <button
                 onClick={() => scroll('left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary rounded-full shadow-md p-2"
                 aria-label="Scroll left"
               >
                 <ChevronLeft size={20} />
@@ -204,13 +200,12 @@ export default function TeamSectionVariant6({
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="flex-shrink-0 w-64 bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                  className="flex-shrink-0 w-64 bg-card/90 rounded-lg overflow-hidden border border-white/10 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="aspect-[4/3] relative overflow-hidden">
-                    <Image
+                    <img
                       src={member.image || '/placeholder.svg'}
                       alt={member.name}
-                      fill
                       className="object-cover"
                     />
                   </div>
@@ -227,7 +222,7 @@ export default function TeamSectionVariant6({
             {canScrollRight && (
               <button
                 onClick={() => scroll('right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary rounded-full shadow-md p-2"
                 aria-label="Scroll right"
               >
                 <ChevronRight size={20} />

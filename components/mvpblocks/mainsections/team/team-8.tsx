@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Linkedin, Github } from 'lucide-react';
 import Link from 'next/link';
 
@@ -161,15 +160,14 @@ export default function Team8({
           {teamMembers.slice(0, 4).map((member) => (
             <div
               key={member.id}
-              className={`p-6 rounded-lg ${
+              className={`p-6 rounded-lg h-fit ${
                 member.id === 4 ? 'bg-lime-300' : 'bg-white'
               }`}
             >
               <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden">
-                <Image
+                <img
                   src={member.image || '/placeholder.svg'}
                   alt={member.name}
-                  fill
                   className="object-cover"
                 />
               </div>
@@ -213,10 +211,9 @@ export default function Team8({
           {teamMembers.slice(4).map((member) => (
             <div key={member.id} className="bg-white p-6 rounded-lg">
               <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden">
-                <Image
+                <img
                   src={member.image || '/placeholder.svg'}
                   alt={member.name}
-                  fill
                   className="object-cover"
                 />
               </div>
