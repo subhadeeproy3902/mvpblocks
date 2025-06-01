@@ -14,6 +14,7 @@ type ComponentLoaderProps = {
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
   fromDocs?: boolean;
+  previewMode?: boolean;
 };
 
 export function ComponentLoader({
@@ -21,6 +22,7 @@ export function ComponentLoader({
   hasReTrigger = false,
   name,
   fromDocs,
+  previewMode,
 }: ComponentLoaderProps) {
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
@@ -147,6 +149,7 @@ export function ComponentLoader({
       name={name}
       fromDocs={fromDocs}
       author={author}
+      previewMode={previewMode}
     />
   );
 }
@@ -160,6 +163,7 @@ type ComponentDisplayProps = {
   fromDocs?: boolean;
   name: string;
   author?: string | null;
+  previewMode?: boolean;
 };
 
 function ComponentDisplay({
@@ -171,6 +175,7 @@ function ComponentDisplay({
   fromDocs,
   name,
   author,
+  previewMode = false,
 }: ComponentDisplayProps) {
   return (
     <div
@@ -181,7 +186,7 @@ function ComponentDisplay({
       id="preview"
     >
       {/* Author badge */}
-      {author && fromDocs && <AuthorBadge username={author} />}
+      {author && !previewMode && <AuthorBadge username={author} />}
 
       {hasReTrigger && (
         <Button

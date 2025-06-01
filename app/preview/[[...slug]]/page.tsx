@@ -21,6 +21,7 @@ export default async function PreviewPage({
             name={componentName}
             hasReTrigger={false}
             classNameComponentContainer="min-h-screen"
+            previewMode
           />
         </div>
       </section>

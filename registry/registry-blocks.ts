@@ -1517,19 +1517,19 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: "shimmer-card-one",
-    author: "midhunkalarikkal",
-    type: "registry:block",
+    name: 'shimmer-card-one',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
     files: [
       {
-        path: "@/components/mvpblocks/shimmers/shimmer-card-1.tsx",
-        type: "registry:block",
+        path: '@/components/mvpblocks/shimmers/shimmer-card-1.tsx',
+        type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/shimmers/shimmer-card-1"),
+      () => import('../components/mvpblocks/shimmers/shimmer-card-1'),
     ),
   },
 ];
