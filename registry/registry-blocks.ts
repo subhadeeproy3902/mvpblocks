@@ -1391,6 +1391,54 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'team-7',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/team/team-7.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/team/team-7'),
+    ),
+  },
+  {
+    name: 'team-8',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/team/team-8.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/team/team-8'),
+    ),
+  },
+  {
+    name: 'team-9',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/team/team-9.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/team/team-9'),
+    ),
+  },
+  {
     name: 'testimonials-carousel',
     type: 'registry:block',
     dependencies: [

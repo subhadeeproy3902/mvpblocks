@@ -1,11 +1,11 @@
 'use client';
 
-import { Facebook, Instagram, Twitter, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Roboto } from 'next/font/google';
+import { Cabin_Condensed } from 'next/font/google';
+import { Facebook, Instagram, Twitter, Globe } from 'lucide-react';
 
-const mont = Roboto({
+const mont = Cabin_Condensed({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });
@@ -236,7 +236,7 @@ export default function Team7({
       className={cn('w-full py-16 text-white', className)}
       style={{ backgroundColor, color: textColor }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container max-w-5xl mx-auto px-4">
         <div className="mb-12">
           <p
             className={cn(
