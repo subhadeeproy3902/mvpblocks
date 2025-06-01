@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { PlusCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import Link from 'next/link';
+import { PlusCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function AddCard() {
   return (

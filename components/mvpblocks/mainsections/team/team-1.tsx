@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { cn } from '@/lib/utils';
+import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface TeamMember {
   name: string;
@@ -11,7 +11,7 @@ interface TeamMember {
   bio: string;
   imageUrl: string;
   location?: string;
-  socialLinks?: { platform: "github" | "twitter" | "linkedin"; url: string }[];
+  socialLinks?: { platform: 'github' | 'twitter' | 'linkedin'; url: string }[];
 }
 
 interface TeamProps {
@@ -24,64 +24,64 @@ interface TeamProps {
 // Default data
 const defaultMembers: TeamMember[] = [
   {
-    name: "Alex Morgan",
-    role: "Founder & CEO",
-    bio: "10+ years of experience in product development and team leadership. Passionate about building products that make a difference.",
+    name: 'Alex Morgan',
+    role: 'Founder & CEO',
+    bio: '10+ years of experience in product development and team leadership. Passionate about building products that make a difference.',
     imageUrl:
-      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=300&h=300&auto=format&fit=crop",
-    location: "San Francisco, CA",
+      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=300&h=300&auto=format&fit=crop',
+    location: 'San Francisco, CA',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Sarah Chen",
-    role: "Lead Designer",
-    bio: "Award-winning designer with a passion for creating beautiful, functional interfaces that delight users.",
+    name: 'Sarah Chen',
+    role: 'Lead Designer',
+    bio: 'Award-winning designer with a passion for creating beautiful, functional interfaces that delight users.',
     imageUrl:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&h=300&auto=format&fit=crop",
-    location: "New York, NY",
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&h=300&auto=format&fit=crop',
+    location: 'New York, NY',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Marcus Johnson",
-    role: "Senior Developer",
-    bio: "Full-stack developer with expertise in React, Node.js, and cloud architecture. Building scalable solutions for complex problems.",
+    name: 'Marcus Johnson',
+    role: 'Senior Developer',
+    bio: 'Full-stack developer with expertise in React, Node.js, and cloud architecture. Building scalable solutions for complex problems.',
     imageUrl:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&h=300&auto=format&fit=crop",
-    location: "Berlin, Germany",
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&h=300&auto=format&fit=crop',
+    location: 'Berlin, Germany',
     socialLinks: [
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Priya Patel",
-    role: "Product Manager",
-    bio: "Strategic thinker with a track record of launching successful products that users love and businesses value.",
+    name: 'Priya Patel',
+    role: 'Product Manager',
+    bio: 'Strategic thinker with a track record of launching successful products that users love and businesses value.',
     imageUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&h=300&auto=format&fit=crop",
-    location: "London, UK",
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&h=300&auto=format&fit=crop',
+    location: 'London, UK',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
 ];
 
 export default function Team1({
-  title = "Meet Our Team",
+  title = 'Meet Our Team',
   subtitle = "We're a diverse group of passionate individuals working together to build amazing products.",
   members = defaultMembers,
   className,
 }: TeamProps) {
   return (
-    <section className={cn("mx-auto max-w-7xl py-16 md:py-24", className)}>
+    <section className={cn('mx-auto max-w-7xl py-16 md:py-24', className)}>
       <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
       <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
       <div className="container px-4 md:px-6">
@@ -142,13 +142,13 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   rel="noopener noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground"
                 >
-                  {link.platform === "github" && (
+                  {link.platform === 'github' && (
                     <GithubIcon className="h-4 w-4" />
                   )}
-                  {link.platform === "twitter" && (
+                  {link.platform === 'twitter' && (
                     <TwitterIcon className="h-4 w-4" />
                   )}
-                  {link.platform === "linkedin" && (
+                  {link.platform === 'linkedin' && (
                     <LinkedinIcon className="h-4 w-4" />
                   )}
                 </Link>

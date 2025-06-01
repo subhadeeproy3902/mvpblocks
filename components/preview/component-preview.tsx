@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { siteLink } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { CheckCheck, Ellipsis, Fullscreen, Terminal } from "lucide-react";
-import { useState, useRef } from "react";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { ComponentLoader } from "./component-loader";
-import { OpenInV0Button } from "../v0";
+} from '@/components/ui/popover';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { siteLink } from '@/config/site';
+import { cn } from '@/lib/utils';
+import { CheckCheck, Ellipsis, Fullscreen, Terminal } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { ComponentLoader } from './component-loader';
+import { OpenInV0Button } from '../v0';
 
 export function ComponentPreview({
   classNameComponentContainer,
@@ -24,7 +24,7 @@ export function ComponentPreview({
   fromDocs,
 }: ComponentPreviewProps) {
   const componentRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState("preview");
+  const [activeTab, setActiveTab] = useState('preview');
   const [isTerminalCopied, setIsTerminalCopied] = useState(false);
 
   const handleTerminalClick = () => {
@@ -74,14 +74,14 @@ export function ComponentPreview({
                 <>
                   <Terminal
                     className={cn(
-                      "h-3.5 w-3.5",
-                      "transition-all duration-200",
-                      "group-hover:rotate-12",
+                      'h-3.5 w-3.5',
+                      'transition-all duration-200',
+                      'group-hover:rotate-12',
                     )}
                   />
                 </>
               )}
-              <span className="font-mono">npx shadcn add {name}</span>{" "}
+              <span className="font-mono">npx shadcn add {name}</span>{' '}
             </Button>
             <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
           </div>
@@ -108,14 +108,14 @@ export function ComponentPreview({
                     <>
                       <Terminal
                         className={cn(
-                          "h-3.5 w-3.5",
-                          "transition-all duration-200",
-                          "group-hover:rotate-12",
+                          'h-3.5 w-3.5',
+                          'transition-all duration-200',
+                          'group-hover:rotate-12',
                         )}
                       />
                     </>
                   )}
-                  <span className="font-mono">Install with CLI</span>{" "}
+                  <span className="font-mono">Install with CLI</span>{' '}
                 </Button>
                 <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
               </PopoverContent>
@@ -127,12 +127,12 @@ export function ComponentPreview({
                 href={`${siteLink}/preview/${name}`}
                 target="_blank"
                 rel="noreferrer"
-                className={cn("group no-underline transition-all duration-200")}
+                className={cn('group no-underline transition-all duration-200')}
               >
                 <Fullscreen
                   className={cn(
-                    "h-4 w-4",
-                    "transition-transform duration-200 group-hover:rotate-45",
+                    'h-4 w-4',
+                    'transition-transform duration-200 group-hover:rotate-45',
                   )}
                 />
               </a>

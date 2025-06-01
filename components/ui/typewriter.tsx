@@ -1,10 +1,10 @@
-"use client";
-import { useEffect } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+'use client';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 export default function TextGenerateEffect({
   words,
-  className = "",
+  className = '',
 }: {
   words: string;
   className?: string;
@@ -15,9 +15,9 @@ export default function TextGenerateEffect({
 
   useEffect(() => {
     const controls = animate(count, words.length, {
-      type: "tween",
+      type: 'tween',
       duration: 2.5, // Increased from 1 to 2.5 seconds
-      ease: "easeInOut",
+      ease: 'easeInOut',
     });
     return controls.stop;
   }, [words]);

@@ -1,15 +1,15 @@
-import { createMDX } from "fumadocs-mdx/next";
+import { createMDX } from 'fumadocs-mdx/next';
 
 const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
     remotePatterns: [
       {
-        hostname: "*",
+        hostname: '*',
       },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -17,7 +17,7 @@ const config = {
   },
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ["framer-motion", "lucide-react", "next-themes"],
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes'],
   },
 };
 

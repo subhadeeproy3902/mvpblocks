@@ -7,10 +7,10 @@ export interface ShowcaseItem {
 
 export const showcaseData: ShowcaseItem[] = [
   {
-    name: "Cndocs",
+    name: 'Cndocs',
     about:
-      "Comprehensive documentation platform for computer networking and socket programming. Master Network Programming with Confidence",
-    image: "/showcase-images/cndocs.png",
-    link: "https://cn.mvp-subha.me",
+      'Comprehensive documentation platform for computer networking and socket programming. Master Network Programming with Confidence',
+    image: '/showcase-images/cndocs.png',
+    link: 'https://cn.mvp-subha.me',
   },
 ];

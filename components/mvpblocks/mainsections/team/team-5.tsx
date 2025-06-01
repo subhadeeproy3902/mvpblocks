@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
+import { cn } from '@/lib/utils';
+import { Poppins } from 'next/font/google';
 
 const mont = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 // Team member data type
@@ -24,59 +24,59 @@ type TeamSectionProps = {
 const teamMembers3D: TeamMember[] = [
   {
     id: 1,
-    name: "Kadir Miye",
-    role: "Chief Executive Officer",
+    name: 'Kadir Miye',
+    role: 'Chief Executive Officer',
     image:
-      "https://img.freepik.com/free-psd/3d-rendering-avatar_23-2150833554.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/free-psd/3d-rendering-avatar_23-2150833554.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 2,
-    name: "Isabella Thompson",
-    role: "Chief Technology Officer",
+    name: 'Isabella Thompson',
+    role: 'Chief Technology Officer',
     image:
-      "https://img.freepik.com/premium-photo/png-headset-headphones-portrait-cartoon_53876-762197.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/premium-photo/png-headset-headphones-portrait-cartoon_53876-762197.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 3,
-    name: "Zainab Rahman",
-    role: "Chief Operations Officer",
+    name: 'Zainab Rahman',
+    role: 'Chief Operations Officer',
     image:
-      "https://img.freepik.com/premium-photo/png-cartoon-portrait-glasses-white-background_53876-905385.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/premium-photo/png-cartoon-portrait-glasses-white-background_53876-905385.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 4,
-    name: "Aiden Davis",
-    role: "Chief Marketing Officer",
+    name: 'Aiden Davis',
+    role: 'Chief Marketing Officer',
     image:
-      "https://img.freepik.com/premium-psd/3d-avatar-character_975163-690.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/premium-psd/3d-avatar-character_975163-690.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 5,
-    name: "Aysha Hussain",
-    role: "UX Designer",
+    name: 'Aysha Hussain',
+    role: 'UX Designer',
     image:
-      "https://img.freepik.com/free-photo/fun-3d-illustration-american-referee_183364-81231.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/free-photo/fun-3d-illustration-american-referee_183364-81231.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 6,
-    name: "Samira Shah",
-    role: "Product Manager",
+    name: 'Samira Shah',
+    role: 'Product Manager',
     image:
-      "https://img.freepik.com/premium-psd/lego-character-with-blue-button-his-chest_1217673-223400.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/premium-psd/lego-character-with-blue-button-his-chest_1217673-223400.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 7,
-    name: "Ethan Williams",
-    role: "Backend Developer",
+    name: 'Ethan Williams',
+    role: 'Backend Developer',
     image:
-      "https://img.freepik.com/premium-photo/there-is-black-girl-with-headphones-yellow-jacket_1034474-106535.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/premium-photo/there-is-black-girl-with-headphones-yellow-jacket_1034474-106535.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
   {
     id: 8,
-    name: "Amina Khan",
-    role: "Frontend Developer",
+    name: 'Amina Khan',
+    role: 'Frontend Developer',
     image:
-      "https://img.freepik.com/free-photo/portrait-young-student-with-book-education-day_23-2150980030.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid",
+      'https://img.freepik.com/free-photo/portrait-young-student-with-book-education-day_23-2150980030.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
   },
 ];
 
@@ -89,7 +89,7 @@ export default function Team5({
         <div className="mx-auto mb-16 max-w-4xl text-center">
           <h2
             className={cn(
-              "mb-6 text-4xl font-semibold leading-tight md:text-5xl",
+              'mb-6 text-4xl font-semibold leading-tight md:text-5xl',
               mont.className,
             )}
           >

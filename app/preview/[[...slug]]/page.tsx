@@ -1,8 +1,8 @@
-import { ComponentLoader } from "@/components/preview/component-loader";
-import { registry } from "@/registry";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { ComponentLoader } from '@/components/preview/component-loader';
+import { registry } from '@/registry';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export default async function PreviewPage({
   params,
@@ -11,7 +11,7 @@ export default async function PreviewPage({
 }) {
   const { slug } = await params;
   if (!slug.length) return notFound();
-  const componentName = slug.join("/");
+  const componentName = slug.join('/');
 
   try {
     return (

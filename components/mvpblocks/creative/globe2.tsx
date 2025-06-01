@@ -1,4 +1,4 @@
-import Earth from "@/components/ui/globe";
+import Earth from '@/components/ui/globe';
 
 export default function Globe2() {
   return (

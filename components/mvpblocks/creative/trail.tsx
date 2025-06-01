@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { MagicTrail } from "../../ui/mouse-trail";
+import { useRef } from 'react';
+import { MagicTrail } from '../../ui/mouse-trail';
 
 export function MagicTrailDemo() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ export function MagicTrailDemo() {
       </div>
       <MagicTrail
         containerRef={containerRef}
-        colors={["#f59e0b", "#ec4899", "#8b5cf6", "#3b82f6", "#10b981"]}
+        colors={['#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#10b981']}
         trailLength={35}
         particleCount={75}
         decay={0.03}

@@ -1,12 +1,12 @@
-import { Spotlight } from "@/components/ui/spotlight";
-import { ChevronDown, Sparkles } from "lucide-react";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Spotlight } from '@/components/ui/spotlight';
+import { ChevronDown, Sparkles } from 'lucide-react';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           <div className="relative mb-12 text-center">
             <h1
               className={cn(
-                "relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+                'relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
                 space.className,
               )}
             >
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
 
           <div
             className="prose max-w-none rounded-2xl border p-6 text-foreground md:p-10"
-            style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
+            style={{ boxShadow: 'inset 0 0 30px 1px rgba(244, 63, 94, 0.1)' }}
           >
             <div className="mb-8 border-b">
               <p className="text-lg leading-relaxed">

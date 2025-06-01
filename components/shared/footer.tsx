@@ -1,5 +1,5 @@
-import { Github, Heart, Instagram, Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
+import { Github, Heart, Instagram, Linkedin, Twitter } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -183,7 +183,7 @@ export default function Footer() {
           <div className="absolute left-1/2 top-0 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/70 to-transparent"></div>
           <div className="flex flex-col items-center justify-between text-sm text-muted-foreground md:flex-row">
             <p>
-              ©{new Date().getFullYear()}{" "}
+              ©{new Date().getFullYear()}{' '}
               <span className="font-medium text-foreground">Mvpblocks</span>.
               All rights reserved.
             </p>

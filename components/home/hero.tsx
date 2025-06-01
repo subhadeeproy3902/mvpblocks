@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { PixelCard } from "../ui/pixelcards";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { CloudLightning, MoveRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import HomeBadge from "../ui/home-badge";
-import { Beam } from "../ui/gridbeam";
-import { Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
-import { CardHoverEffect } from "../ui/pulse-card";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import Image from 'next/image';
+import { PixelCard } from '../ui/pixelcards';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import { CloudLightning, MoveRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import HomeBadge from '../ui/home-badge';
+import { Beam } from '../ui/gridbeam';
+import { Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { CardHoverEffect } from '../ui/pulse-card';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 const PIXEL_SCRIPT_URL =
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pixel-RKkUKH2OXWk9adKbDnozmndkwseTQh.js";
+  'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pixel-RKkUKH2OXWk9adKbDnozmndkwseTQh.js';
 
 export default function Hero() {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
@@ -31,13 +31,13 @@ export default function Hero() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          import("@/lib/load-script").then(({ loadScript }) => {
+          import('@/lib/load-script').then(({ loadScript }) => {
             loadScript(PIXEL_SCRIPT_URL)
               .then(() => {
                 setIsScriptLoaded(true);
               })
               .catch((error) => {
-                console.error("Error loading pixel script:", error);
+                console.error('Error loading pixel script:', error);
               });
           });
           observer.disconnect();
@@ -46,7 +46,7 @@ export default function Hero() {
       { threshold: 0.1 },
     );
 
-    const heroElement = document.getElementById("hero-section");
+    const heroElement = document.getElementById('hero-section');
     if (heroElement) {
       observer.observe(heroElement);
     }
@@ -58,37 +58,37 @@ export default function Hero() {
 
   const cards = [
     {
-      title: "V0 Compatible",
-      description: "Edit and customize visually, instantly.",
+      title: 'V0 Compatible',
+      description: 'Edit and customize visually, instantly.',
       icon: <CloudLightning className="h-full w-full" />,
-      variant: "rose",
+      variant: 'rose',
       showGridLines: true,
     },
     {
-      title: "Animated Out of Box",
-      description: "No setup and  smooth UI interactions.",
+      title: 'Animated Out of Box',
+      description: 'No setup and  smooth UI interactions.',
       icon: <Sparkles className="h-full w-full" />,
-      variant: "rose",
+      variant: 'rose',
       showGridLines: true,
     },
   ] as const;
 
   const cardConfigurations = [
     {
-      color: "rose",
-      icon: "Blocks",
-      label: "Command",
-      canvasProps: { gap: 3, speed: 80, colors: "#fff, #fda4af, #e11d48" },
+      color: 'rose',
+      icon: 'Blocks',
+      label: 'Command',
+      canvasProps: { gap: 3, speed: 80, colors: '#fff, #fda4af, #e11d48' },
       number: 100,
-      desc: "Components available",
+      desc: 'Components available',
     },
     {
-      color: "rose",
-      icon: "f",
-      label: "Dropper",
-      canvasProps: { gap: 3, speed: 80, colors: "#fff, #fda4af, #e11d48" },
+      color: 'rose',
+      icon: 'f',
+      label: 'Dropper',
+      canvasProps: { gap: 3, speed: 80, colors: '#fff, #fda4af, #e11d48' },
       number: 15,
-      desc: "Categories available",
+      desc: 'Categories available',
     },
   ];
 
@@ -146,7 +146,7 @@ export default function Hero() {
           <Beam />
           <motion.h1
             className={cn(
-              "max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none",
+              'max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none',
               space.className,
             )}
             initial={{ opacity: 0, y: 50 }}
@@ -186,7 +186,7 @@ export default function Hero() {
             </Button>
           </Link>
           <Link href="/about">
-            <Button variant={"secondary"}>
+            <Button variant={'secondary'}>
               About <MoveRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
@@ -207,7 +207,7 @@ export default function Hero() {
             className="mr-2 mt-4 hidden w-96 select-none brightness-[4] xl:block"
           />
           <span className="text-sm text-gray-500">
-            We use industry standards like{" "}
+            We use industry standards like{' '}
           </span>
           <Image
             src="/nextjs.webp"
@@ -300,7 +300,7 @@ export default function Hero() {
                   icon={card.icon}
                   variant={card.variant}
                   glowEffect={true}
-                  size={"lg"}
+                  size={'lg'}
                   showGridLines={card.showGridLines}
                 />
               </motion.div>

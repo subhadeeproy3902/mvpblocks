@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
+import { useState } from 'react';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
+import { useAutoResizeTextarea } from '@/hooks/use-auto-resize-textarea';
 import {
   ImageIcon,
   FileUp,
@@ -13,21 +13,21 @@ import {
   ArrowUpIcon,
   Paperclip,
   PlusIcon,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export function VercelV0Chat() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight: 60,
     maxHeight: 200,
   });
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (value.trim()) {
-        setValue("");
+        setValue('');
         adjustHeight(true);
       }
     }
@@ -52,18 +52,18 @@ export function VercelV0Chat() {
               onKeyDown={handleKeyDown}
               placeholder="Ask v0 a question..."
               className={cn(
-                "w-full px-4 py-3",
-                "resize-none",
-                "bg-transparent",
-                "border-none",
-                "text-sm",
-                "focus:outline-none",
-                "focus-visible:ring-0 focus-visible:ring-offset-0",
-                "placeholder:text-sm",
-                "min-h-[60px]",
+                'w-full px-4 py-3',
+                'resize-none',
+                'bg-transparent',
+                'border-none',
+                'text-sm',
+                'focus:outline-none',
+                'focus-visible:ring-0 focus-visible:ring-offset-0',
+                'placeholder:text-sm',
+                'min-h-[60px]',
               )}
               style={{
-                overflow: "hidden",
+                overflow: 'hidden',
               }}
             />
           </div>
@@ -95,14 +95,14 @@ export function VercelV0Chat() {
               <button
                 type="button"
                 className={cn(
-                  "flex items-center justify-between gap-1 rounded-lg border border-border px-1.5 py-1.5 text-sm transition-colors",
-                  value.trim() ? "bg-white text-black" : "text-zinc-400",
+                  'flex items-center justify-between gap-1 rounded-lg border border-border px-1.5 py-1.5 text-sm transition-colors',
+                  value.trim() ? 'bg-white text-black' : 'text-zinc-400',
                 )}
               >
                 <ArrowUpIcon
                   className={cn(
-                    "h-4 w-4",
-                    value.trim() ? "text-black" : "text-zinc-400",
+                    'h-4 w-4',
+                    value.trim() ? 'text-black' : 'text-zinc-400',
                   )}
                 />
                 <span className="sr-only">Send</span>

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
-import { ComponentLoader } from "./component-loader";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+} from '@/components/ui/collapsible';
+import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { ComponentLoader } from './component-loader';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 
 export function ComponentCollapse({
   classNameComponentContainer,
@@ -38,11 +38,11 @@ export function ComponentCollapse({
           <div className="flex cursor-pointer items-center gap-2 rounded-b-md border-t bg-secondary px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
             <ChevronDown
               className={cn(
-                "h-4 w-4 transition-transform duration-200",
-                isOpen && "rotate-180",
+                'h-4 w-4 transition-transform duration-200',
+                isOpen && 'rotate-180',
               )}
             />
-            {isOpen ? "Hide" : "Show"} code
+            {isOpen ? 'Hide' : 'Show'} code
           </div>
         </CollapsibleTrigger>
       </div>

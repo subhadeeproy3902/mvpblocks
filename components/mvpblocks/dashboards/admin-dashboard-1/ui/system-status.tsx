@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { motion } from "framer-motion";
-import { Shield, Database, Zap, Activity } from "lucide-react";
+import { memo } from 'react';
+import { motion } from 'framer-motion';
+import { Shield, Database, Zap, Activity } from 'lucide-react';
 
 const statusItems = [
   {
-    label: "Server Status",
-    status: "Online",
-    color: "text-green-500",
+    label: 'Server Status',
+    status: 'Online',
+    color: 'text-green-500',
     icon: Shield,
     percentage: 100,
   },
   {
-    label: "Database",
-    status: "Healthy",
-    color: "text-green-500",
+    label: 'Database',
+    status: 'Healthy',
+    color: 'text-green-500',
     icon: Database,
     percentage: 95,
   },
   {
-    label: "API Response",
-    status: "Fast",
-    color: "text-green-500",
+    label: 'API Response',
+    status: 'Fast',
+    color: 'text-green-500',
     icon: Zap,
     percentage: 98,
   },
   {
-    label: "Storage",
-    status: "85% Used",
-    color: "text-yellow-500",
+    label: 'Storage',
+    status: '85% Used',
+    color: 'text-yellow-500',
     icon: Activity,
     percentage: 85,
   },
@@ -60,7 +60,7 @@ export const SystemStatus = memo(() => {
                     initial={{ width: 0 }}
                     animate={{ width: `${item.percentage}%` }}
                     transition={{ duration: 1, delay: index * 0.1 }}
-                    className={`h-full rounded-full ${item.color.replace("text-", "bg-")}`}
+                    className={`h-full rounded-full ${item.color.replace('text-', 'bg-')}`}
                   />
                 </div>
                 <span
@@ -77,4 +77,4 @@ export const SystemStatus = memo(() => {
   );
 });
 
-SystemStatus.displayName = "SystemStatus";
+SystemStatus.displayName = 'SystemStatus';

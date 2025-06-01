@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { Spotlight } from "../ui/spotlight";
-import { useTheme } from "next-themes";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import CardCaroursalDemo from "./cardcarouseldemo";
-import WrapButtonDemo from "../ui/wrap-button";
-import { Globe } from "lucide-react";
-import Image from "next/image";
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import { Spotlight } from '../ui/spotlight';
+import { useTheme } from 'next-themes';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import CardCaroursalDemo from './cardcarouseldemo';
+import WrapButtonDemo from '../ui/wrap-button';
+import { Globe } from 'lucide-react';
+import Image from 'next/image';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function Gallery() {
@@ -77,7 +77,7 @@ export default function Gallery() {
           </div>
           <h2
             className={cn(
-              "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+              'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
               space.className,
             )}
           >

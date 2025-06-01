@@ -1,11 +1,11 @@
-import { DocsLayout, type DocsLayoutProps } from "fumadocs-ui/layouts/notebook";
-import type { ReactNode } from "react";
-import { baseOptions } from "@/app/layout.config";
-import { source } from "@/lib/source";
-import { RootProvider } from "fumadocs-ui/provider";
-import dynamic from "next/dynamic";
+import { DocsLayout, type DocsLayoutProps } from 'fumadocs-ui/layouts/notebook';
+import type { ReactNode } from 'react';
+import { baseOptions } from '@/app/layout.config';
+import { source } from '@/lib/source';
+import { RootProvider } from 'fumadocs-ui/provider';
+import dynamic from 'next/dynamic';
 
-const Assistant = dynamic(() => import("@/components/assistant"));
+const Assistant = dynamic(() => import('@/components/assistant'));
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

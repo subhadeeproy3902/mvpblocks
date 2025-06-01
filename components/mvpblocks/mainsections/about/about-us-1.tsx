@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Spotlight } from "@/components/ui/spotlight";
-import { BorderBeam } from "@/components/ui/border-beam";
-import { CardHoverEffect } from "@/components/ui/pulse-card";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Spotlight } from '@/components/ui/spotlight';
+import { BorderBeam } from '@/components/ui/border-beam';
+import { CardHoverEffect } from '@/components/ui/pulse-card';
 import {
   Globe,
   Users,
@@ -13,7 +13,7 @@ import {
   Sparkles,
   Rocket,
   Target,
-} from "lucide-react";
+} from 'lucide-react';
 
 interface AboutUsProps {
   title?: string;
@@ -38,44 +38,44 @@ const iconComponents = {
   Target: Target,
 };
 
-const defaultValues: AboutUsProps["values"] = [
+const defaultValues: AboutUsProps['values'] = [
   {
-    title: "Innovation",
+    title: 'Innovation',
     description:
-      "We constantly push boundaries and explore new possibilities to create cutting-edge solutions.",
-    icon: "Lightbulb",
+      'We constantly push boundaries and explore new possibilities to create cutting-edge solutions.',
+    icon: 'Lightbulb',
   },
   {
-    title: "Collaboration",
+    title: 'Collaboration',
     description:
-      "We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.",
-    icon: "Users",
+      'We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.',
+    icon: 'Users',
   },
   {
-    title: "Excellence",
+    title: 'Excellence',
     description:
-      "We strive for perfection in everything we do, consistently delivering high-quality work.",
-    icon: "Sparkles",
+      'We strive for perfection in everything we do, consistently delivering high-quality work.',
+    icon: 'Sparkles',
   },
   {
-    title: "Impact",
+    title: 'Impact',
     description:
       "We measure our success by the positive difference we make in people's lives and businesses.",
-    icon: "Globe",
+    icon: 'Globe',
   },
 ];
 
 export default function AboutUs1() {
   const aboutData = {
-    title: "About Us",
+    title: 'About Us',
     subtitle:
-      "Building the future of web development with beautiful, reusable components.",
+      'Building the future of web development with beautiful, reusable components.',
     mission:
-      "Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.",
+      'Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.',
     vision:
-      "We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.",
+      'We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.',
     values: defaultValues,
-    className: "relative overflow-hidden py-20",
+    className: 'relative overflow-hidden py-20',
   };
 
   const missionRef = useRef(null);
@@ -97,7 +97,7 @@ export default function AboutUs1() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <h1 className="bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl">
@@ -115,11 +115,11 @@ export default function AboutUs1() {
             animate={
               missionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
             }
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
             className="relative z-10 grid gap-12 md:grid-cols-2"
           >
             <motion.div
-              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
               className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
             >
               <BorderBeam
@@ -144,7 +144,7 @@ export default function AboutUs1() {
             </motion.div>
 
             <motion.div
-              whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+              whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
               className="group relative block overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br p-10 backdrop-blur-3xl"
             >
               <BorderBeam
@@ -174,7 +174,7 @@ export default function AboutUs1() {
             animate={
               valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
             }
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="mb-12 text-center"
           >
             <h2 className="bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:text-4xl">
@@ -200,7 +200,7 @@ export default function AboutUs1() {
                   transition={{
                     duration: 0.6,
                     delay: index * 0.1 + 0.2,
-                    ease: "easeOut",
+                    ease: 'easeOut',
                   }}
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
@@ -210,12 +210,12 @@ export default function AboutUs1() {
                     description={value.description}
                     variant={
                       index === 0
-                        ? "purple"
+                        ? 'purple'
                         : index === 1
-                          ? "blue"
+                          ? 'blue'
                           : index === 2
-                            ? "amber"
-                            : "rose"
+                            ? 'amber'
+                            : 'rose'
                     }
                     glowEffect={true}
                     size="lg"

@@ -6,15 +6,15 @@ import {
   User,
   User2,
   LucideIcon,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 // Define the feature item type
 type FeatureItem = {
   icon: LucideIcon;
   title: string;
   description: string;
-  position?: "left" | "right";
+  position?: 'left' | 'right';
   cornerStyle?: string;
 };
 
@@ -22,54 +22,54 @@ type FeatureItem = {
 const leftFeatures: FeatureItem[] = [
   {
     icon: Building2,
-    title: "Taught by Professionals",
+    title: 'Taught by Professionals',
     description:
-      "Learn directly from top engineers and founders with real-world experience.",
-    position: "left",
-    cornerStyle: "sm:translate-x-4 sm:rounded-br-[2px]",
+      'Learn directly from top engineers and founders with real-world experience.',
+    position: 'left',
+    cornerStyle: 'sm:translate-x-4 sm:rounded-br-[2px]',
   },
   {
     icon: User2,
-    title: "Coding Hostels",
+    title: 'Coding Hostels',
     description:
-      "Join virtual hostels to study, collaborate, and vibe with fellow learners.",
-    position: "left",
-    cornerStyle: "sm:-translate-x-4 sm:rounded-br-[2px]",
+      'Join virtual hostels to study, collaborate, and vibe with fellow learners.',
+    position: 'left',
+    cornerStyle: 'sm:-translate-x-4 sm:rounded-br-[2px]',
   },
   {
     icon: Trophy,
-    title: "Bounties",
+    title: 'Bounties',
     description:
-      "Win rewards for solving challenges, contributing to projects, and helping peers.",
-    position: "left",
-    cornerStyle: "sm:translate-x-4 sm:rounded-tr-[2px]",
+      'Win rewards for solving challenges, contributing to projects, and helping peers.',
+    position: 'left',
+    cornerStyle: 'sm:translate-x-4 sm:rounded-tr-[2px]',
   },
 ];
 
 const rightFeatures: FeatureItem[] = [
   {
     icon: ScreenShare,
-    title: "Revision Classes",
+    title: 'Revision Classes',
     description:
-      "Stay sharp with weekly revision sessions and topic refreshers.",
-    position: "right",
-    cornerStyle: "sm:-translate-x-4 sm:rounded-bl-[2px]",
+      'Stay sharp with weekly revision sessions and topic refreshers.',
+    position: 'right',
+    cornerStyle: 'sm:-translate-x-4 sm:rounded-bl-[2px]',
   },
   {
     icon: User,
-    title: "Peer Code Reviews",
+    title: 'Peer Code Reviews',
     description:
-      "Improve faster with feedback from mentors and batchmates on your actual code.",
-    position: "right",
-    cornerStyle: "sm:translate-x-4 sm:rounded-bl-[2px]",
+      'Improve faster with feedback from mentors and batchmates on your actual code.',
+    position: 'right',
+    cornerStyle: 'sm:translate-x-4 sm:rounded-bl-[2px]',
   },
   {
     icon: Lightbulb,
-    title: "Leet Lab",
+    title: 'Leet Lab',
     description:
-      "Ace coding interviews with daily DSA problems, contests, and tracking.",
-    position: "right",
-    cornerStyle: "sm:-translate-x-4 sm:rounded-tl-[2px]",
+      'Ace coding interviews with daily DSA problems, contests, and tracking.',
+    position: 'right',
+    cornerStyle: 'sm:-translate-x-4 sm:rounded-tl-[2px]',
   },
 ];
 
@@ -81,8 +81,8 @@ const FeatureCard = ({ feature }: { feature: FeatureItem }) => {
     <div>
       <div
         className={cn(
-          "relative rounded-2xl px-4 pb-4 pt-4 text-sm",
-          "bg-secondary/50 ring ring-border",
+          'relative rounded-2xl px-4 pb-4 pt-4 text-sm',
+          'bg-secondary/50 ring ring-border',
           feature.cornerStyle,
         )}
       >

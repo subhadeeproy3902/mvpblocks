@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { memo } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import {
   TrendingUp,
   Plus,
@@ -10,39 +10,39 @@ import {
   Mail,
   MapPin,
   MoreHorizontal,
-} from "lucide-react";
-import Image from "next/image";
+} from 'lucide-react';
+import Image from 'next/image';
 
 const users = [
   {
     id: 1,
-    name: "Alex Johnson",
-    email: "alex@example.com",
-    avatar: "/assets/avatars/avatar-1.webp",
-    role: "Admin",
-    status: "active",
-    joinDate: "2024-01-15",
-    location: "New York, US",
+    name: 'Alex Johnson',
+    email: 'alex@example.com',
+    avatar: '/assets/avatars/avatar-1.webp',
+    role: 'Admin',
+    status: 'active',
+    joinDate: '2024-01-15',
+    location: 'New York, US',
   },
   {
     id: 2,
-    name: "Sarah Chen",
-    email: "sarah@example.com",
-    avatar: "/assets/avatars/avatar-2.webp",
-    role: "User",
-    status: "active",
-    joinDate: "2024-02-20",
-    location: "San Francisco, US",
+    name: 'Sarah Chen',
+    email: 'sarah@example.com',
+    avatar: '/assets/avatars/avatar-2.webp',
+    role: 'User',
+    status: 'active',
+    joinDate: '2024-02-20',
+    location: 'San Francisco, US',
   },
   {
     id: 3,
-    name: "Michael Brown",
-    email: "michael@example.com",
-    avatar: "/assets/avatars/avatar-3.webp",
-    role: "Moderator",
-    status: "inactive",
-    joinDate: "2024-01-08",
-    location: "London, UK",
+    name: 'Michael Brown',
+    email: 'michael@example.com',
+    avatar: '/assets/avatars/avatar-3.webp',
+    role: 'Moderator',
+    status: 'inactive',
+    joinDate: '2024-01-08',
+    location: 'London, UK',
   },
 ];
 
@@ -93,7 +93,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
                 />
                 <div
                   className={`absolute -bottom-1 -right-1 h-3 w-3 rounded-full border-2 border-background ${
-                    user.status === "active" ? "bg-green-500" : "bg-red-500"
+                    user.status === 'active' ? 'bg-green-500' : 'bg-red-500'
                   }`}
                 />
               </div>
@@ -103,11 +103,11 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
                   <h4 className="truncate text-sm font-medium">{user.name}</h4>
                   <span
                     className={`rounded-full px-2 py-1 text-xs font-medium ${
-                      user.role === "Admin"
-                        ? "bg-purple-500/10 text-purple-500"
-                        : user.role === "Moderator"
-                          ? "bg-blue-500/10 text-blue-500"
-                          : "bg-gray-500/10 text-gray-500"
+                      user.role === 'Admin'
+                        ? 'bg-purple-500/10 text-purple-500'
+                        : user.role === 'Moderator'
+                          ? 'bg-blue-500/10 text-blue-500'
+                          : 'bg-gray-500/10 text-gray-500'
                     }`}
                   >
                     {user.role}
@@ -143,4 +143,4 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
   );
 });
 
-UsersTable.displayName = "UsersTable";
+UsersTable.displayName = 'UsersTable';

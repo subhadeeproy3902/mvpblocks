@@ -1,14 +1,14 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { ArrowRight, Code, FileText, Layers, Palette, Zap } from "lucide-react";
+'use client';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { ArrowRight, Code, FileText, Layers, Palette, Zap } from 'lucide-react';
 
 interface BentoGridItemProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   className?: string;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
 }
 
 const BentoGridItem = ({
@@ -16,18 +16,18 @@ const BentoGridItem = ({
   description,
   icon,
   className,
-  size = "small",
+  size = 'small',
 }: BentoGridItemProps) => {
   const variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", damping: 25 } },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', damping: 25 } },
   };
 
   return (
     <motion.div
       variants={variants}
       className={cn(
-        "group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary/30",
+        'group relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-xl border border-primary/10 bg-background px-6 pb-10 pt-6 shadow-md transition-all duration-500 hover:border-primary/30',
         className,
       )}
     >
@@ -57,43 +57,43 @@ const BentoGridItem = ({
 
 const items = [
   {
-    title: "Developer Experience",
+    title: 'Developer Experience',
     description:
-      "Built with developers in mind, making implementation a breeze.",
+      'Built with developers in mind, making implementation a breeze.',
     icon: <Code className="size-6" />,
-    size: "large" as const,
+    size: 'large' as const,
   },
   {
-    title: "Accessibility",
+    title: 'Accessibility',
     description:
-      "Built with a11y best practices to ensure your app is usable by everyone.",
+      'Built with a11y best practices to ensure your app is usable by everyone.',
     icon: <Layers className="size-6" />,
-    size: "small" as const,
+    size: 'small' as const,
   },
   {
-    title: "Responsive Design",
-    description: "Create layouts that adapt to any screen size with ease.",
+    title: 'Responsive Design',
+    description: 'Create layouts that adapt to any screen size with ease.',
     icon: <Layers className="size-6" />,
-    size: "medium" as const,
+    size: 'medium' as const,
   },
   {
-    title: "Customizable",
+    title: 'Customizable',
     description: "Tailor components to match your brand's unique style.",
     icon: <Palette className="size-6" />,
-    size: "medium" as const,
+    size: 'medium' as const,
   },
   {
-    title: "Performance",
-    description: "Optimized for speed and efficiency across all devices.",
+    title: 'Performance',
+    description: 'Optimized for speed and efficiency across all devices.',
     icon: <Zap className="size-6" />,
-    size: "small" as const,
+    size: 'small' as const,
   },
   {
-    title: "Documentation",
+    title: 'Documentation',
     description:
-      "Comprehensive guides and examples to help you get started quickly.",
+      'Comprehensive guides and examples to help you get started quickly.',
     icon: <FileText className="size-6" />,
-    size: "large" as const,
+    size: 'large' as const,
   },
 ];
 
@@ -124,12 +124,12 @@ export default function BentoGrid1() {
             icon={item.icon}
             size={item.size}
             className={cn(
-              item.size === "large"
-                ? "col-span-4"
-                : item.size === "medium"
-                  ? "col-span-3"
-                  : "col-span-2",
-              "h-full",
+              item.size === 'large'
+                ? 'col-span-4'
+                : item.size === 'medium'
+                  ? 'col-span-3'
+                  : 'col-span-2',
+              'h-full',
             )}
           />
         ))}

@@ -5,38 +5,38 @@ import {
   Rocket,
   Book,
   PlusCircle,
-} from "lucide-react";
+} from 'lucide-react';
 
 const features = [
   {
     icon: <Code className="h-6 w-6" />,
-    title: "Developer-Friendly",
-    desc: "Tailored for developers to create and iterate fast, with minimal overhead and maximum flexibility.",
+    title: 'Developer-Friendly',
+    desc: 'Tailored for developers to create and iterate fast, with minimal overhead and maximum flexibility.',
   },
   {
     icon: <Terminal className="h-6 w-6" />,
-    title: "CLI Support",
-    desc: "Command-line interface support for seamless development and workflow integration.",
+    title: 'CLI Support',
+    desc: 'Command-line interface support for seamless development and workflow integration.',
   },
   {
     icon: <Paintbrush className="h-6 w-6" />,
-    title: "Easily Customizable",
-    desc: "Every block is built to be editable. From layout to logic, style to structure—make it your own.",
+    title: 'Easily Customizable',
+    desc: 'Every block is built to be editable. From layout to logic, style to structure—make it your own.',
   },
   {
     icon: <Rocket className="h-6 w-6" />,
-    title: "v0 Support",
-    desc: "Launch fast with confidence. Perfect for MVPs, prototypes, and weekend projects.",
+    title: 'v0 Support',
+    desc: 'Launch fast with confidence. Perfect for MVPs, prototypes, and weekend projects.',
   },
   {
     icon: <Book className="h-6 w-6" />,
-    title: "Full Documentation",
-    desc: "Comprehensive documentation to understand every feature and maximize your development experience.",
+    title: 'Full Documentation',
+    desc: 'Comprehensive documentation to understand every feature and maximize your development experience.',
   },
   {
     icon: <PlusCircle className="h-6 w-6" />,
-    title: "Contribute Yours",
-    desc: "Add your own blocks to the library and become part of the MVPBlocks community.",
+    title: 'Contribute Yours',
+    desc: 'Add your own blocks to the library and become part of the MVPBlocks community.',
   },
 ];
 export default function Feature1() {
@@ -57,7 +57,7 @@ export default function Feature1() {
             className="absolute inset-0 mx-auto h-44 max-w-xs blur-[118px]"
             style={{
               background:
-                "linear-gradient(152.92deg, rgba(192, 15, 102, 0.2) 4.54%, rgba(192, 11, 109, 0.26) 34.2%, rgba(192, 15, 102, 0.1) 77.55%)",
+                'linear-gradient(152.92deg, rgba(192, 15, 102, 0.2) 4.54%, rgba(192, 11, 109, 0.26) 34.2%, rgba(192, 15, 102, 0.1) 77.55%)',
             }}
           ></div>
         </div>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import * as React from 'react';
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import {
   Card,
@@ -9,7 +9,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   ChartConfig,
   ChartContainer,
@@ -17,27 +17,27 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { fetchCodeFrequency } from "@/actions/githubgraphql";
+} from '@/components/ui/select';
+import { fetchCodeFrequency } from '@/actions/githubgraphql';
 
 const chartConfig = {
   activity: {
-    label: "Code Frequency",
+    label: 'Code Frequency',
   },
   additions: {
-    label: "Additions",
-    color: "hsl(var(--chart-3))",
+    label: 'Additions',
+    color: 'hsl(var(--chart-3))',
   },
   deletions: {
-    label: "Deletions",
-    color: "hsl(var(--chart-1))",
+    label: 'Deletions',
+    color: 'hsl(var(--chart-1))',
   },
 } satisfies ChartConfig;
 
@@ -52,7 +52,7 @@ export default function Codefreq() {
     loadData();
   }, []);
 
-  const [timeRange, setTimeRange] = React.useState("90d");
+  const [timeRange, setTimeRange] = React.useState('90d');
 
   // Convert codefreq to array and filter
   const codefreqArray = Object.entries(codefreq)
@@ -67,8 +67,8 @@ export default function Codefreq() {
     const date = new Date(item.date);
     const referenceDate = new Date();
     let daysToSubtract = 90;
-    if (timeRange === "30d") daysToSubtract = 30;
-    else if (timeRange === "7d") daysToSubtract = 7;
+    if (timeRange === '30d') daysToSubtract = 30;
+    else if (timeRange === '7d') daysToSubtract = 7;
     const startDate = new Date(referenceDate);
     startDate.setDate(referenceDate.getDate() - daysToSubtract);
     return date >= startDate;
@@ -139,9 +139,9 @@ export default function Codefreq() {
               axisLine={false}
               tickMargin={12}
               tickFormatter={(value) =>
-                new Date(value).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
+                new Date(value).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
                 })
               }
             />
@@ -156,9 +156,9 @@ export default function Codefreq() {
               content={
                 <ChartTooltipContent
                   labelFormatter={(value) =>
-                    new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
+                    new Date(value).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
                     })
                   }
                   indicator="dot"

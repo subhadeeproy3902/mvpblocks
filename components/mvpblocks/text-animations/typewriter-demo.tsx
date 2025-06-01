@@ -1,4 +1,4 @@
-import TextGenerateEffect from "@/components/ui/typewriter";
+import TextGenerateEffect from '@/components/ui/typewriter';
 
 export default function TypewriterDemo() {
   return (

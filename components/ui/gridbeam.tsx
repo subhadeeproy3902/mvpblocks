@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 export const Beam = () => {
   return (
@@ -24,16 +24,16 @@ export const Beam = () => {
           <motion.linearGradient
             variants={{
               initial: {
-                x1: "40%",
-                x2: "50%",
-                y1: "160%",
-                y2: "180%",
+                x1: '40%',
+                x2: '50%',
+                y1: '160%',
+                y2: '180%',
               },
               animate: {
-                x1: "0%",
-                x2: "10%",
-                y1: "-40%",
-                y2: "-20%",
+                x1: '0%',
+                x2: '10%',
+                y1: '-40%',
+                y2: '-20%',
               },
             }}
             animate="animate"
@@ -41,8 +41,8 @@ export const Beam = () => {
             transition={{
               duration: 1.8,
               repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
+              repeatType: 'loop',
+              ease: 'linear',
               repeatDelay: 2,
             }}
             id="grad1"
@@ -71,16 +71,16 @@ export const Beam = () => {
           <motion.linearGradient
             variants={{
               initial: {
-                x1: "40%",
-                x2: "50%",
-                y1: "160%",
-                y2: "180%",
+                x1: '40%',
+                x2: '50%',
+                y1: '160%',
+                y2: '180%',
               },
               animate: {
-                x1: "0%",
-                x2: "10%",
-                y1: "-40%",
-                y2: "-20%",
+                x1: '0%',
+                x2: '10%',
+                y1: '-40%',
+                y2: '-20%',
               },
             }}
             animate="animate"
@@ -88,8 +88,8 @@ export const Beam = () => {
             transition={{
               duration: 1.8,
               repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
+              repeatType: 'loop',
+              ease: 'linear',
               repeatDelay: 2,
             }}
             id="grad1"

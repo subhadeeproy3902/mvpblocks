@@ -1,70 +1,70 @@
-"use client";
-import Image from "next/image";
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+'use client';
+import Image from 'next/image';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 const testimonials = [
   {
-    text: "Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.",
-    imageSrc: "/assets/avatar-1.webp",
-    name: "Arjun Mehta",
-    username: "@arjdev",
+    text: 'Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.',
+    imageSrc: '/assets/avatar-1.webp',
+    name: 'Arjun Mehta',
+    username: '@arjdev',
   },
   {
-    text: "Honestly shocked at how smooth the animations and styling are out of the box. Just works.",
-    imageSrc: "/assets/avatar-2.webp",
-    name: "Sara Lin",
-    username: "@sara.codes",
+    text: 'Honestly shocked at how smooth the animations and styling are out of the box. Just works.',
+    imageSrc: '/assets/avatar-2.webp',
+    name: 'Sara Lin',
+    username: '@sara.codes',
   },
   {
-    text: "Our team launched a client site in 2 days using Mvpblocks. Saved so much time.",
-    imageSrc: "/assets/avatar-3.webp",
-    name: "Devon Carter",
-    username: "@devninja",
+    text: 'Our team launched a client site in 2 days using Mvpblocks. Saved so much time.',
+    imageSrc: '/assets/avatar-3.webp',
+    name: 'Devon Carter',
+    username: '@devninja',
   },
   {
-    text: "Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.",
-    imageSrc: "/assets/avatar-4.webp",
-    name: "Priya Shah",
-    username: "@priyacodes",
+    text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
+    imageSrc: '/assets/avatar-4.webp',
+    name: 'Priya Shah',
+    username: '@priyacodes',
   },
   {
-    text: "Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.",
-    imageSrc: "/assets/avatar-5.webp",
-    name: "Leo Martin",
-    username: "@leobuilds",
+    text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
+    imageSrc: '/assets/avatar-5.webp',
+    name: 'Leo Martin',
+    username: '@leobuilds',
   },
   {
-    text: "Mvpblocks helped us prototype multiple landing pages without writing CSS once.",
-    imageSrc: "/assets/avatar-6.webp",
-    name: "Chloe Winters",
-    username: "@chloewinters",
+    text: 'Mvpblocks helped us prototype multiple landing pages without writing CSS once.',
+    imageSrc: '/assets/avatar-6.webp',
+    name: 'Chloe Winters',
+    username: '@chloewinters',
   },
   {
-    text: "As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.",
-    imageSrc: "/assets/avatar-7.webp",
-    name: "Ayaan Malik",
-    username: "@ayaan_dev",
+    text: 'As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.',
+    imageSrc: '/assets/avatar-7.webp',
+    name: 'Ayaan Malik',
+    username: '@ayaan_dev',
   },
   {
-    text: "Can’t believe how polished the components look. Clients are impressed every time.",
-    imageSrc: "/assets/avatar-8.webp",
-    name: "Monica Reeves",
-    username: "@monicareeves",
+    text: 'Can’t believe how polished the components look. Clients are impressed every time.',
+    imageSrc: '/assets/avatar-8.webp',
+    name: 'Monica Reeves',
+    username: '@monicareeves',
   },
   {
-    text: "This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.",
-    imageSrc: "/assets/avatar-9.webp",
-    name: "James Roy",
-    username: "@jamesrdev",
+    text: 'This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.',
+    imageSrc: '/assets/avatar-9.webp',
+    name: 'James Roy',
+    username: '@jamesrdev',
   },
 ];
 
@@ -80,13 +80,13 @@ const TestimonialsColumn = (props: {
   <div className={props.className}>
     <motion.div
       animate={{
-        translateY: "-50%",
+        translateY: '-50%',
       }}
       transition={{
         duration: props.duration || 10,
         repeat: Infinity,
-        ease: "linear",
-        repeatType: "loop",
+        ease: 'linear',
+        repeatType: 'loop',
       }}
       className="flex flex-col gap-6"
     >
@@ -130,11 +130,11 @@ const Testimonials = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const handleShareClick = () => {
-    const tweets = require("@/lib/tweet-contents").tweetContents;
+    const tweets = require('@/lib/tweet-contents').tweetContents;
     const randomTweet = tweets[Math.floor(Math.random() * tweets.length)];
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(randomTweet)}`,
-      "_blank",
+      '_blank',
     );
   };
 
@@ -160,7 +160,7 @@ const Testimonials = () => {
           </div>
           <h2
             className={cn(
-              "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+              'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
               space.className,
             )}
           >

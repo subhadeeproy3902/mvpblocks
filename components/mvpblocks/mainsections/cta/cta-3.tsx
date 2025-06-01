@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from 'lucide-react';
 
 export default function CTA3() {
   return (
@@ -11,10 +11,10 @@ export default function CTA3() {
                 TAKE ACTION NOW
               </div>
               <h2 className="mb-6 text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
-                Ready to{" "}
+                Ready to{' '}
                 <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
                   Transform
-                </span>{" "}
+                </span>{' '}
                 Your Marketing?
               </h2>
               <p className="mb-8 text-lg text-muted-foreground">

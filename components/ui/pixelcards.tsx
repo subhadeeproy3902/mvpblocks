@@ -1,8 +1,8 @@
-import type React from "react";
-import { motion } from "framer-motion";
-import { NumberTicker } from "./counter";
-import { VARIANTS } from "./pulse-card";
-import Image from "next/image";
+import type React from 'react';
+import { motion } from 'framer-motion';
+import { NumberTicker } from './counter';
+import { VARIANTS } from './pulse-card';
+import Image from 'next/image';
 
 // Define TypeScript interfaces for better type safety
 interface PixelCanvasProps {
@@ -25,7 +25,7 @@ interface CardProps {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "pixel-canvas": React.DetailedHTMLProps<
+      'pixel-canvas': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
       >;
@@ -36,7 +36,7 @@ declare global {
 const PixelCanvas: React.FC<PixelCanvasProps> = ({
   gap = 5,
   speed = 30,
-  colors = "#e0f2fe, #7dd3fc, #0ea5e9",
+  colors = '#e0f2fe, #7dd3fc, #0ea5e9',
   noFocus = false,
 }) => {
   return (
@@ -45,9 +45,9 @@ const PixelCanvas: React.FC<PixelCanvasProps> = ({
       data-gap={gap}
       data-speed={speed}
       data-colors={colors}
-      {...(noFocus ? { "data-no-focus": "" } : {})}
+      {...(noFocus ? { 'data-no-focus': '' } : {})}
       className="absolute inset-0 z-10 size-full"
-      style={{ position: "absolute", width: "100%", height: "100%" }}
+      style={{ position: 'absolute', width: '100%', height: '100%' }}
     />
   );
 };
@@ -60,7 +60,7 @@ export const PixelCard: React.FC<CardProps> = ({
   desc,
   canvasProps = {},
 }) => {
-  const variantConfig = VARIANTS["rose"];
+  const variantConfig = VARIANTS['rose'];
   // Hover animation configuration
   const hoverTransition = {
     duration: 0.8,
@@ -84,7 +84,7 @@ export const PixelCard: React.FC<CardProps> = ({
         whileHover={{ opacity: 1 }}
         transition={hoverTransition}
       />
-      {icon === "Blocks" ? (
+      {icon === 'Blocks' ? (
         <Image
           src="/components.webp"
           draggable={false}
@@ -104,14 +104,14 @@ export const PixelCard: React.FC<CardProps> = ({
         />
       )}
 
-      {icon === "Blocks" ? (
+      {icon === 'Blocks' ? (
         <div className="absolute inset-0 z-20 overflow-hidden rounded-[inherit] opacity-100 transition-all duration-500">
           <div
             className="absolute bottom-[55%] left-1/2 aspect-square w-[200%] rounded-[50%]"
             style={{
               background: `conic-gradient(from ${variantConfig.shine}, transparent 360deg)`,
-              filter: "blur(40px)",
-              transform: "translateX(-50%) scaleX(-1)",
+              filter: 'blur(40px)',
+              transform: 'translateX(-50%) scaleX(-1)',
             }}
           />
         </div>
@@ -121,7 +121,7 @@ export const PixelCard: React.FC<CardProps> = ({
             className="absolute bottom-[55%] right-1/2 aspect-square w-[200%] translate-x-1/2 rounded-[50%]"
             style={{
               background: `conic-gradient(from ${variantConfig.shine}, transparent 360deg)`,
-              filter: "blur(40px)",
+              filter: 'blur(40px)',
             }}
           />
         </div>

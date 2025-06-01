@@ -1,60 +1,60 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { Users, Activity, DollarSign, Eye } from "lucide-react";
-import { DashboardCard } from "./ui/dashboard-card";
-import { RevenueChart } from "./ui/revenue-chart";
-import { UsersTable } from "./ui/users-table";
-import { QuickActions } from "./ui/quick-actions";
-import { SystemStatus } from "./ui/system-status";
-import { RecentActivity } from "./ui/recent-activity";
-import { DashboardHeader } from "./ui/dashboard-header";
-import { AdminSidebar } from "./ui/admin-sidebar";
+import { useState } from 'react';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { Users, Activity, DollarSign, Eye } from 'lucide-react';
+import { DashboardCard } from './ui/dashboard-card';
+import { RevenueChart } from './ui/revenue-chart';
+import { UsersTable } from './ui/users-table';
+import { QuickActions } from './ui/quick-actions';
+import { SystemStatus } from './ui/system-status';
+import { RecentActivity } from './ui/recent-activity';
+import { DashboardHeader } from './ui/dashboard-header';
+import { AdminSidebar } from './ui/admin-sidebar';
 
 // Dashboard stats data
 const stats = [
   {
-    title: "Total Users",
-    value: "12,345",
-    change: "+12%",
-    changeType: "positive" as const,
+    title: 'Total Users',
+    value: '12,345',
+    change: '+12%',
+    changeType: 'positive' as const,
     icon: Users,
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-500/10',
   },
   {
-    title: "Revenue",
-    value: "$45,678",
-    change: "+8.2%",
-    changeType: "positive" as const,
+    title: 'Revenue',
+    value: '$45,678',
+    change: '+8.2%',
+    changeType: 'positive' as const,
     icon: DollarSign,
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
+    color: 'text-green-500',
+    bgColor: 'bg-green-500/10',
   },
   {
-    title: "Active Sessions",
-    value: "2,456",
-    change: "+15%",
-    changeType: "positive" as const,
+    title: 'Active Sessions',
+    value: '2,456',
+    change: '+15%',
+    changeType: 'positive' as const,
     icon: Activity,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-500/10',
   },
   {
-    title: "Page Views",
-    value: "34,567",
-    change: "-2.4%",
-    changeType: "negative" as const,
+    title: 'Page Views',
+    value: '34,567',
+    change: '-2.4%',
+    changeType: 'negative' as const,
     icon: Eye,
-    color: "text-orange-500",
-    bgColor: "bg-orange-500/10",
+    color: 'text-orange-500',
+    bgColor: 'bg-orange-500/10',
   },
 ];
 
 export default function AdminDashboard() {
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleRefresh = async () => {
     setIsRefreshing(true);
@@ -63,11 +63,11 @@ export default function AdminDashboard() {
   };
 
   const handleExport = () => {
-    console.log("Exporting data...");
+    console.log('Exporting data...');
   };
 
   const handleAddUser = () => {
-    console.log("Adding new user...");
+    console.log('Adding new user...');
   };
 
   return (

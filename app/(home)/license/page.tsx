@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Shield, FileText, Check, Copy, ExternalLink } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Shield, FileText, Check, Copy, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Spotlight } from '@/components/ui/spotlight';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function LicensePage() {
@@ -23,7 +23,7 @@ export default function LicensePage() {
           <div className="relative mb-12 text-center">
             <h1
               className={cn(
-                "relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+                'relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
                 space.className,
               )}
             >
@@ -36,7 +36,7 @@ export default function LicensePage() {
 
           <div
             className="prose max-w-none rounded-2xl border p-6 text-foreground md:p-10"
-            style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
+            style={{ boxShadow: 'inset 0 0 30px 1px rgba(244, 63, 94, 0.1)' }}
           >
             <div className="mb-8 border-b">
               <div className="mb-6 flex items-center justify-between">

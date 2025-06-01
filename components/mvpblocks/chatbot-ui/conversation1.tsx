@@ -1,45 +1,45 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Send, Mic, User, Bot } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+import { useState } from 'react';
+import { Send, Mic, User, Bot } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 const initialMessages = [
   {
-    id: "1",
+    id: '1',
     content:
-      "Hi there! Welcome to our new platform. How can I assist you today?",
-    sender: "ai",
+      'Hi there! Welcome to our new platform. How can I assist you today?',
+    sender: 'ai',
     timestamp: new Date(Date.now() - 1000 * 60 * 10).toISOString(),
   },
   {
-    id: "2",
+    id: '2',
     content:
       "Hello! I'm looking for information about your premium subscription plans.",
-    sender: "user",
+    sender: 'user',
     timestamp: new Date(Date.now() - 1000 * 60 * 9).toISOString(),
   },
   {
-    id: "3",
+    id: '3',
     content:
       "Great question! Our premium plan offers unlimited access to all features, priority support, and advanced analytics. It's priced at $19.99/month with a 7-day free trial.",
-    sender: "ai",
+    sender: 'ai',
     timestamp: new Date(Date.now() - 1000 * 60 * 8).toISOString(),
   },
   {
-    id: "4",
+    id: '4',
     content:
-      "That sounds interesting. Are there any discounts for annual subscriptions?",
-    sender: "user",
+      'That sounds interesting. Are there any discounts for annual subscriptions?',
+    sender: 'user',
     timestamp: new Date(Date.now() - 1000 * 60 * 7).toISOString(),
   },
   {
-    id: "5",
+    id: '5',
     content:
-      "We offer a 20% discount on annual subscriptions, bringing the price down to $191.90 per year, which saves you about $48 compared to the monthly plan.",
-    sender: "ai",
+      'We offer a 20% discount on annual subscriptions, bringing the price down to $191.90 per year, which saves you about $48 compared to the monthly plan.',
+    sender: 'ai',
     timestamp: new Date(Date.now() - 1000 * 60 * 6).toISOString(),
   },
 ];
@@ -52,25 +52,25 @@ interface ChatBubbleProps {
 
 function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
   const formattedTime = timestamp.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: true,
   });
 
   return (
     <div
-      className={cn("flex w-full", isUser ? "justify-end" : "justify-start")}
+      className={cn('flex w-full', isUser ? 'justify-end' : 'justify-start')}
     >
       <div
         className={cn(
-          "flex max-w-[80%] items-start space-x-2",
-          isUser && "flex-row-reverse space-x-reverse",
+          'flex max-w-[80%] items-start space-x-2',
+          isUser && 'flex-row-reverse space-x-reverse',
         )}
       >
         <div
           className={cn(
-            "flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full",
-            isUser ? "bg-primary/10" : "bg-muted",
+            'flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full',
+            isUser ? 'bg-primary/10' : 'bg-muted',
           )}
         >
           {isUser ? (
@@ -83,10 +83,10 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
         <div className="flex flex-col">
           <div
             className={cn(
-              "rounded-2xl px-4 py-2 shadow-sm",
+              'rounded-2xl px-4 py-2 shadow-sm',
               isUser
-                ? "rounded-tr-none bg-primary text-primary-foreground"
-                : "rounded-tl-none border border-border bg-card text-card-foreground",
+                ? 'rounded-tr-none bg-primary text-primary-foreground'
+                : 'rounded-tl-none border border-border bg-card text-card-foreground',
             )}
           >
             <p className="whitespace-pre-wrap">{message}</p>
@@ -94,8 +94,8 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
 
           <span
             className={cn(
-              "mt-1 text-xs text-muted-foreground",
-              isUser ? "text-right" : "text-left",
+              'mt-1 text-xs text-muted-foreground',
+              isUser ? 'text-right' : 'text-left',
             )}
           >
             {formattedTime}
@@ -108,7 +108,7 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
 
 export default function Conversation1() {
   const [messages, setMessages] = useState(initialMessages);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
   const handleSendMessage = (e: React.FormEvent) => {
@@ -117,19 +117,19 @@ export default function Conversation1() {
     const userMessage = {
       id: Date.now().toString(),
       content: input,
-      sender: "user",
+      sender: 'user',
       timestamp: new Date().toISOString(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInput("");
+    setInput('');
     setIsTyping(true);
     setTimeout(() => {
       const aiMessage = {
         id: (Date.now() + 1).toString(),
         content:
           "Thanks for your message! I'm here to help with any other questions you might have about our services or features.",
-        sender: "ai",
+        sender: 'ai',
         timestamp: new Date().toISOString(),
       };
 
@@ -156,7 +156,7 @@ export default function Conversation1() {
               <ChatBubble
                 key={message.id}
                 message={message.content}
-                isUser={message.sender === "user"}
+                isUser={message.sender === 'user'}
                 timestamp={new Date(message.timestamp)}
               />
             ))}
@@ -166,15 +166,15 @@ export default function Conversation1() {
                 <div className="flex space-x-1">
                   <div
                     className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
-                    style={{ animationDelay: "0ms" }}
+                    style={{ animationDelay: '0ms' }}
                   ></div>
                   <div
                     className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
-                    style={{ animationDelay: "150ms" }}
+                    style={{ animationDelay: '150ms' }}
                   ></div>
                   <div
                     className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
-                    style={{ animationDelay: "300ms" }}
+                    style={{ animationDelay: '300ms' }}
                   ></div>
                 </div>
                 <span>AI is typing...</span>

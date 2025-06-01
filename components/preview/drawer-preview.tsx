@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { useState, type ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, type ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCheck, Code, Copy, Terminal, X } from "lucide-react";
-import { ComponentLoader } from "./component-loader";
-import { OpenInV0Button } from "../v0";
-import { siteLink } from "@/config/site";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+} from '@/components/ui/dialog';
+import { Card, CardContent } from '@/components/ui/card';
+import { CheckCheck, Code, Copy, Terminal, X } from 'lucide-react';
+import { ComponentLoader } from './component-loader';
+import { OpenInV0Button } from '../v0';
+import { siteLink } from '@/config/site';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type DrawerCodePreviewProps = {
   name: string;
@@ -32,7 +32,7 @@ type DrawerCodePreviewProps = {
 export function DrawerCodePreview({
   name,
   code,
-  lang = "tsx",
+  lang = 'tsx',
   classNameComponentContainer,
   hasReTrigger = false,
   fromDocs = false,
@@ -57,9 +57,9 @@ export function DrawerCodePreview({
   };
 
   const formattedName = name
-    .split("-")
+    .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(' ');
 
   return (
     <Card className="not-prose relative overflow-hidden border shadow-md">
@@ -75,7 +75,7 @@ export function DrawerCodePreview({
             <span className="font-mono">CLI</span>
             <AnimatePresence mode="wait">
               <motion.div
-                key={copied ? "check" : "copy"}
+                key={copied ? 'check' : 'copy'}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -142,8 +142,8 @@ export function DrawerCodePreview({
         <div className="component-preview flex h-full items-center justify-center bg-gradient-to-br from-background to-muted/30 shadow-[0px_2px_10px_0px_rgba(255,255,255,0.1)_inset]">
           <div
             className={cn(
-              "h-full w-full max-w-md transition-all duration-200",
-              responsive && "flex justify-center",
+              'h-full w-full max-w-md transition-all duration-200',
+              responsive && 'flex justify-center',
             )}
           >
             <ComponentLoader

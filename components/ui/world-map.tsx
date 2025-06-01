@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { motion } from "motion/react";
-import DottedMap from "dotted-map";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useTheme } from "next-themes";
+import { useRef } from 'react';
+import { motion } from 'motion/react';
+import DottedMap from 'dotted-map';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useTheme } from 'next-themes';
 
 interface MapProps {
   dots?: Array<{
@@ -28,18 +28,18 @@ interface MapProps {
 
 export default function WorldMap({
   dots = [],
-  lineColor = "#0ea5e9",
+  lineColor = '#0ea5e9',
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
+  const map = new DottedMap({ height: 100, grid: 'diagonal' });
 
   const { theme } = useTheme();
 
   const svgMap = map.getSVG({
     radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
-    shape: "circle",
-    backgroundColor: theme === "dark" ? "bg-[#0B0A09]" : "white",
+    color: theme === 'dark' ? '#FFFFFF40' : '#00000040',
+    shape: 'circle',
+    backgroundColor: theme === 'dark' ? 'bg-[#0B0A09]' : 'white',
   });
 
   const projectPoint = (lat: number, lng: number) => {
@@ -91,7 +91,7 @@ export default function WorldMap({
                 transition={{
                   duration: 3,
                   delay: 0.3 * i,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   times: [0, 0.4, 0.6, 1],
                   repeat: Number.POSITIVE_INFINITY,
                   repeatDelay: 2,
@@ -153,7 +153,7 @@ export default function WorldMap({
                 <div className="h-6 w-6">
                   <Avatar className="h-6 w-6 border-2 border-white shadow-md dark:border-gray-800">
                     <AvatarImage
-                      src={dot.start.avatar || "/placeholder.svg"}
+                      src={dot.start.avatar || '/placeholder.svg'}
                       alt="Avatar"
                     />
                     <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200"></AvatarFallback>
@@ -201,7 +201,7 @@ export default function WorldMap({
                 <div className="h-6 w-6">
                   <Avatar className="h-6 w-6 border-2 border-white shadow-md dark:border-gray-800">
                     <AvatarImage
-                      src={dot.end.avatar || "/placeholder.svg"}
+                      src={dot.end.avatar || '/placeholder.svg'}
                       alt="Avatar"
                     />
                     <AvatarFallback className="bg-rose-100 text-[8px] text-rose-800 dark:bg-rose-900 dark:text-rose-200"></AvatarFallback>

@@ -1,4 +1,4 @@
-"use server";
+'use server';
 
 const githubGraphql = async ({
   query,
@@ -7,12 +7,12 @@ const githubGraphql = async ({
   query: string;
   variables: Record<string, any>;
 }) => {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
+  const response = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN!}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
+      Accept: 'application/vnd.github+json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query, variables }),
   });
@@ -79,7 +79,7 @@ const getAllCommitDates = async (
 const groupCommitsByDate = (dates: string[]): UserStats => {
   const counts: UserStats = {};
   for (const dateTime of dates) {
-    const date = dateTime.split("T")[0];
+    const date = dateTime.split('T')[0];
     counts[date] = (counts[date] || 0) + 1;
   }
   return counts;
@@ -87,8 +87,8 @@ const groupCommitsByDate = (dates: string[]): UserStats => {
 
 export const fetchUserData = async (): Promise<{ userStats: UserStats }> => {
   const allCommitDates = await getAllCommitDates(
-    "subhadeeproy3902",
-    "mvpblocks",
+    'subhadeeproy3902',
+    'mvpblocks',
   );
   const userStats = groupCommitsByDate(allCommitDates);
   return { userStats };
@@ -130,8 +130,8 @@ export const fetchCodeFrequency = async (): Promise<{
     const data: GitHubResponse2 = await githubGraphql({
       query: commitQuery,
       variables: {
-        login: "subhadeeproy3902",
-        name: "mvpblocks",
+        login: 'subhadeeproy3902',
+        name: 'mvpblocks',
         cursor,
       },
     });
@@ -141,7 +141,7 @@ export const fetchCodeFrequency = async (): Promise<{
 
     for (const edge of history.edges) {
       const { committedDate, additions, deletions } = edge.node;
-      const date = committedDate.split("T")[0];
+      const date = committedDate.split('T')[0];
 
       if (!frequencyMap[date]) {
         frequencyMap[date] = { additions: 0, deletions: 0 };

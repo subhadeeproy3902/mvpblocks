@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ArrowRight, Sparkles } from "lucide-react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, ArrowRight, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
 
 interface NavItem {
   name: string;
@@ -14,28 +14,28 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "/" },
-  { name: "Features", href: "/features" },
+  { name: 'Home', href: '/' },
+  { name: 'Features', href: '/features' },
   {
-    name: "Products",
-    href: "/products",
+    name: 'Products',
+    href: '/products',
     hasDropdown: true,
     dropdownItems: [
       {
-        name: "Analytics",
-        href: "/analytics",
-        description: "Track your metrics",
+        name: 'Analytics',
+        href: '/analytics',
+        description: 'Track your metrics',
       },
       {
-        name: "Dashboard",
-        href: "/dashboard",
-        description: "Manage your data",
+        name: 'Dashboard',
+        href: '/dashboard',
+        description: 'Manage your data',
       },
-      { name: "Reports", href: "/reports", description: "Generate insights" },
+      { name: 'Reports', href: '/reports', description: 'Generate insights' },
     ],
   },
-  { name: "Pricing", href: "/pricing" },
-  { name: "About", href: "/about" },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'About', href: '/about' },
 ];
 
 export default function Header1() {
@@ -48,24 +48,24 @@ export default function Header1() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const headerVariants = {
     initial: { y: -100, opacity: 0 },
     animate: { y: 0, opacity: 1 },
     scrolled: {
-      backdropFilter: "blur(20px)",
+      backdropFilter: 'blur(20px)',
       backgroundColor:
-        theme === "dark" ? "rgba(0, 0, 0, 0.8)" : "rgba(255, 255, 255, 0.8)",
-      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+        theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
     },
   };
 
   const mobileMenuVariants = {
     closed: { opacity: 0, height: 0 },
-    open: { opacity: 1, height: "auto" },
+    open: { opacity: 1, height: 'auto' },
   };
 
   const dropdownVariants = {
@@ -78,16 +78,16 @@ export default function Header1() {
       className="fixed left-0 right-0 top-0 z-50 transition-all duration-300"
       variants={headerVariants}
       initial="initial"
-      animate={isScrolled ? "scrolled" : "animate"}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      animate={isScrolled ? 'scrolled' : 'animate'}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
       style={{
-        backdropFilter: isScrolled ? "blur(20px)" : "none",
+        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
         backgroundColor: isScrolled
-          ? theme === "dark"
-            ? "rgba(0, 0, 0, 0.8)"
-            : "rgba(255, 255, 255, 0.8)"
-          : "transparent",
-        boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.1)" : "none",
+          ? theme === 'dark'
+            ? 'rgba(0, 0, 0, 0.8)'
+            : 'rgba(255, 255, 255, 0.8)'
+          : 'transparent',
+        boxShadow: isScrolled ? '0 8px 32px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -95,7 +95,7 @@ export default function Header1() {
           <motion.div
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             <Link href="/" className="flex items-center space-x-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-rose-700">
@@ -201,7 +201,7 @@ export default function Header1() {
               initial="closed"
               animate="open"
               exit="closed"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <div className="mt-4 space-y-2 rounded-xl border border-border bg-background/95 py-4 shadow-xl backdrop-blur-lg">
                 {navItems.map((item) => (

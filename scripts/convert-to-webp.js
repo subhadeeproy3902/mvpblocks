@@ -1,9 +1,9 @@
-const fs = require("fs");
-const path = require("path");
-const sharp = require("sharp");
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
 
 // Directories to exclude
-const excludeDirs = [".next", "node_modules"];
+const excludeDirs = ['.next', 'node_modules'];
 
 // Function to find all image files
 function findImageFiles(dir, fileList = []) {
@@ -21,7 +21,7 @@ function findImageFiles(dir, fileList = []) {
     } else {
       // Check if file is a PNG, JPG, or JPEG
       const ext = path.extname(file).toLowerCase();
-      if ([".png", ".jpg", ".jpeg"].includes(ext)) {
+      if (['.png', '.jpg', '.jpeg'].includes(ext)) {
         fileList.push(filePath);
       }
     }
@@ -33,7 +33,7 @@ function findImageFiles(dir, fileList = []) {
 // Function to convert image to WebP
 async function convertToWebP(filePath) {
   try {
-    const webpPath = filePath.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+    const webpPath = filePath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
 
     // Check if WebP version already exists
     if (fs.existsSync(webpPath)) {
@@ -55,7 +55,7 @@ async function convertToWebP(filePath) {
 // Main function
 async function main() {
   // Find all image files
-  const imageFiles = findImageFiles(".");
+  const imageFiles = findImageFiles('.');
   console.log(`Found ${imageFiles.length} image files to convert`);
 
   // Convert each image to WebP
@@ -73,7 +73,7 @@ async function main() {
     }
   }
 
-  console.log("Image conversion complete!");
+  console.log('Image conversion complete!');
 }
 
 main().catch(console.error);

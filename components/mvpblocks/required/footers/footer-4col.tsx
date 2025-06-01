@@ -7,41 +7,41 @@ import {
   MapPin,
   Phone,
   Twitter,
-} from "lucide-react";
-import Link from "next/link";
+} from 'lucide-react';
+import Link from 'next/link';
 
 const socialLinks = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: Twitter, label: "Twitter" },
-  { icon: Github, label: "GitHub" },
-  { icon: Dribbble, label: "Dribbble" },
+  { icon: Facebook, label: 'Facebook' },
+  { icon: Instagram, label: 'Instagram' },
+  { icon: Twitter, label: 'Twitter' },
+  { icon: Github, label: 'GitHub' },
+  { icon: Dribbble, label: 'Dribbble' },
 ];
 
 const aboutLinks = [
-  { text: "Company History", href: "#" },
-  { text: "Meet the Team", href: "#" },
-  { text: "Employee Handbook", href: "#" },
-  { text: "Careers", href: "#" },
+  { text: 'Company History', href: '#' },
+  { text: 'Meet the Team', href: '#' },
+  { text: 'Employee Handbook', href: '#' },
+  { text: 'Careers', href: '#' },
 ];
 
 const serviceLinks = [
-  { text: "Web Development", href: "#" },
-  { text: "Web Design", href: "#" },
-  { text: "Marketing", href: "#" },
-  { text: "Google Ads", href: "#" },
+  { text: 'Web Development', href: '#' },
+  { text: 'Web Design', href: '#' },
+  { text: 'Marketing', href: '#' },
+  { text: 'Google Ads', href: '#' },
 ];
 
 const helpfulLinks = [
-  { text: "FAQs", href: "#" },
-  { text: "Support", href: "#" },
-  { text: "Live Chat", href: "#", hasIndicator: true },
+  { text: 'FAQs', href: '#' },
+  { text: 'Support', href: '#' },
+  { text: 'Live Chat', href: '#', hasIndicator: true },
 ];
 
 const contactInfo = [
-  { icon: Mail, text: "Subhadeep" },
-  { icon: Phone, text: "8637373116" },
-  { icon: MapPin, text: "Kolkata, India", isAddress: true },
+  { icon: Mail, text: 'Subhadeep' },
+  { icon: Phone, text: '8637373116' },
+  { icon: MapPin, text: 'Kolkata, India', isAddress: true },
 ];
 
 export default function Footer4Col() {
@@ -126,8 +126,8 @@ export default function Footer4Col() {
                       href={href}
                       className={`${
                         hasIndicator
-                          ? "group flex justify-center gap-1.5 sm:justify-start"
-                          : "text-secondary-foreground/70 transition"
+                          ? 'group flex justify-center gap-1.5 sm:justify-start'
+                          : 'text-secondary-foreground/70 transition'
                       }`}
                     >
                       <span className="text-secondary-foreground/70 transition">

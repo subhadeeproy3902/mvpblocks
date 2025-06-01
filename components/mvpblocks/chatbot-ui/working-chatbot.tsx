@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Bot, Copy, CornerRightUp, Sparkles } from "lucide-react";
-import { useCallback, useRef, useState } from "react";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
-import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
-import { useChat } from "ai/react";
-import Image from "next/image";
-import Markdown from "react-markdown";
-import { toast } from "sonner";
+import { Bot, Copy, CornerRightUp, Sparkles } from 'lucide-react';
+import { useCallback, useRef, useState } from 'react';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
+import { useAutoResizeTextarea } from '@/hooks/use-auto-resize-textarea';
+import { useChat } from 'ai/react';
+import Image from 'next/image';
+import Markdown from 'react-markdown';
+import { toast } from 'sonner';
 
 function AiInput({
   value,
@@ -35,8 +35,8 @@ function AiInput({
             id="ai-input-06"
             placeholder="Ask me anything!"
             className={cn(
-              "w-full max-w-4xl resize-none text-wrap rounded-3xl border-none bg-muted/50 py-4 pl-6 pr-12 leading-[1.2] text-foreground ring-primary/20 placeholder:text-muted-foreground/70",
-              "min-h-[56px] transition-all duration-200 focus:ring-2 focus:ring-primary/30",
+              'w-full max-w-4xl resize-none text-wrap rounded-3xl border-none bg-muted/50 py-4 pl-6 pr-12 leading-[1.2] text-foreground ring-primary/20 placeholder:text-muted-foreground/70',
+              'min-h-[56px] transition-all duration-200 focus:ring-2 focus:ring-primary/30',
             )}
             value={value}
             onKeyDown={onKeyDown}
@@ -48,16 +48,16 @@ function AiInput({
           <button
             onClick={onSubmit}
             className={cn(
-              "absolute right-3 top-1/2 -translate-y-1/2 rounded-xl bg-primary/10 p-2 transition-all duration-200 hover:bg-primary/20",
-              value.trim() ? "opacity-100" : "cursor-not-allowed opacity-50",
+              'absolute right-3 top-1/2 -translate-y-1/2 rounded-xl bg-primary/10 p-2 transition-all duration-200 hover:bg-primary/20',
+              value.trim() ? 'opacity-100' : 'cursor-not-allowed opacity-50',
             )}
             type="button"
             disabled={!value.trim()}
           >
             <CornerRightUp
               className={cn(
-                "h-4 w-4 text-primary transition-opacity",
-                value ? "opacity-100" : "opacity-50",
+                'h-4 w-4 text-primary transition-opacity',
+                value ? 'opacity-100' : 'opacity-50',
               )}
             />
           </button>
@@ -85,7 +85,7 @@ export default function WorkingChatbot() {
     status,
     error,
   } = useChat({
-    api: "/api/demo-chat",
+    api: '/api/demo-chat',
     onFinish: (message) => {
       const endTime = Date.now();
       const duration = (endTime - startTimeRef.current) / 1000;
@@ -97,7 +97,7 @@ export default function WorkingChatbot() {
   });
 
   // Check if the AI is currently generating a response
-  const isLoading = status === "submitted" || status === "streaming";
+  const isLoading = status === 'submitted' || status === 'streaming';
 
   const handleSubmit = useCallback(
     (e?: React.FormEvent) => {
@@ -110,7 +110,7 @@ export default function WorkingChatbot() {
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (event.key === "Enter" && !event.shiftKey) {
+      if (event.key === 'Enter' && !event.shiftKey) {
         event.preventDefault();
         handleSubmit();
       }
@@ -125,7 +125,7 @@ export default function WorkingChatbot() {
           messages.map((m) => {
             return (
               <div key={m.id} className="mb-4 whitespace-pre-wrap">
-                {m.role === "user" ? (
+                {m.role === 'user' ? (
                   <div className="flex flex-row px-2 py-4 sm:px-4">
                     <img
                       alt="user"
@@ -140,7 +140,7 @@ export default function WorkingChatbot() {
                   </div>
                 ) : (
                   <div className="relative mb-4 flex rounded-xl bg-neutral-50 px-2 py-6 dark:bg-neutral-900 sm:px-4">
-                    <Bot className="mr-2 flex size-8 rounded-full bg-secondary p-1 text-primary sm:mr-4" />{" "}
+                    <Bot className="mr-2 flex size-8 rounded-full bg-secondary p-1 text-primary sm:mr-4" />{' '}
                     <div className="markdown-body w-full max-w-3xl overflow-x-auto rounded-xl">
                       <Markdown>{m.content}</Markdown>
                       {responseTimes[m.id] && (
@@ -155,7 +155,7 @@ export default function WorkingChatbot() {
                       className="absolute right-2 top-2 rounded-full bg-rose-500 p-1 opacity-50 transition-all hover:opacity-75 active:scale-95 dark:bg-neutral-800"
                       onClick={() => {
                         navigator.clipboard.writeText(m.content);
-                        toast.success("Copied to clipboard");
+                        toast.success('Copied to clipboard');
                       }}
                     >
                       <Copy className="h-4 w-4 text-white" />

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, ChevronRight, ExternalLink, Github } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export default function GradientHero() {
   return (
@@ -93,7 +93,7 @@ export default function GradientHero() {
             transition={{
               duration: 0.8,
               delay: 0.5,
-              type: "spring",
+              type: 'spring',
               stiffness: 50,
             }}
             className="relative mx-auto mt-16 max-w-4xl"

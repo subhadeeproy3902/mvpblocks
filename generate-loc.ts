@@ -1,18 +1,18 @@
-import { execSync } from "child_process";
-import { readFileSync, writeFileSync, existsSync } from "fs";
-import * as path from "path";
-import * as fs from "fs";
+import { execSync } from 'child_process';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import * as path from 'path';
+import * as fs from 'fs';
 
 // Allowed extensions to track
 const allowedExtensions = [
-  ".ts",
-  ".tsx",
-  ".js",
-  ".jsx",
-  ".json",
-  ".css",
-  ".mjs",
-  ".mdx",
+  '.ts',
+  '.tsx',
+  '.js',
+  '.jsx',
+  '.json',
+  '.css',
+  '.mjs',
+  '.mdx',
 ];
 
 type LOCData = {
@@ -25,13 +25,13 @@ type LOCData = {
 const locData: LOCData = {};
 
 function countLines(content: string): number {
-  return content.split("\n").length;
+  return content.split('\n').length;
 }
 
 function main() {
-  const fileList = execSync("git ls-files")
+  const fileList = execSync('git ls-files')
     .toString()
-    .split("\n")
+    .split('\n')
     .filter(Boolean);
 
   for (const filePath of fileList) {
@@ -46,7 +46,7 @@ function main() {
         continue;
       }
 
-      const content = readFileSync(filePath, "utf8");
+      const content = readFileSync(filePath, 'utf8');
       const lines = countLines(content);
 
       if (!locData[ext]) {
@@ -60,8 +60,8 @@ function main() {
     }
   }
 
-  writeFileSync("custom-loc.json", JSON.stringify(locData, null, 2));
-  console.log("✅ custom-loc.json generated successfully!");
+  writeFileSync('custom-loc.json', JSON.stringify(locData, null, 2));
+  console.log('✅ custom-loc.json generated successfully!');
 }
 
 main();

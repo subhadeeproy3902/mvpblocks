@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Script from "next/script";
+import Script from 'next/script';
 
 const GoogleAnalytics = () => {
   const gid = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!;

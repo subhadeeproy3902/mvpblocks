@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { GithubIcon } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { GithubIcon } from 'lucide-react';
 
 export default function StarOnGithub() {
   return (

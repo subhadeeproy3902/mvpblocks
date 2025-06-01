@@ -1,10 +1,10 @@
-import * as z from "zod";
+import * as z from 'zod';
 
 export const registryItemTypeSchema = z.enum([
-  "registry:block",
-  "registry:ui",
-  "registry:hook",
-  "registry:lib",
+  'registry:block',
+  'registry:ui',
+  'registry:hook',
+  'registry:lib',
 ]);
 
 export const registryItemFileSchema = z.object({

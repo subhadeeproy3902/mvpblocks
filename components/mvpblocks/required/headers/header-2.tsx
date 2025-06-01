@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Zap, Search } from "lucide-react";
-import Link from "next/link";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ArrowRight, Zap, Search } from 'lucide-react';
+import Link from 'next/link';
 
 interface NavItem {
   name: string;
@@ -11,12 +11,12 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "/" },
-  { name: "Features", href: "/features" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Resources", href: "/resources" },
-  { name: "Contact", href: "/contact" },
+  { name: 'Home', href: '/' },
+  { name: 'Features', href: '/features' },
+  { name: 'Solutions', href: '/solutions' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Resources', href: '/resources' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export default function Header2() {
@@ -28,8 +28,8 @@ export default function Header2() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const containerVariants = {
@@ -52,10 +52,10 @@ export default function Header2() {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      x: "100%",
+      x: '100%',
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       },
     },
     open: {
@@ -63,7 +63,7 @@ export default function Header2() {
       x: 0,
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         staggerChildren: 0.1,
       },
     },
@@ -79,8 +79,8 @@ export default function Header2() {
       <motion.header
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "border-b border-border/50 bg-background/80 shadow-sm backdrop-blur-md"
-            : "bg-transparent"
+            ? 'border-b border-border/50 bg-background/80 shadow-sm backdrop-blur-md'
+            : 'bg-transparent'
         }`}
         variants={containerVariants}
         initial="hidden"
@@ -92,7 +92,7 @@ export default function Header2() {
               className="flex items-center space-x-3"
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
               <Link href="/" className="flex items-center space-x-3">
                 <div className="relative">
@@ -133,7 +133,7 @@ export default function Header2() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{
-                          type: "spring",
+                          type: 'spring',
                           stiffness: 400,
                           damping: 30,
                         }}

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function NotebookHero() {
   return (
@@ -36,20 +36,20 @@ export default function NotebookHero() {
               className="animate-gradient-x absolute inset-0 top-32 z-0 hidden blur-2xl dark:block"
               style={{
                 maskImage:
-                  "linear-gradient(to bottom, transparent, white, transparent)",
+                  'linear-gradient(to bottom, transparent, white, transparent)',
                 background:
-                  "repeating-linear-gradient(65deg, hsl(var(--primary)), hsl(var(--primary)/0.8) 12px, color-mix(in oklab, hsl(var(--primary)) 30%, transparent) 20px, transparent 200px)",
-                backgroundSize: "200% 100%",
+                  'repeating-linear-gradient(65deg, hsl(var(--primary)), hsl(var(--primary)/0.8) 12px, color-mix(in oklab, hsl(var(--primary)) 30%, transparent) 20px, transparent 200px)',
+                backgroundSize: '200% 100%',
               }}
             />
             <div
               className="animate-gradient-x absolute inset-0 top-32 z-0 text-left blur-2xl dark:hidden"
               style={{
                 maskImage:
-                  "linear-gradient(to bottom, transparent, white, transparent)",
+                  'linear-gradient(to bottom, transparent, white, transparent)',
                 background:
-                  "repeating-linear-gradient(65deg, hsl(var(--primary)/0.9), hsl(var(--primary)/0.7) 12px, color-mix(in oklab, hsl(var(--primary)) 30%, transparent) 20px, transparent 200px)",
-                backgroundSize: "200% 100%",
+                  'repeating-linear-gradient(65deg, hsl(var(--primary)/0.9), hsl(var(--primary)/0.7) 12px, color-mix(in oklab, hsl(var(--primary)) 30%, transparent) 20px, transparent 200px)',
+                backgroundSize: '200% 100%',
               }}
             />
             <h1 className="mb-4 flex flex-wrap gap-2 text-3xl font-medium leading-tight md:text-5xl">
@@ -138,9 +138,9 @@ export default function NotebookHero() {
                 href="#"
                 className={cn(
                   buttonVariants({
-                    size: "lg",
+                    size: 'lg',
                     className:
-                      "rounded-full bg-gradient-to-b from-primary to-primary/80 text-primary-foreground",
+                      'rounded-full bg-gradient-to-b from-primary to-primary/80 text-primary-foreground',
                   }),
                 )}
               >
@@ -152,13 +152,13 @@ export default function NotebookHero() {
                 rel="noreferrer noopener"
                 className={cn(
                   buttonVariants({
-                    size: "lg",
-                    variant: "outline",
-                    className: "rounded-full bg-fd-background",
+                    size: 'lg',
+                    variant: 'outline',
+                    className: 'rounded-full bg-fd-background',
                   }),
                 )}
               >
-                GitHub{" "}
+                GitHub{' '}
                 <svg
                   className="ml-1 inline size-4"
                   xmlns="http://www.w3.org/2000/svg"

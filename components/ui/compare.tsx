@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { SparklesCore } from "./sparkles";
-import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { EllipsisVertical } from "lucide-react";
+'use client';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { SparklesCore } from './sparkles';
+import { AnimatePresence, motion } from 'motion/react';
+import { cn } from '@/lib/utils';
+import { EllipsisVertical } from 'lucide-react';
 
 interface CompareProps {
   firstImage?: string;
@@ -12,19 +12,19 @@ interface CompareProps {
   firstImageClassName?: string;
   secondImageClassname?: string;
   initialSliderPercentage?: number;
-  slideMode?: "hover" | "drag";
+  slideMode?: 'hover' | 'drag';
   showHandlebar?: boolean;
   autoplay?: boolean;
   autoplayDuration?: number;
 }
 export const Compare = ({
-  firstImage = "",
-  secondImage = "",
+  firstImage = '',
+  secondImage = '',
   className,
   firstImageClassName,
   secondImageClassname,
   initialSliderPercentage = 50,
-  slideMode = "hover",
+  slideMode = 'hover',
   showHandlebar = true,
   autoplay = false,
   autoplayDuration = 5000,
@@ -74,10 +74,10 @@ export const Compare = ({
 
   function mouseLeaveHandler() {
     setIsMouseOver(false);
-    if (slideMode === "hover") {
+    if (slideMode === 'hover') {
       setSliderXPercent(initialSliderPercentage);
     }
-    if (slideMode === "drag") {
+    if (slideMode === 'drag') {
       setIsDragging(false);
     }
     startAutoplay();
@@ -85,7 +85,7 @@ export const Compare = ({
 
   const handleStart = useCallback(
     (clientX: number) => {
-      if (slideMode === "drag") {
+      if (slideMode === 'drag') {
         setIsDragging(true);
       }
     },
@@ -93,7 +93,7 @@ export const Compare = ({
   );
 
   const handleEnd = useCallback(() => {
-    if (slideMode === "drag") {
+    if (slideMode === 'drag') {
       setIsDragging(false);
     }
   }, [slideMode]);
@@ -101,7 +101,7 @@ export const Compare = ({
   const handleMove = useCallback(
     (clientX: number) => {
       if (!sliderRef.current) return;
-      if (slideMode === "hover" || (slideMode === "drag" && isDragging)) {
+      if (slideMode === 'hover' || (slideMode === 'drag' && isDragging)) {
         const rect = sliderRef.current.getBoundingClientRect();
         const x = clientX - rect.left;
         const percent = (x / rect.width) * 100;
@@ -150,9 +150,9 @@ export const Compare = ({
   return (
     <div
       ref={sliderRef}
-      className={cn("h-[500px] w-[600px] overflow-hidden border", className)}
+      className={cn('h-[500px] w-[600px] overflow-hidden border', className)}
       style={{
-        cursor: slideMode === "drag" ? "grab" : "col-resize",
+        cursor: slideMode === 'drag' ? 'grab' : 'col-resize',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={mouseLeaveHandler}
@@ -168,7 +168,7 @@ export const Compare = ({
           className="absolute top-0 z-30 m-auto h-full w-px bg-gradient-to-b from-transparent from-[5%] via-indigo-500 to-transparent to-[95%]"
           style={{
             left: `${sliderXPercent}%`,
-            top: "0",
+            top: '0',
             zIndex: 40,
           }}
           transition={{ duration: 0 }}
@@ -197,7 +197,7 @@ export const Compare = ({
           {firstImage ? (
             <motion.div
               className={cn(
-                "absolute inset-0 z-20 h-full w-full shrink-0 select-none overflow-hidden rounded-2xl",
+                'absolute inset-0 z-20 h-full w-full shrink-0 select-none overflow-hidden rounded-2xl',
                 firstImageClassName,
               )}
               style={{
@@ -209,7 +209,7 @@ export const Compare = ({
                 alt="first image"
                 src={firstImage}
                 className={cn(
-                  "absolute inset-0 z-20 h-full w-full shrink-0 select-none rounded-2xl",
+                  'absolute inset-0 z-20 h-full w-full shrink-0 select-none rounded-2xl',
                   firstImageClassName,
                 )}
                 draggable={false}
@@ -223,7 +223,7 @@ export const Compare = ({
         {secondImage ? (
           <motion.img
             className={cn(
-              "absolute left-0 top-0 z-[19] h-full w-full select-none rounded-2xl",
+              'absolute left-0 top-0 z-[19] h-full w-full select-none rounded-2xl',
               secondImageClassname,
             )}
             alt="second image"

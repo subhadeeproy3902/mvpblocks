@@ -1,13 +1,13 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { getComponentByName } from "@/registry";
-import { AlertCircle, ArrowLeft, RefreshCw, RotateCw } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
-import Link from "next/link";
-import { AuthorBadge } from "../ui/author-badge";
-import { siteLink } from "@/config/site";
+'use client';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { getComponentByName } from '@/registry';
+import { AlertCircle, ArrowLeft, RefreshCw, RotateCw } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
+import Link from 'next/link';
+import { AuthorBadge } from '../ui/author-badge';
+import { siteLink } from '@/config/site';
 
 type ComponentLoaderProps = {
   name: string;
@@ -75,10 +75,10 @@ export function ComponentLoader({
             <CardContent className="text-center">
               <div className="space-y-4">
                 <p className="text-muted-foreground">
-                  The component{" "}
+                  The component{' '}
                   <span className="font-mono font-medium text-foreground">
                     {name}
-                  </span>{" "}
+                  </span>{' '}
                   could not be found. Please check the name and try again.
                 </p>
                 <div className="rounded-lg bg-secondary p-4">
@@ -127,7 +127,7 @@ export function ComponentLoader({
             </CardFooter>
           </Card>
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Need help?{" "}
+            Need help?{' '}
             <Link href="#" className="font-medium text-primary hover:underline">
               Contact support
             </Link>
@@ -175,7 +175,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        "component-preview relative flex w-full items-center justify-center overflow-y-auto rounded-lg border border-secondary/50",
+        'component-preview relative flex w-full items-center justify-center overflow-y-auto rounded-lg border border-secondary/50',
         className,
       )}
       id="preview"

@@ -1,126 +1,126 @@
-import type { Registry } from "@/registry/schema";
-import * as React from "react";
+import type { Registry } from '@/registry/schema';
+import * as React from 'react';
 
 export const ui: Registry = [
   {
-    name: "particles",
-    type: "registry:ui",
-    dependencies: ["react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'particles',
+    type: 'registry:ui',
+    dependencies: ['react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/particles.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/particles.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/particles").then((mod) => ({
+      import('../components/ui/particles').then((mod) => ({
         default: mod.Particles,
       })),
     ),
   },
   {
-    name: "spotlight",
-    type: "registry:ui",
-    dependencies: ["react"],
+    name: 'spotlight',
+    type: 'registry:ui',
+    dependencies: ['react'],
     registryDependencies: [],
     files: [
       {
-        path: "@/components/ui/spotlight.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/spotlight.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/spotlight").then((mod) => ({
+      import('../components/ui/spotlight').then((mod) => ({
         default: mod.Spotlight,
       })),
     ),
   },
   {
-    name: "pulse-card",
-    type: "registry:ui",
-    dependencies: ["framer-motion", "react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'pulse-card',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/pulse-card.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/pulse-card.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/pulse-card").then((mod) => ({
+      import('../components/ui/pulse-card').then((mod) => ({
         default: mod.CardHoverEffect,
       })),
     ),
   },
   {
-    name: "border-beam",
-    type: "registry:ui",
+    name: 'border-beam',
+    type: 'registry:ui',
     dependencies: [],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/border-beam.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/border-beam.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/border-beam").then((mod) => ({
+      import('../components/ui/border-beam').then((mod) => ({
         default: mod.BorderBeam,
       })),
     ),
   },
   {
-    name: "phone-mockup",
-    type: "registry:ui",
-    dependencies: ["framer-motion", "next-themes", "react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'phone-mockup',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'next-themes', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/phone-mockup.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/phone-mockup.tsx',
+        type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import("../components/ui/phone-mockup")),
+    component: React.lazy(() => import('../components/ui/phone-mockup')),
   },
   {
-    name: "multi-step-form",
-    type: "registry:ui",
+    name: 'multi-step-form',
+    type: 'registry:ui',
     dependencies: [
-      "framer-motion",
-      "lucide-react",
-      "react",
-      "react-hook-form",
-      "zod",
+      'framer-motion',
+      'lucide-react',
+      'react',
+      'react-hook-form',
+      'zod',
     ],
     registryDependencies: [
-      "https://blocks.mvp-subha.me/r/utils.json",
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/input.json",
-      "https://blocks.mvp-subha.me/r/label.json",
-      "https://blocks.mvp-subha.me/r/progress.json",
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/label.json',
+      'https://blocks.mvp-subha.me/r/progress.json',
     ],
     files: [
       {
-        path: "@/components/ui/multi-step-form.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/multi-step-form.tsx',
+        type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import("../components/ui/multi-step-form")),
+    component: React.lazy(() => import('../components/ui/multi-step-form')),
   },
   {
-    name: "marquee",
-    type: "registry:ui",
-    dependencies: ["react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'marquee',
+    type: 'registry:ui',
+    dependencies: ['react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/marquee.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/marquee.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/marquee").then((mod) => ({
+      import('../components/ui/marquee').then((mod) => ({
         default: mod.Marquee,
       })),
     ),
@@ -129,18 +129,18 @@ export const ui: Registry = [
         theme: {
           extend: {
             animation: {
-              marquee: "marquee var(--duration) linear infinite",
-              "marquee-vertical":
-                "marquee-vertical var(--duration) linear infinite",
+              marquee: 'marquee var(--duration) linear infinite',
+              'marquee-vertical':
+                'marquee-vertical var(--duration) linear infinite',
             },
             keyframes: {
               marquee: {
-                from: { transform: "translateX(0)" },
-                to: { transform: "translateX(calc(-100% - var(--gap)))" },
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(calc(-100% - var(--gap)))' },
               },
-              "marquee-vertical": {
-                from: { transform: "translateY(0)" },
-                to: { transform: "translateY(calc(-100% - var(--gap)))" },
+              'marquee-vertical': {
+                from: { transform: 'translateY(0)' },
+                to: { transform: 'translateY(calc(-100% - var(--gap)))' },
               },
             },
           },
@@ -149,90 +149,90 @@ export const ui: Registry = [
     },
   },
   {
-    name: "scrollbasedvelocity",
-    type: "registry:ui",
-    dependencies: ["framer-motion", "react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'scrollbasedvelocity',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/scrollbasedvelocity.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/scrollbasedvelocity.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/scrollbasedvelocity").then((mod) => ({
+      import('../components/ui/scrollbasedvelocity').then((mod) => ({
         default: mod.VelocityScroll,
       })),
     ),
   },
   {
-    name: "typewriter",
-    type: "registry:ui",
-    dependencies: ["framer-motion", "react"],
+    name: 'typewriter',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
     registryDependencies: [],
     files: [
       {
-        path: "@/components/ui/typewriter.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/typewriter.tsx',
+        type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import("../components/ui/typewriter")),
+    component: React.lazy(() => import('../components/ui/typewriter')),
   },
   {
-    name: "pricing-card",
-    type: "registry:ui",
-    dependencies: ["lucide-react", "react"],
+    name: 'pricing-card',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'react'],
     registryDependencies: [
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/payment-modal.json",
-      "https://blocks.mvp-subha.me/r/dialog.json",
-      "https://blocks.mvp-subha.me/r/label.json",
-      "https://blocks.mvp-subha.me/r/radio-group.json",
-      "https://blocks.mvp-subha.me/r/utils.json",
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/payment-modal.json',
+      'https://blocks.mvp-subha.me/r/dialog.json',
+      'https://blocks.mvp-subha.me/r/label.json',
+      'https://blocks.mvp-subha.me/r/radio-group.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
     ],
     files: [
       {
-        path: "@/components/ui/pricing-card.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/pricing-card.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/pricing-card").then((mod) => ({
+      import('../components/ui/pricing-card').then((mod) => ({
         default: mod.PricingCard,
       })),
     ),
   },
   {
-    name: "payment-modal",
-    type: "registry:ui",
-    dependencies: ["react"],
+    name: 'payment-modal',
+    type: 'registry:ui',
+    dependencies: ['react'],
     registryDependencies: [
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/dialog.json",
-      "https://blocks.mvp-subha.me/r/label.json",
-      "https://blocks.mvp-subha.me/r/radio-group.json",
-      "https://blocks.mvp-subha.me/r/utils.json",
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/dialog.json',
+      'https://blocks.mvp-subha.me/r/label.json',
+      'https://blocks.mvp-subha.me/r/radio-group.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
     ],
     files: [
       {
-        path: "@/components/ui/payment-modal.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/payment-modal.tsx',
+        type: 'registry:ui',
       },
     ],
     component: React.lazy(() =>
-      import("../components/ui/payment-modal").then((mod) => ({
+      import('../components/ui/payment-modal').then((mod) => ({
         default: mod.PaymentModal,
       })),
     ),
   },
   {
-    name: "accordion",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-accordion"],
+    name: 'accordion',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-accordion'],
     files: [
       {
-        path: "@/components/ui/accordion.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/accordion.tsx',
+        type: 'registry:ui',
       },
     ],
     tailwind: {
@@ -240,18 +240,18 @@ export const ui: Registry = [
         theme: {
           extend: {
             keyframes: {
-              "accordion-down": {
-                from: { height: "0" },
-                to: { height: "var(--radix-accordion-content-height)" },
+              'accordion-down': {
+                from: { height: '0' },
+                to: { height: 'var(--radix-accordion-content-height)' },
               },
-              "accordion-up": {
-                from: { height: "var(--radix-accordion-content-height)" },
-                to: { height: "0" },
+              'accordion-up': {
+                from: { height: 'var(--radix-accordion-content-height)' },
+                to: { height: '0' },
               },
             },
             animation: {
-              "accordion-down": "accordion-down 0.2s ease-out",
-              "accordion-up": "accordion-up 0.2s ease-out",
+              'accordion-down': 'accordion-down 0.2s ease-out',
+              'accordion-up': 'accordion-up 0.2s ease-out',
             },
           },
         },
@@ -259,421 +259,421 @@ export const ui: Registry = [
     },
   },
   {
-    name: "alert",
-    type: "registry:ui",
+    name: 'alert',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/alert.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/alert.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "alert-dialog",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-alert-dialog"],
-    registryDependencies: ["button"],
+    name: 'alert-dialog',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-alert-dialog'],
+    registryDependencies: ['button'],
     files: [
       {
-        path: "@/components/ui/alert-dialog.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/alert-dialog.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "aspect-ratio",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-aspect-ratio"],
+    name: 'aspect-ratio',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-aspect-ratio'],
     files: [
       {
-        path: "@/components/ui/aspect-ratio.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/aspect-ratio.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "avatar",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-avatar"],
+    name: 'avatar',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-avatar'],
     files: [
       {
-        path: "@/components/ui/avatar.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/avatar.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "badge",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
+    name: 'badge',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-slot'],
     files: [
       {
-        path: "@/components/ui/badge.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/badge.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "breadcrumb",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
+    name: 'breadcrumb',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-slot'],
     files: [
       {
-        path: "@/components/ui/breadcrumb.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/breadcrumb.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "button",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-slot"],
+    name: 'button',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-slot'],
     files: [
       {
-        path: "@/components/ui/button.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/button.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "calendar",
-    type: "registry:ui",
-    dependencies: ["react-day-picker@8.10.1", "date-fns"],
-    registryDependencies: ["button"],
+    name: 'calendar',
+    type: 'registry:ui',
+    dependencies: ['react-day-picker@8.10.1', 'date-fns'],
+    registryDependencies: ['button'],
     files: [
       {
-        path: "@/components/ui/calendar.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/calendar.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "card",
-    type: "registry:ui",
+    name: 'card',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/card.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/card.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "carousel",
-    type: "registry:ui",
+    name: 'carousel',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/carousel.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/carousel.tsx',
+        type: 'registry:ui',
       },
     ],
-    registryDependencies: ["button"],
-    dependencies: ["embla-carousel-react"],
+    registryDependencies: ['button'],
+    dependencies: ['embla-carousel-react'],
   },
   {
-    name: "chart",
-    type: "registry:ui",
+    name: 'chart',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/chart.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/chart.tsx',
+        type: 'registry:ui',
       },
     ],
-    registryDependencies: ["card"],
-    dependencies: ["recharts", "lucide-react"],
+    registryDependencies: ['card'],
+    dependencies: ['recharts', 'lucide-react'],
   },
   {
-    name: "checkbox",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-checkbox"],
+    name: 'checkbox',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-checkbox'],
     files: [
       {
-        path: "@/components/ui/checkbox.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "collapsible",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-collapsible"],
-    files: [
-      {
-        path: "@/components/ui/collapsible.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/checkbox.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "command",
-    type: "registry:ui",
-    dependencies: ["cmdk"],
-    registryDependencies: ["dialog"],
+    name: 'collapsible',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-collapsible'],
     files: [
       {
-        path: "@/components/ui/command.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/collapsible.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "context-menu",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-context-menu"],
+    name: 'command',
+    type: 'registry:ui',
+    dependencies: ['cmdk'],
+    registryDependencies: ['dialog'],
     files: [
       {
-        path: "@/components/ui/context-menu.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/command.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "dialog",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
+    name: 'context-menu',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-context-menu'],
     files: [
       {
-        path: "@/components/ui/dialog.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/context-menu.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "drawer",
-    type: "registry:ui",
-    dependencies: ["vaul", "@radix-ui/react-dialog"],
+    name: 'dialog',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-dialog'],
     files: [
       {
-        path: "@/components/ui/drawer.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/dialog.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "dropdown-menu",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-dropdown-menu"],
+    name: 'drawer',
+    type: 'registry:ui',
+    dependencies: ['vaul', '@radix-ui/react-dialog'],
     files: [
       {
-        path: "@/components/ui/dropdown-menu.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/drawer.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "form",
-    type: "registry:ui",
+    name: 'dropdown-menu',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-dropdown-menu'],
+    files: [
+      {
+        path: '@/components/ui/dropdown-menu.tsx',
+        type: 'registry:ui',
+      },
+    ],
+  },
+  {
+    name: 'form',
+    type: 'registry:ui',
     dependencies: [
-      "@radix-ui/react-label",
-      "@radix-ui/react-slot",
-      "@hookform/resolvers",
-      "zod",
-      "react-hook-form",
+      '@radix-ui/react-label',
+      '@radix-ui/react-slot',
+      '@hookform/resolvers',
+      'zod',
+      'react-hook-form',
     ],
-    registryDependencies: ["button", "label"],
+    registryDependencies: ['button', 'label'],
     files: [
       {
-        path: "@/components/ui/form.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/form.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "globe",
-    type: "registry:ui",
-    dependencies: ["lucide-react", "cobe"],
+    name: 'globe',
+    type: 'registry:ui',
+    dependencies: ['lucide-react', 'cobe'],
     files: [
       {
-        path: "@/components/ui/globe.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/globe.tsx',
+        type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import("../components/ui/globe")),
+    component: React.lazy(() => import('../components/ui/globe')),
   },
   {
-    name: "hover-card",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-hover-card"],
+    name: 'hover-card',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-hover-card'],
     files: [
       {
-        path: "@/components/ui/hover-card.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "input",
-    type: "registry:ui",
-    files: [
-      {
-        path: "@/components/ui/input.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/hover-card.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "input-otp",
-    type: "registry:ui",
-    dependencies: ["input-otp"],
+    name: 'input',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/input-otp.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/input.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "label",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-label"],
+    name: 'input-otp',
+    type: 'registry:ui',
+    dependencies: ['input-otp'],
     files: [
       {
-        path: "@/components/ui/label.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/input-otp.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "menubar",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-menubar"],
+    name: 'label',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-label'],
     files: [
       {
-        path: "@/components/ui/menubar.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/label.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "navigation-menu",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-navigation-menu"],
+    name: 'menubar',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-menubar'],
     files: [
       {
-        path: "@/components/ui/navigation-menu.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/menubar.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "pagination",
-    type: "registry:ui",
-    registryDependencies: ["button"],
+    name: 'navigation-menu',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-navigation-menu'],
     files: [
       {
-        path: "@/components/ui/pagination.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/navigation-menu.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "popover",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-popover"],
+    name: 'pagination',
+    type: 'registry:ui',
+    registryDependencies: ['button'],
     files: [
       {
-        path: "@/components/ui/popover.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/pagination.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "progress",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-progress"],
+    name: 'popover',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-popover'],
     files: [
       {
-        path: "@/components/ui/progress.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/popover.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "radio-group",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-radio-group"],
+    name: 'progress',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-progress'],
     files: [
       {
-        path: "@/components/ui/radio-group.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/progress.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "resizable",
-    type: "registry:ui",
-    dependencies: ["react-resizable-panels"],
+    name: 'radio-group',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-radio-group'],
     files: [
       {
-        path: "@/components/ui/resizable.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/radio-group.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "scroll-area",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-scroll-area"],
+    name: 'resizable',
+    type: 'registry:ui',
+    dependencies: ['react-resizable-panels'],
     files: [
       {
-        path: "@/components/ui/scroll-area.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/resizable.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "select",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-select"],
+    name: 'scroll-area',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-scroll-area'],
     files: [
       {
-        path: "@/components/ui/select.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/scroll-area.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "separator",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-separator"],
+    name: 'select',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-select'],
     files: [
       {
-        path: "@/components/ui/separator.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/select.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "sheet",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-dialog"],
+    name: 'separator',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-separator'],
     files: [
       {
-        path: "@/components/ui/sheet.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/separator.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "sidebar",
-    type: "registry:ui",
+    name: 'sheet',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-dialog'],
+    files: [
+      {
+        path: '@/components/ui/sheet.tsx',
+        type: 'registry:ui',
+      },
+    ],
+  },
+  {
+    name: 'sidebar',
+    type: 'registry:ui',
     dependencies: [
-      "@radix-ui/react-slot",
-      "class-variance-authority",
-      "lucide-react",
+      '@radix-ui/react-slot',
+      'class-variance-authority',
+      'lucide-react',
     ],
     registryDependencies: [
-      "button",
-      "separator",
-      "sheet",
-      "tooltip",
-      "input",
-      "use-mobile",
-      "skeleton",
+      'button',
+      'separator',
+      'sheet',
+      'tooltip',
+      'input',
+      'use-mobile',
+      'skeleton',
     ],
     files: [
       {
-        path: "@/components/ui/sidebar.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/sidebar.tsx',
+        type: 'registry:ui',
       },
     ],
     tailwind: {
@@ -682,14 +682,14 @@ export const ui: Registry = [
           extend: {
             colors: {
               sidebar: {
-                DEFAULT: "hsl(var(--sidebar-background))",
-                foreground: "hsl(var(--sidebar-foreground))",
-                primary: "hsl(var(--sidebar-primary))",
-                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-                accent: "hsl(var(--sidebar-accent))",
-                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-                border: "hsl(var(--sidebar-border))",
-                ring: "hsl(var(--sidebar-ring))",
+                DEFAULT: 'hsl(var(--sidebar-background))',
+                foreground: 'hsl(var(--sidebar-foreground))',
+                primary: 'hsl(var(--sidebar-primary))',
+                'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+                accent: 'hsl(var(--sidebar-accent))',
+                'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+                border: 'hsl(var(--sidebar-border))',
+                ring: 'hsl(var(--sidebar-ring))',
               },
             },
           },
@@ -698,151 +698,151 @@ export const ui: Registry = [
     },
     cssVars: {
       light: {
-        "sidebar-background": "0 0% 98%",
-        "sidebar-foreground": "240 5.3% 26.1%",
-        "sidebar-primary": "240 5.9% 10%",
-        "sidebar-primary-foreground": "0 0% 98%",
-        "sidebar-accent": "240 4.8% 95.9%",
-        "sidebar-accent-foreground": "240 5.9% 10%",
-        "sidebar-border": "220 13% 91%",
-        "sidebar-ring": "217.2 91.2% 59.8%",
+        'sidebar-background': '0 0% 98%',
+        'sidebar-foreground': '240 5.3% 26.1%',
+        'sidebar-primary': '240 5.9% 10%',
+        'sidebar-primary-foreground': '0 0% 98%',
+        'sidebar-accent': '240 4.8% 95.9%',
+        'sidebar-accent-foreground': '240 5.9% 10%',
+        'sidebar-border': '220 13% 91%',
+        'sidebar-ring': '217.2 91.2% 59.8%',
       },
       dark: {
-        "sidebar-background": "240 5.9% 10%",
-        "sidebar-foreground": "240 4.8% 95.9%",
-        "sidebar-primary": "224.3 76.3% 48%",
-        "sidebar-primary-foreground": "0 0% 100%",
-        "sidebar-accent": "240 3.7% 15.9%",
-        "sidebar-accent-foreground": "240 4.8% 95.9%",
-        "sidebar-border": "240 3.7% 15.9%",
-        "sidebar-ring": "217.2 91.2% 59.8%",
+        'sidebar-background': '240 5.9% 10%',
+        'sidebar-foreground': '240 4.8% 95.9%',
+        'sidebar-primary': '224.3 76.3% 48%',
+        'sidebar-primary-foreground': '0 0% 100%',
+        'sidebar-accent': '240 3.7% 15.9%',
+        'sidebar-accent-foreground': '240 4.8% 95.9%',
+        'sidebar-border': '240 3.7% 15.9%',
+        'sidebar-ring': '217.2 91.2% 59.8%',
       },
     },
   },
   {
-    name: "skeleton",
-    type: "registry:ui",
+    name: 'skeleton',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/skeleton.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/skeleton.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "slider",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-slider"],
+    name: 'slider',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-slider'],
     files: [
       {
-        path: "@/components/ui/slider.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/slider.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "sonner",
-    type: "registry:ui",
-    dependencies: ["sonner", "next-themes"],
+    name: 'sonner',
+    type: 'registry:ui',
+    dependencies: ['sonner', 'next-themes'],
     files: [
       {
-        path: "@/components/ui/sonner.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/sonner.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "switch",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-switch"],
+    name: 'switch',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-switch'],
     files: [
       {
-        path: "@/components/ui/switch.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/switch.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "table",
-    type: "registry:ui",
+    name: 'table',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/table.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/table.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "tabs",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-tabs"],
+    name: 'tabs',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-tabs'],
     files: [
       {
-        path: "@/components/ui/tabs.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/tabs.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "textarea",
-    type: "registry:ui",
+    name: 'textarea',
+    type: 'registry:ui',
     files: [
       {
-        path: "@/components/ui/textarea.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/textarea.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "toast",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-toast"],
+    name: 'toast',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-toast'],
     files: [
       {
-        path: "@/components/ui/toast.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/toast.tsx',
+        type: 'registry:ui',
       },
       {
-        path: "hooks/use-toast.ts",
-        type: "registry:hook",
+        path: 'hooks/use-toast.ts',
+        type: 'registry:hook',
       },
       {
-        path: "@/components/ui/toaster.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/toaster.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "toggle",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-toggle"],
+    name: 'toggle',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-toggle'],
     files: [
       {
-        path: "@/components/ui/toggle.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/toggle.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "toggle-group",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-toggle-group"],
-    registryDependencies: ["toggle"],
+    name: 'toggle-group',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-toggle-group'],
+    registryDependencies: ['toggle'],
     files: [
       {
-        path: "@/components/ui/toggle-group.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/toggle-group.tsx',
+        type: 'registry:ui',
       },
     ],
   },
   {
-    name: "tooltip",
-    type: "registry:ui",
-    dependencies: ["@radix-ui/react-tooltip"],
+    name: 'tooltip',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-tooltip'],
     files: [
       {
-        path: "@/components/ui/tooltip.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/tooltip.tsx',
+        type: 'registry:ui',
       },
     ],
   },

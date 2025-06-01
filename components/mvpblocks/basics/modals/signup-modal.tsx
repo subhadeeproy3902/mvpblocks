@@ -1,5 +1,5 @@
-import { useId } from "react";
-import { Button } from "@/components/ui/button";
+import { useId } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,9 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 export default function SignupModal() {
   const id = useId();
@@ -78,7 +78,7 @@ export default function SignupModal() {
         <Button variant="outline">Continue with Google</Button>
 
         <p className="text-center text-xs text-muted-foreground">
-          By signing up you agree to our{" "}
+          By signing up you agree to our{' '}
           <a className="underline hover:no-underline" href="#">
             Terms
           </a>

@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
-import { useState } from "react";
+import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
 
 const faqs = [
   {
-    question: "What is Mvpblocks exactly?",
+    question: 'What is Mvpblocks exactly?',
     answer:
-      "Mvpblocks is a collection of plug-and-play UI sections built with Tailwind and Framer Motion, ready to be copy-pasted into your next MVP, landing page, or SaaS project.",
+      'Mvpblocks is a collection of plug-and-play UI sections built with Tailwind and Framer Motion, ready to be copy-pasted into your next MVP, landing page, or SaaS project.',
   },
   {
-    question: "Do I need to know Tailwind to use it?",
+    question: 'Do I need to know Tailwind to use it?',
     answer:
-      "Not necessarily! The blocks come with clean, readable code. If you’ve used HTML before, you can easily customize styles even without deep Tailwind knowledge.",
+      'Not necessarily! The blocks come with clean, readable code. If you’ve used HTML before, you can easily customize styles even without deep Tailwind knowledge.',
   },
   {
-    question: "Can I use these blocks commercially?",
+    question: 'Can I use these blocks commercially?',
     answer:
-      "Absolutely. All components are free to use for personal and commercial projects. No attribution needed—just build and launch.",
+      'Absolutely. All components are free to use for personal and commercial projects. No attribution needed—just build and launch.',
   },
   {
-    question: "Are the blocks responsive and accessible?",
+    question: 'Are the blocks responsive and accessible?',
     answer:
-      "Yes! All blocks are designed to be fully responsive and follow accessibility best practices out of the box.",
+      'Yes! All blocks are designed to be fully responsive and follow accessibility best practices out of the box.',
   },
   {
-    question: "How do I integrate a block into my project?",
+    question: 'How do I integrate a block into my project?',
     answer:
-      "Just copy the code snippet, paste it into your project (e.g., Next.js, Vite, or plain HTML), and you’re good to go. Smooth and instant.",
+      'Just copy the code snippet, paste it into your project (e.g., Next.js, Vite, or plain HTML), and you’re good to go. Smooth and instant.',
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Faqs() {
           </div>
         </div>
         <h2 className="mx-auto mt-6 max-w-xl text-center text-4xl font-medium md:text-[54px] md:leading-[60px]">
-          Questions? We&apos;ve got{" "}
+          Questions? We&apos;ve got{' '}
           <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-transparent dark:bg-gradient-to-b">
             answers
           </span>
@@ -70,8 +70,8 @@ export default function Faqs() {
                 <Plus
                   size={30}
                   className={cn(
-                    "flex-shrink-0 text-primary transition duration-300",
-                    selectedIndex === faqIndex && "rotate-45",
+                    'flex-shrink-0 text-primary transition duration-300',
+                    selectedIndex === faqIndex && 'rotate-45',
                   )}
                 />
               </div>
@@ -84,7 +84,7 @@ export default function Faqs() {
                       marginTop: 0,
                     }}
                     animate={{
-                      height: "auto",
+                      height: 'auto',
                       marginTop: 24,
                     }}
                     exit={{

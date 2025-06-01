@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { AlertCircle, Home, FileText } from "lucide-react";
-import { Spotlight } from "@/components/ui/spotlight";
-import { cn } from "@/lib/utils";
-import { Geist } from "next/font/google";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { AlertCircle, Home, FileText } from 'lucide-react';
+import { Spotlight } from '@/components/ui/spotlight';
+import { cn } from '@/lib/utils';
+import { Geist } from 'next/font/google';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function NotFound() {
@@ -25,7 +25,7 @@ export default function NotFound() {
             <div className="space-y-2">
               <h1
                 className={cn(
-                  "text-6xl font-bold tracking-tight text-foreground",
+                  'text-6xl font-bold tracking-tight text-foreground',
                   space.className,
                 )}
               >
