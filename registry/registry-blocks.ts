@@ -1439,6 +1439,22 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'team-10',
+    author: 'mosespace',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/team/team-10.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/team/team-10'),
+    ),
+  },
+  {
     name: 'testimonials-carousel',
     type: 'registry:block',
     dependencies: [
