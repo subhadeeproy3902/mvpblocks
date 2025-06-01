@@ -1,0 +1,17 @@
+---
+title: Skeletons
+description: Skeletons are placeholder elements that can be used to indicate loading states in your application. They provide a visual cue to users that content is being loaded.
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+
+## Shimmer Card
+
+<ComponentPreview
+  name="shimmer-card-one"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode("shimmer-card")).code}
+  lang="tsx"
+/>

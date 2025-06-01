@@ -1,0 +1,15 @@
+{
+  "name": "shimmer-card-one",
+  "author": "midhunkalarikkal",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import React from 'react';\n\ninterface ShimmerCardOneInterface {\n  descriptionLineCount?: number;\n  rating?: boolean;\n  className?: string;\n  imageShimmerClassName?: string;\n}\n\nexport default function ShimmerCardOne({\n  descriptionLineCount = 1,\n  rating = true,\n  className = '',\n  imageShimmerClassName = 'rounded',\n}: ShimmerCardOneInterface) {\n  return (\n    <div className={`flex w-full max-w-xs flex-col p-2 ${className}`}>\n      <div\n        aria-hidden=\"true\"\n        className={`relative h-40 animate-pulse bg-gray-500 md:h-40 lg:h-56 ${imageShimmerClassName}`}\n      ></div>\n      <div className=\"mt-4 space-y-2\">\n        <div className=\"flex justify-between\">\n          <div className=\"h-4 w-8/12 animate-pulse rounded bg-gray-500 md:h-5\"></div>\n          <div\n            className={`h-4 w-2/12 animate-pulse rounded bg-gray-500 md:h-5 ${rating ? 'block' : 'hidden'}`}\n          ></div>\n        </div>\n        <div className=\"h-3 w-1/2 animate-pulse rounded bg-gray-500 md:h-4\"></div>\n        {Array.from({ length: descriptionLineCount }).map((_, index) => (\n          <div\n            key={index}\n            className=\"h-2 w-full animate-pulse rounded bg-gray-500 md:h-3\"\n          ></div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/shimmers/shimmer-card-1.tsx",
+      "target": "/components/mvpblocks/shimmer-card-1.tsx"
+    }
+  ]
+}

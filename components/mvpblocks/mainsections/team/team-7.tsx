@@ -236,7 +236,7 @@ export default function Team7({
       className={cn('w-full py-16 text-white', className)}
       style={{ backgroundColor, color: textColor }}
     >
-      <div className="container max-w-5xl mx-auto px-4">
+      <div className="container mx-auto max-w-5xl px-4">
         <div className="mb-12">
           <p
             className={cn(

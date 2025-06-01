@@ -144,27 +144,25 @@ export default function TeamSectionVariant6({
   };
 
   return (
-    <section
-      className={cn('w-full', className)}
-    >
+    <section className={cn('w-full', className)}>
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="rounded-2xl shadow-sm p-8 md:p-12">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">{title}</h2>
+        <div className="rounded-2xl p-8 shadow-sm md:p-12">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 text-3xl font-semibold md:text-4xl">{title}</h2>
             <p
-              className="text-base max-w-2xl mx-auto"
+              className="mx-auto max-w-2xl text-base"
               style={{ color: secondaryColor }}
             >
               {subtitle}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
               {ctaButtons.map((button, index) => (
                 <a
                   key={index}
                   href={button.href || '#'}
                   className={cn(
-                    'px-6 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center',
+                    'flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium transition-all',
                     button.isPrimary
                       ? 'text-white'
                       : 'bg-gray-100 text-gray-800 hover:bg-gray-200',
@@ -185,7 +183,7 @@ export default function TeamSectionVariant6({
             {canScrollLeft && (
               <button
                 onClick={() => scroll('left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary rounded-full shadow-md p-2"
+                className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-primary p-2 shadow-md"
                 aria-label="Scroll left"
               >
                 <ChevronLeft size={20} />
@@ -194,15 +192,15 @@ export default function TeamSectionVariant6({
 
             <div
               ref={scrollContainerRef}
-              className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar"
+              className="hide-scrollbar flex gap-4 overflow-x-auto pb-4"
               onScroll={checkScrollButtons}
             >
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="flex-shrink-0 w-64 bg-card/90 rounded-lg overflow-hidden border border-white/10 shadow-sm hover:shadow-md transition-shadow"
+                  className="w-64 flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-card/90 shadow-sm transition-shadow hover:shadow-md"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={member.image || '/placeholder.svg'}
                       alt={member.name}
@@ -222,7 +220,7 @@ export default function TeamSectionVariant6({
             {canScrollRight && (
               <button
                 onClick={() => scroll('right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary rounded-full shadow-md p-2"
+                className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-primary p-2 shadow-md"
                 aria-label="Scroll right"
               >
                 <ChevronRight size={20} />

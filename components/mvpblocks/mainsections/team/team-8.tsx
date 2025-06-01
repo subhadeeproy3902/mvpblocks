@@ -125,46 +125,46 @@ export default function Team8({
 }) {
   return (
     <section className="w-full bg-slate-50 py-16">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col md:flex-row gap-12 mb-12">
+      <div className="container mx-auto max-w-6xl px-4">
+        <div className="mb-12 flex flex-col gap-12 md:flex-row">
           <div className="md:w-1/2">
-            <div className="flex text-black items-center gap-2 mb-4">
+            <div className="mb-4 flex items-center gap-2 text-black">
               <span className="text-black">★</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">
+              <span className="rounded-full bg-gray-200 px-3 py-1 text-sm">
                 WHO
               </span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">
+              <span className="rounded-full bg-gray-200 px-3 py-1 text-sm">
                 WE
               </span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">
+              <span className="rounded-full bg-gray-200 px-3 py-1 text-sm">
                 ARE
               </span>
             </div>
-            <h2 className="text-4xl text-black font-bold mb-4">
+            <h2 className="mb-4 text-4xl font-bold text-black">
               {headline1} <br />
               {headline2}
             </h2>
-            <p className="text-gray-700 mb-4">
+            <p className="mb-4 text-gray-700">
               {title1}
               <br />
               {title2}
             </p>
           </div>
           <div className="md:w-1/2">
-            <p className="text-gray-700 mb-4">{description1}</p>
+            <p className="mb-4 text-gray-700">{description1}</p>
             <p className="text-gray-700">{description2}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {teamMembers.slice(0, 4).map((member) => (
             <div
               key={member.id}
-              className={`p-6 rounded-lg h-fit ${
+              className={`h-fit rounded-lg p-6 ${
                 member.id === 4 ? 'bg-lime-300' : 'bg-white'
               }`}
             >
-              <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden">
+              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
                 <img
                   src={member.image || '/placeholder.svg'}
                   alt={member.name}
@@ -172,7 +172,7 @@ export default function Team8({
                 />
               </div>
               <div
-                className={`inline-block px-4 py-1 text-black rounded-full text-sm font-medium mb-2 ${
+                className={`mb-2 inline-block rounded-full px-4 py-1 text-sm font-medium text-black ${
                   member.id === 4 ? 'bg-white' : 'bg-gray-100'
                 }`}
               >
@@ -180,12 +180,12 @@ export default function Team8({
               </div>
               <p className="text-gray-700">{member.role}</p>
               {member.id === 4 && (
-                <p className="text-sm mt-4 italic">
+                <p className="mt-4 text-sm italic">
                   &quot;You miss 100% of the shots you don&apos;t take&quot;
                   -Wayne Gretzky -Michael Scott
                 </p>
               )}
-              <div className="flex mt-2 space-x-2">
+              <div className="mt-2 flex space-x-2">
                 {member.socialMedia?.linkedin && (
                   <Link
                     href={member.socialMedia.linkedin}
@@ -207,21 +207,21 @@ export default function Team8({
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {teamMembers.slice(4).map((member) => (
-            <div key={member.id} className="bg-white p-6 rounded-lg">
-              <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden">
+            <div key={member.id} className="rounded-lg bg-white p-6">
+              <div className="relative mb-4 h-48 w-full overflow-hidden rounded-lg">
                 <img
                   src={member.image || '/placeholder.svg'}
                   alt={member.name}
                   className="object-cover"
                 />
               </div>
-              <div className="inline-block text-black px-4 py-1 rounded-full text-sm font-medium mb-2 bg-gray-100">
+              <div className="mb-2 inline-block rounded-full bg-gray-100 px-4 py-1 text-sm font-medium text-black">
                 {member.name}
               </div>
               <p className="text-gray-700">{member.role}</p>
-              <div className="flex mt-2 space-x-2">
+              <div className="mt-2 flex space-x-2">
                 {member.socialMedia?.linkedin && (
                   <Link
                     href={member.socialMedia.linkedin}

@@ -105,22 +105,22 @@ export default function Team9({
 
   return (
     <section
-      className={cn('py-16 w-full', className)}
+      className={cn('w-full py-16', className)}
       style={{ backgroundColor, color: textColor }}
     >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl font-medium mb-1">{title}</h2>
-          <p className="text-xl italic font-light opacity-80">{subtitle}</p>
+        <div className="mb-16 text-center">
+          <h2 className="mb-1 text-2xl font-medium">{title}</h2>
+          <p className="text-xl font-light italic opacity-80">{subtitle}</p>
         </div>
 
-        <div className="flex justify-center gap-4 relative">
+        <div className="relative flex justify-center gap-4">
           {teamMembers.slice(0, 4).map((member, index) => {
             const isActive = activeIndex === index;
             return (
               <div
                 key={member.id}
-                className="rounded-xl overflow-hidden w-[16rem] text-white transition-all duration-500 ease-in-out cursor-pointer"
+                className="w-[16rem] cursor-pointer overflow-hidden rounded-xl text-white transition-all duration-500 ease-in-out"
                 style={{
                   backgroundColor: isActive
                     ? member.color || '#3F72AF'
@@ -129,35 +129,35 @@ export default function Team9({
                 }}
                 onMouseEnter={() => handleMouseEnter(index)}
               >
-                <div className="w-full h-full flex flex-col">
+                <div className="flex h-full w-full flex-col">
                   {/* Person image */}
                   <div
                     className={cn(
-                      'transition-all duration-500 ease-in-out relative',
+                      'relative transition-all duration-500 ease-in-out',
                       isActive ? 'h-3/5' : 'h-4/5',
                     )}
                   >
                     <img
                       src={member.image || '/placeholder.svg'}
                       alt={member.name}
-                      className="object-cover object-top aspect-square"
+                      className="aspect-square object-cover object-top"
                     />
                   </div>
 
                   {/* Text content */}
                   <div
                     className={cn(
-                      'p-4 flex flex-col transition-all duration-500 ease-in-out',
+                      'flex flex-col p-4 transition-all duration-500 ease-in-out',
                       isActive ? 'h-2/5' : 'h-1/5',
                     )}
                   >
                     {isActive && member.bio && (
-                      <div className="mb-2 text-sm opacity-80 overflow-hidden line-clamp-3 transition-opacity duration-500 ease-in-out">
+                      <div className="mb-2 line-clamp-3 overflow-hidden text-sm opacity-80 transition-opacity duration-500 ease-in-out">
                         {member.bio}
                       </div>
                     )}
                     <div className="mt-auto">
-                      <h3 className="font-medium text-lg">{member.name}</h3>
+                      <h3 className="text-lg font-medium">{member.name}</h3>
                       <p className="text-sm opacity-70">{member.role}</p>
                     </div>
                   </div>

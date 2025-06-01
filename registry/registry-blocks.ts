@@ -1516,4 +1516,20 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/chatbot-ui/v0-chat'),
     ),
   },
+  {
+    name: 'shimmer-card-one',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/shimmers/shimmer-card-1.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/shimmers/shimmer-card-1'),
+    ),
+  },
 ];
