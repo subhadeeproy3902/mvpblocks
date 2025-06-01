@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useCallback, useTransition } from "react";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useCallback, useTransition } from 'react';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
 import {
   ImageIcon,
   Figma,
@@ -13,9 +13,9 @@ import {
   LoaderIcon,
   Sparkles,
   Command,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import * as React from "react";
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import * as React from 'react';
 
 interface UseAutoResizeTextareaProps {
   minHeight: number;
@@ -58,8 +58,8 @@ function useAutoResizeTextarea({
 
   useEffect(() => {
     const handleResize = () => adjustHeight();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [adjustHeight]);
 
   return { textareaRef, adjustHeight };
@@ -83,16 +83,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const [isFocused, setIsFocused] = React.useState(false);
 
     return (
-      <div className={cn("relative", containerClassName)}>
+      <div className={cn('relative', containerClassName)}>
         <textarea
           className={cn(
-            "flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
-            "transition-all duration-200 ease-in-out",
-            "placeholder:text-muted-foreground",
-            "disabled:cursor-not-allowed disabled:opacity-50",
+            'flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm',
+            'transition-all duration-200 ease-in-out',
+            'placeholder:text-muted-foreground',
+            'disabled:cursor-not-allowed disabled:opacity-50',
             showRing
-              ? "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
-              : "",
+              ? 'focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0'
+              : '',
             className,
           )}
           ref={ref}
@@ -115,7 +115,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <div
             className="absolute bottom-2 right-2 h-2 w-2 rounded-full bg-primary opacity-0"
             style={{
-              animation: "none",
+              animation: 'none',
             }}
             id="textarea-ripple"
           />
@@ -124,10 +124,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   },
 );
-Textarea.displayName = "Textarea";
+Textarea.displayName = 'Textarea';
 
 export default function AnimatedAIChat() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [attachments, setAttachments] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -145,32 +145,32 @@ export default function AnimatedAIChat() {
   const commandSuggestions: CommandSuggestion[] = [
     {
       icon: <ImageIcon className="h-4 w-4" />,
-      label: "Clone UI",
-      description: "Generate a UI from a screenshot",
-      prefix: "/clone",
+      label: 'Clone UI',
+      description: 'Generate a UI from a screenshot',
+      prefix: '/clone',
     },
     {
       icon: <Figma className="h-4 w-4" />,
-      label: "Import Figma",
-      description: "Import a design from Figma",
-      prefix: "/figma",
+      label: 'Import Figma',
+      description: 'Import a design from Figma',
+      prefix: '/figma',
     },
     {
       icon: <MonitorIcon className="h-4 w-4" />,
-      label: "Create Page",
-      description: "Generate a new web page",
-      prefix: "/page",
+      label: 'Create Page',
+      description: 'Generate a new web page',
+      prefix: '/page',
     },
     {
       icon: <Sparkles className="h-4 w-4" />,
-      label: "Improve",
-      description: "Improve existing UI design",
-      prefix: "/improve",
+      label: 'Improve',
+      description: 'Improve existing UI design',
+      prefix: '/improve',
     },
   ];
 
   useEffect(() => {
-    if (value.startsWith("/") && !value.includes(" ")) {
+    if (value.startsWith('/') && !value.includes(' ')) {
       setShowCommandPalette(true);
 
       const matchingSuggestionIndex = commandSuggestions.findIndex((cmd) =>
@@ -192,16 +192,16 @@ export default function AnimatedAIChat() {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
-      const commandButton = document.querySelector("[data-command-button]");
+      const commandButton = document.querySelector('[data-command-button]');
 
       if (
         commandPaletteRef.current &&
@@ -212,39 +212,39 @@ export default function AnimatedAIChat() {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (showCommandPalette) {
-      if (e.key === "ArrowDown") {
+      if (e.key === 'ArrowDown') {
         e.preventDefault();
         setActiveSuggestion((prev) =>
           prev < commandSuggestions.length - 1 ? prev + 1 : 0,
         );
-      } else if (e.key === "ArrowUp") {
+      } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         setActiveSuggestion((prev) =>
           prev > 0 ? prev - 1 : commandSuggestions.length - 1,
         );
-      } else if (e.key === "Tab" || e.key === "Enter") {
+      } else if (e.key === 'Tab' || e.key === 'Enter') {
         e.preventDefault();
         if (activeSuggestion >= 0) {
           const selectedCommand = commandSuggestions[activeSuggestion];
-          setValue(selectedCommand.prefix + " ");
+          setValue(selectedCommand.prefix + ' ');
           setShowCommandPalette(false);
 
           setRecentCommand(selectedCommand.label);
           setTimeout(() => setRecentCommand(null), 3500);
         }
-      } else if (e.key === "Escape") {
+      } else if (e.key === 'Escape') {
         e.preventDefault();
         setShowCommandPalette(false);
       }
-    } else if (e.key === "Enter" && !e.shiftKey) {
+    } else if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (value.trim()) {
         handleSendMessage();
@@ -258,7 +258,7 @@ export default function AnimatedAIChat() {
         setIsTyping(true);
         setTimeout(() => {
           setIsTyping(false);
-          setValue("");
+          setValue('');
           adjustHeight(true);
         }, 3000);
       });
@@ -276,7 +276,7 @@ export default function AnimatedAIChat() {
 
   const selectCommandSuggestion = (index: number) => {
     const selectedCommand = commandSuggestions[index];
-    setValue(selectedCommand.prefix + " ");
+    setValue(selectedCommand.prefix + ' ');
     setShowCommandPalette(false);
 
     setRecentCommand(selectedCommand.label);
@@ -296,7 +296,7 @@ export default function AnimatedAIChat() {
             className="relative z-10 space-y-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <div className="space-y-3 text-center">
               <motion.div
@@ -311,7 +311,7 @@ export default function AnimatedAIChat() {
                 <motion.div
                   className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
                   initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: "100%", opacity: 1 }}
+                  animate={{ width: '100%', opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
                 />
               </motion.div>
@@ -346,10 +346,10 @@ export default function AnimatedAIChat() {
                         <motion.div
                           key={suggestion.prefix}
                           className={cn(
-                            "flex cursor-pointer items-center gap-2 px-3 py-2 text-xs transition-colors",
+                            'flex cursor-pointer items-center gap-2 px-3 py-2 text-xs transition-colors',
                             activeSuggestion === index
-                              ? "bg-primary/20 text-foreground"
-                              : "text-muted-foreground hover:bg-primary/10",
+                              ? 'bg-primary/20 text-foreground'
+                              : 'text-muted-foreground hover:bg-primary/10',
                           )}
                           onClick={() => selectCommandSuggestion(index)}
                           initial={{ opacity: 0 }}
@@ -384,17 +384,17 @@ export default function AnimatedAIChat() {
                   placeholder="Ask mvp.ai a question..."
                   containerClassName="w-full"
                   className={cn(
-                    "w-full px-4 py-3",
-                    "resize-none",
-                    "bg-transparent",
-                    "border-none",
-                    "text-sm text-foreground",
-                    "focus:outline-none",
-                    "placeholder:text-muted-foreground",
-                    "min-h-[60px]",
+                    'w-full px-4 py-3',
+                    'resize-none',
+                    'bg-transparent',
+                    'border-none',
+                    'text-sm text-foreground',
+                    'focus:outline-none',
+                    'placeholder:text-muted-foreground',
+                    'min-h-[60px]',
                   )}
                   style={{
-                    overflow: "hidden",
+                    overflow: 'hidden',
                   }}
                   showRing={false}
                 />
@@ -405,7 +405,7 @@ export default function AnimatedAIChat() {
                   <motion.div
                     className="flex flex-wrap gap-2 px-4 pb-3"
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
+                    animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                   >
                     {attachments.map((file, index) => (
@@ -452,8 +452,8 @@ export default function AnimatedAIChat() {
                     }}
                     whileTap={{ scale: 0.94 }}
                     className={cn(
-                      "group relative rounded-lg p-2 text-muted-foreground transition-colors hover:text-foreground",
-                      showCommandPalette && "bg-primary/20 text-foreground",
+                      'group relative rounded-lg p-2 text-muted-foreground transition-colors hover:text-foreground',
+                      showCommandPalette && 'bg-primary/20 text-foreground',
                     )}
                   >
                     <Command className="h-4 w-4" />
@@ -471,11 +471,11 @@ export default function AnimatedAIChat() {
                   whileTap={{ scale: 0.98 }}
                   disabled={isTyping || !value.trim()}
                   className={cn(
-                    "rounded-lg px-4 py-2 text-sm font-medium transition-all",
-                    "flex items-center gap-2",
+                    'rounded-lg px-4 py-2 text-sm font-medium transition-all',
+                    'flex items-center gap-2',
                     value.trim()
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/10"
-                      : "bg-muted/50 text-muted-foreground",
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/10'
+                      : 'bg-muted/50 text-muted-foreground',
                   )}
                 >
                   {isTyping ? (
@@ -509,7 +509,7 @@ export default function AnimatedAIChat() {
                     }}
                     transition={{
                       duration: 0.3,
-                      ease: "easeOut",
+                      ease: 'easeOut',
                     }}
                   />
                 </motion.button>
@@ -547,7 +547,7 @@ export default function AnimatedAIChat() {
               y: mousePosition.y - 400,
             }}
             transition={{
-              type: "spring",
+              type: 'spring',
               damping: 25,
               stiffness: 150,
               mass: 0.5,
@@ -575,10 +575,10 @@ function TypingDots() {
             duration: 1.2,
             repeat: Infinity,
             delay: dot * 0.15,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           style={{
-            boxShadow: "0 0 4px rgba(255, 255, 255, 0.3)",
+            boxShadow: '0 0 4px rgba(255, 255, 255, 0.3)',
           }}
         />
       ))}
@@ -598,8 +598,8 @@ const rippleKeyframes = `
 }
 `;
 
-if (typeof document !== "undefined") {
-  const style = document.createElement("style");
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
   style.innerHTML = rippleKeyframes;
   document.head.appendChild(style);
 }

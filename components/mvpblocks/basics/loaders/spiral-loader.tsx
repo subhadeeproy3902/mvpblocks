@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 export default function SpiralLoader() {
   const dots = 8;
@@ -27,7 +27,7 @@ export default function SpiralLoader() {
               duration: 1.5,
               repeat: Infinity,
               delay: (index / dots) * 1.5,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
           />
         );

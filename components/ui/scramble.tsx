@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface ScrambleHoverProps {
   text: string;
   scrambleSpeed?: number;
   maxIterations?: number;
   sequential?: boolean;
-  revealDirection?: "start" | "end" | "center";
+  revealDirection?: 'start' | 'end' | 'center';
   useOriginalCharsOnly?: boolean;
   characters?: string;
   className?: string;
@@ -24,11 +24,11 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
   scrambleSpeed = 50,
   maxIterations = 10,
   useOriginalCharsOnly = false,
-  characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+",
+  characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+',
   className,
   scrambledClassName,
   sequential = false,
-  revealDirection = "start",
+  revealDirection = 'start',
   isHovering,
   setIsHovering,
   ...props
@@ -44,11 +44,11 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     const getNextIndex = () => {
       const textLength = text.length;
       switch (revealDirection) {
-        case "start":
+        case 'start':
           return revealedIndices.size;
-        case "end":
+        case 'end':
           return textLength - 1 - revealedIndices.size;
-        case "center":
+        case 'center':
           const middle = Math.floor(textLength / 2);
           const offset = Math.floor(revealedIndices.size / 2);
           const nextIndex =
@@ -75,9 +75,9 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
 
     const shuffleText = (text: string) => {
       if (useOriginalCharsOnly) {
-        const positions = text.split("").map((char, i) => ({
+        const positions = text.split('').map((char, i) => ({
           char,
-          isSpace: char === " ",
+          isSpace: char === ' ',
           index: i,
           isRevealed: revealedIndices.has(i),
         }));
@@ -98,28 +98,28 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
         let charIndex = 0;
         return positions
           .map((p) => {
-            if (p.isSpace) return " ";
+            if (p.isSpace) return ' ';
             if (p.isRevealed) return text[p.index];
             return nonSpaceChars[charIndex++];
           })
-          .join("");
+          .join('');
       } else {
         return text
-          .split("")
+          .split('')
           .map((char, i) => {
-            if (char === " ") return " ";
+            if (char === ' ') return ' ';
             if (revealedIndices.has(i)) return text[i];
             return availableChars[
               Math.floor(Math.random() * availableChars.length)
             ];
           })
-          .join("");
+          .join('');
       }
     };
 
     const availableChars = useOriginalCharsOnly
-      ? Array.from(new Set(text.split(""))).filter((char) => char !== " ")
-      : characters.split("");
+      ? Array.from(new Set(text.split(''))).filter((char) => char !== ' ')
+      : characters.split('');
 
     if (isHovering) {
       setIsScrambling(true);
@@ -166,12 +166,12 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     <motion.span
       onHoverStart={() => setIsHovering?.(true)}
       onHoverEnd={() => setIsHovering?.(false)}
-      className={cn("inline-block whitespace-pre-wrap", className)}
+      className={cn('inline-block whitespace-pre-wrap', className)}
       {...props}
     >
       <span className="sr-only">{displayText}</span>
       <span aria-hidden="true">
-        {displayText.split("").map((char, index) => (
+        {displayText.split('').map((char, index) => (
           <span
             key={index}
             className={cn(

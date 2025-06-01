@@ -1,4 +1,4 @@
-import { VelocityScroll } from "@/components/ui/scrollbasedvelocity";
+import { VelocityScroll } from '@/components/ui/scrollbasedvelocity';
 
 export default function ScrollBasedVelocityDemo() {
   return (

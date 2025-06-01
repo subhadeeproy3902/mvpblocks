@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function AnimatedBtn1() {
   return (
@@ -23,7 +23,7 @@ export default function AnimatedBtn1() {
           }
 
           .bubbleeffectbtn:before {
-            content: "";
+            content: '';
             position: absolute;
             top: -50%;
             left: -50%;
@@ -47,7 +47,7 @@ export default function AnimatedBtn1() {
           .bubbleeffectbtn:after {
             border-radius: 25px;
             position: absolute;
-            content: "";
+            content: '';
             width: 0;
             height: 100%;
             top: 0;

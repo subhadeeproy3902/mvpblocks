@@ -1,20 +1,20 @@
-"use client";
-import { Button } from "@/components/ui/button";
+'use client';
+import { Button } from '@/components/ui/button';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { cn } from "@/lib/utils";
-import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { useState } from "react";
+} from '@/components/ui/collapsible';
+import { cn } from '@/lib/utils';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+import { useState } from 'react';
 
 export function ComponentSource({
   className,
   code,
-  expandButtonTitle = "Expand",
+  expandButtonTitle = 'Expand',
   highlightedCode,
-  maxHeight = "550px",
+  maxHeight = '550px',
   ...props
 }: {
   code: string;
@@ -33,23 +33,23 @@ export function ComponentSource({
     >
       <div
         className={cn(
-          "group/item relative my-4 overflow-hidden rounded-lg border bg-card text-card-foreground",
+          'group/item relative my-4 overflow-hidden rounded-lg border bg-card text-card-foreground',
           className,
         )}
         {...props}
       >
         <CollapsibleContent
           forceMount
-          className={cn("overflow-hidden", !isOpened && "max-h-32")}
+          className={cn('overflow-hidden', !isOpened && 'max-h-32')}
         >
           <div
             className={cn(
-              "[&_pre]:my-0 [&_pre]:pb-[100px]",
-              !isOpened ? "[&_pre]:overflow-hidden" : "[&_pre]:overflow-auto",
+              '[&_pre]:my-0 [&_pre]:pb-[100px]',
+              !isOpened ? '[&_pre]:overflow-hidden' : '[&_pre]:overflow-auto',
             )}
             style={{
-              maxHeight: isOpened ? maxHeight : "none",
-              overflow: "auto",
+              maxHeight: isOpened ? maxHeight : 'none',
+              overflow: 'auto',
             }}
           >
             <DynamicCodeBlock code={code} lang="ts" />
@@ -58,13 +58,13 @@ export function ComponentSource({
 
         <div
           className={cn(
-            "bg-linear-to-b absolute flex items-center justify-center from-background/30 to-background/90 p-2",
-            isOpened ? "inset-x-0 bottom-0 h-12" : "inset-0",
+            'bg-linear-to-b absolute flex items-center justify-center from-background/30 to-background/90 p-2',
+            isOpened ? 'inset-x-0 bottom-0 h-12' : 'inset-0',
           )}
         >
           <CollapsibleTrigger asChild>
             <Button variant="secondary" size="sm" className="h-8 text-xs">
-              {isOpened ? "Collapse" : expandButtonTitle}
+              {isOpened ? 'Collapse' : expandButtonTitle}
             </Button>
           </CollapsibleTrigger>
         </div>

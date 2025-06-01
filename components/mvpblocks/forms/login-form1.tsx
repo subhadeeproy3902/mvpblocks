@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { Github } from 'lucide-react';
 
 export default function LoginForm1() {
   return (
@@ -11,7 +11,7 @@ export default function LoginForm1() {
               Log in to your account
             </h3>
             <p className="">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <a
                 href="#"
                 className="font-medium text-rose-600 hover:text-rose-500"

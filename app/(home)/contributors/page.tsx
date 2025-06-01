@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { ExternalLink, Github, Zap } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Contributor, fetchContributors } from "@/actions/fetchContributors";
-import Image from "next/image";
-import WorldMap from "@/components/ui/world-map";
+import { motion } from 'framer-motion';
+import { Spotlight } from '@/components/ui/spotlight';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { ExternalLink, Github, Zap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Contributor, fetchContributors } from '@/actions/fetchContributors';
+import Image from 'next/image';
+import WorldMap from '@/components/ui/world-map';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function Contributors() {
@@ -37,7 +37,7 @@ export default function Contributors() {
               return {
                 ...contributor,
                 name: detail.name || contributor.login,
-                bio: detail.bio || "",
+                bio: detail.bio || '',
               };
             } catch {
               return contributor;
@@ -53,7 +53,7 @@ export default function Contributors() {
         );
         setTotalContributions(total);
       } catch (error) {
-        console.error("Error fetching contributors:", error);
+        console.error('Error fetching contributors:', error);
       }
     };
 
@@ -76,7 +76,7 @@ export default function Contributors() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className={cn(
-              "mb-6 bg-gradient-to-b from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl",
+              'mb-6 bg-gradient-to-b from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl',
               space.className,
             )}
           >
@@ -141,8 +141,8 @@ export default function Contributors() {
                     {contributor.bio
                       ? contributor.bio.length < 70
                         ? contributor.bio
-                        : contributor.bio.slice(0, 70) + "..."
-                      : "No bio available"}
+                        : contributor.bio.slice(0, 70) + '...'
+                      : 'No bio available'}
                   </p>
 
                   <div className="flex items-center justify-center gap-6">
@@ -170,9 +170,9 @@ export default function Contributors() {
       <div className="w-full bg-white pt-40 dark:bg-[#0B0A09]">
         <div className="mx-auto max-w-7xl text-center">
           <p className="text-xl font-bold text-black dark:text-white md:text-4xl">
-            Want to Contribute{" "}
+            Want to Contribute{' '}
             <span className="text-neutral-400">
-              {"Connectivity".split("").map((word, idx) => (
+              {'Connectivity'.split('').map((word, idx) => (
                 <motion.span
                   key={idx}
                   className="inline-block"

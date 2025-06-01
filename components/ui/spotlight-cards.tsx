@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import React, { MouseEvent, useRef, useState } from "react";
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { MouseEvent, useRef, useState } from 'react';
 
 export default function SpotlightCard({
   title,
@@ -25,9 +25,9 @@ export default function SpotlightCard({
     const updateMousePosition = (e: globalThis.MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener('mousemove', updateMousePosition);
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
+      window.removeEventListener('mousemove', updateMousePosition);
     };
   }, []);
 
@@ -48,7 +48,7 @@ export default function SpotlightCard({
       onMouseLeave={() => setIsHovered(false)}
       ref={boxWrapper}
       className={cn(
-        "group relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-[2px] shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]",
+        'group relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-[2px] shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]',
       )}
     >
       {isHovered && (

@@ -1,43 +1,43 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
-import { CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Progress } from '@/components/ui/progress';
+import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
 
 // Define the form schema for each step
 const personalInfoSchema = z.object({
-  firstName: z.string().min(2, "First name must be at least 2 characters"),
-  lastName: z.string().min(2, "Last name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
 });
 
 const addressSchema = z.object({
-  address: z.string().min(5, "Address must be at least 5 characters"),
-  city: z.string().min(2, "City must be at least 2 characters"),
-  zipCode: z.string().min(5, "Zip code must be at least 5 characters"),
+  address: z.string().min(5, 'Address must be at least 5 characters'),
+  city: z.string().min(2, 'City must be at least 2 characters'),
+  zipCode: z.string().min(5, 'Zip code must be at least 5 characters'),
 });
 
 const accountSchema = z
   .object({
-    username: z.string().min(3, "Username must be at least 3 characters"),
+    username: z.string().min(3, 'Username must be at least 3 characters'),
     password: z
       .string()
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .regex(/[0-9]/, "Password must contain at least one number"),
+      .min(8, 'Password must be at least 8 characters')
+      .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+      .regex(/[0-9]/, 'Password must contain at least one number'),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
+    message: 'Passwords do not match',
+    path: ['confirmPassword'],
   });
 
 // Combine all schemas for the final form data
@@ -66,75 +66,75 @@ export default function MultiStepForm({
   // Define the steps
   const steps = [
     {
-      id: "personal",
-      title: "Personal Information",
-      description: "Tell us about yourself",
+      id: 'personal',
+      title: 'Personal Information',
+      description: 'Tell us about yourself',
       schema: personalInfoSchema,
       fields: [
         {
-          name: "firstName",
-          label: "First Name",
-          type: "text",
-          placeholder: "John",
+          name: 'firstName',
+          label: 'First Name',
+          type: 'text',
+          placeholder: 'John',
         },
         {
-          name: "lastName",
-          label: "Last Name",
-          type: "text",
-          placeholder: "Doe",
+          name: 'lastName',
+          label: 'Last Name',
+          type: 'text',
+          placeholder: 'Doe',
         },
         {
-          name: "email",
-          label: "Email",
-          type: "email",
-          placeholder: "john.doe@example.com",
+          name: 'email',
+          label: 'Email',
+          type: 'email',
+          placeholder: 'john.doe@example.com',
         },
       ],
     },
     {
-      id: "address",
-      title: "Address Information",
-      description: "Where do you live?",
+      id: 'address',
+      title: 'Address Information',
+      description: 'Where do you live?',
       schema: addressSchema,
       fields: [
         {
-          name: "address",
-          label: "Address",
-          type: "text",
-          placeholder: "123 Main St",
+          name: 'address',
+          label: 'Address',
+          type: 'text',
+          placeholder: '123 Main St',
         },
-        { name: "city", label: "City", type: "text", placeholder: "New York" },
+        { name: 'city', label: 'City', type: 'text', placeholder: 'New York' },
         {
-          name: "zipCode",
-          label: "Zip Code",
-          type: "text",
-          placeholder: "10001",
+          name: 'zipCode',
+          label: 'Zip Code',
+          type: 'text',
+          placeholder: '10001',
         },
       ],
     },
     {
-      id: "account",
-      title: "Account Setup",
-      description: "Create your account",
+      id: 'account',
+      title: 'Account Setup',
+      description: 'Create your account',
       schema: accountSchema,
       fields: [
         {
-          name: "username",
-          label: "Username",
-          type: "text",
-          placeholder: "johndoe",
+          name: 'username',
+          label: 'Username',
+          type: 'text',
+          placeholder: 'johndoe',
         },
         {
-          name: "password",
-          label: "Password",
-          type: "password",
-          placeholder: "••••••••",
+          name: 'password',
+          label: 'Password',
+          type: 'password',
+          placeholder: '••••••••',
         },
         {
-          name: "confirmPassword",
-          label: "Confirm Password",
-          type: "password",
-          placeholder: "••••••••",
+          name: 'confirmPassword',
+          label: 'Confirm Password',
+          type: 'password',
+          placeholder: '••••••••',
         },
       ],
     },
@@ -196,7 +196,7 @@ export default function MultiStepForm({
   return (
     <div
       className={cn(
-        "mx-auto w-full max-w-md rounded-lg bg-card/40 p-6 shadow-lg",
+        'mx-auto w-full max-w-md rounded-lg bg-card/40 p-6 shadow-lg',
         className,
       )}
     >
@@ -221,12 +221,12 @@ export default function MultiStepForm({
               <div key={s.id} className="flex flex-col items-center">
                 <div
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold",
+                    'flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold',
                     i < step
-                      ? "bg-primary text-primary-foreground"
+                      ? 'bg-primary text-primary-foreground'
                       : i === step
-                        ? "bg-primary text-primary-foreground ring-2 ring-primary/30"
-                        : "bg-secondary text-secondary-foreground",
+                        ? 'bg-primary text-primary-foreground ring-2 ring-primary/30'
+                        : 'bg-secondary text-secondary-foreground',
                   )}
                 >
                   {i < step ? <CheckCircle2 className="h-4 w-4" /> : i + 1}
@@ -266,7 +266,7 @@ export default function MultiStepForm({
                       placeholder={field.placeholder}
                       {...register(field.name as any)}
                       className={cn(
-                        errors[field.name as string] && "border-destructive",
+                        errors[field.name as string] && 'border-destructive',
                       )}
                     />
                     {errors[field.name as string] && (
@@ -283,16 +283,16 @@ export default function MultiStepForm({
                     variant="outline"
                     onClick={handlePrevStep}
                     disabled={step === 0}
-                    className={cn(step === 0 && "invisible")}
+                    className={cn(step === 0 && 'invisible')}
                   >
                     <ArrowLeft className="mr-2 h-4 w-4" /> Back
                   </Button>
                   <Button type="submit" disabled={isSubmitting}>
                     {step === steps.length - 1 ? (
                       isSubmitting ? (
-                        "Submitting..."
+                        'Submitting...'
                       ) : (
-                        "Submit"
+                        'Submit'
                       )
                     ) : (
                       <>

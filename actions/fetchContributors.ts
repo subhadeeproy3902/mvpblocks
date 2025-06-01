@@ -12,22 +12,22 @@ export type Contributor = {
 export const fetchContributors = async (): Promise<Contributor[]> => {
   try {
     const res = await fetch(
-      "https://api.github.com/repos/subhadeeproy3902/mvpblocks/contributors",
+      'https://api.github.com/repos/subhadeeproy3902/mvpblocks/contributors',
       {
         headers: {
-          Accept: "application/vnd.github+json",
+          Accept: 'application/vnd.github+json',
         },
       },
     );
 
     if (!res.ok) {
-      throw new Error("Failed to fetch contributors");
+      throw new Error('Failed to fetch contributors');
     }
 
     const data: Contributor[] = await res.json();
     return data;
   } catch (error) {
-    console.error("Error fetching contributors:", error);
+    console.error('Error fetching contributors:', error);
     return [];
   }
 };

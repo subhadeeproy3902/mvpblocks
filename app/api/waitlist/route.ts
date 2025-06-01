@@ -1,7 +1,7 @@
-import { MongoClient } from "mongodb";
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-import { VerificationResult, verifyEmail } from "verifymailjs";
+import { MongoClient } from 'mongodb';
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { VerificationResult, verifyEmail } from 'verifymailjs';
 
 let client: MongoClient | null = null;
 
@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const { email } = await request.json();
 
     if (!email) {
-      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
     const result: VerificationResult = verifyEmail(email, {
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
     if (result.isValid === false) {
       return NextResponse.json(
-        { error: "Invalid email address" },
+        { error: 'Invalid email address' },
         { status: 422 },
       );
     }
@@ -30,34 +30,34 @@ export async function POST(request: NextRequest) {
 
     if (!uri) {
       return NextResponse.json(
-        { error: "Database configuration error" },
+        { error: 'Database configuration error' },
         { status: 500 },
       );
     }
 
     if (!resendApiKey) {
       return NextResponse.json(
-        { error: "Email service configuration error" },
+        { error: 'Email service configuration error' },
         { status: 500 },
       );
     }
 
     if (!client) {
       client = new MongoClient(uri, {
-        appName: "blocks-waitlist",
+        appName: 'blocks-waitlist',
       });
     }
 
     const resend = new Resend(resendApiKey);
 
     await client.connect();
-    const database = client.db("waitlist");
-    const collection = database.collection("waitlist-users");
+    const database = client.db('waitlist');
+    const collection = database.collection('waitlist-users');
 
     const existingUser = await collection.findOne({ email });
     if (existingUser) {
       return NextResponse.json(
-        { error: "Email already registered" },
+        { error: 'Email already registered' },
         { status: 409 },
       );
     }
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: `Mvpblocks <blocks@mvp-subha.me>`,
       to: email,
-      subject: "Welcome to the Waitlist!",
+      subject: 'Welcome to the Waitlist!',
       html: `<body style="font-family: 'DM Sans', sans-serif; line-height: 1.6; color: #f0f0f0; margin: 0; padding: 1rem;">
   <div style="max-width: 600px; margin: 20px auto; background-color: #1a1a1a; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.05);">
     <!-- Header -->
@@ -123,12 +123,12 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { message: "Email submitted successfully" },
+      { message: 'Email submitted successfully' },
       { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Internal Server Error : " + error },
+      { error: 'Internal Server Error : ' + error },
       { status: 500 },
     );
   } finally {

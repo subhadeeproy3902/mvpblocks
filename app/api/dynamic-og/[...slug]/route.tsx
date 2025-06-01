@@ -1,82 +1,82 @@
-import { ImageResponse } from "next/og";
-import { metadataImage } from "@/lib/metadata-image";
+import { ImageResponse } from 'next/og';
+import { metadataImage } from '@/lib/metadata-image';
 
 export const GET = metadataImage.createAPI((page) => {
   return new ImageResponse(
     (
       <div
         style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#0A0A0A",
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#0A0A0A',
           backgroundImage:
-            "radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.2) 0%, transparent 35%), " +
-            "radial-gradient(circle at 85% 85%, rgba(244, 63, 94, 0.2) 0%, transparent 35%), " +
-            "radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.15) 0%, transparent 50%), " +
-            "radial-gradient(circle at 80% 20%, rgba(253, 164, 175, 0.1) 0%, transparent 40%)",
-          padding: "40px",
-          position: "relative",
-          overflow: "hidden",
+            'radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.2) 0%, transparent 35%), ' +
+            'radial-gradient(circle at 85% 85%, rgba(244, 63, 94, 0.2) 0%, transparent 35%), ' +
+            'radial-gradient(circle at 50% 50%, rgba(225, 29, 72, 0.15) 0%, transparent 50%), ' +
+            'radial-gradient(circle at 80% 20%, rgba(253, 164, 175, 0.1) 0%, transparent 40%)',
+          padding: '40px',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         {/* Enhanced blurry gradient patches */}
         <div
           style={{
-            position: "absolute",
-            top: "5%",
-            left: "5%",
-            width: "400px",
-            height: "400px",
+            position: 'absolute',
+            top: '5%',
+            left: '5%',
+            width: '400px',
+            height: '400px',
             background:
-              "radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            borderRadius: "100%",
+              'radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            borderRadius: '100%',
             opacity: 0.8,
           }}
         />
         <div
           style={{
-            position: "absolute",
-            bottom: "10%",
-            right: "10%",
-            width: "350px",
-            height: "350px",
+            position: 'absolute',
+            bottom: '10%',
+            right: '10%',
+            width: '350px',
+            height: '350px',
             background:
-              "radial-gradient(circle, rgba(225, 29, 72, 0.2) 0%, transparent 70%)",
-            filter: "blur(50px)",
-            borderRadius: "100%",
+              'radial-gradient(circle, rgba(225, 29, 72, 0.2) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+            borderRadius: '100%',
             opacity: 0.8,
           }}
         />
         <div
           style={{
-            position: "absolute",
-            top: "40%",
-            right: "20%",
-            width: "300px",
-            height: "300px",
+            position: 'absolute',
+            top: '40%',
+            right: '20%',
+            width: '300px',
+            height: '300px',
             background:
-              "radial-gradient(circle, rgba(253, 164, 175, 0.15) 0%, transparent 70%)",
-            filter: "blur(45px)",
-            borderRadius: "100%",
+              'radial-gradient(circle, rgba(253, 164, 175, 0.15) 0%, transparent 70%)',
+            filter: 'blur(45px)',
+            borderRadius: '100%',
             opacity: 0.7,
           }}
         />
         <div
           style={{
-            position: "absolute",
-            bottom: "30%",
-            left: "15%",
-            width: "250px",
-            height: "250px",
+            position: 'absolute',
+            bottom: '30%',
+            left: '15%',
+            width: '250px',
+            height: '250px',
             background:
-              "radial-gradient(circle, rgba(251, 113, 133, 0.15) 0%, transparent 70%)",
-            filter: "blur(40px)",
-            borderRadius: "100%",
+              'radial-gradient(circle, rgba(251, 113, 133, 0.15) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+            borderRadius: '100%',
             opacity: 0.7,
           }}
         />
@@ -84,7 +84,7 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Network grid pattern overlay */}
         <div
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
@@ -93,7 +93,7 @@ export const GET = metadataImage.createAPI((page) => {
               linear-gradient(rgba(244, 63, 94, 0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(244, 63, 94, 0.03) 1px, transparent 1px)
             `,
-            backgroundSize: "20px 20px",
+            backgroundSize: '20px 20px',
             opacity: 0.5,
           }}
         />
@@ -101,17 +101,17 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Binary code background effect - simplified */}
         <div
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
             opacity: 0.05,
-            color: "#f43f5e",
+            color: '#f43f5e',
             fontSize: 12,
             lineHeight: 1,
-            overflow: "hidden",
-            display: "block",
+            overflow: 'hidden',
+            display: 'block',
           }}
         >
           01010101010101010101010101
@@ -120,63 +120,63 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Decorative network nodes */}
         <div
           style={{
-            position: "absolute",
-            top: "20%",
-            left: "20%",
-            width: "4px",
-            height: "4px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(244, 63, 94, 0.8)",
-            boxShadow: "0 0 8px rgba(244, 63, 94, 0.8)",
+            position: 'absolute',
+            top: '20%',
+            left: '20%',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(244, 63, 94, 0.8)',
+            boxShadow: '0 0 8px rgba(244, 63, 94, 0.8)',
           }}
         />
         <div
           style={{
-            position: "absolute",
-            top: "70%",
-            left: "80%",
-            width: "4px",
-            height: "4px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(244, 63, 94, 0.8)",
-            boxShadow: "0 0 8px rgba(244, 63, 94, 0.8)",
+            position: 'absolute',
+            top: '70%',
+            left: '80%',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(244, 63, 94, 0.8)',
+            boxShadow: '0 0 8px rgba(244, 63, 94, 0.8)',
           }}
         />
         <div
           style={{
-            position: "absolute",
-            top: "30%",
-            left: "60%",
-            width: "3px",
-            height: "3px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(244, 63, 94, 0.8)",
-            boxShadow: "0 0 8px rgba(244, 63, 94, 0.8)",
+            position: 'absolute',
+            top: '30%',
+            left: '60%',
+            width: '3px',
+            height: '3px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(244, 63, 94, 0.8)',
+            boxShadow: '0 0 8px rgba(244, 63, 94, 0.8)',
           }}
         />
         <div
           style={{
-            position: "absolute",
-            top: "80%",
-            left: "30%",
-            width: "3px",
-            height: "3px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(244, 63, 94, 0.8)",
-            boxShadow: "0 0 8px rgba(244, 63, 94, 0.8)",
+            position: 'absolute',
+            top: '80%',
+            left: '30%',
+            width: '3px',
+            height: '3px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(244, 63, 94, 0.8)',
+            boxShadow: '0 0 8px rgba(244, 63, 94, 0.8)',
           }}
         />
 
         {/* Header with logo and name */}
         <div
           style={{
-            position: "absolute",
-            top: "20px",
-            left: "40px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
+            position: 'absolute',
+            top: '20px',
+            left: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '10px',
           }}
         >
           <svg
@@ -198,9 +198,9 @@ export const GET = metadataImage.createAPI((page) => {
           <div
             style={{
               fontSize: 48,
-              fontWeight: "bold",
-              color: "white",
-              textShadow: "0 0 10px rgba(244, 63, 94, 0.3)",
+              fontWeight: 'bold',
+              color: 'white',
+              textShadow: '0 0 10px rgba(244, 63, 94, 0.3)',
             }}
           >
             Mvpblocks
@@ -210,13 +210,13 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Decorative circuit board pattern */}
         <div
           style={{
-            position: "absolute",
-            bottom: "20px",
-            right: "20px",
-            width: "180px",
-            height: "180px",
+            position: 'absolute',
+            bottom: '20px',
+            right: '20px',
+            width: '180px',
+            height: '180px',
             opacity: 0.1,
-            display: "flex",
+            display: 'flex',
           }}
         >
           <svg
@@ -274,20 +274,20 @@ export const GET = metadataImage.createAPI((page) => {
         <div
           style={{
             fontSize: 80,
-            fontWeight: "bold",
+            fontWeight: 'bold',
             background:
-              "linear-gradient(to right, rgba(255, 255, 255, 1), rgba(244, 63, 94, 0.8))",
-            backgroundClip: "text",
-            color: "transparent",
-            marginBottom: "24px",
-            textShadow: "0 0 20px rgba(244, 63, 94, 0.3)",
-            textAlign: "center",
-            width: "100%",
-            position: "relative",
+              'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(244, 63, 94, 0.8))',
+            backgroundClip: 'text',
+            color: 'transparent',
+            marginBottom: '24px',
+            textShadow: '0 0 20px rgba(244, 63, 94, 0.3)',
+            textAlign: 'center',
+            width: '100%',
+            position: 'relative',
             zIndex: 10,
-            margin: "3rem auto",
-            display: "flex",
-            justifyContent: "center",
+            margin: '3rem auto',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           {page.data.title}
@@ -297,14 +297,14 @@ export const GET = metadataImage.createAPI((page) => {
         <div
           style={{
             fontSize: 36,
-            color: "rgba(255, 255, 255, 0.85)",
-            marginTop: "10px",
-            textAlign: "center",
-            maxWidth: "900px",
+            color: 'rgba(255, 255, 255, 0.85)',
+            marginTop: '10px',
+            textAlign: 'center',
+            maxWidth: '900px',
             lineHeight: 1.4,
-            position: "relative",
+            position: 'relative',
             zIndex: 10,
-            textShadow: "0 1px 2px rgba(0, 0, 0, 0.5)",
+            textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
           }}
         >
           {page.data.description}
@@ -313,11 +313,11 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Decorative hexagon pattern */}
         <div
           style={{
-            position: "absolute",
-            bottom: "30px",
-            left: "30px",
+            position: 'absolute',
+            bottom: '30px',
+            left: '30px',
             opacity: 0.2,
-            display: "flex",
+            display: 'flex',
           }}
         >
           <svg
@@ -351,11 +351,11 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Subtle version indicator */}
         <div
           style={{
-            position: "absolute",
-            bottom: "10px",
-            right: "10px",
-            fontSize: "32px",
-            color: "rgba(244, 63, 94, 0.4)",
+            position: 'absolute',
+            bottom: '10px',
+            right: '10px',
+            fontSize: '32px',
+            color: 'rgba(244, 63, 94, 0.4)',
           }}
         >
           v2.0
@@ -364,49 +364,49 @@ export const GET = metadataImage.createAPI((page) => {
         {/* Data flow lines - simplified */}
         <div
           style={{
-            position: "absolute",
-            top: "30%",
+            position: 'absolute',
+            top: '30%',
             left: 0,
-            width: "100%",
-            height: "1px",
+            width: '100%',
+            height: '1px',
             background:
-              "linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.8), transparent)",
+              'linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.8), transparent)',
             opacity: 0.3,
           }}
         />
         <div
           style={{
-            position: "absolute",
-            top: "60%",
+            position: 'absolute',
+            top: '60%',
             left: 0,
-            width: "100%",
-            height: "1px",
+            width: '100%',
+            height: '1px',
             background:
-              "linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.8), transparent)",
+              'linear-gradient(90deg, transparent, rgba(244, 63, 94, 0.8), transparent)',
             opacity: 0.3,
           }}
         />
         <div
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
-            left: "40%",
-            width: "1px",
-            height: "100%",
+            left: '40%',
+            width: '1px',
+            height: '100%',
             background:
-              "linear-gradient(180deg, transparent, rgba(244, 63, 94, 0.8), transparent)",
+              'linear-gradient(180deg, transparent, rgba(244, 63, 94, 0.8), transparent)',
             opacity: 0.3,
           }}
         />
         <div
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
-            left: "70%",
-            width: "1px",
-            height: "100%",
+            left: '70%',
+            width: '1px',
+            height: '100%',
             background:
-              "linear-gradient(180deg, transparent, rgba(244, 63, 94, 0.8), transparent)",
+              'linear-gradient(180deg, transparent, rgba(244, 63, 94, 0.8), transparent)',
             opacity: 0.3,
           }}
         />

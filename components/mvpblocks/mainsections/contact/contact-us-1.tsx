@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import Earth from "@/components/ui/globe";
-import { SparklesCore } from "@/components/ui/sparkles";
-import { Label } from "@/components/ui/label";
-import { Check, Loader2 } from "lucide-react";
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import Earth from '@/components/ui/globe';
+import { SparklesCore } from '@/components/ui/sparkles';
+import { Label } from '@/components/ui/label';
+import { Check, Loader2 } from 'lucide-react';
 
 export default function ContactUs1() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -26,17 +26,17 @@ export default function ContactUs1() {
 
     try {
       // Perform form submission logic here
-      console.log("Form submitted:", { name, email, message });
+      console.log('Form submitted:', { name, email, message });
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      setName("");
-      setEmail("");
-      setMessage("");
+      setName('');
+      setEmail('');
+      setMessage('');
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
       }, 5000);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error('Error submitting form:', error);
     } finally {
       setIsSubmitting(false);
     }

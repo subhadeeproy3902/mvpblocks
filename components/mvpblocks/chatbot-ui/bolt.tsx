@@ -5,24 +5,24 @@ import {
   FileUp,
   MonitorIcon,
   Sparkles,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const EXAMPLE_ACTIONS = [
-  { icon: <Figma className="h-4 w-4" />, text: "Import from Figma" },
+  { icon: <Figma className="h-4 w-4" />, text: 'Import from Figma' },
   {
     icon: <FileUp className="h-4 w-4" />,
-    text: "Build a mobile app with Expo",
+    text: 'Build a mobile app with Expo',
   },
   {
     icon: <MonitorIcon className="h-4 w-4" />,
-    text: "Start a blog with Astro",
+    text: 'Start a blog with Astro',
   },
   {
     icon: <Terminal className="h-4 w-4" />,
-    text: "Create a docs site with Vitepress",
+    text: 'Create a docs site with Vitepress',
   },
-  { icon: <FileUp className="h-4 w-4" />, text: "Scaffold UI with shadcn" },
+  { icon: <FileUp className="h-4 w-4" />, text: 'Scaffold UI with shadcn' },
 ];
 
 export default function BoltChat() {
@@ -34,8 +34,8 @@ export default function BoltChat() {
             What do you want to build?
           </h1>
           <p className="text-lg text-gray-400">
-            Prompt, run, edit, and deploy full-stack{" "}
-            <span className="font-medium text-foreground">web</span> and{" "}
+            Prompt, run, edit, and deploy full-stack{' '}
+            <span className="font-medium text-foreground">web</span> and{' '}
             <span className="font-medium text-foreground">mobile</span> apps.
           </p>
         </div>

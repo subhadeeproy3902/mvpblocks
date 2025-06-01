@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { NumberTicker } from "@/components/ui/counter";
-import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { NumberTicker } from '@/components/ui/counter';
+import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 import {
   Users,
   Award,
@@ -17,7 +17,7 @@ import {
   CheckCircle,
   Clock,
   Zap,
-} from "lucide-react";
+} from 'lucide-react';
 
 interface StatItemProps {
   value: number;
@@ -34,7 +34,7 @@ const StatItem = ({
   icon,
   delay = 0,
   decimalPlaces = 0,
-  color = "from-primary to-primary/70",
+  color = 'from-primary to-primary/70',
 }: StatItemProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -45,17 +45,17 @@ const StatItem = ({
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, delay: delay, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay: delay, ease: 'easeOut' }}
       className={cn(
-        "group relative overflow-hidden rounded-xl border border-border/30 bg-card p-6",
-        resolvedTheme === "dark"
-          ? "shadow-xl shadow-black/5"
-          : "shadow-lg shadow-black/[0.03]",
+        'group relative overflow-hidden rounded-xl border border-border/30 bg-card p-6',
+        resolvedTheme === 'dark'
+          ? 'shadow-xl shadow-black/5'
+          : 'shadow-lg shadow-black/[0.03]',
       )}
     >
       <div
         className={cn(
-          "absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:blur-3xl",
+          'absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:blur-3xl',
           color,
         )}
       />
@@ -63,7 +63,7 @@ const StatItem = ({
       <div className="flex items-center gap-4">
         <div
           className={cn(
-            "flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-white",
+            'flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-white',
             color,
           )}
         >
@@ -97,34 +97,34 @@ export default function AboutUs2() {
   const stats = [
     {
       value: 5000,
-      label: "Happy Clients",
+      label: 'Happy Clients',
       icon: <Users className="h-5 w-5" />,
       delay: 0,
-      color: "from-rose-500 to-orange-500",
+      color: 'from-rose-500 to-orange-500',
       decimalPlaces: 0,
     },
     {
       value: 15,
-      label: "Years Experience",
+      label: 'Years Experience',
       icon: <Clock className="h-5 w-5" />,
       delay: 0.1,
-      color: "from-blue-500 to-cyan-500",
+      color: 'from-blue-500 to-cyan-500',
       decimalPlaces: 0,
     },
     {
       value: 100,
-      label: "Projects Completed",
+      label: 'Projects Completed',
       icon: <CheckCircle className="h-5 w-5" />,
       delay: 0.2,
-      color: "from-green-500 to-emerald-500",
+      color: 'from-green-500 to-emerald-500',
       decimalPlaces: 0,
     },
     {
       value: 24,
-      label: "Awards Won",
+      label: 'Awards Won',
       icon: <Award className="h-5 w-5" />,
       delay: 0.3,
-      color: "from-purple-500 to-violet-500",
+      color: 'from-purple-500 to-violet-500',
       decimalPlaces: 0,
     },
   ];
@@ -159,7 +159,7 @@ export default function AboutUs2() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             className="mb-4 flex justify-center"
           >
             <Badge
@@ -174,7 +174,7 @@ export default function AboutUs2() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
           >
             About Our Company
@@ -183,7 +183,7 @@ export default function AboutUs2() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="mt-4 text-xl text-muted-foreground"
           >
             Delivering excellence for over 15 years
@@ -215,7 +215,7 @@ export default function AboutUs2() {
               animate={
                 aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
               }
-              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
               className="relative space-y-6"
             >
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/80 to-primary/60 text-white shadow-lg">
@@ -236,7 +236,7 @@ export default function AboutUs2() {
               animate={
                 aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
               }
-              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
               className="relative space-y-6"
             >
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/80 to-blue-500/60 text-white shadow-lg">
@@ -256,7 +256,7 @@ export default function AboutUs2() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
             className="mt-16 flex items-start gap-4"
           >
             <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 text-primary">
@@ -278,7 +278,7 @@ export default function AboutUs2() {
             animate={
               timelineInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
             }
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
             className="mb-10 text-center text-2xl font-bold tracking-tight md:text-3xl"
           >
             Our Journey
@@ -287,28 +287,28 @@ export default function AboutUs2() {
           <div className="relative ml-4 border-l border-border/60 pl-8 md:ml-0 md:border-none md:pl-0">
             {[
               {
-                year: "2008",
-                title: "Founded",
+                year: '2008',
+                title: 'Founded',
                 description:
-                  "Our company was established with a vision to transform digital experiences.",
+                  'Our company was established with a vision to transform digital experiences.',
               },
               {
-                year: "2015",
-                title: "Global Expansion",
+                year: '2015',
+                title: 'Global Expansion',
                 description:
-                  "Expanded operations to serve clients across 20+ countries worldwide.",
+                  'Expanded operations to serve clients across 20+ countries worldwide.',
               },
               {
-                year: "2019",
-                title: "Innovation Award",
+                year: '2019',
+                title: 'Innovation Award',
                 description:
-                  "Recognized for our cutting-edge solutions and technological innovation.",
+                  'Recognized for our cutting-edge solutions and technological innovation.',
               },
               {
-                year: "2023",
-                title: "New Horizons",
+                year: '2023',
+                title: 'New Horizons',
                 description:
-                  "Launched new service offerings to meet evolving market demands.",
+                  'Launched new service offerings to meet evolving market demands.',
               },
             ].map((item, index) => (
               <motion.div
@@ -320,7 +320,7 @@ export default function AboutUs2() {
                 transition={{
                   duration: 0.5,
                   delay: 0.1 * index,
-                  ease: "easeOut",
+                  ease: 'easeOut',
                 }}
                 className="relative mb-10 md:grid md:grid-cols-5 md:gap-8"
               >

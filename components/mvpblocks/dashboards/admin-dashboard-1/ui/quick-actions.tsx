@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Users, BarChart3, Download, Settings } from "lucide-react";
+import { memo } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Users, BarChart3, Download, Settings } from 'lucide-react';
 
 interface QuickActionsProps {
   onAddUser: () => void;
@@ -13,31 +13,31 @@ interface QuickActionsProps {
 const actions = [
   {
     icon: Users,
-    label: "Add New User",
-    color: "blue",
-    shortcut: "Ctrl+N",
-    action: "addUser",
+    label: 'Add New User',
+    color: 'blue',
+    shortcut: 'Ctrl+N',
+    action: 'addUser',
   },
   {
     icon: BarChart3,
-    label: "View Analytics",
-    color: "green",
-    shortcut: "Ctrl+A",
-    action: "analytics",
+    label: 'View Analytics',
+    color: 'green',
+    shortcut: 'Ctrl+A',
+    action: 'analytics',
   },
   {
     icon: Download,
-    label: "Export Data",
-    color: "purple",
-    shortcut: "Ctrl+E",
-    action: "export",
+    label: 'Export Data',
+    color: 'purple',
+    shortcut: 'Ctrl+E',
+    action: 'export',
   },
   {
     icon: Settings,
-    label: "System Settings",
-    color: "orange",
-    shortcut: "Ctrl+S",
-    action: "settings",
+    label: 'System Settings',
+    color: 'orange',
+    shortcut: 'Ctrl+S',
+    action: 'settings',
   },
 ];
 
@@ -45,17 +45,17 @@ export const QuickActions = memo(
   ({ onAddUser, onExport }: QuickActionsProps) => {
     const handleAction = (action: string) => {
       switch (action) {
-        case "addUser":
+        case 'addUser':
           onAddUser();
           break;
-        case "analytics":
-          console.log("Viewing analytics...");
+        case 'analytics':
+          console.log('Viewing analytics...');
           break;
-        case "export":
+        case 'export':
           onExport();
           break;
-        case "settings":
-          console.log("Opening settings...");
+        case 'settings':
+          console.log('Opening settings...');
           break;
       }
     };
@@ -92,4 +92,4 @@ export const QuickActions = memo(
   },
 );
 
-QuickActions.displayName = "QuickActions";
+QuickActions.displayName = 'QuickActions';

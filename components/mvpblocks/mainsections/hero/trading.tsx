@@ -1,8 +1,8 @@
-import { ArrowRight, Command } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import TextGenerateEffect from "@/components/ui/typewriter";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { ArrowRight, Command } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
+import TextGenerateEffect from '@/components/ui/typewriter';
+import { BorderBeam } from '@/components/ui/border-beam';
 
 export default function Trading() {
   return (
@@ -17,7 +17,7 @@ export default function Trading() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
         className="mb-4 inline-block w-fit rounded-full border bg-white/5 px-4 py-1.5 backdrop-blur-lg"
-        style={{ boxShadow: "0 0 10px 0 #e60a6430 inset" }}
+        style={{ boxShadow: '0 0 10px 0 #e60a6430 inset' }}
       >
         <span className="text-sm font-medium">
           <Command className="mr-2 inline-block h-4 w-4" />
@@ -43,7 +43,7 @@ export default function Trading() {
           className="mb-8 max-w-2xl text-left text-lg text-foreground/50 md:text-xl"
         >
           Experience seamless cryptocurrency trading with advanced features,
-          real-time analytics, and institutional-grade security.{" "}
+          real-time analytics, and institutional-grade security.{' '}
           <span className="text-foreground/50">Start trading in minutes.</span>
         </motion.p>
 

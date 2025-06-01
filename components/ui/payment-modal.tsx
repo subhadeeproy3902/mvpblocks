@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from 'react';
+import Image from 'next/image';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
 
 interface PaymentMethod {
   id: string;
@@ -22,22 +22,22 @@ interface PaymentMethod {
 
 const paymentMethods: PaymentMethod[] = [
   {
-    id: "paypal",
-    name: "PayPal",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
-    description: "Pay with your PayPal account",
+    id: 'paypal',
+    name: 'PayPal',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png',
+    description: 'Pay with your PayPal account',
   },
   {
-    id: "stripe",
-    name: "Stripe",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQGluJhW7I1NYU7jF77E-9K9I46_ib_DUNHw&s",
-    description: "Pay with credit card",
+    id: 'stripe',
+    name: 'Stripe',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQGluJhW7I1NYU7jF77E-9K9I46_ib_DUNHw&s',
+    description: 'Pay with credit card',
   },
   {
-    id: "razorpay",
-    name: "Razorpay",
-    logo: "https://cdn.prod.website-files.com/62979cdcff90ad6bae40b3ef/62d855876f4add6e152a5567_unnamed.png",
-    description: "Pay with Indian payment methods",
+    id: 'razorpay',
+    name: 'Razorpay',
+    logo: 'https://cdn.prod.website-files.com/62979cdcff90ad6bae40b3ef/62d855876f4add6e152a5567_unnamed.png',
+    description: 'Pay with Indian payment methods',
   },
 ];
 
@@ -52,7 +52,7 @@ interface PaymentModalProps {
 }
 
 export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
-  const [selectedMethod, setSelectedMethod] = useState<string>("stripe");
+  const [selectedMethod, setSelectedMethod] = useState<string>('stripe');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -94,8 +94,8 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
                 <Label
                   key={method.id}
                   className={cn(
-                    "flex cursor-pointer items-center justify-between rounded-lg border px-4 py-3 transition-colors",
-                    selectedMethod === method.id ? "border-primary" : "border",
+                    'flex cursor-pointer items-center justify-between rounded-lg border px-4 py-3 transition-colors',
+                    selectedMethod === method.id ? 'border-primary' : 'border',
                   )}
                 >
                   <div className="flex items-center gap-4">
@@ -112,7 +112,7 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
                   </div>
                   <div className="relative h-8 w-20">
                     <Image
-                      src={method.logo || "/placeholder.svg"}
+                      src={method.logo || '/placeholder.svg'}
                       alt={method.name}
                       fill
                       className="object-contain"
@@ -127,7 +127,7 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
             onClick={handleSubmit}
             disabled={isLoading}
           >
-            {isLoading ? "Processing..." : "Continue to payment"}
+            {isLoading ? 'Processing...' : 'Continue to payment'}
           </Button>
         </div>
       </DialogContent>

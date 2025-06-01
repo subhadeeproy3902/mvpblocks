@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ExternalLink, Globe } from "lucide-react";
-import { ShowcaseGrid } from "@/components/showcase/showcase-grid";
-import { Spotlight } from "@/components/ui/spotlight";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
+import { ExternalLink, Globe } from 'lucide-react';
+import { ShowcaseGrid } from '@/components/showcase/showcase-grid';
+import { Spotlight } from '@/components/ui/spotlight';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function ShowcasePage() {
@@ -30,11 +30,11 @@ export default function ShowcasePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className={cn(
-              "mb-6 bg-gradient-to-b from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl",
+              'mb-6 bg-gradient-to-b from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl',
               space.className,
             )}
           >
-            Built with{" "}
+            Built with{' '}
             <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text dark:bg-gradient-to-b">
               Mvpblocks
             </span>

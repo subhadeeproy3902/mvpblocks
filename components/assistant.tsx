@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useChat } from "ai/react";
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { cn } from "@/lib/utils";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useChat } from 'ai/react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { cn } from '@/lib/utils';
+import { useMediaQuery } from '@/hooks/use-media-query';
 import {
   Dialog,
   DialogContent,
@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogTrigger,
   DialogDescription,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Drawer,
   DrawerContent,
@@ -20,10 +20,10 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerTrigger,
-} from "@/components/ui/drawer";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Input } from "@/components/ui/input";
-import { MemoizedMarkdown } from "@/components/memoized-markdown";
+} from '@/components/ui/drawer';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Input } from '@/components/ui/input';
+import { MemoizedMarkdown } from '@/components/memoized-markdown';
 import {
   CornerDownLeftIcon,
   FileCodeIcon,
@@ -37,18 +37,18 @@ import {
   SquareIcon,
   AlertTriangleIcon,
   RefreshCwIcon,
-} from "lucide-react";
-import { Button } from "./ui/button";
+} from 'lucide-react';
+import { Button } from './ui/button';
 
-const timeFormatter = new Intl.DateTimeFormat("en-US", {
-  hour: "numeric",
-  minute: "numeric",
+const timeFormatter = new Intl.DateTimeFormat('en-US', {
+  hour: 'numeric',
+  minute: 'numeric',
   hour12: true,
 });
 
 export default function AssistantDialog() {
   const [open, setOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 640px)", {
+  const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });
   const [tokenUsage, setTokenUsage] = useState(0);
@@ -70,7 +70,7 @@ export default function AssistantDialog() {
       setTokenUsage(usage.totalTokens);
     },
   });
-  const isLoading = status === "submitted" || status === "streaming";
+  const isLoading = status === 'submitted' || status === 'streaming';
 
   // Simple pass-through handler without token limit check
   const handleSubmitWithTokenCheck = useCallback(
@@ -88,14 +88,14 @@ export default function AssistantDialog() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === "/") {
+      if ((e.ctrlKey || e.metaKey) && e.key === '/') {
         e.preventDefault();
         setOpen(true);
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const scrollToBottom = useCallback(() => {
@@ -111,7 +111,7 @@ export default function AssistantDialog() {
     if (messages.length > 0) {
       scrollToBottom();
 
-      if (status === "streaming") {
+      if (status === 'streaming') {
         const interval = setInterval(scrollToBottom, 100);
         return () => clearInterval(interval);
       }
@@ -122,8 +122,8 @@ export default function AssistantDialog() {
     (text: string) => {
       setInput(text);
       setTimeout(() => {
-        const formEvent = new Event("submit", { bubbles: true });
-        const form = document.querySelector("form");
+        const formEvent = new Event('submit', { bubbles: true });
+        const form = document.querySelector('form');
         if (form) form.dispatchEvent(formEvent);
       }, 0);
     },
@@ -180,8 +180,8 @@ export default function AssistantDialog() {
             <br /> Your chat history is not saved between sessions.
           </p>
           <p className="hidden text-xs text-fd-muted-foreground sm:block">
-            Tip: Press{" "}
-            <kbd className="rounded bg-fd-muted px-1 py-0.5">Ctrl+/</kbd>{" "}
+            Tip: Press{' '}
+            <kbd className="rounded bg-fd-muted px-1 py-0.5">Ctrl+/</kbd>{' '}
             anytime to open this assistant
           </p>
           <div className="bottom-0 right-0 w-full sm:absolute">
@@ -190,7 +190,7 @@ export default function AssistantDialog() {
                 aria-label="Example: Button component"
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
-                  submitExample("Show me how to use the button component")
+                  submitExample('Show me how to use the button component')
                 }
               >
                 <MousePointerClickIcon className="size-4" />
@@ -200,7 +200,7 @@ export default function AssistantDialog() {
                 aria-label="Example: Hero section"
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
-                  submitExample("Create a hero section for my landing page")
+                  submitExample('Create a hero section for my landing page')
                 }
               >
                 <GlobeIcon className="size-4" />
@@ -211,7 +211,7 @@ export default function AssistantDialog() {
                 className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
                   submitExample(
-                    "How to implement form validation with MVPBlocks",
+                    'How to implement form validation with MVPBlocks',
                   )
                 }
               >
@@ -238,14 +238,14 @@ export default function AssistantDialog() {
           <div className="space-y-4">
             {messages.map((message) => {
               const timestamp: Date = message.createdAt || new Date();
-              const isUser: boolean = message.role === "user";
+              const isUser: boolean = message.role === 'user';
 
               return (
                 <div
                   key={message.id}
                   className={cn(
-                    "flex items-start gap-3",
-                    isUser ? "justify-end" : "justify-start",
+                    'flex items-start gap-3',
+                    isUser ? 'justify-end' : 'justify-start',
                   )}
                 >
                   {!isUser && (
@@ -255,16 +255,16 @@ export default function AssistantDialog() {
                   )}
                   <div
                     className={cn(
-                      "flex max-w-full flex-col sm:max-w-[calc(100%-3.75rem)]",
-                      isUser ? "items-end" : "items-start",
+                      'flex max-w-full flex-col sm:max-w-[calc(100%-3.75rem)]',
+                      isUser ? 'items-end' : 'items-start',
                     )}
                   >
                     <div
                       className={cn(
-                        "block w-full rounded-lg px-4 py-2 text-sm",
+                        'block w-full rounded-lg px-4 py-2 text-sm',
                         isUser
-                          ? "bg-fd-primary text-fd-primary-foreground"
-                          : "dark:prose-dark prose bg-fd-muted prose-code:bg-fd-card prose-code:px-1 prose-code:font-mono prose-code:text-fd-accent-foreground",
+                          ? 'bg-fd-primary text-fd-primary-foreground'
+                          : 'dark:prose-dark prose bg-fd-muted prose-code:bg-fd-card prose-code:px-1 prose-code:font-mono prose-code:text-fd-accent-foreground',
                       )}
                     >
                       <MemoizedMarkdown
@@ -273,8 +273,8 @@ export default function AssistantDialog() {
                       />
                     </div>
                     <div className="mt-1 text-xs text-fd-muted-foreground">
-                      {formatTime(timestamp)}{" "}
-                      <span>· {isUser ? "User" : "Assistant"}</span>
+                      {formatTime(timestamp)}{' '}
+                      <span>· {isUser ? 'User' : 'Assistant'}</span>
                     </div>
                   </div>
                   {isUser && (
@@ -295,7 +295,7 @@ export default function AssistantDialog() {
                     <div className="font-medium">Error</div>
                     <p className="mt-1">
                       {error.message ||
-                        "Something went wrong with your request."}
+                        'Something went wrong with your request.'}
                     </p>
                     <button
                       aria-label="Try request again"

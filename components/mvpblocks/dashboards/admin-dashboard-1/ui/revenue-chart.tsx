@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { BarChart3, Calendar } from "lucide-react";
+import { memo } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { BarChart3, Calendar } from 'lucide-react';
 
 const chartData = [
-  { month: "Jan", value: 4000, growth: 12, color: "bg-blue-500" },
-  { month: "Feb", value: 3000, growth: -8, color: "bg-red-500" },
-  { month: "Mar", value: 5000, growth: 25, color: "bg-green-500" },
-  { month: "Apr", value: 4500, growth: 15, color: "bg-yellow-500" },
-  { month: "May", value: 6000, growth: 33, color: "bg-purple-500" },
-  { month: "Jun", value: 5500, growth: 22, color: "bg-cyan-500" },
+  { month: 'Jan', value: 4000, growth: 12, color: 'bg-blue-500' },
+  { month: 'Feb', value: 3000, growth: -8, color: 'bg-red-500' },
+  { month: 'Mar', value: 5000, growth: 25, color: 'bg-green-500' },
+  { month: 'Apr', value: 4500, growth: 15, color: 'bg-yellow-500' },
+  { month: 'May', value: 6000, growth: 33, color: 'bg-purple-500' },
+  { month: 'Jun', value: 5500, growth: 22, color: 'bg-cyan-500' },
 ];
 
 export const RevenueChart = memo(() => {
@@ -53,9 +53,9 @@ export const RevenueChart = memo(() => {
                     ${item.value.toLocaleString()}
                   </div>
                   <div
-                    className={`text-xs ${item.growth > 0 ? "text-green-500" : "text-red-500"}`}
+                    className={`text-xs ${item.growth > 0 ? 'text-green-500' : 'text-red-500'}`}
                   >
-                    {item.growth > 0 ? "+" : ""}
+                    {item.growth > 0 ? '+' : ''}
                     {item.growth}%
                   </div>
                 </div>
@@ -87,4 +87,4 @@ export const RevenueChart = memo(() => {
   );
 });
 
-RevenueChart.displayName = "RevenueChart";
+RevenueChart.displayName = 'RevenueChart';

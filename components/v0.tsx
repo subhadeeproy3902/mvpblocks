@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 export function OpenInV0Button({ url }: { url: string }) {
   return (
@@ -12,7 +12,7 @@ export function OpenInV0Button({ url }: { url: string }) {
         target="_blank"
         rel="noreferrer"
       >
-        Open in{" "}
+        Open in{' '}
         <svg
           viewBox="0 0 40 20"
           fill="none"

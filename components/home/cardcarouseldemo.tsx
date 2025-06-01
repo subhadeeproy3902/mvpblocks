@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { CardCarousel } from "../ui/card-carousel";
+import { CardCarousel } from '../ui/card-carousel';
 
 const CardCaroursalDemo = () => {
   const images = [
-    { src: "/assets/card-carousel/1.webp", alt: "Image 1" },
-    { src: "/assets/card-carousel/2.webp", alt: "Image 2" },
-    { src: "/assets/card-carousel/3.webp", alt: "Image 3" },
+    { src: '/assets/card-carousel/1.webp', alt: 'Image 1' },
+    { src: '/assets/card-carousel/2.webp', alt: 'Image 2' },
+    { src: '/assets/card-carousel/3.webp', alt: 'Image 3' },
   ];
 
   return (

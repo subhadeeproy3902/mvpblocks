@@ -1,5 +1,5 @@
-import { Globe, Mail, Phone } from "lucide-react";
-import Link from "next/link";
+import { Globe, Mail, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CTA1() {
   return (
@@ -9,7 +9,7 @@ export default function CTA1() {
           className="relative isolate w-full overflow-hidden rounded-2xl"
           style={{
             background:
-              "linear-gradient(100.5deg,rgba(57,18,241,.4) 29.55%,rgba(164,129,255,.4) 93.8%),radial-gradient(38.35% 93.72% at 18.31% 6.28%,rgba(170,135,252,.8) 0,rgba(61,27,205,.8) 100%)",
+              'linear-gradient(100.5deg,rgba(57,18,241,.4) 29.55%,rgba(164,129,255,.4) 93.8%),radial-gradient(38.35% 93.72% at 18.31% 6.28%,rgba(170,135,252,.8) 0,rgba(61,27,205,.8) 100%)',
           }}
         >
           <img

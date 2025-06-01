@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import Keyboard from "@/components/about/keyboard";
-import { cn } from "@/lib/utils";
-import { motion, useInView } from "framer-motion";
-import { Geist } from "next/font/google";
-import { Spotlight } from "@/components/ui/spotlight";
-import Image from "next/image";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import LocData from "@/components/about/loc";
-import { Card, CardHeader } from "@/components/ui/card";
-import { BorderBeam } from "@/components/ui/border-beam";
-import CommitActivity from "@/components/about/commit-activity";
-import Codefreq from "@/components/about/code-freq";
-import AboutFeaturesSection from "@/components/about/about-features";
-import { useRef } from "react";
-import { Compare } from "@/components/ui/compare";
-import { useTheme } from "next-themes";
-import CTA from "@/components/shared/cta";
-import Faqs from "@/components/shared/faq";
+import Keyboard from '@/components/about/keyboard';
+import { cn } from '@/lib/utils';
+import { motion, useInView } from 'framer-motion';
+import { Geist } from 'next/font/google';
+import { Spotlight } from '@/components/ui/spotlight';
+import Image from 'next/image';
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
+import LocData from '@/components/about/loc';
+import { Card, CardHeader } from '@/components/ui/card';
+import { BorderBeam } from '@/components/ui/border-beam';
+import CommitActivity from '@/components/about/commit-activity';
+import Codefreq from '@/components/about/code-freq';
+import AboutFeaturesSection from '@/components/about/about-features';
+import { useRef } from 'react';
+import { Compare } from '@/components/ui/compare';
+import { useTheme } from 'next-themes';
+import CTA from '@/components/shared/cta';
+import Faqs from '@/components/shared/faq';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function AboutUsPage() {
@@ -52,7 +52,7 @@ export default function AboutUsPage() {
             </div>
             <h2
               className={cn(
-                "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+                'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
                 space.className,
               )}
             >
@@ -79,7 +79,7 @@ export default function AboutUsPage() {
             <div className="absolute left-1/2 top-0 h-px w-3/5 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/50 to-transparent transition-all ease-in-out"></div>
             <h2
               className={cn(
-                "mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text pt-12 text-center text-4xl font-semibold tracking-tighter text-transparent sm:pt-24 md:pt-32 md:text-[54px] md:leading-[60px]",
+                'mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text pt-12 text-center text-4xl font-semibold tracking-tighter text-transparent sm:pt-24 md:pt-32 md:text-[54px] md:leading-[60px]',
                 space.className,
               )}
             >
@@ -98,7 +98,7 @@ export default function AboutUsPage() {
             >
               <h2
                 className={cn(
-                  "mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]",
+                  'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
                   space.className,
                 )}
               >
@@ -112,9 +112,9 @@ export default function AboutUsPage() {
             <div className="relative mx-auto h-full max-w-5xl flex-col items-center justify-start md:flex-row xl:mb-8 xl:flex xl:h-[400px]">
               <Keyboard />
               <Compare
-                firstImage={theme === "dark" ? "/abt2.webp" : "/abt2-dark.webp"}
+                firstImage={theme === 'dark' ? '/abt2.webp' : '/abt2-dark.webp'}
                 secondImage={
-                  theme === "dark" ? "/abt1-dark.webp" : "/abt1.webp"
+                  theme === 'dark' ? '/abt1-dark.webp' : '/abt1.webp'
                 }
                 firstImageClassName="object-cover object-left-top w-full"
                 secondImageClassname="object-cover object-left-top w-full"
@@ -127,7 +127,7 @@ export default function AboutUsPage() {
 
           <Card
             className="relative overflow-hidden bg-background p-4 md:p-6"
-            style={{ boxShadow: "inset 0 0 30px 1px rgba(244, 63, 94, 0.1)" }}
+            style={{ boxShadow: 'inset 0 0 30px 1px rgba(244, 63, 94, 0.1)' }}
           >
             <CardHeader className="mb-6 p-0">
               <h3 className="text-2xl font-semibold leading-none tracking-tight">

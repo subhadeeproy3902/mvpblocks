@@ -1,41 +1,41 @@
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { PlusIcon } from "lucide-react";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { PlusIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion';
 
 const items = [
   {
-    id: "1",
-    title: "What makes MVPBlocks different?",
+    id: '1',
+    title: 'What makes MVPBlocks different?',
     content:
-      "MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS, designed to help you launch your MVPs in record time. No bloated packages, no unnecessary installs—just clean, copyable code to plug right into your next big thing.",
+      'MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS, designed to help you launch your MVPs in record time. No bloated packages, no unnecessary installs—just clean, copyable code to plug right into your next big thing.',
   },
   {
-    id: "2",
-    title: "How can I customize the components?",
+    id: '2',
+    title: 'How can I customize the components?',
     content:
-      "All components are built with Tailwind CSS, making them highly customizable. Simply modify the class names or use our theme variables to match your brand. Components also support both light and dark modes out of the box.",
+      'All components are built with Tailwind CSS, making them highly customizable. Simply modify the class names or use our theme variables to match your brand. Components also support both light and dark modes out of the box.',
   },
   {
-    id: "3",
-    title: "Are MVPBlocks components responsive?",
+    id: '3',
+    title: 'Are MVPBlocks components responsive?',
     content:
       "Absolutely! All components are designed to be fully responsive and work beautifully on all devices, from mobile phones to large desktop screens. We've carefully crafted each component to provide an optimal experience regardless of screen size.",
   },
   {
-    id: "4",
-    title: "Can I use MVPBlocks for commercial projects?",
+    id: '4',
+    title: 'Can I use MVPBlocks for commercial projects?',
     content:
-      "Yes, all MVPBlocks components are free to use for both personal and commercial projects. No attribution required—just build and launch your MVP faster than ever before.",
+      'Yes, all MVPBlocks components are free to use for both personal and commercial projects. No attribution required—just build and launch your MVP faster than ever before.',
   },
   {
-    id: "5",
-    title: "How do I get started with MVPBlocks?",
+    id: '5',
+    title: 'How do I get started with MVPBlocks?',
     content:
       "Simply browse our component library, find the components you need, and copy the code into your project. It's that easy! Our documentation provides clear instructions for installation and usage.",
   },
@@ -67,7 +67,7 @@ export default function Faq1() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Frequently Asked{" "}
+            Frequently Asked{' '}
             <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">
               Questions
             </span>
@@ -111,25 +111,25 @@ export default function Faq1() {
                 <AccordionItem
                   value={item.id}
                   className={cn(
-                    "my-1 overflow-hidden rounded-lg border-none bg-card/50 px-2 shadow-sm transition-all",
-                    "data-[state=open]:bg-card/80 data-[state=open]:shadow-md",
+                    'my-1 overflow-hidden rounded-lg border-none bg-card/50 px-2 shadow-sm transition-all',
+                    'data-[state=open]:bg-card/80 data-[state=open]:shadow-md',
                   )}
                 >
                   <AccordionPrimitive.Header className="flex">
                     <AccordionPrimitive.Trigger
                       className={cn(
-                        "group flex flex-1 items-center justify-between gap-4 py-4 text-left text-base font-medium",
-                        "outline-none transition-all duration-300 hover:text-primary",
-                        "focus-visible:ring-2 focus-visible:ring-primary/50",
-                        "data-[state=open]:text-primary",
+                        'group flex flex-1 items-center justify-between gap-4 py-4 text-left text-base font-medium',
+                        'outline-none transition-all duration-300 hover:text-primary',
+                        'focus-visible:ring-2 focus-visible:ring-primary/50',
+                        'data-[state=open]:text-primary',
                       )}
                     >
                       {item.title}
                       <PlusIcon
                         size={18}
                         className={cn(
-                          "shrink-0 text-primary/70 transition-transform duration-300 ease-out",
-                          "group-data-[state=open]:rotate-45",
+                          'shrink-0 text-primary/70 transition-transform duration-300 ease-out',
+                          'group-data-[state=open]:rotate-45',
                         )}
                         aria-hidden="true"
                       />
@@ -137,9 +137,9 @@ export default function Faq1() {
                   </AccordionPrimitive.Header>
                   <AccordionContent
                     className={cn(
-                      "overflow-hidden pb-4 pt-0 text-muted-foreground",
-                      "data-[state=open]:animate-accordion-down",
-                      "data-[state=closed]:animate-accordion-up",
+                      'overflow-hidden pb-4 pt-0 text-muted-foreground',
+                      'data-[state=open]:animate-accordion-down',
+                      'data-[state=closed]:animate-accordion-up',
                     )}
                   >
                     <div className="border-t border-border/30 pt-3">

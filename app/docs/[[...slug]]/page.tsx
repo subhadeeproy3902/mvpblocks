@@ -1,30 +1,30 @@
-import { source } from "@/lib/source";
+import { source } from '@/lib/source';
 import {
   DocsPage,
   DocsBody,
   DocsTitle,
   DocsDescription,
   DocsCategory,
-} from "fumadocs-ui/page";
-import { notFound, redirect } from "next/navigation";
-import defaultMdxComponents from "fumadocs-ui/mdx";
-import type { MDXComponents } from "mdx/types";
-import { createTypeTable } from "fumadocs-typescript/ui";
-import { getLastModified } from "@/lib/github";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Callout } from "fumadocs-ui/components/callout";
-import { TypeTable } from "fumadocs-ui/components/type-table";
-import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
-import { File, Folder, Files } from "fumadocs-ui/components/files";
-import { type ComponentProps, type FC } from "react";
-import type { Metadata } from "next";
-import { createMetadata } from "@/lib/metadata";
-import { metadataImage } from "@/lib/metadata-image";
-import { EditIcon, AlertCircle, Lightbulb } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Script from "next/script";
-import { siteConfig } from "@/config/site";
+} from 'fumadocs-ui/page';
+import { notFound, redirect } from 'next/navigation';
+import defaultMdxComponents from 'fumadocs-ui/mdx';
+import type { MDXComponents } from 'mdx/types';
+import { createTypeTable } from 'fumadocs-typescript/ui';
+import { getLastModified } from '@/lib/github';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { type ComponentProps, type FC } from 'react';
+import type { Metadata } from 'next';
+import { createMetadata } from '@/lib/metadata';
+import { metadataImage } from '@/lib/metadata-image';
+import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Script from 'next/script';
+import { siteConfig } from '@/config/site';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -32,7 +32,7 @@ export default async function Page(props: {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
-  if (!page) redirect("/docs/introduction");
+  if (!page) redirect('/docs/introduction');
   const MDX = page.data.body;
 
   const path = `content/docs/${page.file.path}`;
@@ -43,12 +43,12 @@ export default async function Page(props: {
       <h3 className="mb-1 font-medium">Contribute</h3>
       <div className="flex flex-col space-y-2">
         <a
-          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=bug&template=bug_report.md&title=[bug]:+${encodeURIComponent(`/docs/${params.slug?.join("/") || ""}`)}&body=${encodeURIComponent(`**Describe the bug**
+          href={`https://github.com/subhadeeproy3902/mvpblocks/issues/new?labels=bug&template=bug_report.md&title=[bug]:+${encodeURIComponent(`/docs/${params.slug?.join('/') || ''}`)}&body=${encodeURIComponent(`**Describe the bug**
 A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '${siteConfig.url}/docs/${params.slug?.join("/") || ""}'
+1. Go to '${siteConfig.url}/docs/${params.slug?.join('/') || ''}'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
@@ -113,12 +113,12 @@ Add any other context or screenshots about the feature request here.`)}`}
 
   const { AutoTypeTable } = createTypeTable();
 
-  const breadcrumbItems = [{ name: "Home", url: siteConfig.url }];
+  const breadcrumbItems = [{ name: 'Home', url: siteConfig.url }];
 
   if (params.slug) {
-    let currentPath = "/docs";
+    let currentPath = '/docs';
     breadcrumbItems.push({
-      name: "Documentation",
+      name: 'Documentation',
       url: `${siteConfig.url}${currentPath}`,
     });
 
@@ -138,10 +138,10 @@ Add any other context or screenshots about the feature request here.`)}`}
     <>
       <Script id="breadcrumb-jsonld" type="application/ld+json">
         {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
           itemListElement: breadcrumbItems.map((item, index) => ({
-            "@type": "ListItem",
+            '@type': 'ListItem',
             position: index + 1,
             name: item.name,
             item: item.url,
@@ -150,14 +150,14 @@ Add any other context or screenshots about the feature request here.`)}`}
       </Script>
       <DocsPage
         article={{
-          className: "max-w-6xl max-sm:pb-16",
+          className: 'max-w-6xl max-sm:pb-16',
         }}
         toc={page.data.toc}
         full={page.data.full}
         tableOfContent={{
           footer,
           single: false,
-          style: "clerk",
+          style: 'clerk',
         }}
         breadcrumb={{
           full: true,
@@ -170,7 +170,7 @@ Add any other context or screenshots about the feature request here.`)}`}
           <MDX
             components={{
               ...defaultMdxComponents,
-              ...((await import("lucide-react")) as unknown as MDXComponents),
+              ...((await import('lucide-react')) as unknown as MDXComponents),
               Tabs,
               Tab,
               TypeTable,
@@ -191,7 +191,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               Folder,
               Files,
               blockquote: Callout as unknown as FC<
-                ComponentProps<"blockquote">
+                ComponentProps<'blockquote'>
               >,
               DocsCategory: ({ slugs = params.slug }: { slugs?: string[] }) => (
                 <DocsCategory page={source.getPage(slugs)!} from={source} />
@@ -217,17 +217,17 @@ export async function generateMetadata(props: {
   if (!page) notFound();
 
   const description =
-    page.data.description ?? "All your MVP blocks needs in one place!";
+    page.data.description ?? 'All your MVP blocks needs in one place!';
 
   return createMetadata(
     metadataImage.withImage(page.slugs, {
       title: page.data.title,
       description,
       alternates: {
-        canonical: `https://blocks.mvp-subha.me/docs/${page.slugs.join("/")}`,
+        canonical: `https://blocks.mvp-subha.me/docs/${page.slugs.join('/')}`,
       },
       openGraph: {
-        url: `/docs/${page.slugs.join("/")}`,
+        url: `/docs/${page.slugs.join('/')}`,
       },
     }),
   );

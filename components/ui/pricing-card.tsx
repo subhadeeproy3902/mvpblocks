@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
-import { PaymentModal } from "./payment-modal";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Check } from 'lucide-react';
+import { PaymentModal } from './payment-modal';
 
 interface PricingCardProps {
   name: string;

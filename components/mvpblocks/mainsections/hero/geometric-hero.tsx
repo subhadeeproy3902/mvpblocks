@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Pacifico } from "next/font/google";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { Pacifico } from 'next/font/google';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const pacifico = Pacifico({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-pacifico",
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-pacifico',
 });
 
 function ElegantShape({
@@ -19,7 +19,7 @@ function ElegantShape({
   width = 400,
   height = 100,
   rotate = 0,
-  gradient = "from-white/[0.08]",
+  gradient = 'from-white/[0.08]',
 }: {
   className?: string;
   delay?: number;
@@ -46,7 +46,7 @@ function ElegantShape({
         ease: [0.23, 0.86, 0.39, 0.96],
         opacity: { duration: 1.2 },
       }}
-      className={cn("absolute", className)}
+      className={cn('absolute', className)}
     >
       <motion.div
         animate={{
@@ -55,7 +55,7 @@ function ElegantShape({
         transition={{
           duration: 12,
           repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
         style={{
           width,
@@ -65,14 +65,14 @@ function ElegantShape({
       >
         <div
           className={cn(
-            "absolute inset-0 rounded-full",
-            "bg-gradient-to-r to-transparent",
+            'absolute inset-0 rounded-full',
+            'bg-gradient-to-r to-transparent',
             gradient,
-            "border-2 border-white/80 backdrop-blur-[2px] dark:border-white/80",
-            "shadow-[0_8px_32px_0_rgba(255,255,255,0.4)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.5)]",
-            "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.6),transparent_70%)]",
-            "dark:after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.7),transparent_70%)]",
+            'border-2 border-white/80 backdrop-blur-[2px] dark:border-white/80',
+            'shadow-[0_8px_32px_0_rgba(255,255,255,0.4)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.5)]',
+            'after:absolute after:inset-0 after:rounded-full',
+            'after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.6),transparent_70%)]',
+            'dark:after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.7),transparent_70%)]',
           )}
         />
       </motion.div>
@@ -81,9 +81,9 @@ function ElegantShape({
 }
 
 export default function HeroGeometric({
-  badge = "MVPBlocks",
-  title1 = "Build Faster",
-  title2 = "Ship Sooner",
+  badge = 'MVPBlocks',
+  title1 = 'Build Faster',
+  title2 = 'Ship Sooner',
 }: {
   badge?: string;
   title1?: string;
@@ -181,9 +181,9 @@ export default function HeroGeometric({
               <br />
               <span
                 className={cn(
-                  "bg-gradient-to-r from-primary via-primary/90 to-rose-500 bg-clip-text p-4 text-transparent",
+                  'bg-gradient-to-r from-primary via-primary/90 to-rose-500 bg-clip-text p-4 text-transparent',
                   pacifico.className,
-                  "font-bold",
+                  'font-bold',
                 )}
               >
                 {title2}

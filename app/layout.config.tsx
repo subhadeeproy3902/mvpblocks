@@ -1,15 +1,15 @@
-import { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import {
   BookA,
   Film,
   Home,
   LayoutPanelTop,
   LayoutTemplate,
-} from "lucide-react";
-import Image from "next/image";
+} from 'lucide-react';
+import Image from 'next/image';
 
 export const baseOptions: BaseLayoutProps = {
-  githubUrl: "https://github.com/subhadeeproy3902/mvpblocks",
+  githubUrl: 'https://github.com/subhadeeproy3902/mvpblocks',
   nav: {
     title: (
       <div className="flex items-center justify-center gap-2">
@@ -25,26 +25,26 @@ export const baseOptions: BaseLayoutProps = {
         </span>
       </div>
     ),
-    transparentMode: "top",
+    transparentMode: 'top',
   },
 
   links: [
     {
-      text: "Home",
-      url: "/",
-      active: "nested-url",
+      text: 'Home',
+      url: '/',
+      active: 'nested-url',
       icon: <Home />,
     },
     {
-      text: "About",
-      url: "/about",
-      active: "nested-url",
+      text: 'About',
+      url: '/about',
+      active: 'nested-url',
       icon: <BookA />,
     },
     {
-      text: "Showcase",
-      url: "/showcase",
-      active: "nested-url",
+      text: 'Showcase',
+      url: '/showcase',
+      active: 'nested-url',
       icon: <Film />,
     },
   ],

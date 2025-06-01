@@ -1,18 +1,18 @@
-import { MongoClient } from "mongodb";
-import { Resend } from "resend";
+import { MongoClient } from 'mongodb';
+import { Resend } from 'resend';
 
 const uri = process.env.MONGODB_URI!;
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
 export async function sendReleaseEmails() {
   const client = new MongoClient(uri, {
-    appName: "blocks-waitlist",
+    appName: 'blocks-waitlist',
   });
 
   try {
     await client.connect();
-    const database = client.db("waitlist");
-    const collection = database.collection("waitlist-users");
+    const database = client.db('waitlist');
+    const collection = database.collection('waitlist-users');
 
     const users = await collection.find({}).toArray();
 
@@ -20,7 +20,7 @@ export async function sendReleaseEmails() {
       await resend.emails.send({
         from: `Mvpblocks <blocks@mvp-subha.me>`,
         to: user.email,
-        subject: "Mvpblocks is Now Live! 🚀",
+        subject: 'Mvpblocks is Now Live! 🚀',
         html: `<!DOCTYPE html>
 <html lang="en">
 
@@ -89,8 +89,8 @@ export async function sendReleaseEmails() {
 
     return { success: true, message: `Sent emails to ${users.length} users` };
   } catch (error) {
-    console.error("Error sending release emails:", error);
-    return { success: false, error: "Failed to send release emails" };
+    console.error('Error sending release emails:', error);
+    return { success: false, error: 'Failed to send release emails' };
   } finally {
     await client.close();
   }

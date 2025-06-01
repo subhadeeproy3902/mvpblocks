@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface Particle {
   x: number;
@@ -25,7 +25,7 @@ export interface MagicTrailProps {
 
 export function MagicTrail({
   className,
-  colors = ["#8b5cf6", "#ec4899", "#3b82f6", "#10b981"],
+  colors = ['#8b5cf6', '#ec4899', '#3b82f6', '#10b981'],
   particleCount = 50,
   trailLength = 35,
   decay = 0.03,
@@ -63,7 +63,7 @@ export function MagicTrail({
     const container = containerRef?.current || canvas?.parentElement;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d", { alpha: true });
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     const updateCanvasSize = () => {
@@ -155,7 +155,7 @@ export function MagicTrail({
       const opacity = Math.random() * 0.5 + 0.5;
       ctx.strokeStyle = `${color}${Math.floor(opacity * 255)
         .toString(16)
-        .padStart(2, "0")}`;
+        .padStart(2, '0')}`;
       ctx.lineWidth = size * 0.5;
 
       // Draw a star shape
@@ -170,13 +170,13 @@ export function MagicTrail({
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = "lighter";
+      ctx.globalCompositeOperation = 'lighter';
 
       addPoint();
 
       // Draw main trail with glow
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
       ctx.shadowBlur = 15;
 
       for (let i = 1; i < points.current.length; i++) {
@@ -198,13 +198,13 @@ export function MagicTrail({
           0,
           `${prevPoint.color}${Math.floor(prevOpacity * 255)
             .toString(16)
-            .padStart(2, "0")}`,
+            .padStart(2, '0')}`,
         );
         gradient.addColorStop(
           1,
           `${point.color}${Math.floor(opacity * 255)
             .toString(16)
-            .padStart(2, "0")}`,
+            .padStart(2, '0')}`,
         );
 
         ctx.beginPath();
@@ -247,15 +247,15 @@ export function MagicTrail({
     };
 
     updateCanvasSize();
-    window.addEventListener("resize", updateCanvasSize);
-    container.addEventListener("mousemove", handleMouseMove);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener('resize', updateCanvasSize);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
     animate();
 
     return () => {
-      window.removeEventListener("resize", updateCanvasSize);
-      container.removeEventListener("mousemove", handleMouseMove);
-      container.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener('resize', updateCanvasSize);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
@@ -264,8 +264,8 @@ export function MagicTrail({
 
   return (
     <div
-      className={cn("pointer-events-none absolute inset-0", className)}
-      style={{ width: "100%", height: "100%" }}
+      className={cn('pointer-events-none absolute inset-0', className)}
+      style={{ width: '100%', height: '100%' }}
     >
       <canvas
         ref={canvasRef}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Navbar,
@@ -10,29 +10,29 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
-import { useState } from "react";
-import { ModeToggle } from "../ui/mode-toggle";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+} from '@/components/ui/resizable-navbar';
+import { useState } from 'react';
+import { ModeToggle } from '../ui/mode-toggle';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export function NavbarDemo() {
   const navItems = [
     {
-      name: "Docs",
-      link: "/docs/introduction",
+      name: 'Docs',
+      link: '/docs/introduction',
     },
     {
-      name: "About",
-      link: "/about",
+      name: 'About',
+      link: '/about',
     },
     {
-      name: "Features",
-      link: "/#features",
+      name: 'Features',
+      link: '/#features',
     },
     {
-      name: "Showcase",
-      link: "/showcase",
+      name: 'Showcase',
+      link: '/showcase',
     },
   ];
 
@@ -85,7 +85,7 @@ export function NavbarDemo() {
               variant="gradient"
               className="w-full"
               onClick={() =>
-                redirect("https://github.com/subhadeeproy3902/mvpblocks")
+                redirect('https://github.com/subhadeeproy3902/mvpblocks')
               }
             >
               Github

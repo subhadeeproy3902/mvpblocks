@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { memo } from "react";
-import { useTheme } from "next-themes";
-import Link from "next/link";
+import { memo } from 'react';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
 import {
   Sidebar,
   SidebarContent,
@@ -15,7 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
 import {
   LayoutDashboard,
   Users,
@@ -30,19 +30,19 @@ import {
   Moon,
   Sun,
   User,
-} from "lucide-react";
+} from 'lucide-react';
 
 const menuItems = [
-  { title: "Dashboard", icon: LayoutDashboard, href: "#dashboard" },
-  { title: "Analytics", icon: BarChart3, href: "#analytics" },
-  { title: "Users", icon: Users, href: "#users" },
-  { title: "Content", icon: FileText, href: "#content" },
-  { title: "Activity", icon: Activity, href: "#activity" },
-  { title: "Database", icon: Database, href: "#database" },
-  { title: "Security", icon: Shield, href: "#security" },
-  { title: "Performance", icon: Zap, href: "#performance" },
-  { title: "Notifications", icon: Bell, href: "#notifications" },
-  { title: "Settings", icon: Settings, href: "#settings" },
+  { title: 'Dashboard', icon: LayoutDashboard, href: '#dashboard' },
+  { title: 'Analytics', icon: BarChart3, href: '#analytics' },
+  { title: 'Users', icon: Users, href: '#users' },
+  { title: 'Content', icon: FileText, href: '#content' },
+  { title: 'Activity', icon: Activity, href: '#activity' },
+  { title: 'Database', icon: Database, href: '#database' },
+  { title: 'Security', icon: Shield, href: '#security' },
+  { title: 'Performance', icon: Zap, href: '#performance' },
+  { title: 'Notifications', icon: Bell, href: '#notifications' },
+  { title: 'Settings', icon: Settings, href: '#settings' },
 ];
 
 export const AdminSidebar = memo(() => {
@@ -95,10 +95,10 @@ export const AdminSidebar = memo(() => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              {theme === "dark" ? <Sun /> : <Moon />}
-              <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
+              {theme === 'dark' ? <Sun /> : <Moon />}
+              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
@@ -116,4 +116,4 @@ export const AdminSidebar = memo(() => {
   );
 });
 
-AdminSidebar.displayName = "AdminSidebar";
+AdminSidebar.displayName = 'AdminSidebar';

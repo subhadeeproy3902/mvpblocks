@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
-import { ShowcaseItem } from "@/lib/showcase";
-import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import { ShowcaseItem } from '@/lib/showcase';
+import { cn } from '@/lib/utils';
 
 interface ShowcaseCardProps {
   item: ShowcaseItem;
@@ -17,7 +17,7 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
   const [imageError, setImageError] = useState(false);
 
   const handleClick = () => {
-    window.open(item.link, "_blank", "noopener,noreferrer");
+    window.open(item.link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -30,8 +30,8 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
       <div
         onClick={handleClick}
         className={cn(
-          "relative cursor-pointer overflow-hidden rounded-xl border-b border-primary/20 bg-card/40 transition-all duration-300 hover:border-primary hover:bg-card/10",
-          "hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10",
+          'relative cursor-pointer overflow-hidden rounded-xl border-b border-primary/20 bg-card/40 transition-all duration-300 hover:border-primary hover:bg-card/10',
+          'hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10',
         )}
       >
         {/* Image container */}
@@ -46,8 +46,8 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
             alt={item.name}
             fill
             className={cn(
-              "overflow-hidden rounded-t-xl object-cover transition-all duration-300 group-hover:scale-105",
-              imageLoaded ? "opacity-100" : "opacity-0",
+              'overflow-hidden rounded-t-xl object-cover transition-all duration-300 group-hover:scale-105',
+              imageLoaded ? 'opacity-100' : 'opacity-0',
             )}
             onLoad={() => setImageLoaded(true)}
             onError={() => {

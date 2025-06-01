@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
 
 interface TeamMember {
   name: string;
   role: string;
   imageUrl: string;
-  socialLinks?: { platform: "github" | "twitter" | "linkedin"; url: string }[];
+  socialLinks?: { platform: 'github' | 'twitter' | 'linkedin'; url: string }[];
 }
 
 interface TeamProps {
@@ -24,91 +24,91 @@ interface TeamProps {
 // Default team members data
 const defaultMembers: TeamMember[] = [
   {
-    name: "Robert Brown",
-    role: "CEO & Co-Founder",
+    name: 'Robert Brown',
+    role: 'CEO & Co-Founder',
     imageUrl:
-      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Leslie Livingston",
-    role: "CTO & Co-Founder",
+    name: 'Leslie Livingston',
+    role: 'CTO & Co-Founder',
     imageUrl:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Joseph McFall",
-    role: "Front-end Developer",
+    name: 'Joseph McFall',
+    role: 'Front-end Developer',
     imageUrl:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Helene Engels",
-    role: "Front-end Developer",
+    name: 'Helene Engels',
+    role: 'Front-end Developer',
     imageUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "github", url: "https://github.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'github', url: 'https://github.com' },
     ],
   },
   {
-    name: "Thom Belly",
-    role: "UI/UX Designer",
+    name: 'Thom Belly',
+    role: 'UI/UX Designer',
     imageUrl:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Bonnie Green",
-    role: "Product Manager",
+    name: 'Bonnie Green',
+    role: 'Product Manager',
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Roberta Casas",
-    role: "Content Strategist",
+    name: 'Roberta Casas',
+    role: 'Content Strategist',
     imageUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "twitter", url: "https://twitter.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'twitter', url: 'https://twitter.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
   {
-    name: "Jesse Leos",
-    role: "Back-end Developer",
+    name: 'Jesse Leos',
+    role: 'Back-end Developer',
     imageUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop",
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop',
     socialLinks: [
-      { platform: "github", url: "https://github.com" },
-      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: 'github', url: 'https://github.com' },
+      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
   },
 ];
 
 export default function Team2({
-  title = "Our people make us great",
+  title = 'Our people make us great',
   subtitle = "You'll interact with talented professionals, will be challenged to solve difficult problems and think in new and creative ways.",
   members = defaultMembers,
   className,
@@ -116,7 +116,7 @@ export default function Team2({
   return (
     <section
       className={cn(
-        "relative w-full overflow-hidden py-16 md:py-24",
+        'relative w-full overflow-hidden py-16 md:py-24',
         className,
       )}
     >
@@ -191,13 +191,13 @@ function TeamMemberCard({
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground"
               >
-                {link.platform === "github" && (
+                {link.platform === 'github' && (
                   <GithubIcon className="h-5 w-5" />
                 )}
-                {link.platform === "twitter" && (
+                {link.platform === 'twitter' && (
                   <TwitterIcon className="h-5 w-5" />
                 )}
-                {link.platform === "linkedin" && (
+                {link.platform === 'linkedin' && (
                   <LinkedinIcon className="h-5 w-5" />
                 )}
               </Link>

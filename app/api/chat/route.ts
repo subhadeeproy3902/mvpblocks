@@ -1,11 +1,11 @@
-import { groq } from "@ai-sdk/groq";
-import { smoothStream, streamText, tool } from "ai";
-import { promises as fs } from "fs";
-import path from "path";
-import { registry } from "@/registry";
-import { z } from "zod";
+import { groq } from '@ai-sdk/groq';
+import { smoothStream, streamText, tool } from 'ai';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { registry } from '@/registry';
+import { z } from 'zod';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 
 const getComponentCode = async (item: any) => {
@@ -14,11 +14,11 @@ const getComponentCode = async (item: any) => {
   }
 
   const filePath = item.files[0].path;
-  const normalizedPath = filePath.replace(/^@\//, "").replace(/^\//, "");
+  const normalizedPath = filePath.replace(/^@\//, '').replace(/^\//, '');
   const fullPath = path.join(process.cwd(), normalizedPath);
 
   try {
-    const code = await fs.readFile(fullPath, "utf-8");
+    const code = await fs.readFile(fullPath, 'utf-8');
 
     return {
       name: item.name,
@@ -40,10 +40,10 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
   const searchTerm = name.toLowerCase();
 
   const typeDescriptions = {
-    "registry:block": "Block Component",
-    "registry:ui": "UI Component",
-    "registry:hook": "Hook",
-    "registry:lib": "Utility Library",
+    'registry:block': 'Block Component',
+    'registry:ui': 'UI Component',
+    'registry:hook': 'Hook',
+    'registry:lib': 'Utility Library',
   };
 
   const extractCategories = () => {
@@ -60,7 +60,7 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
       if (item.files && item.files.length > 0) {
         const pathParts = item.files[0].path.split(/[\/\\]/);
         pathParts.forEach((part) => {
-          if (part.length > 3 && !part.includes(".")) {
+          if (part.length > 3 && !part.includes('.')) {
             categories.add(part.toLowerCase());
           }
         });
@@ -120,7 +120,7 @@ const findSimilarComponents = (name: string, maxResults = 5) => {
     const itemPath =
       item.files && item.files.length > 0
         ? item.files[0].path.toLowerCase()
-        : "";
+        : '';
 
     const nameSimilarity = calculateSimilarity(searchTerm, itemName);
     const pathSimilarity = itemPath
@@ -256,7 +256,7 @@ export async function POST(req: Request) {
     const systemPrompt = await createSystemPrompt();
 
     const result = streamText({
-      model: groq("meta-llama/llama-4-scout-17b-16e-instruct"),
+      model: groq('meta-llama/llama-4-scout-17b-16e-instruct'),
       system: systemPrompt,
       messages,
       maxSteps: 6,
@@ -265,9 +265,9 @@ export async function POST(req: Request) {
       tools: {
         fetchComponent: tool({
           description:
-            "Fetch the required component asked by the user from the registry",
+            'Fetch the required component asked by the user from the registry',
           parameters: z.object({
-            name: z.string().describe("The name of the component to fetch"),
+            name: z.string().describe('The name of the component to fetch'),
           }),
           execute: async ({ name }) => {
             // Find the exact component by name
@@ -291,9 +291,9 @@ export async function POST(req: Request) {
           },
         }),
         searchComponents: tool({
-          description: "Search for components by keyword",
+          description: 'Search for components by keyword',
           parameters: z.object({
-            keyword: z.string().describe("The keyword to search for"),
+            keyword: z.string().describe('The keyword to search for'),
           }),
           execute: async ({ keyword }) => {
             const similarComponents = findSimilarComponents(keyword);
@@ -306,21 +306,21 @@ export async function POST(req: Request) {
           },
         }),
         getDependencyCode: tool({
-          description: "Get the code for a registry dependency",
+          description: 'Get the code for a registry dependency',
           parameters: z.object({
             url: z
               .string()
-              .describe("The URL of the registry dependency to fetch"),
+              .describe('The URL of the registry dependency to fetch'),
           }),
           execute: async ({ url }) => {
             try {
               // Extract component name from URL
-              const componentName = url.split("/").pop()?.replace(".json", "");
+              const componentName = url.split('/').pop()?.replace('.json', '');
 
               if (!componentName) {
                 return JSON.stringify({
-                  error: "Invalid URL format",
-                  message: "Could not extract component name from URL",
+                  error: 'Invalid URL format',
+                  message: 'Could not extract component name from URL',
                 });
               }
 
@@ -331,7 +331,7 @@ export async function POST(req: Request) {
 
               if (!component) {
                 return JSON.stringify({
-                  error: "Component not found",
+                  error: 'Component not found',
                   message: `Component "${componentName}" not found in the registry`,
                 });
               }
@@ -345,33 +345,33 @@ export async function POST(req: Request) {
                     message: `Successfully retrieved code for dependency "${componentName}"`,
                   })
                 : JSON.stringify({
-                    error: "Code not found",
+                    error: 'Code not found',
                     message: `Could not retrieve code for component "${componentName}"`,
                   });
             } catch (error) {
-              console.error("Error fetching dependency code:", error);
+              console.error('Error fetching dependency code:', error);
               return JSON.stringify({
-                error: "Failed to fetch dependency",
-                message: "An error occurred while fetching the dependency code",
+                error: 'Failed to fetch dependency',
+                message: 'An error occurred while fetching the dependency code',
               });
             }
           },
         }),
         generateComponent: tool({
           description:
-            "Generate a new component by combining existing components",
+            'Generate a new component by combining existing components',
           parameters: z.object({
             componentName: z
               .string()
-              .describe("The name of the component to generate"),
+              .describe('The name of the component to generate'),
             componentType: z
               .string()
               .describe(
-                "The type of component to generate (e.g., chatbot, form, card)",
+                'The type of component to generate (e.g., chatbot, form, card)',
               ),
             buildingBlocks: z
               .array(z.string())
-              .describe("Array of component names to use as building blocks"),
+              .describe('Array of component names to use as building blocks'),
           }),
           execute: async ({ componentName, componentType, buildingBlocks }) => {
             try {
@@ -413,27 +413,27 @@ export async function POST(req: Request) {
                 message: `Generated component information for "${componentName}" of type "${componentType}" using ${validComponents.length} building blocks.`,
               });
             } catch (error) {
-              console.error("Error generating component:", error);
+              console.error('Error generating component:', error);
               return JSON.stringify({
-                error: "Failed to generate component",
-                message: "An error occurred while generating the component",
+                error: 'Failed to generate component',
+                message: 'An error occurred while generating the component',
               });
             }
           },
         }),
         listComponents: tool({
-          description: "List all components by type or category",
+          description: 'List all components by type or category',
           parameters: z.object({
             type: z
-              .enum(["ui", "block", "hook", "lib", "all"])
+              .enum(['ui', 'block', 'hook', 'lib', 'all'])
               .describe(
-                "The type of components to list: ui, block, hook, lib, or all",
+                'The type of components to list: ui, block, hook, lib, or all',
               ),
             category: z
               .string()
               .optional()
               .describe(
-                "Optional category to filter by (e.g., buttons, loaders, cards)",
+                'Optional category to filter by (e.g., buttons, loaders, cards)',
               ),
           }),
           execute: async ({ type, category }) => {
@@ -456,20 +456,20 @@ export async function POST(req: Request) {
                 // Extract directory structure as categories
                 const pathParts = path.split(/[\/\\]/);
                 pathParts.forEach((part: string) => {
-                  if (part.length > 3 && !part.includes(".")) {
+                  if (part.length > 3 && !part.includes('.')) {
                     categories.add(part.toLowerCase());
                   }
                 });
 
                 // Special handling for common patterns in paths
-                if (path.includes("buttons")) categories.add("button");
-                if (path.includes("loaders")) categories.add("loader");
-                if (path.includes("cards")) categories.add("card");
-                if (path.includes("forms")) categories.add("form");
-                if (path.includes("inputs")) categories.add("input");
-                if (path.includes("modals") || path.includes("dialogs"))
-                  categories.add("dialog");
-                if (path.includes("navigation")) categories.add("nav");
+                if (path.includes('buttons')) categories.add('button');
+                if (path.includes('loaders')) categories.add('loader');
+                if (path.includes('cards')) categories.add('card');
+                if (path.includes('forms')) categories.add('form');
+                if (path.includes('inputs')) categories.add('input');
+                if (path.includes('modals') || path.includes('dialogs'))
+                  categories.add('dialog');
+                if (path.includes('navigation')) categories.add('nav');
               }
 
               // Add explicit categories if available
@@ -485,12 +485,12 @@ export async function POST(req: Request) {
             let filteredComponents = [...registry];
 
             // Filter by type if not 'all'
-            if (type !== "all") {
+            if (type !== 'all') {
               const typeMapping: Record<string, string> = {
-                ui: "registry:ui",
-                block: "registry:block",
-                hook: "registry:hook",
-                lib: "registry:lib",
+                ui: 'registry:ui',
+                block: 'registry:block',
+                hook: 'registry:hook',
+                lib: 'registry:lib',
               };
 
               filteredComponents = filteredComponents.filter(
@@ -519,7 +519,7 @@ export async function POST(req: Request) {
 
                 // Additional check for name and path
                 const itemName = item.name.toLowerCase();
-                const itemPath = item.files?.[0]?.path?.toLowerCase() || "";
+                const itemPath = item.files?.[0]?.path?.toLowerCase() || '';
 
                 return (
                   itemName.includes(categoryLower) ||
@@ -547,10 +547,10 @@ export async function POST(req: Request) {
 
             // Group by type for better organization
             const groupedByType: Record<string, any[]> = {
-              "registry:ui": [],
-              "registry:block": [],
-              "registry:hook": [],
-              "registry:lib": [],
+              'registry:ui': [],
+              'registry:block': [],
+              'registry:hook': [],
+              'registry:lib': [],
             };
 
             components.forEach((component) => {
@@ -588,22 +588,22 @@ export async function POST(req: Request) {
 
             return JSON.stringify({
               total: components.length,
-              components: type === "all" ? groupedByType : components,
+              components: type === 'all' ? groupedByType : components,
               categorized: groupedByCategory,
-              message: `Found ${components.length} ${type} components${category ? ` in category "${category}"` : ""}.`,
+              message: `Found ${components.length} ${type} components${category ? ` in category "${category}"` : ''}.`,
             });
           },
         }),
       },
       toolCallStreaming: true,
       experimental_transform: smoothStream({
-        chunking: "word",
+        chunking: 'word',
       }),
     });
 
     return result.toDataStreamResponse();
   } catch (error) {
-    console.error("Unhandled error in chat API:", error);
+    console.error('Unhandled error in chat API:', error);
     throw error;
   }
 }

@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import type React from "react";
-import { badgeVariants } from "../ui/badge";
-import { MoveUpRight } from "lucide-react";
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import type React from 'react';
+import { badgeVariants } from '../ui/badge';
+import { MoveUpRight } from 'lucide-react';
 
 interface LinkItem {
   link: string;
@@ -25,8 +25,8 @@ export function Reference({ label, link }: LinkItem) {
       target="_blank"
       rel="noreferrer"
       className={cn(
-        badgeVariants({ variant: "outline" }),
-        "gap-1 px-2 font-medium no-underline",
+        badgeVariants({ variant: 'outline' }),
+        'gap-1 px-2 font-medium no-underline',
       )}
     >
       {label}

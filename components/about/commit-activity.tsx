@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -9,54 +9,54 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
-import { format, isAfter, parseISO, subDays, subMonths } from "date-fns";
+} from 'recharts';
+import { format, isAfter, parseISO, subDays, subMonths } from 'date-fns';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "@/components/ui/card";
-import { ChartContainer } from "@/components/ui/chart";
+} from '@/components/ui/card';
+import { ChartContainer } from '@/components/ui/chart';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { fetchUserData } from "@/actions/githubgraphql";
+} from '@/components/ui/select';
+import { fetchUserData } from '@/actions/githubgraphql';
 
 type UserStats = Record<string, number>;
 
-function prepareChartData(stats: UserStats, filter: "all" | "month" | "week") {
+function prepareChartData(stats: UserStats, filter: 'all' | 'month' | 'week') {
   const now = new Date();
   const entries = Object.entries(stats || {})
     .map(([date, count]) => ({ date: parseISO(date), count }))
     .filter(({ date }) => {
-      if (filter === "month") return isAfter(date, subMonths(now, 1));
-      if (filter === "week") return isAfter(date, subDays(now, 7));
+      if (filter === 'month') return isAfter(date, subMonths(now, 1));
+      if (filter === 'week') return isAfter(date, subDays(now, 7));
       return true;
     })
     .sort((a, b) => a.date.getTime() - b.date.getTime());
 
   return entries.map(({ date, count }) => ({
-    date: format(date, "MMM-dd"),
+    date: format(date, 'MMM-dd'),
     commits: count,
   }));
 }
 
 const chartConfig = {
   commits: {
-    label: "Commits",
-    color: "hsl(var(--chart-1))",
+    label: 'Commits',
+    color: 'hsl(var(--chart-1))',
   },
 };
 
 export default function CommitActivity() {
   const [userStats, setUserStats] = useState<UserStats>({});
-  const [filter, setFilter] = useState<"all" | "month" | "week">("all");
+  const [filter, setFilter] = useState<'all' | 'month' | 'week'>('all');
 
   useEffect(() => {
     const loadData = async () => {
@@ -140,7 +140,7 @@ export default function CommitActivity() {
                 type="monotone"
                 stroke="var(--color-commits)"
                 strokeWidth={2}
-                dot={{ fill: "var(--color-commits)" }}
+                dot={{ fill: 'var(--color-commits)' }}
                 activeDot={{ r: 6 }}
                 isAnimationActive={true}
               />

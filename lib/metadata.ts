@@ -1,14 +1,14 @@
-import type { Metadata } from "next/types";
-import { siteConfig } from "@/config/site";
+import type { Metadata } from 'next/types';
+import { siteConfig } from '@/config/site';
 
 export function createMetadata(override: Metadata): Metadata {
   const titleStr = override.title
-    ? typeof override.title === "string"
+    ? typeof override.title === 'string'
       ? override.title
       : String(override.title)
     : siteConfig.name;
   const descriptionStr = override.description
-    ? typeof override.description === "string"
+    ? typeof override.description === 'string'
       ? override.description
       : String(override.description)
     : siteConfig.description;
@@ -18,9 +18,9 @@ export function createMetadata(override: Metadata): Metadata {
     title: titleStr,
     description: descriptionStr,
     keywords: siteConfig.keywords,
-    authors: [{ name: "Subhadeep Roy" }],
-    creator: "Subhadeep Roy",
-    publisher: "Subhadeep Roy",
+    authors: [{ name: 'Subhadeep Roy' }],
+    creator: 'Subhadeep Roy',
+    publisher: 'Subhadeep Roy',
     openGraph: {
       title: titleStr,
       description: descriptionStr,
@@ -34,14 +34,14 @@ export function createMetadata(override: Metadata): Metadata {
         },
       ],
       siteName: siteConfig.name,
-      locale: "en_US",
+      locale: 'en_US',
       ...(override.openGraph || {}),
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: titleStr,
       description: descriptionStr,
-      creator: "@mvp_Subha",
+      creator: '@mvp_Subha',
       images: [siteConfig.ogImage],
       ...(override.twitter || {}),
     },
@@ -51,9 +51,9 @@ export function createMetadata(override: Metadata): Metadata {
       googleBot: {
         index: true,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
       ...((override.robots as object) || {}),
     },
@@ -61,6 +61,6 @@ export function createMetadata(override: Metadata): Metadata {
 }
 
 export const baseUrl =
-  process.env.NODE_ENV === "development" || !process.env.VERCEL_URL
-    ? new URL("http://localhost:3000")
+  process.env.NODE_ENV === 'development' || !process.env.VERCEL_URL
+    ? new URL('http://localhost:3000')
     : new URL(`https://${process.env.VERCEL_URL}`);

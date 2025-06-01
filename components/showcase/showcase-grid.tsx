@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ShowcaseCard } from "./showcase-card";
-import { showcaseData } from "@/lib/showcase";
-import { AddCard } from "./add-card";
+import { motion } from 'framer-motion';
+import { ShowcaseCard } from './showcase-card';
+import { showcaseData } from '@/lib/showcase';
+import { AddCard } from './add-card';
 
 export function ShowcaseGrid() {
   return (

@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from 'react';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { SparklesIcon } from "lucide-react";
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { SparklesIcon } from 'lucide-react';
 import {
   Autoplay,
   EffectCoverflow,
   Navigation,
   Pagination,
-} from "swiper/modules";
+} from 'swiper/modules';
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge';
 
 interface CarouselProps {
   images: { src: string; alt: string }[];
@@ -67,7 +67,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
             variant="outline"
             className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
           >
-            <SparklesIcon className="fill-[#EEBDE0] stroke-1 text-neutral-800" />{" "}
+            <SparklesIcon className="fill-[#EEBDE0] stroke-1 text-neutral-800" />{' '}
             Latest component
           </Badge>
           <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
@@ -89,11 +89,11 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                   delay: autoplayDelay,
                   disableOnInteraction: false,
                 }}
-                effect={"coverflow"}
+                effect={'coverflow'}
                 grabCursor={true}
                 centeredSlides={true}
                 loop={true}
-                slidesPerView={"auto"}
+                slidesPerView={'auto'}
                 coverflowEffect={{
                   rotate: 0,
                   stretch: 0,
@@ -104,8 +104,8 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 navigation={
                   showNavigation
                     ? {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
                       }
                     : undefined
                 }

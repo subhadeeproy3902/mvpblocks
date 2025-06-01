@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useTheme } from "next-themes";
-import Earth from "../ui/globe";
-import ScrambleHover from "../ui/scramble";
-import { motion, useInView } from "framer-motion";
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { useTheme } from 'next-themes';
+import Earth from '../ui/globe';
+import ScrambleHover from '../ui/scramble';
+import { motion, useInView } from 'framer-motion';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { Geist } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const space = Geist({
-  subsets: ["latin"],
-  variable: "--font-carlito",
-  weight: "400",
+  subsets: ['latin'],
+  variable: '--font-carlito',
+  weight: '400',
 });
 
 export default function Features() {
@@ -22,18 +22,18 @@ export default function Features() {
   const [isHovering, setIsHovering] = useState(false);
 
   const [baseColor, setBaseColor] = useState<[number, number, number]>(
-    theme === "dark" ? [1, 0, 0.3] : [1, 1, 1],
+    theme === 'dark' ? [1, 0, 0.3] : [1, 1, 1],
   );
 
   const [glowColor, setGlowColor] = useState<[number, number, number]>(
-    theme === "dark" ? [1, 0, 0.4] : [1, 0.3, 0.4],
+    theme === 'dark' ? [1, 0, 0.4] : [1, 0.3, 0.4],
   );
 
-  const [dark, setDark] = useState<number>(theme === "dark" ? 1 : 0);
+  const [dark, setDark] = useState<number>(theme === 'dark' ? 1 : 0);
 
   useEffect(() => {
     // Change the color of the globe based on the theme
-    if (theme === "dark") {
+    if (theme === 'dark') {
       setBaseColor([1, 0, 0.3]);
       setDark(1);
       setGlowColor([1, 0, 0.4]);
@@ -60,7 +60,7 @@ export default function Features() {
       >
         <h2
           className={cn(
-            "mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]",
+            'mb-8 bg-gradient-to-b from-zinc-800 via-foreground to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
             space.className,
           )}
         >
@@ -91,7 +91,7 @@ export default function Features() {
                 <div className="relative h-full w-full">
                   <div className="absolute left-[50%] top-0 z-10 flex w-full max-w-[366px] -translate-x-[50%] translate-y-0 overflow-hidden rounded-[56px] bg-neutral-800/20 p-2 transition-all duration-1000 ease-in-out group-hover:-translate-y-8 dark:bg-white/20">
                     <div className="relative z-10 flex max-w-[350px] overflow-hidden rounded-[48px] border border-border/70 shadow-2xl dark:border-border/5 dark:border-t-border/15">
-                      {theme === "light" ? (
+                      {theme === 'light' ? (
                         <Image
                           alt="Mobile UI light theme"
                           width={350}
@@ -149,7 +149,7 @@ export default function Features() {
                   <div className="glass rose relative z-10 row-span-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-105 dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
-                        {theme === "dark" ? (
+                        {theme === 'dark' ? (
                           <Image
                             src="/features-nextjs-dark.webp"
                             alt="Next.js logo dark"

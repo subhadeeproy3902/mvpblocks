@@ -1,40 +1,40 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Pie, PieChart, Sector } from "recharts";
-import type { PieSectorDataItem } from "recharts/types/polar/Pie";
+import * as React from 'react';
+import { Pie, PieChart, Sector } from 'recharts';
+import type { PieSectorDataItem } from 'recharts/types/polar/Pie';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   type ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import locData from "@/custom-loc.json"; // assuming this file is placed in your project root or adjust the path accordingly
+} from '@/components/ui/select';
+import locData from '@/custom-loc.json'; // assuming this file is placed in your project root or adjust the path accordingly
 
 const colors = [
-  "--chart-3",
-  "--chart-2",
-  "--chart-1",
-  "--chart-4",
-  "--chart-5",
-  "--chart-6",
-  "--chart-7",
-  "--chart-8",
+  '--chart-3',
+  '--chart-2',
+  '--chart-1',
+  '--chart-4',
+  '--chart-5',
+  '--chart-6',
+  '--chart-7',
+  '--chart-8',
 ];
 
 const langData = Object.entries(locData).map(([ext, { lines }], i) => ({
@@ -47,14 +47,14 @@ const chartConfig = Object.fromEntries(
   langData.map((item) => [
     item.language,
     {
-      label: item.language.toUpperCase().replace(".", ""),
+      label: item.language.toUpperCase().replace('.', ''),
       color: `hsl(var(${colors[langData.indexOf(item) % colors.length]}))`,
     },
   ]),
 );
 
 export default function LocData() {
-  const id = "pie-loc";
+  const id = 'pie-loc';
   const [activeLang, setActiveLang] = React.useState(langData[0].language);
 
   const activeIndex = React.useMemo(

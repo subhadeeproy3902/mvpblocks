@@ -1,11 +1,11 @@
-import { registry } from "@/registry";
-import { promises as fs } from "fs";
-import type { z } from "zod";
-import type { registryItemFileSchema } from "@/registry/schema";
-import path from "path";
+import { registry } from '@/registry';
+import { promises as fs } from 'fs';
+import type { z } from 'zod';
+import type { registryItemFileSchema } from '@/registry/schema';
+import path from 'path';
 
 const REGISTRY_BASE_PATH = process.cwd();
-const PUBLIC_FOLDER_BASE_PATH = "public/r";
+const PUBLIC_FOLDER_BASE_PATH = 'public/r';
 
 /**
  * bun run ./scripts/build-registry.ts
@@ -19,7 +19,7 @@ async function shouldWriteFile(
 ): Promise<boolean> {
   try {
     // Try to read existing file
-    const existingContent = await fs.readFile(filePath, "utf-8");
+    const existingContent = await fs.readFile(filePath, 'utf-8');
     // Only write if content is different
     return existingContent !== newContent;
   } catch {
@@ -35,7 +35,7 @@ async function writeFileRecursive(filePath: string, data: string) {
     // Check if we need to write the file
     if (await shouldWriteFile(filePath, data)) {
       await fs.mkdir(dir, { recursive: true });
-      await fs.writeFile(filePath, data, "utf-8");
+      await fs.writeFile(filePath, data, 'utf-8');
       console.log(`Updated ${filePath}`);
     }
   } catch (error) {
@@ -45,13 +45,13 @@ async function writeFileRecursive(filePath: string, data: string) {
 
 const getComponentFiles = async (files: File[], registryType: string) => {
   const filesArrayPromises = (files ?? []).map(async (file) => {
-    if (typeof file === "string") {
+    if (typeof file === 'string') {
       //@ts-ignore
-      const normalizedPath = file.startsWith("/") ? file : `/${file}`;
+      const normalizedPath = file.startsWith('/') ? file : `/${file}`;
       const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
-      const fileContent = await fs.readFile(filePath, "utf-8");
+      const fileContent = await fs.readFile(filePath, 'utf-8');
 
-      const fileName = normalizedPath.split("/").pop() || "";
+      const fileName = normalizedPath.split('/').pop() || '';
 
       return {
         type: registryType,
@@ -60,31 +60,31 @@ const getComponentFiles = async (files: File[], registryType: string) => {
         target: `/components/mvpblocks/${fileName}`,
       };
     }
-    const normalizedPath = file.path.startsWith("/")
+    const normalizedPath = file.path.startsWith('/')
       ? file.path
-      : `/${file.path}`.replace("@/", "");
+      : `/${file.path}`.replace('@/', '');
 
     const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
-    const fileContent = await fs.readFile(filePath, "utf-8");
+    const fileContent = await fs.readFile(filePath, 'utf-8');
 
-    const fileName = normalizedPath.split("/").pop() || "";
+    const fileName = normalizedPath.split('/').pop() || '';
 
     const getTargetPath = (type: string) => {
-      if (type === "registry:ui") return `/components/ui/${fileName}`;
-      if (type === "registry:hook") return `/hooks/${fileName}`;
-      if (type === "registry:lib") return `/lib/${fileName}`;
+      if (type === 'registry:ui') return `/components/ui/${fileName}`;
+      if (type === 'registry:hook') return `/hooks/${fileName}`;
+      if (type === 'registry:lib') return `/lib/${fileName}`;
       return `/components/mvpblocks/${fileName}`;
     };
 
     const fileType =
-      typeof file === "string" ? registryType : file.type || registryType;
+      typeof file === 'string' ? registryType : file.type || registryType;
 
     // Modify the import paths in the content
     let modifiedContent = fileContent;
-    if (fileContent.includes("@/components/mvpblocks/")) {
+    if (fileContent.includes('@/components/mvpblocks/')) {
       modifiedContent = fileContent.replace(
         /@\/components\/mvpblocks\/.*?([^/]+)$/gm,
-        "@/components/mvpblocks/$1",
+        '@/components/mvpblocks/$1',
       );
     }
 
@@ -93,7 +93,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
       content: modifiedContent,
       path: normalizedPath,
       target:
-        typeof file === "string"
+        typeof file === 'string'
           ? getTargetPath(registryType)
           : file.target || getTargetPath(fileType),
     };
@@ -110,7 +110,7 @@ const main = async () => {
     const component = { ...registry[i] };
     const files = component.files;
     delete component.component;
-    if (!files) throw new Error("No files found for component");
+    if (!files) throw new Error('No files found for component');
 
     const filesArray = await getComponentFiles(files, component.type);
     const json = JSON.stringify(
@@ -138,7 +138,7 @@ main()
     if (changes > 0) {
       console.log(`✅ Done - Updated ${changes} registry file(s)`);
     } else {
-      console.log("✅ Done - No changes needed");
+      console.log('✅ Done - No changes needed');
     }
   })
   .catch((err) => {

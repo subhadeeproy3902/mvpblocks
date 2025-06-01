@@ -1,20 +1,20 @@
-"use client";
-import React from "react";
-import { Mail } from "lucide-react";
-import { Phone } from "lucide-react";
-import { MapPin } from "lucide-react";
-import { Github } from "lucide-react";
-import { Twitter } from "lucide-react";
-import { Facebook } from "lucide-react";
-import { Instagram } from "lucide-react";
-import { Send } from "lucide-react";
-import Link from "next/link";
+'use client';
+import React from 'react';
+import { Mail } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { Github } from 'lucide-react';
+import { Twitter } from 'lucide-react';
+import { Facebook } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import { Send } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ContactUs2() {
   const [state, setState] = React.useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    message: '',
     errors: {} as Record<string, string>,
     submitting: false,
     submitted: false,
@@ -25,7 +25,7 @@ export default function ContactUs2() {
     setState({ ...state, submitting: true });
 
     // Console log only
-    console.log("Form submitted:", {
+    console.log('Form submitted:', {
       name: state.name,
       email: state.email,
       message: state.message,
@@ -51,7 +51,7 @@ export default function ContactUs2() {
         className="mx-auto mb-6 grid w-full items-start gap-12 rounded-lg border bg-white bg-opacity-10 px-4 pb-6 pt-10 shadow shadow-slate-800 md:grid-cols-2 lg:px-12"
         style={{
           backgroundImage:
-            "radial-gradient(164.75% 100% at 50% 0,#272f3c 0,#0b1224 48.73%)",
+            'radial-gradient(164.75% 100% at 50% 0,#272f3c 0,#0b1224 48.73%)',
         }}
       >
         <form className="space-y-8 text-slate-300" onSubmit={handleSubmit}>
@@ -102,7 +102,7 @@ export default function ContactUs2() {
             type="submit"
             disabled={state.submitting}
           >
-            {state.submitting ? "Sending..." : "Send"}
+            {state.submitting ? 'Sending...' : 'Send'}
             <Send className="mx-2 inline h-4" />
           </button>
         </form>

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   motion,
   useAnimation,
   useMotionValue,
   useTransform,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
+} from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 interface PhoneMockupProps {
   className?: string;
@@ -20,11 +20,11 @@ interface PhoneMockupProps {
 export default function PhoneMockup({
   className,
   imageUrl,
-  alt = "Mobile screenshot",
-  glowColor = "rgba(229, 62, 62, 0.3)",
+  alt = 'Mobile screenshot',
+  glowColor = 'rgba(229, 62, 62, 0.3)',
 }: PhoneMockupProps) {
   const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const isDark = theme === 'dark';
   const controls = useAnimation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -39,7 +39,7 @@ export default function PhoneMockup({
       y: [0, -10, 0],
       transition: {
         duration: 6,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         repeat: Infinity,
       },
     });
@@ -67,13 +67,13 @@ export default function PhoneMockup({
 
   return (
     <motion.div
-      className={cn("relative mx-auto w-full max-w-[320px]", className)}
+      className={cn('relative mx-auto w-full max-w-[320px]', className)}
       animate={controls}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        transformStyle: "preserve-3d",
-        perspective: "1000px",
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
       }}
     >
       <motion.div
@@ -86,15 +86,15 @@ export default function PhoneMockup({
                 `radial-gradient(circle at 30% 30%, rgba(229, 62, 62, ${isHovered ? 0.25 : 0.15}) 0%, rgba(120, 119, 198, ${isHovered ? 0.1 : 0.05}) 50%, transparent 80%)`,
               ]
             : [
-                `radial-gradient(circle at 30% 30%, ${isHovered ? glowColor.replace("0.2", "0.3") : glowColor} 0%, transparent 70%)`,
-                `radial-gradient(circle at 70% 70%, ${isHovered ? glowColor.replace("0.2", "0.3") : glowColor} 0%, transparent 70%)`,
-                `radial-gradient(circle at 30% 30%, ${isHovered ? glowColor.replace("0.2", "0.3") : glowColor} 0%, transparent 70%)`,
+                `radial-gradient(circle at 30% 30%, ${isHovered ? glowColor.replace('0.2', '0.3') : glowColor} 0%, transparent 70%)`,
+                `radial-gradient(circle at 70% 70%, ${isHovered ? glowColor.replace('0.2', '0.3') : glowColor} 0%, transparent 70%)`,
+                `radial-gradient(circle at 30% 30%, ${isHovered ? glowColor.replace('0.2', '0.3') : glowColor} 0%, transparent 70%)`,
               ],
         }}
         transition={{
           duration: isHovered ? 4 : 8,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
         style={{
           zIndex: 0,
@@ -108,16 +108,16 @@ export default function PhoneMockup({
         transition={{
           duration: 0.8,
           delay: 0.2,
-          type: "spring",
+          type: 'spring',
           stiffness: 300,
           damping: 20,
         }}
         className="relative z-10 overflow-hidden rounded-[35px] border-[10px] border-foreground/5 bg-background shadow-lg dark:border-foreground/10"
         style={{
-          transformStyle: "preserve-3d",
-          perspective: "1000px",
+          transformStyle: 'preserve-3d',
+          perspective: '1000px',
           transform: `rotateX(${rotateX.get()}deg) rotateY(${rotateY.get()}deg) scale(${isHovered ? 1.03 : 1})`,
-          transition: "transform 0.2s ease-out",
+          transition: 'transform 0.2s ease-out',
           boxShadow: isDark
             ? `0 0 0 1px rgba(255, 255, 255, 0.05), ${shadowX.get()}px ${shadowY.get()}px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(120, 119, 198, 0.1)`
             : `0 0 0 1px rgba(229, 62, 62, 0.03), ${shadowX.get()}px ${shadowY.get()}px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(229, 62, 62, 0.05)`,
@@ -145,7 +145,7 @@ export default function PhoneMockup({
               duration: 0.8,
               delay: 0.4,
               scale: {
-                type: "spring",
+                type: 'spring',
                 stiffness: 300,
                 damping: 20,
               },
@@ -158,7 +158,7 @@ export default function PhoneMockup({
                 background: isDark
                   ? `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.1) 0%, transparent 60%)`
                   : `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.15) 0%, transparent 60%)`,
-                mixBlendMode: "overlay",
+                mixBlendMode: 'overlay',
               }}
             />
           )}
@@ -174,7 +174,7 @@ export default function PhoneMockup({
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
     </motion.div>

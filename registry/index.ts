@@ -1,8 +1,8 @@
-import { Registry } from "./schema";
-import { blocks } from "./registry-blocks";
-import { ui } from "./registry-ui";
-import { hooks } from "./registry-hooks";
-import { lib } from "./registry-lib";
+import { Registry } from './schema';
+import { blocks } from './registry-blocks';
+import { ui } from './registry-ui';
+import { hooks } from './registry-hooks';
+import { lib } from './registry-lib';
 
 // Ensure that the registry always have an array of registry items
 const ensureArray = <T>(items: T | T[]): T[] =>

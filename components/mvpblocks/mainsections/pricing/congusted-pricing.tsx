@@ -1,73 +1,73 @@
-"use client";
+'use client';
 
-import { buttonVariants } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import { Check, Star } from "lucide-react";
-import Link from "next/link";
-import { useState, useRef } from "react";
-import confetti from "canvas-confetti";
-import NumberFlow from "@number-flow/react";
+import { buttonVariants } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { Check, Star } from 'lucide-react';
+import Link from 'next/link';
+import { useState, useRef } from 'react';
+import confetti from 'canvas-confetti';
+import NumberFlow from '@number-flow/react';
 
 // Define your plans
 const plans = [
   {
-    name: "STARTER",
-    price: "50",
-    yearlyPrice: "40",
-    period: "per month",
+    name: 'STARTER',
+    price: '50',
+    yearlyPrice: '40',
+    period: 'per month',
     features: [
-      "Up to 10 projects",
-      "Basic analytics",
-      "48-hour support response time",
-      "Limited API access",
-      "Community support",
+      'Up to 10 projects',
+      'Basic analytics',
+      '48-hour support response time',
+      'Limited API access',
+      'Community support',
     ],
-    description: "Perfect for individuals and small projects",
-    buttonText: "Start Free Trial",
-    href: "/sign-up",
+    description: 'Perfect for individuals and small projects',
+    buttonText: 'Start Free Trial',
+    href: '/sign-up',
     isPopular: false,
   },
   {
-    name: "PROFESSIONAL",
-    price: "99",
-    yearlyPrice: "79",
-    period: "per month",
+    name: 'PROFESSIONAL',
+    price: '99',
+    yearlyPrice: '79',
+    period: 'per month',
     features: [
-      "Unlimited projects",
-      "Advanced analytics",
-      "24-hour support response time",
-      "Full API access",
-      "Priority support",
-      "Team collaboration",
-      "Custom integrations",
+      'Unlimited projects',
+      'Advanced analytics',
+      '24-hour support response time',
+      'Full API access',
+      'Priority support',
+      'Team collaboration',
+      'Custom integrations',
     ],
-    description: "Ideal for growing teams and businesses",
-    buttonText: "Get Started",
-    href: "/sign-up",
+    description: 'Ideal for growing teams and businesses',
+    buttonText: 'Get Started',
+    href: '/sign-up',
     isPopular: true,
   },
   {
-    name: "ENTERPRISE",
-    price: "299",
-    yearlyPrice: "239",
-    period: "per month",
+    name: 'ENTERPRISE',
+    price: '299',
+    yearlyPrice: '239',
+    period: 'per month',
     features: [
-      "Everything in Professional",
-      "Custom solutions",
-      "Dedicated account manager",
-      "1-hour support response time",
-      "SSO Authentication",
-      "Advanced security",
-      "Custom contracts",
-      "SLA agreement",
+      'Everything in Professional',
+      'Custom solutions',
+      'Dedicated account manager',
+      '1-hour support response time',
+      'SSO Authentication',
+      'Advanced security',
+      'Custom contracts',
+      'SLA agreement',
     ],
-    description: "For large organizations with specific needs",
-    buttonText: "Contact Sales",
-    href: "/contact",
+    description: 'For large organizations with specific needs',
+    buttonText: 'Contact Sales',
+    href: '/contact',
     isPopular: false,
   },
 ];
@@ -92,7 +92,7 @@ interface PricingProps {
 
 export default function CongestedPricing() {
   const [isMonthly, setIsMonthly] = useState(true);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery('(min-width: 768px)');
   const switchRef = useRef<HTMLButtonElement>(null);
 
   const handleToggle = (checked: boolean) => {
@@ -110,16 +110,16 @@ export default function CongestedPricing() {
           y: y / window.innerHeight,
         },
         colors: [
-          "hsl(var(--primary))",
-          "hsl(var(--accent))",
-          "hsl(var(--secondary))",
-          "hsl(var(--muted))",
+          'hsl(var(--primary))',
+          'hsl(var(--accent))',
+          'hsl(var(--secondary))',
+          'hsl(var(--muted))',
         ],
         ticks: 200,
         gravity: 1.2,
         decay: 0.94,
         startVelocity: 30,
-        shapes: ["circle"],
+        shapes: ['circle'],
       });
     }
   };
@@ -170,7 +170,7 @@ export default function CongestedPricing() {
             viewport={{ once: true }}
             transition={{
               duration: 1.6,
-              type: "spring",
+              type: 'spring',
               stiffness: 100,
               damping: 30,
               delay: 0.4,
@@ -178,14 +178,14 @@ export default function CongestedPricing() {
             }}
             className={cn(
               `relative rounded-2xl border-[1px] bg-background p-6 text-center lg:flex lg:flex-col lg:justify-center`,
-              plan.isPopular ? "border-2 border-primary" : "border-border",
-              "flex flex-col",
-              !plan.isPopular && "mt-5",
+              plan.isPopular ? 'border-2 border-primary' : 'border-border',
+              'flex flex-col',
+              !plan.isPopular && 'mt-5',
               index === 0 || index === 2
-                ? "-translate-z-[50px] rotate-y-[10deg] z-0 translate-x-0 translate-y-0 transform"
-                : "z-10",
-              index === 0 && "origin-right",
-              index === 2 && "origin-left",
+                ? '-translate-z-[50px] rotate-y-[10deg] z-0 translate-x-0 translate-y-0 transform'
+                : 'z-10',
+              index === 0 && 'origin-right',
+              index === 2 && 'origin-left',
             )}
           >
             {plan.isPopular && (
@@ -207,20 +207,20 @@ export default function CongestedPricing() {
                       isMonthly ? Number(plan.price) : Number(plan.yearlyPrice)
                     }
                     format={{
-                      style: "currency",
-                      currency: "USD",
+                      style: 'currency',
+                      currency: 'USD',
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 0,
                     }}
                     transformTiming={{
                       duration: 500,
-                      easing: "ease-out",
+                      easing: 'ease-out',
                     }}
                     willChange
                     className="font-variant-numeric: tabular-nums"
                   />
                 </span>
-                {plan.period !== "Next 3 months" && (
+                {plan.period !== 'Next 3 months' && (
                   <span className="text-sm font-semibold leading-6 tracking-wide text-muted-foreground">
                     / {plan.period}
                   </span>
@@ -228,7 +228,7 @@ export default function CongestedPricing() {
               </div>
 
               <p className="text-xs leading-5 text-muted-foreground">
-                {isMonthly ? "billed monthly" : "billed annually"}
+                {isMonthly ? 'billed monthly' : 'billed annually'}
               </p>
 
               <ul className="mt-5 flex flex-col gap-2">
@@ -246,13 +246,13 @@ export default function CongestedPricing() {
                 href={plan.href}
                 className={cn(
                   buttonVariants({
-                    variant: "outline",
+                    variant: 'outline',
                   }),
-                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
-                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:bg-primary hover:text-primary-foreground hover:ring-2 hover:ring-primary hover:ring-offset-1",
+                  'group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter',
+                  'transform-gpu ring-offset-current transition-all duration-300 ease-out hover:bg-primary hover:text-primary-foreground hover:ring-2 hover:ring-primary hover:ring-offset-1',
                   plan.isPopular
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-background text-foreground",
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-background text-foreground',
                 )}
               >
                 {plan.buttonText}

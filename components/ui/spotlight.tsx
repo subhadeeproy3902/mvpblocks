@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { motion } from "motion/react";
+'use client';
+import React from 'react';
+import { motion } from 'motion/react';
 
 type SpotlightProps = {
   gradientFirst?: string;
@@ -15,9 +15,9 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({
-  gradientFirst = "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.1) 0, hsla(341, 100%, 55%, 0.02) 50%, hsla(336, 100%, 45%, 0) 80%)",
-  gradientSecond = "radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.06) 0, hsla(335, 100%, 55%, 0.02) 80%, transparent 100%)",
-  gradientThird = "radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.04) 0, hsla(327, 100%, 85%, 0.04) 80%, transparent 100%)",
+  gradientFirst = 'radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(336, 100%, 50%, 0.1) 0, hsla(341, 100%, 55%, 0.02) 50%, hsla(336, 100%, 45%, 0) 80%)',
+  gradientSecond = 'radial-gradient(50% 50% at 50% 50%, hsla(333, 100%, 85%, 0.06) 0, hsla(335, 100%, 55%, 0.02) 80%, transparent 100%)',
+  gradientThird = 'radial-gradient(50% 50% at 50% 50%, hsla(332, 100%, 85%, 0.04) 0, hsla(327, 100%, 85%, 0.04) 80%, transparent 100%)',
   translateY = -350,
   width = 560,
   height = 1380,
@@ -45,8 +45,8 @@ export const Spotlight = ({
         transition={{
           duration,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
+          repeatType: 'reverse',
+          ease: 'easeInOut',
         }}
         className="pointer-events-none absolute left-0 top-0 z-0 h-screen w-screen"
       >
@@ -62,7 +62,7 @@ export const Spotlight = ({
 
         <div
           style={{
-            transform: "rotate(-45deg) translate(5%, -50%)",
+            transform: 'rotate(-45deg) translate(5%, -50%)',
             background: gradientSecond,
             width: `${smallWidth}px`,
             height: `${height}px`,
@@ -72,7 +72,7 @@ export const Spotlight = ({
 
         <div
           style={{
-            transform: "rotate(-45deg) translate(-180%, -70%)",
+            transform: 'rotate(-45deg) translate(-180%, -70%)',
             background: gradientThird,
             width: `${smallWidth}px`,
             height: `${height}px`,
@@ -88,8 +88,8 @@ export const Spotlight = ({
         transition={{
           duration,
           repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
+          repeatType: 'reverse',
+          ease: 'easeInOut',
         }}
         className="pointer-events-none absolute right-0 top-0 z-40 h-screen w-screen"
       >
@@ -105,7 +105,7 @@ export const Spotlight = ({
 
         <div
           style={{
-            transform: "rotate(45deg) translate(-5%, -50%)",
+            transform: 'rotate(45deg) translate(-5%, -50%)',
             background: gradientSecond,
             width: `${smallWidth}px`,
             height: `${height}px`,
@@ -115,7 +115,7 @@ export const Spotlight = ({
 
         <div
           style={{
-            transform: "rotate(45deg) translate(180%, -70%)",
+            transform: 'rotate(45deg) translate(180%, -70%)',
             background: gradientThird,
             width: `${smallWidth}px`,
             height: `${height}px`,

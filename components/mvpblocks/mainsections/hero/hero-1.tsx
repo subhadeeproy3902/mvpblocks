@@ -1,5 +1,5 @@
-import React from "react";
-import { ArrowRight } from "lucide-react";
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero1() {
   return (
@@ -21,7 +21,7 @@ export default function Hero1() {
             </h1>
 
             <h2 className="font-geist mx-auto bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] bg-clip-text text-4xl tracking-tighter text-transparent md:text-6xl">
-              Designing your projects faster with{" "}
+              Designing your projects faster with{' '}
               <span className="bg-gradient-to-r from-purple-300 to-orange-200 bg-clip-text text-transparent">
                 the largest figma UI kit.
               </span>

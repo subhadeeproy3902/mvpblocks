@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Database,
   Sparkles,
   Zap,
   ArrowUpRight,
-} from "lucide-react";
+} from 'lucide-react';
 
 export default function AppHero() {
   // State for animated counters
@@ -64,7 +64,7 @@ export default function AppHero() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { type: 'spring', stiffness: 100 },
     },
   };
 
@@ -74,7 +74,7 @@ export default function AppHero() {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   };
 
@@ -84,7 +84,7 @@ export default function AppHero() {
     transition: {
       duration: 20,
       repeat: Infinity,
-      ease: "linear",
+      ease: 'linear',
     },
   };
 
@@ -95,7 +95,7 @@ export default function AppHero() {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   };
 
@@ -106,7 +106,7 @@ export default function AppHero() {
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         delay: 1.2,
       },
@@ -120,7 +120,7 @@ export default function AppHero() {
     transition: {
       duration: 2,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   };
 
@@ -192,7 +192,7 @@ export default function AppHero() {
               transition={{
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: 'easeInOut',
                 delay: Math.random() * 2,
               }}
             />
@@ -370,7 +370,7 @@ export default function AppHero() {
                 ))}
               </div>
               <span className="text-xs text-slate-300">
-                <span className="font-semibold text-white">500+</span>{" "}
+                <span className="font-semibold text-white">500+</span>{' '}
                 developers already building
               </span>
               <ArrowUpRight className="h-3 w-3 text-purple-400" />

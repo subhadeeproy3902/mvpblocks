@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { AnimationPlaybackControls, motion, useAnimate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { Bricolage_Grotesque } from "next/font/google";
+import { cn } from '@/lib/utils';
+import { AnimationPlaybackControls, motion, useAnimate } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { Bricolage_Grotesque } from 'next/font/google';
 
 const space = Bricolage_Grotesque({
-  subsets: ["latin"],
+  subsets: ['latin'],
 });
 
 export default function EndSlider() {
@@ -18,8 +18,8 @@ export default function EndSlider() {
   useEffect(() => {
     animation.current = animate(
       scope.current,
-      { x: "-50%" },
-      { duration: 30, ease: "linear", repeat: Infinity },
+      { x: '-50%' },
+      { duration: 30, ease: 'linear', repeat: Infinity },
     );
   }, []);
 
@@ -46,7 +46,7 @@ export default function EndSlider() {
             <div
               key={index}
               className={cn(
-                "flex items-center gap-4 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center font-semibold text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55",
+                'flex items-center gap-4 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center font-semibold text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55',
                 space.className,
               )}
             >
@@ -55,7 +55,7 @@ export default function EndSlider() {
                 alt="Metal Rose"
                 className="mr-4 h-32 w-32"
               />
-              <span className={cn(slowDownAnimation && "text-primary")}>
+              <span className={cn(slowDownAnimation && 'text-primary')}>
                 Ready. Set. Ship.
               </span>
             </div>

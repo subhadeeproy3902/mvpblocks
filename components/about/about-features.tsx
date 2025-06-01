@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 import {
   Book,
   Code,
@@ -8,51 +8,51 @@ import {
   PlusCircle,
   Sliders,
   Terminal,
-} from "lucide-react";
+} from 'lucide-react';
 
 export default function AboutFeaturesSection() {
   const features = [
     {
-      title: "Developer-Friendly",
-      description: "Tailored for developers to create and iterate fast.",
+      title: 'Developer-Friendly',
+      description: 'Tailored for developers to create and iterate fast.',
       icon: <Code />,
     },
     {
-      title: "CLI Support",
-      description: "Command-line interface support for seamless development.",
+      title: 'CLI Support',
+      description: 'Command-line interface support for seamless development.',
       icon: <Terminal />,
     },
     {
-      title: "Easily Customisable",
-      description: "Fully adaptable to fit your unique needs.",
+      title: 'Easily Customisable',
+      description: 'Fully adaptable to fit your unique needs.',
       icon: <Sliders />,
     },
     {
-      title: "v0 Support",
+      title: 'v0 Support',
       description:
-        "Initial version support to kickstart your MVP without hassle.",
+        'Initial version support to kickstart your MVP without hassle.',
       icon: <GitCommit />,
     },
     {
-      title: "Fully Functional Docs Understanding",
+      title: 'Fully Functional Docs Understanding',
       description:
-        "Comprehensive documentation to understand every feature and usage.",
+        'Comprehensive documentation to understand every feature and usage.',
       icon: <Book />,
     },
     {
-      title: "Multi Viewport",
-      description: "Preview your MVP across multiple devices and screen sizes.",
+      title: 'Multi Viewport',
+      description: 'Preview your MVP across multiple devices and screen sizes.',
       icon: <Monitor />,
     },
     {
-      title: "Easy-to-Use Interface",
-      description: "Simple, intuitive UI for seamless MVP creation.",
+      title: 'Easy-to-Use Interface',
+      description: 'Simple, intuitive UI for seamless MVP creation.',
       icon: <Layout />,
     },
     {
-      title: "Add Yours!",
+      title: 'Add Yours!',
       description:
-        "Add your own features and customize your MVPBlocks experience.",
+        'Add your own features and customize your MVPBlocks experience.',
       icon: <PlusCircle />,
     },
   ];
@@ -80,9 +80,9 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "group/feature relative flex flex-col py-10 dark:border-neutral-800 lg:border-r",
-        (index === 0 || index === 4) && "dark:border-neutral-800 lg:border-l",
-        index < 4 && "dark:border-neutral-800 lg:border-b",
+        'group/feature relative flex flex-col py-10 dark:border-neutral-800 lg:border-r',
+        (index === 0 || index === 4) && 'dark:border-neutral-800 lg:border-l',
+        index < 4 && 'dark:border-neutral-800 lg:border-b',
       )}
     >
       {index < 4 && (

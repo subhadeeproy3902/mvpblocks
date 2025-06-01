@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Image, { ImageProps } from "next/image";
-import { cn } from "@/lib/utils";
+import { useState, useEffect } from 'react';
+import Image, { ImageProps } from 'next/image';
+import { cn } from '@/lib/utils';
 
-interface LazyImageProps extends Omit<ImageProps, "onLoad"> {
+interface LazyImageProps extends Omit<ImageProps, 'onLoad'> {
   threshold?: number;
   blurPlaceholder?: boolean;
 }
@@ -27,7 +27,7 @@ export function LazyImage({
     }
 
     const element = document.getElementById(
-      `lazy-image-${alt.replace(/\s+/g, "-")}`,
+      `lazy-image-${alt.replace(/\s+/g, '-')}`,
     );
     if (!element) return;
 
@@ -50,16 +50,16 @@ export function LazyImage({
 
   return (
     <div
-      id={`lazy-image-${alt.replace(/\s+/g, "-")}`}
-      className={cn("relative overflow-hidden", className)}
+      id={`lazy-image-${alt.replace(/\s+/g, '-')}`}
+      className={cn('relative overflow-hidden', className)}
     >
       {isInView ? (
         <Image
           src={src}
           alt={alt}
           className={cn(
-            "transition-opacity duration-500",
-            isLoaded ? "opacity-100" : "opacity-0",
+            'transition-opacity duration-500',
+            isLoaded ? 'opacity-100' : 'opacity-0',
           )}
           onLoadingComplete={() => setIsLoaded(true)}
           {...props}
@@ -69,8 +69,8 @@ export function LazyImage({
           <div
             className="absolute inset-0 animate-pulse bg-muted/20"
             style={{
-              width: props.width ? `${props.width}px` : "100%",
-              height: props.height ? `${props.height}px` : "100%",
+              width: props.width ? `${props.width}px` : '100%',
+              height: props.height ? `${props.height}px` : '100%',
             }}
           />
         )

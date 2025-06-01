@@ -1,0 +1,251 @@
+'use client';
+
+import type React from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
+
+type TeamMember = {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  socialMedia?: {
+    linkedin?: string;
+    github?: string;
+  };
+};
+
+interface TeamSectionProps {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  teamMembers: TeamMember[];
+  backgroundColor?: string;
+  textColor?: string;
+  accentColor?: string;
+  secondaryColor?: string;
+  className?: string;
+}
+
+const dami_data: TeamMember[] = [
+  {
+    id: 1,
+    name: 'Kadir Miye',
+    role: 'Chief Executive Officer',
+    image:
+      'https://img.freepik.com/free-psd/3d-rendering-avatar_23-2150833554.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 2,
+    name: 'Isabella Thompson',
+    role: 'Chief Technology Officer',
+    image:
+      'https://img.freepik.com/premium-photo/png-headset-headphones-portrait-cartoon_53876-762197.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 3,
+    name: 'Zainab Rahman',
+    role: 'Chief Operations Officer',
+    image:
+      'https://img.freepik.com/premium-photo/png-cartoon-portrait-glasses-white-background_53876-905385.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 4,
+    name: 'Aiden Davis',
+    role: 'Chief Marketing Officer',
+    image:
+      'https://img.freepik.com/premium-psd/3d-avatar-character_975163-690.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 5,
+    name: 'Aysha Hussain',
+    role: 'UX Designer',
+    image:
+      'https://img.freepik.com/free-photo/fun-3d-illustration-american-referee_183364-81231.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 6,
+    name: 'Samira Shah',
+    role: 'Product Manager',
+    image:
+      'https://img.freepik.com/premium-psd/lego-character-with-blue-button-his-chest_1217673-223400.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 7,
+    name: 'Ethan Williams',
+    role: 'Backend Developer',
+    image:
+      'https://img.freepik.com/premium-photo/there-is-black-girl-with-headphones-yellow-jacket_1034474-106535.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+  {
+    id: 8,
+    name: 'Amina Khan',
+    role: 'Frontend Developer',
+    image:
+      'https://img.freepik.com/free-photo/portrait-young-student-with-book-education-day_23-2150980030.jpg?ga=GA1.1.1818589012.1736774497&semt=ais_hybrid',
+  },
+];
+
+export interface SupportTeamProps extends TeamSectionProps {
+  ctaButtons?: Array<{
+    label: string;
+    href?: string;
+    isPrimary?: boolean;
+    icon?: React.ReactNode;
+    onClick?: () => void;
+  }>;
+}
+
+export default function TeamSectionVariant6({
+  title = 'Our team of experts are here to help',
+  subtitle = 'Get support 24/7, with our award-winning support network of growth experts.',
+  teamMembers = dami_data,
+  backgroundColor = '',
+  textColor = '#111827',
+  accentColor = '#4f46e5',
+  secondaryColor = '#6b7280',
+  className,
+  ctaButtons = [
+    {
+      label: 'Book a call',
+      isPrimary: false,
+      icon: <Phone size={16} className="mr-2" />,
+    },
+    { label: 'Book a demo', isPrimary: true },
+  ],
+}: SupportTeamProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollButtons = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    checkScrollButtons();
+    window.addEventListener('resize', checkScrollButtons);
+    return () => window.removeEventListener('resize', checkScrollButtons);
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const { clientWidth } = scrollContainerRef.current;
+      const scrollAmount = clientWidth * 0.8;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  return (
+    <section
+      className={cn('py-16 w-full', className)}
+      style={{ backgroundColor, color: textColor }}
+    >
+      <div className="container mx-auto max-w-6xl px-4">
+        <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">{title}</h2>
+            <p
+              className="text-base max-w-2xl mx-auto"
+              style={{ color: secondaryColor }}
+            >
+              {subtitle}
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              {ctaButtons.map((button, index) => (
+                <a
+                  key={index}
+                  href={button.href || '#'}
+                  className={cn(
+                    'px-6 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center',
+                    button.isPrimary
+                      ? 'text-white'
+                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200',
+                  )}
+                  style={
+                    button.isPrimary ? { backgroundColor: accentColor } : {}
+                  }
+                  onClick={button.onClick}
+                >
+                  {button.icon}
+                  {button.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative mt-12">
+            {canScrollLeft && (
+              <button
+                onClick={() => scroll('left')}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft size={20} />
+              </button>
+            )}
+
+            <div
+              ref={scrollContainerRef}
+              className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar"
+              onScroll={checkScrollButtons}
+            >
+              {teamMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className="flex-shrink-0 w-64 bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <Image
+                      src={member.image || '/placeholder.svg'}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium">{member.name}</h3>
+                    <p className="text-sm" style={{ color: secondaryColor }}>
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {canScrollRight && (
+              <button
+                onClick={() => scroll('right')}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md p-2"
+                aria-label="Scroll right"
+              >
+                <ChevronRight size={20} />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+    </section>
+  );
+}

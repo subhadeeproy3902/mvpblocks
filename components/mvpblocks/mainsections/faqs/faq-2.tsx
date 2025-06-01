@@ -1,91 +1,91 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
-import { MinusIcon, PlusIcon } from "lucide-react";
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { MinusIcon, PlusIcon } from 'lucide-react';
 
 interface FaqItem {
   id: string;
   question: string;
   answer: string;
-  category: "general" | "pricing" | "technical" | "support";
+  category: 'general' | 'pricing' | 'technical' | 'support';
 }
 
 const faqItems: FaqItem[] = [
   {
-    id: "1",
-    question: "What is MVPBlocks?",
+    id: '1',
+    question: 'What is MVPBlocks?',
     answer:
-      "MVPBlocks is a collection of ready-to-use UI components built with Next.js and Tailwind CSS. It helps developers quickly build beautiful, responsive websites without starting from scratch.",
-    category: "general",
+      'MVPBlocks is a collection of ready-to-use UI components built with Next.js and Tailwind CSS. It helps developers quickly build beautiful, responsive websites without starting from scratch.',
+    category: 'general',
   },
   {
-    id: "2",
-    question: "Is MVPBlocks free to use?",
+    id: '2',
+    question: 'Is MVPBlocks free to use?',
     answer:
-      "Yes, MVPBlocks is completely free and open-source. You can use it for personal and commercial projects without any restrictions or attribution requirements.",
-    category: "general",
+      'Yes, MVPBlocks is completely free and open-source. You can use it for personal and commercial projects without any restrictions or attribution requirements.',
+    category: 'general',
   },
   {
-    id: "3",
-    question: "Do I need to know Tailwind CSS to use MVPBlocks?",
+    id: '3',
+    question: 'Do I need to know Tailwind CSS to use MVPBlocks?',
     answer:
       "While having Tailwind CSS knowledge is helpful, it's not required. You can simply copy and paste our components into your project and make basic modifications without deep Tailwind expertise.",
-    category: "technical",
+    category: 'technical',
   },
   {
-    id: "4",
-    question: "How do I install MVPBlocks?",
+    id: '4',
+    question: 'How do I install MVPBlocks?',
     answer:
       "You don't need to install MVPBlocks as a package. Simply browse our component library, find the components you need, and copy the code into your project. Make sure you have the required dependencies installed.",
-    category: "technical",
+    category: 'technical',
   },
   {
-    id: "5",
-    question: "Can I customize the components?",
+    id: '5',
+    question: 'Can I customize the components?',
     answer:
-      "Absolutely! All components are built with customization in mind. You can modify colors, spacing, typography, and more using Tailwind classes or by editing the component code directly.",
-    category: "technical",
+      'Absolutely! All components are built with customization in mind. You can modify colors, spacing, typography, and more using Tailwind classes or by editing the component code directly.',
+    category: 'technical',
   },
   {
-    id: "6",
-    question: "Do MVPBlocks components work with dark mode?",
+    id: '6',
+    question: 'Do MVPBlocks components work with dark mode?',
     answer:
       "Yes, all MVPBlocks components are designed to work seamlessly with both light and dark modes. They automatically adapt to your site's theme settings.",
-    category: "technical",
+    category: 'technical',
   },
   {
-    id: "7",
-    question: "How often are new components added?",
+    id: '7',
+    question: 'How often are new components added?',
     answer:
-      "We regularly add new components to the library. Our goal is to provide a comprehensive set of components for all common UI patterns and website sections.",
-    category: "general",
+      'We regularly add new components to the library. Our goal is to provide a comprehensive set of components for all common UI patterns and website sections.',
+    category: 'general',
   },
   {
-    id: "8",
-    question: "How can I contribute to MVPBlocks?",
+    id: '8',
+    question: 'How can I contribute to MVPBlocks?',
     answer:
-      "We welcome contributions! You can contribute by creating new components, improving existing ones, fixing bugs, or enhancing documentation. Check our GitHub repository for contribution guidelines.",
-    category: "support",
+      'We welcome contributions! You can contribute by creating new components, improving existing ones, fixing bugs, or enhancing documentation. Check our GitHub repository for contribution guidelines.',
+    category: 'support',
   },
 ];
 
 const categories = [
-  { id: "all", label: "All" },
-  { id: "general", label: "General" },
-  { id: "technical", label: "Technical" },
-  { id: "pricing", label: "Pricing" },
-  { id: "support", label: "Support" },
+  { id: 'all', label: 'All' },
+  { id: 'general', label: 'General' },
+  { id: 'technical', label: 'Technical' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'support', label: 'Support' },
 ];
 
 export default function Faq2() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState<string>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const filteredFaqs =
-    activeCategory === "all"
+    activeCategory === 'all'
       ? faqItems
       : faqItems.filter((item) => item.category === activeCategory);
 
@@ -121,10 +121,10 @@ export default function Faq2() {
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={cn(
-                "rounded-full px-4 py-2 text-sm font-medium transition-all",
+                'rounded-full px-4 py-2 text-sm font-medium transition-all',
                 activeCategory === category.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
               )}
             >
               {category.label}
@@ -143,12 +143,12 @@ export default function Faq2() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={cn(
-                  "h-fit overflow-hidden rounded-xl border border-border",
+                  'h-fit overflow-hidden rounded-xl border border-border',
                   expandedId === faq.id
-                    ? "shadow-3xl bg-card/50"
-                    : "bg-card/50",
+                    ? 'shadow-3xl bg-card/50'
+                    : 'bg-card/50',
                 )}
-                style={{ minHeight: "88px" }}
+                style={{ minHeight: '88px' }}
               >
                 <button
                   onClick={() => toggleExpand(faq.id)}
@@ -170,7 +170,7 @@ export default function Faq2() {
                   {expandedId === faq.id && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
+                      animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"

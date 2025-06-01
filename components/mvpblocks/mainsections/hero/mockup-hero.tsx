@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 import {
   motion,
   useAnimation,
@@ -8,23 +8,23 @@ import {
   useScroll,
   useTransform,
   useMotionValue,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import PhoneMockup from "@/components/ui/phone-mockup";
-import { useTheme } from "next-themes";
-import { ArrowRight, Sparkles } from "lucide-react";
+} from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import PhoneMockup from '@/components/ui/phone-mockup';
+import { useTheme } from 'next-themes';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function LucyHero() {
   const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const isDark = theme === 'dark';
   const heroRef = useRef<HTMLDivElement>(null);
   const mockupRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(heroRef, { once: false, amount: 0.3 });
   const controls = useAnimation();
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -39,7 +39,7 @@ export default function LucyHero() {
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible");
+      controls.start('visible');
     }
   }, [isInView, controls]);
 
@@ -52,7 +52,7 @@ export default function LucyHero() {
   }) => (
     <span
       className={cn(
-        "bg-gradient-to-r from-primary via-rose-400 to-rose-300 bg-clip-text text-transparent dark:from-primary dark:via-rose-300 dark:to-red-400",
+        'bg-gradient-to-r from-primary via-rose-400 to-rose-300 bg-clip-text text-transparent dark:from-primary dark:via-rose-300 dark:to-red-400',
         className,
       )}
     >
@@ -104,7 +104,7 @@ export default function LucyHero() {
               }}
             >
               <h2 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                LU-cy bridges <GradientText>Web3</GradientText> and{" "}
+                LU-cy bridges <GradientText>Web3</GradientText> and{' '}
                 <GradientText>AI</GradientText> platforms for dev teams
               </h2>
             </motion.div>
@@ -118,7 +118,7 @@ export default function LucyHero() {
             >
               The future is a blend of intelligence and decentralization. LU-cy
               connects AI tools with Web3 infrastructure, giving developers the
-              power to build beyond limits. One platform.{" "}
+              power to build beyond limits. One platform.{' '}
               <span className="font-semibold text-foreground">
                 Endless potential.
               </span>
@@ -161,7 +161,7 @@ export default function LucyHero() {
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
               className="mt-10 flex flex-wrap justify-center gap-3 md:justify-start"
             >
-              {["Web3 Ready", "AI Powered", "Developer First"].map(
+              {['Web3 Ready', 'AI Powered', 'Developer First'].map(
                 (feature, index) => (
                   <motion.div
                     key={feature}
@@ -189,7 +189,7 @@ export default function LucyHero() {
                 scale: 1,
                 transition: {
                   duration: 0.8,
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 100,
                 },
               },
@@ -199,8 +199,8 @@ export default function LucyHero() {
             ref={mockupRef}
             className="relative mx-auto flex justify-center"
             style={{
-              transformStyle: "preserve-3d",
-              perspective: "1000px",
+              transformStyle: 'preserve-3d',
+              perspective: '1000px',
             }}
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
@@ -222,22 +222,22 @@ export default function LucyHero() {
             <motion.div
               className="relative z-10"
               style={{
-                transformStyle: "preserve-3d",
+                transformStyle: 'preserve-3d',
                 rotateX: rotateX,
                 rotateY: rotateY,
                 scale: isHovered ? 1.05 : 1,
-                transition: "scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transition: 'scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
               }}
             >
               <PhoneMockup
                 imageUrl={
                   isDark
-                    ? "https://blocks.mvp-subha.me/mobile-dark.webp"
-                    : "https://blocks.mvp-subha.me/mobile-light.webp"
+                    ? 'https://blocks.mvp-subha.me/mobile-dark.webp'
+                    : 'https://blocks.mvp-subha.me/mobile-light.webp'
                 }
                 alt="LU-cy mobile app"
                 glowColor={
-                  isDark ? "rgba(229, 62, 62, 0.5)" : "rgba(229, 62, 62, 0.25)"
+                  isDark ? 'rgba(229, 62, 62, 0.5)' : 'rgba(229, 62, 62, 0.25)'
                 }
                 className="max-w-[380px]"
               />
