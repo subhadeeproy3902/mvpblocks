@@ -7,7 +7,7 @@
   "files": [
     {
       "type": "registry:ui",
-      "content": "\"use client\";\n\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\n\nconst AspectRatio = AspectRatioPrimitive.Root;\n\nexport { AspectRatio };\n",
+      "content": "\"use client\";\r\n\r\nimport * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\r\n\r\nconst AspectRatio = AspectRatioPrimitive.Root;\r\n\r\nexport { AspectRatio };\r\n",
       "path": "/components/ui/aspect-ratio.tsx",
       "target": "/components/ui/aspect-ratio.tsx"
     }
