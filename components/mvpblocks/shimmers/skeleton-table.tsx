@@ -101,13 +101,13 @@ const ShimmerTable = ({
 export default function SkeletonTableWrapper({
   rowCount = 5,
   columnCount = 5,
-  showRealTopBar = true,
+  showRealTopBar = false,
   showRealFilter = true,
   showRealColumButton = true,
-  showShimmerTopBar = false,
+  showShimmerTopBar = true,
   bodyClassName = "px-10",
-  showTableHeading = true,
-  tableHeadings = ["Name", "Email", "Phone", "Verified", "Options"],
+  showTableHeading = false,
+  tableHeadings,
 }: SkeletonTableProps) {
   if (showRealTopBar && showShimmerTopBar) {
     console.warn(
