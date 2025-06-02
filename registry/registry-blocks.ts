@@ -1590,4 +1590,20 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/shimmers/shimmer-card-1'),
     ),
   },
+  {
+    name: 'skeleton-table',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/shimmers/skeleton-table.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/shimmers/skeleton-table'),
+    ),
+  },
 ];
