@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-interface SkeletonTableInterface {
+interface SkeletonTableProps {
   rowCount?: number;
   columnCount?: number;
   showRealTopBar?: boolean;
@@ -108,7 +108,7 @@ export default function SkeletonTableWrapper({
   bodyClassName = "px-10",
   showTableHeading = true,
   tableHeadings = ["Name", "Email", "Phone", "Verified", "Options"],
-}: SkeletonTableInterface) {
+}: SkeletonTableProps) {
   if (showRealTopBar && showShimmerTopBar) {
     console.warn(
       "Only one of 'showRealTopBar' or 'showShimmerTopBar' should be true. Defaulting to 'showRealTopBar'."
