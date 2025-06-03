@@ -63,7 +63,7 @@ export default function SkeletonTableTwoWrapper({
     showColumnToggle = true,
     bodyClassName = "px-10",
     tableHeadings = ["Name", "Email", "Phone", "Verified", "Options"],
-    columnWidthArray = ["w-2/12", "w-4/12", "w-2/12", "w-3/12", "w-1/12"]
+    columnWidthArray = ["w-2/12", "w-4/12", "w-3/12", "w-2/12", "w-1/12"]
 }: SkeletonTableProps) {
 
     return (
@@ -78,6 +78,7 @@ export default function SkeletonTableTwoWrapper({
             <ShimmerTable
                 rowCount={rowCount}
                 columnCount={columnCount}
+                columnWidthArray={columnWidthArray}
                 renderHeading={
                     <TableHeading
                         columnCount={columnCount}

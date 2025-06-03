@@ -81,6 +81,7 @@ export default function SkeletonTableOneWrapper({
   showFilter = true,
   showColumnToggle = true,
   bodyClassName = "px-10",
+  columnWidthArray,
 }: SkeletonTableProps) {
 
   return (
@@ -92,6 +93,7 @@ export default function SkeletonTableOneWrapper({
       <ShimmerTable
         rowCount={rowCount}
         columnCount={columnCount}
+        columnWidthArray={columnWidthArray}
       />
     </div>
   );
