@@ -33,7 +33,7 @@ export const ShimmerTable: React.FC<ShimmerTableProps> = ({
   rowCount = 5,
   columnCount = 5,
   renderHeading,
-  columnWidthArray = ["w-2/12", "w-4/12", "w-2/12", "w-3/12", "w-1/12"]
+  columnWidthArray,
 }) => {
 
   if (columnWidthArray && (columnCount !== columnWidthArray.length)) {

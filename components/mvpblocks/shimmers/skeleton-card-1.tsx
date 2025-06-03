@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ShimmerCardOneInterface {
   descriptionLineCount?: number;
   rating?: boolean;
