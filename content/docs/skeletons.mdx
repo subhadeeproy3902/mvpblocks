@@ -4,14 +4,34 @@ description: Skeletons are placeholder elements that can be used to indicate loa
 new: true
 ---
 
-import { ComponentPreview } from "@/components/preview/component-preview";
-import { extractSourceCode } from "@/lib/code";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
 
 ## Shimmer Card
 
 <ComponentPreview
   name="skeleton-card-one"
   classNameComponentContainer="min-h-[500px]"
-  code={(await extractSourceCode("skeleton-card-one")).code}
+  code={(await extractSourceCode('skeleton-card-one')).code}
+  lang="tsx"
+/>
+
+## Shimmer Table
+
+### Example 1
+
+<ComponentPreview
+  name="skeleton-table-one"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode('skeleton-table-one')).code}
+  lang="tsx"
+/>
+
+### Example 2
+
+<ComponentPreview
+  name="skeleton-table-two"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode('skeleton-table-two')).code}
   lang="tsx"
 />

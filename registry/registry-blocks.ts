@@ -1612,9 +1612,9 @@ export const blocks: Registry = [
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
-      "https://blocks.mvp-subha.me/r/input.json",
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/dropdown-menu.json"
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
     ],
     files: [
       {
