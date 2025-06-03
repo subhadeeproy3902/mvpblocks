@@ -25,9 +25,19 @@ const TableHeading: React.FC<SkeletonTableProps> = ({
     columnCount,
     showTableHeading,
     tableHeadings,
+    columnWidthArray
 }) => {
-    if(!columnCount || columnCount === 0) return null;
     
+    if(!columnCount || columnCount === 0) return (
+        <h3 className="text-center text-red-400">Please ensure that columnCount is greater than 0</h3>
+    );
+
+    if(columnWidthArray && (columnCount !== columnWidthArray.length)) {
+    return (
+      <h3 className="text-center text-red-400">Please ensure that columnCount and columnWidthArray length is equal</h3>
+    )
+  };
+
     const headings = showTableHeading
         ? (tableHeadings?.length === columnCount
             ? tableHeadings
@@ -35,10 +45,10 @@ const TableHeading: React.FC<SkeletonTableProps> = ({
         : [];
 
     return (
-        <div className={`flex items-center border-b-2 h-10 mb-1 px-2 ${showTableHeading ? "block" : "hidden"}`}>
+        <div className={`flex items-center border-b-2 h-10 mb-1 ${showTableHeading ? "block" : "hidden"}`}>
             {headings.map((heading, idx) => (
-                <div key={idx} className="w-full flex justify-center">
-                    <h3 className="font-semibold">{heading}</h3>
+                <div key={idx} className={`flex justify-center ${columnWidthArray ? columnWidthArray[idx] : "w-full"} ${idx !== headings.length && "border-l-2"}`}>
+                    <h3 className="font-semibold text-xs md:text-[15px] truncate overflow-hidden whitespace-nowrap">{heading}</h3>
                 </div>
             ))}
         </div>
@@ -53,6 +63,7 @@ export default function SkeletonTableTwoWrapper({
     showColumnToggle = true,
     bodyClassName = "px-10",
     tableHeadings = ["Name", "Email", "Phone", "Verified", "Options"],
+    columnWidthArray = ["w-2/12","w-4/12","w-2/12","w-3/12","w-1/12"]
 }: SkeletonTableProps) {
 
     return (
@@ -72,6 +83,7 @@ export default function SkeletonTableTwoWrapper({
                         columnCount={columnCount}
                         showTableHeading={true}
                         tableHeadings={tableHeadings}
+                        columnWidthArray={columnWidthArray}
                     />
                 }
             />
