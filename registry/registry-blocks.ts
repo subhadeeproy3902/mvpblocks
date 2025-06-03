@@ -1591,19 +1591,35 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'skeleton-table',
+    name: 'skeleton-table-one',
     author: 'midhunkalarikkal',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
     files: [
       {
-        path: '@/components/mvpblocks/shimmers/skeleton-table.tsx',
+        path: '@/components/mvpblocks/shimmers/skeleton-table-1.tsx',
         type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/shimmers/skeleton-table'),
+      () => import('../components/mvpblocks/shimmers/skeleton-table-1'),
+    ),
+  },
+  {
+    name: 'skeleton-table-two',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/shimmers/skeleton-table-2.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/shimmers/skeleton-table-2'),
     ),
   },
 ];
