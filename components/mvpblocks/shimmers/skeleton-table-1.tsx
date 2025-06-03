@@ -25,6 +25,10 @@ export const ShimmerComponent: React.FC<ShimmerComponentProps> = ({ className = 
   return <div className={`animate-pulse rounded bg-gray-500 ${className}`} />;
 };
 
+export const ErrorMessage: React.FC<{ message: string }> = ({ message }) => {
+  return <h3 className="text-center text-red-400">{message}</h3>
+}
+
 export const ShimmerTable: React.FC<ShimmerTableProps> = ({
   rowCount = 5,
   columnCount = 5,
@@ -33,10 +37,8 @@ export const ShimmerTable: React.FC<ShimmerTableProps> = ({
 }) => {
 
   if (columnWidthArray && (columnCount !== columnWidthArray.length)) {
-    return (
-      <h3 className="text-center text-red-400">Please ensure that columnCount and columnWidthArray length is equal</h3>
-    )
-  };
+    return <ErrorMessage message={"Please ensure that columnCount and columnWidthArray length is equal"} />
+  }
 
   return (
     <div className="w-full overflow-x-auto">

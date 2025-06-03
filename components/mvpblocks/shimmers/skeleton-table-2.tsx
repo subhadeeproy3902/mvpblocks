@@ -1,9 +1,9 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ShimmerTable, SkeletonTableProps } from "./skeleton-table-1";
+import { ErrorMessage, ShimmerTable, SkeletonTableProps } from "./skeleton-table-1";
 import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-const RealTopBar:React.FC<SkeletonTableProps> = ({
+const RealTopBar: React.FC<SkeletonTableProps> = ({
     showFilter,
     showColumnToggle,
 }) => (
@@ -27,16 +27,16 @@ const TableHeading: React.FC<SkeletonTableProps> = ({
     tableHeadings,
     columnWidthArray
 }) => {
-    
-    if(!columnCount || columnCount === 0) return (
-        <h3 className="text-center text-red-400">Please ensure that columnCount is greater than 0</h3>
+
+    if (!columnCount || columnCount === 0) return (
+        <ErrorMessage message={"Please ensure that columnCount is greater than 0"} />
     );
 
-    if(columnWidthArray && (columnCount !== columnWidthArray.length)) {
-    return (
-      <h3 className="text-center text-red-400">Please ensure that columnCount and columnWidthArray length is equal</h3>
-    )
-  };
+    if (columnWidthArray && (columnCount !== columnWidthArray.length)) {
+        return (
+            <ErrorMessage message={"Please ensure that columnCount and columnWidthArray length is equal"} />
+        )
+    };
 
     const headings = showTableHeading
         ? (tableHeadings?.length === columnCount
@@ -63,7 +63,7 @@ export default function SkeletonTableTwoWrapper({
     showColumnToggle = true,
     bodyClassName = "px-10",
     tableHeadings = ["Name", "Email", "Phone", "Verified", "Options"],
-    columnWidthArray = ["w-2/12","w-4/12","w-2/12","w-3/12","w-1/12"]
+    columnWidthArray = ["w-2/12", "w-4/12", "w-2/12", "w-3/12", "w-1/12"]
 }: SkeletonTableProps) {
 
     return (
@@ -79,7 +79,7 @@ export default function SkeletonTableTwoWrapper({
                 rowCount={rowCount}
                 columnCount={columnCount}
                 renderHeading={
-                    <TableHeading 
+                    <TableHeading
                         columnCount={columnCount}
                         showTableHeading={true}
                         tableHeadings={tableHeadings}
