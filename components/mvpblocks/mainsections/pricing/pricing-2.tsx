@@ -73,7 +73,7 @@ const plans: {
 
 export default function PricingTwo() {
   return (
-    <section className="not-prose w-full relative py-16 md:py-32">
+    <section className="not-prose relative w-full py-16 md:py-32">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[10%] left-[50%] h-[40%] w-[60%] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute -bottom-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
@@ -96,7 +96,7 @@ export default function PricingTwo() {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`flex flex-col relative ${
+              className={`relative flex flex-col ${
                 plan.badge ? 'border border-amber-300' : ''
               }`}
             >

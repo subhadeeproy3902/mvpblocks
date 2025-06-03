@@ -1575,19 +1575,55 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'shimmer-card-one',
+    name: 'skeleton-card-one',
     author: 'midhunkalarikkal',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
     files: [
       {
-        path: '@/components/mvpblocks/shimmers/shimmer-card-1.tsx',
+        path: '@/components/mvpblocks/shimmers/skeleton-card-1.tsx',
         type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/shimmers/shimmer-card-1'),
+      () => import('../components/mvpblocks/shimmers/skeleton-card-1'),
+    ),
+  },
+  {
+    name: 'skeleton-table-one',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/shimmers/skeleton-table-1.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/shimmers/skeleton-table-1'),
+    ),
+  },
+  {
+    name: 'skeleton-table-two',
+    author: 'midhunkalarikkal',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/shimmers/skeleton-table-2.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/shimmers/skeleton-table-2'),
     ),
   },
 ];
