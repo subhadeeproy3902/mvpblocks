@@ -59,6 +59,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header',
       },
     ],
     component: React.lazy(() =>
@@ -78,6 +79,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity',
       },
     ],
     component: React.lazy(() =>
@@ -97,6 +99,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status',
       },
     ],
     component: React.lazy(() =>
@@ -119,6 +122,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions',
       },
     ],
     component: React.lazy(() =>
@@ -141,6 +145,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table',
       },
     ],
     component: React.lazy(() =>
@@ -160,6 +165,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card',
       },
     ],
     component: React.lazy(() =>
@@ -182,6 +188,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart',
       },
     ],
     component: React.lazy(() =>
@@ -211,6 +218,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar.tsx',
         type: 'registry:block',
+        target: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar',
       },
     ],
     component: React.lazy(() =>
