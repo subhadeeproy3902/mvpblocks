@@ -1634,4 +1634,20 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/shimmers/skeleton-table-2'),
     ),
   },
+  {
+    name: "glass-card",
+    author: "Smalakargh", 
+    type: "registry:block",
+    dependencies: ["tailwindcss", "react"], 
+    registryDependencies: [], 
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/basic/glass-card.tsx", 
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/cards/basic/glass-card"), 
+    ),
+  }
 ];
