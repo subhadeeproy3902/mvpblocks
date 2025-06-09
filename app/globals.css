@@ -352,27 +352,33 @@ code {
 /* Markdown CSS */
 /* Headings */
 .markdown-body h1 {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
+  /* 40px */
 }
 
 .markdown-body h2 {
-  font-size: 2rem; /* 32px */
+  font-size: 2rem;
+  /* 32px */
 }
 
 .markdown-body h3 {
-  font-size: 1.75rem; /* 28px */
+  font-size: 1.75rem;
+  /* 28px */
 }
 
 .markdown-body h4 {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
+  /* 24px */
 }
 
 .markdown-body h5 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
 }
 
 .markdown-body h6 {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
 }
 
 /* Headings */
@@ -408,6 +414,7 @@ code {
 .markdown-body ol {
   padding-left: 20px;
 }
+
 .markdown-body ul li {
   list-style-type: disc;
 }
@@ -449,4 +456,156 @@ code {
 
 .markdown-body th {
   background-color: #626161;
+}
+
+/* Animated minimalist hero */
+@keyframes word-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  margin: 0 0.1em;
+  transition: all 0.3s ease;
+}
+
+.word:hover {
+  color: #c8b4a0;
+  transform: translateY(-2px);
+}
+
+.grid-line {
+  stroke: #c8b4a0;
+  stroke-width: 0.5;
+  opacity: 0;
+  stroke-dasharray: 5 5;
+  stroke-dashoffset: 1000;
+  animation: grid-draw 2s ease-out forwards;
+}
+
+.detail-dot {
+  fill: #c8b4a0;
+  opacity: 0;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.corner-element {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(200, 180, 160, 0.2);
+  opacity: 0;
+  animation: word-appear 1s ease-out forwards;
+}
+
+.corner-element::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(200, 180, 160, 0.3);
+  border-radius: 50%;
+}
+
+.text-decoration {
+  position: relative;
+}
+
+.text-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8b4a0, transparent);
+  animation: underline-grow 2s ease-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes underline-grow {
+  to {
+    width: 100%;
+  }
+}
+
+.floating-element {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #c8b4a0;
+  border-radius: 50%;
+  opacity: 0;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+    opacity: 0.4;
+  }
+
+  75% {
+    transform: translateY(-15px) translateX(7px);
+    opacity: 0.8;
+  }
 }
