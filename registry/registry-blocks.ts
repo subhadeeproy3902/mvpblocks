@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "designer-pricing",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/designer-pricing.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/designer-pricing"),
+    ),
+  },
+  {
     name: "minimal-hero",
     type: "registry:block",
     dependencies: ["react"],
