@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "footer-glow",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-glow.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-glow"),
+    ),
+  },
+  {
     name: 'admin-dashboard-1',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
