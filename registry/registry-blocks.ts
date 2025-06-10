@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "footer-newsletter",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-newsletter.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-newsletter"),
+    ),
+  },
+  {
     name: "designer-pricing",
     type: "registry:block",
     dependencies: [],
