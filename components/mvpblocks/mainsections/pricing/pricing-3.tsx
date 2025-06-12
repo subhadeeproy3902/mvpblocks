@@ -83,7 +83,7 @@ export default function PricingThree() {
               key={index}
               className={`rounded-(--radius) flex flex-col justify-between space-y-8 border p-6 lg:p-10 ${
                 plan.highlight
-                  ? 'dark:bg-muted shadow-lg shadow-gray-950/5 md:col-span-3 dark:[--color-muted:var(--color-zinc-900)]'
+                  ? 'shadow-lg shadow-gray-950/5 dark:bg-muted dark:[--color-muted:var(--color-zinc-900)] md:col-span-3'
                   : 'md:col-span-2 md:my-2 md:rounded-r-none md:border-r-0'
               }`}
             >
@@ -94,7 +94,7 @@ export default function PricingThree() {
                   <span className="my-3 block text-2xl font-semibold">
                     {plan.price}
                   </span>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-sm text-muted-foreground">
                     {plan.description}
                   </p>
                 </div>

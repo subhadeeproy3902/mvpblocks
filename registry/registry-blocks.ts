@@ -3,6 +3,66 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "footer-newsletter",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-newsletter.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-newsletter"),
+    ),
+  },
+  {
+    name: "designer-pricing",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/designer-pricing.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/designer-pricing"),
+    ),
+  },
+  {
+    name: "minimal-hero",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/minimal-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/minimal-hero"),
+    ),
+  },
+  {
+    name: "footer-glow",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-glow.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-glow"),
+    ),
+  },
+  {
     name: 'admin-dashboard-1',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -59,6 +119,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/dashboard-header.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -78,6 +139,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/recent-activity.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -97,6 +159,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/system-status.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -119,6 +182,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/quick-actions.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -141,6 +205,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/users-table.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -160,6 +225,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/dashboard-card.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -182,6 +248,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/revenue-chart.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -211,6 +278,7 @@ export const blocks: Registry = [
       {
         path: '@/components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar.tsx',
         type: 'registry:block',
+        target: 'components/mvpblocks/ui/admin-sidebar.tsx',
       },
     ],
     component: React.lazy(() =>
@@ -1612,9 +1680,9 @@ export const blocks: Registry = [
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
-      "https://blocks.mvp-subha.me/r/input.json",
-      "https://blocks.mvp-subha.me/r/button.json",
-      "https://blocks.mvp-subha.me/r/dropdown-menu.json"
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
     ],
     files: [
       {
