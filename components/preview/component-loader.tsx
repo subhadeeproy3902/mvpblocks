@@ -207,7 +207,7 @@ function ComponentDisplay({
           className={`${className} w-full`}
         />
       ) : (
-        <div className="overflow-y-auto h-full w-full">
+        <div className="overflow-y-auto h-full w-full flex justify-center">
           {component}
         </div>
       )}
