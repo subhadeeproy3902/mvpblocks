@@ -1642,12 +1642,12 @@ export const blocks: Registry = [
     registryDependencies: [], 
     files: [
       {
-        path: "@/components/mvpblocks/cards/basic/glass-card.tsx", 
+        path: "@/components/mvpblocks/basics/buttons/download-animated-btn.tsx", 
         type: "registry:block",
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/cards/basic/glass-card"), 
+      () => import("../components/mvpblocks/basics/buttons/download-animated-btn"), 
     ),
   }
 ];
