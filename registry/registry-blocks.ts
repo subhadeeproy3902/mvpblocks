@@ -1635,10 +1635,10 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: "glass-card",
+    name: "download-animated-btn",
     author: "Smalakargh", 
     type: "registry:block",
-    dependencies: ["tailwindcss", "react"], 
+    dependencies: ["tailwindcss", "react","lucide-react"], 
     registryDependencies: [], 
     files: [
       {
