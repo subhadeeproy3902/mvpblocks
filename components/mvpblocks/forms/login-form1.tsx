@@ -1,6 +1,9 @@
-import { Github } from 'lucide-react';
+'use client';
+import { Github, Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 
 export default function LoginForm1() {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background sm:px-4">
       <div className="w-full space-y-4 sm:max-w-md">
@@ -88,13 +91,22 @@ export default function LoginForm1() {
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-rose-600"
               />
             </div>
-            <div>
+            <div className="relative">
               <label className="font-medium">Password</label>
-              <input
-                type="password"
-                required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-rose-600"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-rose-600"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 mr-3 mt-2 flex items-center"
+                >
+                  {showPassword ? ( <EyeOff size={20} className="text-secondary" /> ) : ( <Eye size={20} className="text-secondary" />)}
+                </button>
+              </div>
             </div>
             <button className="w-full rounded-lg bg-rose-600 px-4 py-2 font-medium text-white duration-150 hover:bg-rose-500 active:bg-rose-600">
               Sign in

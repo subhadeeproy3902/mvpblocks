@@ -13,4 +13,11 @@ export const showcaseData: ShowcaseItem[] = [
     image: '/showcase-images/cndocs.png',
     link: 'https://cn.mvp-subha.me',
   },
+  {
+    name: 'Love Leetcode',
+    about:
+      'Master coding through structured learning paths, solve challenging problems, and build your programming expertise with our comprehensive platform.',
+    image: '/showcase-images/loveleetcode.png',
+    link: 'https://loveleetcode.in',
+  }
 ];

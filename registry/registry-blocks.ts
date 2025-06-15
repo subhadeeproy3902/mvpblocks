@@ -3,6 +3,66 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "footer-newsletter",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-newsletter.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-newsletter"),
+    ),
+  },
+  {
+    name: "designer-pricing",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/designer-pricing.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/designer-pricing"),
+    ),
+  },
+  {
+    name: "minimal-hero",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/hero/minimal-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/hero/minimal-hero"),
+    ),
+  },
+  {
+    name: "footer-glow",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-glow.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-glow"),
+    ),
+  },
+  {
     name: 'admin-dashboard-1',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
