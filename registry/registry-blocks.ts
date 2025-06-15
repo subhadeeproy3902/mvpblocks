@@ -1694,4 +1694,20 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/shimmers/skeleton-table-2'),
     ),
   },
+  {
+    name: "download-animated-btn",
+    author: "Smalakargh", 
+    type: "registry:block",
+    dependencies: ["tailwindcss", "react","lucide-react"], 
+    registryDependencies: [], 
+    files: [
+      {
+        path: "@/components/mvpblocks/basics/buttons/download-animated-btn.tsx", 
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/basics/buttons/download-animated-btn"), 
+    ),
+  }
 ];
