@@ -11,7 +11,6 @@ import {
   MapPin,
   MoreHorizontal,
 } from 'lucide-react';
-import Image from 'next/image';
 
 const users = [
   {
@@ -84,7 +83,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
           >
             <div className="flex w-full items-center gap-4 sm:w-auto">
               <div className="relative">
-                <Image
+                <img
                   src={user.avatar}
                   alt={user.name}
                   width={40}

@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { ExternalLink, Github, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Contributor, fetchContributors } from '@/actions/fetchContributors';
-import Image from 'next/image';
 import WorldMap from '@/components/ui/world-map';
 
 const space = Geist({
@@ -123,7 +122,7 @@ export default function Contributors() {
               <div className="relative overflow-hidden rounded-2xl border border-gray-200/30 shadow-lg transition-all duration-300 hover:shadow-xl">
                 {/* Full width image */}
                 <div className="relative w-full overflow-hidden">
-                  <Image
+                  <img
                     src={contributor.avatar_url}
                     height={100}
                     width={330}

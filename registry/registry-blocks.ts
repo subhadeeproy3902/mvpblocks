@@ -3,6 +3,22 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "login-form-2",
+    author: "Xeven777",
+    type: "registry:block",
+    dependencies: ["framer-motion"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/card.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/forms/login-form-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/forms/login-form-2"),
+    ),
+  },
+  {
     name: "footer-newsletter",
     type: "registry:block",
     dependencies: ["lucide-react"],

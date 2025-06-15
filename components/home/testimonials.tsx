@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Geist } from 'next/font/google';
@@ -102,7 +101,7 @@ const TestimonialsColumn = (props: {
                 <div className="absolute -left-5 -top-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b from-primary/10 to-card blur-md" />
                 <div>{text}</div>
                 <div className="mt-5 flex items-center gap-2">
-                  <Image
+                  <img
                     src={imageSrc}
                     alt={name}
                     height={40}

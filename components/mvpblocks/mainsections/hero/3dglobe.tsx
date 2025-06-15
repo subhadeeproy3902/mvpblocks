@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Globe3D() {
@@ -88,13 +87,12 @@ export default function Globe3D() {
             />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
-            <Image
+            <img
               src="https://blocks.mvp-subha.me/assets/lunexa-db.png"
               alt="Lunexa Dashboard"
               width={1920}
               height={1080}
               className="h-auto w-full rounded-lg border border-white/10"
-              priority
             />
           </div>
         </motion.div>

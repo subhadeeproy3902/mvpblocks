@@ -4,7 +4,6 @@ import type React from 'react';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Code, Star, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Particles } from '@/components/ui/particles';
 import { Spotlight } from '@/components/ui/spotlight';
@@ -295,7 +294,7 @@ export default function WaitlistPage() {
                 className="size-10 rounded-full border-2 border-background bg-gradient-to-r from-primary to-rose-500 p-[2px]"
               >
                 <div className="overflow-hidden rounded-full">
-                  <Image
+                  <img
                     src={user.imgUrl}
                     alt="Avatar"
                     className="rounded-full transition-all duration-300 hover:rotate-6 hover:scale-110"

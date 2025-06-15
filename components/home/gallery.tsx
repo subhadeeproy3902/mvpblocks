@@ -9,7 +9,6 @@ import { motion, useInView } from 'framer-motion';
 import CardCaroursalDemo from './cardcarouseldemo';
 import WrapButtonDemo from '../ui/wrap-button';
 import { Globe } from 'lucide-react';
-import Image from 'next/image';
 
 const space = Geist({
   subsets: ['latin'],
@@ -40,7 +39,7 @@ export default function Gallery() {
         <Spotlight />
       </div>
       <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 lg:block">
-        <Image
+        <img
           alt="Trending graphic 1"
           width={100}
           height={100}
@@ -49,7 +48,7 @@ export default function Gallery() {
         />
       </div>
       <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block">
-        <Image
+        <img
           alt="Trending graphic 2"
           width={100}
           height={100}

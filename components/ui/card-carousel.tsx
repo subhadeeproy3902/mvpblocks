@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -114,7 +113,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 {images.map((image, index) => (
                   <SwiperSlide key={index}>
                     <div className="size-full rounded-3xl">
-                      <Image
+                      <img
                         src={image.src}
                         width={500}
                         height={500}
@@ -127,7 +126,7 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                 {images.map((image, index) => (
                   <SwiperSlide key={index}>
                     <div className="size-full rounded-3xl">
-                      <Image
+                      <img
                         src={image.src}
                         width={200}
                         height={200}

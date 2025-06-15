@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -172,10 +171,9 @@ function TeamMemberCard({
       <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-        <Image
+        <img
           src={member.imageUrl}
           alt={member.name}
-          fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />

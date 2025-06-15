@@ -6,7 +6,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { useAutoResizeTextarea } from '@/hooks/use-auto-resize-textarea';
 import { useChat } from 'ai/react';
-import Image from 'next/image';
 import Markdown from 'react-markdown';
 import { toast } from 'sonner';
 
@@ -177,7 +176,7 @@ export default function WorkingChatbot() {
             </p>
             <div className="group relative mt-6">
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-primary/10 opacity-75 blur-md transition-opacity duration-500 group-hover:opacity-100"></div>
-              <Image
+              <img
                 src="/assets/robo.svg"
                 alt="AI Assistant"
                 width={250}

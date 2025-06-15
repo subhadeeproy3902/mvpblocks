@@ -3,7 +3,6 @@
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import Image from 'next/image';
 import { Marquee } from '@/components/ui/marquee';
 
 export function Highlight({
@@ -66,7 +65,7 @@ export function TestimonialCard({
       </div>
 
       <div className="flex w-full select-none items-center justify-start gap-5">
-        <Image
+        <img
           width={40}
           height={40}
           src={img || ''}

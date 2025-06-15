@@ -1,15 +1,12 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function CTA() {
   return (
     <section className="mx-auto mb-24 flex w-full max-w-7xl flex-col items-center justify-center">
       <div className="w-full">
         <div className="relative z-20 h-[400px] w-full overflow-hidden rounded-xl border border-border bg-primary shadow-xl md:h-[400px]">
-          <Image
+          <img
             alt="Agent CTA Background"
-            fill
-            priority
             className="absolute inset-0 object-cover object-right md:object-center"
             sizes="(max-width: 768px) 100vw, 1280px"
             src="/cta-bg.webp"

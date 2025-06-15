@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import Image from 'next/image';
 import { useState } from 'react';
 import { ShowcaseItem } from '@/lib/showcase';
 import { cn } from '@/lib/utils';
@@ -41,10 +40,9 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
             <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-muted via-muted/50 to-muted" />
           )}
 
-          <Image
+          <img
             src={item.image}
             alt={item.name}
-            fill
             className={cn(
               'overflow-hidden rounded-t-xl object-cover transition-all duration-300 group-hover:scale-105',
               imageLoaded ? 'opacity-100' : 'opacity-0',

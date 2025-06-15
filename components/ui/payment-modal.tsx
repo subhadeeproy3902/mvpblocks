@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import {
   Dialog,
   DialogContent,
@@ -111,10 +110,9 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
                     </div>
                   </div>
                   <div className="relative h-8 w-20">
-                    <Image
+                    <img
                       src={method.logo || '/placeholder.svg'}
                       alt={method.name}
-                      fill
                       className="object-contain"
                     />
                   </div>

@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Facebook, Linkedin, Twitter } from 'lucide-react';
 
-// Team member data type
+
 type TeamMember = {
   id: number;
   name: string;
@@ -101,10 +100,9 @@ export default function Team3({
             <div key={member.id} className="group relative">
               <div className="relative h-80 w-full overflow-hidden rounded-lg">
                 <div className="absolute inset-0 z-10 opacity-20 transition-opacity group-hover:opacity-0"></div>
-                <Image
+                <img
                   src={member.image || '/placeholder.svg'}
                   alt={member.name}
-                  fill
                   className="object-cover"
                 />
               </div>

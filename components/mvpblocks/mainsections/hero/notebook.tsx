@@ -3,7 +3,6 @@
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 export default function NotebookHero() {
   return (
@@ -178,12 +177,11 @@ export default function NotebookHero() {
             </div>
 
             <div className="relative z-10 mt-16 w-full">
-              <Image
+              <img
                 src="https://blocks.mvp-subha.me/assets/bg.png"
                 alt="MVPBlocks component library preview"
                 width={1000}
                 height={600}
-                priority
                 className="border-6 z-10 mx-auto -mb-60 w-full select-none rounded-lg border-neutral-100 object-cover shadow-2xl duration-1000 animate-in fade-in slide-in-from-bottom-12 dark:border-neutral-600 lg:-mb-40"
               />
 

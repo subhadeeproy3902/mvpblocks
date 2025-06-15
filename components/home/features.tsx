@@ -7,7 +7,6 @@ import { motion, useInView } from 'framer-motion';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Geist } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 const space = Geist({
   subsets: ['latin'],
@@ -92,7 +91,7 @@ export default function Features() {
                   <div className="absolute left-[50%] top-0 z-10 flex w-full max-w-[366px] -translate-x-[50%] translate-y-0 overflow-hidden rounded-[56px] bg-neutral-800/20 p-2 transition-all duration-1000 ease-in-out group-hover:-translate-y-8 dark:bg-white/20">
                     <div className="relative z-10 flex max-w-[350px] overflow-hidden rounded-[48px] border border-border/70 shadow-2xl dark:border-border/5 dark:border-t-border/15">
                       {theme === 'light' ? (
-                        <Image
+                        <img
                           alt="Mobile UI light theme"
                           width={350}
                           height={765}
@@ -101,7 +100,7 @@ export default function Features() {
                           src="/mobile-light.webp"
                         />
                       ) : (
-                        <Image
+                        <img
                           alt="Mobile UI dark theme"
                           width={350}
                           height={765}
@@ -150,7 +149,7 @@ export default function Features() {
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
                         {theme === 'dark' ? (
-                          <Image
+                          <img
                             src="/features-nextjs-dark.webp"
                             alt="Next.js logo dark"
                             width={32}
@@ -159,7 +158,7 @@ export default function Features() {
                             draggable={false}
                           />
                         ) : (
-                          <Image
+                          <img
                             src="/features-nextjs-light.webp"
                             alt="Next.js logo light"
                             width={32}
@@ -175,7 +174,7 @@ export default function Features() {
                   <div className="glass rose relative z-10 row-span-2 row-start-2 flex items-center justify-center rounded-xl outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-90 dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10 flex h-8 w-8 items-center justify-center">
-                        <Image
+                        <img
                           src="/tailwind.webp"
                           alt="Tailwind CSS logo"
                           width={32}
@@ -189,7 +188,7 @@ export default function Features() {
                   <div className="glass rose relative z-10 row-span-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-90 dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
-                        <Image
+                        <img
                           src="/framer.webp"
                           alt="Framer logo"
                           width={32}
@@ -204,7 +203,7 @@ export default function Features() {
                   <div className="glass rose relative z-10 row-span-2 flex items-center justify-center rounded-xl to-transparent outline-4 outline-border/30 transition-all duration-1000 ease-in-out group-hover:scale-105 dark:outline-background/30">
                     <div className="after:scale-200 after:bg-radial relative after:absolute after:inset-0 after:rounded-full after:from-primary-foreground/30 after:from-10% after:to-primary-foreground/0 after:to-60% after:content-['']">
                       <div className="text-light relative z-10">
-                        <Image
+                        <img
                           src="/typescript.webp"
                           alt="TypeScript logo"
                           width={32}

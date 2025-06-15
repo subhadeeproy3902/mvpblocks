@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { PixelCard } from '../ui/pixelcards';
 import { Geist } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -97,41 +96,37 @@ export default function Hero() {
       id="hero-section"
       className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6"
     >
-      <Image
+      <img
         src="/vector1.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
         className="absolute right-0 top-0 z-[2] select-none object-cover object-center"
-        priority
       />
-      <Image
+      <img
         src="/vector2.webp"
         alt="Vector"
         width={300}
         height={300}
         draggable={false}
         className="absolute left-0 top-0 z-[2] select-none object-cover object-center"
-        priority
       />
-      <Image
+      <img
         src="/vector5.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
         className="absolute -left-44 bottom-0 z-[2] -rotate-90 select-none object-cover object-center"
-        priority
       />
-      <Image
+      <img
         src="/vector6.webp"
         alt="Vector"
         width={300}
         draggable={false}
         height={300}
         className="absolute -right-44 bottom-0 z-[2] rotate-90 select-none object-cover object-center"
-        priority
       />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
         <motion.div
@@ -209,7 +204,7 @@ export default function Hero() {
           <span className="text-sm text-gray-500">
             We use industry standards like{' '}
           </span>
-          <Image
+          <img
             src="/nextjs.webp"
             draggable={false}
             alt="Next.js"
@@ -217,7 +212,7 @@ export default function Hero() {
             height={28}
             className="h-7 w-7 select-none"
           />
-          <Image
+          <img
             src="/tailwind.webp"
             alt="Tailwind CSS"
             width={28}
@@ -225,7 +220,7 @@ export default function Hero() {
             className="h-7 w-7 select-none"
             draggable={false}
           />
-          <Image
+          <img
             src="/framer.webp"
             alt="Framer Motion"
             width={24}
@@ -239,7 +234,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 1.25 }}
             className="ml-2 mt-4 hidden w-96 select-none xl:block"
           >
-            <Image
+            <img
               src="/vector3.webp"
               alt="Vector graphic"
               width={384}

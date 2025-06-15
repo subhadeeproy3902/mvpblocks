@@ -192,7 +192,7 @@ function ComponentDisplay({
         <Button
           variant="ghost"
           size="icon"
-          className="absolute left-0 top-0 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
+          className="absolute left-0 z-50 top-0 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
           onClick={reTrigger}
           aria-label="Refresh component"
         >

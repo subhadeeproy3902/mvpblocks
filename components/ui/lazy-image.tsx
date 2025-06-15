@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image, { ImageProps } from 'next/image';
+import { ImageProps } from 'next/image';
 import { cn } from '@/lib/utils';
 
 interface LazyImageProps extends Omit<ImageProps, 'onLoad'> {
@@ -54,8 +54,8 @@ export function LazyImage({
       className={cn('relative overflow-hidden', className)}
     >
       {isInView ? (
-        <Image
-          src={src}
+        <img
+          src={src as string}
           alt={alt}
           className={cn(
             'transition-opacity duration-500',

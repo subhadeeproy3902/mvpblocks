@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { motion, useInView } from 'framer-motion';
 import { Geist } from 'next/font/google';
 import { Spotlight } from '@/components/ui/spotlight';
-import Image from 'next/image';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import LocData from '@/components/about/loc';
 import { Card, CardHeader } from '@/components/ui/card';
@@ -64,7 +63,7 @@ export default function AboutUsPage() {
             </p>
           </motion.div>
           <ContainerScroll>
-            <Image
+            <img
               src="/about.webp"
               alt="hero"
               height={720}
