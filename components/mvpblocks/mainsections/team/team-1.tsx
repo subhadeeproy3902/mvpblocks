@@ -1,5 +1,5 @@
 'use client';
-
+// changes on line 109
 import { cn } from '@/lib/utils';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -106,7 +106,7 @@ export default function Team1({
 // Team member card component
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
-    <div className="group h-[420px] w-96 overflow-hidden rounded-xl bg-card shadow-sm">
+    <div className="opacity-100 hover:opacity-75 transition-opacity group h-[420px] w-96 overflow-hidden rounded-xl bg-card shadow-sm"> //  drops opacity when hovered
       <div className="relative h-[200px] w-full overflow-hidden">
         <img
           src={member.imageUrl}
