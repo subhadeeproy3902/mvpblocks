@@ -198,7 +198,7 @@ export default function TeamSectionVariant6({
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="w-64 flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-card/90 shadow-sm transition-shadow hover:shadow-md"
+                  className="w-64 opacity-100 hover:opacity-75 transition-opacity flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-card/90 shadow-sm transition-shadow hover:shadow-md"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
