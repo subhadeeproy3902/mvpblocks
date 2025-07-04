@@ -13,19 +13,19 @@ const space = Geist({
 const testimonials = [
   {
     text: 'Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.',
-    imageSrc: '/assets/avatar-1.webp',
+    imageSrc: '/assets/avatars/avatar-1.webp',
     name: 'Arjun Mehta',
     username: '@arjdev',
   },
   {
     text: 'Honestly shocked at how smooth the animations and styling are out of the box. Just works.',
-    imageSrc: '/assets/avatar-2.webp',
+    imageSrc: '/assets/avatars/avatar-2.webp',
     name: 'Sara Lin',
     username: '@sara.codes',
   },
   {
     text: 'Our team launched a client site in 2 days using Mvpblocks. Saved so much time.',
-    imageSrc: '/assets/avatar-3.webp',
+    imageSrc: '/assets/avatars/avatar-3.webp',
     name: 'Devon Carter',
     username: '@devninja',
   },
@@ -37,19 +37,19 @@ const testimonials = [
   },
   {
     text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
-    imageSrc: '/assets/avatar-5.webp',
+    imageSrc: '/assets/avatars/avatar-5.webp',
     name: 'Leo Martin',
     username: '@leobuilds',
   },
   {
     text: 'Mvpblocks helped us prototype multiple landing pages without writing CSS once.',
-    imageSrc: '/assets/avatar-6.webp',
+    imageSrc: '/assets/avatars/avatar-6.webp',
     name: 'Chloe Winters',
     username: '@chloewinters',
   },
   {
     text: 'As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.',
-    imageSrc: '/assets/avatar-7.webp',
+    imageSrc: '/assets/avatars/avatar-7.webp',
     name: 'Ayaan Malik',
     username: '@ayaan_dev',
   },
@@ -61,7 +61,7 @@ const testimonials = [
   },
   {
     text: 'This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.',
-    imageSrc: '/assets/avatar-9.webp',
+    imageSrc: '/assets/avatars/avatar-9.webp',
     name: 'James Roy',
     username: '@jamesrdev',
   },
