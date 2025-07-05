@@ -1,0 +1,18 @@
+---
+title: Codes
+description: A collection of code blocks showcasing various designs and functionalities
+new: true
+---
+
+import RetroCard from "@/components/mvpblocks/cards/basic/retro-card";
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+
+## Code Block 1
+
+<ComponentPreview
+  name="code-block-1"
+  classNameComponentContainer='min-h-[600px]'
+  code={(await extractSourceCode('code-block-1')).code}
+  lang="tsx"
+/>

@@ -3,6 +3,36 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "code-block-1",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/./components/mvpblocks/cards/code/code-block-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import(".././components/mvpblocks/cards/code/code-block-1"),
+    ),
+  },
+  {
+    name: "web3-hero",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/./components/mvpblocks/mainsections/hero/web3-hero.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import(".././components/mvpblocks/mainsections/hero/web3-hero"),
+    ),
+  },
+  {
     name: "technical-pricing",
     type: "registry:block",
     dependencies: ["react"],
