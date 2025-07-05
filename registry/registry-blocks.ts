@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "meshy-cards",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/basic/meshy-cards.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/cards/basic/meshy-cards"),
+    ),
+  },
+  {
     name: "login-form-2",
     author: "Xeven777",
     type: "registry:block",
