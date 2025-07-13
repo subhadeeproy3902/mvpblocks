@@ -14,8 +14,8 @@
     {
       "type": "registry:block",
       "content": "import MultiStepForm from '@/components/ui/multi-step-form';\n\nexport default function MultiStepFormPreview() {\n  return (\n    <div className=\"mx-auto w-full max-w-lg\">\n      <MultiStepForm\n        onSubmit={(data) => {\n          console.log('Form submitted:', data);\n        }}\n      />\n    </div>\n  );\n}\n",
-      "path": "/components/mvpblocks/forms/multi-step-form-preview.tsx",
-      "target": "/components/mvpblocks/multi-step-form-preview.tsx"
+      "path": "components/mvpblocks/forms/multi-step-form-preview.tsx",
+      "target": "components/mvpblocks/multi-step-form-preview.tsx"
     }
   ]
 }

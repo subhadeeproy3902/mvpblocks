@@ -9,8 +9,8 @@
     {
       "type": "registry:block",
       "content": "import TextGenerateEffect from '@/components/ui/typewriter';\n\nexport default function GradientTypewriter() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <TextGenerateEffect\n        words=\"Gradient Text\"\n        className=\"bg-gradient-to-r from-rose-400 to-red-600 bg-clip-text text-6xl font-bold text-transparent\"\n      />\n    </div>\n  );\n}\n",
-      "path": "/components/mvpblocks/text-animations/gradient-typewriter.tsx",
-      "target": "/components/mvpblocks/gradient-typewriter.tsx"
+      "path": "components/mvpblocks/text-animations/gradient-typewriter.tsx",
+      "target": "components/mvpblocks/gradient-typewriter.tsx"
     }
   ]
 }

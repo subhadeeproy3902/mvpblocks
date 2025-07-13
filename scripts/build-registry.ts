@@ -57,12 +57,12 @@ const getComponentFiles = async (files: File[], registryType: string) => {
         type: registryType,
         content: fileContent,
         path: normalizedPath,
-        target: `/components/mvpblocks/${fileName}`,
+        target: `components/mvpblocks/${fileName}`,
       };
     }
     const normalizedPath = file.path.startsWith('/')
       ? file.path
-      : `/${file.path}`.replace('@/', '');
+      : `${file.path}`.replace('@/', '');
 
     const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
     const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -70,10 +70,10 @@ const getComponentFiles = async (files: File[], registryType: string) => {
     const fileName = normalizedPath.split('/').pop() || '';
 
     const getTargetPath = (type: string) => {
-      if (type === 'registry:ui') return `/components/ui/${fileName}`;
-      if (type === 'registry:hook') return `/hooks/${fileName}`;
-      if (type === 'registry:lib') return `/lib/${fileName}`;
-      return `/components/mvpblocks/${fileName}`;
+      if (type === 'registry:ui') return `components/ui/${fileName}`;
+      if (type === 'registry:hook') return `hooks/${fileName}`;
+      if (type === 'registry:lib') return `lib/${fileName}`;
+      return `components/mvpblocks/${fileName}`;
     };
 
     const fileType =

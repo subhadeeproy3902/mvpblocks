@@ -9,7 +9,7 @@ export const blocks: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/./components/mvpblocks/cards/product/product-1.tsx",
+        path: "@/components/mvpblocks/cards/product/product-1.tsx",
         type: "registry:block",
       },
     ],
@@ -24,7 +24,7 @@ export const blocks: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/./components/mvpblocks/cards/code/code-block-1.tsx",
+        path: "@/components/mvpblocks/cards/code/code-block-1.tsx",
         type: "registry:block",
       },
     ],
@@ -39,7 +39,7 @@ export const blocks: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/./components/mvpblocks/mainsections/hero/web3-hero.tsx",
+        path: "@/components/mvpblocks/mainsections/hero/web3-hero.tsx",
         type: "registry:block",
       },
     ],
@@ -54,7 +54,7 @@ export const blocks: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/./components/mvpblocks/mainsections/pricing/technical-pricing.tsx",
+        path: "@/components/mvpblocks/mainsections/pricing/technical-pricing.tsx",
         type: "registry:block",
       },
     ],

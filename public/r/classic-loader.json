@@ -7,8 +7,8 @@
     {
       "type": "registry:block",
       "content": "export default function ClassicLoader() {\n  return (\n    <div className=\"flex h-10 w-10 animate-spin items-center justify-center rounded-full border-4 border-primary border-t-transparent\"></div>\n  );\n}\n",
-      "path": "/components/mvpblocks/basics/loaders/classic-loader.tsx",
-      "target": "/components/mvpblocks/classic-loader.tsx"
+      "path": "components/mvpblocks/basics/loaders/classic-loader.tsx",
+      "target": "components/mvpblocks/classic-loader.tsx"
     }
   ]
 }
