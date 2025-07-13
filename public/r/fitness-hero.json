@@ -5,6 +5,11 @@
   "registryDependencies": [
     "https://blocks.mvp-subha.me/r/button.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

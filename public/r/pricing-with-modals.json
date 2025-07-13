@@ -11,6 +11,11 @@
     "https://blocks.mvp-subha.me/r/radio-group.json",
     "https://blocks.mvp-subha.me/r/label.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

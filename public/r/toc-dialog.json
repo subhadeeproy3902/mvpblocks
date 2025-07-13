@@ -9,6 +9,11 @@
     "https://blocks.mvp-subha.me/r/utils.json",
     "https://blocks.mvp-subha.me/r/dialog.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

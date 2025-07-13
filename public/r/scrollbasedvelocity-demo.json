@@ -6,6 +6,11 @@
     "https://blocks.mvp-subha.me/r/scrollbasedvelocity.json",
     "https://blocks.mvp-subha.me/r/utils.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

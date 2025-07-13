@@ -5,6 +5,11 @@
     "lucide-react",
     "cobe"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:ui",

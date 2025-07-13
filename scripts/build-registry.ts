@@ -7,10 +7,6 @@ import path from 'path';
 const REGISTRY_BASE_PATH = process.cwd();
 const PUBLIC_FOLDER_BASE_PATH = 'public/r';
 
-/**
- * bun run ./scripts/build-registry.ts
- *
- */
 type File = z.infer<typeof registryItemFileSchema>;
 
 async function shouldWriteFile(
@@ -18,12 +14,9 @@ async function shouldWriteFile(
   newContent: string,
 ): Promise<boolean> {
   try {
-    // Try to read existing file
     const existingContent = await fs.readFile(filePath, 'utf-8');
-    // Only write if content is different
     return existingContent !== newContent;
   } catch {
-    // If file doesn't exist, we should write it
     return true;
   }
 }
@@ -32,7 +25,6 @@ async function writeFileRecursive(filePath: string, data: string) {
   const dir = path.dirname(filePath);
 
   try {
-    // Check if we need to write the file
     if (await shouldWriteFile(filePath, data)) {
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(filePath, data, 'utf-8');
@@ -45,13 +37,14 @@ async function writeFileRecursive(filePath: string, data: string) {
 
 const getComponentFiles = async (files: File[], registryType: string) => {
   const filesArrayPromises = (files ?? []).map(async (file) => {
+    // Handle string file paths
     if (typeof file === 'string') {
-      //@ts-ignore
-      const normalizedPath = file.startsWith('/') ? file : `/${file}`;
+      const normalizedPath = (file as string).startsWith('@/') 
+        ? (file as string).replace('@/', '') 
+        : file;
       const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
       const fileContent = await fs.readFile(filePath, 'utf-8');
-
-      const fileName = normalizedPath.split('/').pop() || '';
+      const fileName = path.basename(normalizedPath);
 
       return {
         type: registryType,
@@ -60,14 +53,14 @@ const getComponentFiles = async (files: File[], registryType: string) => {
         target: `components/mvpblocks/${fileName}`,
       };
     }
-    const normalizedPath = file.path.startsWith('/')
-      ? file.path
-      : `${file.path}`.replace('@/', '');
 
+    // Handle file objects
+    const normalizedPath = file.path.startsWith('@/')
+      ? file.path.replace('@/', '')
+      : file.path;
     const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
     const fileContent = await fs.readFile(filePath, 'utf-8');
-
-    const fileName = normalizedPath.split('/').pop() || '';
+    const fileName = path.basename(normalizedPath);
 
     const getTargetPath = (type: string) => {
       if (type === 'registry:ui') return `components/ui/${fileName}`;
@@ -76,53 +69,37 @@ const getComponentFiles = async (files: File[], registryType: string) => {
       return `components/mvpblocks/${fileName}`;
     };
 
-    const fileType =
-      typeof file === 'string' ? registryType : file.type || registryType;
-
-    // Modify the import paths in the content
-    let modifiedContent = fileContent;
-    if (fileContent.includes('@/components/mvpblocks/')) {
-      modifiedContent = fileContent.replace(
-        /@\/components\/mvpblocks\/.*?([^/]+)$/gm,
-        '@/components/mvpblocks/$1',
-      );
-    }
+    const fileType = file.type || registryType;
 
     return {
       type: fileType,
-      content: modifiedContent,
+      content: fileContent, // Don't modify the content
       path: normalizedPath,
-      target:
-        typeof file === 'string'
-          ? getTargetPath(registryType)
-          : file.target || getTargetPath(fileType),
+      target: file.target || getTargetPath(fileType),
     };
   });
 
-  const filesArray = await Promise.all(filesArrayPromises);
-  return filesArray;
+  return await Promise.all(filesArrayPromises);
 };
 
 const main = async () => {
   let changesCount = 0;
 
-  for (let i = 0; i < registry.length; i++) {
-    const component = { ...registry[i] };
-    const files = component.files;
-    delete component.component;
+  for (const component of registry) {
+    const { files, ...componentData } = component;
     if (!files) throw new Error('No files found for component');
 
-    const filesArray = await getComponentFiles(files, component.type);
+    const filesArray = await getComponentFiles(files, componentData.type);
     const json = JSON.stringify(
       {
-        ...component,
+        ...componentData,
         files: filesArray,
       },
       null,
       2,
     );
 
-    const jsonPath = `${PUBLIC_FOLDER_BASE_PATH}/${component.name}.json`;
+    const jsonPath = path.join(PUBLIC_FOLDER_BASE_PATH, `${componentData.name}.json`);
     const hasChanged = await shouldWriteFile(jsonPath, json);
     if (hasChanged) {
       await writeFileRecursive(jsonPath, json);
@@ -143,4 +120,5 @@ main()
   })
   .catch((err) => {
     console.error(err);
+    process.exit(1);
   });

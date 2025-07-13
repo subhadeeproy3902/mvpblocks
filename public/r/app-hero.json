@@ -10,6 +10,11 @@
     "https://blocks.mvp-subha.me/r/button.json",
     "https://blocks.mvp-subha.me/r/utils.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

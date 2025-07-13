@@ -12,6 +12,11 @@
     "https://blocks.mvp-subha.me/r/particles.json",
     "https://blocks.mvp-subha.me/r/spotlight.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

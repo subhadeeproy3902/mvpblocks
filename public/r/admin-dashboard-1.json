@@ -26,6 +26,11 @@
     "https://blocks.mvp-subha.me/r/breadcrumb.json",
     "https://blocks.mvp-subha.me/r/admin-sidebar.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

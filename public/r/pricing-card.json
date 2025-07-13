@@ -13,6 +13,11 @@
     "https://blocks.mvp-subha.me/r/radio-group.json",
     "https://blocks.mvp-subha.me/r/utils.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:ui",

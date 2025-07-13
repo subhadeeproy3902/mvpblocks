@@ -15,6 +15,11 @@
     "https://blocks.mvp-subha.me/r/switch.json",
     "https://blocks.mvp-subha.me/r/use-media-query.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

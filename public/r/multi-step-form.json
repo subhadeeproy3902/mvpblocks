@@ -15,6 +15,11 @@
     "https://blocks.mvp-subha.me/r/label.json",
     "https://blocks.mvp-subha.me/r/progress.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:ui",

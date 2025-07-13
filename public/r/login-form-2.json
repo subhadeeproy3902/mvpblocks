@@ -12,6 +12,11 @@
     "https://blocks.mvp-subha.me/r/label.json",
     "https://blocks.mvp-subha.me/r/card.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

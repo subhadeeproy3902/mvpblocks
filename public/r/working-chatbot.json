@@ -12,6 +12,11 @@
     "https://blocks.mvp-subha.me/r/textarea.json",
     "https://blocks.mvp-subha.me/r/use-auto-resize-textarea.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

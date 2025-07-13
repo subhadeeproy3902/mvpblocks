@@ -4,6 +4,11 @@
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

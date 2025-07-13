@@ -11,6 +11,11 @@
     "https://blocks.mvp-subha.me/r/typewriter.json",
     "https://blocks.mvp-subha.me/r/border-beam.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

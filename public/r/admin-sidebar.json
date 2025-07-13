@@ -17,6 +17,11 @@
     "https://blocks.mvp-subha.me/r/tooltip.json",
     "https://blocks.mvp-subha.me/r/use-mobile.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

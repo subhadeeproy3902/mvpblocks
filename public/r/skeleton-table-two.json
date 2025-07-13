@@ -8,6 +8,11 @@
     "https://blocks.mvp-subha.me/r/button.json",
     "https://blocks.mvp-subha.me/r/dropdown-menu.json"
   ],
+  "component": {
+    "_payload": {
+      "_status": -1
+    }
+  },
   "files": [
     {
       "type": "registry:block",

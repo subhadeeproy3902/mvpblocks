@@ -1,6 +1,13 @@
 {
   "name": "chart",
   "type": "registry:ui",
+  "registryDependencies": [
+    "card"
+  ],
+  "dependencies": [
+    "recharts",
+    "lucide-react"
+  ],
   "files": [
     {
       "type": "registry:ui",
@@ -8,12 +15,5 @@
       "path": "components/ui/chart.tsx",
       "target": "components/ui/chart.tsx"
     }
-  ],
-  "registryDependencies": [
-    "card"
-  ],
-  "dependencies": [
-    "recharts",
-    "lucide-react"
   ]
 }
