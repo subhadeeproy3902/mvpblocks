@@ -7,6 +7,9 @@ updated: true
 
 import {ComponentPreview} from "@/components/preview/component-preview";
 import {extractSourceCode} from "@/lib/code";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { ComponentSource } from "@/components/preview/component-source";
 
 ## About Us 1
 
@@ -17,6 +20,66 @@ import {extractSourceCode} from "@/lib/code";
   lang="tsx"
   fromDocs={true}
 />
+
+### Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install framer-motion 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add framer-motion 
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add framer-motion 
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+
+    #### Spotlight
+
+    <ComponentSource
+      code={(await extractSourceCode('spotlight')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+
+  <Step>
+
+    #### Pulse Card
+
+    <ComponentSource
+      code={(await extractSourceCode('pulse-card')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+
+  <Step>
+
+    #### Border Beam
+
+    <ComponentSource
+      code={(await extractSourceCode('border-beam')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+
+</Steps>
 
 ## About Us 2
 
