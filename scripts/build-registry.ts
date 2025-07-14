@@ -65,7 +65,7 @@ const getComponentFiles = async (files: File[], registryType: string) => {
       : `/${file.path}`.replace('@/', '');
 
     const filePath = path.join(REGISTRY_BASE_PATH, normalizedPath);
-    const fileContent = await fs.readFile(filePath, 'utf-8');
+    let fileContent = await fs.readFile(filePath, 'utf-8');
 
     const fileName = normalizedPath.split('/').pop() || '';
 
@@ -80,17 +80,15 @@ const getComponentFiles = async (files: File[], registryType: string) => {
       typeof file === 'string' ? registryType : file.type || registryType;
 
     // Modify the import paths in the content
-    let modifiedContent = fileContent;
-    if (fileContent.includes('@/components/mvpblocks/')) {
-      modifiedContent = fileContent.replace(
-        /@\/components\/mvpblocks\/.*?([^/]+)$/gm,
-        '@/components/mvpblocks/$1',
-      );
-    }
+    fileContent = fileContent
+      .replace(/@\/components\/ui\//g, '@/components/ui/')
+      .replace(/@\/components\/mvpblocks\//g, '@/components/mvpblocks/')
+      .replace(/@\/lib\//g, '@/lib/')
+      .replace(/@\/hooks\//g, '@/hooks/');
 
     return {
       type: fileType,
-      content: modifiedContent,
+      content: fileContent,
       path: normalizedPath,
       target:
         typeof file === 'string'
