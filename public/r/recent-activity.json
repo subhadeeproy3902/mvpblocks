@@ -7,16 +7,11 @@
     "react"
   ],
   "registryDependencies": [],
-  "component": {
-    "_payload": {
-      "_status": -1
-    }
-  },
   "files": [
     {
       "type": "registry:block",
       "content": "'use client';\n\nimport { memo } from 'react';\nimport { motion } from 'framer-motion';\nimport { User, Download, Settings, Users } from 'lucide-react';\n\nconst activities = [\n  {\n    action: 'User login',\n    user: 'john@example.com',\n    time: '2 min ago',\n    icon: User,\n    color: 'text-blue-500',\n  },\n  {\n    action: 'Data export',\n    user: 'admin',\n    time: '5 min ago',\n    icon: Download,\n    color: 'text-green-500',\n  },\n  {\n    action: 'Settings updated',\n    user: 'admin',\n    time: '10 min ago',\n    icon: Settings,\n    color: 'text-orange-500',\n  },\n  {\n    action: 'New user registered',\n    user: 'sarah@example.com',\n    time: '15 min ago',\n    icon: Users,\n    color: 'text-purple-500',\n  },\n];\n\nexport const RecentActivity = memo(() => {\n  return (\n    <div className=\"rounded-xl border border-border bg-card/40 p-6\">\n      <h3 className=\"mb-4 text-xl font-semibold\">Recent Activity</h3>\n      <div className=\"space-y-3\">\n        {activities.map((activity, index) => {\n          const Icon = activity.icon;\n          return (\n            <motion.div\n              key={index}\n              initial={{ opacity: 0, y: 10 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: index * 0.1 }}\n              className=\"flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-accent/50\"\n            >\n              <div className={`rounded-lg bg-accent/50 p-2`}>\n                <Icon className={`h-4 w-4 ${activity.color}`} />\n              </div>\n              <div className=\"min-w-0 flex-1\">\n                <div className=\"text-sm font-medium\">{activity.action}</div>\n                <div className=\"truncate text-xs text-muted-foreground\">\n                  {activity.user}\n                </div>\n              </div>\n              <div className=\"text-xs text-muted-foreground\">\n                {activity.time}\n              </div>\n            </motion.div>\n          );\n        })}\n      </div>\n    </div>\n  );\n});\n\nRecentActivity.displayName = 'RecentActivity';\n",
-      "path": "components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity.tsx",
+      "path": "/components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity.tsx",
       "target": "components/mvpblocks/ui/recent-activity.tsx"
     }
   ]

@@ -5,16 +5,11 @@
   "registryDependencies": [
     "https://blocks.mvp-subha.me/r/typewriter.json"
   ],
-  "component": {
-    "_payload": {
-      "_status": -1
-    }
-  },
   "files": [
     {
       "type": "registry:block",
       "content": "import TextGenerateEffect from '@/components/ui/typewriter';\n\nexport default function TypewriterDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <TextGenerateEffect words=\"Hello World!\" className=\"text-6xl font-bold\" />\n    </div>\n  );\n}\n",
-      "path": "components/mvpblocks/text-animations/typewriter-demo.tsx",
+      "path": "/components/mvpblocks/text-animations/typewriter-demo.tsx",
       "target": "components/mvpblocks/typewriter-demo.tsx"
     }
   ]
