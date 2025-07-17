@@ -6,35 +6,79 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import NumberFlow from "@number-flow/react";
 import { BadgeCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const PAYMENT_FREQUENCIES: ("monthly" | "yearly")[] = ["monthly", "yearly"];
 const TIERS = [
   {
-    name: "basic",
-    description: "Essential features to get started",
-    price: { monthly: 9, yearly: 90 },
-    features: ["Feature 1", "Feature 2", "Feature 3"],
-    cta: "Get Started",
-    highlighted: false,
-    popular: false,
+    id: "individuals",
+    name: "Individuals",
+    price: {
+      monthly: "Free",
+      yearly: "Free",
+    },
+    description: "For your hobby projects",
+    features: [
+      "Free email alerts",
+      "3-minute checks",
+      "Automatic data enrichment",
+      "10 monitors",
+      "Up to 3 seats",
+    ],
+    cta: "Get started",
   },
   {
-    name: "pro",
-    description: "For growing businesses",
-    price: { monthly: 29, yearly: 290 },
-    features: ["All Basic features", "Feature 4", "Feature 5"],
-    cta: "Go Pro",
-    highlighted: false,
+    id: "teams",
+    name: "Teams",
+    price: {
+      monthly: 90,
+      yearly: 75,
+    },
+    description: "Great for small businesses",
+    features: [
+      "Unlimited phone calls",
+      "30 second checks",
+      "Single-user account",
+      "20 monitors",
+      "Up to 6 seats",
+    ],
+    cta: "Get started",
     popular: true,
   },
   {
-    name: "enterprise",
-    description: "For large organizations",
-    price: { monthly: 99, yearly: 990 },
-    features: ["All Pro features", "Feature 6", "Feature 7", "Feature 8"],
+    id: "organizations",
+    name: "Organizations",
+    price: {
+      monthly: 120,
+      yearly: 100,
+    },
+    description: "Great for large businesses",
+    features: [
+      "Unlimited phone calls",
+      "15 second checks",
+      "Single-user account",
+      "50 monitors",
+      "Up to 10 seats",
+    ],
+    cta: "Get started",
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    price: {
+      monthly: "Custom",
+      yearly: "Custom",
+    },
+    description: "For multiple teams",
+    features: [
+      "Everything in Organizations",
+      "Up to 5 team members",
+      "100 monitors",
+      "15 status pages",
+      "200+ integrations",
+    ],
     cta: "Contact Us",
     highlighted: true,
-    popular: false,
   },
 ];
 
@@ -43,37 +87,51 @@ const HighlightedBackground = () => (
 );
 
 const PopularBackground = () => (
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(240,119,119,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(220,119,118,0.3),rgba(255,255,255,0))]" />
 );
 
 const Tab = ({
   text,
   selected,
   setSelected,
-  discount,
+  discount = false,
 }: {
   text: string;
   selected: boolean;
   setSelected: (text: string) => void;
   discount?: boolean;
-}) => (
-  <button
-    onClick={() => setSelected(text)}
-    className={cn(
-      "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
-      selected
-        ? "bg-white text-black shadow dark:bg-[#333] dark:text-white"
-        : "hover:bg-[#E5E7EB] dark:hover:bg-[#333]",
-    )}
-  >
-    {text}
-    {discount && (
-      <span className="absolute -right-1 -top-1 rounded-full bg-orange-500 px-1.5 py-0.5 text-[0.6rem] text-white">
-        Save
-      </span>
-    )}
-  </button>
-);
+}) => {
+  return (
+    <button
+      onClick={() => setSelected(text)}
+      className={cn(
+        "relative w-fit px-4 py-2 text-sm font-semibold capitalize text-foreground transition-colors",
+        discount && "flex items-center justify-center gap-2.5",
+      )}
+    >
+      <span className="relative z-10">{text}</span>
+      {selected && (
+        <motion.span
+          layoutId="tab"
+          transition={{ type: "spring", duration: 0.4 }}
+          className="absolute inset-0 z-0 rounded-full bg-background shadow-sm"
+        ></motion.span>
+      )}
+      {discount && (
+        <Badge
+          className={cn(
+            "relative z-10 whitespace-nowrap bg-gray-100 text-xs text-black shadow-none hover:bg-gray-100",
+            selected
+              ? "bg-[#F3F4F6] hover:bg-[#F3F4F6]"
+              : "bg-gray-300 hover:bg-gray-300",
+          )}
+        >
+          Save 35%
+        </Badge>
+      )}
+    </button>
+  );
+};
 
 const PricingCard = ({
   tier,
@@ -93,7 +151,7 @@ const PricingCard = ({
         isHighlighted
           ? "bg-foreground text-background"
           : "bg-background text-foreground",
-        isPopular && "outline outline-[rgba(120,119,198)]",
+        isPopular && "outline outline-[#eb638a]",
       )}
     >
       {isHighlighted && <HighlightedBackground />}
@@ -157,7 +215,7 @@ const PricingCard = ({
   );
 };
 
-export const PricingSection = () => {
+export default function PricingSection(){
   const [selectedPaymentFreq, setSelectedPaymentFreq] = useState<"monthly" | "yearly">(
     PAYMENT_FREQUENCIES[0],
   );
@@ -182,7 +240,7 @@ export const PricingSection = () => {
         </div>
       </div>
 
-      <div className="grid w-full max-w-6xl gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid w-full max-w-6xl gap-6 sm:grid-cols-2 grid-cols-1 md:grid-cols-3 xl:grid-cols-4">
         {TIERS.map((tier, i) => (
           <PricingCard
             key={i}
