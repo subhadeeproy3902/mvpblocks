@@ -3,6 +3,36 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "pricing-5",
+    type: "registry:block",
+    dependencies: ["lucide-react","react","@number-flow/react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json","https://blocks.mvp-subha.me/r/button.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/mainsections/pricing/pricing-5.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/mainsections/pricing/pricing-5"),
+    ),
+  },
+  {
+    name: "login-form-3",
+    type: "registry:block",
+    dependencies: ["framer-motion","lucide-react","react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/forms/login-form-3.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/forms/login-form-3"),
+    ),
+  },
+  {
     name: "product-1",
     type: "registry:block",
     dependencies: ["react"],
