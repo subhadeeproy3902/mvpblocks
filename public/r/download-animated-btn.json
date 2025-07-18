@@ -11,7 +11,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { MoveDown } from \"lucide-react\";\n\nexport default function DownloadBtn(){\n    return (\n    <>\n    <button className=\"flex group relative cursor-pointer overflow-hidden rounded-4xl bg-gray-800 px-6 py-2 font-semibold text-white\">\n  <span className=\"absolute top-0 right-6 h-full w-full origin-right scale-100 transform rounded-3xl bg-green-600 transition-transform duration-500 group-hover:scale-0\"></span>\n  <span className=\"mt-1 mr-1 text-3xl relative z-10\">Download</span>\n  <div className=\"Z-11 relative rounded-4xl animate-bounce bg-green-600 p-2 text-white mt-1.5 ml-1\"><MoveDown size={23} strokeWidth={4} /></div>\n</button>\n</>\n    );\n}",
+      "content": "import { MoveDown } from \"lucide-react\";\r\n\r\nexport default function DownloadBtn(){\r\n    return (\r\n    <>\r\n    <button className=\"flex group relative cursor-pointer overflow-hidden rounded-4xl bg-gray-800 px-6 py-2 font-semibold text-white\">\r\n  <span className=\"absolute top-0 right-6 h-full w-full origin-right scale-100 transform rounded-3xl bg-green-600 transition-transform duration-500 group-hover:scale-0\"></span>\r\n  <span className=\"mt-1 mr-1 text-3xl relative z-10\">Download</span>\r\n  <div className=\"Z-11 relative rounded-4xl animate-bounce bg-green-600 p-2 text-white mt-1.5 ml-1\"><MoveDown size={23} strokeWidth={4} /></div>\r\n</button>\r\n</>\r\n    );\r\n}",
       "path": "/components/mvpblocks/basics/buttons/download-animated-btn.tsx",
       "target": "components/mvpblocks/download-animated-btn.tsx"
     }
