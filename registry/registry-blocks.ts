@@ -5,8 +5,8 @@ export const blocks: Registry = [
   {
     name: "pricing-5",
     type: "registry:block",
-    dependencies: ["lucide-react","react","@number-flow/react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/badge.json","https://blocks.mvp-subha.me/r/button.json"],
+    dependencies: ["lucide-react", "react", "@number-flow/react"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json", "https://blocks.mvp-subha.me/r/badge.json", "https://blocks.mvp-subha.me/r/button.json"],
     files: [
       {
         path: "@/components/mvpblocks/mainsections/pricing/pricing-5.tsx",
@@ -20,7 +20,7 @@ export const blocks: Registry = [
   {
     name: "login-form-3",
     type: "registry:block",
-    dependencies: ["framer-motion","lucide-react","react"],
+    dependencies: ["framer-motion", "lucide-react", "react"],
     registryDependencies: [],
     files: [
       {
@@ -112,7 +112,7 @@ export const blocks: Registry = [
     author: "Xeven777",
     type: "registry:block",
     dependencies: ["framer-motion"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json","https://blocks.mvp-subha.me/r/utils.json","https://blocks.mvp-subha.me/r/input.json","https://blocks.mvp-subha.me/r/label.json","https://blocks.mvp-subha.me/r/card.json"],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/button.json", "https://blocks.mvp-subha.me/r/utils.json", "https://blocks.mvp-subha.me/r/input.json", "https://blocks.mvp-subha.me/r/label.json", "https://blocks.mvp-subha.me/r/card.json"],
     files: [
       {
         path: "@/components/mvpblocks/forms/login-form-2.tsx",
@@ -880,6 +880,22 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import('../components/mvpblocks/text-animations/typewriter-demo'),
+    ),
+  },
+  {
+    name: "circular-text",
+    type: "registry:block",
+    author: "nuelst",
+    dependencies: ["framer-motion", "react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/circular-text.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/circular-text"),
     ),
   },
   {
@@ -1817,18 +1833,18 @@ export const blocks: Registry = [
   },
   {
     name: "download-animated-btn",
-    author: "Smalakargh", 
+    author: "Smalakargh",
     type: "registry:block",
-    dependencies: ["tailwindcss", "react","lucide-react"], 
-    registryDependencies: [], 
+    dependencies: ["tailwindcss", "react", "lucide-react"],
+    registryDependencies: [],
     files: [
       {
-        path: "@/components/mvpblocks/basics/buttons/download-animated-btn.tsx", 
+        path: "@/components/mvpblocks/basics/buttons/download-animated-btn.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/basics/buttons/download-animated-btn"), 
+      () => import("../components/mvpblocks/basics/buttons/download-animated-btn"),
     ),
   }
 ];

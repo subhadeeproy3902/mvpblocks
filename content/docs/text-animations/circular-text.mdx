@@ -1,0 +1,137 @@
+---
+title: Circular Text
+description: Circular text animations create a circular text effect that continuously rotates. This engaging animation can be used to draw attention to important content or add visual interest to your design.
+root: text-animations
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+<ComponentPreview
+  name="circular-text"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode("circular-text")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add framer-motion
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add framer-motion
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("circular-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import { CircularText } from "@/components/mvpblocks/text-animations/circular-text";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center h-screen bg-black">
+      <CircularText
+        text="Circular Text Animation • "
+        spinDuration={20}
+        onHover="speedUp"
+        className="text-white"
+      />
+    </div>
+  );
+}
+```
+
+## API
+
+<TypeTable
+  type={{
+    text: {
+      type: "string",
+      description: "The text to display in circular format."
+    },
+    spinDuration: {
+      type: "number",
+      description: "Duration of one complete rotation in seconds.",
+      default: "20"
+    },
+    onHover: {
+      type: '"slowDown" | "speedUp" | "pause" | "goBonkers"',
+      description: "Animation behavior on hover.",
+      default: '"speedUp"'
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes for styling."
+    }
+  }}
+/>
+
+## Features
+
+- 🎯 **Smooth Animation**: Continuous rotation with customizable speed
+- 🎨 **Hover Effects**: Multiple hover behaviors (slowDown, speedUp, pause, goBonkers)
+- 🎪 **Customizable**: Easy to style with CSS classes
+- 📱 **Responsive**: Works well on different screen sizes
+- ⚡ **Performance**: Optimized with framer-motion
+
+## Examples
+
+### Speed Up on Hover
+```tsx
+<CircularText
+  text="Speed Up Effect • "
+  spinDuration={15}
+  onHover="speedUp"
+/>
+```
+
+### Pause on Hover
+```tsx
+<CircularText
+  text="Pause on Hover • "
+  spinDuration={25}
+  onHover="pause"
+/>
+```
+
+### Go Bonkers on Hover
+```tsx
+<CircularText
+  text="Go Bonkers! • "
+  spinDuration={30}
+  onHover="goBonkers"
+/>
+``` 
