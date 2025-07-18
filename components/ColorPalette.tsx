@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 interface ColorPaletteProps {
   colors: Array<{ name: string; value: string; usage: string }>;
@@ -19,6 +20,7 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({ colors }) => {
 const ColorSwatch: React.FC<{ color: { name: string; value: string; usage: string } }> = ({ color }) => {
   const swatchRef = useRef<HTMLDivElement>(null);
   const [hexValue, setHexValue] = useState<string>('');
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (swatchRef.current) {
@@ -29,7 +31,7 @@ const ColorSwatch: React.FC<{ color: { name: string; value: string; usage: strin
       const hex = rgbToHex(computedColor);
       setHexValue(hex);
     }
-  }, [color.value]);
+  }, [color.value, theme]);
 
   // Helper function to convert rgb string to hex
   const rgbToHex = (rgb: string): string => {
