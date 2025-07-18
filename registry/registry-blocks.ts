@@ -3,21 +3,6 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
-    name: "circular-text",
-    type: "registry:block",
-    author: "nuelst",
-    dependencies: ["framer-motion", "react"],
-    registryDependencies: [],
-    files: [
-      {
-        path: "@/components/mvpblocks/text-animations/circular-text.tsx",
-        type: "registry:block",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/mvpblocks/text-animations/circular-text"),
-    ),
-  }, {
     name: "pricing-5",
     type: "registry:block",
     dependencies: ["lucide-react", "react", "@number-flow/react"],
@@ -895,6 +880,22 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import('../components/mvpblocks/text-animations/typewriter-demo'),
+    ),
+  },
+  {
+    name: "circular-text",
+    type: "registry:block",
+    author: "nuelst",
+    dependencies: ["framer-motion", "react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/circular-text.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/circular-text"),
     ),
   },
   {

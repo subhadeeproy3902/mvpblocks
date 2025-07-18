@@ -6,8 +6,9 @@ import {
   useAnimation,
   useMotionValue,
 } from "framer-motion";
-import React, { useEffect } from "react";
-interface CircularTextProps {
+import { useEffect } from "react";
+
+type CircularTextProps = {
   text: string;
   spinDuration?: number;
   onHover?: "slowDown" | "speedUp" | "pause" | "goBonkers";
@@ -36,12 +37,12 @@ const getTransition = (duration: number, from: number) => ({
   },
 });
 
-const CircularText: React.FC<CircularTextProps> = ({
-  text,
+export function CircularText({
+  text = "Circular Text Animation • ",
   spinDuration = 20,
   onHover = "speedUp",
   className = "",
-}) => {
+}: Readonly<CircularTextProps>) {
   const letters = Array.from(text);
   const controls = useAnimation();
   const rotation: MotionValue<number> = useMotionValue(0);
@@ -101,33 +102,36 @@ const CircularText: React.FC<CircularTextProps> = ({
   };
 
   return (
-    <motion.div
-      className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative font-black text-white text-center cursor-pointer origin-center ${className}`}
-      style={{ rotate: rotation }}
-      initial={{ rotate: 0 }}
-      animate={controls}
-      onMouseEnter={handleHoverStart}
-      onMouseLeave={handleHoverEnd}
-    >
-      {letters.map((letter, i) => {
-        const rotationDeg = (360 / letters.length) * i;
-        const factor = Math.PI / letters.length;
-        const x = factor * i;
-        const y = factor * i;
-        const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
+    <div className="flex items-center justify-center min-h-[400px]  rounded-lg">
+      <motion.div
+        className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative font-black text-white text-center cursor-pointer origin-center ${className}`}
+        style={{ rotate: rotation }}
+        initial={{ rotate: 0 }}
+        animate={controls}
+        onMouseEnter={handleHoverStart}
+        onMouseLeave={handleHoverEnd}
+      >
+        {letters.map((letter, i) => {
+          const rotationDeg = (360 / letters.length) * i;
+          const factor = Math.PI / letters.length;
+          const x = factor * i;
+          const y = factor * i;
+          const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
-        return (
-          <span
-            key={i}
-            className="absolute inline-block inset-0 text-2xl transition-all duration-500 ease-[cubic-bezier(0,0,0,1)]"
-            style={{ transform, WebkitTransform: transform }}
-          >
-            {letter}
-          </span>
-        );
-      })}
-    </motion.div>
+          return (
+            <span
+              key={i}
+              className="absolute inline-block inset-0 text-2xl transition-all duration-500 ease-out"
+              style={{ transform, WebkitTransform: transform }}
+            >
+              {letter}
+            </span>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 };
 
 export default CircularText;
+
