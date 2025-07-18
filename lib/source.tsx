@@ -11,7 +11,7 @@ export const source = loader({
     attachFile(node, file) {
       if (!file) return node;
 
-      const data = file.data.data as unknown as {
+      const data = file.data as {
         new: boolean;
         pro: boolean;
         updated: boolean;

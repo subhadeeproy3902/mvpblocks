@@ -42,8 +42,8 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
-.source/index.ts
-.source/index.ts
+
+.source
 
 # package-lock
 package-lock.json

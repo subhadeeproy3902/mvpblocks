@@ -4,12 +4,10 @@ import {
   DocsBody,
   DocsTitle,
   DocsDescription,
-  DocsCategory,
 } from 'fumadocs-ui/page';
 import { notFound, redirect } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
-import { createTypeTable } from 'fumadocs-typescript/ui';
 import { getLastModified } from '@/lib/github';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { Callout } from 'fumadocs-ui/components/callout';
@@ -25,6 +23,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Script from 'next/script';
 import { siteConfig } from '@/config/site';
+import { LLMCopyButton, ViewOptions } from '@/components/Actions';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -111,8 +110,6 @@ Add any other context or screenshots about the feature request here.`)}`}
     </div>
   );
 
-  const { AutoTypeTable } = createTypeTable();
-
   const breadcrumbItems = [{ name: 'Home', url: siteConfig.url }];
 
   if (params.slug) {
@@ -166,6 +163,13 @@ Add any other context or screenshots about the feature request here.`)}`}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
         <DocsDescription>{page.data.description}</DocsDescription>
+        <div className="flex gap-2">
+          <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
+          <ViewOptions
+            markdownUrl={`${page.url}.mdx`}
+            githubUrl={`https://github.com/preetsuthar17/hextaui/blob/dev/apps/docs/content/docs/${page.path}`}
+          />
+        </div>
         <DocsBody>
           <MDX
             components={{
@@ -174,7 +178,6 @@ Add any other context or screenshots about the feature request here.`)}`}
               Tabs,
               Tab,
               TypeTable,
-              AutoTypeTable,
               Accordion,
               a: ({ href, ...props }) => {
                 return (
@@ -192,10 +195,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               Files,
               blockquote: Callout as unknown as FC<
                 ComponentProps<'blockquote'>
-              >,
-              DocsCategory: ({ slugs = params.slug }: { slugs?: string[] }) => (
-                <DocsCategory page={source.getPage(slugs)!} from={source} />
-              ),
+              >
             }}
           />
         </DocsBody>

@@ -261,7 +261,7 @@ export async function POST(req: Request) {
       messages,
       maxSteps: 6,
       maxRetries: 3,
-      maxTokens: 4096,
+      maxTokens: 8192,
       tools: {
         fetchComponent: tool({
           description:

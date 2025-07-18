@@ -102,7 +102,6 @@ export default function TestimonialsCarousel({
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.2),transparent_60%)]" />
         <div className="absolute left-1/4 top-1/4 h-32 w-32 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute inset-0 bg-[length:20px_20px] bg-grid-foreground/[0.02]" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
