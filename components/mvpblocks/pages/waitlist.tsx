@@ -145,17 +145,6 @@ export default function WaitlistPage() {
             <span className="text-xl font-bold">Premium</span>
             <span className="text-xs text-muted-foreground">Quality</span>
           </div>
-
-          <div
-            className={cn(
-              'flex flex-col items-center justify-center rounded-xl border border-primary/10 bg-white/5 p-4 backdrop-blur-md sm:hidden',
-              resolvedTheme === 'dark' ? 'glass' : 'glass2',
-            )}
-          >
-            <Code className="mb-2 h-5 w-5 text-primary" />
-            <span className="text-xl font-bold">15+</span>
-            <span className="text-xs text-muted-foreground">Categories</span>
-          </div>
         </motion.div>
 
         <motion.form
