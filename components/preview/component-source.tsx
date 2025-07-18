@@ -33,7 +33,7 @@ export function ComponentSource({
     >
       <div
         className={cn(
-          'group/item relative my-4 overflow-hidden rounded-lg border bg-card text-card-foreground',
+          'group/item bg-card text-card-foreground relative my-4 overflow-hidden rounded-lg border',
           className,
         )}
         {...props}
@@ -43,13 +43,10 @@ export function ComponentSource({
           className={cn('overflow-hidden', !isOpened && 'max-h-32')}
         >
           <div
-            className={cn(
-              '[&_pre]:my-0 [&_pre]:pb-[100px]',
-              !isOpened ? '[&_pre]:overflow-hidden' : '[&_pre]:overflow-auto',
-            )}
+            className="[&_pre]:overflow-hidden [&_pre]:my-0 [&_pre]:pb-[100px]"
             style={{
               maxHeight: isOpened ? maxHeight : 'none',
-              overflow: 'auto',
+              overflow: 'hidden',
             }}
           >
             <DynamicCodeBlock code={code} lang="ts" />
@@ -58,7 +55,7 @@ export function ComponentSource({
 
         <div
           className={cn(
-            'bg-linear-to-b absolute flex items-center justify-center from-background/30 to-background/90 p-2',
+            'from-background/30 to-background/90 absolute flex items-center justify-center bg-linear-to-b p-2',
             isOpened ? 'inset-x-0 bottom-0 h-12' : 'inset-0',
           )}
         >

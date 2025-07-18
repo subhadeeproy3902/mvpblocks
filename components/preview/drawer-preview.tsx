@@ -62,7 +62,7 @@ export function DrawerCodePreview({
     .join(' ');
 
   return (
-    <Card className="not-prose relative overflow-hidden border shadow-md">
+    <Card className="not-prose p-0 relative overflow-hidden border shadow-md">
       <div className="absolute right-0 top-0 z-20 flex items-center justify-end p-3">
         <div className="flex items-center gap-2">
           <Button

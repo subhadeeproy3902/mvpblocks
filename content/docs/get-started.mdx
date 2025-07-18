@@ -1,179 +1,70 @@
 ---
-title: Get Started
-description: Installing and setting up required components
-icon: Album
+title: Installation
+description: How to install and set up Mvpblocks in your project.
+icon: Package
 ---
 
-import { Step, Steps } from "fumadocs-ui/components/steps";
+import { DocsInstallationCard } from '@/components/DocInstall.tsx';
 
-## Install Next Js
-
-### System requirements
-
-- [Node.js 18.18](https://nodejs.org/) or later.
-- macOS, Windows (including WSL), and Linux are supported.
-
-### Automatic installation
-
-We recommend starting a new Next.js app using [`create-next-app`](/docs/app/api-reference/cli/create-next-app), which sets up everything automatically for you. To create a project, run:
-
-```bash filename="Terminal"
-npx create-next-app@latest
-```
-
-On installation, you'll see the following prompts:
-
-```txt filename="Terminal"
-What is your project named? my-app
-Would you like to use TypeScript? No / Yes
-Would you like to use ESLint? No / Yes
-Would you like to use Tailwind CSS? No / Yes
-Would you like your code inside a `src/` directory? No / Yes
-Would you like to use App Router? (recommended) No / Yes
-Would you like to use Turbopack for `next dev`?  No / Yes
-Would you like to customize the import alias (`@/*` by default)? No / Yes
-What import alias would you like configured? @/*
-```
-
-After the prompts, [`create-next-app`](/docs/app/api-reference/cli/create-next-app) will create a folder with your project name and install the required dependencies.
-
-
-## Install ShadCN
-
-### For Next Js
-
-<Steps>
-
-<Step>
-### Create project
-
-Run the `init` command to create a new Next.js project or to setup an existing one:
-
-```bash
-npx shadcn@latest init
-```
-
-<Callout className="mt-4">
-
-You can use the `-d` flag for defaults i.e `new-york`, `zinc` and `yes` for the css variables.
-
-```bash
-npx shadcn@latest init -d
-```
-
-</Callout>
-</Step>
-
-<Step>
-### Configure components.json
-
-</Step>
-You will be asked a few questions to configure `components.json`:
-
-```txt showLineNumbers
-Which style would you like to use? › New York
-Which color would you like to use as base color? › Zinc
-Do you want to use CSS variables for colors? › no / yes
-```
-
-<Step>
-
-### That's it
-
-</Step>
-
-You can now start adding components to your project.
-
-```bash
-npx shadcn@latest add button
-```
-
-The command above will add the `Button` component to your project. You can then import it like this:
-
-```tsx title="index.tsx"
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
-</Steps>
-
-## Install Framer Motion
-
-<Steps>
-  <Step>Installation</Step>
-    ```bash
-    npm install motion
-    ```
-    <Step>Usage</Step>
-        ```tsx title="index.tsx"
-        import { motion } from "motion/react";
-
-        export default function Home() {
-          return (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              Hello World
-            </motion.div>
-          );
-        }
-        ```
-
-</Steps>
-
-## Other libraries
-
-<Steps>
-  <Step>React Icons</Step>
-    ```bash
-    npm install react-icons
-    ```
-    <Step>Usage</Step>
-        ```tsx title="index.tsx"
-        import { FaSearch } from "react-icons/fa";
-
-        export default function Home() {
-          return (
-            <div>
-              <FaSearch />
-            </div>
-          );
-        }
-        ```
-
-</Steps>
-
-<Steps>
-  <Step>Canvas Confetti</Step>
-    ```bash
-    npm install canvas-confetti
-    ```
-
-    ```bash
-    npm i --save-dev @types/canvas-confetti
-    ```
-
-    <Step>Usage</Step>
-        ```tsx title="index.tsx"
-        import { useEffect } from "react";
-        import confetti from "canvas-confetti";
-
-        export default function Home() {
-          useEffect(() => {
-            confetti();
-          }, []);
-
-          return <div>Hello World</div>;
-        }
-        ```
-
-</Steps>
+<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <DocsInstallationCard
+    title="Next.js"
+    light="/nextjs_icon_dark.svg"
+    dark="/nextjs_icon_dark.svg"
+    url="/docs/installation/nextjs"
+  />
+  <DocsInstallationCard
+    title="Vite"
+    light="/vitejs.svg"
+    dark="/vitejs.svg"
+    url="/docs/installation/vite"
+  />
+  <DocsInstallationCard
+    title="Laravel"
+    light="/laravel.svg"
+    dark="/laravel.svg"
+    url="/docs/installation/laravel"
+  />
+  <DocsInstallationCard
+    title="React Router"
+    light="/reactrouter.svg"
+    dark="/reactrouter.svg"
+    url="/docs/installation/react-router"
+  />
+  <DocsInstallationCard
+    title="Remix"
+    light="/remix_light.svg"
+    dark="/remix_dark.svg"
+    url="/docs/installation/remix"
+  />
+  <DocsInstallationCard
+    title="Astro"
+    light="/astro.svg"
+    dark="/astro_dark.svg"
+    url="/docs/installation/astro"
+  />
+  <DocsInstallationCard
+    title="Gatsby"
+    light="/gatsby.svg"
+    dark="/gatsby.svg"
+    url="/docs/installation/gatsby"
+  />
+  <DocsInstallationCard
+    title="TanStack"
+    light="/tanstack.svg"
+    dark="/tanstack.svg"
+    url="/docs/installation/tanstack"
+  />
+  <DocsInstallationCard
+    title="TanStack Router"
+    light="/tanstack.svg"
+    dark="/tanstack.svg"
+    url="/docs/installation/tanstack-router"
+  />
+  <DocsInstallationCard
+    title="Manual Installation"
+    light="/react_light.svg"
+    dark="/react_dark.svg"
+    url="/docs/installation/manual"
+  />
+</div>

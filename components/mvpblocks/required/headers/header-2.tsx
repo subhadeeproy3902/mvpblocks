@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, easeInOut } from 'framer-motion';
 import { Menu, X, ArrowRight, Zap, Search } from 'lucide-react';
 import Link from 'next/link';
 
@@ -55,7 +55,7 @@ export default function Header2() {
       x: '100%',
       transition: {
         duration: 0.3,
-        ease: 'easeInOut',
+        ease: easeInOut,
       },
     },
     open: {
@@ -63,7 +63,7 @@ export default function Header2() {
       x: 0,
       transition: {
         duration: 0.3,
-        ease: 'easeInOut',
+        ease: easeInOut,
         staggerChildren: 0.1,
       },
     },

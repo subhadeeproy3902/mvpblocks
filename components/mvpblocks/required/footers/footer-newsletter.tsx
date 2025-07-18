@@ -39,7 +39,7 @@ const socialIcons = [
 
 export default function FooterNewsletter() {
 	return (
-		<footer className="relative w-full overflow-hidden pb-10 pt-20 bg-background text-foreground">
+		<footer className="relative w-full pb-10 pt-20 bg-background text-foreground">
 			<div className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full overflow-hidden">
 				<div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-primary opacity-10 blur-3xl" />
 				<div className="absolute bottom-1/4 right-1/4 h-80 w-80 rounded-full bg-primary opacity-10 blur-3xl" />

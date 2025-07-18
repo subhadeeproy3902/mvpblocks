@@ -157,17 +157,17 @@ Add any other context or screenshots about the feature request here.`)}`}
           style: 'clerk',
         }}
         breadcrumb={{
-          full: true,
+          enabled: false
         }}
         lastUpdate={lastModified ? new Date(lastModified) : undefined}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
-        <DocsDescription>{page.data.description}</DocsDescription>
-        <div className="flex gap-2">
+        <DocsDescription className='mb-2'>{page.data.description}</DocsDescription>
+        <div className="flex gap-2 mb-4">
           <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
           <ViewOptions
             markdownUrl={`${page.url}.mdx`}
-            githubUrl={`https://github.com/preetsuthar17/hextaui/blob/dev/apps/docs/content/docs/${page.path}`}
+            githubUrl={`https://github.com/subhadeeproy3902/mvpblocks/tree/main/content/docs/${page.path}`}
           />
         </div>
         <DocsBody>

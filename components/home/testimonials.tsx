@@ -31,7 +31,7 @@ const testimonials = [
   },
   {
     text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
-    imageSrc: '/assets/avatar-4.webp',
+    imageSrc: '/assets/avatar-2.webp',
     name: 'Priya Shah',
     username: '@priyacodes',
   },
@@ -55,7 +55,7 @@ const testimonials = [
   },
   {
     text: 'Can’t believe how polished the components look. Clients are impressed every time.',
-    imageSrc: '/assets/avatar-8.webp',
+    imageSrc: '/assets/avatar-5.webp',
     name: 'Monica Reeves',
     username: '@monicareeves',
   },

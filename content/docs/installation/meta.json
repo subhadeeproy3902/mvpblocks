@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "nextjs",
+    "vite",
+    "laravel",
+    "react-router",
+    "remix",
+    "astro",
+    "gatsby",
+    "tanstack",
+    "tanstack-router",
+    "manual"
+  ]
+}

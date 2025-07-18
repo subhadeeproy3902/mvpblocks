@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { easeInOut, motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Pacifico } from 'next/font/google';
@@ -96,7 +96,7 @@ export default function HeroGeometric({
       transition: {
         duration: 1,
         delay: 0.5 + i * 0.2,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: easeInOut,
       },
     }),
   };

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { easeInOut, motion, spring } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
@@ -64,7 +64,7 @@ export default function AppHero() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: 'spring', stiffness: 100 },
+      transition: { type: spring, stiffness: 100 },
     },
   };
 
@@ -74,7 +74,7 @@ export default function AppHero() {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: 'easeInOut',
+      ease: easeInOut,
     },
   };
 
@@ -95,7 +95,7 @@ export default function AppHero() {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: 'easeInOut',
+      ease: easeInOut,
     },
   };
 
@@ -106,7 +106,7 @@ export default function AppHero() {
       opacity: 1,
       scale: 1,
       transition: {
-        type: 'spring',
+        type: spring,
         stiffness: 100,
         delay: 1.2,
       },

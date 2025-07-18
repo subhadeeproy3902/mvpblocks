@@ -4,8 +4,6 @@ import remarkMdx from "remark-mdx";
 import { remarkInclude } from "fumadocs-mdx/config";
 import { source } from "@/lib/source";
 import type { InferPageType } from "fumadocs-core/source";
-import { createMDXSource } from "fumadocs-mdx";
-import { docs, meta } from '@/.source';
 
 const processor = remark().use(remarkMdx).use(remarkInclude).use(remarkGfm);
 

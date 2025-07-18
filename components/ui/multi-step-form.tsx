@@ -44,7 +44,7 @@ const accountSchema = z
 const formSchema = z.object({
   ...personalInfoSchema.shape,
   ...addressSchema.shape,
-  ...accountSchema._def.schema.shape,
+  ...accountSchema.shape,
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -141,7 +141,7 @@ export default function MultiStepForm({
   ];
 
   // Get the current step schema
-  const currentStepSchema = steps[step].schema;
+  const currentStepSchema = steps[step].schema as z.ZodType<any, any, any>;
 
   // Setup form with the current step schema
   const {
@@ -150,7 +150,7 @@ export default function MultiStepForm({
     formState: { errors },
     reset,
   } = useForm<any>({
-    resolver: zodResolver(currentStepSchema as z.ZodType<any>),
+    resolver: zodResolver(currentStepSchema),
     defaultValues: formData,
   });
 

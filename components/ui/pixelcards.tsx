@@ -63,7 +63,7 @@ export const PixelCard: React.FC<CardProps> = ({
   // Hover animation configuration
   const hoverTransition = {
     duration: 0.8,
-    ease: [0.5, 1, 0.89, 1],
+    ease: "easeInOut" as const,
   };
 
   return (

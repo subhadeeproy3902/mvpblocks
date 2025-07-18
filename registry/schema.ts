@@ -35,6 +35,7 @@ export const registryItemSchema = z.object({
   dependencies: z.array(z.string()).optional(),
   registryDependencies: z.array(z.string()).optional(),
   files: z.array(registryItemFileSchema).optional(),
+  // @ts-ignore
   component: z.function().args(z.any()).returns(z.any()).optional(),
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),

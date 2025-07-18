@@ -81,7 +81,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           {...baseOptions}
           tree={source.pageTree}
           sidebar={{
-            defaultOpenLevel: 2,
+            defaultOpenLevel: 1,
             tabs: {
               transform(option, node) {
                 const meta = source.getNodeMeta(node);

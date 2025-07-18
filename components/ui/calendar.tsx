@@ -53,14 +53,7 @@ function Calendar({
         day_hidden: 'invisible',
         ...classNames,
       }}
-      components={{
-        IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn('h-4 w-4', className)} {...props} />
-        ),
-        IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn('h-4 w-4', className)} {...props} />
-        ),
-      }}
+      // Remove unsupported 'components' prop; DayPicker uses default icons or you can customize navigation via 'components.Nav'
       {...props}
     />
   );
