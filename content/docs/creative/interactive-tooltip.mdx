@@ -247,21 +247,30 @@ The component uses Tailwind classes and can be customized:
 ### Avatar Styling
 ```css
 .avatar-custom {
-  @apply h-16 w-16 border-4 border-primary rounded-full;
+  @apply h-16 w-16 border-2 border-background rounded-full ring-2 ring-primary/20;
 }
 ```
 
 ### Tooltip Styling
 ```css
 .tooltip-custom {
-  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg;
+  @apply bg-background/95 backdrop-blur-sm border border-border text-foreground px-4 py-2 rounded-lg shadow-xl;
 }
 ```
 
+### Theme Colors
+The component uses semantic theme colors for consistency:
+- **Background**: `bg-background/95` with blur for modern glass effect
+- **Border**: `border-border` for subtle outlines
+- **Text**: `text-foreground` for primary text, `text-muted-foreground` for secondary
+- **Ring Effect**: `ring-primary/20` with hover state `ring-primary/40`
+- **Gradients**: `from-primary/5 via-transparent to-primary/5` for subtle depth
+
 ### Gradient Effects
-The tooltip includes two gradient lines:
-- **Emerald gradient**: 20% width, via-emerald-500
-- **Sky gradient**: 40% width, via-sky-500
+The tooltip includes multiple gradient layers using theme colors:
+- **Background gradient**: Subtle vertical gradient with `primary/5`
+- **Primary gradient**: 20% width, `via-primary`
+- **Secondary gradient**: 40% width, `via-primary/60`
 
 ## Best Practices
 
