@@ -31,7 +31,7 @@ export default function CardFlip({
 
   return (
     <div
-      className="relative w-full max-w-[280px] h-[320px] group [perspective:2000px]"
+      className="relative w-full max-w-[300px] h-[360px] group [perspective:2000px]"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -65,8 +65,8 @@ export default function CardFlip({
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 dark:from-primary/10 dark:to-blue-500/10" />
 
           {/* Animated code blocks */}
-          <div className="absolute inset-0 flex items-center justify-center pt-16">
-            <div className="relative w-[180px] h-[120px] flex flex-col items-center justify-center gap-2">
+          <div className="absolute inset-0 flex items-center justify-center pt-20">
+            <div className="relative w-[200px] h-[100px] flex flex-col items-center justify-center gap-2">
               {/* Code blocks animation */}
               {[...Array(6)].map((_, i) => (
                 <div
@@ -131,7 +131,7 @@ export default function CardFlip({
           className={cn(
             "absolute inset-0 w-full h-full",
             "[backface-visibility:hidden] [transform:rotateY(180deg)]",
-            "p-6 rounded-2xl",
+            "p-5 rounded-2xl",
             "bg-gradient-to-br from-white via-slate-50 to-slate-100",
             "dark:from-zinc-900 dark:via-zinc-900/95 dark:to-zinc-800",
             "border border-slate-200 dark:border-zinc-800",
@@ -146,7 +146,7 @@ export default function CardFlip({
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5 dark:from-primary/10 dark:to-blue-500/10 rounded-2xl" />
 
-          <div className="relative z-10 flex-1 space-y-6">
+          <div className="relative z-10 flex-1 space-y-5">
             <div className="space-y-2">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary via-primary/90 to-primary/80 flex items-center justify-center">
@@ -156,12 +156,12 @@ export default function CardFlip({
                   {title}
                 </h3>
               </div>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 tracking-tight transition-all duration-500 ease-out group-hover:translate-y-[-2px] line-clamp-3">
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 tracking-tight transition-all duration-500 ease-out group-hover:translate-y-[-2px] line-clamp-2">
                 {description}
               </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {features.map((feature, index) => {
                 const icons = [Copy, Code2, Rocket, Zap];
                 const IconComponent = icons[index % icons.length];
@@ -189,12 +189,12 @@ export default function CardFlip({
             </div>
           </div>
 
-          <div className="relative z-10 pt-6 mt-6 border-t border-slate-200 dark:border-zinc-800">
+          <div className="relative z-10 pt-4 mt-auto border-t border-slate-200 dark:border-zinc-800">
             <div
               className={cn(
                 "group/start relative",
                 "flex items-center justify-between",
-                "p-3 -m-3 rounded-xl",
+                "p-2.5 rounded-lg",
                 "transition-all duration-300",
                 "bg-gradient-to-r from-slate-100 via-slate-100 to-slate-100",
                 "dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800",
