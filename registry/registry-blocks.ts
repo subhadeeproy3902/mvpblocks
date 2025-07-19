@@ -1228,6 +1228,22 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'flip-card',
+    author: 'nuelst',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/basic/card-flip.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('@/components/mvpblocks/cards/basic/card-flip'),
+    ),
+  },
+  {
     name: 'feature-1',
     type: 'registry:block',
     dependencies: [],

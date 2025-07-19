@@ -1,0 +1,181 @@
+---
+title: Flip Card
+description: An interactive 3D flip card component with hover animations. Perfect for showcasing MVP features with engaging visual effects and smooth transitions.
+root: cards
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+<ComponentPreview
+  name="flip-card"
+  classNameComponentContainer="h-[400px]"
+  code={(await extractSourceCode("flip-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("flip-card")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import CardFlip from "@/components/mvpblocks/cards/basic/card-flip";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <CardFlip
+        title="Build MVPs Fast"
+        subtitle="Launch your idea in record time"
+        description="Copy, paste, customize—and launch your MVP faster than ever with our developer-first component library."
+        features={[
+          "Copy & Paste Ready",
+          "Developer-First", 
+          "MVP Optimized",
+          "Zero Setup Required"
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+## API
+
+<TypeTable
+  type={{
+    title: {
+      type: "string",
+      description: "The main title displayed on both sides of the card.",
+      default: '"Build MVPs Fast"'
+    },
+    subtitle: {
+      type: "string", 
+      description: "Subtitle text shown on the front of the card.",
+      default: '"Launch your idea in record time"'
+    },
+    description: {
+      type: "string",
+      description: "Detailed description shown on the back of the card.",
+      default: '"Copy, paste, customize—and launch your MVP faster than ever with our developer-first component library."'
+    },
+    features: {
+      type: "string[]",
+      description: "Array of feature strings displayed as a list on the back.",
+      default: '["Copy & Paste Ready", "Developer-First", "MVP Optimized", "Zero Setup Required"]'
+    }
+  }}
+/>
+
+## Features
+
+- 🃏 **3D Flip Animation**: Smooth card flip effect with CSS 3D transforms
+- 🎯 **Hover Triggered**: Flips on mouse enter/leave for intuitive interaction
+- 🚀 **MVP Themed**: Perfect for showcasing development speed and efficiency
+- 📱 **Responsive**: Adapts to different screen sizes beautifully
+- 🎨 **Dark Mode**: Seamlessly works with light and dark themes
+- ⚡ **Performance**: Optimized animations with CSS transitions
+
+## Examples
+
+### Custom MVP Card
+```tsx
+<CardFlip
+  title="Deploy Instantly"
+  subtitle="From code to production"
+  description="Push your changes and watch them go live in seconds, not hours."
+  features={[
+    "One-Click Deploy",
+    "Auto Scaling",
+    "Zero Downtime",
+    "Global CDN"
+  ]}
+/>
+```
+
+### Development Tools Card
+```tsx
+<CardFlip
+  title="Dev Tools Pro"
+  subtitle="Everything you need to code"
+  description="A complete development environment with all the tools and integrations you need to build faster."
+  features={[
+    "Code Editor",
+    "Git Integration", 
+    "Live Preview",
+    "Collaboration"
+  ]}
+/>
+```
+
+### Startup Features Card
+```tsx
+<CardFlip
+  title="Launch Ready"
+  subtitle="MVP to market in days"
+  description="Skip the boring setup and focus on what matters - building features your users will love."
+  features={[
+    "Auth System",
+    "Payment Ready",
+    "Admin Panel",
+    "Analytics"
+  ]}
+/>
+```
+
+## Styling
+
+The component uses Tailwind CSS classes and can be customized by modifying the source code. Key styling features:
+
+- **Gradient Backgrounds**: Subtle gradients for modern look
+- **Border Effects**: Dynamic borders that change on hover
+- **Shadow Effects**: Layered shadows for depth
+- **Icon Integration**: Lucide React icons with smooth animations
+- **Typography**: Carefully balanced text hierarchy
+
+## Animation Details
+
+- **Flip Duration**: 700ms smooth transition
+- **Perspective**: 2000px for realistic 3D effect
+- **Backface Visibility**: Hidden to prevent flickering
+- **Transform Origin**: Center-based rotation
+- **Staggered Animations**: Features appear with sequential delays
