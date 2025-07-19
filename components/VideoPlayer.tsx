@@ -15,6 +15,7 @@ export function VideoPlayer({ src, className }: VideoPlayerProps) {
       <video
         autoPlay
         loop
+        muted
         playsInline
         className="w-full max-w-full h-auto object-cover rounded-lg"
         src={src}
