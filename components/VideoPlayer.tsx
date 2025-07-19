@@ -18,8 +18,8 @@ export function VideoPlayer({ src, className }: VideoPlayerProps) {
         muted
         playsInline
         className="w-full max-w-full h-auto object-cover rounded-lg"
+        src={src}
       >
-        <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
