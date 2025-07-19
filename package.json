@@ -88,6 +88,7 @@
     "motion": "^12.23.6",
     "next": "15.4.1",
     "next-themes": "^0.4.6",
+    "razorpay": "^2.9.6",
     "react": "^19.1.0",
     "react-day-picker": "9.8.0",
     "react-dom": "^19.1.0",
@@ -100,6 +101,7 @@
     "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
+    "tsparticles-confetti": "^2.12.0",
     "vaul": "^1.1.2",
     "verifymailjs": "^1.1.5",
     "zod": "^4.0.5"
