@@ -1,0 +1,272 @@
+---
+title: Interactive Tooltip
+description: A dynamic tooltip component with mouse-following animations and spring physics. Perfect for displaying user profiles or team member information with engaging hover effects.
+root: creative
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+<ComponentPreview
+  name="interactive-tooltip"
+  classNameComponentContainer="h-[250px] flex items-center justify-center"
+  code={(await extractSourceCode("interactive-tooltip")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("interactive-tooltip")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import InteractiveTooltip from "@/components/mvpblocks/creative/interactive-tooltip";
+
+const teamMembers = [
+  {
+    id: 1,
+    name: "John Doe",
+    designation: "Senior Developer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    designation: "UI/UX Designer",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+  },
+  {
+    id: 3,
+    name: "Mike Johnson",
+    designation: "Product Manager",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+  }
+];
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-[200px] p-8">
+      <div className="flex items-center">
+        <InteractiveTooltip items={teamMembers} />
+      </div>
+    </div>
+  );
+}
+```
+
+## API
+
+<TypeTable
+  type={{
+    items: {
+      type: "Array<{id: number, name: string, designation: string, image: string}>",
+      description: "Array of items to display with tooltips. Each item should have id, name, designation, and image properties.",
+      default: "[]"
+    }
+  }}
+/>
+
+### Item Properties
+
+<TypeTable
+  type={{
+    id: {
+      type: "number",
+      description: "Unique identifier for the item.",
+      default: "-"
+    },
+    name: {
+      type: "string",
+      description: "Display name shown in the tooltip.",
+      default: "-"
+    },
+    designation: {
+      type: "string",
+      description: "Job title or role description shown below the name.",
+      default: "-"
+    },
+    image: {
+      type: "string",
+      description: "URL of the profile image to display.",
+      default: "-"
+    }
+  }}
+/>
+
+## Features
+
+- 🎯 **Mouse Following**: Tooltip follows mouse movement with smooth spring physics
+- 🔄 **Dynamic Rotation**: Tooltip rotates based on mouse position for natural feel
+- ⚡ **Spring Animations**: Smooth enter/exit animations with configurable spring physics
+- 🎨 **Gradient Effects**: Beautiful gradient borders for visual appeal
+- 📱 **Responsive Design**: Works seamlessly on different screen sizes
+- 🖼️ **Image Hover Effects**: Scale and z-index changes on hover
+- 🎪 **Stacked Layout**: Overlapping avatars with proper z-index management
+
+## Examples
+
+### Development Team
+```tsx
+const devTeam = [
+  {
+    id: 1,
+    name: "Alex Rivera",
+    designation: "Lead Frontend Developer",
+    image: "/team/alex.jpg"
+  },
+  {
+    id: 2,
+    name: "Sarah Chen",
+    designation: "Backend Engineer",
+    image: "/team/sarah.jpg"
+  },
+  {
+    id: 3,
+    name: "Marcus Williams",
+    designation: "DevOps Engineer",
+    image: "/team/marcus.jpg"
+  }
+];
+
+<InteractiveTooltip items={devTeam} />
+```
+
+### Customer Success Team
+```tsx
+const customerTeam = [
+  {
+    id: 1,
+    name: "Emma Thompson",
+    designation: "Customer Success Manager",
+    image: "/team/emma.jpg"
+  },
+  {
+    id: 2,
+    name: "David Park",
+    designation: "Support Specialist",
+    image: "/team/david.jpg"
+  },
+  {
+    id: 3,
+    name: "Lisa Rodriguez",
+    designation: "Account Manager",
+    image: "/team/lisa.jpg"
+  }
+];
+
+<InteractiveTooltip items={customerTeam} />
+```
+
+### Executive Team
+```tsx
+const executives = [
+  {
+    id: 1,
+    name: "Michael Johnson",
+    designation: "Chief Executive Officer",
+    image: "/executives/ceo.jpg"
+  },
+  {
+    id: 2,
+    name: "Jennifer Davis",
+    designation: "Chief Technology Officer",
+    image: "/executives/cto.jpg"
+  },
+  {
+    id: 3,
+    name: "Robert Kim",
+    designation: "Chief Marketing Officer",
+    image: "/executives/cmo.jpg"
+  }
+];
+
+<InteractiveTooltip items={executives} />
+```
+
+## Animation Details
+
+### Spring Configuration
+The component uses carefully tuned spring physics:
+- **Stiffness**: 100 (smooth but responsive)
+- **Damping**: 5 (minimal bouncing)
+- **Rotation Range**: -45° to +45° based on mouse position
+- **Translation Range**: -50px to +50px horizontal offset
+
+### Hover Effects
+- **Scale**: Images scale to 105% on hover
+- **Z-Index**: Hovered image moves to front layer (z-30)
+- **Transition**: 500ms duration for smooth scaling
+
+### Tooltip Animation
+- **Enter**: Opacity 0→1, Y 20→0, Scale 0.6→1
+- **Exit**: Opacity 1→0, Y 0→20, Scale 1→0.6
+- **Spring Type**: High stiffness (260) with controlled damping (10)
+
+## Styling Customization
+
+The component uses Tailwind classes and can be customized:
+
+### Avatar Styling
+```css
+.avatar-custom {
+  @apply h-16 w-16 border-4 border-primary rounded-full;
+}
+```
+
+### Tooltip Styling
+```css
+.tooltip-custom {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg;
+}
+```
+
+### Gradient Effects
+The tooltip includes two gradient lines:
+- **Emerald gradient**: 20% width, via-emerald-500
+- **Sky gradient**: 40% width, via-sky-500
+
+## Best Practices
+
+1. **Image Optimization**: Use optimized images (WebP format recommended)
+2. **Responsive Images**: Provide appropriate sizes for different screen densities
+3. **Accessibility**: Include proper alt text for profile images
+4. **Performance**: Limit the number of items to avoid performance issues
+5. **Spacing**: Allow adequate spacing between avatars for comfortable interaction

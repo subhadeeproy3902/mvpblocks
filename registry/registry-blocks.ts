@@ -997,6 +997,22 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'interactive-tooltip',
+    author: 'nuelst',
+    type: 'registry:block',
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/creative/interactive-tooltip.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('@/components/mvpblocks/creative/interactive-tooltip'),
+    ),
+  },
+  {
     name: 'about-us-1',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
