@@ -67,7 +67,7 @@ export const initiatePayment = async ({
               orderId: response.razorpay_order_id,
               productId,
               productName: title,
-              amount: (amount / 100).toFixed(2),
+              amount: amount,
               currency,
             }),
           });
