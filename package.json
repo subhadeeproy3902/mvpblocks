@@ -15,8 +15,7 @@
     "register": "bun run ./scripts/auto-register.ts",
     "add-component": "powershell -File ./scripts/register-component.ps1",
     "update-dependencies": "bun run ./scripts/update-dependencies.ts",
-    "optimise-image": "bun run ./scripts/convert-to-webp.js",
-    "email": "bun actions/sendEmails.ts"
+    "optimise-image": "bun run ./scripts/convert-to-webp.js"
   },
   "dependencies": {
     "@ai-sdk/groq": "^1.2.9",
