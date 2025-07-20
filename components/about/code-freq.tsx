@@ -75,7 +75,7 @@ export default function Codefreq() {
   });
 
   return (
-    <Card className="bg-gradient-to-b from-secondary/40 to-secondary/0 shadow-[0px_-2px_50px_0px_#e91e631c_inset]">
+    <Card className="from-secondary/40 to-secondary/0 bg-gradient-to-b shadow-[0px_-2px_50px_0px_#e91e631c_inset]">
       <CardHeader className="flex items-center gap-2 space-y-0 py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
           <CardTitle>GitHub Code Frequency</CardTitle>

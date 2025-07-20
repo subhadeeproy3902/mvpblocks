@@ -139,7 +139,7 @@ export default function AssistantDialog() {
     () => (
       <Button
         aria-label="Trigger Assistant"
-        className="fixed bottom-3 right-3 h-12 w-12 cursor-pointer rounded-full bg-gradient-to-b from-rose-500 to-rose-700 p-0 text-3xl text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] focus-visible:outline-none sm:bottom-5 sm:right-5"
+        className="fixed right-3 bottom-3 h-12 w-12 cursor-pointer rounded-full bg-gradient-to-b from-rose-500 to-rose-700 p-0 text-3xl text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset] focus-visible:outline-none sm:right-5 sm:bottom-5"
       >
         <SparklesIcon />
       </Button>
@@ -150,14 +150,14 @@ export default function AssistantDialog() {
   const TokenUsageFooter = useMemo(
     () => (
       <div className="flex w-full items-center justify-between">
-        <div className="flex items-center gap-1 text-xs text-fd-muted-foreground">
+        <div className="text-fd-muted-foreground flex items-center gap-1 text-xs">
           <ZapIcon className="size-3.5" />
           <span>{tokenUsage} tokens used</span>
         </div>
         <button
           aria-label="Clear chat history"
           onClick={clearChat}
-          className="flex items-center gap-1 text-xs text-fd-muted-foreground transition-colors hover:text-fd-foreground"
+          className="text-fd-muted-foreground hover:text-fd-foreground flex items-center gap-1 text-xs transition-colors"
         >
           <TrashIcon className="size-3.5" />
           Clear chat
@@ -174,21 +174,21 @@ export default function AssistantDialog() {
           <h3 className="text-lg font-medium">
             Welcome to the mvp.ai Assistant
           </h3>
-          <p className="text-balance text-fd-muted-foreground">
+          <p className="text-fd-muted-foreground text-balance">
             Ask me anything about MVPBlocks components, UI design, or
             implementation details.
             <br /> Your chat history is not saved between sessions.
           </p>
-          <p className="hidden text-xs text-fd-muted-foreground sm:block">
+          <p className="text-fd-muted-foreground hidden text-xs sm:block">
             Tip: Press{' '}
-            <kbd className="rounded bg-fd-muted px-1 py-0.5">Ctrl+/</kbd>{' '}
+            <kbd className="bg-fd-muted rounded px-1 py-0.5">Ctrl+/</kbd>{' '}
             anytime to open this assistant
           </p>
-          <div className="bottom-0 right-0 w-full sm:absolute">
+          <div className="right-0 bottom-0 w-full sm:absolute">
             <div className="mt-8 grid gap-4 text-sm sm:grid-cols-3">
               <button
                 aria-label="Example: Button component"
-                className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
+                className="border-fd-muted flex items-center gap-2 rounded-lg border p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
                   submitExample('Show me how to use the button component')
                 }
@@ -198,7 +198,7 @@ export default function AssistantDialog() {
               </button>
               <button
                 aria-label="Example: Hero section"
-                className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
+                className="border-fd-muted flex items-center gap-2 rounded-lg border p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
                   submitExample('Create a hero section for my landing page')
                 }
@@ -208,7 +208,7 @@ export default function AssistantDialog() {
               </button>
               <button
                 aria-label="Example: Form validation"
-                className="flex items-center gap-2 rounded-lg border border-fd-muted p-2 shadow-sm hover:cursor-pointer"
+                className="border-fd-muted flex items-center gap-2 rounded-lg border p-2 shadow-sm hover:cursor-pointer"
                 onClick={() =>
                   submitExample(
                     'How to implement form validation with MVPBlocks',
@@ -249,7 +249,7 @@ export default function AssistantDialog() {
                   )}
                 >
                   {!isUser && (
-                    <div className="hidden h-min rounded-full bg-fd-accent p-2 sm:block">
+                    <div className="bg-fd-accent hidden h-min rounded-full p-2 sm:block">
                       <SparklesIcon className="size-4" />
                     </div>
                   )}
@@ -272,13 +272,13 @@ export default function AssistantDialog() {
                         content={message.content}
                       />
                     </div>
-                    <div className="mt-1 text-xs text-fd-muted-foreground">
+                    <div className="text-fd-muted-foreground mt-1 text-xs">
                       {formatTime(timestamp)}{' '}
                       <span>· {isUser ? 'User' : 'Assistant'}</span>
                     </div>
                   </div>
                   {isUser && (
-                    <div className="hidden h-min rounded-full bg-fd-accent p-2 sm:block">
+                    <div className="bg-fd-accent hidden h-min rounded-full p-2 sm:block">
                       <UserIcon className="size-4" />
                     </div>
                   )}
@@ -305,7 +305,7 @@ export default function AssistantDialog() {
                       <RefreshCwIcon className="mr-1 size-3" /> Try again
                     </button>
                   </div>
-                  <div className="mt-1 text-xs text-fd-muted-foreground">
+                  <div className="text-fd-muted-foreground mt-1 text-xs">
                     {formatTime(new Date())} <span>· System</span>
                   </div>
                 </div>
@@ -324,13 +324,13 @@ export default function AssistantDialog() {
         {messages.length > 0 && TokenUsageFooter}
         <form
           onSubmit={handleSubmitWithTokenCheck}
-          className="flex w-full flex-row items-center gap-2 rounded-lg border border-fd-border px-3 shadow-sm"
+          className="border-fd-border flex w-full flex-row items-center gap-2 rounded-lg border px-3 shadow-sm"
         >
           <div className="relative size-4">
             {isLoading ? (
-              <Loader2Icon className="absolute size-full animate-spin text-fd-muted-foreground" />
+              <Loader2Icon className="text-fd-muted-foreground absolute size-full animate-spin" />
             ) : (
-              <SparklesIcon className="absolute size-full text-fd-muted-foreground" />
+              <SparklesIcon className="text-fd-muted-foreground absolute size-full" />
             )}
           </div>
           <Input
@@ -346,7 +346,7 @@ export default function AssistantDialog() {
               type="button"
               aria-label="Stop generating response"
               onClick={stop}
-              className="text-fd-destructive hover:text-fd-destructive inline-flex items-center justify-center rounded-md border p-1.5 text-xs font-medium transition-colors duration-100 hover:bg-fd-accent hover:text-fd-accent-foreground"
+              className="text-fd-destructive hover:text-fd-destructive hover:bg-fd-accent hover:text-fd-accent-foreground inline-flex items-center justify-center rounded-md border p-1.5 text-xs font-medium transition-colors duration-100"
             >
               <SquareIcon className="size-4" />
             </button>
@@ -354,7 +354,7 @@ export default function AssistantDialog() {
             <button
               type="submit"
               aria-label="Send message"
-              className="inline-flex items-center justify-center rounded-md border p-1.5 text-xs font-medium transition-colors duration-100 hover:bg-fd-accent hover:text-fd-accent-foreground disabled:pointer-events-none disabled:opacity-50"
+              className="hover:bg-fd-accent hover:text-fd-accent-foreground inline-flex items-center justify-center rounded-md border p-1.5 text-xs font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50"
               disabled={isLoading || !input.trim()}
             >
               <CornerDownLeftIcon className="size-4" />
@@ -378,7 +378,7 @@ export default function AssistantDialog() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{TriggerButton}</DialogTrigger>
-        <DialogContent className="rounded-xl bg-fd-popover sm:max-w-screen-sm">
+        <DialogContent className="bg-fd-popover rounded-xl sm:max-w-screen-sm">
           <DialogHeader>
             <div className="flex items-center gap-2">
               <img
@@ -386,7 +386,7 @@ export default function AssistantDialog() {
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />
-              <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
+              <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
                 Mvpblocks
               </span>
             </div>
@@ -408,7 +408,7 @@ export default function AssistantDialog() {
         <DrawerHeader>
           <div className="flex items-center gap-2">
             <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
-            <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
+            <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
               Mvpblocks
             </span>
           </div>

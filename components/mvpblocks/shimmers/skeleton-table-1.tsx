@@ -78,7 +78,7 @@ const ShimmerTopBar: React.FC<{
   showColumnToggle: boolean;
 }> = ({ showFilter, showColumnToggle }) => (
   <div className="mb-2 flex w-full flex-col overflow-hidden rounded-md">
-    <div className="h-15 flex items-center justify-between gap-4">
+    <div className="flex h-15 items-center justify-between gap-4">
       {showFilter && (
         <ShimmerComponent className="h-6 w-6/12 md:h-8 lg:w-3/12" />
       )}

@@ -63,11 +63,11 @@ export const PixelCard: React.FC<CardProps> = ({
   // Hover animation configuration
   const hoverTransition = {
     duration: 0.8,
-    ease: "easeInOut" as const,
+    ease: 'easeInOut' as const,
   };
 
   return (
-    <motion.div className="light:border-gray-900 !dark:border-gray-[900] aspect-4/5 group relative isolate flex h-full select-none place-items-center items-center justify-center overflow-hidden rounded-xl border transition-all duration-200 hover:text-black dark:hover:text-white">
+    <motion.div className="light:border-gray-900 !dark:border-gray-[900] group relative isolate flex aspect-4/5 h-full place-items-center items-center justify-center overflow-hidden rounded-xl border transition-all duration-200 select-none hover:text-black dark:hover:text-white">
       <PixelCanvas {...{ ...canvasProps }} />
 
       <motion.div
@@ -90,7 +90,7 @@ export const PixelCard: React.FC<CardProps> = ({
           alt={label}
           width={112}
           height={112}
-          className="z-50 mb-4 h-28 w-28 select-none opacity-30 group-hover:opacity-80"
+          className="z-50 mb-4 h-28 w-28 opacity-30 select-none group-hover:opacity-80"
         />
       ) : (
         <img
@@ -99,7 +99,7 @@ export const PixelCard: React.FC<CardProps> = ({
           alt={label}
           width={128}
           height={128}
-          className="z-50 mb-4 h-32 w-32 select-none opacity-30 group-hover:opacity-80"
+          className="z-50 mb-4 h-32 w-32 opacity-30 select-none group-hover:opacity-80"
         />
       )}
 
@@ -117,7 +117,7 @@ export const PixelCard: React.FC<CardProps> = ({
       ) : (
         <div className="absolute inset-0 z-20 overflow-hidden rounded-[inherit] opacity-100 transition-all duration-500">
           <div
-            className="absolute bottom-[55%] right-1/2 aspect-square w-[200%] translate-x-1/2 rounded-[50%]"
+            className="absolute right-1/2 bottom-[55%] aspect-square w-[200%] translate-x-1/2 rounded-[50%]"
             style={{
               background: `conic-gradient(from ${variantConfig.shine}, transparent 360deg)`,
               filter: 'blur(40px)',
@@ -128,10 +128,10 @@ export const PixelCard: React.FC<CardProps> = ({
 
       <span className="sr-only">{label}</span>
 
-      <div className="absolute bottom-0 z-10 w-full bg-background">
-        <div className="w-full bg-gradient-to-b from-background via-background to-primary/20 px-4 pb-4 pt-2 text-left">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground/80">
-            <span className="inline-block tabular-nums tracking-wider">
+      <div className="bg-background absolute bottom-0 z-10 w-full">
+        <div className="from-background via-background to-primary/20 w-full bg-gradient-to-b px-4 pt-2 pb-4 text-left">
+          <h2 className="text-foreground/80 text-2xl font-bold tracking-tight">
+            <span className="inline-block tracking-wider tabular-nums">
               {number ? (
                 <>
                   <NumberTicker value={number} /> +
@@ -142,7 +142,7 @@ export const PixelCard: React.FC<CardProps> = ({
             </span>
           </h2>
           <div className="flex items-end justify-between">
-            <p className="max-w-[16rem] text-base text-muted-foreground/80">
+            <p className="text-muted-foreground/80 max-w-[16rem] text-base">
               {desc}
             </p>
           </div>

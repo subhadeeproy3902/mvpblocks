@@ -44,7 +44,7 @@ export default function ThankYou({
             <img src="/success.gif" alt="Success" className="w-56" />
           </div>
           <AlertDialogHeader className="relative">
-            <AlertDialogTitle className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-transparent dark:bg-gradient-to-b mb-2 text-center text-3xl font-medium">
+            <AlertDialogTitle className="bg-primary from-foreground to-primary mb-2 via-rose-200 bg-clip-text text-center text-3xl font-medium text-transparent dark:bg-gradient-to-b">
               Thank you for your purchase!
             </AlertDialogTitle>
           </AlertDialogHeader>
@@ -63,7 +63,7 @@ export default function ThankYou({
             >
               Close
             </Button>
-            <p className="text-muted-foreground mt-4 text-xs text-center">
+            <p className="text-muted-foreground mt-4 text-center text-xs">
               Please check your inbox (and spam folder if you don&apos;t see
               it).
             </p>

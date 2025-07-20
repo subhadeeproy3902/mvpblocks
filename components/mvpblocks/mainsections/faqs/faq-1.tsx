@@ -68,12 +68,12 @@ export default function Faq1() {
             transition={{ duration: 0.5 }}
           >
             Frequently Asked{' '}
-            <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">
+            <span className="from-primary bg-gradient-to-r to-rose-400 bg-clip-text text-transparent">
               Questions
             </span>
           </motion.h2>
           <motion.p
-            className="mx-auto max-w-2xl text-muted-foreground"
+            className="text-muted-foreground mx-auto max-w-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -90,13 +90,13 @@ export default function Faq1() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           {/* Decorative gradient */}
-          <div className="absolute -left-4 -top-4 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute -bottom-4 -right-4 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+          <div className="bg-primary/10 absolute -top-4 -left-4 -z-10 h-72 w-72 rounded-full blur-3xl" />
+          <div className="bg-primary/10 absolute -right-4 -bottom-4 -z-10 h-72 w-72 rounded-full blur-3xl" />
 
           <Accordion
             type="single"
             collapsible
-            className="w-full rounded-xl border border-border/40 bg-card/30 p-2 backdrop-blur-sm"
+            className="border-border/40 bg-card/30 w-full rounded-xl border p-2 backdrop-blur-sm"
             defaultValue="1"
           >
             {items.map((item, index) => (
@@ -111,7 +111,7 @@ export default function Faq1() {
                 <AccordionItem
                   value={item.id}
                   className={cn(
-                    'my-1 overflow-hidden rounded-lg border-none bg-card/50 px-2 shadow-sm transition-all',
+                    'bg-card/50 my-1 overflow-hidden rounded-lg border-none px-2 shadow-sm transition-all',
                     'data-[state=open]:bg-card/80 data-[state=open]:shadow-md',
                   )}
                 >
@@ -119,8 +119,8 @@ export default function Faq1() {
                     <AccordionPrimitive.Trigger
                       className={cn(
                         'group flex flex-1 items-center justify-between gap-4 py-4 text-left text-base font-medium',
-                        'outline-none transition-all duration-300 hover:text-primary',
-                        'focus-visible:ring-2 focus-visible:ring-primary/50',
+                        'hover:text-primary transition-all duration-300 outline-none',
+                        'focus-visible:ring-primary/50 focus-visible:ring-2',
                         'data-[state=open]:text-primary',
                       )}
                     >
@@ -128,7 +128,7 @@ export default function Faq1() {
                       <PlusIcon
                         size={18}
                         className={cn(
-                          'shrink-0 text-primary/70 transition-transform duration-300 ease-out',
+                          'text-primary/70 shrink-0 transition-transform duration-300 ease-out',
                           'group-data-[state=open]:rotate-45',
                         )}
                         aria-hidden="true"
@@ -137,12 +137,12 @@ export default function Faq1() {
                   </AccordionPrimitive.Header>
                   <AccordionContent
                     className={cn(
-                      'overflow-hidden pb-4 pt-0 text-muted-foreground',
+                      'text-muted-foreground overflow-hidden pt-0 pb-4',
                       'data-[state=open]:animate-accordion-down',
                       'data-[state=closed]:animate-accordion-up',
                     )}
                   >
-                    <div className="border-t border-border/30 pt-3">
+                    <div className="border-border/30 border-t pt-3">
                       {item.content}
                     </div>
                   </AccordionContent>

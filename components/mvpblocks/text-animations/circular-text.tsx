@@ -1,47 +1,47 @@
-"use client";
+'use client';
 import {
   motion,
   MotionValue,
   Transition,
   useAnimation,
   useMotionValue,
-} from "framer-motion";
-import { useEffect } from "react";
+} from 'framer-motion';
+import { useEffect } from 'react';
 
 type CircularTextProps = {
   text: string;
   spinDuration?: number;
-  onHover?: "slowDown" | "speedUp" | "pause" | "goBonkers";
+  onHover?: 'slowDown' | 'speedUp' | 'pause' | 'goBonkers';
   className?: string;
-}
+};
 
 const getRotationTransition = (
   duration: number,
   from: number,
-  loop: boolean = true
+  loop: boolean = true,
 ) => ({
   from,
   to: from + 360,
-  ease: "linear" as const,
+  ease: 'linear' as const,
   duration,
-  type: "tween" as const,
+  type: 'tween' as const,
   repeat: loop ? Infinity : 0,
 });
 
 const getTransition = (duration: number, from: number) => ({
   rotate: getRotationTransition(duration, from),
   scale: {
-    type: "spring" as const,
+    type: 'spring' as const,
     damping: 20,
     stiffness: 300,
   },
 });
 
 export function CircularText({
-  text = "Circular Text Animation • ",
+  text = 'Circular Text Animation • ',
   spinDuration = 20,
-  onHover = "speedUp",
-  className = "",
+  onHover = 'speedUp',
+  className = '',
 }: Readonly<CircularTextProps>) {
   const letters = Array.from(text);
   const controls = useAnimation();
@@ -65,19 +65,19 @@ export function CircularText({
     let scaleVal = 1;
 
     switch (onHover) {
-      case "slowDown":
+      case 'slowDown':
         transitionConfig = getTransition(spinDuration * 2, start);
         break;
-      case "speedUp":
+      case 'speedUp':
         transitionConfig = getTransition(spinDuration / 4, start);
         break;
-      case "pause":
+      case 'pause':
         transitionConfig = {
-          rotate: { type: "spring", damping: 20, stiffness: 300 },
-          scale: { type: "spring", damping: 20, stiffness: 300 },
+          rotate: { type: 'spring', damping: 20, stiffness: 300 },
+          scale: { type: 'spring', damping: 20, stiffness: 300 },
         };
         break;
-      case "goBonkers":
+      case 'goBonkers':
         transitionConfig = getTransition(spinDuration / 20, start);
         scaleVal = 0.8;
         break;
@@ -102,9 +102,9 @@ export function CircularText({
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[400px]  rounded-lg">
+    <div className="flex min-h-[400px] items-center justify-center rounded-lg">
       <motion.div
-        className={`m-0 mx-auto rounded-full w-[200px] h-[200px] relative font-black text-white text-center cursor-pointer origin-center ${className}`}
+        className={`relative m-0 mx-auto h-[200px] w-[200px] origin-center cursor-pointer rounded-full text-center font-black text-white ${className}`}
         style={{ rotate: rotation }}
         initial={{ rotate: 0 }}
         animate={controls}
@@ -121,7 +121,7 @@ export function CircularText({
           return (
             <span
               key={i}
-              className="absolute inline-block inset-0 text-2xl transition-all duration-500 ease-out"
+              className="absolute inset-0 inline-block text-2xl transition-all duration-500 ease-out"
               style={{ transform, WebkitTransform: transform }}
             >
               {letter}
@@ -131,7 +131,6 @@ export function CircularText({
       </motion.div>
     </div>
   );
-};
+}
 
 export default CircularText;
-

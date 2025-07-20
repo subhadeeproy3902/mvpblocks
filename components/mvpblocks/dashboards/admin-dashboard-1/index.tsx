@@ -89,7 +89,7 @@ export default function AdminDashboard() {
                 <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
                   Welcome Admin
                 </h1>
-                <p className="text-sm text-muted-foreground sm:text-base">
+                <p className="text-muted-foreground text-sm sm:text-base">
                   Here&apos;s what&apos;s happening with your platform today.
                 </p>
               </div>

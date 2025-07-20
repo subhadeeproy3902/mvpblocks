@@ -14,7 +14,7 @@ const space = Geist({
 
 export default function NotFound() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-background">
+    <div className="bg-background relative h-screen w-full overflow-hidden">
       <Spotlight />
       <div className="flex h-full flex-col items-center justify-center p-4">
         <Card className="mx-auto max-w-2xl shadow-lg">
@@ -25,16 +25,16 @@ export default function NotFound() {
             <div className="space-y-2">
               <h1
                 className={cn(
-                  'text-6xl font-bold tracking-tight text-foreground',
+                  'text-foreground text-6xl font-bold tracking-tight',
                   space.className,
                 )}
               >
                 404
               </h1>
-              <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+              <h2 className="text-foreground text-2xl font-semibold tracking-tight">
                 Page Not Found
               </h2>
-              <p className="max-w-md text-muted-foreground">
+              <p className="text-muted-foreground max-w-md">
                 Sorry, we couldn&apos;t find the page you&apos;re looking for.
                 The page might have been moved, deleted, or you entered the
                 wrong URL.
@@ -62,9 +62,9 @@ export default function NotFound() {
               </Button>
             </div>
             {/* Help Section */}
-            <div className="rounded-lg bg-muted/50 p-4">
-              <h3 className="mb-2 font-semibold text-foreground">Need Help?</h3>
-              <p className="mb-3 text-sm text-muted-foreground">
+            <div className="bg-muted/50 rounded-lg p-4">
+              <h3 className="text-foreground mb-2 font-semibold">Need Help?</h3>
+              <p className="text-muted-foreground mb-3 text-sm">
                 If you believe this is an error, please let us know.
               </p>
               <div className="flex gap-2">

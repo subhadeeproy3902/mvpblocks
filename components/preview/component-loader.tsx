@@ -54,7 +54,7 @@ export function ComponentLoader({
       <div className="flex h-full w-full items-center justify-center p-16">
         <div className="flex h-full w-full flex-col items-center justify-center bg-transparent p-4">
           <div className="rounded-full p-3">
-            <RotateCw className="h-6 w-6 animate-spin text-foreground" />
+            <RotateCw className="text-foreground h-6 w-6 animate-spin" />
           </div>
         </div>
       </div>
@@ -64,13 +64,13 @@ export function ComponentLoader({
   if (!Component) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+        <div className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
           <Card className="mx-auto max-w-md shadow-lg">
             <CardHeader className="flex flex-col items-center space-y-1 pb-2 text-center">
               <div className="rounded-full bg-red-100 p-3 dark:bg-red-900/0">
                 <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
               </div>
-              <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
+              <h1 className="text-foreground mt-4 text-2xl font-bold tracking-tight">
                 Component not found
               </h1>
             </CardHeader>
@@ -78,32 +78,32 @@ export function ComponentLoader({
               <div className="space-y-4">
                 <p className="text-muted-foreground">
                   The component{' '}
-                  <span className="font-mono font-medium text-foreground">
+                  <span className="text-foreground font-mono font-medium">
                     {name}
                   </span>{' '}
                   could not be found. Please check the name and try again.
                 </p>
-                <div className="rounded-lg bg-secondary p-4">
+                <div className="bg-secondary rounded-lg p-4">
                   <h3 className="mb-2 text-sm font-medium">
                     Troubleshooting steps:
                   </h3>
-                  <ul className="space-y-2 text-left text-sm text-muted-foreground">
+                  <ul className="text-muted-foreground space-y-2 text-left text-sm">
                     <li className="flex items-start">
-                      <span className="mr-2 text-primary">•</span>
+                      <span className="text-primary mr-2">•</span>
                       <span>
                         If you are the developer, ensure the component is
                         registered correctly in your component registry.
                       </span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-primary">•</span>
+                      <span className="text-primary mr-2">•</span>
                       <span>
                         Check for typos in the component name or import
                         statement.
                       </span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-primary">•</span>
+                      <span className="text-primary mr-2">•</span>
                       <span>
                         If you are the user, please contact the developer to fix
                         this issue.
@@ -128,9 +128,9 @@ export function ComponentLoader({
               </Button>
             </CardFooter>
           </Card>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
+          <p className="text-muted-foreground mt-6 text-center text-sm">
             Need help?{' '}
-            <Link href="#" className="font-medium text-primary hover:underline">
+            <Link href="#" className="text-primary font-medium hover:underline">
               Contact support
             </Link>
           </p>
@@ -180,7 +180,7 @@ function ComponentDisplay({
   return (
     <div
       className={cn(
-        'component-preview relative flex w-full items-center justify-center overflow-y-auto rounded-lg border border-secondary/50',
+        'component-preview border-secondary/50 relative flex w-full items-center justify-center overflow-y-auto rounded-lg border',
         className,
       )}
       id="preview"
@@ -192,7 +192,7 @@ function ComponentDisplay({
         <Button
           variant="ghost"
           size="icon"
-          className="absolute left-0 z-50 top-0 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
+          className="text-muted-foreground/80 hover:text-foreground absolute top-0 left-0 z-50 cursor-pointer hover:bg-transparent"
           onClick={reTrigger}
           aria-label="Refresh component"
         >
@@ -207,7 +207,7 @@ function ComponentDisplay({
           className={`${className} w-full`}
         />
       ) : (
-        <div className="overflow-y-auto h-full w-full flex justify-center">
+        <div className="flex h-full w-full justify-center overflow-y-auto">
           {component}
         </div>
       )}

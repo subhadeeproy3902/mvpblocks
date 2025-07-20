@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Facebook, Linkedin, Twitter } from 'lucide-react';
 
-
 type TeamMember = {
   id: number;
   name: string;
@@ -106,7 +105,7 @@ export default function Team3({
                   className="object-cover"
                 />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-indigo-900 to-transparent p-6">
+              <div className="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-indigo-900 to-transparent p-6">
                 <h3 className="text-xl font-bold">{member.name}</h3>
                 <p className="mb-3 text-indigo-300">{member.role}</p>
                 <div className="flex space-x-3">
@@ -137,7 +136,7 @@ export default function Team3({
                 </div>
               </div>
               {member.troubleMaker && (
-                <div className="absolute left-0 right-0 top-0 bg-indigo-600 bg-opacity-80 p-6">
+                <div className="bg-opacity-80 absolute top-0 right-0 left-0 bg-indigo-600 p-6">
                   <p className="text-sm font-medium">Trouble Maker</p>
                 </div>
               )}

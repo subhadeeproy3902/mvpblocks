@@ -249,7 +249,7 @@ export default function Team7({
           </p>
           <h2
             className={cn(
-              'mb-6 text-4xl font-bold leading-tight md:text-5xl',
+              'mb-6 text-4xl leading-tight font-bold md:text-5xl',
               mont.className,
             )}
           >

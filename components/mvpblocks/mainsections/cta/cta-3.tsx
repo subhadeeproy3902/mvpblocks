@@ -17,7 +17,7 @@ export default function CTA3() {
                 </span>{' '}
                 Your Marketing?
               </h2>
-              <p className="mb-8 text-lg text-muted-foreground">
+              <p className="text-muted-foreground mb-8 text-lg">
                 96% of visitors leave websites without taking action. Our
                 conversion-optimized funnels recapture those lost opportunities
                 and turn them into predictable revenue.
@@ -25,7 +25,7 @@ export default function CTA3() {
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="mr-4 mt-1 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
+                  <div className="mt-1 mr-4 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
                     <svg
                       width="20"
                       height="20"
@@ -58,7 +58,7 @@ export default function CTA3() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="mr-4 mt-1 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
+                  <div className="mt-1 mr-4 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
                     <svg
                       width="20"
                       height="20"
@@ -92,7 +92,7 @@ export default function CTA3() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="mr-4 mt-1 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
+                  <div className="mt-1 mr-4 rounded-full bg-[#0A0F2C] p-2 text-[#2E9BFF]">
                     <svg
                       width="20"
                       height="20"
@@ -128,7 +128,7 @@ export default function CTA3() {
             </div>
 
             <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700 p-8 text-white md:p-12 lg:p-16">
-              <div className="absolute right-0 top-0 h-full w-full opacity-10"></div>
+              <div className="absolute top-0 right-0 h-full w-full opacity-10"></div>
               <div className="relative z-10">
                 <h3 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
                   Don&apos;t Let Another Day Pass With A Leaky Marketing Funnel

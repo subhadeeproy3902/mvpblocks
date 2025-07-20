@@ -6,7 +6,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "export default function BounceLoader() {\n  return (\n    <div className=\"flex items-center justify-center space-x-2\">\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary [animation-delay:-0.3s]\"></div>\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary [animation-delay:-0.13s]\"></div>\n      <div className=\"h-5 w-5 animate-bounce rounded-full bg-primary\"></div>\n    </div>\n  );\n}\n",
+      "content": "export default function BounceLoader() {\n  return (\n    <div className=\"flex items-center justify-center space-x-2\">\n      <div className=\"bg-primary h-5 w-5 animate-bounce rounded-full [animation-delay:-0.3s]\"></div>\n      <div className=\"bg-primary h-5 w-5 animate-bounce rounded-full [animation-delay:-0.13s]\"></div>\n      <div className=\"bg-primary h-5 w-5 animate-bounce rounded-full\"></div>\n    </div>\n  );\n}\n",
       "path": "/components/mvpblocks/basics/loaders/bouncing-loader.tsx",
       "target": "components/mvpblocks/bouncing-loader.tsx"
     }

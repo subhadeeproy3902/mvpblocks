@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 interface VideoPlayerProps {
   src: string;
@@ -10,14 +10,14 @@ interface VideoPlayerProps {
 export function VideoPlayer({ src, className }: VideoPlayerProps) {
   return (
     <div
-      className={`relative w-full max-w-full h-auto rounded-lg overflow-hidden ${className}`}
+      className={`relative h-auto w-full max-w-full overflow-hidden rounded-lg ${className}`}
     >
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="w-full max-w-full h-auto object-cover rounded-lg"
+        className="h-auto w-full max-w-full rounded-lg object-cover"
         src={src}
       >
         Your browser does not support the video tag.

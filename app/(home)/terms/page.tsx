@@ -11,14 +11,14 @@ const space = Geist({
 
 export default function TermsPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-background px-2 py-32 md:px-6">
+    <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
       <Spotlight />
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
           <div className="relative mb-12 text-center">
             <h1
               className={cn(
-                'relative bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
+                'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 relative bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
                 space.className,
               )}
             >
@@ -28,7 +28,7 @@ export default function TermsPage() {
           </div>
 
           <div
-            className="prose max-w-none rounded-2xl border p-6 text-foreground md:p-10"
+            className="prose text-foreground max-w-none rounded-2xl border p-6 md:p-10"
             style={{ boxShadow: 'inset 0 0 30px 1px rgba(244, 63, 94, 0.1)' }}
           >
             <div className="mb-8 border-b">
@@ -73,7 +73,7 @@ export default function TermsPage() {
                 </h2>
               </div>
               <div className="pl-14">
-                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                <h3 className="mt-6 mb-3 text-xl font-semibold">
                   2.1 User-Generated Content
                 </h3>
                 <p>
@@ -93,7 +93,7 @@ export default function TermsPage() {
                   </li>
                 </ul>
 
-                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                <h3 className="mt-6 mb-3 text-xl font-semibold">
                   2.2 Acceptable Use
                 </h3>
                 <p>
@@ -119,7 +119,7 @@ export default function TermsPage() {
                   </li>
                 </ul>
 
-                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                <h3 className="mt-6 mb-3 text-xl font-semibold">
                   2.3 Respect for Other Users
                 </h3>
                 <p>
@@ -225,7 +225,7 @@ export default function TermsPage() {
                 </h2>
               </div>
               <div className="pl-14">
-                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                <h3 className="mt-6 mb-3 text-xl font-semibold">
                   5.1 Platform Content
                 </h3>
                 <p>
@@ -236,7 +236,7 @@ export default function TermsPage() {
                   of its proprietary components.
                 </p>
 
-                <h3 className="mb-3 mt-6 text-xl font-semibold">
+                <h3 className="mt-6 mb-3 text-xl font-semibold">
                   5.2 User-Generated Content
                 </h3>
                 <p>
@@ -278,7 +278,7 @@ export default function TermsPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               By using MVPBlocks, you acknowledge that you have read and
               understood these Terms and Conditions.
             </p>

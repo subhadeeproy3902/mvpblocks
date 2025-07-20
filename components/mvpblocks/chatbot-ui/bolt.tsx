@@ -35,22 +35,22 @@ export default function BoltChat() {
           </h1>
           <p className="text-lg text-gray-400">
             Prompt, run, edit, and deploy full-stack{' '}
-            <span className="font-medium text-foreground">web</span> and{' '}
-            <span className="font-medium text-foreground">mobile</span> apps.
+            <span className="text-foreground font-medium">web</span> and{' '}
+            <span className="text-foreground font-medium">mobile</span> apps.
           </p>
         </div>
 
         <div className="mx-auto mb-6 w-full max-w-lg">
           <div className="relative h-[26px]">
-            <div className="duration-350 absolute left-2 top-0 flex w-[calc(100%-1rem)] flex-wrap justify-between truncate rounded-t-lg border bg-secondary/50 px-2 py-1 text-xs opacity-100 backdrop-blur transition-opacity">
+            <div className="bg-secondary/50 absolute top-0 left-2 flex w-[calc(100%-1rem)] flex-wrap justify-between truncate rounded-t-lg border px-2 py-1 text-xs opacity-100 backdrop-blur transition-opacity duration-350">
               <span>150K daily tokens remaining.</span>
-              <button className="mr-4 inline-block bg-transparent font-semibold text-primary hover:underline">
+              <button className="text-primary mr-4 inline-block bg-transparent font-semibold hover:underline">
                 Subscribe to Pro for 66x more usage
               </button>
             </div>
           </div>
-          <div className="shadow-xs relative rounded-lg backdrop-blur">
-            <div className="flex flex-col rounded-lg border bg-secondary/50 p-4">
+          <div className="relative rounded-lg shadow-xs backdrop-blur">
+            <div className="bg-secondary/50 flex flex-col rounded-lg border p-4">
               <textarea
                 placeholder="How can Bolt help you today?"
                 className="mb-4 h-24 w-full resize-none bg-transparent outline-none"

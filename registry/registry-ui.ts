@@ -3,18 +3,23 @@ import * as React from 'react';
 
 export const ui: Registry = [
   {
-    name: "sparkles",
-    type: "registry:ui",
-    dependencies: ["@tsparticles/engine","@tsparticles/react","@tsparticles/slim","react"],
-    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    name: 'sparkles',
+    type: 'registry:ui',
+    dependencies: [
+      '@tsparticles/engine',
+      '@tsparticles/react',
+      '@tsparticles/slim',
+      'react',
+    ],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
       {
-        path: "@/components/ui/sparkles.tsx",
-        type: "registry:ui",
+        path: '@/components/ui/sparkles.tsx',
+        type: 'registry:ui',
       },
     ],
-    component: React.lazy(
-      () => import("../components/ui/sparkles").then((mod) => ({
+    component: React.lazy(() =>
+      import('../components/ui/sparkles').then((mod) => ({
         default: mod.SparklesCore,
       })),
     ),

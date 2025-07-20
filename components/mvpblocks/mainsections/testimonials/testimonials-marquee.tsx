@@ -46,14 +46,14 @@ export function TestimonialCard({
       className={cn(
         'mb-4 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4',
         // theme styles
-        'border border-border bg-card/50 shadow-sm',
+        'border-border bg-card/50 border shadow-sm',
         // hover effect
         'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md',
         className,
       )}
       {...props}
     >
-      <div className="select-none text-sm font-normal text-muted-foreground">
+      <div className="text-muted-foreground text-sm font-normal select-none">
         {description}
         <div className="flex flex-row py-1">
           <Star className="size-4 fill-blue-500 text-blue-500" />
@@ -64,7 +64,7 @@ export function TestimonialCard({
         </div>
       </div>
 
-      <div className="flex w-full select-none items-center justify-start gap-5">
+      <div className="flex w-full items-center justify-start gap-5 select-none">
         <img
           width={40}
           height={40}
@@ -74,8 +74,8 @@ export function TestimonialCard({
         />
 
         <div>
-          <p className="font-medium text-foreground">{name}</p>
-          <p className="text-xs font-normal text-muted-foreground">{role}</p>
+          <p className="text-foreground font-medium">{name}</p>
+          <p className="text-muted-foreground text-xs font-normal">{role}</p>
         </div>
       </div>
     </div>
@@ -233,9 +233,9 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="container relative py-10">
+    <section className="relative container py-10">
       {/* Decorative elements */}
-      <div className="absolute -left-20 top-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
+      <div className="absolute top-20 -left-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
       <div className="absolute -right-20 bottom-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
 
       <motion.div
@@ -243,10 +243,10 @@ export default function Testimonials() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="mb-4 text-center text-4xl font-bold leading-[1.2] tracking-tighter text-foreground md:text-5xl">
+        <h2 className="text-foreground mb-4 text-center text-4xl leading-[1.2] font-bold tracking-tighter md:text-5xl">
           What Our Users Are Saying
         </h2>
-        <h3 className="mx-auto mb-8 max-w-lg text-balance text-center text-lg font-medium tracking-tight text-muted-foreground">
+        <h3 className="text-muted-foreground mx-auto mb-8 max-w-lg text-center text-lg font-medium tracking-tight text-balance">
           Don&apos;t just take our word for it. Here&apos;s what{' '}
           <span className="bg-gradient-to-r from-blue-500 to-sky-500 bg-clip-text text-transparent">
             real developers
@@ -287,8 +287,8 @@ export default function Testimonials() {
               </Marquee>
             ))}
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-background from-20%"></div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-background from-20%"></div>
+        <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-20%"></div>
+        <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-20%"></div>
       </div>
     </section>
   );

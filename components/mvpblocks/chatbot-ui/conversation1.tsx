@@ -74,9 +74,9 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
           )}
         >
           {isUser ? (
-            <User className="h-4 w-4 text-primary" />
+            <User className="text-primary h-4 w-4" />
           ) : (
-            <Bot className="h-4 w-4 text-muted-foreground" />
+            <Bot className="text-muted-foreground h-4 w-4" />
           )}
         </div>
 
@@ -85,8 +85,8 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
             className={cn(
               'rounded-2xl px-4 py-2 shadow-sm',
               isUser
-                ? 'rounded-tr-none bg-primary text-primary-foreground'
-                : 'rounded-tl-none border border-border bg-card text-card-foreground',
+                ? 'bg-primary text-primary-foreground rounded-tr-none'
+                : 'border-border bg-card text-card-foreground rounded-tl-none border',
             )}
           >
             <p className="whitespace-pre-wrap">{message}</p>
@@ -94,7 +94,7 @@ function ChatBubble({ message, isUser, timestamp }: ChatBubbleProps) {
 
           <span
             className={cn(
-              'mt-1 text-xs text-muted-foreground',
+              'text-muted-foreground mt-1 text-xs',
               isUser ? 'text-right' : 'text-left',
             )}
           >
@@ -139,13 +139,13 @@ export default function Conversation1() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
-      <div className="w-full max-w-2xl overflow-hidden rounded-xl border border-border bg-card shadow-lg">
+    <main className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="border-border bg-card w-full max-w-2xl overflow-hidden rounded-xl border shadow-lg">
         <div className="bg-primary p-4">
-          <h1 className="text-lg font-semibold text-primary-foreground">
+          <h1 className="text-primary-foreground text-lg font-semibold">
             AI Assistant
           </h1>
-          <p className="text-sm text-primary-foreground/80">
+          <p className="text-primary-foreground/80 text-sm">
             Always here to help you
           </p>
         </div>
@@ -162,18 +162,18 @@ export default function Conversation1() {
             ))}
 
             {isTyping && (
-              <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <div className="text-muted-foreground flex items-center space-x-2 text-sm">
                 <div className="flex space-x-1">
                   <div
-                    className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
+                    className="bg-muted-foreground/70 h-2 w-2 animate-bounce rounded-full"
                     style={{ animationDelay: '0ms' }}
                   ></div>
                   <div
-                    className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
+                    className="bg-muted-foreground/70 h-2 w-2 animate-bounce rounded-full"
                     style={{ animationDelay: '150ms' }}
                   ></div>
                   <div
-                    className="h-2 w-2 animate-bounce rounded-full bg-muted-foreground/70"
+                    className="bg-muted-foreground/70 h-2 w-2 animate-bounce rounded-full"
                     style={{ animationDelay: '300ms' }}
                   ></div>
                 </div>
@@ -182,7 +182,7 @@ export default function Conversation1() {
             )}
           </div>
 
-          <div className="border-t border-border p-4">
+          <div className="border-border border-t p-4">
             <form onSubmit={handleSendMessage} className="flex space-x-2">
               <Input
                 value={input}

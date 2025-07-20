@@ -106,7 +106,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: '800px',
       }}
       className={cn(
-        'relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full bg-white/80 px-4 py-2 dark:bg-neutral-950 md:flex',
+        'relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full bg-white/80 px-4 py-2 md:flex dark:bg-neutral-950',
         visible && 'bg-white/80 dark:bg-neutral-950/80',
         className,
       )}
@@ -168,7 +168,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        'relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-background px-0 py-2 md:hidden',
+        'bg-background relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-0 py-2 md:hidden',
         visible && 'bg-white/80 dark:bg-neutral-950/80',
         className,
       )}
@@ -237,7 +237,7 @@ export const NavbarLogo = () => {
   return (
     <Link href="/" className="z-50 flex items-center justify-center gap-2">
       <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
-      <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-2xl font-semibold text-transparent dark:bg-gradient-to-b md:text-xl">
+      <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
         Mvpblocks
       </span>
     </Link>

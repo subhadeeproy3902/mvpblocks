@@ -84,18 +84,18 @@ export default function Team5({
   teamMembers = teamMembers3D.slice(0, 4),
 }: TeamSectionProps) {
   return (
-    <section className="w-full bg-background py-16">
+    <section className="bg-background w-full py-16">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="mx-auto mb-16 max-w-4xl text-center">
           <h2
             className={cn(
-              'mb-6 text-4xl font-semibold leading-tight md:text-5xl',
+              'mb-6 text-4xl leading-tight font-semibold md:text-5xl',
               mont.className,
             )}
           >
             We bring a wealth of experience from a wide range of backgrounds
           </h2>
-          <p className="text-lg text-foreground/80">
+          <p className="text-foreground/80 text-lg">
             Our philosophy is simple; hire great people and give them the
             resources and support to do their best work.
           </p>
@@ -112,7 +112,7 @@ export default function Team5({
                 />
               </div>
               <h3 className="text-xl font-medium">{member.name}</h3>
-              <p className="text-base text-primary">{member.role}</p>
+              <p className="text-primary text-base">{member.role}</p>
             </div>
           ))}
         </div>

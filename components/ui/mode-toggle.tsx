@@ -10,7 +10,7 @@ export function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="z-50 rounded-full text-primary"
+      className="text-primary z-50 rounded-full"
       onClick={() => setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'))}
     >
       {theme === 'dark' ? <Sun /> : <Moon />}

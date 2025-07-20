@@ -100,8 +100,8 @@ export default function TestimonialsCarousel({
     >
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.2),transparent_60%)]" />
-        <div className="absolute left-1/4 top-1/4 h-32 w-32 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+        <div className="bg-primary/5 absolute top-1/4 left-1/4 h-32 w-32 rounded-full blur-3xl" />
+        <div className="bg-primary/10 absolute right-1/4 bottom-1/4 h-40 w-40 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
@@ -112,12 +112,12 @@ export default function TestimonialsCarousel({
           viewport={{ once: true }}
           className="relative mb-12 text-center md:mb-16"
         >
-          <h1 className="mb-4 bg-gradient-to-b from-foreground to-foreground/40 bg-clip-text text-3xl font-bold text-transparent md:text-5xl lg:text-6xl">
+          <h1 className="from-foreground to-foreground/40 mb-4 bg-gradient-to-b bg-clip-text text-3xl font-bold text-transparent md:text-5xl lg:text-6xl">
             {title}
           </h1>
 
           <motion.p
-            className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg"
+            className="text-muted-foreground mx-auto max-w-2xl text-base md:text-lg"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -140,18 +140,18 @@ export default function TestimonialsCarousel({
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative h-full w-fit rounded-2xl border border-border bg-gradient-to-b from-secondary/20 to-card p-6 shadow-md backdrop-blur-sm"
+                  className="border-border from-secondary/20 to-card relative h-full w-fit rounded-2xl border bg-gradient-to-b p-6 shadow-md backdrop-blur-sm"
                 >
                   {/* Enhanced decorative gradients */}
-                  <div className="absolute -left-5 -top-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b from-primary/15 to-card blur-md" />
-                  <div className="absolute -bottom-10 -right-10 -z-10 h-32 w-32 rounded-full bg-gradient-to-t from-primary/10 to-transparent opacity-70 blur-xl" />
+                  <div className="from-primary/15 to-card absolute -top-5 -left-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b blur-md" />
+                  <div className="from-primary/10 absolute -right-10 -bottom-10 -z-10 h-32 w-32 rounded-full bg-gradient-to-t to-transparent opacity-70 blur-xl" />
 
                   <motion.div
                     initial={{ opacity: 0, y: -5 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
                     viewport={{ once: true }}
-                    className="mb-4 text-primary"
+                    className="text-primary mb-4"
                   >
                     <div className="relative">
                       <Quote className="h-10 w-10 -rotate-180" />
@@ -163,7 +163,7 @@ export default function TestimonialsCarousel({
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
                     viewport={{ once: true }}
-                    className="relative mb-6 text-base leading-relaxed text-foreground/90"
+                    className="text-foreground/90 relative mb-6 text-base leading-relaxed"
                   >
                     <span className="relative">{testimonial.text}</span>
                   </motion.p>
@@ -174,9 +174,9 @@ export default function TestimonialsCarousel({
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
                     viewport={{ once: true }}
-                    className="mt-auto flex items-center gap-3 border-t border-border/40 pt-2"
+                    className="border-border/40 mt-auto flex items-center gap-3 border-t pt-2"
                   >
-                    <Avatar className="h-10 w-10 border border-border ring-2 ring-primary/10 ring-offset-1 ring-offset-background">
+                    <Avatar className="border-border ring-primary/10 ring-offset-background h-10 w-10 border ring-2 ring-offset-1">
                       <AvatarImage
                         src={testimonial.imageSrc}
                         alt={testimonial.name}
@@ -186,19 +186,19 @@ export default function TestimonialsCarousel({
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
-                      <h4 className="whitespace-nowrap font-medium text-foreground">
+                      <h4 className="text-foreground font-medium whitespace-nowrap">
                         {testimonial.name}
                       </h4>
                       <div className="flex items-center gap-2">
-                        <p className="whitespace-nowrap text-sm text-primary/80">
+                        <p className="text-primary/80 text-sm whitespace-nowrap">
                           {testimonial.username}
                         </p>
                         {testimonial.role && (
                           <>
-                            <span className="flex-shrink-0 text-muted-foreground">
+                            <span className="text-muted-foreground flex-shrink-0">
                               •
                             </span>
-                            <p className="whitespace-nowrap text-sm text-muted-foreground">
+                            <p className="text-muted-foreground text-sm whitespace-nowrap">
                               {testimonial.role}
                             </p>
                           </>

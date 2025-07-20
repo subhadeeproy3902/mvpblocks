@@ -34,8 +34,8 @@ function AiInput({
             id="ai-input-06"
             placeholder="Ask me anything!"
             className={cn(
-              'w-full max-w-4xl resize-none text-wrap rounded-3xl border-none bg-muted/50 py-4 pl-6 pr-12 leading-[1.2] text-foreground ring-primary/20 placeholder:text-muted-foreground/70',
-              'min-h-[56px] transition-all duration-200 focus:ring-2 focus:ring-primary/30',
+              'bg-muted/50 text-foreground ring-primary/20 placeholder:text-muted-foreground/70 w-full max-w-4xl resize-none rounded-3xl border-none py-4 pr-12 pl-6 leading-[1.2] text-wrap',
+              'focus:ring-primary/30 min-h-[56px] transition-all duration-200 focus:ring-2',
             )}
             value={value}
             onKeyDown={onKeyDown}
@@ -47,7 +47,7 @@ function AiInput({
           <button
             onClick={onSubmit}
             className={cn(
-              'absolute right-3 top-1/2 -translate-y-1/2 rounded-xl bg-primary/10 p-2 transition-all duration-200 hover:bg-primary/20',
+              'bg-primary/10 hover:bg-primary/20 absolute top-1/2 right-3 -translate-y-1/2 rounded-xl p-2 transition-all duration-200',
               value.trim() ? 'opacity-100' : 'cursor-not-allowed opacity-50',
             )}
             type="button"
@@ -55,13 +55,13 @@ function AiInput({
           >
             <CornerRightUp
               className={cn(
-                'h-4 w-4 text-primary transition-opacity',
+                'text-primary h-4 w-4 transition-opacity',
                 value ? 'opacity-100' : 'opacity-50',
               )}
             />
           </button>
         </div>
-        <p className="ml-4 text-xs text-muted-foreground">
+        <p className="text-muted-foreground ml-4 text-xs">
           {value.length}/2000 characters
         </p>
       </div>
@@ -119,7 +119,7 @@ export default function WorkingChatbot() {
 
   return (
     <div className="mx-auto flex h-svh w-full max-w-4xl flex-col pb-0.5">
-      <div className="h-full flex-1 overflow-y-auto rounded-xl border border-primary/20 bg-card/40 p-4 text-sm leading-6 text-card-foreground shadow-md sm:text-base sm:leading-7">
+      <div className="border-primary/20 bg-card/40 text-card-foreground h-full flex-1 overflow-y-auto rounded-xl border p-4 text-sm leading-6 shadow-md sm:text-base sm:leading-7">
         {messages.length > 0 ? (
           messages.map((m) => {
             return (
@@ -138,8 +138,8 @@ export default function WorkingChatbot() {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative mb-4 flex rounded-xl bg-neutral-50 px-2 py-6 dark:bg-neutral-900 sm:px-4">
-                    <Bot className="mr-2 flex size-8 rounded-full bg-secondary p-1 text-primary sm:mr-4" />{' '}
+                  <div className="relative mb-4 flex rounded-xl bg-neutral-50 px-2 py-6 sm:px-4 dark:bg-neutral-900">
+                    <Bot className="bg-secondary text-primary mr-2 flex size-8 rounded-full p-1 sm:mr-4" />{' '}
                     <div className="markdown-body w-full max-w-3xl overflow-x-auto rounded-xl">
                       <Markdown>{m.content}</Markdown>
                       {responseTimes[m.id] && (
@@ -151,7 +151,7 @@ export default function WorkingChatbot() {
                     <button
                       type="button"
                       title="copy"
-                      className="absolute right-2 top-2 rounded-full bg-rose-500 p-1 opacity-50 transition-all hover:opacity-75 active:scale-95 dark:bg-neutral-800"
+                      className="absolute top-2 right-2 rounded-full bg-rose-500 p-1 opacity-50 transition-all hover:opacity-75 active:scale-95 dark:bg-neutral-800"
                       onClick={() => {
                         navigator.clipboard.writeText(m.content);
                         toast.success('Copied to clipboard');
@@ -166,16 +166,16 @@ export default function WorkingChatbot() {
           })
         ) : (
           <div className="flex h-full flex-col items-center justify-center">
-            <p className="mx-auto px-2 text-center text-xl font-semibold tracking-wide text-muted-foreground md:text-2xl">
+            <p className="text-muted-foreground mx-auto px-2 text-center text-xl font-semibold tracking-wide md:text-2xl">
               Start Chatting with
               <br />
-              <span className="text-2xl font-bold text-primary md:text-4xl">
+              <span className="text-primary text-2xl font-bold md:text-4xl">
                 MVPBlocks
               </span>
               <span className="text-primary">.AI</span>
             </p>
             <div className="group relative mt-6">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 to-primary/10 opacity-75 blur-md transition-opacity duration-500 group-hover:opacity-100"></div>
+              <div className="from-primary/30 to-primary/10 absolute -inset-1 rounded-full bg-gradient-to-r opacity-75 blur-md transition-opacity duration-500 group-hover:opacity-100"></div>
               <img
                 src="/assets/robo.svg"
                 alt="AI Assistant"
@@ -187,15 +187,15 @@ export default function WorkingChatbot() {
           </div>
         )}
         {isLoading && (
-          <div className="mx-auto flex w-fit items-center gap-2 rounded-full bg-primary/5 px-4 py-2">
-            <Sparkles className="h-4 w-4 animate-pulse text-primary" />
-            <span className="animate-pulse bg-gradient-to-r from-primary/80 to-primary bg-clip-text text-sm font-medium text-transparent">
+          <div className="bg-primary/5 mx-auto flex w-fit items-center gap-2 rounded-full px-4 py-2">
+            <Sparkles className="text-primary h-4 w-4 animate-pulse" />
+            <span className="from-primary/80 to-primary animate-pulse bg-gradient-to-r bg-clip-text text-sm font-medium text-transparent">
               Generating response...
             </span>
           </div>
         )}
         {error && (
-          <div className="mx-auto w-fit rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-destructive">
+          <div className="border-destructive/20 bg-destructive/10 text-destructive mx-auto w-fit rounded-lg border p-3">
             Something went wrong! Please try again.
           </div>
         )}

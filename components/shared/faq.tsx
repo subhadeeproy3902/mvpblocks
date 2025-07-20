@@ -38,18 +38,18 @@ export default function Faqs() {
 
   return (
     <section id="faq" className="relative overflow-hidden pb-24">
-      <div className="absolute -right-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
-      <div className="absolute -left-20 top-1/2 z-[-1] h-64 w-64 select-none rounded-full bg-primary/20 opacity-80 blur-3xl"></div>
-      <div className="container z-10">
+      <div className="bg-primary/20 absolute top-1/2 -right-20 z-[-1] h-64 w-64 rounded-full opacity-80 blur-3xl select-none"></div>
+      <div className="bg-primary/20 absolute top-1/2 -left-20 z-[-1] h-64 w-64 rounded-full opacity-80 blur-3xl select-none"></div>
+      <div className="z-10 container">
         <div className="flex justify-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-3 py-1 uppercase text-primary">
+          <div className="border-primary/40 text-primary inline-flex items-center gap-2 rounded-full border px-3 py-1 uppercase">
             <span>✶</span>
             <span className="text-sm">Faqs</span>
           </div>
         </div>
         <h2 className="mx-auto mt-6 max-w-xl text-center text-4xl font-medium md:text-[54px] md:leading-[60px]">
           Questions? We&apos;ve got{' '}
-          <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text text-transparent dark:bg-gradient-to-b">
+          <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-transparent dark:bg-gradient-to-b">
             answers
           </span>
         </h2>
@@ -63,14 +63,14 @@ export default function Faqs() {
                   ? setSelectedIndex(-1)
                   : setSelectedIndex(faqIndex)
               }
-              className="rounded-2xl border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
+              className="from-secondary/40 to-secondary/10 rounded-2xl border border-white/10 bg-gradient-to-b p-6 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
             >
               <div className="flex items-start justify-between">
                 <h3 className="m-0 font-medium">{faq.question}</h3>
                 <Plus
                   size={30}
                   className={cn(
-                    'flex-shrink-0 text-primary transition duration-300',
+                    'text-primary flex-shrink-0 transition duration-300',
                     selectedIndex === faqIndex && 'rotate-45',
                   )}
                 />

@@ -194,17 +194,17 @@ const Keyboard: React.FC = () => {
                   `align-center relative top-0 flex h-10 justify-center overflow-hidden rounded px-1 pt-[2px] transition-all duration-75 active:top-1 ${key.label === 'Caps' ? 'w-full' : `w-${key.width}`}`,
                   isHighlighted
                     ? demoMode
-                      ? 'border-green-500 bg-gradient-to-b from-primary/0 to-rose-400/50 shadow-xl shadow-green-400'
-                      : 'border-yellow-500 bg-gradient-to-b from-primary/0 to-rose-400/50 shadow-xl shadow-yellow-400'
-                    : 'bg-gradient-to-b from-primary/20 to-rose-400',
+                      ? 'from-primary/0 border-green-500 bg-gradient-to-b to-rose-400/50 shadow-xl shadow-green-400'
+                      : 'from-primary/0 border-yellow-500 bg-gradient-to-b to-rose-400/50 shadow-xl shadow-yellow-400'
+                    : 'from-primary/20 bg-gradient-to-b to-rose-400',
                 )}
               >
                 <div className="absolute -top-[2px] left-0 flex h-10 w-full items-center justify-between blur-sm">
-                  <div className="relative -left-5 h-8 w-8 flex-shrink-0 rotate-45 bg-primary/40"></div>
-                  <div className="relative -right-5 h-8 w-8 flex-shrink-0 rotate-45 bg-primary/40"></div>
+                  <div className="bg-primary/40 relative -left-5 h-8 w-8 flex-shrink-0 rotate-45"></div>
+                  <div className="bg-primary/40 relative -right-5 h-8 w-8 flex-shrink-0 rotate-45"></div>
                 </div>
-                <div className="relative flex h-7 flex-grow rounded border border-secondary/0 bg-gradient-to-b from-secondary/0 to-secondary/20 pl-1 pt-1 shadow-[0px_0px_10px_0px_rgba(255,255,255,0.1)_inset]">
-                  <span className="leading-none group-hover:text-foreground">
+                <div className="border-secondary/0 from-secondary/0 to-secondary/20 relative flex h-7 flex-grow rounded border bg-gradient-to-b pt-1 pl-1 shadow-[0px_0px_10px_0px_rgba(255,255,255,0.1)_inset]">
+                  <span className="group-hover:text-foreground leading-none">
                     {key.label}
                   </span>
                 </div>
@@ -216,9 +216,9 @@ const Keyboard: React.FC = () => {
   );
 
   return (
-    <div className="z-10 flex scale-[0.55] items-center justify-center text-xs text-foreground/70 md:mt-16 md:scale-100 lg:scale-125 xl:-ml-12 xl:mt-0">
-      <div className="rounded-lg border-2 border-border bg-secondary/80 p-3 shadow-lg">
-        <div className="overflow-hidden rounded bg-background p-1">
+    <div className="text-foreground/70 z-10 flex scale-[0.55] items-center justify-center text-xs md:mt-16 md:scale-100 lg:scale-125 xl:mt-0 xl:-ml-12">
+      <div className="border-border bg-secondary/80 rounded-lg border-2 p-3 shadow-lg">
+        <div className="bg-background overflow-hidden rounded p-1">
           {['1', '2', '3', '4', '5'].map((row) => renderRow(row))}
         </div>
       </div>

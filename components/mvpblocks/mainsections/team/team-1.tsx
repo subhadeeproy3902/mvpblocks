@@ -81,14 +81,14 @@ export default function Team1({
 }: TeamProps) {
   return (
     <section className={cn('mx-auto max-w-7xl py-16 md:py-24', className)}>
-      <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
-      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
+      <div className="bg-primary/15 absolute top-0 left-0 h-96 w-96 rounded-full blur-3xl" />
+      <div className="bg-primary/15 absolute top-0 right-0 h-96 w-96 rounded-full blur-3xl" />
       <div className="container px-4 md:px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {title}
           </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground md:text-lg">
+          <p className="text-muted-foreground mx-auto max-w-2xl md:text-lg">
             {subtitle}
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function Team1({
 // Team member card component
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
-    <div className="opacity-100 hover:opacity-75 transition-opacity group h-[420px] w-96 overflow-hidden rounded-xl bg-card shadow-sm">
+    <div className="group bg-card h-[420px] w-96 overflow-hidden rounded-xl opacity-100 shadow-sm transition-opacity hover:opacity-75">
       <div className="relative h-[200px] w-full overflow-hidden">
         <img
           src={member.imageUrl}
@@ -118,16 +118,16 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 
       <div className="flex h-[220px] flex-col p-5">
         {member.location && (
-          <div className="mb-1 flex items-center text-xs text-muted-foreground">
-            <div className="mr-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+          <div className="text-muted-foreground mb-1 flex items-center text-xs">
+            <div className="bg-primary mr-1.5 h-1.5 w-1.5 rounded-full" />
             {member.location}
           </div>
         )}
 
         <h3 className="mb-1 text-xl font-bold">{member.name}</h3>
-        <p className="mb-2 text-sm font-medium text-primary">{member.role}</p>
+        <p className="text-primary mb-2 text-sm font-medium">{member.role}</p>
         <div className="mb-4">
-          <p className="text-sm text-muted-foreground">{member.bio}</p>
+          <p className="text-muted-foreground text-sm">{member.bio}</p>
         </div>
         <div className="mt-auto">
           {member.socialLinks && (
@@ -138,7 +138,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground"
+                  className="bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground flex h-8 w-8 items-center justify-center rounded-full transition-all"
                 >
                   {link.platform === 'github' && (
                     <GithubIcon className="h-4 w-4" />

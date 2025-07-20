@@ -61,7 +61,7 @@ export const QuickActions = memo(
     };
 
     return (
-      <div className="rounded-xl border border-border bg-card/40 p-6">
+      <div className="border-border bg-card/40 rounded-xl border p-6">
         <h3 className="mb-4 text-xl font-semibold">Quick Actions</h3>
         <div className="space-y-3">
           {actions.map((action, index) => {
@@ -79,7 +79,7 @@ export const QuickActions = memo(
                 >
                   <Icon className={`mr-3 h-5 w-5 text-${action.color}-500`} />
                   <span className="font-medium">{action.label}</span>
-                  <div className="ml-auto text-xs text-muted-foreground">
+                  <div className="text-muted-foreground ml-auto text-xs">
                     {action.shortcut}
                   </div>
                 </Button>

@@ -122,8 +122,8 @@ export default function Team2({
       {/* Background decorative elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_70%)]" />
-        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+        <div className="bg-primary/5 absolute top-1/4 left-1/4 h-64 w-64 rounded-full blur-3xl" />
+        <div className="bg-primary/10 absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
@@ -135,7 +135,7 @@ export default function Team2({
           viewport={{ once: true }}
           className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-foreground/80 via-foreground to-foreground/80 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-foreground/70 dark:via-foreground dark:to-foreground/70 md:text-4xl lg:text-5xl">
+          <h2 className="from-foreground/80 via-foreground to-foreground/80 dark:from-foreground/70 dark:via-foreground dark:to-foreground/70 mb-4 bg-gradient-to-r bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl">
             {title}
           </h2>
           <p className="text-muted-foreground md:text-lg">{subtitle}</p>
@@ -168,8 +168,8 @@ function TeamMemberCard({
       className="group relative overflow-hidden rounded-xl"
     >
       {/* Image container */}
-      <div className="relative aspect-square overflow-hidden rounded-xl bg-muted">
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="bg-muted relative aspect-square overflow-hidden rounded-xl">
+        <div className="from-background/80 absolute inset-0 z-10 bg-gradient-to-t via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <img
           src={member.imageUrl}
@@ -180,14 +180,14 @@ function TeamMemberCard({
 
         {/* Social links that appear on hover */}
         {member.socialLinks && (
-          <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div className="absolute right-0 bottom-4 left-0 z-20 flex justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             {member.socialLinks.map((link) => (
               <Link
                 key={link.platform}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-all hover:bg-primary hover:text-primary-foreground"
+                className="bg-background/80 text-foreground hover:bg-primary hover:text-primary-foreground flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-all"
               >
                 {link.platform === 'github' && (
                   <GithubIcon className="h-5 w-5" />
@@ -207,7 +207,7 @@ function TeamMemberCard({
       {/* Name and role */}
       <div className="mt-4 text-center">
         <h3 className="text-lg font-semibold">{member.name}</h3>
-        <p className="text-sm text-primary">{member.role}</p>
+        <p className="text-primary text-sm">{member.role}</p>
       </div>
     </motion.div>
   );

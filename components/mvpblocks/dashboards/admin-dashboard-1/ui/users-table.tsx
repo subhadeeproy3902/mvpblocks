@@ -51,11 +51,11 @@ interface UsersTableProps {
 
 export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
   return (
-    <div className="rounded-xl border border-border bg-card/40 p-3 sm:p-6">
+    <div className="border-border bg-card/40 rounded-xl border p-3 sm:p-6">
       <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h3 className="text-lg font-semibold sm:text-xl">Recent Users</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Latest user registrations and activity
           </p>
         </div>
@@ -79,7 +79,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="group flex flex-col items-start gap-4 rounded-lg p-4 transition-colors hover:bg-accent/50 sm:flex-row sm:items-center"
+            className="group hover:bg-accent/50 flex flex-col items-start gap-4 rounded-lg p-4 transition-colors sm:flex-row sm:items-center"
           >
             <div className="flex w-full items-center gap-4 sm:w-auto">
               <div className="relative">
@@ -91,7 +91,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
                   className="rounded-full"
                 />
                 <div
-                  className={`absolute -bottom-1 -right-1 h-3 w-3 rounded-full border-2 border-background ${
+                  className={`border-background absolute -right-1 -bottom-1 h-3 w-3 rounded-full border-2 ${
                     user.status === 'active' ? 'bg-green-500' : 'bg-red-500'
                   }`}
                 />
@@ -112,7 +112,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
                     {user.role}
                   </span>
                 </div>
-                <div className="mt-1 flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:gap-4">
+                <div className="text-muted-foreground mt-1 flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:gap-4">
                   <div className="flex items-center gap-1">
                     <Mail className="h-3 w-3" />
                     <span className="truncate">{user.email}</span>
@@ -126,7 +126,7 @@ export const UsersTable = memo(({ onAddUser }: UsersTableProps) => {
             </div>
 
             <div className="ml-auto flex items-center gap-3">
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <div className="text-muted-foreground flex items-center gap-1 text-xs">
                 <Calendar className="h-3 w-3" />
                 <span>{new Date(user.joinDate).toLocaleDateString()}</span>
               </div>

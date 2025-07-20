@@ -131,11 +131,11 @@ export default function Team6({
       )}
       style={{ backgroundColor, color: textColor }}
     >
-      <div className="container relative mx-auto px-4">
+      <div className="relative container mx-auto px-4">
         {/* Vertical text on left */}
-        <div className="absolute bottom-0 left-0 top-0 flex items-center">
+        <div className="absolute top-0 bottom-0 left-0 flex items-center">
           <div
-            className="origin-center -rotate-90 transform whitespace-nowrap text-8xl font-bold opacity-20"
+            className="origin-center -rotate-90 transform text-8xl font-bold whitespace-nowrap opacity-20"
             style={{ color: accentColor }}
           >
             {verticalText.left}
@@ -143,9 +143,9 @@ export default function Team6({
         </div>
 
         {/* Vertical text on right */}
-        <div className="absolute bottom-0 right-0 top-0 flex items-center">
+        <div className="absolute top-0 right-0 bottom-0 flex items-center">
           <div
-            className="origin-center -rotate-90 transform whitespace-nowrap text-8xl font-bold opacity-20"
+            className="origin-center -rotate-90 transform text-8xl font-bold whitespace-nowrap opacity-20"
             style={{ color: accentColor }}
           >
             {verticalText.right}
@@ -189,7 +189,7 @@ export default function Team6({
                   alt={member.name}
                   className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
+                <div className="absolute right-0 bottom-0 left-0 z-20 p-4">
                   <h3 className="text-xl font-bold text-white">
                     {member.name}
                   </h3>

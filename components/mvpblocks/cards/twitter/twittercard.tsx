@@ -49,7 +49,7 @@ export default function TweetCard({
     <Link href="https://x.com/mvp_Subha" target="_blank">
       <div
         className={cn(
-          'relative isolate w-full min-w-[400px] max-w-xl overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]',
+          'relative isolate w-full max-w-xl min-w-[400px] overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]',
           'bg-white/5 dark:bg-black/90',
           'bg-linear-to-br from-black/5 to-black/[0.02] dark:from-white/5 dark:to-white/[0.02]',
           'backdrop-blur-xl backdrop-saturate-[180%]',
@@ -67,7 +67,7 @@ export default function TweetCard({
             'text-black/90 dark:text-white',
             'shadow-xs',
             'translate-z-0 will-change-transform',
-            'before:bg-linear-to-br before:pointer-events-none before:absolute before:inset-0 before:from-black/[0.02] before:to-black/[0.01] before:opacity-0 before:transition-opacity dark:before:from-white/[0.03] dark:before:to-white/[0.01]',
+            'before:pointer-events-none before:absolute before:inset-0 before:bg-linear-to-br before:from-black/[0.02] before:to-black/[0.01] before:opacity-0 before:transition-opacity dark:before:from-white/[0.03] dark:before:to-white/[0.01]',
             'hover:before:opacity-100',
           )}
         >

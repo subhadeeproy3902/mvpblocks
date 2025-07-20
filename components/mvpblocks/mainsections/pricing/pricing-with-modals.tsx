@@ -45,8 +45,8 @@ export default function PricingPage() {
   return (
     <div className="relative min-h-screen w-full px-4 py-20">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -right-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -left-[10%] -top-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="bg-primary/5 absolute -top-[10%] -right-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
+        <div className="bg-primary/5 absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
       </div>
       <div className="mx-auto max-w-6xl space-y-12">
         <div className="space-y-4 text-center">

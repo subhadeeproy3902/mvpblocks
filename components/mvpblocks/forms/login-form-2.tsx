@@ -9,9 +9,9 @@ import { motion } from 'framer-motion';
 
 export default function LoginForm2() {
   return (
-    <div className="rose-gradient relative min-h-screen overflow-hidden bg-background">
-      <div className="absolute -top-10 left-0 h-1/2 w-full rounded-b-full bg-gradient-to-b from-background to-transparent blur"></div>
-      <div className="absolute -top-64 left-0 h-1/2 w-full rounded-full bg-gradient-to-b from-primary/80 to-transparent blur-3xl"></div>
+    <div className="rose-gradient bg-background relative min-h-screen overflow-hidden">
+      <div className="from-background absolute -top-10 left-0 h-1/2 w-full rounded-b-full bg-gradient-to-b to-transparent blur"></div>
+      <div className="from-primary/80 absolute -top-64 left-0 h-1/2 w-full rounded-full bg-gradient-to-b to-transparent blur-3xl"></div>
       <div className="relative z-10 grid min-h-screen grid-cols-1 md:grid-cols-2">
         <motion.div
           className="hidden flex-1 items-center justify-center space-y-8 p-8 text-center md:flex"
@@ -28,7 +28,7 @@ export default function LoginForm2() {
               <img
                 src="/assets/roblox-logo.png"
                 alt="Illustration"
-                className="md:w-90 mx-auto h-auto w-full"
+                className="mx-auto h-auto w-full md:w-90"
               />
             </motion.div>
             {/* <motion.h1
@@ -54,7 +54,7 @@ export default function LoginForm2() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           >
-            <Card className="w-full max-w-md border-border/70 bg-card/20 shadow-[0_10px_26px_#e0e0e0a1] backdrop-blur-lg dark:shadow-none">
+            <Card className="border-border/70 bg-card/20 w-full max-w-md shadow-[0_10px_26px_#e0e0e0a1] backdrop-blur-lg dark:shadow-none">
               <CardContent className="space-y-6 p-8">
                 {/* Logo and Header */}
                 <motion.div
@@ -68,7 +68,7 @@ export default function LoginForm2() {
                       Login
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Create an account or log in to discover Purgions and find
                     ways to make money.
                   </p>
@@ -95,7 +95,7 @@ export default function LoginForm2() {
                   <Input
                     id="password"
                     type="password"
-                    className="border border-border"
+                    className="border-border border"
                   />
                 </motion.div>
 
@@ -118,10 +118,10 @@ export default function LoginForm2() {
                   transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
                 >
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-border"></div>
+                    <div className="border-border w-full border-t"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="bg-card px-2 text-muted-foreground">
+                    <span className="bg-card text-muted-foreground px-2">
                       OR
                     </span>
                   </div>
@@ -136,7 +136,7 @@ export default function LoginForm2() {
                 >
                   <Button
                     variant="secondary"
-                    className="w-full bg-primary-foreground text-primary shadow-[0_4px_16px_var(--border)] duration-300 hover:bg-primary-foreground/95 dark:shadow-[0_4px_14px_var(--muted-foreground)]"
+                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/95 w-full shadow-[0_4px_16px_var(--border)] duration-300 dark:shadow-[0_4px_14px_var(--muted-foreground)]"
                   >
                     <svg
                       className="h-5 w-5"
@@ -155,7 +155,7 @@ export default function LoginForm2() {
 
                 {/* Terms */}
                 <motion.p
-                  className="mt-2 text-center text-xs text-muted-foreground"
+                  className="text-muted-foreground mt-2 text-center text-xs"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.0, ease: 'easeOut' }}
@@ -163,14 +163,14 @@ export default function LoginForm2() {
                   By signing in you agree to our{' '}
                   <Link
                     href="#"
-                    className="text-muted-foreground underline hover:text-primary"
+                    className="text-muted-foreground hover:text-primary underline"
                   >
                     terms of service
                   </Link>{' '}
                   and{' '}
                   <Link
                     href="#"
-                    className="text-muted-foreground underline hover:text-primary"
+                    className="text-muted-foreground hover:text-primary underline"
                   >
                     privacy policy
                   </Link>

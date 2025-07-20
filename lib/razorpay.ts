@@ -9,13 +9,13 @@ interface PaymentArgs {
   onSuccess: () => void;
 }
 
-export const initiatePayment = async ({ 
-  email, 
-  amount, 
-  currency, 
+export const initiatePayment = async ({
+  email,
+  amount,
+  currency,
   title = 'Digital Product',
   productId,
-  onSuccess
+  onSuccess,
 }: PaymentArgs) => {
   const loadRazorpay = () => {
     return new Promise<void>((resolve, reject) => {
@@ -25,7 +25,8 @@ export const initiatePayment = async ({
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
       script.async = true;
       script.onload = () => resolve();
-      script.onerror = () => reject(new Error('Failed to load Razorpay script'));
+      script.onerror = () =>
+        reject(new Error('Failed to load Razorpay script'));
       document.body.appendChild(script);
     });
   };

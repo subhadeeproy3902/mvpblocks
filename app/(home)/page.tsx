@@ -27,9 +27,7 @@ export default function Homepage() {
 
   return (
     <>
-      {show && <Advertisement
-        setShow={setShow}
-      />}
+      {show && <Advertisement setShow={setShow} />}
       <Hero />
       <Features />
       <Gallery />

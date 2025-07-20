@@ -72,7 +72,7 @@ export default function CommitActivity() {
   );
 
   return (
-    <Card className="bg-gradient-to-b from-secondary/40 to-secondary/0 shadow-[0px_-2px_50px_0px_#e91e631c_inset]">
+    <Card className="from-secondary/40 to-secondary/0 bg-gradient-to-b shadow-[0px_-2px_50px_0px_#e91e631c_inset]">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
@@ -124,7 +124,7 @@ export default function CommitActivity() {
                   if (payload && payload.length) {
                     const { date, commits } = payload[0].payload;
                     return (
-                      <div className="rounded-md border bg-background px-3 py-2 text-sm shadow-md">
+                      <div className="bg-background rounded-md border px-3 py-2 text-sm shadow-md">
                         <div className="font-medium">{date}</div>
                         <div className="text-muted-foreground">
                           {commits} commits

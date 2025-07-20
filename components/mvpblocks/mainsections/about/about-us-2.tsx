@@ -47,7 +47,7 @@ const StatItem = ({
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, delay: delay, ease: 'easeOut' }}
       className={cn(
-        'group relative overflow-hidden rounded-xl border border-border/30 bg-card p-6',
+        'group border-border/30 bg-card relative overflow-hidden rounded-xl border p-6',
         resolvedTheme === 'dark'
           ? 'shadow-xl shadow-black/5'
           : 'shadow-lg shadow-black/[0.03]',
@@ -55,7 +55,7 @@ const StatItem = ({
     >
       <div
         className={cn(
-          'absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:blur-3xl',
+          'absolute -top-6 -right-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-20 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:blur-3xl',
           color,
         )}
       />
@@ -79,7 +79,7 @@ const StatItem = ({
             />
             <span className="ml-1 text-sm font-medium opacity-70">+</span>
           </h3>
-          <p className="text-sm font-medium text-muted-foreground">{label}</p>
+          <p className="text-muted-foreground text-sm font-medium">{label}</p>
         </div>
       </div>
     </motion.div>
@@ -153,7 +153,7 @@ export default function AboutUs2() {
         </svg>
       </div>
 
-      <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-6">
+      <div className="relative z-10 container mx-auto max-w-6xl px-4 md:px-6">
         {/* Header Section with Badge */}
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <motion.div
@@ -164,9 +164,9 @@ export default function AboutUs2() {
           >
             <Badge
               variant="outline"
-              className="rounded-full border-primary/20 bg-primary/5 px-4 py-1 text-sm font-medium"
+              className="border-primary/20 bg-primary/5 rounded-full px-4 py-1 text-sm font-medium"
             >
-              <Sparkles className="mr-1 h-3.5 w-3.5 text-primary" />
+              <Sparkles className="text-primary mr-1 h-3.5 w-3.5" />
               About Us
             </Badge>
           </motion.div>
@@ -175,7 +175,7 @@ export default function AboutUs2() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-            className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
+            className="from-foreground to-foreground/70 bg-gradient-to-b bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
           >
             About Our Company
           </motion.h1>
@@ -184,7 +184,7 @@ export default function AboutUs2() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className="mt-4 text-xl text-muted-foreground"
+            className="text-muted-foreground mt-4 text-xl"
           >
             Delivering excellence for over 15 years
           </motion.p>
@@ -218,13 +218,13 @@ export default function AboutUs2() {
               transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
               className="relative space-y-6"
             >
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/80 to-primary/60 text-white shadow-lg">
+              <div className="from-primary/80 to-primary/60 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-lg">
                 <Zap className="h-6 w-6" />
               </div>
 
               <h2 className="text-2xl font-bold tracking-tight">Our Mission</h2>
 
-              <p className="text-base leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground text-base leading-relaxed">
                 To empower businesses with innovative digital solutions that
                 drive growth, enhance user experiences, and create lasting value
                 in an ever-evolving technological landscape.
@@ -245,7 +245,7 @@ export default function AboutUs2() {
 
               <h2 className="text-2xl font-bold tracking-tight">Our Vision</h2>
 
-              <p className="text-base leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground text-base leading-relaxed">
                 To be the leading provider of transformative digital
                 experiences, recognized globally for our commitment to
                 excellence, innovation, and client success.
@@ -259,10 +259,10 @@ export default function AboutUs2() {
             transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
             className="mt-16 flex items-start gap-4"
           >
-            <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 text-primary">
+            <div className="from-primary/20 to-primary/5 text-primary inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br">
               <Building className="h-5 w-5" />
             </div>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-muted-foreground text-base leading-relaxed">
               We are a passionate team of experts dedicated to delivering
               exceptional solutions that help businesses thrive in the digital
               landscape. Our commitment to innovation and quality has made us a
@@ -284,7 +284,7 @@ export default function AboutUs2() {
             Our Journey
           </motion.h2>
 
-          <div className="relative ml-4 border-l border-border/60 pl-8 md:ml-0 md:border-none md:pl-0">
+          <div className="border-border/60 relative ml-4 border-l pl-8 md:ml-0 md:border-none md:pl-0">
             {[
               {
                 year: '2008',
@@ -325,13 +325,13 @@ export default function AboutUs2() {
                 className="relative mb-10 md:grid md:grid-cols-5 md:gap-8"
               >
                 <div className="md:col-span-1">
-                  <div className="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-sm font-bold md:static md:h-auto md:w-auto md:rounded-none md:border-none md:bg-transparent md:text-xl">
+                  <div className="border-border bg-card absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full border text-sm font-bold md:static md:h-auto md:w-auto md:rounded-none md:border-none md:bg-transparent md:text-xl">
                     {item.year}
                   </div>
                 </div>
                 <div className="md:col-span-4">
                   <h3 className="text-lg font-bold md:text-xl">{item.title}</h3>
-                  <p className="mt-1 text-muted-foreground">
+                  <p className="text-muted-foreground mt-1">
                     {item.description}
                   </p>
                 </div>

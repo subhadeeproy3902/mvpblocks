@@ -35,12 +35,12 @@ export function VercelV0Chat() {
 
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col items-center space-y-4 p-4 py-24 sm:space-y-8">
-      <h1 className="text-center text-2xl font-bold text-foreground sm:text-4xl">
+      <h1 className="text-foreground text-center text-2xl font-bold sm:text-4xl">
         What can I help you ship?
       </h1>
 
       <div className="w-full">
-        <div className="relative rounded-xl border border-border bg-secondary/20">
+        <div className="border-border bg-secondary/20 relative rounded-xl border">
           <div className="overflow-y-auto">
             <Textarea
               ref={textareaRef}
@@ -74,7 +74,7 @@ export function VercelV0Chat() {
                 type="button"
                 size="sm"
                 variant="outline"
-                className="group flex items-center gap-1 rounded-lg p-2 hover:bg-secondary/50"
+                className="group hover:bg-secondary/50 flex items-center gap-1 rounded-lg p-2"
               >
                 <Paperclip className="h-4 w-4" />
                 <span className="hidden text-xs transition-opacity group-hover:inline">
@@ -87,7 +87,7 @@ export function VercelV0Chat() {
                 type="button"
                 size="sm"
                 variant="secondary"
-                className="flex items-center justify-between gap-1 rounded-lg border border-dashed border-border px-2 py-1 text-sm transition-colors"
+                className="border-border flex items-center justify-between gap-1 rounded-lg border border-dashed px-2 py-1 text-sm transition-colors"
               >
                 <PlusIcon className="h-4 w-4" />
                 Project
@@ -95,7 +95,7 @@ export function VercelV0Chat() {
               <button
                 type="button"
                 className={cn(
-                  'flex items-center justify-between gap-1 rounded-lg border border-border px-1.5 py-1.5 text-sm transition-colors',
+                  'border-border flex items-center justify-between gap-1 rounded-lg border px-1.5 py-1.5 text-sm transition-colors',
                   value.trim() ? 'bg-white text-black' : 'text-zinc-400',
                 )}
               >
@@ -146,7 +146,7 @@ function ActionButton({ icon, label }: ActionButtonProps) {
     <Button
       type="button"
       variant="secondary"
-      className="flex w-full flex-shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-secondary/20 px-3 py-2 transition-colors sm:w-auto sm:px-4"
+      className="border-border bg-secondary/20 flex w-full flex-shrink-0 items-center gap-2 rounded-full border px-3 py-2 whitespace-nowrap transition-colors sm:w-auto sm:px-4"
     >
       {icon}
       <span className="text-xs">{label}</span>

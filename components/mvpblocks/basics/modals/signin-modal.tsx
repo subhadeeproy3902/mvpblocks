@@ -62,7 +62,7 @@ export default function SigninModal() {
               <Checkbox id={`${id}-remember`} />
               <Label
                 htmlFor={`${id}-remember`}
-                className="font-normal text-muted-foreground"
+                className="text-muted-foreground font-normal"
               >
                 Remember me
               </Label>
@@ -76,8 +76,8 @@ export default function SigninModal() {
           </Button>
         </form>
 
-        <div className="flex items-center gap-3 before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
-          <span className="text-xs text-muted-foreground">Or</span>
+        <div className="before:bg-border after:bg-border flex items-center gap-3 before:h-px before:flex-1 after:h-px after:flex-1">
+          <span className="text-muted-foreground text-xs">Or</span>
         </div>
 
         <Button variant="outline">Login with Google</Button>

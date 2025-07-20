@@ -73,7 +73,7 @@ If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.`)}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
         >
           <AlertCircle className="size-4" />
           Report an issue
@@ -92,7 +92,7 @@ A clear and concise description of any alternative solutions or features you've 
 Add any other context or screenshots about the feature request here.`)}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
         >
           <Lightbulb className="size-4" />
           Request a feature
@@ -101,7 +101,7 @@ Add any other context or screenshots about the feature request here.`)}`}
           href={`https://github.com/subhadeeproy3902/mvpblocks/blob/main/${path}`}
           target="_blank"
           rel="noreferrer noopener"
-          className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm transition-colors"
         >
           <EditIcon className="size-4" />
           Edit this page
@@ -157,13 +157,15 @@ Add any other context or screenshots about the feature request here.`)}`}
           style: 'clerk',
         }}
         breadcrumb={{
-          enabled: false
+          enabled: false,
         }}
         lastUpdate={lastModified ? new Date(lastModified) : undefined}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
-        <DocsDescription className='mb-2'>{page.data.description}</DocsDescription>
-        <div className="flex gap-2 mb-4">
+        <DocsDescription className="mb-2">
+          {page.data.description}
+        </DocsDescription>
+        <div className="mb-4 flex gap-2">
           <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
           <ViewOptions
             markdownUrl={`${page.url}.mdx`}
@@ -195,7 +197,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               Files,
               blockquote: Callout as unknown as FC<
                 ComponentProps<'blockquote'>
-              >
+              >,
             }}
           />
         </DocsBody>

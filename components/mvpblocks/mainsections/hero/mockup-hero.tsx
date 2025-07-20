@@ -52,7 +52,7 @@ export default function LucyHero() {
   }) => (
     <span
       className={cn(
-        'bg-gradient-to-r from-primary via-rose-400 to-rose-300 bg-clip-text text-transparent dark:from-primary dark:via-rose-300 dark:to-red-400',
+        'from-primary dark:from-primary bg-gradient-to-r via-rose-400 to-rose-300 bg-clip-text text-transparent dark:via-rose-300 dark:to-red-400',
         className,
       )}
     >
@@ -63,7 +63,7 @@ export default function LucyHero() {
   return (
     <div
       ref={heroRef}
-      className="relative min-h-screen w-full overflow-hidden bg-background py-16"
+      className="bg-background relative min-h-screen w-full overflow-hidden py-16"
     >
       <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,62,62,0.2),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(229,62,62,0.15),rgba(30,30,40,0))]"></div>
@@ -73,11 +73,11 @@ export default function LucyHero() {
 
         <div className="bg-noise absolute inset-0 opacity-[0.02]"></div>
         <div className="absolute inset-0 opacity-5 backdrop-blur-[100px]"></div>
-        <div className="absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(229,62,62,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(229,62,62,0.05)_1px,transparent_1px)] [background-size:40px_40px] dark:opacity-[0.02] dark:[background-image:linear-gradient(rgba(200,200,255,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(200,200,255,0.05)_1px,transparent_1px)]"></div>
+        <div className="absolute inset-0 [background-image:linear-gradient(rgba(229,62,62,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(229,62,62,0.05)_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03] dark:[background-image:linear-gradient(rgba(200,200,255,0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(200,200,255,0.05)_1px,transparent_1px)] dark:opacity-[0.02]"></div>
       </motion.div>
 
       <motion.div
-        className="container relative z-10 mx-auto max-w-7xl"
+        className="relative z-10 container mx-auto max-w-7xl"
         style={{ y: contentY }}
       >
         <div className="grid items-center gap-16 md:grid-cols-2">
@@ -103,7 +103,7 @@ export default function LucyHero() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <h2 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
+              <h2 className="text-foreground mb-6 text-4xl leading-tight font-bold tracking-tight md:text-5xl lg:text-6xl">
                 LU-cy bridges <GradientText>Web3</GradientText> and{' '}
                 <GradientText>AI</GradientText> platforms for dev teams
               </h2>
@@ -114,12 +114,12 @@ export default function LucyHero() {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="mb-8 text-lg leading-relaxed text-muted-foreground"
+              className="text-muted-foreground mb-8 text-lg leading-relaxed"
             >
               The future is a blend of intelligence and decentralization. LU-cy
               connects AI tools with Web3 infrastructure, giving developers the
               power to build beyond limits. One platform.{' '}
-              <span className="font-semibold text-foreground">
+              <span className="text-foreground font-semibold">
                 Endless potential.
               </span>
             </motion.p>
@@ -147,10 +147,10 @@ export default function LucyHero() {
                 whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-                <div className="absolute inset-0 -z-10 rounded-full bg-background/50 backdrop-blur-sm"></div>
+                <div className="bg-background/50 absolute inset-0 -z-10 rounded-full backdrop-blur-sm"></div>
                 <Button
                   variant="outline"
-                  className="rounded-full border-primary/20 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-primary/5"
+                  className="border-primary/20 hover:border-primary/30 hover:bg-primary/5 rounded-full backdrop-blur-sm transition-all duration-300"
                 >
                   Learn More <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -169,10 +169,10 @@ export default function LucyHero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="relative rounded-full px-4 py-1.5 text-sm font-medium text-foreground shadow-sm"
+                    className="text-foreground relative rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
                   >
-                    <div className="absolute inset-0 rounded-full border border-primary/10 bg-background/80 backdrop-blur-md dark:border-white/5 dark:bg-background/30"></div>
-                    <div className="absolute bottom-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500/0 via-primary/20 to-rose-500/0 dark:from-blue-500/0 dark:via-primary/30 dark:to-indigo-500/0"></div>
+                    <div className="border-primary/10 bg-background/80 dark:bg-background/30 absolute inset-0 rounded-full border backdrop-blur-md dark:border-white/5"></div>
+                    <div className="via-primary/20 dark:via-primary/30 absolute bottom-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-rose-500/0 to-rose-500/0 dark:from-blue-500/0 dark:to-indigo-500/0"></div>
 
                     <span className="relative z-10">{feature}</span>
                   </motion.div>

@@ -47,7 +47,7 @@ export default function SpotlightCard({
       onMouseLeave={() => setIsHovered(false)}
       ref={boxWrapper}
       className={cn(
-        'group relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b from-secondary/40 to-secondary/10 p-[2px] shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]',
+        'group from-secondary/40 to-secondary/10 relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b p-[2px] shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]',
       )}
     >
       {isHovered && (
@@ -78,11 +78,11 @@ export default function SpotlightCard({
           className="relative h-full w-full rounded-lg text-center no-underline"
         >
           <>
-            <h1 className="bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+            <h1 className="from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 bg-gradient-to-r bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent">
               {title}
             </h1>
             {desc && (
-              <p className="pt-2 capitalize text-gray-500">
+              <p className="pt-2 text-gray-500 capitalize">
                 {desc}
                 <br />
               </p>
@@ -92,11 +92,11 @@ export default function SpotlightCard({
       ) : (
         <div className="relative h-full w-full rounded-lg text-center no-underline">
           <>
-            <h1 className="bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55">
+            <h1 className="from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 bg-gradient-to-r bg-clip-text pt-5 text-center text-2xl font-semibold tracking-tighter text-transparent">
               {title}
             </h1>
             {desc && (
-              <p className="pt-2 capitalize text-gray-500">
+              <p className="pt-2 text-gray-500 capitalize">
                 {desc}
                 <br />
               </p>

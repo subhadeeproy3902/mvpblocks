@@ -9,7 +9,7 @@ interface ColorPaletteProps {
 
 const ColorPalette: React.FC<ColorPaletteProps> = ({ colors }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {colors.map((color) => (
         <ColorSwatch key={color.name} color={color} />
       ))}
@@ -17,7 +17,9 @@ const ColorPalette: React.FC<ColorPaletteProps> = ({ colors }) => {
   );
 };
 
-const ColorSwatch: React.FC<{ color: { name: string; value: string; usage: string } }> = ({ color }) => {
+const ColorSwatch: React.FC<{
+  color: { name: string; value: string; usage: string };
+}> = ({ color }) => {
   const swatchRef = useRef<HTMLDivElement>(null);
   const [hexValue, setHexValue] = useState<string>('');
   const { theme } = useTheme();
@@ -26,7 +28,7 @@ const ColorSwatch: React.FC<{ color: { name: string; value: string; usage: strin
     if (swatchRef.current) {
       // Get the computed background color (which will be in rgb format)
       const computedColor = getComputedStyle(swatchRef.current).backgroundColor;
-      
+
       // Convert the rgb string to hex
       const hex = rgbToHex(computedColor);
       setHexValue(hex);
@@ -37,39 +39,39 @@ const ColorSwatch: React.FC<{ color: { name: string; value: string; usage: strin
   const rgbToHex = (rgb: string): string => {
     // Extract the r, g, b values from the string
     const match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    
+
     if (!match) return '#000000';
-    
+
     const r = parseInt(match[1], 10);
     const g = parseInt(match[2], 10);
     const b = parseInt(match[3], 10);
-    
+
     // Convert each component to hex and pad with zero if needed
     const toHex = (c: number) => {
       const hex = c.toString(16);
       return hex.length === 1 ? '0' + hex : hex;
     };
-    
+
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
   };
 
   return (
-    <div className="bg-accent/10 relative overflow-hidden group rounded-lg border-border flex flex-col items-start gap-2 border p-4">
-      <div className="bg-primary/10 absolute group-hover:bg-primary/30 group-hover:-bottom-6 transition-all duration-500 ease-in-out -bottom-10 left-0 h-16 w-full blur-2xl"></div>
+    <div className="bg-accent/10 group border-border relative flex flex-col items-start gap-2 overflow-hidden rounded-lg border p-4">
+      <div className="bg-primary/10 group-hover:bg-primary/30 absolute -bottom-10 left-0 h-16 w-full blur-2xl transition-all duration-500 ease-in-out group-hover:-bottom-6"></div>
       <div
         ref={swatchRef}
-        className="border-border rounded-lg overflow-hidden relative h-32 w-full border flex items-center justify-center"
+        className="border-border relative flex h-32 w-full items-center justify-center overflow-hidden rounded-lg border"
         style={{ backgroundColor: color.value }}
       >
         {hexValue && (
-          <span className="bg-black/70 text-white absolute top-0 right-0 text-xs px-2 py-1 rounded-bl-md">
+          <span className="absolute top-0 right-0 rounded-bl-md bg-black/70 px-2 py-1 text-xs text-white">
             {hexValue}
           </span>
         )}
       </div>
       <div>
         <strong className="block">{color.name}</strong>
-        <span className="text-sm text-muted-foreground">{color.usage}</span>
+        <span className="text-muted-foreground text-sm">{color.usage}</span>
       </div>
     </div>
   );

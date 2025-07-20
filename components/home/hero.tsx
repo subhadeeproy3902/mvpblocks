@@ -94,7 +94,7 @@ export default function Hero() {
   return (
     <div
       id="hero-section"
-      className="relative min-h-screen w-full overflow-x-hidden bg-background py-32 md:px-6"
+      className="bg-background relative min-h-screen w-full overflow-x-hidden py-32 md:px-6"
     >
       <img
         src="/vector1.webp"
@@ -102,7 +102,7 @@ export default function Hero() {
         width={300}
         draggable={false}
         height={300}
-        className="absolute right-0 top-0 z-[2] select-none object-cover object-center"
+        className="absolute top-0 right-0 z-[2] object-cover object-center select-none"
       />
       <img
         src="/vector2.webp"
@@ -110,7 +110,7 @@ export default function Hero() {
         width={300}
         height={300}
         draggable={false}
-        className="absolute left-0 top-0 z-[2] select-none object-cover object-center"
+        className="absolute top-0 left-0 z-[2] object-cover object-center select-none"
       />
       <img
         src="/vector5.webp"
@@ -118,7 +118,7 @@ export default function Hero() {
         width={300}
         draggable={false}
         height={300}
-        className="absolute -left-44 bottom-0 z-[2] -rotate-90 select-none object-cover object-center"
+        className="absolute bottom-0 -left-44 z-[2] -rotate-90 object-cover object-center select-none"
       />
       <img
         src="/vector6.webp"
@@ -126,7 +126,7 @@ export default function Hero() {
         width={300}
         draggable={false}
         height={300}
-        className="absolute -right-44 bottom-0 z-[2] rotate-90 select-none object-cover object-center"
+        className="absolute -right-44 bottom-0 z-[2] rotate-90 object-cover object-center select-none"
       />
       <div className="container mx-auto px-4 2xl:max-w-[1400px]">
         <motion.div
@@ -141,7 +141,7 @@ export default function Hero() {
           <Beam />
           <motion.h1
             className={cn(
-              'max-w-5xl bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 sm:text-5xl xl:text-6xl/none',
+              'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent sm:text-5xl xl:text-6xl/none',
               space.className,
             )}
             initial={{ opacity: 0, y: 50 }}
@@ -164,7 +164,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.3 }}
         >
-          <p className="text-xl text-muted-foreground">
+          <p className="text-muted-foreground text-xl">
             Copy-paste beautiful, responsive components without worrying about
             styling or animations. Build faster, launch sooner.
           </p>
@@ -199,7 +199,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 1.25 }}
             src="/vector4.webp"
             alt="Next.js"
-            className="mr-2 mt-4 hidden w-96 select-none brightness-[4] xl:block"
+            className="mt-4 mr-2 hidden w-96 brightness-[4] select-none xl:block"
           />
           <span className="text-sm text-gray-500">
             We use industry standards like{' '}
@@ -232,7 +232,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.25 }}
-            className="ml-2 mt-4 hidden w-96 select-none xl:block"
+            className="mt-4 ml-2 hidden w-96 select-none xl:block"
           >
             <img
               src="/vector3.webp"
@@ -245,10 +245,10 @@ export default function Hero() {
           </motion.div>
         </motion.div>
         <div className="mx-auto mt-5 max-w-2xl text-center">
-          <main className="m-auto flex w-full flex-col items-center justify-center gap-8 bg-background p-6 text-left text-gray-800 dark:bg-background dark:text-[#e3e3e3] sm:flex-row xl:p-4">
+          <main className="bg-background dark:bg-background m-auto flex w-full flex-col items-center justify-center gap-8 p-6 text-left text-gray-800 sm:flex-row xl:p-4 dark:text-[#e3e3e3]">
             {isScriptLoaded && (
               <motion.div
-                className="absolute left-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
+                className="bg-background absolute top-[45%] left-28 z-50 hidden h-[370px] w-[300px] xl:block"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.5 }}
@@ -266,7 +266,7 @@ export default function Hero() {
             )}
             {isScriptLoaded && (
               <motion.div
-                className="absolute right-28 top-[45%] z-50 hidden h-[370px] w-[300px] bg-background xl:block"
+                className="bg-background absolute top-[45%] right-28 z-50 hidden h-[370px] w-[300px] xl:block"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.5 }}

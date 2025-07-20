@@ -1,38 +1,42 @@
-"use client";
+'use client';
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
   useTransform,
-} from "motion/react";
-import { useState } from "react";
+} from 'motion/react';
+import { useState } from 'react';
 
 const defaultItems = [
   {
     id: 1,
-    name: "Alex Rivera",
-    designation: "Lead Developer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+    name: 'Alex Rivera',
+    designation: 'Lead Developer',
+    image:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 2,
-    name: "Erick Williams",
-    designation: "UI/UX Designer",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face"
+    name: 'Erick Williams',
+    designation: 'UI/UX Designer',
+    image:
+      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 3,
-    name: "Mike Johnson",
-    designation: "Product Manager",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+    name: 'Mike Johnson',
+    designation: 'Product Manager',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 4,
-    name: "Emma Davis",
-    designation: "Marketing Lead",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-  }
+    name: 'Emma Davis',
+    designation: 'Marketing Lead',
+    image:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+  },
 ];
 
 export default function InteractiveTooltip({
@@ -81,7 +85,7 @@ export default function InteractiveTooltip({
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
                     damping: 10,
                   },
@@ -90,17 +94,19 @@ export default function InteractiveTooltip({
                 style={{
                   translateX: translateX,
                   rotate: rotate,
-                  whiteSpace: "nowrap",
+                  whiteSpace: 'nowrap',
                 }}
-                className="absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-lg bg-background/95 backdrop-blur-sm border border-border px-4 py-2 text-xs shadow-xl"
+                className="bg-background/95 border-border absolute -top-16 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center justify-center rounded-lg border px-4 py-2 text-xs shadow-xl backdrop-blur-sm"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5 rounded-lg" />
-                <div className="absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent via-primary to-transparent" />
-                <div className="absolute -bottom-px left-10 z-30 h-px w-[40%] bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-                <div className="relative z-30 text-base font-bold text-foreground">
+                <div className="from-primary/5 to-primary/5 absolute inset-0 rounded-lg bg-gradient-to-b via-transparent" />
+                <div className="via-primary absolute inset-x-10 -bottom-px z-30 h-px w-[20%] bg-gradient-to-r from-transparent to-transparent" />
+                <div className="via-primary/60 absolute -bottom-px left-10 z-30 h-px w-[40%] bg-gradient-to-r from-transparent to-transparent" />
+                <div className="text-foreground relative z-30 text-base font-bold">
                   {item.name}
                 </div>
-                <div className="text-xs text-muted-foreground">{item.designation}</div>
+                <div className="text-muted-foreground text-xs">
+                  {item.designation}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -110,12 +116,10 @@ export default function InteractiveTooltip({
             width={100}
             src={item.image}
             alt={item.name}
-            className="relative !m-0 h-14 w-14 rounded-full border-2 border-background object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105 ring-2 ring-primary/20 group-hover:ring-primary/40"
+            className="border-background ring-primary/20 group-hover:ring-primary/40 relative !m-0 h-14 w-14 rounded-full border-2 object-cover object-top !p-0 ring-2 transition duration-500 group-hover:z-30 group-hover:scale-105"
           />
         </div>
       ))}
     </>
   );
-};
-
-
+}

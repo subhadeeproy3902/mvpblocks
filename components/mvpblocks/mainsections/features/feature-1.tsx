@@ -48,7 +48,7 @@ export default function Feature1() {
             <h3 className="font-geist mt-4 text-3xl font-normal tracking-tighter sm:text-4xl md:text-5xl">
               Let’s help build your MVP
             </h3>
-            <p className="font-geist mt-3 text-foreground/60">
+            <p className="font-geist text-foreground/60 mt-3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               congue, nisl eget molestie varius, enim ex faucibus purus.
             </p>
@@ -61,7 +61,7 @@ export default function Feature1() {
             }}
           ></div>
         </div>
-        <hr className="mx-auto mt-5 h-px w-1/2 bg-foreground/30" />
+        <hr className="bg-foreground/30 mx-auto mt-5 h-px w-1/2" />
         <div className="relative mt-12">
           <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((item, idx) => (
@@ -69,7 +69,7 @@ export default function Feature1() {
                 key={idx}
                 className="transform-gpu space-y-3 rounded-xl border bg-transparent p-4 [box-shadow:0_-20px_80px_-20px_#ff7aa42f_inset]"
               >
-                <div className="w-fit transform-gpu rounded-full border p-4 text-primary [box-shadow:0_-20px_80px_-20px_#ff7aa43f_inset] dark:[box-shadow:0_-20px_80px_-20px_#ff7aa40f_inset]">
+                <div className="text-primary w-fit transform-gpu rounded-full border p-4 [box-shadow:0_-20px_80px_-20px_#ff7aa43f_inset] dark:[box-shadow:0_-20px_80px_-20px_#ff7aa40f_inset]">
                   {item.icon}
                 </div>
                 <h4 className="font-geist text-lg font-bold tracking-tighter">

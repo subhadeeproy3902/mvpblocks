@@ -60,16 +60,16 @@ export const CardCarousel: React.FC<CarouselProps> = ({
   return (
     <section className="w-ace-y-4">
       <style>{css}</style>
-      <div className="mx-auto w-full max-w-4xl rounded-[24px] border border-secondary/50 p-2 shadow-sm md:rounded-t-[44px]">
-        <div className="relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b from-secondary/10 to-card p-2 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] md:items-start md:gap-8 md:rounded-b-[20px] md:rounded-t-[40px] md:p-2">
+      <div className="border-secondary/50 mx-auto w-full max-w-4xl rounded-[24px] border p-2 shadow-sm md:rounded-t-[44px]">
+        <div className="from-secondary/10 to-card relative mx-auto flex w-full flex-col rounded-[24px] border bg-gradient-to-b p-2 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset] md:items-start md:gap-8 md:rounded-t-[40px] md:rounded-b-[20px] md:p-2">
           <Badge
             variant="outline"
-            className="absolute left-4 top-6 rounded-[14px] border text-base md:left-6"
+            className="absolute top-6 left-4 rounded-[14px] border text-base md:left-6"
           >
             <SparklesIcon className="fill-[#EEBDE0] stroke-1 text-neutral-800" />{' '}
             Latest component
           </Badge>
-          <div className="flex flex-col justify-center pb-2 pl-4 pt-14 md:items-center">
+          <div className="flex flex-col justify-center pt-14 pb-2 pl-4 md:items-center">
             <div className="flex gap-2">
               <div>
                 <h3 className="text-4xl font-bold tracking-tight opacity-85">

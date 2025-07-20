@@ -344,19 +344,19 @@ export default function BasicPagination({
         <div className="space-y-6">
           {/* Content area */}
           <motion.div
-            className="rounded-md border bg-card/50 p-4"
+            className="bg-card/50 rounded-md border p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             key={`page-${page}`} // Key changes force re-animation
             transition={{ duration: 0.3 }}
           >
             <div className="mb-4 flex items-center justify-between border-b pb-2">
-              <h4 className="text-sm font-medium text-muted-foreground">
+              <h4 className="text-muted-foreground text-sm font-medium">
                 Showing {startIndex + 1}-
                 {Math.min(startIndex + itemsPerPage, demoItems.length)} of{' '}
                 {demoItems.length} items
               </h4>
-              <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+              <span className="bg-primary/10 text-primary rounded-full px-2 py-1 text-xs font-medium">
                 Page {page} of {totalPages}
               </span>
             </div>
@@ -371,19 +371,19 @@ export default function BasicPagination({
                     duration: 0.3,
                     delay: (item.id % itemsPerPage) * 0.1,
                   }}
-                  className="flex items-center justify-between rounded-md border p-3 hover:bg-muted/50"
+                  className="hover:bg-muted/50 flex items-center justify-between rounded-md border p-3"
                 >
                   <div>
                     <h3 className="font-medium">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
+                      <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-medium">
                         {item.category}
                       </span>
                       <span>{item.date}</span>
                     </div>
                   </div>
-                  <button className="rounded-full p-2 hover:bg-muted">
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  <button className="hover:bg-muted rounded-full p-2">
+                    <ChevronRight className="text-muted-foreground h-4 w-4" />
                   </button>
                 </motion.div>
               ))}
@@ -580,7 +580,7 @@ export default function BasicPagination({
           <h2 className="mb-2 text-3xl font-bold tracking-tight">
             Pagination Examples
           </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl">
             Interactive pagination components that demonstrate real content
             navigation. Each example shows how pagination can be used to
             navigate through a collection of items.
@@ -593,7 +593,7 @@ export default function BasicPagination({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="rounded-lg border bg-card p-6 shadow-sm"
+            className="bg-card rounded-lg border p-6 shadow-sm"
           >
             <h3 className="mb-6 text-xl font-semibold">Default Style</h3>
             <EnhancedPagination />
@@ -604,7 +604,7 @@ export default function BasicPagination({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="rounded-lg border bg-card p-6 shadow-sm"
+            className="bg-card rounded-lg border p-6 shadow-sm"
           >
             <h3 className="mb-6 text-xl font-semibold">Outline Style</h3>
             <EnhancedPagination variant="outline" />
@@ -615,7 +615,7 @@ export default function BasicPagination({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-lg border bg-card p-6 shadow-sm"
+            className="bg-card rounded-lg border p-6 shadow-sm"
           >
             <h3 className="mb-6 text-xl font-semibold">Rounded Style</h3>
             <EnhancedPagination variant="rounded" />

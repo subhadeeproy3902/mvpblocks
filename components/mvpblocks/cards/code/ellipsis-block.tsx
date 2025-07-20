@@ -31,9 +31,8 @@ export default function EllipsisBlock() {
 
   return (
     <div className="relative w-full max-w-2xl rounded-xl p-0.5">
-      <div className="code-border-anim" />
       <div className="rounded-xl p-4">
-        <div className="flex items-center justify-between rounded-t-xl border-b border-gray-700 bg-stone-900 px-4 py-2">
+        <div className="flex items-center justify-between rounded-t-xl border-b border-gray-700 bg-neutral-900 px-4 py-2">
           <div className="flex items-center justify-center gap-2">
             <span className="size-3 rounded-full bg-[#FF5F56]" />
             <span className="size-3 rounded-full bg-[#FFBD2E]" />
@@ -64,7 +63,7 @@ export default function EllipsisBlock() {
             <span style={{ color: '#8be9fd' }}>useState</span>
             <span style={{ color: '#ffffff' }}>{'}'}</span>{' '}
             <span style={{ color: '#80b6f7' }}>from</span>{' '}
-            <span style={{ color: '#50fa7b' }}>"react"</span>;
+            <span style={{ color: '#50fa7b' }}>&quot;react&quot;</span>;
             <br />
             <br />
             <span style={{ color: '#80b6f7' }}>function</span>{' '}

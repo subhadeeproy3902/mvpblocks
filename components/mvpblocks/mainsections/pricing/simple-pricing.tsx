@@ -88,25 +88,25 @@ export default function SimplePricing() {
   return (
     <div className="not-prose relative flex w-full flex-col gap-16 overflow-hidden px-4 py-24 text-center sm:px-8">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-[10%] left-[50%] h-[40%] w-[60%] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="bg-primary/10 absolute -top-[10%] left-[50%] h-[40%] w-[60%] -translate-x-1/2 rounded-full blur-3xl" />
+        <div className="bg-primary/5 absolute -right-[10%] -bottom-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
+        <div className="bg-primary/5 absolute -bottom-[10%] -left-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
       </div>
 
       <div className="flex flex-col items-center justify-center gap-8">
         <div className="flex flex-col items-center space-y-2">
           <Badge
             variant="outline"
-            className="mb-4 rounded-full border-primary/20 bg-primary/5 px-4 py-1 text-sm font-medium"
+            className="border-primary/20 bg-primary/5 mb-4 rounded-full px-4 py-1 text-sm font-medium"
           >
-            <Sparkles className="mr-1 h-3.5 w-3.5 animate-pulse text-primary" />
+            <Sparkles className="text-primary mr-1 h-3.5 w-3.5 animate-pulse" />
             Pricing Plans
           </Badge>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-b from-foreground to-foreground/30 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
+            className="from-foreground to-foreground/30 bg-gradient-to-b bg-clip-text text-4xl font-bold text-transparent sm:text-5xl"
           >
             Pick the perfect plan for your needs
           </motion.h1>
@@ -114,7 +114,7 @@ export default function SimplePricing() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="max-w-md pt-2 text-lg text-muted-foreground"
+            className="text-muted-foreground max-w-md pt-2 text-lg"
           >
             Simple, transparent pricing that scales with your business. No
             hidden fees, no surprises.
@@ -129,23 +129,23 @@ export default function SimplePricing() {
           <Tabs
             defaultValue={frequency}
             onValueChange={setFrequency}
-            className="inline-block rounded-full bg-muted/30 p-1 shadow-sm"
+            className="bg-muted/30 inline-block rounded-full p-1 shadow-sm"
           >
             <TabsList className="bg-transparent">
               <TabsTrigger
                 value="monthly"
-                className="rounded-full transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                className="data-[state=active]:bg-background rounded-full transition-all duration-300 data-[state=active]:shadow-sm"
               >
                 Monthly
               </TabsTrigger>
               <TabsTrigger
                 value="yearly"
-                className="rounded-full transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-sm"
+                className="data-[state=active]:bg-background rounded-full transition-all duration-300 data-[state=active]:shadow-sm"
               >
                 Yearly
                 <Badge
                   variant="secondary"
-                  className="ml-2 bg-primary/10 text-primary hover:bg-primary/15"
+                  className="bg-primary/10 text-primary hover:bg-primary/15 ml-2"
                 >
                   20% off
                 </Badge>
@@ -166,17 +166,17 @@ export default function SimplePricing() {
             >
               <Card
                 className={cn(
-                  'relative h-full w-full bg-secondary/20 text-left transition-all duration-300 hover:shadow-lg',
+                  'bg-secondary/20 relative h-full w-full text-left transition-all duration-300 hover:shadow-lg',
                   plan.popular
-                    ? 'shadow-md ring-2 ring-primary/50 dark:shadow-primary/10'
+                    ? 'ring-primary/50 dark:shadow-primary/10 shadow-md ring-2'
                     : 'hover:border-primary/30',
                   plan.popular &&
-                    'bg-gradient-to-b from-primary/[0.03] to-transparent',
+                    'from-primary/[0.03] bg-gradient-to-b to-transparent',
                 )}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-0 right-0 mx-auto w-fit">
-                    <Badge className="rounded-full bg-primary px-4 py-1 text-primary-foreground shadow-sm">
+                  <div className="absolute -top-3 right-0 left-0 mx-auto w-fit">
+                    <Badge className="bg-primary text-primary-foreground rounded-full px-4 py-1 shadow-sm">
                       <Sparkles className="mr-1 h-3.5 w-3.5" />
                       Popular
                     </Badge>
@@ -226,7 +226,7 @@ export default function SimplePricing() {
                               ] as number
                             }
                           />
-                          <span className="ml-1 text-sm text-muted-foreground">
+                          <span className="text-muted-foreground ml-1 text-sm">
                             /month, billed {frequency}
                           </span>
                         </div>
@@ -280,7 +280,7 @@ export default function SimplePricing() {
                     className={cn(
                       'w-full font-medium transition-all duration-300',
                       plan.popular
-                        ? 'bg-primary hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20'
+                        ? 'bg-primary hover:bg-primary/90 hover:shadow-primary/20 hover:shadow-md'
                         : 'hover:border-primary/30 hover:bg-primary/5 hover:text-primary',
                     )}
                   >
@@ -292,11 +292,11 @@ export default function SimplePricing() {
                 {/* Subtle gradient effects */}
                 {plan.popular ? (
                   <>
-                    <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 rounded-b-lg bg-gradient-to-t from-primary/[0.05] to-transparent" />
-                    <div className="pointer-events-none absolute inset-0 rounded-lg border border-primary/20" />
+                    <div className="from-primary/[0.05] pointer-events-none absolute right-0 bottom-0 left-0 h-1/2 rounded-b-lg bg-gradient-to-t to-transparent" />
+                    <div className="border-primary/20 pointer-events-none absolute inset-0 rounded-lg border" />
                   </>
                 ) : (
-                  <div className="pointer-events-none absolute inset-0 rounded-lg border border-transparent opacity-0 transition-opacity duration-300 hover:border-primary/10 hover:opacity-100" />
+                  <div className="hover:border-primary/10 pointer-events-none absolute inset-0 rounded-lg border border-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
                 )}
               </Card>
             </motion.div>

@@ -112,7 +112,7 @@ export default function PhoneMockup({
           stiffness: 300,
           damping: 20,
         }}
-        className="relative z-10 overflow-hidden rounded-[35px] border-[10px] border-foreground/5 bg-background shadow-lg dark:border-foreground/10"
+        className="border-foreground/5 bg-background dark:border-foreground/10 relative z-10 overflow-hidden rounded-[35px] border-[10px] shadow-lg"
         style={{
           transformStyle: 'preserve-3d',
           perspective: '1000px',
@@ -123,15 +123,15 @@ export default function PhoneMockup({
             : `0 0 0 1px rgba(229, 62, 62, 0.03), ${shadowX.get()}px ${shadowY.get()}px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(229, 62, 62, 0.05)`,
         }}
       >
-        <div className="absolute left-1/2 top-0 z-20 h-7 w-28 -translate-x-1/2 rounded-b-xl bg-foreground/10 backdrop-blur-sm">
-          <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/30"></div>
+        <div className="bg-foreground/10 absolute top-0 left-1/2 z-20 h-7 w-28 -translate-x-1/2 rounded-b-xl backdrop-blur-sm">
+          <div className="bg-foreground/30 absolute top-1/2 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
         </div>
 
-        <div className="absolute -right-[14px] top-16 h-12 w-[4px] rounded-l-sm bg-foreground/20"></div>
-        <div className="absolute -left-[14px] top-16 h-8 w-[4px] rounded-r-sm bg-foreground/20"></div>
-        <div className="absolute -left-[14px] top-28 h-8 w-[4px] rounded-r-sm bg-foreground/20"></div>
+        <div className="bg-foreground/20 absolute top-16 -right-[14px] h-12 w-[4px] rounded-l-sm"></div>
+        <div className="bg-foreground/20 absolute top-16 -left-[14px] h-8 w-[4px] rounded-r-sm"></div>
+        <div className="bg-foreground/20 absolute top-28 -left-[14px] h-8 w-[4px] rounded-r-sm"></div>
 
-        <div className="relative aspect-[9/16] w-full overflow-hidden bg-background">
+        <div className="bg-background relative aspect-[9/16] w-full overflow-hidden">
           <motion.img
             src={imageUrl}
             alt={alt}
@@ -166,7 +166,7 @@ export default function PhoneMockup({
       </motion.div>
 
       <motion.div
-        className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/20 blur-xl"
+        className="bg-primary/20 absolute -top-8 -right-8 h-24 w-24 rounded-full blur-xl"
         animate={{
           opacity: [0.4, 0.7, 0.4],
           scale: [1, 1.1, 1],

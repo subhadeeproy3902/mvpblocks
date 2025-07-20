@@ -53,7 +53,7 @@ export default function Advertisement({
 
           <div className="flex justify-center">
             <Link href="/docs/developer-portfolio">
-              <Button className="rounded-lg cursor-pointer">
+              <Button className="cursor-pointer rounded-lg">
                 Explore Docs
                 <MoveRight className="ml-2 inline-block h-4 w-4" />
               </Button>

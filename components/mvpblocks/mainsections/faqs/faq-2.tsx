@@ -99,16 +99,16 @@ export default function Faq2() {
         <div className="mb-12 flex flex-col items-center">
           <Badge
             variant="outline"
-            className="mb-4 border-primary px-3 py-1 text-xs font-medium uppercase tracking-wider"
+            className="border-primary mb-4 px-3 py-1 text-xs font-medium tracking-wider uppercase"
           >
             FAQs
           </Badge>
 
-          <h2 className="mb-6 text-center text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h2 className="text-foreground mb-6 text-center text-4xl font-bold tracking-tight md:text-5xl">
             Frequently Asked Questions
           </h2>
 
-          <p className="max-w-2xl text-center text-muted-foreground">
+          <p className="text-muted-foreground max-w-2xl text-center">
             Find answers to common questions about MVPBlocks and how to use our
             components to build your next project.
           </p>
@@ -143,7 +143,7 @@ export default function Faq2() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={cn(
-                  'h-fit overflow-hidden rounded-xl border border-border',
+                  'border-border h-fit overflow-hidden rounded-xl border',
                   expandedId === faq.id
                     ? 'shadow-3xl bg-card/50'
                     : 'bg-card/50',
@@ -154,14 +154,14 @@ export default function Faq2() {
                   onClick={() => toggleExpand(faq.id)}
                   className="flex w-full items-center justify-between p-6 text-left"
                 >
-                  <h3 className="text-lg font-medium text-foreground">
+                  <h3 className="text-foreground text-lg font-medium">
                     {faq.question}
                   </h3>
                   <div className="ml-4 flex-shrink-0">
                     {expandedId === faq.id ? (
-                      <MinusIcon className="h-5 w-5 text-primary" />
+                      <MinusIcon className="text-primary h-5 w-5" />
                     ) : (
-                      <PlusIcon className="h-5 w-5 text-primary" />
+                      <PlusIcon className="text-primary h-5 w-5" />
                     )}
                   </div>
                 </button>
@@ -175,7 +175,7 @@ export default function Faq2() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-border px-6 pb-6 pt-2">
+                      <div className="border-border border-t px-6 pt-2 pb-6">
                         <p className="text-muted-foreground">{faq.answer}</p>
                       </div>
                     </motion.div>
@@ -193,12 +193,12 @@ export default function Faq2() {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="mt-16 text-center"
         >
-          <p className="mb-4 text-muted-foreground">
+          <p className="text-muted-foreground mb-4">
             Can&apos;t find what you&apos;re looking for?
           </p>
           <a
             href="#"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-primary px-6 py-3 font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+            className="border-primary text-foreground hover:bg-primary hover:text-primary-foreground inline-flex items-center justify-center rounded-lg border-2 px-6 py-3 font-medium transition-colors"
           >
             Contact Support
           </a>

@@ -1,21 +1,21 @@
-"use client";
-import { useMemo, useState } from "react";
+'use client';
+import { useMemo, useState } from 'react';
 import {
   Check,
   ChevronDown,
   Copy,
   ExternalLinkIcon,
   MessageCircleIcon,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useCopyButton } from "fumadocs-ui/utils/use-copy-button";
-import { buttonVariants } from "fumadocs-ui/components/ui/button";
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
+import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "fumadocs-ui/components/ui/popover";
-import { cva } from "class-variance-authority";
+} from 'fumadocs-ui/components/ui/popover';
+import { cva } from 'class-variance-authority';
 
 const cache = new Map<string, string>();
 
@@ -37,7 +37,7 @@ export function LLMCopyButton({
     try {
       await navigator.clipboard.write([
         new ClipboardItem({
-          "text/plain": fetch(markdownUrl).then(async (res) => {
+          'text/plain': fetch(markdownUrl).then(async (res) => {
             const content = await res.text();
             cache.set(markdownUrl, content);
 
@@ -55,9 +55,9 @@ export function LLMCopyButton({
       disabled={isLoading}
       className={cn(
         buttonVariants({
-          color: "secondary",
-          size: "sm",
-          className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground",
+          color: 'secondary',
+          size: 'sm',
+          className: '[&_svg]:text-fd-muted-foreground gap-2 [&_svg]:size-3.5',
         }),
       )}
       onClick={onClick}
@@ -69,7 +69,7 @@ export function LLMCopyButton({
 }
 
 const optionVariants = cva(
-  "text-sm p-2 rounded-lg inline-flex items-center gap-2 hover:text-fd-accent-foreground hover:bg-fd-accent [&_svg]:size-4",
+  'text-sm p-2 rounded-lg inline-flex items-center gap-2 hover:text-fd-accent-foreground hover:bg-fd-accent [&_svg]:size-4',
 );
 
 export function ViewOptions({
@@ -88,14 +88,14 @@ export function ViewOptions({
 }) {
   const items = useMemo(() => {
     const fullMarkdownUrl =
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? new URL(markdownUrl, window.location.origin)
-        : "loading";
+        : 'loading';
     const q = `Read ${fullMarkdownUrl}, I want to ask questions about it.`;
 
     return [
       {
-        title: "Open in GitHub",
+        title: 'Open in GitHub',
         href: githubUrl,
         icon: (
           <svg fill="currentColor" role="img" viewBox="0 0 24 24">
@@ -105,9 +105,9 @@ export function ViewOptions({
         ),
       },
       {
-        title: "Open in ChatGPT",
+        title: 'Open in ChatGPT',
         href: `https://chatgpt.com/?${new URLSearchParams({
-          hints: "search",
+          hints: 'search',
           q,
         })}`,
         icon: (
@@ -123,7 +123,7 @@ export function ViewOptions({
         ),
       },
       {
-        title: "Open in Claude",
+        title: 'Open in Claude',
         href: `https://claude.ai/new?${new URLSearchParams({
           q,
         })}`,
@@ -140,7 +140,7 @@ export function ViewOptions({
         ),
       },
       {
-        title: "Open in T3 Chat",
+        title: 'Open in T3 Chat',
         href: `https://t3.chat/new?${new URLSearchParams({
           q,
         })}`,
@@ -154,14 +154,14 @@ export function ViewOptions({
       <PopoverTrigger
         className={cn(
           buttonVariants({
-            color: "secondary",
-            size: "sm",
-            className: "gap-2",
+            color: 'secondary',
+            size: 'sm',
+            className: 'gap-2',
           }),
         )}
       >
         Open
-        <ChevronDown className="size-3.5 text-fd-muted-foreground" />
+        <ChevronDown className="text-fd-muted-foreground size-3.5" />
       </PopoverTrigger>
       <PopoverContent className="flex flex-col overflow-auto">
         {items.map((item) => (
@@ -174,7 +174,7 @@ export function ViewOptions({
           >
             {item.icon}
             {item.title}
-            <ExternalLinkIcon className="text-fd-muted-foreground size-3.5 ms-auto" />
+            <ExternalLinkIcon className="text-fd-muted-foreground ms-auto size-3.5" />
           </a>
         ))}
       </PopoverContent>

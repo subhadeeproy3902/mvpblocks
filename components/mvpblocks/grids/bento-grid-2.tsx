@@ -41,7 +41,7 @@ const itemsSample: BentoItem[] = [
     meta: '100+ components',
     description:
       'Explore our extensive collection of ready-to-use UI components built with Next.js and Tailwind CSS. Perfect for quickly building beautiful, responsive websites.',
-    icon: <Home className="h-4 w-4 text-primary" />,
+    icon: <Home className="text-primary h-4 w-4" />,
     status: 'Popular',
     tags: ['UI', 'Components', 'Tailwind'],
     colSpan: 2,
@@ -52,7 +52,7 @@ const itemsSample: BentoItem[] = [
     meta: 'All devices',
     description:
       'Every component is fully responsive and works beautifully on all screen sizes, from mobile to desktop.',
-    icon: <Building className="h-4 w-4 text-primary" />,
+    icon: <Building className="text-primary h-4 w-4" />,
     status: 'Essential',
     tags: ['Mobile', 'Desktop'],
   },
@@ -60,14 +60,14 @@ const itemsSample: BentoItem[] = [
     title: 'Theme Support',
     description:
       'All components support both light and dark modes out of the box, with seamless transitions.',
-    icon: <MapPin className="h-4 w-4 text-primary" />,
+    icon: <MapPin className="text-primary h-4 w-4" />,
     status: 'New',
   },
   {
     title: 'Performance Optimized',
     description:
       'Built with performance in mind, ensuring fast load times and smooth interactions.',
-    icon: <HomeIcon className="h-4 w-4 text-primary" />,
+    icon: <HomeIcon className="text-primary h-4 w-4" />,
     meta: 'Lighthouse 100',
     tags: ['Speed', 'Optimization'],
   },
@@ -75,7 +75,7 @@ const itemsSample: BentoItem[] = [
     title: 'Accessibility',
     description:
       'All components follow WCAG guidelines and are fully accessible to all users.',
-    icon: <Heart className="h-4 w-4 text-primary" />,
+    icon: <Heart className="text-primary h-4 w-4" />,
     meta: 'WCAG 2.1 AA',
     tags: ['A11y', 'Inclusive'],
   },
@@ -84,7 +84,7 @@ const itemsSample: BentoItem[] = [
     meta: 'TypeScript',
     description:
       'Clean, well-documented code with TypeScript support for a seamless development experience.',
-    icon: <Compass className="h-4 w-4 text-primary" />,
+    icon: <Compass className="text-primary h-4 w-4" />,
     status: 'Featured',
     tags: ['DX', 'TypeScript'],
   },
@@ -93,7 +93,7 @@ const itemsSample: BentoItem[] = [
     meta: 'MIT License',
     description:
       'MVPBlocks is completely free and open-source. Use it for personal and commercial projects without any restrictions or attribution requirements.',
-    icon: <Camera className="h-4 w-4 text-primary" />,
+    icon: <Camera className="text-primary h-4 w-4" />,
     status: 'Free',
     tags: ['Open Source', 'MIT'],
     colSpan: 2,
@@ -104,8 +104,8 @@ export default function BentoGrid({ items = itemsSample }: BentoGridProps) {
   return (
     <section className="relative overflow-hidden py-12">
       {/* Decorative elements */}
-      <div className="absolute -left-20 top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-      <div className="absolute -right-20 bottom-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+      <div className="bg-primary/5 absolute top-20 -left-20 h-64 w-64 rounded-full blur-3xl" />
+      <div className="bg-primary/5 absolute -right-20 bottom-20 h-64 w-64 rounded-full blur-3xl" />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-4 p-4 md:grid-cols-3">
         {items.map((item, index) => (
@@ -122,9 +122,9 @@ export default function BentoGrid({ items = itemsSample }: BentoGridProps) {
           >
             <Card
               className={cn(
-                'group relative h-full bg-card/40 transition-all duration-300 hover:shadow-md',
+                'group bg-card/40 relative h-full transition-all duration-300 hover:shadow-md',
                 'will-change-transform hover:-translate-y-1',
-                'overflow-hidden border-border/60',
+                'border-border/60 overflow-hidden',
                 {
                   '-translate-y-1 shadow-md': item.hasPersistentHover,
                 },
@@ -144,42 +144,42 @@ export default function BentoGrid({ items = itemsSample }: BentoGridProps) {
 
               <CardHeader className="relative space-y-0 p-4">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
+                  <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg">
                     {item.icon}
                   </div>
-                  <span className="rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground">
+                  <span className="bg-secondary text-secondary-foreground rounded-md px-2 py-1 text-xs font-medium">
                     {item.status || 'Active'}
                   </span>
                 </div>
               </CardHeader>
 
               <CardContent className="relative space-y-2 p-4 pt-0">
-                <h3 className="text-[15px] font-medium tracking-tight text-foreground">
+                <h3 className="text-foreground text-[15px] font-medium tracking-tight">
                   {item.title}
                   {item.meta && (
-                    <span className="ml-2 text-xs font-normal text-muted-foreground">
+                    <span className="text-muted-foreground ml-2 text-xs font-normal">
                       {item.meta}
                     </span>
                   )}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {item.description}
                 </p>
               </CardContent>
 
               <CardFooter className="relative p-4">
                 <div className="flex w-full items-center justify-between">
-                  <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                  <div className="text-muted-foreground flex flex-wrap gap-2 text-xs">
                     {item.tags?.map((tag) => (
                       <span
                         key={`${item.title}-${tag}`}
-                        className="backdrop-blur-xs rounded-md bg-secondary/50 px-2 py-1 transition-all duration-200"
+                        className="bg-secondary/50 rounded-md px-2 py-1 backdrop-blur-xs transition-all duration-200"
                       >
                         #{tag}
                       </span>
                     ))}
                   </div>
-                  <span className="text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="text-primary text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100">
                     {item.cta || 'Explore →'}
                   </span>
                 </div>
@@ -187,7 +187,7 @@ export default function BentoGrid({ items = itemsSample }: BentoGridProps) {
 
               <div
                 className={cn(
-                  'absolute inset-0 -z-10 rounded-xl bg-gradient-to-br from-transparent via-primary/10 to-transparent p-px',
+                  'via-primary/10 absolute inset-0 -z-10 rounded-xl bg-gradient-to-br from-transparent to-transparent p-px',
                   item.hasPersistentHover
                     ? 'opacity-100'
                     : 'opacity-0 group-hover:opacity-100',

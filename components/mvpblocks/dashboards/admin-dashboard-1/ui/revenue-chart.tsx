@@ -16,14 +16,14 @@ const chartData = [
 
 export const RevenueChart = memo(() => {
   return (
-    <div className="rounded-xl border border-border bg-card/40 p-6">
+    <div className="border-border bg-card/40 rounded-xl border p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h3 className="flex items-center gap-2 text-lg font-semibold">
             <BarChart3 className="h-5 w-5 text-green-500" />
             Revenue Analytics
           </h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Monthly revenue performance
           </p>
         </div>
@@ -48,7 +48,7 @@ export const RevenueChart = memo(() => {
                 className={`w-full ${item.color} relative min-h-[20px] cursor-pointer rounded-t-lg transition-opacity hover:opacity-80`}
               >
                 {/* Tooltip */}
-                <div className="absolute -top-16 left-1/2 z-10 -translate-x-1/2 transform whitespace-nowrap rounded-lg border border-border bg-popover px-3 py-2 text-sm opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                <div className="border-border bg-popover absolute -top-16 left-1/2 z-10 -translate-x-1/2 transform rounded-lg border px-3 py-2 text-sm whitespace-nowrap opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
                   <div className="font-medium">
                     ${item.value.toLocaleString()}
                   </div>
@@ -60,7 +60,7 @@ export const RevenueChart = memo(() => {
                   </div>
                 </div>
               </motion.div>
-              <div className="mt-2 text-center text-xs font-medium text-muted-foreground">
+              <div className="text-muted-foreground mt-2 text-center text-xs font-medium">
                 {item.month}
               </div>
             </div>
@@ -69,18 +69,18 @@ export const RevenueChart = memo(() => {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-3 gap-4 border-t border-border/50 pt-4">
+      <div className="border-border/50 grid grid-cols-3 gap-4 border-t pt-4">
         <div className="text-center">
           <div className="text-2xl font-bold text-green-500">$27K</div>
-          <div className="text-xs text-muted-foreground">Total Revenue</div>
+          <div className="text-muted-foreground text-xs">Total Revenue</div>
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-blue-500">+18%</div>
-          <div className="text-xs text-muted-foreground">Growth Rate</div>
+          <div className="text-muted-foreground text-xs">Growth Rate</div>
         </div>
         <div className="text-center">
           <div className="text-2xl font-bold text-purple-500">$4.5K</div>
-          <div className="text-xs text-muted-foreground">Average</div>
+          <div className="text-muted-foreground text-xs">Average</div>
         </div>
       </div>
     </div>

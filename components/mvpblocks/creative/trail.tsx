@@ -9,7 +9,7 @@ export function MagicTrailDemo() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[500px] w-full rounded-lg border border-border/40 bg-gray-100 p-10 dark:bg-zinc-950"
+      className="border-border/40 relative min-h-[500px] w-full rounded-lg border bg-gray-100 p-10 dark:bg-zinc-950"
     >
       <div className="mb-4 cursor-pointer text-center text-lg font-medium text-black/40 dark:text-white/80">
         ✨ Move your mouse to cast magical trails! ✨

@@ -95,10 +95,10 @@ const TestimonialsColumn = (props: {
             {props.testimonials.map(({ text, imageSrc, name, username }) => (
               <div
                 key={text}
-                className="relative w-full max-w-xs overflow-hidden rounded-3xl border border-border bg-gradient-to-b from-secondary/10 to-card p-10 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
+                className="border-border from-secondary/10 to-card relative w-full max-w-xs overflow-hidden rounded-3xl border bg-gradient-to-b p-10 shadow-[0px_2px_0px_0px_rgba(255,255,255,0.1)_inset]"
               >
                 {/* rose color gradient */}
-                <div className="absolute -left-5 -top-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b from-primary/10 to-card blur-md" />
+                <div className="from-primary/10 to-card absolute -top-5 -left-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b blur-md" />
                 <div>{text}</div>
                 <div className="mt-5 flex items-center gap-2">
                   <img
@@ -109,7 +109,7 @@ const TestimonialsColumn = (props: {
                     className="h-10 w-10 rounded-full"
                   />
                   <div className="flex flex-col">
-                    <div className="font-medium leading-5 tracking-tight">
+                    <div className="leading-5 font-medium tracking-tight">
                       {name}
                     </div>
                     <div className="leading-5 tracking-tight">{username}</div>
@@ -138,7 +138,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="reviews" className="mb-24 bg-background">
+    <section id="reviews" className="bg-background mb-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           ref={ref}
@@ -150,16 +150,16 @@ const Testimonials = () => {
           <div className="flex justify-center">
             <button
               type="button"
-              className="group relative z-[60] mx-auto rounded-full border border-zinc-500/80 bg-background/50 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/[0.1] active:scale-100 dark:border-border md:text-sm"
+              className="group bg-background/50 hover:shadow-primary/[0.1] dark:border-border relative z-[60] mx-auto rounded-full border border-zinc-500/80 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
             >
-              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <div className="via-primary absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="via-primary absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:h-px"></div>
               <span className="relative">Testimonials</span>
             </button>
           </div>
           <h2
             className={cn(
-              'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
+              'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
               space.className,
             )}
           >
@@ -186,12 +186,12 @@ const Testimonials = () => {
         <div className="-mt-8 flex justify-center">
           <button
             onClick={handleShareClick}
-            className="group relative inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-primary/60 hover:bg-primary/10 active:scale-95"
+            className="group border-primary/30 bg-background text-foreground hover:border-primary/60 hover:bg-primary/10 relative inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-all active:scale-95"
           >
-            <div className="absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-            <div className="absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+            <div className="via-primary/40 absolute inset-x-0 -top-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent to-transparent" />
+            <div className="via-primary/40 absolute inset-x-0 -bottom-px mx-auto h-px w-3/4 bg-gradient-to-r from-transparent to-transparent" />
             <svg
-              className="h-4 w-4 text-primary"
+              className="text-primary h-4 w-4"
               fill="currentColor"
               viewBox="0 0 24 24"
             >

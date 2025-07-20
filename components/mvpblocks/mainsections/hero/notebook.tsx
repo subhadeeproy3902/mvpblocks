@@ -23,14 +23,14 @@ export default function NotebookHero() {
       `}</style>
 
       <div className="pointer-events-none absolute inset-0 top-0 z-0 overflow-hidden">
-        <div className="absolute -left-20 -top-20 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-rose-500/30 via-rose-500/20 to-transparent opacity-50 blur-[100px]" />
-        <div className="absolute -right-20 -top-40 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-red-500/30 via-red-500/20 to-transparent opacity-50 blur-[100px]" />
+        <div className="absolute -top-20 -left-20 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-rose-500/30 via-rose-500/20 to-transparent opacity-50 blur-[100px]" />
+        <div className="absolute -top-40 -right-20 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-red-500/30 via-red-500/20 to-transparent opacity-50 blur-[100px]" />
         <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-gradient-to-tr from-amber-500/20 via-amber-500/10 to-transparent opacity-30 blur-[80px]" />
       </div>
 
-      <main className="container relative mt-4 max-w-[1100px] px-2 py-4 lg:py-8">
+      <main className="relative container mt-4 max-w-[1100px] px-2 py-4 lg:py-8">
         <div className="relative sm:overflow-hidden">
-          <div className="relative flex flex-col items-start justify-start rounded-xl border border-primary/20 bg-fd-background/70 px-4 pt-12 shadow-xl shadow-primary/10 backdrop-blur-md max-md:text-center md:px-12 md:pt-16">
+          <div className="border-primary/20 bg-fd-background/70 shadow-primary/10 relative flex flex-col items-start justify-start rounded-xl border px-4 pt-12 shadow-xl backdrop-blur-md max-md:text-center md:px-12 md:pt-16">
             <div
               className="animate-gradient-x absolute inset-0 top-32 z-0 hidden blur-2xl dark:block"
               style={{
@@ -51,11 +51,11 @@ export default function NotebookHero() {
                 backgroundSize: '200% 100%',
               }}
             />
-            <h1 className="mb-4 flex flex-wrap gap-2 text-3xl font-medium leading-tight md:text-5xl">
+            <h1 className="mb-4 flex flex-wrap gap-2 text-3xl leading-tight font-medium md:text-5xl">
               Build <span className="text-primary">Beautiful UI</span> with
               MVPBlocks
             </h1>
-            <p className="mb-8 text-left text-muted-foreground md:max-w-[80%] md:text-xl">
+            <p className="text-muted-foreground mb-8 text-left md:max-w-[80%] md:text-xl">
               Your comprehensive library of ready-to-use UI components built
               with Next.js and Tailwind CSS. From simple buttons to complex
               layouts, MVPBlocks helps you create stunning interfaces with
@@ -64,7 +64,7 @@ export default function NotebookHero() {
             <div className="mb-6 flex flex-wrap gap-4 md:flex-row">
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-primary"
+                  className="text-primary h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,7 +81,7 @@ export default function NotebookHero() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-primary"
+                  className="text-primary h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ export default function NotebookHero() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-primary"
+                  className="text-primary h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -115,7 +115,7 @@ export default function NotebookHero() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-primary"
+                  className="text-primary h-5 w-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -139,7 +139,7 @@ export default function NotebookHero() {
                   buttonVariants({
                     size: 'lg',
                     className:
-                      'rounded-full bg-gradient-to-b from-primary to-primary/80 text-primary-foreground',
+                      'from-primary to-primary/80 text-primary-foreground rounded-full bg-gradient-to-b',
                   }),
                 )}
               >
@@ -153,7 +153,7 @@ export default function NotebookHero() {
                   buttonVariants({
                     size: 'lg',
                     variant: 'outline',
-                    className: 'rounded-full bg-fd-background',
+                    className: 'bg-fd-background rounded-full',
                   }),
                 )}
               >
@@ -182,10 +182,10 @@ export default function NotebookHero() {
                 alt="MVPBlocks component library preview"
                 width={1000}
                 height={600}
-                className="border-6 z-10 mx-auto -mb-60 w-full select-none rounded-lg border-neutral-100 object-cover shadow-2xl duration-1000 animate-in fade-in slide-in-from-bottom-12 dark:border-neutral-600 lg:-mb-40"
+                className="animate-in fade-in slide-in-from-bottom-12 z-10 mx-auto -mb-60 w-full rounded-lg border-6 border-neutral-100 object-cover shadow-2xl duration-1000 select-none lg:-mb-40 dark:border-neutral-600"
               />
 
-              <div className="absolute -right-6 -top-6 rotate-6 transform rounded-lg bg-white p-3 shadow-lg animate-in fade-in slide-in-from-left-4 dark:bg-neutral-900">
+              <div className="animate-in fade-in slide-in-from-left-4 absolute -top-6 -right-6 rotate-6 transform rounded-lg bg-white p-3 shadow-lg dark:bg-neutral-900">
                 <div className="flex items-center gap-2">
                   <svg
                     className="h-5 w-5 text-green-500"

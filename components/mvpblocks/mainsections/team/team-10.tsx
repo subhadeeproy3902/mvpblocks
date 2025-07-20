@@ -183,7 +183,7 @@ export default function TeamSectionVariant6({
             {canScrollLeft && (
               <button
                 onClick={() => scroll('left')}
-                className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-primary p-2 shadow-md"
+                className="bg-primary absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-full p-2 shadow-md"
                 aria-label="Scroll left"
               >
                 <ChevronLeft size={20} />
@@ -198,7 +198,7 @@ export default function TeamSectionVariant6({
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="w-64 opacity-100 hover:opacity-75 transition-opacity flex-shrink-0 overflow-hidden rounded-lg border border-white/10 bg-card/90 shadow-sm transition-shadow hover:shadow-md"
+                  className="bg-card/90 w-64 flex-shrink-0 overflow-hidden rounded-lg border border-white/10 opacity-100 shadow-sm transition-opacity transition-shadow hover:opacity-75 hover:shadow-md"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
@@ -220,7 +220,7 @@ export default function TeamSectionVariant6({
             {canScrollRight && (
               <button
                 onClick={() => scroll('right')}
-                className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-primary p-2 shadow-md"
+                className="bg-primary absolute top-1/2 right-0 z-10 -translate-y-1/2 rounded-full p-2 shadow-md"
                 aria-label="Scroll right"
               >
                 <ChevronRight size={20} />

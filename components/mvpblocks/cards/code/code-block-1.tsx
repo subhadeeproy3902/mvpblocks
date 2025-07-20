@@ -1,4 +1,4 @@
-export default function CodeBlock () {
+export default function CodeBlock() {
   return (
     <>
       <div className="relative w-full max-w-2xl rounded-xl p-0.5">
@@ -10,7 +10,7 @@ export default function CodeBlock () {
               Copy
             </button>
           </div>
-          <pre className="m-0 overflow-x-auto whitespace-pre rounded-lg bg-transparent p-0 text-sm leading-relaxed text-blue-100">
+          <pre className="m-0 overflow-x-auto rounded-lg bg-transparent p-0 text-sm leading-relaxed whitespace-pre text-blue-100">
             <code>
               <span className="text-[#1fcdfc]">import</span>{' '}
               <span className="text-[#e0e0e0]">{'{'}</span>useState
@@ -88,4 +88,4 @@ export default function CodeBlock () {
       `}</style>
     </>
   );
-};
+}

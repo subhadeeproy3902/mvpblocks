@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function LoginForm1() {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background sm:px-4">
+    <main className="bg-background flex min-h-screen w-full flex-col items-center justify-center sm:px-4">
       <div className="w-full space-y-4 sm:max-w-md">
         <div className="text-center">
           <img src="/logo.webp" width={80} className="mx-auto" />
@@ -26,7 +26,7 @@ export default function LoginForm1() {
         </div>
         <div className="space-y-6 p-4 py-6 shadow sm:rounded-lg sm:p-6">
           <div className="grid grid-cols-3 gap-x-3">
-            <button className="flex items-center justify-center rounded-lg border py-2.5 duration-150 hover:bg-secondary active:bg-secondary/40">
+            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
@@ -58,7 +58,7 @@ export default function LoginForm1() {
                 </defs>
               </svg>
             </button>
-            <button className="flex items-center justify-center rounded-lg border py-2.5 duration-150 hover:bg-secondary active:bg-secondary/40">
+            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
@@ -71,12 +71,12 @@ export default function LoginForm1() {
                 />
               </svg>
             </button>
-            <button className="flex items-center justify-center rounded-lg border py-2.5 duration-150 hover:bg-secondary active:bg-secondary/40">
+            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
               <Github size={24} />
             </button>
           </div>
           <div className="relative">
-            <span className="block h-px w-full bg-secondary"></span>
+            <span className="bg-secondary block h-px w-full"></span>
             <p className="absolute inset-x-0 -top-2 mx-auto inline-block w-fit px-2 text-sm">
               Or continue with
             </p>
@@ -102,9 +102,13 @@ export default function LoginForm1() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 mr-3 mt-2 flex items-center"
+                  className="absolute inset-y-0 right-0 mt-2 mr-3 flex items-center"
                 >
-                  {showPassword ? ( <EyeOff size={20} className="text-secondary" /> ) : ( <Eye size={20} className="text-secondary" />)}
+                  {showPassword ? (
+                    <EyeOff size={20} className="text-secondary" />
+                  ) : (
+                    <Eye size={20} className="text-secondary" />
+                  )}
                 </button>
               </div>
             </div>

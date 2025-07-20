@@ -37,7 +37,7 @@ const statusItems = [
 
 export const SystemStatus = memo(() => {
   return (
-    <div className="rounded-xl border border-border bg-card/40 p-6">
+    <div className="border-border bg-card/40 rounded-xl border p-6">
       <h3 className="mb-4 text-xl font-semibold">System Status</h3>
       <div className="space-y-4">
         {statusItems.map((item, index) => {
@@ -48,14 +48,14 @@ export const SystemStatus = memo(() => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="flex cursor-pointer items-center justify-between rounded-lg p-3 transition-colors hover:bg-accent/50"
+              className="hover:bg-accent/50 flex cursor-pointer items-center justify-between rounded-lg p-3 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Icon className={`h-4 w-4 ${item.color}`} />
                 <span className="text-sm font-medium">{item.label}</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="h-2 w-16 overflow-hidden rounded-full bg-muted">
+                <div className="bg-muted h-2 w-16 overflow-hidden rounded-full">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${item.percentage}%` }}

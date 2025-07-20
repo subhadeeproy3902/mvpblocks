@@ -55,7 +55,7 @@ export const AdminSidebar = memo(() => {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="#dashboard">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <LayoutDashboard className="h-5 w-5" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">

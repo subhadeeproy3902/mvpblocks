@@ -62,8 +62,8 @@ export function DrawerCodePreview({
     .join(' ');
 
   return (
-    <Card className="not-prose p-0 relative overflow-hidden border shadow-md">
-      <div className="absolute right-0 top-0 z-20 flex items-center justify-end p-3">
+    <Card className="not-prose relative overflow-hidden border p-0 shadow-md">
+      <div className="absolute top-0 right-0 z-20 flex items-center justify-end p-3">
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
@@ -102,14 +102,14 @@ export function DrawerCodePreview({
               </Button>
             </DialogTrigger>
             <DialogContent className="not-prose flex max-h-[80vh] w-full max-w-4xl flex-col overflow-auto p-0">
-              <DialogHeader className="sticky top-0 z-10 border-b bg-background px-6 py-4">
+              <DialogHeader className="bg-background sticky top-0 z-10 border-b px-6 py-4">
                 <DialogTitle className="flex items-center justify-between text-lg font-semibold">
                   <span>{formattedName}</span>
                   {/* Cross button */}
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-muted-foreground hover:bg-transparent hover:text-foreground"
+                    className="text-muted-foreground hover:text-foreground hover:bg-transparent"
                     onClick={() => setDialogOpen(false)}
                     aria-label="Close"
                   >
@@ -120,7 +120,7 @@ export function DrawerCodePreview({
 
               <div className="flex w-full flex-col">
                 <div className="overflow-x-auto p-6">
-                  <div className="w-full max-w-full [&_code]:whitespace-pre-wrap [&_code]:break-words [&_pre]:!overflow-x-visible">
+                  <div className="w-full max-w-full [&_code]:break-words [&_code]:whitespace-pre-wrap [&_pre]:!overflow-x-visible">
                     <DynamicCodeBlock code={code} lang={lang} />
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export function DrawerCodePreview({
       </div>
 
       <CardContent className="h-full p-0">
-        <div className="component-preview flex h-full items-center justify-center bg-gradient-to-br from-background to-muted/30 shadow-[0px_2px_10px_0px_rgba(255,255,255,0.1)_inset]">
+        <div className="component-preview from-background to-muted/30 flex h-full items-center justify-center bg-gradient-to-br shadow-[0px_2px_10px_0px_rgba(255,255,255,0.1)_inset]">
           <div
             className={cn(
               'h-full w-full max-w-md transition-all duration-200',

@@ -6,7 +6,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, paymentId, orderId, productId, amount, currency } = await req.json();
+    const { email, paymentId, orderId, productId, amount, currency } =
+      await req.json();
 
     const html = generateThankYouEmail({
       orderId,
@@ -27,6 +28,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Email send error:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to send email' },
+      { status: 500 },
+    );
   }
 }

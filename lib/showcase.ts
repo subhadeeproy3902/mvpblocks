@@ -19,5 +19,5 @@ export const showcaseData: ShowcaseItem[] = [
       'Master coding through structured learning paths, solve challenging problems, and build your programming expertise with our comprehensive platform.',
     image: '/showcase-images/loveleetcode.png',
     link: 'https://loveleetcode.in',
-  }
+  },
 ];

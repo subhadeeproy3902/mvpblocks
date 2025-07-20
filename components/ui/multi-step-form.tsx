@@ -196,7 +196,7 @@ export default function MultiStepForm({
   return (
     <div
       className={cn(
-        'mx-auto w-full max-w-md rounded-lg bg-card/40 p-6 shadow-lg',
+        'bg-card/40 mx-auto w-full max-w-md rounded-lg p-6 shadow-lg',
         className,
       )}
     >
@@ -225,7 +225,7 @@ export default function MultiStepForm({
                     i < step
                       ? 'bg-primary text-primary-foreground'
                       : i === step
-                        ? 'bg-primary text-primary-foreground ring-2 ring-primary/30'
+                        ? 'bg-primary text-primary-foreground ring-primary/30 ring-2'
                         : 'bg-secondary text-secondary-foreground',
                   )}
                 >
@@ -248,7 +248,7 @@ export default function MultiStepForm({
             >
               <div className="mb-6">
                 <h2 className="text-xl font-bold">{steps[step].title}</h2>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   {steps[step].description}
                 </p>
               </div>
@@ -270,7 +270,7 @@ export default function MultiStepForm({
                       )}
                     />
                     {errors[field.name as string] && (
-                      <p className="text-sm text-destructive">
+                      <p className="text-destructive text-sm">
                         {errors[field.name as string]?.message as string}
                       </p>
                     )}
@@ -312,11 +312,11 @@ export default function MultiStepForm({
           transition={{ duration: 0.5 }}
           className="py-10 text-center"
         >
-          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-            <CheckCircle2 className="h-8 w-8 text-primary" />
+          <div className="bg-primary/10 mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full">
+            <CheckCircle2 className="text-primary h-8 w-8" />
           </div>
           <h2 className="mb-2 text-2xl font-bold">Form Submitted!</h2>
-          <p className="mb-6 text-muted-foreground">
+          <p className="text-muted-foreground mb-6">
             Thank you for completing the form. We&apos;ll be in touch soon.
           </p>
           <Button

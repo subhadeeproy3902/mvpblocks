@@ -6,7 +6,7 @@ export default function MeshyCards() {
         style={{ transform: 'translateY(0px) scale(1)' }}
       >
         <div
-          className="relative transform overflow-hidden rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105"
+          className="relative transform overflow-hidden rounded-2xl p-6 shadow-lg transition-all duration-300 group-hover:scale-105 hover:shadow-xl"
           style={{
             background:
               'url(https://images.unsplash.com/photo-1635776062360-af423602aff3?w=800&amp;q=80)',
@@ -66,7 +66,7 @@ export default function MeshyCards() {
         style={{ transform: 'transform: translateY(0px) scale(1)' }}
       >
         <div
-          className="relative transform overflow-hidden rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105"
+          className="relative transform overflow-hidden rounded-2xl p-6 shadow-lg transition-all duration-300 group-hover:scale-105 hover:shadow-xl"
           style={{
             background:
               'url(https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?w=800&amp;q=80)',
@@ -131,7 +131,7 @@ export default function MeshyCards() {
         style={{ transform: 'transform: translateY(0px) scale(1)' }}
       >
         <div
-          className="relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-green-600 to-green-800 p-6 shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105"
+          className="relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-green-600 to-green-800 p-6 shadow-lg transition-all duration-300 group-hover:scale-105 hover:shadow-xl"
           style={{
             background:
               'url(https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?w=800&amp;q=80)',
@@ -192,7 +192,7 @@ export default function MeshyCards() {
         style={{ transform: 'transform: translateY(0px) scale(1)' }}
       >
         <div
-          className="relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-800 p-6 shadow-lg transition-all duration-300 hover:shadow-xl group-hover:scale-105"
+          className="relative transform overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-800 p-6 shadow-lg transition-all duration-300 group-hover:scale-105 hover:shadow-xl"
           style={{
             background:
               'url(https://images.unsplash.com/photo-1635776063328-153b13e3c245?w=800&amp;q=80)',

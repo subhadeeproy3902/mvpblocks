@@ -43,7 +43,7 @@ export function ComponentSource({
           className={cn('overflow-hidden', !isOpened && 'max-h-32')}
         >
           <div
-            className="[&_pre]:overflow-hidden [&_pre]:my-0 [&_pre]:pb-[100px]"
+            className="[&_pre]:my-0 [&_pre]:overflow-hidden [&_pre]:pb-[100px]"
             style={{
               maxHeight: isOpened ? maxHeight : 'none',
               overflow: 'hidden',

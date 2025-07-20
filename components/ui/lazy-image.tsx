@@ -67,7 +67,7 @@ export function LazyImage({
       ) : (
         blurPlaceholder && (
           <div
-            className="absolute inset-0 animate-pulse bg-muted/20"
+            className="bg-muted/20 absolute inset-0 animate-pulse"
             style={{
               width: props.width ? `${props.width}px` : '100%',
               height: props.height ? `${props.height}px` : '100%',

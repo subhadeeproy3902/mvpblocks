@@ -40,15 +40,15 @@ export default function ContactUs2() {
 
   return (
     <section className="w-full max-w-screen-md px-2">
-      <h2 className="mb-5 mt-4 bg-gradient-to-br from-gray-300 via-blue-300 to-gray-700 bg-clip-text text-center text-4xl font-bold text-transparent md:text-6xl">
+      <h2 className="mt-4 mb-5 bg-gradient-to-br from-gray-300 via-blue-300 to-gray-700 bg-clip-text text-center text-4xl font-bold text-transparent md:text-6xl">
         Let&apos;s Get in Touch
       </h2>
-      <p className="mb-6 text-center text-muted-foreground">
+      <p className="text-muted-foreground mb-6 text-center">
         Fill out the form below and we&apos;ll get back to you as soon as
         possible.
       </p>
       <div
-        className="mx-auto mb-6 grid w-full items-start gap-12 rounded-lg border bg-white bg-opacity-10 px-4 pb-6 pt-10 shadow shadow-slate-800 md:grid-cols-2 lg:px-12"
+        className="bg-opacity-10 mx-auto mb-6 grid w-full items-start gap-12 rounded-lg border bg-white px-4 pt-10 pb-6 shadow shadow-slate-800 md:grid-cols-2 lg:px-12"
         style={{
           backgroundImage:
             'radial-gradient(164.75% 100% at 50% 0,#272f3c 0,#0b1224 48.73%)',
@@ -62,7 +62,7 @@ export default function ContactUs2() {
               id="name"
               type="text"
               required
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none hover:border-slate-600 hover:outline-none hover:transition-all focus:border-slate-500 focus:outline-none"
+              className="bg-background flex h-10 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none hover:border-slate-600 hover:transition-all hover:outline-none focus:border-slate-500 focus:outline-none"
               placeholder="Enter your name"
               name="name"
             />
@@ -74,7 +74,7 @@ export default function ContactUs2() {
               id="email"
               placeholder="Enter your email"
               type="email"
-              className="hover:transition-al flex h-10 w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-slate-400 hover:outline-none focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              className="hover:transition-al bg-background placeholder:text-muted-foreground flex h-10 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm shadow-inner shadow-slate-800 outline-none file:text-sm file:font-medium hover:border-slate-400 hover:outline-none focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
               name="email"
               required
             />
@@ -86,7 +86,7 @@ export default function ContactUs2() {
             <label htmlFor="message" className="text-lg" />
             Message
             <textarea
-              className="mb-5 flex min-h-[100px] w-full rounded-md border border-slate-700 bg-background bg-slate-950 px-3 py-2 text-sm text-white shadow-inner shadow-slate-800 outline-none ring-offset-background placeholder:text-muted-foreground hover:border-slate-400 hover:outline-none hover:transition-all focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+              className="bg-background ring-offset-background placeholder:text-muted-foreground mb-5 flex min-h-[100px] w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white shadow-inner shadow-slate-800 outline-none hover:border-slate-400 hover:transition-all hover:outline-none focus:border-slate-500 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
               id="message"
               placeholder="Enter your message"
               name="message"

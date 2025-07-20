@@ -61,9 +61,9 @@ export default function PricingThree() {
   return (
     <section className="note-prose relative w-full py-16 md:py-32">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-[10%] left-[50%] h-[40%] w-[60%] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-[10%] -right-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="bg-primary/10 absolute -top-[10%] left-[50%] h-[40%] w-[60%] -translate-x-1/2 rounded-full blur-3xl" />
+        <div className="bg-primary/5 absolute -right-[10%] -bottom-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
+        <div className="bg-primary/5 absolute -bottom-[10%] -left-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
       </div>
       <div className="mx-auto max-w-5xl px-6">
         <div className="mx-auto max-w-2xl space-y-6 text-center">
@@ -81,9 +81,9 @@ export default function PricingThree() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-(--radius) flex flex-col justify-between space-y-8 border p-6 lg:p-10 ${
+              className={`flex flex-col justify-between space-y-8 rounded-(--radius) border p-6 lg:p-10 ${
                 plan.highlight
-                  ? 'shadow-lg shadow-gray-950/5 dark:bg-muted dark:[--color-muted:var(--color-zinc-900)] md:col-span-3'
+                  ? 'dark:bg-muted shadow-lg shadow-gray-950/5 md:col-span-3 dark:[--color-muted:var(--color-zinc-900)]'
                   : 'md:col-span-2 md:my-2 md:rounded-r-none md:border-r-0'
               }`}
             >
@@ -94,7 +94,7 @@ export default function PricingThree() {
                   <span className="my-3 block text-2xl font-semibold">
                     {plan.price}
                   </span>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     {plan.description}
                   </p>
                 </div>

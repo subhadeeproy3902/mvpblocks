@@ -21,7 +21,7 @@ export const source = loader({
         node.name = (
           <>
             {node.name}
-            <span className="py-0.2 mx-[5px] ml-1 rounded-md border border-primary bg-primary px-2 text-xs text-white">
+            <span className="py-0.2 border-primary bg-primary mx-[5px] ml-1 rounded-md border px-2 text-xs text-white">
               New
             </span>
           </>

@@ -11,7 +11,7 @@ const features = [
     title: 'Build Faster',
     content:
       'Create your MVP in record time with our pre-built blocks and components.',
-    icon: <Rocket className="h-6 w-6 text-primary" />,
+    icon: <Rocket className="text-primary h-6 w-6" />,
     image:
       'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop',
   },
@@ -20,7 +20,7 @@ const features = [
     title: 'Customize Easily',
     content:
       'Tailor every component to your needs with our intuitive design system and flexible architecture.',
-    icon: <Paintbrush className="h-6 w-6 text-primary" />,
+    icon: <Paintbrush className="text-primary h-6 w-6" />,
     image:
       'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop',
   },
@@ -29,7 +29,7 @@ const features = [
     title: 'Deploy Confidently',
     content:
       'Launch your product with confidence using our optimized, responsive, and accessible components.',
-    icon: <Code className="h-6 w-6 text-primary" />,
+    icon: <Code className="text-primary h-6 w-6" />,
     image:
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
   },
@@ -38,7 +38,7 @@ const features = [
     title: 'Add Yours!',
     content:
       'Contribute your own blocks and become part of the MVPBlocks community.',
-    icon: <Code className="h-6 w-6 text-primary" />,
+    icon: <Code className="text-primary h-6 w-6" />,
     image:
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
   },
@@ -69,7 +69,7 @@ export default function FeatureSteps() {
             <h2 className="font-geist text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
               Build Your MVP in Three Steps
             </h2>
-            <p className="font-geist mt-3 text-foreground/60">
+            <p className="font-geist text-foreground/60 mt-3">
               MVPBlocks helps you create, customize, and deploy your product
               faster than ever before.
             </p>
@@ -82,7 +82,7 @@ export default function FeatureSteps() {
             }}
           ></div>
         </div>
-        <hr className="mx-auto mb-10 h-px w-1/2 bg-foreground/30" />
+        <hr className="bg-foreground/30 mx-auto mb-10 h-px w-1/2" />
 
         <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-10">
           <div className="order-2 space-y-8 md:order-1">
@@ -102,7 +102,7 @@ export default function FeatureSteps() {
                   className={cn(
                     'flex h-12 w-12 items-center justify-center rounded-full border-2 md:h-14 md:w-14',
                     index === currentFeature
-                      ? 'scale-110 border-primary bg-primary/10 text-primary [box-shadow:0_0_15px_rgba(192,15,102,0.3)]'
+                      ? 'border-primary bg-primary/10 text-primary scale-110 [box-shadow:0_0_15px_rgba(192,15,102,0.3)]'
                       : 'border-muted-foreground bg-muted',
                   )}
                 >
@@ -113,7 +113,7 @@ export default function FeatureSteps() {
                   <h3 className="text-xl font-semibold md:text-2xl">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground md:text-base">
+                  <p className="text-muted-foreground text-sm md:text-base">
                     {feature.content}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default function FeatureSteps() {
 
           <div
             className={cn(
-              'relative order-1 h-[200px] overflow-hidden rounded-xl border border-primary/20 [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)] md:order-2 md:h-[300px] lg:h-[400px]',
+              'border-primary/20 relative order-1 h-[200px] overflow-hidden rounded-xl border [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)] md:order-2 md:h-[300px] lg:h-[400px]',
             )}
           >
             <AnimatePresence mode="wait">
@@ -145,10 +145,10 @@ export default function FeatureSteps() {
                         width={1000}
                         height={500}
                       />
-                      <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                      <div className="from-background via-background/50 absolute right-0 bottom-0 left-0 h-2/3 bg-gradient-to-t to-transparent" />
 
-                      <div className="absolute bottom-4 left-4 rounded-lg bg-background/80 p-2 backdrop-blur-sm">
-                        <span className="text-xs font-medium text-primary">
+                      <div className="bg-background/80 absolute bottom-4 left-4 rounded-lg p-2 backdrop-blur-sm">
+                        <span className="text-primary text-xs font-medium">
                           {feature.step}
                         </span>
                       </div>

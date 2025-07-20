@@ -69,7 +69,7 @@ export default function LocData() {
   return (
     <Card
       data-chart={id}
-      className="flex h-full flex-col bg-gradient-to-b from-secondary/40 to-secondary/0 shadow-[0px_-2px_50px_0px_#e91e631c_inset]"
+      className="from-secondary/40 to-secondary/0 flex h-full flex-col bg-gradient-to-b shadow-[0px_-2px_50px_0px_#e91e631c_inset]"
     >
       <ChartStyle id={id} config={chartConfig as ChartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">

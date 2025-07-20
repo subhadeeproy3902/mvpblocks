@@ -21,7 +21,7 @@ export default function CTA1() {
             src="https://blocks.mvp-subha.me/assets/cta/grid.svg"
           />
           <div className="relative isolate overflow-hidden px-4 py-12 sm:px-24">
-            <p className="w-fit rounded-xl bg-white px-4 py-1 text-center text-base font-semibold uppercase leading-7 text-black lg:text-left">
+            <p className="w-fit rounded-xl bg-white px-4 py-1 text-center text-base leading-7 font-semibold text-black uppercase lg:text-left">
               Get in touch
             </p>
             <h2 className="mt-3 max-w-md text-4xl font-semibold text-white md:text-6xl">
@@ -47,7 +47,7 @@ export default function CTA1() {
                 mvp-subha.me
               </Link>
             </div>
-            <ul className="ml-4 mt-8 list-disc text-sm text-gray-300 md:text-base">
+            <ul className="mt-8 ml-4 list-disc text-sm text-gray-300 md:text-base">
               <li>Submit your query and state your requirements.</li>
               <li>
                 Receive a call back from our experts as per your query to help

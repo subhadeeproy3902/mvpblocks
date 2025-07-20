@@ -105,10 +105,10 @@ export function CardHoverEffect({
         'group relative z-30 w-full cursor-pointer overflow-hidden rounded-2xl',
         sizeConfig.padding,
         // Light mode styles
-        'before:bg-linear-to-b bg-white/80 before:from-white/5 before:to-white/20 before:backdrop-blur-3xl',
+        'bg-white/80 before:bg-linear-to-b before:from-white/5 before:to-white/20 before:backdrop-blur-3xl',
         'after:bg-linear-to-b after:from-transparent after:via-transparent after:to-white/20',
         // Dark mode styles
-        'dark:before:bg-linear-to-b dark:bg-black/5 dark:before:from-black/5 dark:before:to-black/20',
+        'dark:bg-black/5 dark:before:bg-linear-to-b dark:before:from-black/5 dark:before:to-black/20',
         'dark:after:to-black/20',
         // Common styles
         "before:absolute before:inset-0 before:rounded-[inherit] before:content-['']",
@@ -161,7 +161,7 @@ export function CardHoverEffect({
         />
         <span
           className={cn(
-            'z-1 relative block transition-colors duration-300',
+            'relative z-1 block transition-colors duration-300',
             'text-black/60 group-hover:text-[var(--card-color)]',
             'dark:text-zinc-400',
             sizeConfig.iconSize,

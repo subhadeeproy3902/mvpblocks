@@ -29,15 +29,15 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
       <div
         onClick={handleClick}
         className={cn(
-          'relative cursor-pointer overflow-hidden rounded-xl border-b border-primary/20 bg-card/40 transition-all duration-300 hover:border-primary hover:bg-card/10',
-          'hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10',
+          'border-primary/20 bg-card/40 hover:border-primary hover:bg-card/10 relative cursor-pointer overflow-hidden rounded-xl border-b transition-all duration-300',
+          'hover:shadow-primary/10 hover:-translate-y-1 hover:shadow-xl',
         )}
       >
         {/* Image container */}
-        <div className="relative aspect-video overflow-hidden bg-muted">
+        <div className="bg-muted relative aspect-video overflow-hidden">
           {/* Loading skeleton */}
           {!imageLoaded && !imageError && (
-            <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-muted via-muted/50 to-muted" />
+            <div className="from-muted via-muted/50 to-muted absolute inset-0 animate-pulse bg-gradient-to-r" />
           )}
 
           <img
@@ -56,10 +56,10 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
 
           {/* Fallback for failed images */}
           {imageError && (
-            <div className="absolute inset-0 flex items-center justify-center bg-muted">
+            <div className="bg-muted absolute inset-0 flex items-center justify-center">
               <div className="text-center">
                 <div className="mb-2 text-2xl">🖼️</div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Image not available
                 </p>
               </div>
@@ -70,26 +70,26 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {/* External link icon */}
-          <div className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:opacity-100">
-            <ExternalLink className="h-4 w-4 text-foreground" />
+          <div className="bg-background/80 absolute top-4 right-4 z-10 rounded-full p-2 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:opacity-100">
+            <ExternalLink className="text-foreground h-4 w-4" />
           </div>
         </div>
 
         {/* Content */}
         <div className="p-6">
           {/* Title */}
-          <h3 className="mb-2 text-xl text-primary transition-colors duration-200 group-hover:text-primary">
+          <h3 className="text-primary group-hover:text-primary mb-2 text-xl transition-colors duration-200">
             {item.name}
           </h3>
 
           {/* Description */}
-          <p className="line-clamp-3 text-sm text-muted-foreground">
+          <p className="text-muted-foreground line-clamp-3 text-sm">
             {item.about}
           </p>
         </div>
 
         {/* Hover effect overlay */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="from-primary/5 absolute inset-0 rounded-xl bg-gradient-to-r to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
     </motion.div>
   );

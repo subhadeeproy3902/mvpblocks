@@ -24,7 +24,7 @@ export default function Gallery() {
   return (
     <section
       id="trending"
-      className="relative mb-32 min-h-screen overflow-hidden rounded-bl-3xl rounded-br-3xl rounded-tl-3xl rounded-tr-3xl border-b border-t border-secondary/50 bg-background pt-16 md:rounded-bl-[5rem] md:rounded-br-[5rem] md:rounded-tl-[5rem] md:rounded-tr-[5rem]"
+      className="border-secondary/50 bg-background relative mb-32 min-h-screen overflow-hidden rounded-tl-3xl rounded-tr-3xl rounded-br-3xl rounded-bl-3xl border-t border-b pt-16 md:rounded-tl-[5rem] md:rounded-tr-[5rem] md:rounded-br-[5rem] md:rounded-bl-[5rem]"
       style={{
         boxShadow: `
       inset 0 20px 30px -12px rgba(244, 63, 94, 0.2),
@@ -38,7 +38,7 @@ export default function Gallery() {
       <div className="absolute bottom-0 z-0 h-full w-full rotate-180">
         <Spotlight />
       </div>
-      <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 lg:block">
+      <div className="absolute top-1/2 left-0 hidden -translate-y-1/2 lg:block">
         <img
           alt="Trending graphic 1"
           width={100}
@@ -47,7 +47,7 @@ export default function Gallery() {
           src="/trending1.svg"
         />
       </div>
-      <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block">
+      <div className="absolute top-1/2 right-0 hidden -translate-y-1/2 lg:block">
         <img
           alt="Trending graphic 2"
           width={100}
@@ -67,16 +67,16 @@ export default function Gallery() {
           <div className="flex justify-center">
             <button
               type="button"
-              className="group relative z-[60] mx-auto rounded-full border border-zinc-500/80 bg-background/50 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/[0.1] active:scale-100 dark:border-border md:text-sm"
+              className="group bg-background/50 hover:shadow-primary/[0.1] dark:border-border relative z-[60] mx-auto rounded-full border border-zinc-500/80 px-6 py-1 text-xs backdrop-blur transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-100 md:text-sm"
             >
-              <div className="absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
-              <div className="absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent via-primary to-transparent shadow-2xl transition-all duration-500 group-hover:h-px"></div>
+              <div className="via-primary absolute inset-x-0 -top-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:w-3/4"></div>
+              <div className="via-primary absolute inset-x-0 -bottom-px mx-auto h-0.5 w-1/2 bg-gradient-to-r from-transparent to-transparent shadow-2xl transition-all duration-500 group-hover:h-px"></div>
               <span className="relative">Gallery</span>
             </button>
           </div>
           <h2
             className={cn(
-              'mt-5 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 md:text-[54px] md:leading-[60px]',
+              'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
               space.className,
             )}
           >
@@ -106,8 +106,8 @@ export default function Gallery() {
                 </span>
               </div>
               <p className="text-center text-lg md:text-2xl lg:text-3xl">
-                Built to <span className="font-bold text-primary">run</span>.
-                Built to <span className="font-bold text-primary">scale</span>.
+                Built to <span className="text-primary font-bold">run</span>.
+                Built to <span className="text-primary font-bold">scale</span>.
               </p>
             </div>
             <div className="mt-10 scale-125">

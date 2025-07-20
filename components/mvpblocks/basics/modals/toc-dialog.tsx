@@ -45,7 +45,7 @@ export default function TocDialog() {
           >
             <DialogDescription asChild>
               <div className="px-6 py-4">
-                <div className="space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground">
+                <div className="[&_strong]:text-foreground space-y-4 [&_strong]:font-semibold">
                   <div className="space-y-4">
                     <div className="space-y-1">
                       <p>
@@ -156,7 +156,7 @@ export default function TocDialog() {
         </DialogHeader>
         <DialogFooter className="border-t px-6 py-4 sm:items-center">
           {!hasReadToBottom && (
-            <span className="grow text-xs text-muted-foreground max-sm:text-center">
+            <span className="text-muted-foreground grow text-xs max-sm:text-center">
               Read all terms before accepting.
             </span>
           )}

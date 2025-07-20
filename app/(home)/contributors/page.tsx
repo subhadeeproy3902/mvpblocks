@@ -75,11 +75,11 @@ export default function Contributors() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className={cn(
-              'mb-6 bg-gradient-to-b from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl',
+              'from-foreground via-foreground/90 to-foreground/70 mb-6 bg-gradient-to-b bg-clip-text text-4xl tracking-tight text-transparent sm:text-5xl lg:text-6xl',
               space.className,
             )}
           >
-            <span className="bg-primary from-foreground via-rose-200 to-primary bg-clip-text dark:bg-gradient-to-b">
+            <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text dark:bg-gradient-to-b">
               Contributors
             </span>
           </motion.h1>
@@ -89,7 +89,7 @@ export default function Contributors() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mx-auto mb-12 max-w-3xl text-lg text-muted-foreground sm:text-xl"
+            className="text-muted-foreground mx-auto mb-12 max-w-3xl text-lg sm:text-xl"
           >
             Meet the amazing people who have contributed to MVPBlocks. Their
             dedication and hard work make this project possible.
@@ -102,10 +102,10 @@ export default function Contributors() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <h1 className="group inline-flex cursor-pointer items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25">
+            <h1 className="group bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-primary/25 inline-flex cursor-pointer items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg">
               {contributors.length} Contributors
             </h1>
-            <h1 className="group inline-flex cursor-pointer items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:scale-105 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25">
+            <h1 className="group bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-primary/25 inline-flex cursor-pointer items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg">
               {totalContributions} Contributions
             </h1>
           </motion.div>
@@ -168,7 +168,7 @@ export default function Contributors() {
       </div>
       <div className="w-full bg-white pt-40 dark:bg-[#0B0A09]">
         <div className="mx-auto max-w-7xl text-center">
-          <p className="text-xl font-bold text-black dark:text-white md:text-4xl">
+          <p className="text-xl font-bold text-black md:text-4xl dark:text-white">
             Want to Contribute{' '}
             <span className="text-neutral-400">
               {'Connectivity'.split('').map((word, idx) => (

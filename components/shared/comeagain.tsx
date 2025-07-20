@@ -46,7 +46,7 @@ export default function EndSlider() {
             <div
               key={index}
               className={cn(
-                'flex items-center gap-4 bg-gradient-to-r from-foreground/60 via-foreground to-foreground/60 bg-clip-text text-center font-semibold text-transparent dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55',
+                'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 flex items-center gap-4 bg-gradient-to-r bg-clip-text text-center font-semibold text-transparent',
                 space.className,
               )}
             >

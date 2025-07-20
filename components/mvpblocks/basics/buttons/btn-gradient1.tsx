@@ -18,7 +18,7 @@ export default function Btn09() {
           ></path>
         </svg>
       </span>
-      <span className="absolute right-0 top-0 -mr-3 h-full w-12">
+      <span className="absolute top-0 right-0 -mr-3 h-full w-12">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-full w-full object-cover"

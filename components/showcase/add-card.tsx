@@ -16,7 +16,7 @@ export function AddCard() {
         rel="noopener noreferrer"
         className="flex h-full w-full cursor-pointer flex-col items-center justify-center"
       >
-        <PlusCircle className="mb-4 h-12 w-12 text-primary opacity-70" />
+        <PlusCircle className="text-primary mb-4 h-12 w-12 opacity-70" />
         <h3 className="mb-2 text-xl font-semibold">Add yours</h3>
       </Link>
     </motion.div>

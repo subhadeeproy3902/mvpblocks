@@ -152,10 +152,7 @@ export function BuyDialog({
         </DialogContent>
       </Dialog>
 
-      <ThankYou 
-        isOpen={showThankYou} 
-        setIsOpen={setShowThankYou}
-      />
+      <ThankYou isOpen={showThankYou} setIsOpen={setShowThankYou} />
     </>
   );
 }

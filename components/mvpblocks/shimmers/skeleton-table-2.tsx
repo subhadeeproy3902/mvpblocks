@@ -66,7 +66,7 @@ const TableHeading: React.FC<SkeletonTableProps> = ({
           key={idx}
           className={`flex justify-center ${columnWidthArray ? columnWidthArray[idx] : 'w-full'} ${idx !== headings.length && 'border-l-2'}`}
         >
-          <h3 className="overflow-hidden truncate whitespace-nowrap text-xs font-semibold md:text-[15px]">
+          <h3 className="truncate overflow-hidden text-xs font-semibold whitespace-nowrap md:text-[15px]">
             {heading}
           </h3>
         </div>
