@@ -1,0 +1,16 @@
+---
+title: Glow Cards
+description: A collection of glow card designs, featuring various layouts for showcasing content
+root: cards
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+
+<ComponentPreview
+  name="glow-card"
+  classNameComponentContainer="min-h-[600px]"
+  code={(await extractSourceCode("glow-card")).code}
+  lang="tsx"
+/>

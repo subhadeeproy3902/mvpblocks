@@ -1,0 +1,16 @@
+{
+  "name": "glow-card",
+  "type": "registry:block",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import React from 'react';\r\n\r\nexport default function GlowingCard () {\r\n  return (\r\n    <>\r\n      <div className=\"card\">\r\n        Glowing Card\r\n        <div className=\"glow\" />\r\n      </div>\r\n\r\n      <style jsx>{`\r\n        @property --a {\r\n          syntax: '<angle>';\r\n          initial-value: 0deg;\r\n          inherits: false;\r\n        }\r\n\r\n        @keyframes a {\r\n          to {\r\n            --a: 1turn;\r\n          }\r\n        }\r\n\r\n        .card {\r\n          position: relative;\r\n          overflow: hidden;\r\n          width: min(12.5em, 80vmin);\r\n          aspect-ratio: 1;\r\n          border-radius: 0.5em;\r\n\r\n          display: grid;\r\n          place-self: center;\r\n          place-content: center;\r\n          padding: 0.5em;\r\n          color: #ededed;\r\n          font: clamp(1em, 2vw + 2vh, 2em) sans-serif;\r\n          text-align: center;\r\n          text-transform: uppercase;\r\n          text-wrap: balance;\r\n        }\r\n\r\n        .glow {\r\n          content: '';\r\n          position: absolute;\r\n          z-index: -1;\r\n          inset: -1em;\r\n          border: solid 1.25em;\r\n          border-image: conic-gradient(\r\n              from var(--a),\r\n              #669900,\r\n              #99cc33,\r\n              #ccee66,\r\n              #006699,\r\n              #3399cc,\r\n              #990066,\r\n              #cc3399,\r\n              #ff6600,\r\n              #ff9900,\r\n              #ffcc00,\r\n              #669900\r\n            )\r\n            1;\r\n          filter: blur(0.75em);\r\n          animation: a 4s linear infinite;\r\n          pointer-events: none;\r\n        }\r\n      `}</style>\r\n    </>\r\n  );\r\n};\r\n",
+      "path": "/components/mvpblocks/cards/glow/glow-card.tsx",
+      "target": "components/mvpblocks/glow-card.tsx"
+    }
+  ]
+}

@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "glow-card",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/cards/glow/glow-card.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/cards/glow/glow-card"),
+    ),
+  },
+  {
     name: 'pricing-5',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react', '@number-flow/react'],
