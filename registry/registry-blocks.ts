@@ -3,6 +3,21 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "masonry-grid-1",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/grids/masonry-grid-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/grids/masonry-grid-1"),
+    ),
+  },
+  {
     name: "glow-card",
     type: "registry:block",
     dependencies: ["react"],

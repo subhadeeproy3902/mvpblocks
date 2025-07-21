@@ -1,0 +1,16 @@
+{
+  "name": "masonry-grid-1",
+  "type": "registry:block",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { useState } from 'react';\r\nimport { motion } from 'framer-motion';\r\n\r\nconst images = [\r\n  'https://picsum.photos/800/600?random=1',\r\n  'https://picsum.photos/640/480?random=2',\r\n  'https://picsum.photos/1280/720?random=3',\r\n  'https://picsum.photos/960/540?random=4',\r\n  'https://picsum.photos/900/300?random=5',\r\n  'https://picsum.photos/1200/600?random=6',\r\n  'https://picsum.photos/400/600?random=7',\r\n  'https://picsum.photos/300/450?random=8',\r\n  'https://picsum.photos/600/800?random=9',\r\n  'https://picsum.photos/450/600?random=10',\r\n  'https://picsum.photos/600/600?random=11',\r\n  'https://picsum.photos/500/550?random=12',\r\n  'https://picsum.photos/700/850?random=20',\r\n  'https://picsum.photos/1280/960?random=14',\r\n  'https://picsum.photos/1440/810?random=15',\r\n  'https://picsum.photos/1024/768?random=16',\r\n  'https://picsum.photos/800/800?random=17',\r\n  'https://picsum.photos/1080/720?random=18',\r\n  'https://picsum.photos/1920/1080?random=19',\r\n  'https://picsum.photos/1280/800?random=20',\r\n  'https://picsum.photos/800/400?random=21',\r\n  'https://picsum.photos/1024/576?random=22',\r\n  'https://picsum.photos/640/360?random=23',\r\n];\r\n\r\nexport default function MasonryGallery() {\r\n  const [hovered, setHovered] = useState<number | null>(null);\r\n\r\n  return (\r\n    <div className=\"min-h-screen p-6 md:p-12\">\r\n      <div className=\"columns-1 gap-4 space-y-4 transition-all sm:columns-2 md:columns-3 lg:columns-4\">\r\n        {images.map((src, index) => (\r\n          <motion.div\r\n            key={index}\r\n            initial={{ opacity: 0, y: 30 }}\r\n            whileInView={{ opacity: 1, y: 0 }}\r\n            transition={{ duration: 0.4, delay: index * 0.1 }}\r\n            viewport={{ once: true }}\r\n            onMouseEnter={() => setHovered(index)}\r\n            onMouseLeave={() => setHovered(null)}\r\n            className=\"group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-in-out\"\r\n          >\r\n            <motion.img\r\n              src={src}\r\n              alt={`Random ${index}`}\r\n              className={`w-full rounded-xl object-cover transition-all duration-300 ease-in-out ${\r\n                hovered === null\r\n                  ? 'blur-0 scale-100'\r\n                  : hovered === index\r\n                    ? 'blur-0 scale-105'\r\n                    : 'blur-xs'\r\n              }`}\r\n              whileHover={{ scale: 1.05 }}\r\n            />\r\n          </motion.div>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/grids/masonry-grid-1.tsx",
+      "target": "components/mvpblocks/masonry-grid-1.tsx"
+    }
+  ]
+}
