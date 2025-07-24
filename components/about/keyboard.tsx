@@ -186,7 +186,7 @@ const Keyboard: React.FC = () => {
 
           return (
             <div
-              key={index}
+              key={key.code || `${key.row}-${key.label}-${index}`}
               className={`group h-10 min-w-10 ${key.flexGrow ? 'flex-grow' : ''} ${key.label === 'Caps' && 'w-16'} ${key.label === 'Tab' && 'w-14'}`}
             >
               <button
@@ -219,7 +219,11 @@ const Keyboard: React.FC = () => {
     <div className="text-foreground/70 z-10 flex scale-[0.55] items-center justify-center text-xs md:mt-16 md:scale-100 lg:scale-125 xl:mt-0 xl:-ml-12">
       <div className="border-border bg-secondary/80 rounded-lg border-2 p-3 shadow-lg">
         <div className="bg-background overflow-hidden rounded p-1">
-          {['1', '2', '3', '4', '5'].map((row) => renderRow(row))}
+          {['1', '2', '3', '4', '5'].map((row) => (
+            <div key={row}>
+              {renderRow(row)}
+            </div>
+          ))}
         </div>
       </div>
     </div>
