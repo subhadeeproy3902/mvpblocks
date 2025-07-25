@@ -3,6 +3,51 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: "text-reveal-1",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/text-reveal.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/text-reveal-1.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/text-reveal-1"),
+    ),
+  },
+  {
+    name: "text-reveal-2",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/text-reveal.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/text-animations/text-reveal-2.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/text-animations/text-reveal-2"),
+    ),
+  },
+  {
+    name: "gradient-bars-preview",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/gradient-bars.json","https://blocks.mvp-subha.me/r/text-reveal.json","https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/mvpblocks/backgrounds/gradient-bars-preview.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/backgrounds/gradient-bars-preview"),
+    ),
+  },
+  {
     name: "masonry-grid-1",
     type: "registry:block",
     dependencies: ["react"],

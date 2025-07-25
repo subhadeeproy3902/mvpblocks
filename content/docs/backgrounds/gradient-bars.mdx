@@ -1,0 +1,73 @@
+---
+title: Gradient Bars
+description: Animated background with vertical gradient bars that pulse in a wave-like motion.
+new: true
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+import {ComponentSource} from "@/components/preview/component-source";
+
+<ComponentPreview
+  name="gradient-bars-preview"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode("gradient-bars-preview")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react react
+        ```
+      </Tab>
+      <Tab>
+      ```bash 
+      pnpm install motion/react react
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      yarn add motion/react react
+      ```
+      </Tab>
+      <Tab>
+      ```bash 
+      bun add motion/react react
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    Gradient Bars
+    <ComponentSource
+      code={(await extractSourceCode("gradient-bars")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    bars: {
+      description: "The number of gradient bars to display.",
+      type: "number",
+      default: "20",
+    },
+    colors: {
+      description: "The colors to use for the gradient.",
+      type: "string[]",
+      default: '["#e60a64", "transparent"]',
+    },
+  }}
+/>

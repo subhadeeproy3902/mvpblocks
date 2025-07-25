@@ -1,0 +1,17 @@
+{
+  "name": "text-reveal-2",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/text-reveal.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { TextReveal } from '@/components/ui/text-reveal';\r\n\r\nexport default function TextRevealWords() {\r\n  return (\r\n    <TextReveal\r\n      className=\"bg-gradient-to-tr from-blue-500 to-purple-500 bg-clip-text text-3xl font-medium text-transparent\"\r\n      from=\"top\"\r\n      split=\"word\"\r\n      blur={3}\r\n      delay={0.2}\r\n      duration={1.2}\r\n    >\r\n      Check out the recent template we just launched\r\n    </TextReveal>\r\n  );\r\n}",
+      "path": "/components/mvpblocks/text-animations/text-reveal-2.tsx",
+      "target": "components/mvpblocks/text-reveal-2.tsx"
+    }
+  ]
+}

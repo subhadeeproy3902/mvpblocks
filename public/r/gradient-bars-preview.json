@@ -1,0 +1,18 @@
+{
+  "name": "gradient-bars-preview",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/gradient-bars.json",
+    "https://blocks.mvp-subha.me/r/text-reveal.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GradientBars } from '@/components/ui/gradient-bars';\r\nimport { TextReveal } from '@/components/ui/text-reveal';\r\n\r\nexport default function GradientBarsPreview() {\r\n  return (\r\n    <div className=\"flex h-full w-full flex-col items-center justify-center\">\r\n      <GradientBars />\r\n      <TextReveal className=\"text-foreground text-4xl text-center\">\r\n        Awesome backgrounds :)\r\n      </TextReveal>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/backgrounds/gradient-bars-preview.tsx",
+      "target": "components/mvpblocks/gradient-bars-preview.tsx"
+    }
+  ]
+}

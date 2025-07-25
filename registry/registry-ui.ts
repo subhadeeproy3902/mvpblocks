@@ -3,6 +3,40 @@ import * as React from 'react';
 
 export const ui: Registry = [
   {
+    name: "text-reveal",
+    type: "registry:ui",
+    dependencies: [],
+    registryDependencies: ["https://blocks.mvp-subha.me/r/utils.json"],
+    files: [
+      {
+        path: "@/components/ui/text-reveal.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/text-reveal").then((mod) => ({
+        default: mod.TextReveal,
+      })),
+    ),
+  },
+  {
+    name: "gradient-bars",
+    type: "registry:ui",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/ui/gradient-bars.tsx",
+        type: "registry:ui",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/ui/gradient-bars").then((mod) => ({
+        default: mod.GradientBars,
+      })),
+    ),
+  },
+  {
     name: 'sparkles',
     type: 'registry:ui',
     dependencies: [
