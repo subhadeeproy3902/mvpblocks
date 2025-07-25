@@ -12,7 +12,7 @@ import { BorderBeam } from '@/components/ui/border-beam';
 import CommitActivity from '@/components/about/commit-activity';
 import Codefreq from '@/components/about/code-freq';
 import AboutFeaturesSection from '@/components/about/about-features';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Compare } from '@/components/ui/compare';
 import { useTheme } from 'next-themes';
 import CTA from '@/components/shared/cta';
@@ -26,8 +26,13 @@ const space = Geist({
 
 export default function AboutUsPage() {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <>
       <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
@@ -110,17 +115,21 @@ export default function AboutUsPage() {
             </motion.div>
             <div className="relative mx-auto h-full max-w-5xl flex-col items-center justify-start md:flex-row xl:mb-8 xl:flex xl:h-[400px]">
               <Keyboard />
-              <Compare
-                firstImage={theme === 'dark' ? '/abt2.webp' : '/abt2-dark.webp'}
-                secondImage={
-                  theme === 'dark' ? '/abt1-dark.webp' : '/abt1.webp'
-                }
-                firstImageClassName="object-cover object-left-top w-full"
-                secondImageClassname="object-cover object-left-top w-full"
-                className="absolute -top-16 -right-32 z-0 hidden rounded-[22px] md:rounded-lg xl:block"
-                slideMode="hover"
-                autoplay={true}
-              />
+              {mounted && (
+                <Compare
+                  firstImage={
+                    theme === 'dark' ? '/abt2.webp' : '/abt2-dark.webp'
+                  }
+                  secondImage={
+                    theme === 'dark' ? '/abt1-dark.webp' : '/abt1.webp'
+                  }
+                  firstImageClassName="object-cover object-left-top w-full"
+                  secondImageClassname="object-cover object-left-top w-full"
+                  className="absolute -top-16 -right-32 z-0 hidden rounded-[22px] md:rounded-lg xl:block"
+                  slideMode="hover"
+                  autoplay={true}
+                />
+              )}
             </div>
           </div>
 
