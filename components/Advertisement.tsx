@@ -25,11 +25,11 @@ export default function Advertisement({
 
         <div className="flex flex-col gap-8 px-8 py-12 sm:px-16 sm:py-16">
           <h2 className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent sm:text-3xl dark:bg-gradient-to-b">
-            Wanna bag up an aesthetic portfolio at a steal?
+            The most awesome AI SaaS Template — Dirt Cheap! 💸
           </h2>
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
             <img
-              src="/developer-portfolio.png"
+              src="/ai-saas-marketing.jpeg"
               alt="Template preview"
               width={300}
               height={300}
@@ -38,21 +38,20 @@ export default function Advertisement({
 
             <div className="space-y-2 text-center sm:text-left">
               <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                Developer Portfolio
+                AI SaaS Marketing Template
               </p>
               <p className="text-sm text-neutral-400">
-                🔥 Only $5... ONLYYYY! (₹439 INR) The CHEAPEST Next.js Portfolio
-                Template You’ll Ever Find!
+                ⚡ Launch faster with the most elegant & high-performing AI SaaS template - fully responsive, conversion-optimized, and dirt cheap!
               </p>
               <p className="text-3xl font-semibold tracking-tight">
-                <span className="text-primary">$5</span>{' '}
-                <span className="text-sm text-neutral-400">(₹439 INR)</span>
+                <span className="text-primary">₹2199</span>{' '}
+                <span className="text-sm text-neutral-400">INR</span>
               </p>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <Link href="/docs/developer-portfolio">
+            <Link href="/docs/ai-saas-marketing">
               <Button className="cursor-pointer rounded-lg">
                 Explore Docs
                 <MoveRight className="ml-2 inline-block h-4 w-4" />

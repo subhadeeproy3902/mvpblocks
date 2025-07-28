@@ -20,7 +20,6 @@ interface BuyDialogProps {
   currency: 'INR' | 'USD' | string;
   image: string;
   productId: string;
-  downloadUrl: string;
 }
 
 export function BuyDialog({
@@ -29,7 +28,6 @@ export function BuyDialog({
   currency,
   image,
   productId,
-  downloadUrl,
 }: BuyDialogProps) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
