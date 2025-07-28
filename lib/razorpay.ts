@@ -7,6 +7,7 @@ interface PaymentArgs {
   title?: string;
   productId?: string;
   onSuccess: () => void;
+  downloadUrl: string
 }
 
 export const initiatePayment = async ({
@@ -16,6 +17,7 @@ export const initiatePayment = async ({
   title = 'Digital Product',
   productId,
   onSuccess,
+  downloadUrl,
 }: PaymentArgs) => {
   const loadRazorpay = () => {
     return new Promise<void>((resolve, reject) => {
@@ -70,6 +72,7 @@ export const initiatePayment = async ({
               productName: title,
               amount: amount,
               currency,
+              downloadUrl: downloadUrl,
             }),
           });
 

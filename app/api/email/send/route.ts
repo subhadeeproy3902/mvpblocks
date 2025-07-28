@@ -6,14 +6,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, paymentId, orderId, productId, amount, currency } =
+    const { email, paymentId, orderId, productId, amount, currency, downloadUrl } =
       await req.json();
 
     const html = generateThankYouEmail({
       orderId,
       paymentId,
       productName: productId ?? 'Template',
-      downloadUrl: process.env.DEVELOPER_PORTFOLIO_DOWNLOAD_URL!,
+      downloadUrl: downloadUrl,
       amount: amount,
       currency: currency,
     });

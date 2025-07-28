@@ -20,6 +20,7 @@ interface BuyDialogProps {
   currency: 'INR' | 'USD' | string;
   image: string;
   productId: string;
+  downloadUrl: string;
 }
 
 export function BuyDialog({
@@ -28,6 +29,7 @@ export function BuyDialog({
   currency,
   image,
   productId,
+  downloadUrl,
 }: BuyDialogProps) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -58,6 +60,7 @@ export function BuyDialog({
           setIsDialogOpen(false);
           setShowThankYou(true);
         },
+        downloadUrl: downloadUrl
       });
     } catch (err) {
       console.error('Checkout error:', err);
