@@ -1,4 +1,4 @@
-import { MoveRight, X } from 'lucide-react';
+import { DollarSign, MoveRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { set } from 'zod';
 import { Button } from './ui/button';
@@ -10,7 +10,7 @@ export default function Advertisement({
 }) {
   return (
     <div className="bg-background/70 fixed inset-0 z-[1000] flex items-center justify-center backdrop-blur-sm">
-      <div className="bg-background/80 relative w-[95%] max-w-2xl overflow-hidden rounded-2xl border shadow-2xl">
+      <div className="bg-background/80 relative w-[95%] max-w-[45rem] overflow-hidden rounded-2xl border shadow-2xl">
         <div className="bg-primary/30 absolute -top-10 left-0 h-16 w-full blur-2xl"></div>
         <div className="bg-primary/20 absolute right-0 -bottom-10 h-20 w-full blur-3xl"></div>
 
@@ -25,7 +25,7 @@ export default function Advertisement({
 
         <div className="flex flex-col gap-8 px-8 py-12 sm:px-16 sm:py-16">
           <h2 className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent sm:text-3xl dark:bg-gradient-to-b">
-            The most awesome AI SaaS Template — Dirt Cheap! 💸
+            The most awesome AI SaaS Template Dirt Cheap!
           </h2>
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
             <img
