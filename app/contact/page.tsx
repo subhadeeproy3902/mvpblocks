@@ -1,10 +1,11 @@
 
-import React from 'react';
+
+import AnimatedText from '@/components/ui/AnimatedText';
 
 export default function ContactPage() {
   return (
     <main className="container mx-auto max-w-xl py-12 px-4">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+      <AnimatedText text="Contact Us" className="text-3xl font-bold mb-6" />
       <form className="space-y-5">
         <div>
           <label htmlFor="name" className="block mb-1 font-medium">Name</label>
