@@ -3,35 +3,157 @@ title: Admin Dashboard
 description: A comprehensive admin dashboard with real-time analytics, user management, and system monitoring. Features custom components with minimal shadcn usage.
 root: dashboards
 full: true
+new: true
 ---
 
-import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
-import Link from "next/link";
+import {ComponentPreview} from "@/components/preview/component-preview";
+import {extractSourceCode} from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
-<div className="flex flex-col items-center justify-start space-y-8 py-4 text-center">
-  <div className="space-y-2">
-    <h2 className="text-3xl mt-0 font-bold tracking-tighter sm:text-4xl md:text-5xl">Component In Development</h2>
-    <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-      We're currently working on creating beautiful, responsive pagination components for MVPBlocks.
-    </p>
-  </div>
+<ComponentPreview
+  name="admin-dashboard-1"
+  classNameComponentContainer="h-[600px]"
+  code={(await extractSourceCode('admin-dashboard-1')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
 
-<div className="w-full max-w-md rounded-lg border border-border bg-card/40 p-6 shadow-sm">
-  <div className="space-y-2">
-    <h3 className="text-xl font-bold">Want to contribute?</h3>
-    <p className="text-sm text-muted-foreground">
-      We welcome contributions from the community! If you have ideas or
-      implementations for pagination components, consider contributing to
-      MVPBlocks.
-    </p>
-  </div>
-</div>
+## Folder structure
 
-  <Link href="https://github.com/subhadeeproy3902/mvpblocks" target="_blank" rel="noopener noreferrer">
-    <Button className="gap-2">
-      <Github className="h-4 w-4" />
-      Contribute on GitHub
-    </Button>
-  </Link>
-</div>
+<Files className="bg-fd-secondary/50">
+  <Folder name="components" defaultOpen>
+    <Folder name="mvpblocks" defaultOpen>
+      <Folder name="ui" defaultOpen>
+        <File name="admin-sidebar.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="dashboard-card.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="dashboard-header.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="quick-actions.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="recent-activity.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="revenue-chart.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="system-status.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File name="users-table.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+      </Folder>
+      <File name="index.tsx" className="hover:bg-secondary/50" />
+    </Folder>
+    <Folder name="ui">
+      <File name="breadcrumb.tsx" className="hover:bg-secondary/50" />
+      <File name="button.tsx" className="hover:bg-secondary/50" />
+      <File name="dropdown-menu.tsx" className="hover:bg-secondary/50" />
+      <File name="input.tsx" className="hover:bg-secondary/50" />
+      <File name="separator.tsx" className="hover:bg-secondary/50" /> 
+      <File name="sheet.tsx" className="hover:bg-secondary/50" />
+      <File name="sidebar.tsx" className="hover:bg-secondary/50" />
+      <File name="skeleton.tsx" className="hover:bg-secondary/50" />
+      <File name="tooltip.tsx" className="hover:bg-secondary/50" />
+    </Folder>
+  </Folder>
+</Files>
+
+## Installation and setup
+
+To set up the Admin Dashboard, follow these steps:
+
+<Steps>
+  <Step>
+    Add admin-sidebar, dashboard-card, dashboard-header, quick-actions, recent-activity, revenue-chart, system-status, and user-table components to your project.
+
+    <Tabs items={['CLI', 'Manual']}>
+      <Tab>
+            Run the following command to install the necessary components:
+            <Tabs items={['npm', 'bun']}>
+              <Tab>
+                ```bash
+                npx shadcn@latest add https://blocks.mvp-subha.me/r/admin-sidebar.json https://blocks.mvp-subha.me/r/dashboard-card.json https://blocks.mvp-subha.me/r/dashboard-header.json https://blocks.mvp-subha.me/r/quick-actions.json https://blocks.mvp-subha.me/r/recent-activity.json https://blocks.mvp-subha.me/r/revenue-chart.json https://blocks.mvp-subha.me/r/system-status.json https://blocks.mvp-subha.me/r/user-table.json
+                ```
+              </Tab>
+
+              <Tab>
+                ```bash
+                bunx --bun shadcn@latest add https://blocks.mvp-subha.me/r/admin-sidebar.json https://blocks.mvp-subha.me/r/dashboard-card.json https://blocks.mvp-subha.me/r/dashboard-header.json https://blocks.mvp-subha.me/r/quick-actions.json https://blocks.mvp-subha.me/r/recent-activity.json https://blocks.mvp-subha.me/r/revenue-chart.json https://blocks.mvp-subha.me/r/system-status.json https://blocks.mvp-subha.me/r/users-table.json
+                ```
+              </Tab>
+            </Tabs>
+      </Tab>
+      <Tab>
+        <Steps>
+          <Step>
+            Copy the code from the following files and paste it into your project:
+          </Step>
+
+          <Step>
+            Add admin-sidebar.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('admin-sidebar')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
+          <Step>
+            Add dashboard-card.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('dashboard-card')).code}
+              className="bg-fd-secondary/50"
+            />
+
+          </Step>
+
+          <Step>
+            Add dashboard-header.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('dashboard-header')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+          <Step>
+            Add quick-actions.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('quick-actions')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+          <Step>
+            Add recent-activity.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('recent-activity')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+          <Step>
+
+            Add revenue-chart.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('revenue-chart')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+          <Step>
+            Add system-status.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('system-status')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+          <Step>
+            Add user-table.tsx:
+
+            <ComponentSource
+              code={(await extractSourceCode('users-table')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+        </Steps>
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>

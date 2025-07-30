@@ -19,11 +19,11 @@ import type { Metadata } from 'next';
 import { createMetadata } from '@/lib/metadata';
 import { metadataImage } from '@/lib/metadata-image';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import Script from 'next/script';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/Actions';
+import { createGenerator } from 'fumadocs-typescript';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -33,6 +33,7 @@ export default async function Page(props: {
 
   if (!page) redirect('/docs/introduction');
   const MDX = page.data.body;
+  const generator = createGenerator();
 
   const path = `content/docs/${page.file.path}`;
   const lastModified = await getLastModified(page);
@@ -198,6 +199,9 @@ Add any other context or screenshots about the feature request here.`)}`}
               blockquote: Callout as unknown as FC<
                 ComponentProps<'blockquote'>
               >,
+              AutoTypeTable: (props) => (
+                <AutoTypeTable {...props} generator={generator} />
+              ),
             }}
           />
         </DocsBody>
