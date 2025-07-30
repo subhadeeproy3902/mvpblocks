@@ -1,0 +1,53 @@
+# Contribution Guidelines 🚀
+
+Thank you for your interest in contributing to this project under **GSSOC'25**!  
+Please follow these rules to ensure fair participation and smooth collaboration.  
+
+---
+
+## 📌 Issue Assignment Rules
+- An issue can be assigned to **only one person at a time** (unless specified as `good first issue` or `open for all`).
+- If **no active contribution is made within 7 days**, the assignee will be **unassigned** and the issue will be open for others.
+- Make sure to comment your progress regularly to avoid being unassigned.
+
+---
+
+## 🎯 PR Rules
+- Pull requests should be **linked to an issue**.  
+- Create a **new branch** for every PR. (Do not push changes to `main` directly.)
+- Follow **proper commit messages**:  
+  - `feat: Added new feature XYZ`
+  - `fix: Resolved bug in ABC`
+  - `docs: Updated documentation`
+- PRs with **plagiarized or spam code** will be marked as **invalid**.
+
+---
+
+## 🏆 Points System
+Contributions will be rewarded with points based on difficulty level:
+
+| Difficulty | Points |
+|------------|--------|
+| Easy       | 4      |
+| Medium     | 7      |
+| Hard       | 10     |
+
+---
+
+## ✅ Code of Conduct
+- Respect all contributors and maintain a positive community.  
+- Do not claim someone else’s work.  
+- Be open to feedback and suggestions.  
+
+---
+
+## 💡 Best Practices
+- Write **clean and readable code** with proper comments.  
+- Run linting/tests (if available) before submitting a PR.  
+- Keep PRs small and focused (avoid combining multiple unrelated fixes/features).  
+- Add/update documentation if your change requires it.  
+
+---
+
+⚡ Let’s build something awesome together!  
+Happy Contributing 💖
