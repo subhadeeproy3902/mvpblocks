@@ -60,7 +60,7 @@ export function BuyDialog({
           setIsDialogOpen(false);
           setShowThankYou(true);
         },
-        downloadUrl: downloadUrl
+        downloadUrl: downloadUrl,
       });
     } catch (err) {
       console.error('Checkout error:', err);

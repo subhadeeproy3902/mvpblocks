@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-export default function GlowingCard () {
+export default function GlowingCard() {
   return (
     <>
       <div className="card">
@@ -67,4 +67,4 @@ export default function GlowingCard () {
       `}</style>
     </>
   );
-};
+}

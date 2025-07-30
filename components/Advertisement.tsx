@@ -41,7 +41,9 @@ export default function Advertisement({
                 AI SaaS Marketing Template
               </p>
               <p className="text-sm text-neutral-400">
-                ⚡ Launch faster with the most elegant & high-performing AI SaaS template - fully responsive, conversion-optimized, and dirt cheap!
+                ⚡ Launch faster with the most elegant & high-performing AI SaaS
+                template - fully responsive, conversion-optimized, and dirt
+                cheap!
               </p>
               <p className="text-3xl font-semibold tracking-tight">
                 <span className="text-primary">₹2199</span>{' '}

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { cn } from '@/lib/utils';
+import { motion } from 'motion/react';
 
 interface TextRevealProps {
   children: string;
@@ -9,8 +9,8 @@ interface TextRevealProps {
   blur?: number;
   delay?: number;
   duration?: number;
-  from?: "top" | "bottom";
-  split?: "word" | "letter";
+  from?: 'top' | 'bottom';
+  split?: 'word' | 'letter';
 }
 
 export const TextReveal = ({
@@ -19,11 +19,11 @@ export const TextReveal = ({
   blur = 10,
   delay = 0.1,
   duration = 1,
-  from = "bottom",
-  split = "word",
+  from = 'bottom',
+  split = 'word',
 }: TextRevealProps) => {
   const segments =
-    split === "word" ? children.split(" ") : children.split(/(?=.)/);
+    split === 'word' ? children.split(' ') : children.split(/(?=.)/);
 
   return (
     <div>
@@ -32,22 +32,22 @@ export const TextReveal = ({
           key={`${c}-${index}`}
           initial={{
             opacity: 0,
-            y: from === "bottom" ? "50%" : "-50%",
+            y: from === 'bottom' ? '50%' : '-50%',
             filter: `blur(${blur}px)`,
           }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{
             delay: index * delay,
             duration,
             ease: [0.18, 0.89, 0.82, 1.04],
           }}
           className={cn(
-            "inline-flex leading-none",
-            split === "word" ? "mr-[0.2em]" : "",
-            className
+            'inline-flex leading-none',
+            split === 'word' ? 'mr-[0.2em]' : '',
+            className,
           )}
         >
-          {c === " " ? "\u00A0" : c}
+          {c === ' ' ? '\u00A0' : c}
         </motion.span>
       ))}
       <div className="sr-only">{children}</div>

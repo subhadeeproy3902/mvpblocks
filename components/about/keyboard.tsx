@@ -220,9 +220,7 @@ const Keyboard: React.FC = () => {
       <div className="border-border bg-secondary/80 rounded-lg border-2 p-3 shadow-lg">
         <div className="bg-background overflow-hidden rounded p-1">
           {['1', '2', '3', '4', '5'].map((row) => (
-            <div key={row}>
-              {renderRow(row)}
-            </div>
+            <div key={row}>{renderRow(row)}</div>
           ))}
         </div>
       </div>

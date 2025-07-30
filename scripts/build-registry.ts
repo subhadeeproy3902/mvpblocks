@@ -81,10 +81,16 @@ const getComponentFiles = async (files: File[], registryType: string) => {
 
     // Modify the import paths in the content
     fileContent = fileContent
-      .replace(/from\s+['"]@\/components\/ui\/(.+)['"]/g, 'from \'@/components/ui/$1\'')
-      .replace(/from\s+['"]@\/components\/mvpblocks\/(.+)['"]/g, 'from \'@/components/mvpblocks/$1\'')
-      .replace(/from\s+['"]@\/lib\/(.+)['"]/g, 'from \'@/lib/$1\'')
-      .replace(/from\s+['"]@\/hooks\/(.+)['"]/g, 'from \'@/hooks/$1\'');
+      .replace(
+        /from\s+['"]@\/components\/ui\/(.+)['"]/g,
+        "from '@/components/ui/$1'",
+      )
+      .replace(
+        /from\s+['"]@\/components\/mvpblocks\/(.+)['"]/g,
+        "from '@/components/mvpblocks/$1'",
+      )
+      .replace(/from\s+['"]@\/lib\/(.+)['"]/g, "from '@/lib/$1'")
+      .replace(/from\s+['"]@\/hooks\/(.+)['"]/g, "from '@/hooks/$1'");
 
     return {
       type: fileType,

@@ -7,7 +7,7 @@ interface PaymentArgs {
   title?: string;
   productId?: string;
   onSuccess: () => void;
-  downloadUrl: string
+  downloadUrl: string;
 }
 
 export const initiatePayment = async ({
