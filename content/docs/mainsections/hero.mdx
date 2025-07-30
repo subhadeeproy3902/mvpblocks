@@ -50,6 +50,24 @@ import { extractSourceCode } from "@/lib/code";
   fromDocs={true}
 />
 
+> Apply the below CSS for the above hero:
+
+```css
+@keyframes moveGradientLeft {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.animate-gradient-x {
+  animation: moveGradientLeft 20s linear infinite;
+}
+```
+
 ## Minimal Hero
 <ComponentPreview
   name="minimal-hero"

@@ -753,3 +753,18 @@ code {
   border: 1px solid rgba(165, 93, 7, 0.6);
   color: rgba(120, 50, 5, 0.8);
 }
+
+/* Notebook Hero */
+@keyframes moveGradientLeft {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.animate-gradient-x {
+  animation: moveGradientLeft 20s linear infinite;
+}

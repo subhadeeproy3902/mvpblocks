@@ -24,8 +24,8 @@ export default function Layout({ children }: { children: ReactNode }) {
           'transparent',
         ]}
       >
-        <Link href="/docs/developer-portfolio" className="font-medium">
-          Launched Developer Portfolio Template just for $5 —{' '}
+        <Link href="/docs/ai-saas-marketing" className="font-medium">
+          Launched best Saas Marketing template at cheap —{' '}
           <span className="underline">Check out</span>
         </Link>{' '}
       </Banner>

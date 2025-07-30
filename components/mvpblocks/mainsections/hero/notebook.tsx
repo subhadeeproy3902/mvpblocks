@@ -7,21 +7,6 @@ import { ArrowRight } from 'lucide-react';
 export default function NotebookHero() {
   return (
     <div className="min-h-screen py-6 sm:py-14">
-      {/* Add keyframes for the animation */}
-      <style jsx global>{`
-        @keyframes moveGradientLeft {
-          0% {
-            background-position: 0% 0%;
-          }
-          100% {
-            background-position: -200% 0%;
-          }
-        }
-        .animate-gradient-x {
-          animation: moveGradientLeft 20s linear infinite;
-        }
-      `}</style>
-
       <div className="pointer-events-none absolute inset-0 top-0 z-0 overflow-hidden">
         <div className="absolute -top-20 -left-20 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-rose-500/30 via-rose-500/20 to-transparent opacity-50 blur-[100px]" />
         <div className="absolute -top-40 -right-20 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-red-500/30 via-red-500/20 to-transparent opacity-50 blur-[100px]" />
@@ -30,7 +15,7 @@ export default function NotebookHero() {
 
       <main className="relative container mt-4 max-w-[1100px] px-2 py-4 lg:py-8">
         <div className="relative sm:overflow-hidden">
-          <div className="border-primary/20 bg-fd-background/70 shadow-primary/10 relative flex flex-col items-start justify-start rounded-xl border px-4 pt-12 shadow-xl backdrop-blur-md max-md:text-center md:px-12 md:pt-16">
+          <div className="border-primary/20 bg-background/70 shadow-primary/10 relative flex flex-col items-start justify-start rounded-xl border px-4 pt-12 shadow-xl backdrop-blur-md max-md:text-center md:px-12 md:pt-16">
             <div
               className="animate-gradient-x absolute inset-0 top-32 z-0 hidden blur-2xl dark:block"
               style={{
@@ -153,7 +138,7 @@ export default function NotebookHero() {
                   buttonVariants({
                     size: 'lg',
                     variant: 'outline',
-                    className: 'bg-fd-background rounded-full',
+                    className: 'bg-background rounded-full',
                   }),
                 )}
               >
