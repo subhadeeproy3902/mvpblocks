@@ -34,6 +34,10 @@ export function NavbarDemo() {
       name: 'Showcase',
       link: '/showcase',
     },
+    {
+      name: 'Pricing',
+      link: '/pricing',
+    },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
