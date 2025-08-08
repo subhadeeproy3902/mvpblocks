@@ -34,5 +34,11 @@ export const baseOptions: BaseLayoutProps = {
       active: 'nested-url',
       icon: <Film />,
     },
+    {
+      text: 'Pricing',
+      url: '/pricing',
+      active: 'nested-url',
+      icon: <Film />,
+    },
   ],
 };
