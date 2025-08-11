@@ -5,7 +5,6 @@ import path from 'path';
 import { registry } from '@/registry';
 import { z } from 'zod';
 
-export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 export const runtime = 'nodejs';
 // Add caching headers to reduce edge requests

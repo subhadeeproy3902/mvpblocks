@@ -1,7 +1,6 @@
 import { groq } from '@ai-sdk/groq';
 import { smoothStream, streamText } from 'ai';
 
-export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
 export const runtime = 'nodejs';
 // Reduce function invocations with rate limiting
