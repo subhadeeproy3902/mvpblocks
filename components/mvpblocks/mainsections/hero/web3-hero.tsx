@@ -430,7 +430,7 @@ export default function Web3LandingPage() {
                   }}
                 />
                 <img
-                  src="https://i.imgur.com/ckSgzLQ.png"
+                  src="https://i.imgur.com/ckSgzLQ.webp"
                   alt="Crypto wallet holographic card"
                   className="controller-img pointer-events-none relative z-10 h-auto w-[260px] object-contain drop-shadow-[0_8px_24px_rgba(232,121,249,0.18)] select-none md:w-[340px] lg:w-[390px]"
                   draggable={false}

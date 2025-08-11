@@ -210,9 +210,7 @@ Add any other context or screenshots about the feature request here.`)}`}
   );
 }
 
-export async function generateStaticParams() {
-  return source.generateParams();
-}
+export const revalidate = 7200;
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>;

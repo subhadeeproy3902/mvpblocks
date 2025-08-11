@@ -31,10 +31,4 @@ export default async function PreviewPage({
   }
 }
 
-export async function generateStaticParams() {
-  const allComponents = registry.map((component) => {
-    return { slug: [component.name] };
-  });
-
-  return allComponents;
-}
+export const revalidate = 3600;

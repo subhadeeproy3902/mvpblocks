@@ -7,6 +7,9 @@ import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 30;
+export const runtime = 'nodejs';
+// Add caching headers to reduce edge requests
+export const revalidate = 0;
 
 const getComponentCode = async (item: any) => {
   if (!item || !item.files || item.files.length === 0) {

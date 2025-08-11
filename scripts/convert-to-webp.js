@@ -21,7 +21,7 @@ function findImageFiles(dir, fileList = []) {
     } else {
       // Check if file is a PNG, JPG, or JPEG
       const ext = path.extname(file).toLowerCase();
-      if (['.png', '.jpg', '.jpeg'].includes(ext)) {
+      if (['.webp', '.jpg', '.jpeg'].includes(ext)) {
         fileList.push(filePath);
       }
     }
@@ -41,10 +41,31 @@ async function convertToWebP(filePath) {
       return true;
     }
 
-    // Convert image to WebP
-    await sharp(filePath).webp({ quality: 80 }).toFile(webpPath);
+    // Get file stats to check size
+    const stats = fs.statSync(filePath);
+    const fileSizeInMB = stats.size / (1024 * 1024);
 
-    console.log(`Converted ${filePath} to WebP`);
+    // Adjust quality based on file size
+    let quality = 80;
+    if (fileSizeInMB > 2) {
+      quality = 60; // Lower quality for larger files
+    } else if (fileSizeInMB > 1) {
+      quality = 70;
+    }
+
+    // Convert image to WebP with optimized settings
+    await sharp(filePath)
+      .webp({
+        quality,
+        effort: 6, // Higher effort for better compression
+        lossless: false
+      })
+      .toFile(webpPath);
+
+    const webpStats = fs.statSync(webpPath);
+    const compressionRatio = ((stats.size - webpStats.size) / stats.size * 100).toFixed(1);
+
+    console.log(`Converted ${filePath} to WebP (${compressionRatio}% smaller)`);
     return true;
   } catch (error) {
     console.error(`Error converting ${filePath} to WebP:`, error);

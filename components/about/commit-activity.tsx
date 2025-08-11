@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -11,6 +11,8 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { format, isAfter, parseISO, subDays, subMonths } from 'date-fns';
+import { githubData } from '@/constants/github-data';
+
 import {
   Card,
   CardHeader,
@@ -26,7 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { fetchUserData } from '@/actions/githubgraphql';
 
 type UserStats = Record<string, number>;
 
@@ -55,20 +56,11 @@ const chartConfig = {
 };
 
 export default function CommitActivity() {
-  const [userStats, setUserStats] = useState<UserStats>({});
   const [filter, setFilter] = useState<'all' | 'month' | 'week'>('all');
 
-  useEffect(() => {
-    const loadData = async () => {
-      const { userStats } = await fetchUserData();
-      setUserStats(userStats);
-    };
-    loadData();
-  }, []);
-
   const chartData = useMemo(
-    () => prepareChartData(userStats, filter),
-    [userStats, filter],
+    () => prepareChartData(githubData.userStats, filter),
+    [filter],
   );
 
   return (
@@ -96,7 +88,7 @@ export default function CommitActivity() {
           <ResponsiveContainer width="100%" height={300}>
             <LineChart
               data={chartData}
-              margin={{ top: 16, right: 16, bottom: 24, left: 16 }} // Increased bottom margin
+              margin={{ top: 16, right: 16, bottom: 24, left: 16 }}
             >
               <CartesianGrid
                 strokeDasharray="4"
@@ -138,9 +130,9 @@ export default function CommitActivity() {
               <Line
                 dataKey="commits"
                 type="monotone"
-                stroke="var(--color-commits)"
+                stroke="hsl(var(--chart-1))"
                 strokeWidth={2}
-                dot={{ fill: 'var(--color-commits)' }}
+                dot={{ fill: 'hsl(var(--chart-2))' }}
                 activeDot={{ r: 6 }}
                 isAnimationActive={true}
               />

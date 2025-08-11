@@ -60,7 +60,7 @@ export default function SignInPage() {
         <div className="bg-secondary/50 overflow-hidden rounded-[40px] shadow-2xl">
           <div className="grid min-h-[700px] lg:grid-cols-2">
             {/* Left Side */}
-            <div className="brand-side relative m-4 rounded-3xl bg-[url('https://cdn.midjourney.com/299f94f9-ecb9-4b26-bead-010b8d8b01d9/0_0.png?w=800&q=80')] bg-cover p-12 text-white">
+            <div className="brand-side relative m-4 rounded-3xl bg-[url('https://cdn.midjourney.com/299f94f9-ecb9-4b26-bead-010b8d8b01d9/0_0.webp?w=800&q=80')] bg-cover p-12 text-white">
               <div>
                 <div className="mb-12 text-lg font-semibold uppercase">
                   PixelForge Studio

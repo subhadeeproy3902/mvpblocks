@@ -23,7 +23,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: 'paypal',
     name: 'PayPal',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.webp',
     description: 'Pay with your PayPal account',
   },
   {
@@ -35,7 +35,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: 'razorpay',
     name: 'Razorpay',
-    logo: 'https://cdn.prod.website-files.com/62979cdcff90ad6bae40b3ef/62d855876f4add6e152a5567_unnamed.png',
+    logo: 'https://cdn.prod.website-files.com/62979cdcff90ad6bae40b3ef/62d855876f4add6e152a5567_unnamed.webp',
     description: 'Pay with Indian payment methods',
   },
 ];

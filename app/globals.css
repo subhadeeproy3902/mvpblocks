@@ -69,6 +69,8 @@
   --color-chart-3: hsl(var(--chart-3));
   --color-chart-2: hsl(var(--chart-2));
   --color-chart-1: hsl(var(--chart-1));
+  --color-chart-6: hsl(var(--chart-6));
+  --color-chart-7: hsl(var(--chart-7));
   --color-ring: hsl(var(--ring));
   --color-input: hsl(var(--input));
   --color-border: hsl(var(--border));

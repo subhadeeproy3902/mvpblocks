@@ -163,7 +163,7 @@ export default function NotebookHero() {
 
             <div className="relative z-10 mt-16 w-full">
               <img
-                src="https://blocks.mvp-subha.me/assets/bg.png"
+                src="https://blocks.mvp-subha.me/assets/bg.webp"
                 alt="MVPBlocks component library preview"
                 width={1000}
                 height={600}

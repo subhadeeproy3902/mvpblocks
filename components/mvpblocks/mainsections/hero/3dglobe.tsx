@@ -81,14 +81,14 @@ export default function Globe3D() {
         >
           <div className="relative flex h-40 w-full overflow-hidden md:h-64">
             <img
-              src="https://blocks.mvp-subha.me/assets/earth.png"
+              src="https://blocks.mvp-subha.me/assets/earth.webp"
               alt="Earth"
               className="absolute top-0 left-1/2 -z-10 mx-auto -translate-x-1/2 px-4 opacity-80"
             />
           </div>
           <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-lg shadow-[0_0_50px_rgba(155,135,245,0.2)]">
             <img
-              src="https://blocks.mvp-subha.me/assets/lunexa-db.png"
+              src="https://blocks.mvp-subha.me/assets/lunexa-db.webp"
               alt="Lunexa Dashboard"
               width={1920}
               height={1080}

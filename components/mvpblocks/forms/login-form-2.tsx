@@ -26,7 +26,7 @@ export default function LoginForm2() {
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
             >
               <img
-                src="/assets/roblox-logo.png"
+                src="/assets/roblox-logo.webp"
                 alt="Illustration"
                 className="mx-auto h-auto w-full md:w-90"
               />

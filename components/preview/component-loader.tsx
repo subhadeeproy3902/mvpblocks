@@ -1,9 +1,10 @@
 'use client';
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getComponentByName } from '@/registry';
 import { AlertCircle, ArrowLeft, RefreshCw, RotateCw } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useMemo, useState, useCallback } from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import Link from 'next/link';
 import { AuthorBadge } from '../ui/author-badge';
@@ -17,6 +18,14 @@ type ComponentLoaderProps = {
   previewMode?: boolean;
 };
 
+const LazyComponentWrapper = lazy(() => 
+  Promise.resolve({
+    default: ({ Component, reTriggerKey }: { Component: React.ComponentType; reTriggerKey: number }) => (
+      <Component key={reTriggerKey} />
+    )
+  })
+);
+
 export function ComponentLoader({
   classNameComponentContainer,
   hasReTrigger = false,
@@ -24,30 +33,35 @@ export function ComponentLoader({
   fromDocs,
   previewMode,
 }: ComponentLoaderProps) {
-  const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
   const [loading, setLoading] = useState(true);
-  const [author, setAuthor] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const componentInfo = getComponentByName(name);
-    const component = componentInfo?.component;
-
-    if (component) {
-      setComponent(() => component);
+  const componentInfo = useMemo(() => {
+    try {
+      return getComponentByName(name);
+    } catch (err) {
+      setError(`Component "${name}" not found`);
+      return null;
     }
-
-    // Check if the component has an author
-    if (componentInfo?.author) {
-      setAuthor(componentInfo.author);
-    }
-
-    setLoading(false);
   }, [name]);
 
-  const reTrigger = () => {
+  const Component = componentInfo?.component;
+  const author = componentInfo?.author;
+
+  const reTrigger = useCallback(() => {
     setReTriggerKey(Date.now());
-  };
+  }, []);
+
+  useEffect(() => {
+    if (Component) {
+      setLoading(false);
+      setError(null);
+    } else if (!componentInfo) {
+      setLoading(false);
+      setError(`Component "${name}" not found`);
+    }
+  }, [Component, componentInfo, name]);
 
   if (loading) {
     return (
@@ -61,7 +75,7 @@ export function ComponentLoader({
     );
   }
 
-  if (!Component) {
+  if (error || !Component) {
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
@@ -141,7 +155,15 @@ export function ComponentLoader({
 
   return (
     <ComponentDisplay
-      component={<Component />}
+      component={
+        <Suspense fallback={
+          <div className="flex h-full w-full items-center justify-center">
+            <RotateCw className="text-foreground h-6 w-6 animate-spin" />
+          </div>
+        }>
+          <LazyComponentWrapper Component={Component} reTriggerKey={reTriggerKey} />
+        </Suspense>
+      }
       hasReTrigger={hasReTrigger}
       className={classNameComponentContainer}
       reTriggerKey={reTriggerKey}

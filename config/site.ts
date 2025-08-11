@@ -7,7 +7,7 @@ export const launched = true;
 export const siteConfig = {
   name: 'MVPBlocks',
   url: 'https://blocks.mvp-subha.me',
-  ogImage: 'https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png',
+  ogImage: 'https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp',
   description:
     'Copy, paste, customize—and launch your idea faster than ever. MVPBlocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.',
   links: {

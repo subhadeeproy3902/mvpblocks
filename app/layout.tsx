@@ -8,6 +8,7 @@ import { PreviewPageDetector } from '@/components/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/Clarity';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { PerformanceMonitor } from '@/components/performance-monitor';
 
 const dm = DM_Sans({
   subsets: ['latin'],
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     siteName: 'Mvpblocks',
     images: [
       {
-        url: 'https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png',
+        url: 'https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp',
         width: 1200,
         height: 630,
         alt: 'Mvpblocks - The Ultimate Open Source Component Library for MVPs',
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     description:
       'Copy, paste, customize—and launch your idea faster than ever.',
     creator: '@mvp_Subha',
-    images: ['https://i.postimg.cc/Wz9JFxdW/mvpblocksog.png'],
+    images: ['https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp'],
   },
   robots: {
     index: true,
@@ -94,6 +95,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster richColors />
+          <PerformanceMonitor />
         </ThemeProvider>
         <SpeedInsights />
       </body>

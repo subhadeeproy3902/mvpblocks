@@ -15,10 +15,13 @@
     "register": "bun run ./scripts/auto-register.ts",
     "add-component": "powershell -File ./scripts/register-component.ps1",
     "update-dependencies": "bun run ./scripts/update-dependencies.ts",
-    "optimise-image": "bun run ./scripts/convert-to-webp.js"
+    "optimise-image": "bun run ./scripts/convert-to-webp.js",
+    "github-contribution": "bun run ./scripts/github-contribution.ts",
+    "optimize-build": "bun run ./scripts/optimize-build.ts",
+    "build-optimized": "bun run optimize-build && next build"
   },
   "dependencies": {
-    "@ai-sdk/groq": "^1.2.9",
+    "@ai-sdk/groq": "^1.2.9", 
     "@hookform/resolvers": "^5.1.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",

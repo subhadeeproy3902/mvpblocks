@@ -202,7 +202,7 @@ export default function AppHero() {
 
       <div className="fadein-blur relative z-0 mx-auto mb-10 h-[300px] w-[300px] lg:absolute lg:top-1/2 lg:right-1/2 lg:mx-0 lg:mb-0 lg:h-[500px] lg:w-[500px] lg:translate-x-1/2 lg:-translate-y-2/3">
         <img
-          src="https://blocks.mvp-subha.me/Adobe Express - file(1).png"
+          src="https://blocks.mvp-subha.me/Adobe Express - file(1).webp"
           alt="Nexus Platform 3D Visualization"
           className="h-full w-full object-contain drop-shadow-[0_0_35px_#3358ea85] transition-all duration-1000 hover:scale-110"
         />

@@ -29,7 +29,7 @@ export default function Advertisement({
           </h2>
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
             <img
-              src="/ai-saas-marketing.jpeg"
+              src="/ai-saas-marketing.webp"
               alt="Template preview"
               width={300}
               height={300}

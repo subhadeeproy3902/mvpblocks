@@ -419,6 +419,5 @@ export const GET = metadataImage.createAPI((page) => {
   );
 });
 
-export function generateStaticParams() {
-  return metadataImage.generateParams();
-}
+export const revalidate = 86400;
+export const runtime = 'edge';
