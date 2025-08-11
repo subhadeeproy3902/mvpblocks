@@ -268,6 +268,9 @@ export type GitHubData = typeof githubData;
   }
 }
 
-if (import.meta.main) {
+// Check if this script is being run directly
+if (typeof require !== 'undefined' && require.main === module) {
+  main();
+} else if (typeof process !== 'undefined' && process.argv[1] === __filename) {
   main();
 }

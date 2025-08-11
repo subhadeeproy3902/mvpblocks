@@ -46,10 +46,10 @@ export default function TweetCard({
   },
 }: TweetCardProps) {
   return (
-    <Link href="https://x.com/mvp_Subha" target="_blank">
+    <Link href="https://x.com/mvp_Subha" target="_blank" className="h-fit m-auto">
       <div
         className={cn(
-          'relative isolate w-full max-w-xl min-w-[400px] overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]',
+          'relative isolate w-full max-w-xl my-auto min-w-[400px] overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]',
           'bg-white/5 dark:bg-black/90',
           'bg-linear-to-br from-black/5 to-black/[0.02] dark:from-white/5 dark:to-white/[0.02]',
           'backdrop-blur-xl backdrop-saturate-[180%]',

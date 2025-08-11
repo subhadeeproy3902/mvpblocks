@@ -420,4 +420,4 @@ export const GET = metadataImage.createAPI((page) => {
 });
 
 export const revalidate = 86400;
-export const runtime = 'edge';
+export const runtime = 'nodejs';

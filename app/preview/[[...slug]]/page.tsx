@@ -1,7 +1,4 @@
 import { ComponentLoader } from '@/components/preview/component-loader';
-import { registry } from '@/registry';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export default async function PreviewPage({
@@ -30,5 +27,3 @@ export default async function PreviewPage({
     return notFound();
   }
 }
-
-export const revalidate = 3600;
