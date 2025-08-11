@@ -3,11 +3,9 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import './scrollbar.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PreviewPageDetector } from '@/components/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/Clarity';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { PerformanceMonitor } from '@/components/performance-monitor';
 
 const dm = DM_Sans({
@@ -83,7 +81,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {process.env.NODE_ENV === 'production' ? <GoogleAnalytics /> : null}
       <body className={`${dm.className}`}>
         {process.env.NODE_ENV === 'production' ? <Clarity /> : null}
         <PreviewPageDetector />
@@ -97,7 +94,6 @@ export default function RootLayout({
           <Toaster richColors />
           <PerformanceMonitor />
         </ThemeProvider>
-        <SpeedInsights />
       </body>
     </html>
   );

@@ -210,8 +210,6 @@ Add any other context or screenshots about the feature request here.`)}`}
   );
 }
 
-export const revalidate = 7200;
-
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {

@@ -20,6 +20,7 @@ const config = {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes'],
   },
+  output: 'export' as const,
 };
 
 // Compose the configurations
