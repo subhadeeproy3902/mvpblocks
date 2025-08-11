@@ -25,6 +25,8 @@ import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/Actions';
 import { createGenerator } from 'fumadocs-typescript';
 
+export const dynamic = "force-static"
+
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
