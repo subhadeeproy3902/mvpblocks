@@ -1,10 +1,35 @@
 import { ImageResponse } from 'next/og';
-import { metadataImage } from '@/lib/metadata-image';
+import type { ReactElement, ReactNode } from 'react';
+import type { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types';
 
-export const GET = metadataImage.createAPI((page) => {
+interface GenerateProps {
+  title: ReactNode;
+  description?: ReactNode;
+}
+
+export function generateOGImage(
+  options: GenerateProps & ImageResponseOptions,
+): ImageResponse {
+  const { title, description, ...rest } = options;
+
   return new ImageResponse(
-    (
-      <div
+    generate({
+      title,
+      description,
+    }),
+    {
+      width: 1200,
+      height: 630,
+      ...rest,
+    },
+  );
+}
+
+export function generate({
+  ...props
+}: GenerateProps): ReactElement {
+  return (
+    <div
         style={{
           height: '100%',
           width: '100%',
@@ -290,7 +315,7 @@ export const GET = metadataImage.createAPI((page) => {
             justifyContent: 'center',
           }}
         >
-          {page.data.title}
+          {props.title}
         </div>
 
         {/* Description with enhanced styling */}
@@ -307,7 +332,7 @@ export const GET = metadataImage.createAPI((page) => {
             textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)',
           }}
         >
-          {page.data.description}
+          {props.description}
         </div>
 
         {/* Decorative hexagon pattern */}
@@ -411,14 +436,5 @@ export const GET = metadataImage.createAPI((page) => {
           }}
         />
       </div>
-    ),
-    {
-      width: 1200,
-      height: 630,
-    },
   );
-});
-
-export function generateStaticParams() {
-  return metadataImage.generateParams();
 }

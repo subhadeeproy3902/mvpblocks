@@ -1,8 +1,6 @@
 import { ComponentLoader } from '@/components/preview/component-loader';
 import { notFound } from 'next/navigation';
 
-export const dynamic = "force-static"
-
 export default async function PreviewPage({
   params,
 }: {
@@ -30,6 +28,5 @@ export default async function PreviewPage({
   }
 }
 
-export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  return [];
-}
+export const dynamic = "force-static"
+export const revalidate = 86400

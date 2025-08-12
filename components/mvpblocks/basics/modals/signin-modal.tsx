@@ -26,7 +26,7 @@ export default function SigninModal() {
             className="flex size-11 shrink-0 items-center justify-center rounded-full border"
             aria-hidden="true"
           >
-            <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
+            <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="logo" className="h-8 w-8 rounded-full" />
           </div>
           <DialogHeader>
             <DialogTitle className="sm:text-center">Welcome back</DialogTitle>

@@ -102,7 +102,7 @@ export default function Gallery() {
               <div className="flex items-center justify-end gap-2 text-center text-lg md:text-2xl lg:text-3xl">
                 <p>Each component is production-ready</p>
                 <span className="scale-125">
-                  <img src="/logo.webp" alt="" className="spin h-8 w-8" />
+                  <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="" className="spin h-8 w-8" />
                 </span>
               </div>
               <p className="text-center text-lg md:text-2xl lg:text-3xl">

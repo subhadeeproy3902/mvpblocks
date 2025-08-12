@@ -129,7 +129,7 @@ export default function WorkingChatbot() {
                     <img
                       alt="user"
                       className="mr-2 flex size-6 rounded-full sm:mr-4 md:size-8"
-                      src="/logo.webp"
+                      src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp"
                       width={32}
                       height={32}
                     />

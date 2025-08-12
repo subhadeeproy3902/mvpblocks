@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
-import './scrollbar.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreviewPageDetector } from '@/components/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';

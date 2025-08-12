@@ -17,7 +17,6 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
 import { type ComponentProps, type FC } from 'react';
 import type { Metadata } from 'next';
 import { createMetadata } from '@/lib/metadata';
-import { metadataImage } from '@/lib/metadata-image';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import Script from 'next/script';
@@ -26,6 +25,7 @@ import { LLMCopyButton, ViewOptions } from '@/components/Actions';
 import { createGenerator } from 'fumadocs-typescript';
 
 export const dynamic = "force-static"
+export const revalidate = false
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -136,18 +136,6 @@ Add any other context or screenshots about the feature request here.`)}`}
 
   return (
     <>
-      <Script id="breadcrumb-jsonld" type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: breadcrumbItems.map((item, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            name: item.name,
-            item: item.url,
-          })),
-        })}
-      </Script>
       <DocsPage
         article={{
           className: 'max-w-6xl max-sm:pb-16',
@@ -219,24 +207,28 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: {
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
-  const page = source.getPage(params.slug);
-
+  const { slug = [] } = await props.params;
+  const page = source.getPage(slug);
   if (!page) notFound();
 
   const description =
-    page.data.description ?? 'All your MVP blocks needs in one place!';
+    page.data.description ?? 'Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.';
 
-  return createMetadata(
-    metadataImage.withImage(page.slugs, {
-      title: page.data.title,
-      description,
-      alternates: {
-        canonical: `https://blocks.mvp-subha.me/docs/${page.slugs.join('/')}`,
-      },
-      openGraph: {
-        url: `/docs/${page.slugs.join('/')}`,
-      },
-    }),
-  );
+  const image = {
+    url: ['/og', ...slug, 'image.png'].join('/'),
+    width: 1200,
+    height: 630,
+  };
+
+  return createMetadata({
+    title: page.data.title,
+    description,
+    openGraph: {
+      url: `/docs/${page.slugs.join('/')}`,
+      images: [image],
+    },
+    twitter: {
+      images: [image],
+    },
+  });
 }

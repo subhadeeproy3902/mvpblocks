@@ -382,7 +382,7 @@ export default function AssistantDialog() {
           <DialogHeader>
             <div className="flex items-center gap-2">
               <img
-                src="/logo.webp"
+                src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />
@@ -407,7 +407,7 @@ export default function AssistantDialog() {
       <DrawerContent className="bg-fd-popover">
         <DrawerHeader>
           <div className="flex items-center gap-2">
-            <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
+            <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="logo" className="h-8 w-8 rounded-full" />
             <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
               Mvpblocks
             </span>
