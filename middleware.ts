@@ -14,6 +14,7 @@ export function middleware(req: NextRequest) {
     '/privacy',
     '/terms',
     '/showcase',
+    '/404'
   ];
 
   const isProtected = protectedPaths.some((p) => path.startsWith(p));
