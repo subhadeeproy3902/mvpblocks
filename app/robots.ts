@@ -18,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         '/about',
         '/privacy',
         '/terms',
+        '/showcase',
       ],
     },
     sitemap: `${siteUrl}/sitemap.xml`,

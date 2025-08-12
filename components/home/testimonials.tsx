@@ -31,13 +31,13 @@ const testimonials = [
   },
   {
     text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
-    imageSrc: '/assets/avatar-2.webp',
+    imageSrc: '/assets/avatar-3.webp',
     name: 'Priya Shah',
     username: '@priyacodes',
   },
   {
     text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
-    imageSrc: '/assets/avatars/avatar-5.webp',
+    imageSrc: '/assets/avatars/avatar-1.webp',
     name: 'Leo Martin',
     username: '@leobuilds',
   },

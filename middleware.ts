@@ -14,6 +14,7 @@ export function middleware(req: NextRequest) {
     '/about',
     '/privacy',
     '/terms',
+    '/showcase',
   ];
 
   // Block known bots/crawlers
