@@ -19,6 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         '/privacy',
         '/terms',
         '/showcase',
+        '/404'
       ],
     },
     sitemap: `${siteUrl}/sitemap.xml`,
