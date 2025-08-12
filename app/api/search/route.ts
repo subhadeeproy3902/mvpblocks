@@ -1,8 +1,12 @@
-import { source } from '@/lib/source';
-import { createFromSource } from 'fumadocs-core/search/server';
+// import { source } from '@/lib/source';
+// import { createFromSource } from 'fumadocs-core/search/server';
 
-// Add caching to reduce function invocations
-export const revalidate = 3600; // Cache for 1 hour
-export const runtime = 'nodejs';
+// export const { GET } = createFromSource(source);
 
-export const { GET } = createFromSource(source);
+import { source } from "@/lib/source";
+import { createFromSource } from "fumadocs-core/search/server";
+
+// it should be cached forever
+export const revalidate = false;
+
+export const { staticGET: GET } = createFromSource(source);

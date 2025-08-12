@@ -2,9 +2,7 @@ import { groq } from '@ai-sdk/groq';
 import { smoothStream, streamText } from 'ai';
 
 export const maxDuration = 30;
-export const runtime = 'nodejs';
-// Reduce function invocations with rate limiting
-export const revalidate = 0;
+export const revalidate = false;
 
 export async function POST(req: Request) {
   try {

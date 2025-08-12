@@ -6,9 +6,7 @@ import { registry } from '@/registry';
 import { z } from 'zod';
 
 export const maxDuration = 30;
-export const runtime = 'nodejs';
-// Add caching headers to reduce edge requests
-export const revalidate = 0;
+export const revalidate = false;
 
 const getComponentCode = async (item: any) => {
   if (!item || !item.files || item.files.length === 0) {

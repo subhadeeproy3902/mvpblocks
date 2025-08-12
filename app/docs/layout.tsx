@@ -30,7 +30,13 @@ export default function Layout({ children }: { children: ReactNode }) {
         </Link>{' '}
       </Banner>
 
-      <RootProvider>
+      <RootProvider
+        search={{
+          options: {
+            type: "static",
+          },
+        }}
+      >
         <div className="min-h-screen" vaul-drawer-wrapper="">
           <div className="absolute inset-0 -z-10 mx-0 max-w-none overflow-hidden">
             <div className="absolute top-0 left-1/2 ml-[-30rem] h-[27rem] w-[85rem] dark:[mask-image:linear-gradient(white,transparent)]">
