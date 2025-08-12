@@ -1,5 +1,6 @@
 import { ComponentLoader } from '@/components/preview/component-loader';
 import { notFound } from 'next/navigation';
+import { registry } from "@/registry";
 
 export default async function PreviewPage({
   params,
@@ -28,5 +29,13 @@ export default async function PreviewPage({
   }
 }
 
+export async function generateStaticParams() {
+  const allComponents = registry.map((component) => {
+    return { slug: [component.name] };
+  });
+
+  return allComponents;
+}
+
 export const dynamic = "force-static"
-export const revalidate = 86400
+export const revalidate = false
