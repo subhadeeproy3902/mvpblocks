@@ -1,6 +1,7 @@
 import type { Registry } from '@/registry/schema';
 import * as React from 'react';
 
+const siteLink = 'localhost:3000';
 export const blocks: Registry = [
   {
     name: 'text-reveal-1',
@@ -104,6 +105,27 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import('../components/mvpblocks/mainsections/pricing/pricing-5'),
+    ),
+  },
+  {
+    name: 'pricing-glassmorphism',
+    author: 'surya10102000',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'framer-motion'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/switch.json',
+      'https://blocks.mvp-subha.me/r/label.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/pricing/pricing-glassmorphism.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/pricing/pricing-glassmorphism'),
     ),
   },
   {
