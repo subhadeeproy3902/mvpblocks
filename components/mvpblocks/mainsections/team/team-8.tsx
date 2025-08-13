@@ -187,16 +187,14 @@ export default function Team8({
               )}
               <div className="mt-2 flex space-x-2">
                 {member.socialMedia?.linkedin && (
-                  <Link
-                    href={member.socialMedia.linkedin}
+                  <Link prefetch={false}                    href={member.socialMedia.linkedin}
                     className="text-gray-500 hover:text-blue-700"
                   >
                     <Linkedin size={18} />
                   </Link>
                 )}
                 {member.socialMedia?.github && (
-                  <Link
-                    href={member.socialMedia.github}
+                  <Link prefetch={false}                    href={member.socialMedia.github}
                     className="text-gray-500 hover:text-gray-900"
                   >
                     <Github size={18} />
@@ -223,16 +221,14 @@ export default function Team8({
               <p className="text-gray-700">{member.role}</p>
               <div className="mt-2 flex space-x-2">
                 {member.socialMedia?.linkedin && (
-                  <Link
-                    href={member.socialMedia.linkedin}
+                  <Link prefetch={false}                    href={member.socialMedia.linkedin}
                     className="text-gray-500 hover:text-blue-700"
                   >
                     <Linkedin size={18} />
                   </Link>
                 )}
                 {member.socialMedia?.github && (
-                  <Link
-                    href={member.socialMedia.github}
+                  <Link prefetch={false}                    href={member.socialMedia.github}
                     className="text-gray-500 hover:text-gray-900"
                   >
                     <Github size={18} />

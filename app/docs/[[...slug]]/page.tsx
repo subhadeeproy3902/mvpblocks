@@ -19,7 +19,6 @@ import type { Metadata } from 'next';
 import { createMetadata } from '@/lib/metadata';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
-import Script from 'next/script';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/Actions';
 import { createGenerator } from 'fumadocs-typescript';

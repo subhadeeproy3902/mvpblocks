@@ -128,8 +128,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          onMouseEnter={() => setHovered(idx)}
+        <Link prefetch={false}          onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
@@ -235,8 +234,8 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <Link href="/" className="z-50 flex items-center justify-center gap-2">
-      <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="logo" className="h-8 w-8 rounded-full" />
+    <Link prefetch={false} href="/" className="z-50 flex items-center justify-center gap-2">
+      <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
       <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
         Mvpblocks
       </span>

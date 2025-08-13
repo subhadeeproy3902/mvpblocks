@@ -161,7 +161,7 @@ export default function HeroGeometric({
             animate="visible"
             className="border-primary/30 bg-card/50 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 shadow-sm backdrop-blur-sm md:mb-12"
           >
-            <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="logo" className="h-6 w-6" />
+            <img src="/logo.webp" alt="logo" className="h-6 w-6" />
             <span className="text-foreground text-sm font-medium tracking-wide">
               {badge}
             </span>

@@ -100,7 +100,7 @@ export default function PricingThree() {
                 </div>
 
                 <Button asChild variant={plan.buttonVariant} className="w-full">
-                  <Link href="">Get Started</Link>
+                  <Link prefetch={false} href="">Get Started</Link>
                 </Button>
               </div>
 

@@ -1,14 +1,8 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Geist } from 'next/font/google';
+import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
-
-const space = Geist({
-  subsets: ['latin'],
-  variable: '--font-carlito',
-  weight: '400',
-});
 
 const testimonials = [
   {
@@ -31,7 +25,7 @@ const testimonials = [
   },
   {
     text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
-    imageSrc: '/assets/avatar-3.webp',
+    imageSrc: '/assets/avatars/avatar-6.webp',
     name: 'Priya Shah',
     username: '@priyacodes',
   },
@@ -55,7 +49,7 @@ const testimonials = [
   },
   {
     text: 'Can’t believe how polished the components look. Clients are impressed every time.',
-    imageSrc: '/assets/avatar-5.webp',
+    imageSrc: '/assets/avatars/avatar-9.webp',
     name: 'Monica Reeves',
     username: '@monicareeves',
   },
@@ -160,7 +154,7 @@ const Testimonials = () => {
           <h2
             className={cn(
               'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
-              space.className,
+              geist.className,
             )}
           >
             What our users say

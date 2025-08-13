@@ -192,8 +192,7 @@ export default function Team7({
     switch (type) {
       case 'facebook':
         return (
-          <Link
-            href={url}
+          <Link prefetch={false}            href={url}
             className="text-gray-400 transition-colors hover:text-white"
           >
             <Facebook size={18} />
@@ -201,8 +200,7 @@ export default function Team7({
         );
       case 'instagram':
         return (
-          <Link
-            href={url}
+          <Link prefetch={false}            href={url}
             className="text-gray-400 transition-colors hover:text-white"
           >
             <Instagram size={18} />
@@ -210,8 +208,7 @@ export default function Team7({
         );
       case 'twitter':
         return (
-          <Link
-            href={url}
+          <Link prefetch={false}            href={url}
             className="text-gray-400 transition-colors hover:text-white"
           >
             <Twitter size={18} />
@@ -219,8 +216,7 @@ export default function Team7({
         );
       case 'website':
         return (
-          <Link
-            href={url}
+          <Link prefetch={false}            href={url}
             className="text-gray-400 transition-colors hover:text-white"
           >
             <Globe size={18} />
@@ -298,8 +294,7 @@ export default function Team7({
         </div>
 
         <div className="mt-12 text-right">
-          <Link
-            href="#"
+          <Link prefetch={false}            href="#"
             className="inline-flex items-center text-lg hover:underline"
             style={{ color: accentColor }}
           >

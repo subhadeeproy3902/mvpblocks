@@ -1,6 +1,6 @@
 'use client';
 
-import { Geist } from 'next/font/google';
+import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { Spotlight } from '../ui/spotlight';
 import { useTheme } from 'next-themes';
@@ -9,12 +9,6 @@ import { motion, useInView } from 'framer-motion';
 import CardCaroursalDemo from './cardcarouseldemo';
 import WrapButtonDemo from '../ui/wrap-button';
 import { Globe } from 'lucide-react';
-
-const space = Geist({
-  subsets: ['latin'],
-  variable: '--font-carlito',
-  weight: '400',
-});
 
 export default function Gallery() {
   const { theme } = useTheme();
@@ -44,7 +38,7 @@ export default function Gallery() {
           width={100}
           height={100}
           className="brightness-[0.95] dark:opacity-5"
-          src="/trending1.svg"
+          src="/trending1.png"
         />
       </div>
       <div className="absolute top-1/2 right-0 hidden -translate-y-1/2 lg:block">
@@ -53,7 +47,7 @@ export default function Gallery() {
           width={100}
           height={100}
           className="brightness-[0.95] dark:opacity-5"
-          src="/trending2.svg"
+          src="/trending2.png"
         />
       </div>
       <div className="mx-auto px-2">
@@ -77,7 +71,7 @@ export default function Gallery() {
           <h2
             className={cn(
               'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 mt-5 bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
-              space.className,
+              geist.className,
             )}
           >
             Trending blocks
@@ -102,7 +96,7 @@ export default function Gallery() {
               <div className="flex items-center justify-end gap-2 text-center text-lg md:text-2xl lg:text-3xl">
                 <p>Each component is production-ready</p>
                 <span className="scale-125">
-                  <img src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp" alt="" className="spin h-8 w-8" />
+                  <img src="/logo.webp" alt="" className="spin h-8 w-8" />
                 </span>
               </div>
               <p className="text-center text-lg md:text-2xl lg:text-3xl">

@@ -73,8 +73,7 @@ export default function SpotlightCard({
       ></div>
 
       {href ? (
-        <Link
-          href={href}
+        <Link prefetch={false}          href={href}
           className="relative h-full w-full rounded-lg text-center no-underline"
         >
           <>

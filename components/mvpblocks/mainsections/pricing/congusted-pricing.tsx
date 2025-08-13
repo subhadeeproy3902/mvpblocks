@@ -242,8 +242,7 @@ export default function CongestedPricing() {
 
               <hr className="my-4 w-full" />
 
-              <Link
-                href={plan.href}
+              <Link prefetch={false}                href={plan.href}
                 className={cn(
                   buttonVariants({
                     variant: 'outline',

@@ -1,7 +1,7 @@
 'use client';
 
 import { PixelCard } from '../ui/pixelcards';
-import { Geist } from 'next/font/google';
+import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { CloudLightning, MoveRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,12 +12,6 @@ import { useEffect, useState } from 'react';
 import { CardHoverEffect } from '../ui/pulse-card';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-const space = Geist({
-  subsets: ['latin'],
-  variable: '--font-carlito',
-  weight: '400',
-});
 
 const PIXEL_SCRIPT_URL =
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pixel-RKkUKH2OXWk9adKbDnozmndkwseTQh.js';
@@ -105,7 +99,7 @@ export default function Hero() {
         className="absolute top-0 right-0 z-[2] object-cover object-center select-none"
       />
       <img
-        src="/vector2.webp"
+        src="/vector2.png"
         alt="Vector"
         width={300}
         height={300}
@@ -121,7 +115,7 @@ export default function Hero() {
         className="absolute bottom-0 -left-44 z-[2] -rotate-90 object-cover object-center select-none"
       />
       <img
-        src="/vector6.webp"
+        src="/vector6.png"
         alt="Vector"
         width={300}
         draggable={false}
@@ -142,7 +136,7 @@ export default function Hero() {
           <motion.h1
             className={cn(
               'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 max-w-5xl bg-gradient-to-r bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent sm:text-5xl xl:text-6xl/none',
-              space.className,
+              geist.className,
             )}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,12 +169,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.4 }}
         >
-          <Link href="/docs/introduction">
+          <Link prefetch={false} href="/docs/introduction">
             <Button className="bg-gradient-to-b from-rose-500 to-rose-700 text-sm text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]">
               Get started
             </Button>
           </Link>
-          <Link href="/about">
+          <Link prefetch={false} href="/about">
             <Button variant={'secondary'}>
               About <MoveRight className="ml-2 h-4 w-4" />
             </Button>

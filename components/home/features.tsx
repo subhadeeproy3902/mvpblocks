@@ -5,14 +5,8 @@ import Earth from '../ui/globe';
 import ScrambleHover from '../ui/scramble';
 import { motion, useInView } from 'framer-motion';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { Geist } from 'next/font/google';
+import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
-
-const space = Geist({
-  subsets: ['latin'],
-  variable: '--font-carlito',
-  weight: '400',
-});
 
 export default function Features() {
   const ref = useRef(null);
@@ -60,7 +54,7 @@ export default function Features() {
         <h2
           className={cn(
             'via-foreground mb-8 bg-gradient-to-b from-zinc-800 to-zinc-700 bg-clip-text text-center text-4xl font-semibold tracking-tighter text-transparent md:text-[54px] md:leading-[60px]',
-            space.className,
+            geist.className,
           )}
         >
           Features

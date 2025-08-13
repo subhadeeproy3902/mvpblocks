@@ -20,21 +20,21 @@ export default function FitnessHero() {
                 <div className="mb-8 flex flex-wrap items-center gap-[10px] lg:mb-[50px]">
                   <div className="flex">
                     <img
-                      src="https://blocks.mvp-subha.me/assets/fitness-hero/1.webp"
+                      src="/assets/fitness-hero/1.webp"
                       alt="hero-avatar-img-1"
                       width="58"
                       height="58"
                       className="-ml-[15px] h-[58px] w-[58px] rounded-[50%] first:-ml-0"
                     />
                     <img
-                      src="https://blocks.mvp-subha.me/assets/fitness-hero/2.webp"
+                      src="/assets/fitness-hero/2.webp"
                       alt="hero-avatar-img-2"
                       width="58"
                       height="58"
                       className="-ml-[15px] h-[58px] w-[58px] rounded-[50%] first:-ml-0"
                     />
                     <img
-                      src="https://blocks.mvp-subha.me/assets/fitness-hero/3.webp"
+                      src="/assets/fitness-hero/3.webp"
                       alt="hero-avatar-img-2"
                       width="58"
                       height="58"
@@ -57,31 +57,31 @@ export default function FitnessHero() {
                       <div className="flex gap-[5px] text-base">
                         <div className="flex gap-1">
                           <img
-                            src="https://blocks.mvp-subha.me/assets/fitness-hero/icon.svg"
+                            src="/assets/fitness-hero/icon.svg"
                             alt="icon-green-star"
                             width="17"
                             height="17"
                           />
                           <img
-                            src="https://blocks.mvp-subha.me/assets/fitness-hero/icon.svg"
+                            src="/assets/fitness-hero/icon.svg"
                             alt="icon-green-star"
                             width="17"
                             height="17"
                           />
                           <img
-                            src="https://blocks.mvp-subha.me/assets/fitness-hero/icon.svg"
+                            src="/assets/fitness-hero/icon.svg"
                             alt="icon-green-star"
                             width="17"
                             height="17"
                           />
                           <img
-                            src="https://blocks.mvp-subha.me/assets/fitness-hero/icon.svg"
+                            src="/assets/fitness-hero/icon.svg"
                             alt="icon-green-star"
                             width="17"
                             height="17"
                           />
                           <img
-                            src="https://blocks.mvp-subha.me/assets/fitness-hero/icon.svg"
+                            src="/assets/fitness-hero/icon.svg"
                             alt="icon-green-star"
                             width="17"
                             height="17"
@@ -108,21 +108,21 @@ export default function FitnessHero() {
             <div>
               <div className="relative z-10 mx-auto h-auto max-w-[280px] sm:max-w-[500px] lg:mr-0 lg:ml-auto">
                 <img
-                  src="https://blocks.mvp-subha.me/assets/fitness-hero/image.webp"
+                  src="/assets/fitness-hero/image.webp"
                   alt="hero-mobille"
                   width="612"
                   height="1272"
                   className="z-10 mx-auto h-[635px] w-[306px]"
                 />
                 <img
-                  src="https://blocks.mvp-subha.me/assets/fitness-hero/shape1.svg"
+                  src="/assets/fitness-hero/shape1.svg"
                   alt="hero-2-shape-1"
                   width="110"
                   height="191"
                   className="xxl:left-[6%] absolute bottom-[18%] -left-[12%] -z-10 xl:-left-[2%]"
                 />
                 <img
-                  src="https://blocks.mvp-subha.me/assets/fitness-hero/shape2.svg"
+                  src="/assets/fitness-hero/shape2.svg"
                   alt="hero-2-shape-1"
                   width="292"
                   height="299"

@@ -20,7 +20,7 @@ import Link from "next/link";
 The Basics category contains fundamental UI components that are essential for any modern website. These components provide the core interactive elements and visual feedback mechanisms that users expect.
 
 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 mt-6 mb-10">
-  <Link href="/docs/basic/buttons" className="no-underline">
+  <Link prefetch={false} href="/docs/basic/buttons" className="no-underline">
   <Card className="group relative overflow-hidden border border-white/10 bg-gradient-to-b from-secondary/60 to-secondary/20 shadow-[0px_2px_10px_0px_rgba(255,255,255,0.1)_inset] hover:shadow-md transition-all duration-300">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,transparent_55%,#ffffff10)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <CardHeader className="flex flex-row items-start gap-4">
@@ -35,7 +35,7 @@ The Basics category contains fundamental UI components that are essential for an
   </Card>
   </Link>
 
-  <Link href="/docs/basic/loaders" className="no-underline">
+  <Link prefetch={false} href="/docs/basic/loaders" className="no-underline">
   <Card className="group relative overflow-hidden border border-white/10 bg-gradient-to-b from-secondary/60 to-secondary/20 shadow-[0px_2px_10px_0px_rgba(255,255,255,0.1)_inset] hover:shadow-md transition-all duration-300">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,transparent_55%,#ffffff10)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     <CardHeader className="flex flex-row items-start gap-4">

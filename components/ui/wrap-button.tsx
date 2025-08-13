@@ -18,7 +18,7 @@ const WrapButtonDemo: React.FC<WrapButtonProps> = ({
   return (
     <div className="flex items-center justify-center">
       {href ? (
-        <Link href={href}>
+        <Link prefetch={false} href={href}>
           <div
             className={cn(
               'group border-border bg-secondary/70 flex h-[64px] cursor-pointer items-center gap-2 rounded-full border p-[11px]',

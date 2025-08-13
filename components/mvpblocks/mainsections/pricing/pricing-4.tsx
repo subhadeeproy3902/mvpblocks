@@ -70,7 +70,7 @@ export default function PricingFour() {
                 </span>
                 <div className="flex justify-center">
                   <Button asChild size="lg" className="shadow-md">
-                    <Link href="#">Get started</Link>
+                    <Link prefetch={false} href="#">Get started</Link>
                   </Button>
                 </div>
                 <p className="text-muted-foreground mt-12 text-sm">

@@ -161,15 +161,13 @@ export default function LoginForm2() {
                   transition={{ duration: 0.5, delay: 1.0, ease: 'easeOut' }}
                 >
                   By signing in you agree to our{' '}
-                  <Link
-                    href="#"
+                  <Link prefetch={false}                    href="#"
                     className="text-muted-foreground hover:text-primary underline"
                   >
                     terms of service
                   </Link>{' '}
                   and{' '}
-                  <Link
-                    href="#"
+                  <Link prefetch={false}                    href="#"
                     className="text-muted-foreground hover:text-primary underline"
                   >
                     privacy policy

@@ -133,8 +133,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
           {member.socialLinks && (
             <div className="flex space-x-3">
               {member.socialLinks.map((link) => (
-                <Link
-                  key={link.platform}
+                <Link prefetch={false}                  key={link.platform}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

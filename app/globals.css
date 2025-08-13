@@ -2,6 +2,10 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
+html {
+  overflow-x: hidden !important;
+}
+
 /* Default scrollbar styles for all pages */
 ::-webkit-scrollbar {
   width: 4px !important;

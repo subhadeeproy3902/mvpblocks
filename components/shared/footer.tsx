@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="col-span-2">
             <div className="mb-4 flex items-center justify-start gap-2">
               <img
-                src="https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp"
+                src="/logo.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />
@@ -26,32 +26,28 @@ export default function Footer() {
               and beautifully styled.
             </p>
             <div className="flex space-x-3">
-              <Link
-                href="https://github.com/subhadeeproy3902/mvpblocks"
+              <Link prefetch={false}                href="https://github.com/subhadeeproy3902/mvpblocks"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
               >
                 <Github className="h-5 w-5" />
               </Link>
-              <Link
-                href="https://x.com/mvp_Subha"
+              <Link prefetch={false}                href="https://x.com/mvp_Subha"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
               >
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link
-                href="https://instagram.com/mvp_Subha"
+              <Link prefetch={false}                href="https://instagram.com/mvp_Subha"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </Link>
-              <Link
-                href="https://linkedin.com/in/subhadeep3902"
+              <Link prefetch={false}                href="https://linkedin.com/in/subhadeep3902"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
@@ -64,24 +60,21 @@ export default function Footer() {
             <h3 className="mb-4 font-semibold">Product</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="#features"
+                <Link prefetch={false}                  href="#features"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Features
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/about"
+                <Link prefetch={false}                  href="/about"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   About
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/docs/introduction"
+                <Link prefetch={false}                  href="/docs/introduction"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Introduction
@@ -93,24 +86,21 @@ export default function Footer() {
             <h3 className="mb-4 font-semibold">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/blog"
+                <Link prefetch={false}                  href="/blog"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/docs/get-started"
+                <Link prefetch={false}                  href="/docs/get-started"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/docs/add-a-block"
+                <Link prefetch={false}                  href="/docs/add-a-block"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Add block
@@ -122,24 +112,21 @@ export default function Footer() {
             <h3 className="mb-4 font-semibold">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/terms"
+                <Link prefetch={false}                  href="/terms"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Terms
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/privacy"
+                <Link prefetch={false}                  href="/privacy"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/license"
+                <Link prefetch={false}                  href="/license"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   License
@@ -151,24 +138,21 @@ export default function Footer() {
             <h3 className="mb-4 font-semibold">Support</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/contact"
+                <Link prefetch={false}                  href="/contact"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#faq"
+                <Link prefetch={false}                  href="#faq"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   FAQs
                 </Link>
               </li>
               <li>
-                <Link
-                  href="https://github.com/subhadeeproy3902/mvpblocks/blob/main/CONTRIBUTING.md"
+                <Link prefetch={false}                  href="https://github.com/subhadeeproy3902/mvpblocks/blob/main/CONTRIBUTING.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -190,8 +174,7 @@ export default function Footer() {
             <div className="mt-4 flex items-center space-x-1 md:mt-0">
               <span>
                 Building in public at
-                <Link
-                  href="http://mvp-subha.me"
+                <Link prefetch={false}                  href="http://mvp-subha.me"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary ml-1 font-medium hover:underline"

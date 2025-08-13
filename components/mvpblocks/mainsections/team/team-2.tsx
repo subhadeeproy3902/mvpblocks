@@ -182,8 +182,7 @@ function TeamMemberCard({
         {member.socialLinks && (
           <div className="absolute right-0 bottom-4 left-0 z-20 flex justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             {member.socialLinks.map((link) => (
-              <Link
-                key={link.platform}
+              <Link prefetch={false}                key={link.platform}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"

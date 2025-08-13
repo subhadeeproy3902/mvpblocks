@@ -1,3 +1,4 @@
+// middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -7,31 +8,31 @@ export function middleware(req: NextRequest) {
 
   // Paths to protect from bots
   const protectedPaths = [
-    '/preview',
-    '/docs',
-    '/api',
+    '/preview/',
+    '/docs/',
+    '/api/',
+    '/_next/',
     '/about',
-    '/privacy',
     '/terms',
-    '/showcase',
-    '/404'
+    '/privacy',
+    '/contact',
+    '/404',
   ];
 
-  const isProtected = protectedPaths.some((p) => path.startsWith(p));
-
-  if (isProtected) {
-    if (ua.includes('bot') || ua.includes('crawler') || ua.includes('spider')) {
-      return new NextResponse('Blocked', { status: 403 });
+  // If path starts with any of these, block bad bots
+  if (protectedPaths.some(p => path.startsWith(p))) {
+    if (
+      ua.includes('bot') ||
+      ua.includes('crawler') ||
+      ua.includes('spider') ||
+      ua.includes('curl') ||
+      ua.includes('wget') ||
+      ua.includes('python') ||
+      ua.includes('scrapy')
+    ) {
+      return new NextResponse('Access denied', { status: 403 });
     }
   }
 
   return NextResponse.next();
 }
-
-// Only run middleware for non-static application routes
-export const config = {
-  matcher: [
-    // Match all paths except _next, static assets, files with .ext, etc.
-    '/((?!_next|static|.*\\..*).*)',
-  ],
-};

@@ -73,7 +73,7 @@ export default function Trading() {
       >
         <div className="overflow-hidden rounded-xl">
           <img
-            src="https://blocks.mvp-subha.me/assets/trading-hero/db.webp"
+            src="/assets/trading-hero/db.webp"
             alt="CryptoTrade Dashboard"
             className="h-auto w-full"
           />

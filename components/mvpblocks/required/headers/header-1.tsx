@@ -97,7 +97,7 @@ export default function Header1() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
+            <Link prefetch={false} href="/" className="flex items-center space-x-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-rose-700">
                 <Sparkles className="h-5 w-5 text-white" />
               </div>
@@ -117,8 +117,7 @@ export default function Header1() {
                 }
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <Link
-                  href={item.href}
+                <Link prefetch={false}                  href={item.href}
                   className="text-foreground flex items-center space-x-1 font-medium transition-colors duration-200 hover:text-rose-500"
                 >
                   <span>{item.name}</span>
@@ -139,8 +138,7 @@ export default function Header1() {
                         transition={{ duration: 0.2 }}
                       >
                         {item.dropdownItems?.map((dropdownItem) => (
-                          <Link
-                            key={dropdownItem.name}
+                          <Link prefetch={false}                            key={dropdownItem.name}
                             href={dropdownItem.href}
                             className="hover:bg-muted block px-4 py-3 transition-colors duration-200"
                           >
@@ -163,15 +161,13 @@ export default function Header1() {
           </nav>
 
           <div className="hidden items-center space-x-4 lg:flex">
-            <Link
-              href="/login"
+            <Link prefetch={false}              href="/login"
               className="text-foreground font-medium transition-colors duration-200 hover:text-rose-500"
             >
               Sign In
             </Link>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/signup"
+              <Link prefetch={false}                href="/signup"
                 className="inline-flex items-center space-x-2 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>Get Started</span>
@@ -205,8 +201,7 @@ export default function Header1() {
             >
               <div className="border-border bg-background/95 mt-4 space-y-2 rounded-xl border py-4 shadow-xl backdrop-blur-lg">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
+                  <Link prefetch={false}                    key={item.name}
                     href={item.href}
                     className="text-foreground hover:bg-muted block px-4 py-3 font-medium transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
@@ -215,15 +210,13 @@ export default function Header1() {
                   </Link>
                 ))}
                 <div className="space-y-2 px-4 py-2">
-                  <Link
-                    href="/login"
+                  <Link prefetch={false}                    href="/login"
                     className="text-foreground hover:bg-muted block w-full rounded-lg py-2.5 text-center font-medium transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </Link>
-                  <Link
-                    href="/signup"
+                  <Link prefetch={false}                    href="/signup"
                     className="block w-full rounded-lg bg-gradient-to-r from-rose-500 to-rose-700 py-2.5 text-center font-medium text-white transition-all duration-200 hover:shadow-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >

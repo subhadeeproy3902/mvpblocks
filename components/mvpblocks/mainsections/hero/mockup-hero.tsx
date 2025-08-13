@@ -197,11 +197,7 @@ export default function LucyHero() {
             initial="hidden"
             animate={controls}
             ref={mockupRef}
-            className="relative mx-auto flex justify-center"
-            style={{
-              transformStyle: 'preserve-3d',
-              perspective: '1000px',
-            }}
+            className="relative mx-auto flex justify-center perspective-distant transform-3d"
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -220,20 +216,21 @@ export default function LucyHero() {
             }}
           >
             <motion.div
-              className="relative z-10"
+              className="relative z-10 transform-3d"
               style={{
-                transformStyle: 'preserve-3d',
                 rotateX: rotateX,
                 rotateY: rotateY,
                 scale: isHovered ? 1.05 : 1,
-                transition: 'scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              }}
+              transition={{
+                scale: { duration: 0.3, type: 'spring', ease: [0.34, 1.56, 0.64, 1] },
               }}
             >
               <PhoneMockup
                 imageUrl={
                   isDark
-                    ? 'https://blocks.mvp-subha.me/mobile-dark.webp'
-                    : 'https://blocks.mvp-subha.me/mobile-light.webp'
+                    ? '/mobile-dark.webp'
+                    : '/mobile-light.webp'
                 }
                 alt="LU-cy mobile app"
                 glowColor={

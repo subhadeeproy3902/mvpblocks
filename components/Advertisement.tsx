@@ -1,13 +1,19 @@
-import { DollarSign, MoveRight, X } from 'lucide-react';
-import Link from 'next/link';
-import { set } from 'zod';
-import { Button } from './ui/button';
+'use client';
 
-export default function Advertisement({
-  setShow,
-}: {
-  setShow: (show: boolean) => void;
-}) {
+import { MoveRight, X } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from './ui/button';
+import { useState, useEffect } from 'react';
+
+export default function Advertisement() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
+  if (!show) return null;
+
   return (
     <div className="bg-background/70 fixed inset-0 z-[1000] flex items-center justify-center backdrop-blur-sm">
       <div className="bg-background/80 relative w-[95%] max-w-[45rem] overflow-hidden rounded-2xl border shadow-2xl">
@@ -53,7 +59,7 @@ export default function Advertisement({
           </div>
 
           <div className="flex justify-center">
-            <Link href="/docs/ai-saas-marketing">
+            <Link prefetch={false} href="/docs/ai-saas-marketing">
               <Button className="cursor-pointer rounded-lg">
                 Explore Docs
                 <MoveRight className="ml-2 inline-block h-4 w-4" />

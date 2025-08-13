@@ -130,7 +130,7 @@ export default function PricingTwo() {
 
               <CardFooter className="mt-auto">
                 <Button asChild variant={plan.buttonVariant} className="w-full">
-                  <Link href="">Get Started</Link>
+                  <Link prefetch={false} href="">Get Started</Link>
                 </Button>
               </CardFooter>
             </Card>

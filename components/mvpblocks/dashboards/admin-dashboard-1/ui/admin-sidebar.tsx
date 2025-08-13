@@ -54,7 +54,7 @@ export const AdminSidebar = memo(() => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="#dashboard">
+              <Link prefetch={false} href="#dashboard">
                 <div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <LayoutDashboard className="h-5 w-5" />
                 </div>
@@ -78,7 +78,7 @@ export const AdminSidebar = memo(() => {
                 return (
                   <SidebarMenuItem key={item.href}>
                     <SidebarMenuButton asChild>
-                      <Link href={item.href}>
+                      <Link prefetch={false} href={item.href}>
                         <Icon />
                         <span>{item.title}</span>
                       </Link>
@@ -103,7 +103,7 @@ export const AdminSidebar = memo(() => {
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link href="#profile">
+              <Link prefetch={false} href="#profile">
                 <User />
                 <span>Admin Profile</span>
               </Link>

@@ -42,7 +42,7 @@ const data = {
     name: 'Mvpblocks',
     description:
       'Building beautiful and functional web experiences with modern technologies. We help startups and businesses create their digital presence.',
-    logo: 'https://res.cloudinary.com/dtyc0ob4r/image/upload/v1754994617/logo_bkqfei.webp',
+    logo: '/logo.webp',
   },
 };
 
@@ -104,8 +104,7 @@ export default function Footer4Col() {
             <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
-                  <Link
-                    href={href}
+                  <Link prefetch={false}                    href={href}
                     className="text-primary hover:text-primary/80 transition"
                   >
                     <span className="sr-only">{label}</span>

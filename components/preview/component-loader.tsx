@@ -144,7 +144,7 @@ export function ComponentLoader({
           </Card>
           <p className="text-muted-foreground mt-6 text-center text-sm">
             Need help?{' '}
-            <Link href="#" className="text-primary font-medium hover:underline">
+            <Link prefetch={false} href="#" className="text-primary font-medium hover:underline">
               Contact support
             </Link>
           </p>

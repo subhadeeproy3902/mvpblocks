@@ -111,8 +111,7 @@ export default function ContactUs2() {
             Connect with Us
           </h3>
           <div className="mb-12 flex gap-8">
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Mail className="h-5 w-5 text-white" />
@@ -124,8 +123,7 @@ export default function ContactUs2() {
           </div>
 
           <div className="mb-12 flex gap-8">
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Phone className="h-5 w-5 text-white" />
@@ -137,8 +135,7 @@ export default function ContactUs2() {
           </div>
 
           <div className="mb-12 flex gap-8">
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 px-2 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 px-2 shadow-inner shadow-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <MapPin className="h-5 w-5 text-white" />
@@ -150,26 +147,22 @@ export default function ContactUs2() {
           </div>
 
           <div className="flex space-x-12 py-7">
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Twitter className="h-5 w-5 text-white" />
             </Link>
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-600 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Facebook className="h-5 w-5 text-white" />
             </Link>
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Instagram className="h-5 w-5 text-white" />
             </Link>
-            <Link
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
+            <Link prefetch={false}              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-gray-800 hover:shadow-md hover:shadow-slate-500 hover:transition hover:duration-300 hover:ease-in-out"
               href="#"
             >
               <Github className="h-5 w-5 text-white" />

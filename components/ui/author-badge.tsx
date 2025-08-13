@@ -20,8 +20,7 @@ export function AuthorBadge({ username, className }: AuthorBadgeProps) {
     .slice(0, 2);
 
   return (
-    <Link
-      href={`https://github.com/${username}`}
+    <Link prefetch={false}      href={`https://github.com/${username}`}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

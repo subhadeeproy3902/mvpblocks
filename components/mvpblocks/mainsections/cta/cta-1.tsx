@@ -18,7 +18,7 @@ export default function CTA1() {
             width="1840"
             height="694"
             className="absolute top-0"
-            src="https://blocks.mvp-subha.me/assets/cta/grid.svg"
+            src="/assets/cta/grid.svg"
           />
           <div className="relative isolate overflow-hidden px-4 py-12 sm:px-24">
             <p className="w-fit rounded-xl bg-white px-4 py-1 text-center text-base leading-7 font-semibold text-black uppercase lg:text-left">
@@ -42,7 +42,7 @@ export default function CTA1() {
                 <Phone className="h-7 w-7 text-green-500" />
                 +91-8637373116
               </a>
-              <Link className="flex items-center gap-2 text-white" href="/">
+              <Link prefetch={false} className="flex items-center gap-2 text-white" href="/">
                 <Globe className="h-7 w-7 text-blue-500" />
                 mvp-subha.me
               </Link>

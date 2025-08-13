@@ -46,7 +46,7 @@ export default function TweetCard({
   },
 }: TweetCardProps) {
   return (
-    <Link href="https://x.com/mvp_Subha" target="_blank" className="h-fit m-auto">
+    <Link prefetch={false} href="https://x.com/mvp_Subha" target="_blank" className="h-fit m-auto">
       <div
         className={cn(
           'relative isolate w-full max-w-xl my-auto min-w-[400px] overflow-hidden rounded-2xl p-1.5 md:min-w-[500px]',

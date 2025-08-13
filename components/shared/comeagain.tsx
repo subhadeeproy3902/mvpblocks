@@ -3,11 +3,7 @@
 import { cn } from '@/lib/utils';
 import { AnimationPlaybackControls, motion, useAnimate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { Bricolage_Grotesque } from 'next/font/google';
-
-const space = Bricolage_Grotesque({
-  subsets: ['latin'],
-});
+import { bricolage } from '@/lib/fonts';
 
 export default function EndSlider() {
   const animation = useRef<AnimationPlaybackControls | null>(null);
@@ -47,7 +43,7 @@ export default function EndSlider() {
               key={index}
               className={cn(
                 'from-foreground/60 via-foreground to-foreground/60 dark:from-muted-foreground/55 dark:via-foreground dark:to-muted-foreground/55 flex items-center gap-4 bg-gradient-to-r bg-clip-text text-center font-semibold text-transparent',
-                space.className,
+                bricolage.className,
               )}
             >
               <img

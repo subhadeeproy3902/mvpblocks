@@ -10,8 +10,7 @@ export function AddCard() {
       transition={{ duration: 0.5, delay: 0.2 }}
       className="relative flex h-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-zinc-300 text-center dark:border-zinc-800"
     >
-      <Link
-        href="https://github.com/subhadeeproy3902/mvpblocks/discussions/19"
+      <Link prefetch={false}        href="https://github.com/subhadeeproy3902/mvpblocks/discussions/19"
         target="_blank"
         rel="noopener noreferrer"
         className="flex h-full w-full cursor-pointer flex-col items-center justify-center"

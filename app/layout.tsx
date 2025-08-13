@@ -1,16 +1,10 @@
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { dm } from '@/lib/fonts';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { PreviewPageDetector } from '@/components/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/Clarity';
-import { Analytics } from "@vercel/analytics/next"
-import { PerformanceMonitor } from '@/components/performance-monitor';
-
-const dm = DM_Sans({
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'Mvpblocks',
@@ -82,7 +76,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
-        <Analytics />
         {process.env.NODE_ENV === 'production' ? <Clarity /> : null}
         <PreviewPageDetector />
         <ThemeProvider
@@ -93,7 +86,6 @@ export default function RootLayout({
         >
           {children}
           <Toaster richColors />
-          <PerformanceMonitor />
         </ThemeProvider>
       </body>
     </html>

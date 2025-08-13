@@ -94,7 +94,7 @@ export default function Header2() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             >
-              <Link href="/" className="flex items-center space-x-3">
+              <Link prefetch={false} href="/" className="flex items-center space-x-3">
                 <div className="relative">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 shadow-lg">
                     <Zap className="h-5 w-5 text-white" />
@@ -121,8 +121,7 @@ export default function Header2() {
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
                 >
-                  <Link
-                    href={item.href}
+                  <Link prefetch={false}                    href={item.href}
                     className="text-foreground/80 hover:text-foreground relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-200"
                   >
                     {hoveredItem === item.name && (
@@ -157,8 +156,7 @@ export default function Header2() {
                 <Search className="h-5 w-5" />
               </motion.button>
 
-              <Link
-                href="/login"
+              <Link prefetch={false}                href="/login"
                 className="text-foreground/80 hover:text-foreground px-4 py-2 text-sm font-medium transition-colors duration-200"
               >
                 Sign In
@@ -168,8 +166,7 @@ export default function Header2() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link
-                  href="/signup"
+                <Link prefetch={false}                  href="/signup"
                   className="bg-foreground text-background hover:bg-foreground/90 inline-flex items-center space-x-2 rounded-lg px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-200"
                 >
                   <span>Get Started</span>
@@ -215,8 +212,7 @@ export default function Header2() {
                 <div className="space-y-1">
                   {navItems.map((item) => (
                     <motion.div key={item.name} variants={mobileItemVariants}>
-                      <Link
-                        href={item.href}
+                      <Link prefetch={false}                        href={item.href}
                         className="text-foreground hover:bg-muted block rounded-lg px-4 py-3 font-medium transition-colors duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
@@ -230,15 +226,13 @@ export default function Header2() {
                   className="border-border space-y-3 border-t pt-6"
                   variants={mobileItemVariants}
                 >
-                  <Link
-                    href="/login"
+                  <Link prefetch={false}                    href="/login"
                     className="text-foreground hover:bg-muted block w-full rounded-lg py-3 text-center font-medium transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign In
                   </Link>
-                  <Link
-                    href="/signup"
+                  <Link prefetch={false}                    href="/signup"
                     className="bg-foreground text-background hover:bg-foreground/90 block w-full rounded-lg py-3 text-center font-medium transition-all duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
