@@ -115,7 +115,7 @@ const PricingPage = ({ plans = pricingPlans, className }: PricingProps) => {
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="bg-primary/5 absolute -right-[10%] -bottom-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
         <div className="bg-primary/5 absolute -bottom-[10%] -left-[10%] h-[40%] w-[40%] rounded-full blur-3xl" />
-        <h1 className="text-center font-bold text-[7rem] md:text-[10rem]">
+        <h1 className="text-center text-[7rem] font-bold md:text-[10rem]">
           Pricing
         </h1>
       </div>
@@ -213,9 +213,9 @@ const PricingCard = React.forwardRef<HTMLDivElement, PricingCardProps>(
           'relative flex flex-col justify-between overflow-hidden rounded-2xl p-6',
           'border-border/50 border',
           'bg-background/20 backdrop-blur-sm',
-          'shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.1)]',
+          'shadow-[inset_0_1px_30px_0_rgba(255,255,255,0.1)]',
           "before:absolute before:inset-0 before:-z-10 before:content-['']",
-          'before:bg-gradient-to-br before:from-white/5 before:to-transparent',
+          'before:bg-gradient-to-br before:from-white/7 before:to-transparent',
           'before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100',
           "after:absolute after:inset-0 after:-z-20 after:content-['']",
           'after:bg-[radial-gradient(circle_at_75%_25%,hsl(var(--primary)/0.05),transparent_70%)]',
