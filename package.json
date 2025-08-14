@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@ai-sdk/groq": "^1.2.9",
+    "@arcjet/inspect": "^1.0.0-beta.10",
+    "@arcjet/next": "^1.0.0-beta.10",
     "@hookform/resolvers": "^5.1.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -61,8 +63,6 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/hsl-to-hex": "^1.0.2",
     "@types/mdx": "^2.0.13",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "ai": "^4.3.19",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",

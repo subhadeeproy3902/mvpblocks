@@ -44,7 +44,6 @@ const KNOWN_NPM_DEPENDENCIES = [
   '@tsparticles/react',
   '@tsparticles/slim',
   '@types/mdx',
-  '@vercel/speed-insights',
   'ai',
   'class-variance-authority',
   'clsx',

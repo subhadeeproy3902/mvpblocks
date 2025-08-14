@@ -1,38 +1,22 @@
-// middleware.ts
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import arcjet, { createMiddleware, detectBot } from "@arcjet/next";
 
-export function middleware(req: NextRequest) {
-  const ua = req.headers.get('user-agent')?.toLowerCase() || '';
-  const path = req.nextUrl.pathname;
+export const config = {
+  matcher: [
+    // Match everything except Next.js internals and static assets in /public
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|txt|xml|json)).*)",
+  ],
+};
 
-  // Paths to protect from bots
-  const protectedPaths = [
-    '/preview/',
-    '/docs/',
-    '/api/',
-    '/_next/',
-    '/about',
-    '/terms',
-    '/privacy',
-    '/contact',
-    '/404',
-  ];
+const aj = arcjet({
+  key: process.env.ARCJET_KEY!,
+  rules: [
+    detectBot({
+      mode: "LIVE",
+      allow: [
+        "CATEGORY:SEARCH_ENGINE", // allow Google, Bing, etc.
+      ],
+    }),
+  ],
+});
 
-  // If path starts with any of these, block bad bots
-  if (protectedPaths.some(p => path.startsWith(p))) {
-    if (
-      ua.includes('bot') ||
-      ua.includes('crawler') ||
-      ua.includes('spider') ||
-      ua.includes('curl') ||
-      ua.includes('wget') ||
-      ua.includes('python') ||
-      ua.includes('scrapy')
-    ) {
-      return new NextResponse('Access denied', { status: 403 });
-    }
-  }
-
-  return NextResponse.next();
-}
+export default createMiddleware(aj);

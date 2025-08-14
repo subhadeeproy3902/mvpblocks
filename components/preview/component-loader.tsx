@@ -18,7 +18,7 @@ type ComponentLoaderProps = {
   previewMode?: boolean;
 };
 
-const LazyComponentWrapper = lazy(() => 
+const LazyComponentWrapper = lazy(() =>
   Promise.resolve({
     default: ({ Component, reTriggerKey }: { Component: React.ComponentType; reTriggerKey: number }) => (
       <Component key={reTriggerKey} />
@@ -227,6 +227,9 @@ function ComponentDisplay({
         <iframe
           src={`${siteLink}/preview/${name}`}
           className={`${className} w-full`}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          sandbox="allow-scripts allow-same-origin"
         />
       ) : (
         <div className="flex h-full w-full justify-center overflow-y-auto">

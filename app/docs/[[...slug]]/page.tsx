@@ -8,7 +8,6 @@ import {
 import { notFound, redirect } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
-import { getLastModified } from '@/lib/github';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { Callout } from 'fumadocs-ui/components/callout';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
@@ -37,7 +36,7 @@ export default async function Page(props: {
   const generator = createGenerator();
 
   const path = `content/docs/${page.file.path}`;
-  const lastModified = await getLastModified(page);
+  const lastModified = page.data.lastModified;
 
   const footer = (
     <div className="flex flex-col space-y-2">
