@@ -1,4 +1,5 @@
 import type { Registry } from '@/registry/schema';
+import FooterAnimated from "@/components/FooterAnimated";
 import * as React from 'react';
 
 const siteLink = 'localhost:3000';
@@ -274,6 +275,23 @@ export const blocks: Registry = [
         import('../components/mvpblocks/required/footers/footer-newsletter'),
     ),
   },
+  {
+  name: 'footer-animated',
+  author: 'Siddhi-121',
+  type: 'registry:block',
+  dependencies: ['react', 'framer-motion'],
+  registryDependencies: [],
+  files: [
+    {
+      path: '@/components/mvpblocks/required/footers/footer-animated.tsx',
+      type: 'registry:block',
+    },
+  ],
+  component: React.lazy(
+    () =>
+      import('../components/mvpblocks/required/footers/footer-animated'),
+  ),
+},
   {
     name: 'designer-pricing',
     type: 'registry:block',
