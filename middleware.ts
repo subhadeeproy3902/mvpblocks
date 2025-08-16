@@ -2,10 +2,12 @@ import arcjet, { createMiddleware, detectBot } from "@arcjet/next";
 
 export const config = {
   matcher: [
-    // Match everything except Next.js internals and static assets in /public
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
   ],
-};
+}
 
 const aj = arcjet({
   key: process.env.ARCJET_KEY!,
