@@ -5,7 +5,8 @@ import Hero from "@/components/home/hero";
 import Testimonials from "@/components/home/testimonials";
 import CTA from "@/components/shared/cta";
 import Faqs from "@/components/shared/faq";
-import FooterAnimated from "@/components/mvpblocks/required/footers/footer-animated";
+import FooterAnimated from "@/components/mvpblocks/required/footers/FooterAnimated";
+
 
 
 // 👇 Import your new block directly
