@@ -277,7 +277,10 @@ export const blocks: Registry = [
   },
   {
   name: 'footer-animated',
+<<<<<<< HEAD
   author: 'Siddhi-121',
+=======
+>>>>>>> f8ca622 (fix: suppress hydration warning for Next.js logo image)
   type: 'registry:block',
   dependencies: ['react', 'framer-motion'],
   registryDependencies: [],
@@ -288,8 +291,12 @@ export const blocks: Registry = [
     },
   ],
   component: React.lazy(
+<<<<<<< HEAD
     () =>
       import('../components/mvpblocks/required/footers/footer-animated'),
+=======
+    () => import('../components/mvpblocks/required/footers/footer-animated'),
+>>>>>>> f8ca622 (fix: suppress hydration warning for Next.js logo image)
   ),
 },
   {

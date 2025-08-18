@@ -152,6 +152,7 @@ export default function Features() {
                             draggable={false}
                           />
                         ) : (
+                          <div suppressHydrationWarning>
                           <img
                             src="/features-nextjs-light.webp"
                             alt="Next.js logo light"
@@ -160,6 +161,7 @@ export default function Features() {
                             className="h-8 w-8 select-none"
                             draggable={false}
                           />
+                          </div>
                         )}
                       </div>
                     </div>
