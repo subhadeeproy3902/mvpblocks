@@ -46,4 +46,5 @@ next-env.d.ts
 .source
 
 # package-lock
-package-lock.json
+package-lock.json"filelist.txt" 
+"filelist.txt" 
