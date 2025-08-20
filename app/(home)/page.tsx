@@ -6,10 +6,6 @@ import Testimonials from "@/components/home/testimonials";
 import CTA from "@/components/shared/cta";
 import Faqs from "@/components/shared/faq";
 
-
-export const dynamic = 'force-static';
-export const revalidate = false;
-
 export default function Homepage() {
   return (
     <>

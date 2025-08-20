@@ -1,10 +1,10 @@
-import ShowcaseComponent from "./_components/ShowcaseComponent";
+"use client"
 
-export const dynamic = 'force-static';
-export const revalidate = 86400;
+import ShowCaseComponent from './ShowcaseComponent';
 
 export default function ShowcasePage() {
+
   return (
-    <ShowcaseComponent />
+    <ShowCaseComponent />
   );
 }

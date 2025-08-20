@@ -3,6 +3,7 @@ import { createMDXSource } from 'fumadocs-mdx';
 import { loader } from 'fumadocs-core/source';
 import { icons } from 'lucide-react';
 import { createElement } from 'react';
+import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
 
 export const source = loader({
   baseUrl: '/docs',
@@ -53,3 +54,6 @@ export const source = loader({
       return createElement(icons[icon as keyof typeof icons]);
   },
 });
+
+export type Page = InferPageType<typeof source>;
+export type Meta = InferMetaType<typeof source>;
