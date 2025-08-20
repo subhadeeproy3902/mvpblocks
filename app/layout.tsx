@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { PreviewPageDetector } from '@/components/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/Clarity';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Mvpblocks',
@@ -47,6 +48,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dm.className}`}>
+        {/* LemonSqueezy Affiliate Script */}
+        <Script id="lemon-affiliate-config" strategy="afterInteractive">
+          {`window.lemonSqueezyAffiliateConfig = { store: "mvpblocks" };`}
+        </Script>
+        <Script
+          src="https://lmsqueezy.com/affiliate.js"
+          strategy="afterInteractive"
+        />
+
         {process.env.NODE_ENV === 'production' ? <Clarity /> : null}
         <PreviewPageDetector />
         <ThemeProvider
