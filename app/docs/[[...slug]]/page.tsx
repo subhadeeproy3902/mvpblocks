@@ -21,6 +21,7 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/Actions';
 import { createGenerator } from 'fumadocs-typescript';
+import { metadataImage } from '@/lib/metadata-image';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -167,7 +168,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               Tab,
               TypeTable,
               Accordion,
-              a: ({ href, ...props }) => {
+              a: ({ href, ...props }: { href?: string; [key: string]: any }) => {
                 return (
                   // Primary color not underlined
                   <a
@@ -184,7 +185,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               blockquote: Callout as unknown as FC<
                 ComponentProps<'blockquote'>
               >,
-              AutoTypeTable: (props) => (
+              AutoTypeTable: (props: any) => (
                 <AutoTypeTable {...props} generator={generator} />
               ),
             }}
@@ -200,30 +201,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug: string[] }>;
-}): Promise<Metadata> {
-  const { slug = [] } = await props.params;
-  const page = source.getPage(slug);
+  params: Promise<{ slug?: string[] }>;
+}) {
+  const params = await props.params;
+  const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const description =
-    page.data.description ?? 'Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.';
-
-  const image = {
-    url: ['/og', ...slug, 'image.png'].join('/'),
-    width: 1200,
-    height: 630,
-  };
-
-  return createMetadata({
+  return metadataImage.withImage(page.slugs, {
+    description: page.data.description,
     title: page.data.title,
-    description,
-    openGraph: {
-      url: `/docs/${page.slugs.join('/')}`,
-      images: [image],
-    },
-    twitter: {
-      images: [image],
-    },
   });
 }

@@ -1,6 +1,5 @@
 import createBundleAnalyzer from '@next/bundle-analyzer';
 import { createMDX } from 'fumadocs-mdx/next';
-import type { NextConfig } from 'next';
 
 const withAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -14,9 +13,9 @@ const config = {
       fullUrl: true,
     },
   },
-  eslint: {
-    // Replaced by root workspace command
-    ignoreDuringBuilds: true,
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes'],
   },
   serverExternalPackages: ['ts-morph', 'typescript', 'twoslash', 'shiki'],
   images: {
