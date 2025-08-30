@@ -20,7 +20,21 @@ const config = {
   serverExternalPackages: ['ts-morph', 'typescript', 'twoslash', 'shiki'],
   images: {
     remotePatterns: [{ hostname: '*' }],
-    unoptimized: true, // 🚀 disables the optimizer
+    unoptimized: true, // <--- disables Next.js image optimizer as per your current config
+  },
+  async headers() {
+    return [
+      {
+        // Cache static assets (webp, png, jpg, svg, ico) for 1 year, immutable
+        source: '/:path*\\.(webp|png|jpg|jpeg|svg|ico|gif|bmp|tiff|avif|woff|woff2|eot|ttf|otf)$',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
   async rewrites() {
     return [
