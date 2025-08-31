@@ -147,7 +147,6 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
   '@/components/ui/input-otp': 'https://blocks.mvp-subha.me/r/input-otp.json',
   '@/components/ui/input': 'https://blocks.mvp-subha.me/r/input.json',
   '@/components/ui/label': 'https://blocks.mvp-subha.me/r/label.json',
-  '@/components/ui/lazy-image': 'https://blocks.mvp-subha.me/r/lazy-image.json',
   '@/components/ui/marquee': 'https://blocks.mvp-subha.me/r/marquee.json',
   '@/components/ui/menubar': 'https://blocks.mvp-subha.me/r/menubar.json',
   '@/components/ui/minimal-card':
@@ -193,7 +192,6 @@ const REGISTRY_DEPENDENCIES: Record<string, string> = {
     'https://blocks.mvp-subha.me/r/toggle-group.json',
   '@/components/ui/toggle': 'https://blocks.mvp-subha.me/r/toggle.json',
   '@/components/ui/tooltip': 'https://blocks.mvp-subha.me/r/tooltip.json',
-  '@/components/ui/world-map': 'https://blocks.mvp-subha.me/r/world-map.json',
   '@/components/ui/wrap-button':
     'https://blocks.mvp-subha.me/r/wrap-button.json',
 

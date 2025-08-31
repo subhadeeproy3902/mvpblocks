@@ -13,6 +13,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { toast } from 'sonner';
 import ThankYou from './ThankYou';
+import Image from 'next/image';
 
 interface BuyDialogProps {
   title: string;
@@ -86,7 +87,7 @@ export function BuyDialog({
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between rounded-md p-4">
                 <div className="flex w-full gap-2">
-                  <img
+                  <Image
                     src={image}
                     alt="Product Preview"
                     width={200}

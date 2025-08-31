@@ -148,7 +148,7 @@ export default function Team9({
                   <div
                     className={cn(
                       'flex flex-col p-4 transition-all duration-500 ease-in-out',
-                      isActive ? 'h-2/5' : 'h-1/5',
+                      isActive ? 'h-3/5' : 'h-1/5',
                     )}
                   >
                     {isActive && member.bio && (

@@ -14,28 +14,28 @@ const defaultItems = [
     name: 'Alex Rivera',
     designation: 'Lead Developer',
     image:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+      'https://i.pravatar.cc',
   },
   {
     id: 2,
     name: 'Erick Williams',
     designation: 'UI/UX Designer',
     image:
-      'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face',
+      'https://i.pravatar.cc',
   },
   {
     id: 3,
     name: 'Mike Johnson',
     designation: 'Product Manager',
     image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+      'https://i.pravatar.cc',
   },
   {
     id: 4,
     name: 'Emma Davis',
     designation: 'Marketing Lead',
     image:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+      'https://i.pravatar.cc',
   },
 ];
 

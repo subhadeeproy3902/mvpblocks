@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { smoothStream, streamText } from 'ai';
+import { convertToModelMessages, smoothStream, stepCountIs, streamText } from 'ai';
 
 export const maxDuration = 30;
 export const revalidate = false;
@@ -10,15 +10,15 @@ export async function POST(req: Request) {
 
     const result = streamText({
       model: groq('meta-llama/llama-4-scout-17b-16e-instruct'),
-      messages,
-      maxSteps: 6,
+      messages: convertToModelMessages(messages),
       maxRetries: 3,
-      maxTokens: 4096,
+      stopWhen: stepCountIs(6),
+      maxOutputTokens: 8192,
       experimental_transform: smoothStream({
         chunking: 'word',
       }),
     });
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error('Unhandled error in chat API:', error);
     throw error;

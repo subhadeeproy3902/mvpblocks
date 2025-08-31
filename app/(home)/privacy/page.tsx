@@ -44,7 +44,7 @@ export default function PrivacyPage() {
                 </div>
                 <h2 className="m-0 text-2xl font-bold tracking-tight">TL;DR</h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <ul>
                   <li className="mb-2">
                     We do not require account registration.
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
                   What We Collect
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   We intentionally collect as little data as possible.
                   Here&apos;s the breakdown:
@@ -129,7 +129,7 @@ export default function PrivacyPage() {
                   No Cookies Policy
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   We believe cookies should be in your browser&apos;s snack bar,
                   not your browser&apos;s storage.
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
                   Third-Party Tools
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   If we integrate third-party tools (like analytics, hosting, or
                   icons):
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
                   Data Sharing and Selling
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   We do not sell, rent, trade, or otherwise disclose your data
                   to anyone. Period.
@@ -203,7 +203,7 @@ export default function PrivacyPage() {
                   Children&apos;s Privacy
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   MVPBlocks is not intended for use by children under the age of
                   13. We do not knowingly collect personal information from
@@ -222,7 +222,7 @@ export default function PrivacyPage() {
                   Security Measures
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   We take your privacy seriously and use modern infrastructure
                   to ensure platform security. This includes:

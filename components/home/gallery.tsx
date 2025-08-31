@@ -9,6 +9,7 @@ import { motion, useInView } from 'framer-motion';
 import CardCaroursalDemo from './cardcarouseldemo';
 import WrapButtonDemo from '../ui/wrap-button';
 import { Globe } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Gallery() {
   const { theme } = useTheme();
@@ -33,7 +34,7 @@ export default function Gallery() {
         <Spotlight />
       </div>
       <div className="absolute top-1/2 left-0 hidden -translate-y-1/2 lg:block">
-        <img
+        <Image
           alt="Trending graphic 1"
           width={100}
           height={100}
@@ -42,7 +43,7 @@ export default function Gallery() {
         />
       </div>
       <div className="absolute top-1/2 right-0 hidden -translate-y-1/2 lg:block">
-        <img
+        <Image
           alt="Trending graphic 2"
           width={100}
           height={100}
@@ -96,7 +97,7 @@ export default function Gallery() {
               <div className="flex items-center justify-end gap-2 text-center text-lg md:text-2xl lg:text-3xl">
                 <p>Each component is production-ready</p>
                 <span className="scale-125">
-                  <img src="/logo.webp" alt="" className="spin h-8 w-8" />
+                  <Image width={500} height={500} src="/logo.webp" alt="" className="spin h-8 w-8" />
                 </span>
               </div>
               <p className="text-center text-lg md:text-2xl lg:text-3xl">

@@ -26,7 +26,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Robert Brown',
     role: 'CEO & Co-Founder',
     imageUrl:
-      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -37,7 +37,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Leslie Livingston',
     role: 'CTO & Co-Founder',
     imageUrl:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -48,7 +48,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Joseph McFall',
     role: 'Front-end Developer',
     imageUrl:
-      'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -58,7 +58,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Helene Engels',
     role: 'Front-end Developer',
     imageUrl:
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -68,7 +68,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Thom Belly',
     role: 'UI/UX Designer',
     imageUrl:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -78,7 +78,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Bonnie Green',
     role: 'Product Manager',
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -88,7 +88,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Roberta Casas',
     role: 'Content Strategist',
     imageUrl:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -98,7 +98,7 @@ const defaultMembers: TeamMember[] = [
     name: 'Jesse Leos',
     role: 'Back-end Developer',
     imageUrl:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop',
+      'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },

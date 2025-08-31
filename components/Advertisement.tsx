@@ -4,6 +4,7 @@ import { MoveRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Advertisement() {
   const [show, setShow] = useState(false);
@@ -34,7 +35,7 @@ export default function Advertisement() {
             The most awesome AI SaaS Template Dirt Cheap!
           </h2>
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
-            <img
+            <Image
               src="/ai-saas-marketing.webp"
               alt="Template preview"
               width={300}

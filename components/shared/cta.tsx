@@ -1,5 +1,6 @@
-"use client";
+'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CTA() {
@@ -7,7 +8,8 @@ export default function CTA() {
     <section className="mx-auto mb-24 flex w-full max-w-7xl flex-col items-center justify-center">
       <div className="w-full">
         <div className="border-border bg-primary relative z-20 h-[400px] w-full overflow-hidden rounded-xl border shadow-xl md:h-[400px]">
-          <img
+          <Image
+            fill
             alt="Agent CTA Background"
             className="absolute inset-0 object-cover object-right md:object-center"
             sizes="(max-width: 768px) 100vw, 1280px"
@@ -18,7 +20,9 @@ export default function CTA() {
               Build. Customize. Deploy Quickly.
             </h1>
             <div className="absolute bottom-16 flex flex-col items-center justify-center gap-2">
-              <Link prefetch={false}                className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md"
+              <Link
+                prefetch={false}
+                className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md"
                 href="/docs/introduction"
               >
                 Start with Mvpblocks Today

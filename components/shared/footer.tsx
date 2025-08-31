@@ -1,6 +1,7 @@
 "use client"
 
 import { Github, Heart, Instagram, Linkedin, Twitter } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -14,7 +15,9 @@ export default function Footer() {
         <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-6">
           <div className="col-span-2">
             <div className="mb-4 flex items-center justify-start gap-2">
-              <img
+              <Image
+                width={40}
+                height={40}
                 src="/logo.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"

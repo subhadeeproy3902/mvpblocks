@@ -10,6 +10,7 @@ import {
 import { Button } from './ui/button';
 import { confetti } from 'tsparticles-confetti';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function ThankYou({
   isOpen,
@@ -41,7 +42,9 @@ export default function ThankYou({
         <div className="relative">
           <div className="bg-primary/30 absolute -top-10 left-0 h-16 w-full blur-2xl"></div>
           <div className="mt-4 mb-6 flex justify-center">
-            <img src="/success.gif" alt="Success" className="w-56" />
+            <Image
+              width={500}
+              height={500} src="/success.gif" alt="Success" className="w-56" />
           </div>
           <AlertDialogHeader className="relative">
             <AlertDialogTitle className="bg-primary from-foreground to-primary mb-2 via-rose-200 bg-clip-text text-center text-3xl font-medium text-transparent dark:bg-gradient-to-b">

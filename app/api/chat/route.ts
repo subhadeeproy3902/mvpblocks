@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { smoothStream, streamText, tool } from 'ai';
+import { convertToModelMessages, smoothStream, stepCountIs, streamText, tool } from 'ai';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { registry } from '@/registry';
@@ -258,19 +258,18 @@ export async function POST(req: Request) {
     const result = streamText({
       model: groq('meta-llama/llama-4-scout-17b-16e-instruct'),
       system: systemPrompt,
-      messages,
-      maxSteps: 6,
+      messages: convertToModelMessages(messages),
       maxRetries: 3,
-      maxTokens: 8192,
+      stopWhen: stepCountIs(6),
+      maxOutputTokens: 8192,
       tools: {
         fetchComponent: tool({
           description:
             'Fetch the required component asked by the user from the registry',
-          parameters: z.object({
+          inputSchema: z.object({
             name: z.string().describe('The name of the component to fetch'),
           }),
           execute: async ({ name }) => {
-            // Find the exact component by name
             const component = registry.find((item) => item.name === name);
 
             if (component) {
@@ -292,7 +291,7 @@ export async function POST(req: Request) {
         }),
         searchComponents: tool({
           description: 'Search for components by keyword',
-          parameters: z.object({
+          inputSchema: z.object({
             keyword: z.string().describe('The keyword to search for'),
           }),
           execute: async ({ keyword }) => {
@@ -307,7 +306,7 @@ export async function POST(req: Request) {
         }),
         getDependencyCode: tool({
           description: 'Get the code for a registry dependency',
-          parameters: z.object({
+          inputSchema: z.object({
             url: z
               .string()
               .describe('The URL of the registry dependency to fetch'),
@@ -360,7 +359,7 @@ export async function POST(req: Request) {
         generateComponent: tool({
           description:
             'Generate a new component by combining existing components',
-          parameters: z.object({
+          inputSchema: z.object({
             componentName: z
               .string()
               .describe('The name of the component to generate'),
@@ -423,7 +422,7 @@ export async function POST(req: Request) {
         }),
         listComponents: tool({
           description: 'List all components by type or category',
-          parameters: z.object({
+          inputSchema: z.object({
             type: z
               .enum(['ui', 'block', 'hook', 'lib', 'all'])
               .describe(
@@ -595,13 +594,12 @@ export async function POST(req: Request) {
           },
         }),
       },
-      toolCallStreaming: true,
       experimental_transform: smoothStream({
         chunking: 'word',
       }),
     });
 
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error('Unhandled error in chat API:', error);
     throw error;

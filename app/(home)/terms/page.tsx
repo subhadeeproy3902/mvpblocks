@@ -43,7 +43,7 @@ export default function TermsPage() {
                   Introduction to MVPBlocks
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   MVPBlocks is a platform designed for quick, efficient, and
                   customizable MVP (Minimum Viable Product) development. It
@@ -65,7 +65,7 @@ export default function TermsPage() {
                   User Responsibility and Ownership
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <h3 className="mt-6 mb-3 text-xl font-semibold">
                   2.1 User-Generated Content
                 </h3>
@@ -135,7 +135,7 @@ export default function TermsPage() {
                   Platform Usage
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   MVPBlocks offers a variety of features designed to streamline
                   the MVP development process, including:
@@ -179,7 +179,7 @@ export default function TermsPage() {
                   Restrictions and Prohibited Activities
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>While using MVPBlocks, you agree that you will not:</p>
                 <ul>
                   <li className="mb-2">
@@ -217,7 +217,7 @@ export default function TermsPage() {
                   Intellectual Property and Licensing
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <h3 className="mt-6 mb-3 text-xl font-semibold">
                   5.1 Platform Content
                 </h3>
@@ -252,7 +252,7 @@ export default function TermsPage() {
                   No Warranty
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p>
                   MVPBlocks is provided &quot;as is&quot; and &quot;as
                   available.&quot; While we strive to provide a reliable and

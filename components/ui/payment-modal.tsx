@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface PaymentMethod {
   id: string;
@@ -110,7 +111,9 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
                     </div>
                   </div>
                   <div className="relative h-8 w-20">
-                    <img
+                    <Image
+                      width={80}
+                      height={32}
                       src={method.logo || '/placeholder.svg'}
                       alt={method.name}
                       className="object-contain"

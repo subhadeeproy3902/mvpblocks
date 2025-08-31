@@ -21,9 +21,8 @@
     "build-optimized": "bun run optimize-build && next build"
   },
   "dependencies": {
-    "@ai-sdk/groq": "^1.2.9",
-    "@arcjet/inspect": "^1.0.0-beta.10",
-    "@arcjet/next": "^1.0.0-beta.10",
+    "@ai-sdk/groq": "^2.0.16",
+    "@ai-sdk/react": "^2.0.28",
     "@hookform/resolvers": "^5.1.1",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -64,7 +63,7 @@
     "@types/canvas-confetti": "^1.9.0",
     "@types/hsl-to-hex": "^1.0.2",
     "@types/mdx": "^2.0.13",
-    "ai": "^4.3.19",
+    "ai": "^5.0.28",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

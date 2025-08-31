@@ -5,6 +5,7 @@ import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { ShowcaseItem } from '@/lib/showcase';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface ShowcaseCardProps {
   item: ShowcaseItem;
@@ -40,7 +41,8 @@ export function ShowcaseCard({ item, index }: ShowcaseCardProps) {
             <div className="from-muted via-muted/50 to-muted absolute inset-0 animate-pulse bg-gradient-to-r" />
           )}
 
-          <img
+          <Image
+            fill
             src={item.image}
             alt={item.name}
             className={cn(

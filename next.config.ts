@@ -25,8 +25,7 @@ const config = {
   async headers() {
     return [
       {
-        // Cache static assets (webp, png, jpg, svg, ico) for 1 year, immutable
-        source: '/:path*\\.(webp|png|jpg|jpeg|svg|ico|gif|bmp|tiff|avif|woff|woff2|eot|ttf|otf)$',
+        source: '/favicon.ico',
         headers: [
           {
             key: 'Cache-Control',

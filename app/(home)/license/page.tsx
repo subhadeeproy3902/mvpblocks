@@ -84,13 +84,13 @@ export default function LicensePage() {
                   Source Code Redistribution
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p className="mb-4">
                   Redistributions of source code must retain the above copyright
                   notice, this list of conditions and the following disclaimer.
                 </p>
                 <div className="rounded-lg border border-rose-100 bg-rose-50 p-4 dark:border-rose-800/30 dark:bg-rose-900/20">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-center gap-3">
                     <Check className="text-primary mt-0.5 h-5 w-5 shrink-0" />
                     <p className="m-0 text-sm text-rose-800 dark:text-rose-300">
                       When you share the source code, make sure to include the
@@ -110,7 +110,7 @@ export default function LicensePage() {
                   Binary Redistribution
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p className="mb-4">
                   Redistributions in binary form must reproduce the above
                   copyright notice, this list of conditions and the following
@@ -118,7 +118,7 @@ export default function LicensePage() {
                   provided with the distribution.
                 </p>
                 <div className="rounded-lg border border-rose-100 bg-rose-50 p-4 dark:border-rose-800/30 dark:bg-rose-900/20">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-center gap-3">
                     <Check className="text-primary mt-0.5 h-5 w-5 shrink-0" />
                     <p className="m-0 text-sm text-rose-800 dark:text-rose-300">
                       When distributing compiled versions, include the license
@@ -138,7 +138,7 @@ export default function LicensePage() {
                   Endorsement Restriction
                 </h2>
               </div>
-              <div className="pl-14">
+              <div className="sm:pl-14">
                 <p className="mb-4">
                   Neither the name of the copyright holder nor the names of its
                   contributors may be used to endorse or promote products
@@ -146,7 +146,7 @@ export default function LicensePage() {
                   permission.
                 </p>
                 <div className="rounded-lg border border-rose-100 bg-rose-50 p-4 dark:border-rose-800/30 dark:bg-rose-900/20">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-center gap-3">
                     <Check className="text-primary mt-0.5 h-5 w-5 shrink-0" />
                     <p className="m-0 text-sm text-rose-800 dark:text-rose-300">
                       Don&apos;t use the author&apos;s name to promote your

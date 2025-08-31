@@ -3,59 +3,60 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const testimonials = [
   {
     text: 'Mvpblocks has completely changed the way I build UIs. Copy-paste, done. No more design stress.',
-    imageSrc: '/assets/avatars/avatar-1.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Arjun Mehta',
     username: '@arjdev',
   },
   {
     text: 'Honestly shocked at how smooth the animations and styling are out of the box. Just works.',
-    imageSrc: '/assets/avatars/avatar-2.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Sara Lin',
     username: '@sara.codes',
   },
   {
     text: 'Our team launched a client site in 2 days using Mvpblocks. Saved so much time.',
-    imageSrc: '/assets/avatars/avatar-3.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Devon Carter',
     username: '@devninja',
   },
   {
     text: 'Plugged a few blocks into our existing codebase and everything blended perfectly. Massive W.',
-    imageSrc: '/assets/avatars/avatar-6.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Priya Shah',
     username: '@priyacodes',
   },
   {
     text: 'Found a beautiful hero section, dropped it into V0, tweaked copy, and shipped in 15 minutes.',
-    imageSrc: '/assets/avatars/avatar-1.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Leo Martin',
     username: '@leobuilds',
   },
   {
     text: 'Mvpblocks helped us prototype multiple landing pages without writing CSS once.',
-    imageSrc: '/assets/avatars/avatar-6.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Chloe Winters',
     username: '@chloewinters',
   },
   {
     text: 'As a solo founder, Mvpblocks lets me move fast without sacrificing design quality.',
-    imageSrc: '/assets/avatars/avatar-7.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Ayaan Malik',
     username: '@ayaan_dev',
   },
   {
     text: 'Can’t believe how polished the components look. Clients are impressed every time.',
-    imageSrc: '/assets/avatars/avatar-9.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'Monica Reeves',
     username: '@monicareeves',
   },
   {
     text: 'This tool is a lifesaver when deadlines are tight. Drop in a block, tweak, and deploy.',
-    imageSrc: '/assets/avatars/avatar-9.webp',
+    imageSrc: 'https://i.pravatar.cc',
     name: 'James Roy',
     username: '@jamesrdev',
   },
@@ -95,7 +96,7 @@ const TestimonialsColumn = (props: {
                 <div className="from-primary/10 to-card absolute -top-5 -left-5 -z-10 h-40 w-40 rounded-full bg-gradient-to-b blur-md" />
                 <div>{text}</div>
                 <div className="mt-5 flex items-center gap-2">
-                  <img
+                  <Image
                     src={imageSrc}
                     alt={name}
                     height={40}

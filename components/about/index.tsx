@@ -12,6 +12,7 @@ import Codefreq from './code-freq';
 import AboutFeaturesSection from './about-features';
 import { Spotlight } from '@/components/ui/spotlight';
 import HowToUse from './how-to-use';
+import Image from 'next/image';
 
 export default function AboutUsComponent() {
   return (
@@ -48,7 +49,7 @@ export default function AboutUsComponent() {
           </p>
         </motion.div>
         <ContainerScroll>
-          <img
+          <Image
             src="/about.webp"
             alt="hero"
             height={720}

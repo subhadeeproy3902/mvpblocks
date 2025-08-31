@@ -1,6 +1,6 @@
 'use client';
 
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-media-query';
@@ -38,6 +38,22 @@ import {
   RefreshCwIcon,
 } from 'lucide-react';
 import { Button } from './ui/button';
+import Image from 'next/image';
+import {
+  convertToModelMessages,
+  streamText,
+  UIMessage,
+  type LanguageModelUsage,
+} from 'ai';
+import { toast } from 'sonner';
+
+type MyMetadata = {
+  totalUsage: LanguageModelUsage;
+};
+
+type MyUIMessage = UIMessage<MyMetadata> & {
+  createdAt?: Date;
+}
 
 const timeFormatter = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
@@ -47,36 +63,36 @@ const timeFormatter = new Intl.DateTimeFormat('en-US', {
 
 export default function AssistantDialog() {
   const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
   const isDesktop = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false,
   });
   const [tokenUsage, setTokenUsage] = useState(0);
 
   const {
-    messages,
-    setMessages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    status,
-    setInput,
-    stop,
-    error,
-    reload,
-  } = useChat({
+    messages, status, error, sendMessage, regenerate
+  } = useChat<MyUIMessage>({
     experimental_throttle: 50,
-    onFinish: ({}, { usage }) => {
-      setTokenUsage(usage.totalTokens);
+    onFinish: ({ message }) => {
+      setTokenUsage(message.metadata?.totalUsage?.totalTokens || 0);
     },
   });
   const isLoading = status === 'submitted' || status === 'streaming';
 
   // Simple pass-through handler without token limit check
   const handleSubmitWithTokenCheck = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      handleSubmit(e);
+    (e?: React.FormEvent) => {
+      e?.preventDefault();
+      if (!input.trim()) return;
+      // Token limit checking
+      if (tokenUsage >= 3000) {
+        toast.error('Token limit reached. Please clear the chat.');
+        return;
+      }
+      sendMessage({ parts: [{ type: "text", text: input.trim() }] });
+      setInput("");
     },
-    [handleSubmit],
+    [input, sendMessage, setInput, tokenUsage]
   );
 
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -131,8 +147,8 @@ export default function AssistantDialog() {
 
   const clearChat = useCallback(() => {
     setTokenUsage(0);
-    setMessages([]);
-  }, [setTokenUsage, setMessages]);
+    sendMessage({ parts: [] });
+  }, [setTokenUsage, sendMessage]);
 
   const TriggerButton = useMemo(
     () => (
@@ -268,7 +284,12 @@ export default function AssistantDialog() {
                     >
                       <MemoizedMarkdown
                         id={message.id}
-                        content={message.content}
+                        content={
+                          message.parts
+                            .filter((part) => part.type === "text")
+                            .map((part) => part.text)
+                            .join("") || ''
+                        }
                       />
                     </div>
                     <div className="text-fd-muted-foreground mt-1 text-xs">
@@ -298,7 +319,9 @@ export default function AssistantDialog() {
                     </p>
                     <button
                       aria-label="Try request again"
-                      onClick={() => reload()}
+                      onClick={() =>
+                        regenerate()
+                      }
                       className="mt-2 inline-flex items-center text-xs font-medium text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-200"
                     >
                       <RefreshCwIcon className="mr-1 size-3" /> Try again
@@ -314,7 +337,7 @@ export default function AssistantDialog() {
         )}
       </ScrollArea>
     ),
-    [messages, formatTime, EmptyChatState, error, reload],
+    [messages, formatTime, EmptyChatState, error, regenerate],
   );
 
   const chatFooter = useMemo(
@@ -335,7 +358,9 @@ export default function AssistantDialog() {
           <Input
             disabled={isLoading}
             value={input}
-            onChange={handleInputChange}
+            onChange={
+              (e) => setInput(e.target.value)
+            }
             maxLength={100}
             placeholder="Ask about MVPBlocks components..."
             className="h-11 w-0 flex-1 border-0 py-3 text-base shadow-none outline-none focus-visible:ring-0"
@@ -365,11 +390,10 @@ export default function AssistantDialog() {
     [
       handleSubmitWithTokenCheck,
       input,
-      handleInputChange,
+      setInput,
       isLoading,
       messages.length,
       TokenUsageFooter,
-      stop,
     ],
   );
 
@@ -380,7 +404,9 @@ export default function AssistantDialog() {
         <DialogContent className="bg-fd-popover rounded-xl sm:max-w-screen-sm">
           <DialogHeader>
             <div className="flex items-center gap-2">
-              <img
+              <Image
+                width={500}
+                height={500}
                 src="/logo.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
@@ -406,7 +432,9 @@ export default function AssistantDialog() {
       <DrawerContent className="bg-fd-popover">
         <DrawerHeader>
           <div className="flex items-center gap-2">
-            <img src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
+            <Image
+              width={500}
+              height={500} src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
             <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
               Mvpblocks
             </span>

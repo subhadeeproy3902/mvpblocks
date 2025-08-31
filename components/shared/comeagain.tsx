@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { AnimationPlaybackControls, motion, useAnimate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { bricolage } from '@/lib/fonts';
+import Image from 'next/image';
 
 export default function EndSlider() {
   const animation = useRef<AnimationPlaybackControls | null>(null);
@@ -46,7 +47,9 @@ export default function EndSlider() {
                 bricolage.className,
               )}
             >
-              <img
+              <Image
+                width={500}
+                height={500}
                 src="/metalrose.webp"
                 alt="Metal Rose"
                 className="mr-4 h-32 w-32"

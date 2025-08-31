@@ -1,13 +1,14 @@
 'use client';
 
 import { Bot, Copy, CornerRightUp, Sparkles } from 'lucide-react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { useAutoResizeTextarea } from '@/hooks/use-auto-resize-textarea';
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
 import Markdown from 'react-markdown';
 import { toast } from 'sonner';
+import { DefaultChatTransport } from 'ai';
 
 function AiInput({
   value,
@@ -73,25 +74,25 @@ export default function WorkingChatbot() {
   const [responseTimes, setResponseTimes] = useState<Record<string, number>>(
     {},
   );
+  const [input, setInput] = useState('');
   const startTimeRef = useRef<number>(0);
   // Using theme for styling is handled by Tailwind's dark mode classes
 
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: "/api/demo-chat",
+      }),
+    []
+  );
+
   const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit: originalHandleSubmit,
-    status,
-    error,
+    messages, status, error, sendMessage
   } = useChat({
-    api: '/api/demo-chat',
-    onFinish: (message) => {
-      const endTime = Date.now();
-      const duration = (endTime - startTimeRef.current) / 1000;
-      setResponseTimes((prev) => ({
-        ...prev,
-        [message.id]: duration,
-      }));
+    transport,
+    onFinish: ({ message }) => {
+      const duration = (Date.now() - startTimeRef.current) / 1000;
+      setResponseTimes((prev) => ({ ...prev, [message.id]: duration }));
     },
   });
 
@@ -100,11 +101,13 @@ export default function WorkingChatbot() {
 
   const handleSubmit = useCallback(
     (e?: React.FormEvent) => {
+      e?.preventDefault();
       if (!input.trim()) return;
       startTimeRef.current = Date.now();
-      originalHandleSubmit(e);
+      sendMessage({ parts: [{ type: "text", text: input.trim() }] });
+      setInput("");
     },
-    [originalHandleSubmit, input],
+    [input, sendMessage, setInput]
   );
 
   const handleKeyDown = useCallback(
@@ -129,19 +132,30 @@ export default function WorkingChatbot() {
                     <img
                       alt="user"
                       className="mr-2 flex size-6 rounded-full sm:mr-4 md:size-8"
-                      src="/logo.webp"
+                      src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
                       width={32}
                       height={32}
                     />
                     <div className="flex max-w-3xl items-center">
-                      <p>{m.content}</p>
+                      <p>
+                        {m.parts.map((part) =>
+                          part.type === "text" ? part.text : null
+                        )}
+                      </p>
                     </div>
                   </div>
                 ) : (
                   <div className="relative mb-4 flex rounded-xl bg-neutral-50 px-2 py-6 sm:px-4 dark:bg-neutral-900">
                     <Bot className="bg-secondary text-primary mr-2 flex size-8 rounded-full p-1 sm:mr-4" />{' '}
                     <div className="markdown-body w-full max-w-3xl overflow-x-auto rounded-xl">
-                      <Markdown>{m.content}</Markdown>
+                      <Markdown>
+                        {m.parts
+                          .map((part) =>
+                            part.type === "text" ? part.text : ""
+                          )
+                          .join("")}
+
+                      </Markdown>
                       {responseTimes[m.id] && (
                         <div className="mt-2 text-xs text-neutral-500">
                           Response time: {responseTimes[m.id].toFixed(3)}s
@@ -153,7 +167,10 @@ export default function WorkingChatbot() {
                       title="copy"
                       className="absolute top-2 right-2 rounded-full bg-rose-500 p-1 opacity-50 transition-all hover:opacity-75 active:scale-95 dark:bg-neutral-800"
                       onClick={() => {
-                        navigator.clipboard.writeText(m.content);
+                        const textContent = m.parts
+                          .filter((part) => part.type === "text")
+                          .join("");
+                        navigator.clipboard.writeText(textContent);
                         toast.success('Copied to clipboard');
                       }}
                     >
@@ -205,7 +222,7 @@ export default function WorkingChatbot() {
         <div className="relative">
           <AiInput
             value={input}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
             onSubmit={handleSubmit}
             onKeyDown={handleKeyDown}
           />
