@@ -18,7 +18,7 @@ export default function Footer() {
               <Image
                 width={40}
                 height={40}
-                src="/logo.webp"
+                src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
                 alt="logo"
                 className="h-8 w-8 rounded-full"
               />

@@ -97,7 +97,7 @@ export default function Gallery() {
               <div className="flex items-center justify-end gap-2 text-center text-lg md:text-2xl lg:text-3xl">
                 <p>Each component is production-ready</p>
                 <span className="scale-125">
-                  <Image width={500} height={500} src="/logo.webp" alt="" className="spin h-8 w-8" />
+                  <Image width={500} height={500} src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp" alt="" className="spin h-8 w-8" />
                 </span>
               </div>
               <p className="text-center text-lg md:text-2xl lg:text-3xl">

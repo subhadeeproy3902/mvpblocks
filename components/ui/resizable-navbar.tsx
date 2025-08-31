@@ -239,7 +239,7 @@ export const NavbarLogo = () => {
       <Image  
         width={32}
         height={32}
-      src="/logo.webp" alt="logo" className="h-8 w-8 rounded-full" />
+      src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp" alt="logo" className="h-8 w-8 rounded-full" />
       <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
         Mvpblocks
       </span>

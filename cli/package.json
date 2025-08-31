@@ -1,0 +1,60 @@
+{
+  "name": "mvpblocks",
+  "version": "1.0.0",
+  "description": "🚀 Official CLI for MVPBlocks - Copy, paste, customize—and launch your idea faster than ever!",
+  "bin": {
+    "mvpblocks": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build needed for CLI\"",
+    "dev": "node ./src/index.js"
+  },
+  "keywords": [
+    "mvpblocks",
+    "ui-components",
+    "react",
+    "nextjs",
+    "tailwindcss",
+    "cli",
+    "component-library",
+    "blocks",
+    "templates",
+    "mvp",
+    "developer-tools"
+  ],
+  "author": {
+    "name": "Subhadeep Roy",
+    "email": "subhadeeproy3902@gmail.com",
+    "url": "https://github.com/subhadeeproy3902"
+  },
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subhadeeproy3902/mvpblocks.git",
+    "directory": "cli"
+  },
+  "homepage": "https://blocks.mvp-subha.me",
+  "bugs": {
+    "url": "https://github.com/subhadeeproy3902/mvpblocks/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "@radix-ui/react-slot": "^1.2.3",
+    "chalk": "^5.6.0",
+    "execa": "^9.6.0",
+    "gradient-string": "^3.0.0",
+    "node-fetch": "^3.3.2",
+    "picocolors": "^1.1.1",
+    "prettier": "^3.6.1",
+    "typescript": "^5.8.3"
+  }
+}
