@@ -1,9 +1,11 @@
 import arcjet, { createMiddleware, detectBot } from "@arcjet/next";
+
 export const config = {
-  // matcher tells Next.js which routes to run the middleware on.
-  // This runs the middleware on all routes except for static assets.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|assets|favicon|.*\\.(webp|png|jpg|jpeg|svg|ico|json|txt|woff2?|ttf)).*)",
+  ],
 };
+
 const aj = arcjet({
   key: process.env.ARCJET_KEY!, // Get your site key from https://app.arcjet.com
   rules: [
