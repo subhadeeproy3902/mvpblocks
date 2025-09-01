@@ -105,7 +105,7 @@ class ProjectManager {
           : `${pm === 'npm' ? 'npx' : pm} create-next-app@latest ${projectName} --javascript --tailwind`;
         
         console.log('Running:', cmd);
-        execSync(cmd, { stdio: 'inherit', cwd: this.cwd });
+        execSync(cmd, { stdio: 'inherit' });
         
         // Debug: List directories after project creation
         console.log('🔍 Debug: Folders created after Next.js initialization:');
@@ -162,7 +162,7 @@ class ProjectManager {
         const cmd = `${pm === 'npm' ? 'npm' : pm} create vite@latest ${projectName} -- --template ${template}`;
         
         console.log('Running:', cmd);
-        execSync(cmd, { stdio: 'inherit', cwd: this.cwd });
+        execSync(cmd, { stdio: 'inherit' });
         
         // Debug: List directories after project creation
         console.log('🔍 Debug: Folders created after Vite initialization:');
@@ -183,12 +183,12 @@ class ProjectManager {
         // Install dependencies with user's package manager
         console.log('Installing dependencies...');
         const installCmd = pm === 'npm' ? 'npm install' : `${pm} install`;
-        execSync(installCmd, { stdio: 'inherit', cwd: this.cwd });
+        execSync(installCmd, { stdio: 'inherit' });
         
         // Install Tailwind CSS v4 with user's package manager
         console.log('Setting up Tailwind CSS v4...');
         const addTailwindCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-        execSync(`${addTailwindCmd} tailwindcss @tailwindcss/vite`, { stdio: 'inherit', cwd: this.cwd });
+        execSync(`${addTailwindCmd} tailwindcss @tailwindcss/vite`, { stdio: 'inherit' });
         
         // Update vite.config.ts/js with Tailwind CSS v4
         const viteConfigPath = useTypeScript 
@@ -247,7 +247,7 @@ export default defineConfig({
       console.log('📦 Adding shadcn/ui dependencies...');
       const pm = this.detectPackageManager();
       const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-      execSync(`${addCmd} clsx tailwind-merge`, { stdio: 'inherit', cwd: this.cwd });
+      execSync(`${addCmd} clsx tailwind-merge`, { stdio: 'inherit' });
       
       // Create utils file in the appropriate location
       const isNextApp = fs.existsSync(path.join(this.cwd, 'src')) || framework === 'nextjs';
@@ -317,6 +317,24 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
       if (type === 'hooks' && paths['@/hooks/*']) {
         const pathPattern = paths['@/hooks/*'][0];
         return path.join(this.cwd, pathPattern.replace('/*', ''));
+      }
+    }
+
+    // Special handling for Vite projects - keep lib and hooks consistent with components
+    if (framework === 'vite') {
+      // Check if components are in src (standard Vite setup)
+      const srcComponentsPath = path.join(this.cwd, 'src', 'components');
+      const rootComponentsPath = path.join(this.cwd, 'components');
+      
+      if (fs.existsSync(srcComponentsPath)) {
+        // Components are in src, put everything in src
+        return path.join(this.cwd, 'src', type);
+      } else if (fs.existsSync(rootComponentsPath)) {
+        // Components are at root, put everything at root
+        return path.join(this.cwd, type);
+      } else {
+        // No components folder exists yet, default to root for Vite
+        return path.join(this.cwd, type);
       }
     }
 
@@ -854,8 +872,22 @@ async function processRegistryDependencies(registryDependencies, projectManager,
   
   console.log(colors.blue(`📦 Processing ${registryDependencies.length} registry dependencies...`));
   
-  for (const registryUrl of registryDependencies) {
+  for (const registryItem of registryDependencies) {
     try {
+      // Handle both full URLs and component names
+      let registryUrl;
+      let componentName;
+      
+      if (registryItem.startsWith('http')) {
+        // Full URL like "https://blocks.mvp-subha.me/r/sidebar.json"
+        registryUrl = registryItem;
+        componentName = registryItem.split('/').pop().replace('.json', '');
+      } else {
+        // Component name like "button", "separator"
+        componentName = registryItem;
+        registryUrl = `${COMPONENTS_BASE_URL}/${componentName}.json`;
+      }
+      
       console.log(colors.dim(`  → Fetching ${registryUrl}`));
       const response = await fetch(registryUrl);
       if (!response.ok) {
@@ -864,9 +896,6 @@ async function processRegistryDependencies(registryDependencies, projectManager,
       }
       
       const registryComponentData = await response.json();
-      
-      // Extract component name from URL (e.g., sidebar.json -> sidebar)
-      const componentName = registryUrl.split('/').pop().replace('.json', '');
       
       console.log(colors.dim(`  → Installing registry component: ${componentName}`));
       
@@ -896,7 +925,7 @@ async function processRegistryDependencies(registryDependencies, projectManager,
       }
       
     } catch (error) {
-      console.log(colors.yellow(`  ⚠️  Warning: Failed to process registry dependency ${registryUrl}: ${error.message}`));
+      console.log(colors.yellow(`  ⚠️  Warning: Failed to process registry dependency ${registryItem}: ${error.message}`));
     }
   }
 }
@@ -1011,8 +1040,8 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
 
   const fileName = path.basename(targetPath);
   const isCss = fileName.endsWith('.css');
-  const isHook = targetPath.includes('/hooks/');
-  const isLib = targetPath.includes('/lib/');
+  const isHook = targetPath.includes('/hooks/') || fileName.startsWith('use-');
+  const isLib = targetPath.includes('/lib/') || fileName === 'utils.ts' || fileName === 'utils.js';
 
   // Use ProjectManager for smart path resolution
   let targetDir;
@@ -1023,6 +1052,13 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
     targetDir = projectManager.getResolvedPath('hooks');
   } else if (isLib) {
     targetDir = projectManager.getResolvedPath('lib');
+    
+    // Skip utils.ts/utils.js if it already exists
+    const utilsPath = path.join(targetDir, fileName);
+    if (fs.existsSync(utilsPath)) {
+      console.log(colors.dim(`  → Skipping ${fileName} (already exists)`));
+      return;
+    }
   } else if (targetPath.includes('/ui/')) {
     const componentsDir = projectManager.getResolvedPath('components');
     targetDir = path.join(componentsDir, 'ui');

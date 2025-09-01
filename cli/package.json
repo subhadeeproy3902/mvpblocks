@@ -1,6 +1,6 @@
 {
   "name": "mvpblocks",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "🚀 Official CLI for MVPBlocks - Copy, paste, customize—and launch your idea faster than ever!",
   "bin": {
     "mvpblocks": "bin/cli.js"
