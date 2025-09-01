@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import {
   intro,
-  outro,
   spinner,
   cancel,
   select,
@@ -849,6 +848,59 @@ async function fetchComponentData(componentName) {
   return await response.json();
 }
 
+// Helper function to process registry dependencies recursively
+async function processRegistryDependencies(registryDependencies, projectManager, targetLanguage) {
+  if (!registryDependencies?.length) return;
+  
+  console.log(colors.blue(`📦 Processing ${registryDependencies.length} registry dependencies...`));
+  
+  for (const registryUrl of registryDependencies) {
+    try {
+      console.log(colors.dim(`  → Fetching ${registryUrl}`));
+      const response = await fetch(registryUrl);
+      if (!response.ok) {
+        console.log(colors.yellow(`  ⚠️  Warning: Could not fetch ${registryUrl} (${response.status})`));
+        continue;
+      }
+      
+      const registryComponentData = await response.json();
+      
+      // Extract component name from URL (e.g., sidebar.json -> sidebar)
+      const componentName = registryUrl.split('/').pop().replace('.json', '');
+      
+      console.log(colors.dim(`  → Installing registry component: ${componentName}`));
+      
+      // Install files for this registry component
+      if (registryComponentData.files?.length) {
+        for (const file of registryComponentData.files) {
+          await downloadFileFromGitHub(file, registryComponentData, projectManager);
+        }
+      }
+      
+      // Recursively process its registry dependencies
+      if (registryComponentData.registryDependencies?.length) {
+        await processRegistryDependencies(registryComponentData.registryDependencies, projectManager, targetLanguage);
+      }
+      
+      // Install its npm dependencies
+      if (registryComponentData.dependencies?.length) {
+        const pm = detectPackageManager();
+        console.log(colors.dim(`  → Installing npm dependencies for ${componentName}: ${registryComponentData.dependencies.join(', ')}`));
+        
+        try {
+          const cmd = pm === 'npm' ? ['install', ...registryComponentData.dependencies] : ['add', ...registryComponentData.dependencies];
+          await execa(pm, cmd, { stdio: 'pipe' }); // Use pipe to avoid spam
+        } catch (err) {
+          console.log(colors.yellow(`  ⚠️  Warning: Failed to install dependencies for ${componentName}`));
+        }
+      }
+      
+    } catch (error) {
+      console.log(colors.yellow(`  ⚠️  Warning: Failed to process registry dependency ${registryUrl}: ${error.message}`));
+    }
+  }
+}
+
 async function searchComponents(query) {
   const s = spinner();
   s.start(colors.white(`🔍 Searching for "${query}"...`));
@@ -1070,30 +1122,29 @@ export function cn(...inputs) {
     colors.green(`✅ ${colors.bold(componentName)} installed successfully!`),
   );
 
-  // Install dependencies
-  if (
-    componentData.dependencies?.length ||
-    componentData.registryDependencies?.length
-  ) {
-    const allDependencies = [
-      ...(componentData.dependencies || []),
-      ...(componentData.registryDependencies || []),
-    ].filter(Boolean);
+  // Install registry dependencies first (recursively install other components)
+  if (componentData.registryDependencies?.length) {
+    await processRegistryDependencies(componentData.registryDependencies, projectManager, language);
+  }
 
-    if (allDependencies.length > 0) {
+  // Install regular npm dependencies
+  if (componentData.dependencies?.length) {
+    const npmDependencies = componentData.dependencies.filter(Boolean);
+
+    if (npmDependencies.length > 0) {
       const pm = detectPackageManager();
       const s2 = spinner();
       s2.start(
         colors.white(
-          `📦 Installing dependencies with ${colors.bold(pm)}: ${colors.dim(allDependencies.join(', '))}`,
+          `📦 Installing npm dependencies with ${colors.bold(pm)}: ${colors.dim(npmDependencies.join(', '))}`,
         ),
       );
 
       try {
         const cmd =
           pm === 'npm'
-            ? ['install', ...allDependencies]
-            : ['add', ...allDependencies];
+            ? ['install', ...npmDependencies]
+            : ['add', ...npmDependencies];
         await execa(pm, cmd, { stdio: 'inherit' });
         s2.stop(colors.green('✅ Dependencies installed successfully!'));
       } catch (err) {
@@ -1101,7 +1152,7 @@ export function cn(...inputs) {
         console.error(colors.dim('You may need to install them manually:'));
         console.error(
           colors.yellow(
-            `${pm} ${pm === 'npm' ? 'install' : 'add'} ${allDependencies.join(' ')}`,
+            `${pm} ${pm === 'npm' ? 'install' : 'add'} ${npmDependencies.join(' ')}`,
           ),
         );
       }

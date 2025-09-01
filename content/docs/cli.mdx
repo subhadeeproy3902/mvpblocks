@@ -1,0 +1,899 @@
+---
+title: CLI
+description: Complete guide to the MVPBlocks CLI - the most intelligent component CLI that auto-initializes projects with themes
+new: true
+icon: Terminal
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
+# 🚀 MVPBlocks CLI
+
+The **most intelligent component CLI** that not only adds components but can **automatically initialize entire projects** with your preferred framework, theme, and setup.
+
+<Callout type="info">
+**Zero Configuration Required** - MVPBlocks detects empty directories and sets up complete projects automatically!
+</Callout>
+
+## ✨ Revolutionary Features
+
+### 🪄 **Auto-Project Initialization**
+- **Zero Configuration** - Detects if you're in an empty directory and offers to create a project
+- **Framework Choice** - Choose between Next.js or Vite + React
+- **Official Tools** - Uses `create-next-app` and `create-vite` for rock-solid projects
+- **Package Manager Respect** - Automatically detects and uses your preferred package manager
+
+### 🎨 **Interactive Theme Selection**
+- **6 Beautiful Color Palettes** - Zinc, Red, Rose, Orange, Green, Blue
+- **Smart CSS Detection** - Automatically finds and updates your CSS files
+- **Instant Preview** - See color swatches before making your choice
+- **Tailwind Integration** - Perfect CSS variables setup for light/dark themes
+
+## 🛠️ Installation
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    # Use directly (recommended)
+    npx mvpblocks --help
+    
+    # Or install globally
+    npm install -g mvpblocks
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    # Use directly (recommended)
+    yarn dlx mvpblocks --help
+    
+    # Or install globally
+    yarn global add mvpblocks
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    # Use directly (recommended)
+    pnpm dlx mvpblocks --help
+    
+    # Or install globally
+    pnpm add -g mvpblocks
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    # Use directly (recommended)
+    bunx mvpblocks --help
+    
+    # Or install globally
+    bun add -g mvpblocks
+    ```
+  </Tab>
+</Tabs>
+
+## 🚀 Quick Start - The Magic Way
+
+### Auto-Initialization Workflow
+
+<Steps>
+  <Step>
+    **Navigate to your project location**
+    
+    ```bash
+    mkdir my-awesome-project
+    cd my-awesome-project
+    ```
+  </Step>
+  
+  <Step>
+    **Run ANY component command**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step>
+    **Interactive Setup Begins**
+    
+    1. 🔍 **Auto-Detection**: "No package.json found. Let's set up a new project!"
+    2. 🎯 **Framework Choice**: Choose between Next.js or Vite + React
+    3. 🏷️ **Project Name**: Enter your project name (or use current directory)
+    4. 🚀 **Project Creation**: Official tools create your project structure
+    5. 📦 **Dependency Installation**: All dependencies installed automatically
+    6. 🎨 **Theme Selection**: Interactive color palette picker
+    7. 🔧 **Theme Application**: CSS variables applied to your theme file
+    8. 📁 **Component Installation**: Your requested component is added
+  </Step>
+  
+  <Step>
+    **🎉 Complete Project Ready!**
+    
+    Your project is now ready with:
+    - ✅ Framework setup (Next.js or Vite)
+    - ✅ TypeScript/JavaScript configuration
+    - ✅ Tailwind CSS integrated
+    - ✅ Beautiful theme applied
+    - ✅ Component installed and ready to use
+  </Step>
+</Steps>
+
+## 🎨 Theme System
+
+Choose from **6 professionally designed color palettes**:
+
+| Theme | Preview | Perfect For |
+|-------|---------|-------------|
+| 🔘 **Zinc** | Modern neutral grays | Professional dashboards, SaaS apps |
+| 🔴 **Red** | Bold and energetic | Marketing sites, calls-to-action |
+| 🌹 **Rose** | Warm and welcoming | E-commerce, lifestyle brands |
+| 🟠 **Orange** | Creative and vibrant | Creative agencies, portfolios |
+| 🟢 **Green** | Fresh and natural | Health, finance, eco-friendly |
+| 🔵 **Blue** | Trust and reliability | Corporate, tech, social platforms |
+
+<Callout type="tip">
+**Theme Switching**: Want to change themes later? Re-run any component installation and the theme selector will appear!
+</Callout>
+
+## 📚 Commands Reference
+
+### `add` - Add Component (with Auto-Init)
+
+The most powerful command that can both initialize projects and add components.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    # Basic usage
+    npx mvpblocks add button
+    
+    # Force TypeScript (triggers auto-init if needed)
+    npx mvpblocks add hero-1 --ts
+    
+    # Force JavaScript (triggers auto-init if needed)
+    npx mvpblocks add features --js
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    # Basic usage
+    yarn dlx mvpblocks add button
+    
+    # Force TypeScript (triggers auto-init if needed)
+    yarn dlx mvpblocks add hero-1 --ts
+    
+    # Force JavaScript (triggers auto-init if needed)
+    yarn dlx mvpblocks add features --js
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    # Basic usage
+    pnpm dlx mvpblocks add button
+    
+    # Force TypeScript (triggers auto-init if needed)
+    pnpm dlx mvpblocks add hero-1 --ts
+    
+    # Force JavaScript (triggers auto-init if needed)
+    pnpm dlx mvpblocks add features --js
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    # Basic usage
+    bunx mvpblocks add button
+    
+    # Force TypeScript (triggers auto-init if needed)
+    bunx mvpblocks add hero-1 --ts
+    
+    # Force JavaScript (triggers auto-init if needed)
+    bunx mvpblocks add features --js
+    ```
+  </Tab>
+</Tabs>
+
+**Example**: Adding a hero component to a new project
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    mkdir landing-page && cd landing-page
+    npx mvpblocks add hero-1 --ts
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    mkdir landing-page && cd landing-page
+    yarn dlx mvpblocks add hero-1 --ts
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    mkdir landing-page && cd landing-page
+    pnpm dlx mvpblocks add hero-1 --ts
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    mkdir landing-page && cd landing-page
+    bunx mvpblocks add hero-1 --ts
+    ```
+  </Tab>
+</Tabs>
+
+**Result**: Complete Next.js or Vite project with hero component and theme!
+
+### `list` - View All Components
+
+Lists all available components across all categories.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks list
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks list
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks list
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks list
+    ```
+  </Tab>
+</Tabs>
+
+**Example Output**:
+```
+📦 UI Components:
+  • button - Versatile button component with variants
+  • input - Form input with validation states
+  • card - Flexible card container component
+
+🧱 Block Components:
+  • hero-1 - Modern hero section with CTA
+  • features - Feature showcase grid
+  • testimonials - Customer testimonials carousel
+```
+
+### `search` - Find Components
+
+Search for components by name, description, or category.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks search hero
+    npx mvpblocks search button
+    npx mvpblocks search "landing page"
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks search hero
+    yarn dlx mvpblocks search button
+    yarn dlx mvpblocks search "landing page"
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks search hero
+    pnpm dlx mvpblocks search button
+    pnpm dlx mvpblocks search "landing page"
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks search hero
+    bunx mvpblocks search button
+    bunx mvpblocks search "landing page"
+    ```
+  </Tab>
+</Tabs>
+
+**Example**: Searching for hero components
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks search hero
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks search hero
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks search hero
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks search hero
+    ```
+  </Tab>
+</Tabs>
+
+**Example Output**:
+```
+🔍 Search Results for "hero":
+
+🧱 Block Components:
+  • hero-1 - Modern hero section with CTA button
+  • hero-2 - Hero with background image and overlay
+  • hero-3 - Minimal hero with centered content
+```
+
+### `categories` - Browse by Category
+
+View all available component categories.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks categories
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks categories
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks categories
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks categories
+    ```
+  </Tab>
+</Tabs>
+
+**Example Output**:
+```
+📂 Component Categories:
+
+📦 UI Components (15 components)
+  Basic building blocks like buttons, inputs, cards
+
+🧱 Block Components (25 components)  
+  Complete sections like heroes, features, testimonials
+
+🪝 Hooks (8 components)
+  Custom React hooks for enhanced functionality
+
+📚 Library (5 components)
+  Utility functions and helpers
+```
+
+### `info` - Component Details
+
+Get detailed information about a specific component.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks info button
+    npx mvpblocks info hero-1
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks info button
+    yarn dlx mvpblocks info hero-1
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks info button
+    pnpm dlx mvpblocks info hero-1
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks info button
+    bunx mvpblocks info hero-1
+    ```
+  </Tab>
+</Tabs>
+
+**Example**: Getting button component info
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks info button
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks info button
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks info button
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks info button
+    ```
+  </Tab>
+</Tabs>
+
+**Example Output**:
+```
+📦 Component: button
+📝 Description: Versatile button component with multiple variants and sizes
+📂 Category: UI Components
+📋 Dependencies: class-variance-authority, @radix-ui/react-slot
+🏷️ Registry: registry:ui
+📁 File: components/ui/button.tsx
+
+🎨 Variants:
+  • default, destructive, outline, secondary, ghost, link
+  • Sizes: default, sm, lg, icon
+```
+
+### `help` - Show Help
+
+Display help information and available commands.
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks --help
+    npx mvpblocks help
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks --help
+    yarn dlx mvpblocks help
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks --help
+    pnpm dlx mvpblocks help
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks --help
+    bunx mvpblocks help
+    ```
+  </Tab>
+</Tabs>
+
+## 🏗️ Project Structure
+
+### Next.js Auto-Initialization
+
+When you run MVPBlocks in an empty directory and choose **Next.js**:
+
+<Files>
+  <Folder name="my-awesome-project" defaultOpen>
+    <Folder name="app" defaultOpen>
+      <File name="globals.css">🎨 Theme applied here</File>
+      <File name="layout.tsx" />
+      <File name="page.tsx" />
+    </Folder>
+    <Folder name="components" defaultOpen>
+      <Folder name="ui">
+        <File name="button.tsx" />
+      </Folder>
+      <Folder name="mvpblocks">
+        <File name="hero-1.tsx" />
+      </Folder>
+    </Folder>
+    <Folder name="lib">
+      <File name="utils.ts">Utility functions</File>
+    </Folder>
+    <File name="package.json">📦 All dependencies</File>
+    <File name="tailwind.config.ts">🎨 Tailwind setup</File>
+    <File name="tsconfig.json">TypeScript config</File>
+  </Folder>
+</Files>
+
+### Vite Auto-Initialization
+
+When you run MVPBlocks in an empty directory and choose **Vite + React**:
+
+<Files>
+  <Folder name="my-awesome-project" defaultOpen>
+    <Folder name="src" defaultOpen>
+      <File name="index.css">🎨 Theme applied here</File>
+      <File name="App.tsx" />
+      <File name="main.tsx" />
+    </Folder>
+    <Folder name="components" defaultOpen>
+      <Folder name="ui">
+        <File name="button.tsx" />
+      </Folder>
+      <Folder name="mvpblocks">
+        <File name="hero-1.tsx" />
+      </Folder>
+    </Folder>
+    <Folder name="lib">
+      <File name="utils.ts">Utility functions</File>
+    </Folder>
+    <File name="package.json">📦 All dependencies</File>
+    <File name="vite.config.ts">⚡ Vite + Tailwind CSS v4</File>
+    <File name="tsconfig.json">TypeScript config</File>
+  </Folder>
+</Files>
+
+## 🎯 Example Workflows
+
+### Complete Beginner - Landing Page
+
+<Steps>
+  <Step>
+    **Create project directory**
+    
+    ```bash
+    mkdir my-landing-page
+    cd my-landing-page
+    ```
+  </Step>
+  
+  <Step>
+    **Add hero section with auto-initialization**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add hero-1 --ts
+        ```
+      </Tab>
+    </Tabs>
+    
+    **Interactive flow**: Choose Next.js → Enter project name → Pick Blue theme → Done!
+  </Step>
+  
+  <Step>
+    **Add more components**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add features
+        npx mvpblocks add testimonials
+        npx mvpblocks add cta-1
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add features
+        yarn dlx mvpblocks add testimonials
+        yarn dlx mvpblocks add cta-1
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add features
+        pnpm dlx mvpblocks add testimonials
+        pnpm dlx mvpblocks add cta-1
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add features
+        bunx mvpblocks add testimonials
+        bunx mvpblocks add cta-1
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step>
+    **🎉 Perfect landing page ready!**
+    
+    Your complete landing page is now ready with hero, features, testimonials, and CTA sections!
+  </Step>
+</Steps>
+
+### Experienced Developer - SaaS Dashboard
+
+<Steps>
+  <Step>
+    **Create SaaS project**
+    
+    ```bash
+    mkdir my-saas-app
+    cd my-saas-app
+    ```
+  </Step>
+  
+  <Step>
+    **Initialize with Vite for speed**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add dashboard --ts
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add dashboard --ts
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add dashboard --ts
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add dashboard --ts
+        ```
+      </Tab>
+    </Tabs>
+    
+    **Interactive flow**: Choose Vite → Modern setup → Zinc theme → Ready!
+  </Step>
+  
+  <Step>
+    **Add UI components**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add button
+        npx mvpblocks add input
+        npx mvpblocks add modal
+        npx mvpblocks add data-table
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add button
+        yarn dlx mvpblocks add input
+        yarn dlx mvpblocks add modal
+        yarn dlx mvpblocks add data-table
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add button
+        pnpm dlx mvpblocks add input
+        pnpm dlx mvpblocks add modal
+        pnpm dlx mvpblocks add data-table
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add button
+        bunx mvpblocks add input
+        bunx mvpblocks add modal
+        bunx mvpblocks add data-table
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step>
+    **🚀 Production-ready SaaS dashboard!**
+    
+    Complete dashboard with all UI components and proper theming ready for development.
+  </Step>
+</Steps>
+
+### Existing Project - Add Components
+
+<Steps>
+  <Step>
+    **Navigate to existing project**
+    
+    ```bash
+    cd my-existing-project
+    ```
+  </Step>
+  
+  <Step>
+    **Add components directly**
+    
+    <Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+      <Tab value="npm">
+        ```bash
+        npx mvpblocks add hero-2
+        npx mvpblocks add pricing
+        ```
+      </Tab>
+      <Tab value="yarn">
+        ```bash
+        yarn dlx mvpblocks add hero-2
+        yarn dlx mvpblocks add pricing
+        ```
+      </Tab>
+      <Tab value="pnpm">
+        ```bash
+        pnpm dlx mvpblocks add hero-2
+        pnpm dlx mvpblocks add pricing
+        ```
+      </Tab>
+      <Tab value="bun">
+        ```bash
+        bunx mvpblocks add hero-2
+        bunx mvpblocks add pricing
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step>
+    **✅ Components added to existing structure**
+    
+    No initialization needed - components are added directly to your existing project!
+  </Step>
+</Steps>
+
+## 💡 Pro Tips
+
+<Callout type="tip">
+**Package Manager Intelligence**: MVPBlocks automatically detects your package manager from lock files and uses it consistently throughout the project.
+</Callout>
+
+### Theme Switching Made Easy
+
+Want to change themes later? Simply re-run any component installation:
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npx mvpblocks add button --ts  # Theme selector will appear
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn dlx mvpblocks add button --ts  # Theme selector will appear
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm dlx mvpblocks add button --ts  # Theme selector will appear
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx mvpblocks add button --ts  # Theme selector will appear
+    ```
+  </Tab>
+</Tabs>
+
+### Speed Optimization
+
+Install globally for faster access:
+
+<Tabs items={['npm', 'yarn', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npm install -g mvpblocks
+    mvpblocks add hero-1 --ts  # No npx needed!
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn global add mvpblocks
+    mvpblocks add hero-1 --ts  # No yarn dlx needed!
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add -g mvpblocks
+    mvpblocks add hero-1 --ts  # No pnpm dlx needed!
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bun add -g mvpblocks
+    mvpblocks add hero-1 --ts  # No bunx needed!
+    ```
+  </Tab>
+</Tabs>
+
+## 🔧 Options & Flags
+
+| Flag | Description | Example |
+|------|-------------|---------|
+| `--ts`, `--typescript` | Force TypeScript output (triggers auto-init if needed) | `--ts` |
+| `--js`, `--javascript` | Force JavaScript output (triggers auto-init if needed) | `--js` |
+| `--help`, `-h` | Show help message | `--help` |
+
+## 📋 Requirements
+
+- **Node.js** 18 or higher
+- **Package Manager**: npm, yarn, pnpm, or bun (auto-detected)
+- **No existing setup needed** - MVPBlocks creates everything for you!
+
+## 🎨 Supported Frameworks
+
+### **Next.js (Auto-Initialized)**
+- ✅ App Router with TypeScript
+- ✅ Tailwind CSS v3 
+- ✅ ESLint configuration
+- ✅ Automatic `globals.css` theme integration
+- ✅ Optional `src/` directory support
+
+### **Vite + React (Auto-Initialized)**
+- ✅ React with TypeScript/JavaScript  
+- ✅ Tailwind CSS v4 with `@tailwindcss/vite`
+- ✅ Automatic `index.css` theme integration
+- ✅ Lightning-fast development server
+
+### **Existing Projects (Manual)**
+- ✅ Any React/Next.js project with Tailwind CSS
+- ✅ Components added to existing structure
+- ✅ Dependencies auto-installed
+
+<Callout type="warn">
+**Important**: For auto-initialization to trigger, the directory must not contain a `package.json` file. If you want to initialize in a directory with existing files, temporarily move or rename the `package.json`.
+</Callout>
+
+## 🚀 What Makes MVPBlocks Special?
+
+### **🪄 Zero Configuration Magic**
+Other CLIs require you to set up projects manually. MVPBlocks creates **production-ready projects** with a single command.
+
+### **🎨 Professional Theme System**  
+No more tweaking CSS variables manually. Choose from expertly crafted color palettes and get perfect theming instantly.
+
+### **🚀 Official Tools Integration**
+Uses `create-next-app` and `create-vite` under the hood, ensuring you get the same quality setup as manual creation.
+
+### **📦 Package Manager Intelligence**
+Automatically detects and respects your preferred package manager. No configuration needed.
+
+---
+
+**🚀 From zero to production-ready in seconds. That's the MVPBlocks promise.**
