@@ -1,5 +1,11 @@
 import { groq } from '@ai-sdk/groq';
-import { convertToModelMessages, smoothStream, stepCountIs, streamText, tool } from 'ai';
+import {
+  convertToModelMessages,
+  smoothStream,
+  stepCountIs,
+  streamText,
+  tool,
+} from 'ai';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { registry } from '@/registry';

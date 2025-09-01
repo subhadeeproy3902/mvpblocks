@@ -1,5 +1,10 @@
 import { groq } from '@ai-sdk/groq';
-import { convertToModelMessages, smoothStream, stepCountIs, streamText } from 'ai';
+import {
+  convertToModelMessages,
+  smoothStream,
+  stepCountIs,
+  streamText,
+} from 'ai';
 
 export const maxDuration = 30;
 export const revalidate = false;

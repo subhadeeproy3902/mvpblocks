@@ -45,7 +45,10 @@ export function NavbarDemo() {
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
           <NavbarButton variant="gradient">
-            <Link prefetch={false} href="https://github.com/subhadeeproy3902/mvpblocks">
+            <Link
+              prefetch={false}
+              href="https://github.com/subhadeeproy3902/mvpblocks"
+            >
               Github
             </Link>
           </NavbarButton>

@@ -111,7 +111,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
         <img
           src={member.imageUrl}
           alt={member.name}
-          className="object-cover object-center transition-transform duration-500 group-hover:scale-105 w-full h-full"
+          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
@@ -132,7 +132,9 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
           {member.socialLinks && (
             <div className="flex space-x-3">
               {member.socialLinks.map((link) => (
-                <Link prefetch={false}                  key={link.platform}
+                <Link
+                  prefetch={false}
+                  key={link.platform}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -104,7 +104,9 @@ export default function Footer4Col() {
             <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <li key={label}>
-                  <Link prefetch={false}                    href={href}
+                  <Link
+                    prefetch={false}
+                    href={href}
                     className="text-primary hover:text-primary/80 transition"
                   >
                     <span className="sr-only">{label}</span>

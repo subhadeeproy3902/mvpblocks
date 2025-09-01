@@ -3,13 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
-export default function ComponentNotFound(
-  {
-    name,
-  }: {
-    name: string;
-  }
-) {
+export default function ComponentNotFound({ name }: { name: string }) {
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
@@ -46,8 +40,7 @@ export default function ComponentNotFound(
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
                     <span>
-                      Check for typos in the component name or import
-                      statement.
+                      Check for typos in the component name or import statement.
                     </span>
                   </li>
                   <li className="flex items-start">
@@ -78,11 +71,15 @@ export default function ComponentNotFound(
         </Card>
         <p className="text-muted-foreground mt-6 text-center text-sm">
           Need help?{' '}
-          <Link prefetch={false} href="#" className="text-primary font-medium hover:underline">
+          <Link
+            prefetch={false}
+            href="#"
+            className="text-primary font-medium hover:underline"
+          >
             Contact support
           </Link>
         </p>
       </div>
     </div>
-  )
+  );
 }

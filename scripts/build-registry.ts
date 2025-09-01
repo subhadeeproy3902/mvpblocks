@@ -6,6 +6,7 @@ import path from 'path';
 
 const REGISTRY_BASE_PATH = process.cwd();
 const PUBLIC_FOLDER_BASE_PATH = 'public/r';
+const CLI_CONSTANTS_PATH = 'cli/src/constants.js';
 
 /**
  * bun run ./scripts/build-registry.ts
@@ -107,6 +108,86 @@ const getComponentFiles = async (files: File[], registryType: string) => {
   return filesArray;
 };
 
+// Function to update CLI constants with available components
+const updateCliConstants = async (): Promise<boolean> => {
+  console.log('🔄 Updating CLI constants...');
+
+  // Get all component names from the registry
+  const componentNames = registry.map((item) => item.name).sort();
+
+  // Group components by type for better organization in comments
+  const componentsByType: {
+    ui: string[];
+    block: string[];
+    hook: string[];
+    lib: string[];
+    other: string[];
+  } = {
+    ui: [],
+    block: [],
+    hook: [],
+    lib: [],
+    other: [],
+  };
+
+  // Categorize components
+  componentNames.forEach((name) => {
+    const component = registry.find((item) => item.name === name);
+    if (!component) return;
+
+    if (component.type === 'registry:ui') {
+      componentsByType.ui.push(name);
+    } else if (component.type === 'registry:block') {
+      componentsByType.block.push(name);
+    } else if (component.type === 'registry:hook') {
+      componentsByType.hook.push(name);
+    } else if (component.type === 'registry:lib') {
+      componentsByType.lib.push(name);
+    } else {
+      componentsByType.other.push(name);
+    }
+  });
+
+  // Generate the constants file content
+  const constantsContent = `// Auto-generated file - DO NOT EDIT MANUALLY
+// This file is updated automatically by the build-registry script
+// Run 'bun run build:registry' to update this file
+
+export const AVAILABLE_COMPONENTS = [
+${componentsByType.ui.length > 0 ? `  // UI Components (${componentsByType.ui.length} items)\n  ${componentsByType.ui.map((name) => `'${name}'`).join(', ')},\n` : ''}${componentsByType.block.length > 0 ? `  \n  // Block Components (${componentsByType.block.length} items)\n  ${componentsByType.block.map((name) => `'${name}'`).join(', ')},\n` : ''}${componentsByType.hook.length > 0 ? `  \n  // Hooks (${componentsByType.hook.length} items)\n  ${componentsByType.hook.map((name) => `'${name}'`).join(', ')},\n` : ''}${componentsByType.lib.length > 0 ? `  \n  // Utils/Lib (${componentsByType.lib.length} items)\n  ${componentsByType.lib.map((name) => `'${name}'`).join(', ')},\n` : ''}${componentsByType.other.length > 0 ? `  \n  // Other Components (${componentsByType.other.length} items)\n  ${componentsByType.other.map((name) => `'${name}'`).join(', ')}\n` : ''}];
+
+// Registry metadata
+export const REGISTRY_METADATA = {
+  totalComponents: ${componentNames.length},
+  uiComponents: ${componentsByType.ui.length},
+  blockComponents: ${componentsByType.block.length},
+  hooks: ${componentsByType.hook.length},
+  utils: ${componentsByType.lib.length},
+  other: ${componentsByType.other.length},
+  lastUpdated: '${new Date().toISOString()}'
+};
+
+// Legacy export for backward compatibility
+export const REGISTRY_LAST_UPDATED = REGISTRY_METADATA.lastUpdated;
+`;
+
+  // Write the constants file
+  const hasChanged = await shouldWriteFile(
+    CLI_CONSTANTS_PATH,
+    constantsContent,
+  );
+  if (hasChanged) {
+    await writeFileRecursive(CLI_CONSTANTS_PATH, constantsContent);
+    console.log(
+      `✅ Updated CLI constants with ${componentNames.length} components`,
+    );
+    return true;
+  } else {
+    console.log('✅ CLI constants are already up to date');
+    return false;
+  }
+};
+
 const main = async () => {
   let changesCount = 0;
 
@@ -138,13 +219,18 @@ const main = async () => {
 };
 
 main()
-  .then((changes) => {
-    if (changes > 0) {
-      console.log(`✅ Done - Updated ${changes} registry file(s)`);
+  .then(async (changes: number) => {
+    // Update CLI constants after building the registry
+    const cliUpdated = await updateCliConstants();
+
+    if (changes > 0 || cliUpdated) {
+      console.log(
+        `✅ Done - Updated ${changes} registry file(s)${cliUpdated ? ' and CLI constants' : ''}`,
+      );
     } else {
       console.log('✅ Done - No changes needed');
     }
   })
-  .catch((err) => {
+  .catch((err: any) => {
     console.error(err);
   });

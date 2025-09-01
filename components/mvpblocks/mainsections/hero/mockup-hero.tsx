@@ -223,15 +223,15 @@ export default function LucyHero() {
                 scale: isHovered ? 1.05 : 1,
               }}
               transition={{
-                scale: { duration: 0.3, type: 'spring', ease: [0.34, 1.56, 0.64, 1] },
+                scale: {
+                  duration: 0.3,
+                  type: 'spring',
+                  ease: [0.34, 1.56, 0.64, 1],
+                },
               }}
             >
               <PhoneMockup
-                imageUrl={
-                  isDark
-                    ? '/mobile-dark.webp'
-                    : '/mobile-light.webp'
-                }
+                imageUrl={isDark ? '/mobile-dark.webp' : '/mobile-light.webp'}
                 alt="LU-cy mobile app"
                 glowColor={
                   isDark ? 'rgba(229, 62, 62, 0.5)' : 'rgba(229, 62, 62, 0.25)'

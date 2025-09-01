@@ -58,12 +58,15 @@ async function convertToWebP(filePath) {
       .webp({
         quality,
         effort: 6, // Higher effort for better compression
-        lossless: false
+        lossless: false,
       })
       .toFile(webpPath);
 
     const webpStats = fs.statSync(webpPath);
-    const compressionRatio = ((stats.size - webpStats.size) / stats.size * 100).toFixed(1);
+    const compressionRatio = (
+      ((stats.size - webpStats.size) / stats.size) *
+      100
+    ).toFixed(1);
 
     console.log(`Converted ${filePath} to WebP (${compressionRatio}% smaller)`);
     return true;

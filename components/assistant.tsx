@@ -53,7 +53,7 @@ type MyMetadata = {
 
 type MyUIMessage = UIMessage<MyMetadata> & {
   createdAt?: Date;
-}
+};
 
 const timeFormatter = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
@@ -69,14 +69,13 @@ export default function AssistantDialog() {
   });
   const [tokenUsage, setTokenUsage] = useState(0);
 
-  const {
-    messages, status, error, sendMessage, regenerate
-  } = useChat<MyUIMessage>({
-    experimental_throttle: 50,
-    onFinish: ({ message }) => {
-      setTokenUsage(message.metadata?.totalUsage?.totalTokens || 0);
-    },
-  });
+  const { messages, status, error, sendMessage, regenerate } =
+    useChat<MyUIMessage>({
+      experimental_throttle: 50,
+      onFinish: ({ message }) => {
+        setTokenUsage(message.metadata?.totalUsage?.totalTokens || 0);
+      },
+    });
   const isLoading = status === 'submitted' || status === 'streaming';
 
   // Simple pass-through handler without token limit check
@@ -89,10 +88,10 @@ export default function AssistantDialog() {
         toast.error('Token limit reached. Please clear the chat.');
         return;
       }
-      sendMessage({ parts: [{ type: "text", text: input.trim() }] });
-      setInput("");
+      sendMessage({ parts: [{ type: 'text', text: input.trim() }] });
+      setInput('');
     },
-    [input, sendMessage, setInput, tokenUsage]
+    [input, sendMessage, setInput, tokenUsage],
   );
 
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -286,9 +285,9 @@ export default function AssistantDialog() {
                         id={message.id}
                         content={
                           message.parts
-                            .filter((part) => part.type === "text")
+                            .filter((part) => part.type === 'text')
                             .map((part) => part.text)
-                            .join("") || ''
+                            .join('') || ''
                         }
                       />
                     </div>
@@ -319,9 +318,7 @@ export default function AssistantDialog() {
                     </p>
                     <button
                       aria-label="Try request again"
-                      onClick={() =>
-                        regenerate()
-                      }
+                      onClick={() => regenerate()}
                       className="mt-2 inline-flex items-center text-xs font-medium text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-200"
                     >
                       <RefreshCwIcon className="mr-1 size-3" /> Try again
@@ -358,9 +355,7 @@ export default function AssistantDialog() {
           <Input
             disabled={isLoading}
             value={input}
-            onChange={
-              (e) => setInput(e.target.value)
-            }
+            onChange={(e) => setInput(e.target.value)}
             maxLength={100}
             placeholder="Ask about MVPBlocks components..."
             className="h-11 w-0 flex-1 border-0 py-3 text-base shadow-none outline-none focus-visible:ring-0"
@@ -434,7 +429,11 @@ export default function AssistantDialog() {
           <div className="flex items-center gap-2">
             <Image
               width={500}
-              height={500} src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp" alt="logo" className="h-8 w-8 rounded-full" />
+              height={500}
+              src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+              alt="logo"
+              className="h-8 w-8 rounded-full"
+            />
             <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
               Mvpblocks
             </span>

@@ -168,7 +168,13 @@ Add any other context or screenshots about the feature request here.`)}`}
               Tab,
               TypeTable,
               Accordion,
-              a: ({ href, ...props }: { href?: string; [key: string]: any }) => {
+              a: ({
+                href,
+                ...props
+              }: {
+                href?: string;
+                [key: string]: any;
+              }) => {
                 return (
                   // Primary color not underlined
                   <a

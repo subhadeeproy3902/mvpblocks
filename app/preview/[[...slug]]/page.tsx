@@ -1,6 +1,6 @@
 import { ComponentLoader } from '@/components/preview/component-loader';
 import { notFound } from 'next/navigation';
-import { registry } from "@/registry";
+import { registry } from '@/registry';
 
 export default async function PreviewPage({
   params,
@@ -37,4 +37,4 @@ export async function generateStaticParams() {
   return allComponents;
 }
 
-export const dynamic = "force-static"
+export const dynamic = 'force-static';

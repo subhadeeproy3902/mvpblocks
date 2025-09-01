@@ -26,7 +26,11 @@ export default function SigninModal() {
             className="flex size-11 shrink-0 items-center justify-center rounded-full border"
             aria-hidden="true"
           >
-            <img src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp" alt="logo" className="h-8 w-8 rounded-full" />
+            <img
+              src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+              alt="logo"
+              className="h-8 w-8 rounded-full"
+            />
           </div>
           <DialogHeader>
             <DialogTitle className="sm:text-center">Welcome back</DialogTitle>

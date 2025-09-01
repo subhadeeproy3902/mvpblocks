@@ -110,21 +110,27 @@ export default function Team3({
                 <p className="mb-3 text-indigo-300">{member.role}</p>
                 <div className="flex space-x-3">
                   {member.socialMedia?.facebook && (
-                    <Link prefetch={false}                      href={member.socialMedia.facebook}
+                    <Link
+                      prefetch={false}
+                      href={member.socialMedia.facebook}
                       className="text-white hover:text-indigo-300"
                     >
                       <Facebook size={18} />
                     </Link>
                   )}
                   {member.socialMedia?.twitter && (
-                    <Link prefetch={false}                      href={member.socialMedia.twitter}
+                    <Link
+                      prefetch={false}
+                      href={member.socialMedia.twitter}
                       className="text-white hover:text-indigo-300"
                     >
                       <Twitter size={18} />
                     </Link>
                   )}
                   {member.socialMedia?.linkedin && (
-                    <Link prefetch={false}                      href={member.socialMedia.linkedin}
+                    <Link
+                      prefetch={false}
+                      href={member.socialMedia.linkedin}
                       className="text-white hover:text-indigo-300"
                     >
                       <Linkedin size={18} />

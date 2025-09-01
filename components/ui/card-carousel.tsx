@@ -115,7 +115,6 @@ export const CardCarousel: React.FC<CarouselProps> = ({
                   <SwiperSlide key={index}>
                     <div className="size-full rounded-3xl">
                       <Image
-                      
                         src={image.src}
                         width={500}
                         height={500}

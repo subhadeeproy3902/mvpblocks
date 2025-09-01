@@ -20,7 +20,9 @@ export function References({ children }: React.PropsWithChildren) {
 
 export function Reference({ label, link }: LinkItem) {
   return (
-    <Link prefetch={false}      href={link}
+    <Link
+      prefetch={false}
+      href={link}
       target="_blank"
       rel="noreferrer"
       className={cn(

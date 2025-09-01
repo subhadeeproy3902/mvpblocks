@@ -42,7 +42,11 @@ export default function CTA1() {
                 <Phone className="h-7 w-7 text-green-500" />
                 +91-8637373116
               </a>
-              <Link prefetch={false} className="flex items-center gap-2 text-white" href="/">
+              <Link
+                prefetch={false}
+                className="flex items-center gap-2 text-white"
+                href="/"
+              >
                 <Globe className="h-7 w-7 text-blue-500" />
                 mvp-subha.me
               </Link>

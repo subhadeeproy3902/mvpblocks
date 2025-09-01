@@ -1,6 +1,6 @@
-import { ImageResponse } from "next/og";
-import type { ReactElement, ReactNode } from "react";
-import type { ImageResponseOptions } from "next/dist/compiled/@vercel/og/types";
+import { ImageResponse } from 'next/og';
+import type { ReactElement, ReactNode } from 'react';
+import type { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types';
 
 interface GenerateProps {
   title: ReactNode;
@@ -8,13 +8,9 @@ interface GenerateProps {
 }
 
 export function generateOGImage(
-  options: GenerateProps & ImageResponseOptions
+  options: GenerateProps & ImageResponseOptions,
 ): ImageResponse {
-  const {
-    description,
-    title,
-    ...rest
-  } = options;
+  const { description, title, ...rest } = options;
 
   return new ImageResponse(
     generate({
@@ -25,13 +21,11 @@ export function generateOGImage(
       height: 630,
       width: 1200,
       ...rest,
-    }
+    },
   );
 }
 
-export function generate({
-  ...props
-}: GenerateProps): ReactElement {
+export function generate({ ...props }: GenerateProps): ReactElement {
   return (
     <div
       style={{

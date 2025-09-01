@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { Spotlight } from '@/components/ui/spotlight';
 import { motion } from 'framer-motion';
@@ -8,7 +8,6 @@ import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 
 export default function ShowCaseComponent() {
-
   return (
     <div className="relative min-h-screen overflow-hidden px-2 py-32 md:px-6">
       <Spotlight />

@@ -13,29 +13,25 @@ const defaultItems = [
     id: 1,
     name: 'Alex Rivera',
     designation: 'Lead Developer',
-    image:
-      'https://i.pravatar.cc',
+    image: 'https://i.pravatar.cc',
   },
   {
     id: 2,
     name: 'Erick Williams',
     designation: 'UI/UX Designer',
-    image:
-      'https://i.pravatar.cc',
+    image: 'https://i.pravatar.cc',
   },
   {
     id: 3,
     name: 'Mike Johnson',
     designation: 'Product Manager',
-    image:
-      'https://i.pravatar.cc',
+    image: 'https://i.pravatar.cc',
   },
   {
     id: 4,
     name: 'Emma Davis',
     designation: 'Marketing Lead',
-    image:
-      'https://i.pravatar.cc',
+    image: 'https://i.pravatar.cc',
   },
 ];
 

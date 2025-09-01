@@ -43,13 +43,19 @@ export default function NotFound() {
             {/* Quick Actions */}
             <div className="grid gap-3 sm:grid-cols-2">
               <Button asChild className="h-12">
-                <Link prefetch={false} href="/" className="flex items-center gap-2">
+                <Link
+                  prefetch={false}
+                  href="/"
+                  className="flex items-center gap-2"
+                >
                   <Home className="h-4 w-4" />
                   Go Home
                 </Link>
               </Button>
               <Button asChild variant="outline" className="h-12">
-                <Link prefetch={false} href="/docs/introduction"
+                <Link
+                  prefetch={false}
+                  href="/docs/introduction"
                   className="flex items-center gap-2"
                 >
                   <FileText className="h-4 w-4" />
@@ -65,7 +71,9 @@ export default function NotFound() {
               </p>
               <div className="flex gap-2">
                 <Button asChild variant="outline" size="sm">
-                  <Link prefetch={false} href="https://github.com/subhadeeproy3902/mvpblocks/issues"
+                  <Link
+                    prefetch={false}
+                    href="https://github.com/subhadeeproy3902/mvpblocks/issues"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -73,7 +81,9 @@ export default function NotFound() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="sm">
-                  <Link prefetch={false} href="https://x.com/mvp_Subha"
+                  <Link
+                    prefetch={false}
+                    href="https://x.com/mvp_Subha"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

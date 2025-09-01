@@ -4,7 +4,14 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getComponentByName } from '@/registry';
 import { AlertCircle, ArrowLeft, RefreshCw, RotateCw } from 'lucide-react';
-import React, { lazy, Suspense, useEffect, useMemo, useState, useCallback } from 'react';
+import React, {
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+} from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import Link from 'next/link';
 import { AuthorBadge } from '../ui/author-badge';
@@ -21,10 +28,14 @@ type ComponentLoaderProps = {
 
 const LazyComponentWrapper = lazy(() =>
   Promise.resolve({
-    default: ({ Component, reTriggerKey }: { Component: React.ComponentType; reTriggerKey: number }) => (
-      <Component key={reTriggerKey} />
-    )
-  })
+    default: ({
+      Component,
+      reTriggerKey,
+    }: {
+      Component: React.ComponentType;
+      reTriggerKey: number;
+    }) => <Component key={reTriggerKey} />,
+  }),
 );
 
 export function ComponentLoader({
@@ -77,20 +88,23 @@ export function ComponentLoader({
   }
 
   if (error || !Component) {
-    return (
-      <ComponentNotFound name={name} />
-    );
+    return <ComponentNotFound name={name} />;
   }
 
   return (
     <ComponentDisplay
       component={
-        <Suspense fallback={
-          <div className="flex h-full w-full items-center justify-center">
-            <RotateCw className="text-foreground h-6 w-6 animate-spin" />
-          </div>
-        }>
-          <LazyComponentWrapper Component={Component} reTriggerKey={reTriggerKey} />
+        <Suspense
+          fallback={
+            <div className="flex h-full w-full items-center justify-center">
+              <RotateCw className="text-foreground h-6 w-6 animate-spin" />
+            </div>
+          }
+        >
+          <LazyComponentWrapper
+            Component={Component}
+            reTriggerKey={reTriggerKey}
+          />
         </Suspense>
       }
       hasReTrigger={hasReTrigger}
@@ -159,7 +173,7 @@ function ComponentDisplay({
           loading="lazy"
           referrerPolicy="no-referrer"
           sandbox="allow-scripts allow-same-origin"
-          rel='noopener noreferrer'
+          rel="noopener noreferrer"
         />
       ) : (
         <div className="flex h-full w-full justify-center overflow-y-auto">

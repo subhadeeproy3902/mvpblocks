@@ -18,8 +18,10 @@ export function PerformanceMonitor() {
     const measurePerformance = () => {
       try {
         // Get navigation timing
-        const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-        
+        const navigation = performance.getEntriesByType(
+          'navigation',
+        )[0] as PerformanceNavigationTiming;
+
         if (navigation) {
           const metrics: Partial<PerformanceMetrics> = {
             pageLoadTime: navigation.loadEventEnd - navigation.loadEventStart,
@@ -39,7 +41,7 @@ export function PerformanceMonitor() {
             const lastEntry = entries[entries.length - 1];
             metrics.largestContentfulPaint = lastEntry.startTime;
           });
-          
+
           observer.observe({ entryTypes: ['largest-contentful-paint'] });
 
           // Get CLS
@@ -52,22 +54,23 @@ export function PerformanceMonitor() {
             }
             metrics.cumulativeLayoutShift = clsValue;
           });
-          
+
           clsObserver.observe({ entryTypes: ['layout-shift'] });
 
           // Get FID
           const fidObserver = new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
-              metrics.firstInputDelay = (entry as any).processingStart - entry.startTime;
+              metrics.firstInputDelay =
+                (entry as any).processingStart - entry.startTime;
             }
           });
-          
+
           fidObserver.observe({ entryTypes: ['first-input'] });
 
           // Log metrics after 5 seconds
           setTimeout(() => {
             console.log('Performance Metrics:', metrics);
-            
+
             // Send to analytics if needed (optional)
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'page_performance', {
@@ -110,9 +113,12 @@ export function useComponentPerformance(componentName: string) {
     return () => {
       const endTime = performance.now();
       const renderTime = endTime - startTime;
-      
-      if (renderTime > 100) { // Log if component takes more than 100ms
-        console.warn(`Slow component render: ${componentName} took ${renderTime.toFixed(2)}ms`);
+
+      if (renderTime > 100) {
+        // Log if component takes more than 100ms
+        console.warn(
+          `Slow component render: ${componentName} took ${renderTime.toFixed(2)}ms`,
+        );
       }
     };
   }, [componentName]);

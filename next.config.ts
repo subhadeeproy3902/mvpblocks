@@ -16,7 +16,7 @@ const config = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes'],
-    serverComponents: true
+    serverComponents: true,
   },
   serverExternalPackages: ['ts-morph', 'typescript', 'twoslash', 'shiki'],
   images: {

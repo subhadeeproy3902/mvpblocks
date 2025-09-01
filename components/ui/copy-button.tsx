@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import { Check, Copy } from "lucide-react";
-import { Button } from "./button";
-import { useState } from "react";
+import { Check, Copy } from 'lucide-react';
+import { Button } from './button';
+import { useState } from 'react';
 
 export const CopyButton = ({ text }: { text: string }) => {
   const [copied, setCopied] = useState(false);
@@ -31,4 +31,4 @@ export const CopyButton = ({ text }: { text: string }) => {
       )}
     </Button>
   );
-}
+};

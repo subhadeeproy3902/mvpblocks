@@ -125,7 +125,10 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/mainsections/pricing/pricing-glassmorphism'),
+      () =>
+        import(
+          '../components/mvpblocks/mainsections/pricing/pricing-glassmorphism'
+        ),
     ),
   },
   {

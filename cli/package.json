@@ -1,6 +1,6 @@
 {
   "name": "mvpblocks",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "🚀 Official CLI for MVPBlocks - Copy, paste, customize—and launch your idea faster than ever!",
   "bin": {
     "mvpblocks": "./src/index.js"
@@ -8,7 +8,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "echo \"No build needed for CLI\"",
-    "dev": "node ./src/index.js"
+    "dev": "node ./src/index.js",
+    "release": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "publish:latest": "npm publish",
+    "check": "npm info mvpblocks"
   },
   "keywords": [
     "mvpblocks",
@@ -32,7 +37,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/subhadeeproy3902/mvpblocks.git",
+    "url": "git+https://github.com/subhadeeproy3902/mvpblocks.git",
     "directory": "cli"
   },
   "homepage": "https://blocks.mvp-subha.me",

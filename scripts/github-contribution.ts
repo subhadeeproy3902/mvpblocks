@@ -64,7 +64,7 @@ const fetchContributors = async (): Promise<Contributor[]> => {
     }
 
     const data: Contributor[] = await res.json();
-    
+
     // Fetch detailed info for each contributor
     const detailedContributors = await Promise.all(
       data.map(async (contributor) => {
@@ -75,7 +75,7 @@ const fetchContributors = async (): Promise<Contributor[]> => {
               headers: {
                 Authorization: `Bearer ${process.env.GITHUB_TOKEN!}`,
               },
-            }
+            },
           );
           const detail = await res.json();
 
@@ -221,7 +221,7 @@ const fetchCodeFrequency = async (): Promise<{
 // Main execution
 async function main() {
   console.log('🚀 Fetching GitHub data...');
-  
+
   try {
     // Fetch all data in parallel
     const [contributors, userData, codeFrequency] = await Promise.all([
@@ -255,13 +255,14 @@ export type GitHubData = typeof githubData;
 `;
 
     writeFileSync(constantsPath, fileContent);
-    
+
     console.log('✅ GitHub data cached successfully!');
     console.log(`📊 Contributors: ${contributors.length}`);
     console.log(`📈 Total contributions: ${totalContributions}`);
     console.log(`📅 Commit dates: ${Object.keys(userData.userStats).length}`);
-    console.log(`💻 Code frequency entries: ${Object.keys(codeFrequency.codeFrequency).length}`);
-    
+    console.log(
+      `💻 Code frequency entries: ${Object.keys(codeFrequency.codeFrequency).length}`,
+    );
   } catch (error) {
     console.error('❌ Error fetching GitHub data:', error);
     process.exit(1);

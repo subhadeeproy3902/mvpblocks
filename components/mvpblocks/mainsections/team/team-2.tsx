@@ -25,8 +25,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Robert Brown',
     role: 'CEO & Co-Founder',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -36,8 +35,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Leslie Livingston',
     role: 'CTO & Co-Founder',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -47,8 +45,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Joseph McFall',
     role: 'Front-end Developer',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -57,8 +54,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Helene Engels',
     role: 'Front-end Developer',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'github', url: 'https://github.com' },
@@ -67,8 +63,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Thom Belly',
     role: 'UI/UX Designer',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -77,8 +72,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Bonnie Green',
     role: 'Product Manager',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -87,8 +81,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Roberta Casas',
     role: 'Content Strategist',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'twitter', url: 'https://twitter.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -97,8 +90,7 @@ const defaultMembers: TeamMember[] = [
   {
     name: 'Jesse Leos',
     role: 'Back-end Developer',
-    imageUrl:
-      'https://i.pravatar.cc',
+    imageUrl: 'https://i.pravatar.cc',
     socialLinks: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
@@ -182,7 +174,9 @@ function TeamMemberCard({
         {member.socialLinks && (
           <div className="absolute right-0 bottom-4 left-0 z-20 flex justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             {member.socialLinks.map((link) => (
-              <Link prefetch={false}                key={link.platform}
+              <Link
+                prefetch={false}
+                key={link.platform}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"

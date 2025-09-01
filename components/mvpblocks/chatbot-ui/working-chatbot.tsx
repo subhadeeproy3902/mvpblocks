@@ -81,14 +81,12 @@ export default function WorkingChatbot() {
   const transport = useMemo(
     () =>
       new DefaultChatTransport({
-        api: "/api/demo-chat",
+        api: '/api/demo-chat',
       }),
-    []
+    [],
   );
 
-  const {
-    messages, status, error, sendMessage
-  } = useChat({
+  const { messages, status, error, sendMessage } = useChat({
     transport,
     onFinish: ({ message }) => {
       const duration = (Date.now() - startTimeRef.current) / 1000;
@@ -104,10 +102,10 @@ export default function WorkingChatbot() {
       e?.preventDefault();
       if (!input.trim()) return;
       startTimeRef.current = Date.now();
-      sendMessage({ parts: [{ type: "text", text: input.trim() }] });
-      setInput("");
+      sendMessage({ parts: [{ type: 'text', text: input.trim() }] });
+      setInput('');
     },
-    [input, sendMessage, setInput]
+    [input, sendMessage, setInput],
   );
 
   const handleKeyDown = useCallback(
@@ -139,7 +137,7 @@ export default function WorkingChatbot() {
                     <div className="flex max-w-3xl items-center">
                       <p>
                         {m.parts.map((part) =>
-                          part.type === "text" ? part.text : null
+                          part.type === 'text' ? part.text : null,
                         )}
                       </p>
                     </div>
@@ -151,10 +149,9 @@ export default function WorkingChatbot() {
                       <Markdown>
                         {m.parts
                           .map((part) =>
-                            part.type === "text" ? part.text : ""
+                            part.type === 'text' ? part.text : '',
                           )
-                          .join("")}
-
+                          .join('')}
                       </Markdown>
                       {responseTimes[m.id] && (
                         <div className="mt-2 text-xs text-neutral-500">
@@ -168,8 +165,8 @@ export default function WorkingChatbot() {
                       className="absolute top-2 right-2 rounded-full bg-rose-500 p-1 opacity-50 transition-all hover:opacity-75 active:scale-95 dark:bg-neutral-800"
                       onClick={() => {
                         const textContent = m.parts
-                          .filter((part) => part.type === "text")
-                          .join("");
+                          .filter((part) => part.type === 'text')
+                          .join('');
                         navigator.clipboard.writeText(textContent);
                         toast.success('Copied to clipboard');
                       }}

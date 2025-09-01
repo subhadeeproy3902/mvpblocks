@@ -129,7 +129,9 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <Link prefetch={false}          onMouseEnter={() => setHovered(idx)}
+        <Link
+          prefetch={false}
+          onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
@@ -235,11 +237,18 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <Link prefetch={false} href="/" className="z-50 flex items-center justify-center gap-2">
-      <Image  
+    <Link
+      prefetch={false}
+      href="/"
+      className="z-50 flex items-center justify-center gap-2"
+    >
+      <Image
         width={32}
         height={32}
-      src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp" alt="logo" className="h-8 w-8 rounded-full" />
+        src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+        alt="logo"
+        className="h-8 w-8 rounded-full"
+      />
       <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-2xl font-semibold text-transparent md:text-xl dark:bg-gradient-to-b">
         Mvpblocks
       </span>

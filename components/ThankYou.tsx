@@ -44,7 +44,11 @@ export default function ThankYou({
           <div className="mt-4 mb-6 flex justify-center">
             <Image
               width={500}
-              height={500} src="/success.gif" alt="Success" className="w-56" />
+              height={500}
+              src="/success.gif"
+              alt="Success"
+              className="w-56"
+            />
           </div>
           <AlertDialogHeader className="relative">
             <AlertDialogTitle className="bg-primary from-foreground to-primary mb-2 via-rose-200 bg-clip-text text-center text-3xl font-medium text-transparent dark:bg-gradient-to-b">

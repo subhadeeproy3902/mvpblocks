@@ -38,7 +38,7 @@ console.log('📦 Optimizing package.json...');
 const packagePath = join(process.cwd(), 'package.json');
 if (existsSync(packagePath)) {
   const packageJson = JSON.parse(readFileSync(packagePath, 'utf-8'));
-  
+
   // Remove dev dependencies from production build
   const optimizedPackage = {
     ...packageJson,
@@ -50,10 +50,10 @@ if (existsSync(packagePath)) {
       'github-contribution': packageJson.scripts['github-contribution'],
     },
   };
-  
+
   writeFileSync(
     join(process.cwd(), 'package.prod.json'),
-    JSON.stringify(optimizedPackage, null, 2)
+    JSON.stringify(optimizedPackage, null, 2),
   );
   console.log('✅ Production package.json created');
 }
@@ -73,12 +73,12 @@ const buildInfo = {
 
 writeFileSync(
   join(process.cwd(), 'build-info.json'),
-  JSON.stringify(buildInfo, null, 2)
+  JSON.stringify(buildInfo, null, 2),
 );
 
 console.log('🎉 Build optimization complete!');
 console.log('📋 Optimizations applied:');
-buildInfo.optimizations.forEach(opt => console.log(`  ✓ ${opt}`));
+buildInfo.optimizations.forEach((opt) => console.log(`  ✓ ${opt}`));
 
 // 6. Display bundle size recommendations
 console.log('\n📏 Bundle Size Recommendations:');

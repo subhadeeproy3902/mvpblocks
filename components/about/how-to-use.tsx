@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useRef, useEffect, useState } from 'react';
 import { Compare } from '../ui/compare';
@@ -43,12 +43,8 @@ export default function HowToUse() {
         <Keyboard />
         {mounted && (
           <Compare
-            firstImage={
-              theme === 'dark' ? '/abt2.webp' : '/abt2-dark.webp'
-            }
-            secondImage={
-              theme === 'dark' ? '/abt1-dark.webp' : '/abt1.webp'
-            }
+            firstImage={theme === 'dark' ? '/abt2.webp' : '/abt2-dark.webp'}
+            secondImage={theme === 'dark' ? '/abt1-dark.webp' : '/abt1.webp'}
             firstImageClassName="object-cover object-left-top w-full"
             secondImageClassname="object-cover object-left-top w-full"
             className="absolute -top-16 -right-32 z-0 hidden rounded-[22px] md:rounded-lg xl:block"
@@ -58,5 +54,5 @@ export default function HowToUse() {
         )}
       </div>
     </div>
-  )
+  );
 }

@@ -24,7 +24,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           'transparent',
         ]}
       >
-        <Link prefetch={false} href="/docs/ai-saas-marketing" className="font-medium">
+        <Link
+          prefetch={false}
+          href="/docs/ai-saas-marketing"
+          className="font-medium"
+        >
           Launched best Saas Marketing template at cheap —{' '}
           <span className="underline">Check out</span>
         </Link>{' '}
@@ -33,7 +37,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <RootProvider
         search={{
           options: {
-            type: "static",
+            type: 'static',
           },
         }}
       >
