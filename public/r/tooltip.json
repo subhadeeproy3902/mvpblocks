@@ -1,5 +1,11 @@
 {
   "name": "tooltip",
+  "description": "A tooltip component for displaying additional information on hover. Official Shadcn UI component.",
+  "categories": [
+    "tooltip",
+    "interactive",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-tooltip"

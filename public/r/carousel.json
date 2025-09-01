@@ -1,5 +1,10 @@
 {
   "name": "carousel",
+  "description": "A carousel component for cycling through content. Official Shadcn UI component.",
+  "categories": [
+    "carousel",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

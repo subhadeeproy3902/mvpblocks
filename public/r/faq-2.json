@@ -1,5 +1,10 @@
 {
   "name": "faq-2",
+  "categories": [
+    "faq",
+    "mainsection"
+  ],
+  "description": "A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

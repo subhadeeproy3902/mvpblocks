@@ -1,5 +1,10 @@
 {
   "name": "technical-pricing",
+  "description": "A technical pricing section with a sleek design and hover effects. Used for SaaS products, pricing sections, etc.",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

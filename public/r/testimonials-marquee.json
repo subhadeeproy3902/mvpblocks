@@ -1,5 +1,10 @@
 {
   "name": "testimonials-marquee",
+  "categories": [
+    "testimonials",
+    "mainsection"
+  ],
+  "description": "A testimonials section with a marquee style scrolling effect and a sleek design. Used for testimonials sections, reviews, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

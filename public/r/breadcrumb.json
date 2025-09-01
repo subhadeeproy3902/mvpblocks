@@ -1,5 +1,11 @@
 {
   "name": "breadcrumb",
+  "description": "A breadcrumb component for displaying navigation hierarchy. Official Shadcn UI component.",
+  "categories": [
+    "breadcrumb",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-slot"

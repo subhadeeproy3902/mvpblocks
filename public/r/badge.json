@@ -1,5 +1,10 @@
 {
   "name": "badge",
+  "description": "A badge component for displaying small status descriptors. Official Shadcn UI component.",
+  "categories": [
+    "badge",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-slot"

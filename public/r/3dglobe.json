@@ -1,5 +1,10 @@
 {
   "name": "3dglobe",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A modern hero section with a 3D globe animation and a sleek design. Used for SaaS products, hero sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion"

@@ -1,5 +1,10 @@
 {
   "name": "web3-hero",
+  "description": "A futuristic web3 themed hero section with a sleek design and hover effects. Used for SaaS products, Web3 related page heroes, hero sections, etc.",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

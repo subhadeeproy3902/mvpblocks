@@ -1,5 +1,11 @@
 {
   "name": "menubar",
+  "description": "A menubar component for navigation. Official Shadcn UI component.",
+  "categories": [
+    "menubar",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-menubar"

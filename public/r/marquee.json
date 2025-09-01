@@ -1,5 +1,10 @@
 {
   "name": "marquee",
+  "description": "A marquee component for scrolling text or elements horizontally or vertically",
+  "categories": [
+    "carousel",
+    "animation"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "react"

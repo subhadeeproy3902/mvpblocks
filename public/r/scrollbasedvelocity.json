@@ -1,5 +1,10 @@
 {
   "name": "scrollbasedvelocity",
+  "description": "Scroll velocity animations create a dynamic and engaging effect as elements move on the screen. This technique can be used to draw attention to specific content or enhance the overall user experience.",
+  "categories": [
+    "scroll-animation",
+    "design"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "framer-motion",

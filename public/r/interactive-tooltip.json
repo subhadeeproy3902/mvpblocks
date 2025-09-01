@@ -1,5 +1,11 @@
 {
   "name": "interactive-tooltip",
+  "categories": [
+    "tooltip",
+    "interactive",
+    "design"
+  ],
+  "description": "A dynamic tooltip component with mouse-following animations and spring physics. Perfect for displaying user profiles or team member information with engaging hover effects.",
   "author": "nuelst",
   "type": "registry:block",
   "dependencies": [

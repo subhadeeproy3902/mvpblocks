@@ -1,5 +1,11 @@
 {
   "name": "contact-us-1",
+  "categories": [
+    "contact",
+    "mainsection",
+    "form"
+  ],
+  "description": "A modern contact us section with a sleek modern and designer style. Used for contact sections, designer landing pages etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

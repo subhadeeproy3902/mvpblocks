@@ -13,7 +13,7 @@ export default function CTA() {
             alt="Agent CTA Background"
             className="absolute inset-0 object-cover object-right md:object-center"
             sizes="(max-width: 768px) 100vw, 1280px"
-            src="/cta-bg.png"
+            src="https://i.postimg.cc/15qzD9gF/cta-bg.png"
           />
           <div className="absolute inset-0 -top-32 flex flex-col items-center justify-center md:-top-40">
             <h1 className="max-w-xs bg-gradient-to-r from-zinc-200/60 via-zinc-50 to-zinc-200/60 bg-clip-text text-center text-4xl font-medium tracking-tighter text-transparent md:max-w-xl md:text-7xl">

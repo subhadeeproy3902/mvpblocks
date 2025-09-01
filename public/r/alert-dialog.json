@@ -1,5 +1,11 @@
 {
   "name": "alert-dialog",
+  "description": "An alert dialog component for critical messages. Official Shadcn UI component.",
+  "categories": [
+    "dialog",
+    "modal",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-alert-dialog"

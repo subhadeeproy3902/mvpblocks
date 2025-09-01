@@ -50,7 +50,7 @@ export default function EndSlider() {
               <Image
                 width={500}
                 height={500}
-                src="/metalrose.webp"
+                src="https://i.postimg.cc/fTZ1NW4f/metalrose.webp"
                 alt="Metal Rose"
                 className="mr-4 h-32 w-32"
               />

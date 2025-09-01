@@ -1,5 +1,11 @@
 {
   "name": "skeleton-table-two",
+  "categories": [
+    "shimmer",
+    "skeleton",
+    "loader"
+  ],
+  "description": "A detailed skeleton table component with a sleek design and shimmer effect. Used for loading states, etc.",
   "author": "midhunkalarikkal",
   "type": "registry:block",
   "dependencies": [],

@@ -1,5 +1,6 @@
 {
   "name": "sparkles",
+  "description": "Sparkles effect component using tsparticles making the background magical and sparkly",
   "type": "registry:ui",
   "dependencies": [
     "@tsparticles/engine",
@@ -17,5 +18,8 @@
       "path": "/components/ui/sparkles.tsx",
       "target": "components/ui/sparkles.tsx"
     }
+  ],
+  "categories": [
+    "background"
   ]
 }

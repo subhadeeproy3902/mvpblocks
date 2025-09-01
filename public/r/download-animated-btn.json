@@ -1,5 +1,10 @@
 {
   "name": "download-animated-btn",
+  "categories": [
+    "button",
+    "interactive"
+  ],
+  "description": "A download button with an animated download icon and hover effects.",
   "author": "Smalakargh",
   "type": "registry:block",
   "dependencies": [

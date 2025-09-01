@@ -1,5 +1,11 @@
 {
   "name": "tabs",
+  "description": "A tabs component for switching between content sections. Official Shadcn UI component.",
+  "categories": [
+    "tabs",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-tabs"

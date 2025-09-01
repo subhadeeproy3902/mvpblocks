@@ -1,5 +1,10 @@
 {
   "name": "classic-loader",
+  "categories": [
+    "loader",
+    "animation"
+  ],
+  "description": "A classic loader animation component with a sleek design. Used for loading animations, etc.",
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [],

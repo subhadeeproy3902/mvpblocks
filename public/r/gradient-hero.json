@@ -1,5 +1,10 @@
 {
   "name": "gradient-hero",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A modern gradient hero section with vibrant colors and a sleek design. Used for SaaS products, hero sections, etc.",
   "author": "Xeven777",
   "type": "registry:block",
   "dependencies": [

@@ -1,5 +1,6 @@
 {
   "name": "particles",
+  "description": "Particles effect component making the background lively and interactive on mouse move",
   "type": "registry:ui",
   "dependencies": [
     "react"
@@ -14,5 +15,8 @@
       "path": "/components/ui/particles.tsx",
       "target": "components/ui/particles.tsx"
     }
+  ],
+  "categories": [
+    "background"
   ]
 }

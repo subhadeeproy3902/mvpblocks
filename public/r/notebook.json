@@ -1,5 +1,10 @@
 {
   "name": "notebook",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A modern cool looking hero section for documentations or notebook or study related websites. Used for Documented products like APIs, educational hero sections, hero sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

@@ -1,5 +1,10 @@
 {
   "name": "glow-card",
+  "description": "A card component with a glowing inner box shadow effect whose colors can be changed as well. Used for showcasing products, features, etc.",
+  "categories": [
+    "card",
+    "design"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

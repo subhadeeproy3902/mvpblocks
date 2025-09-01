@@ -1,5 +1,10 @@
 {
   "name": "pricing-with-modals",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
+  "description": "A modern pricing section with 3 pricing tiers and modals for payment options. Best use for actual payment options stuffs",
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

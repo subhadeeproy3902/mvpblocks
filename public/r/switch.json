@@ -1,5 +1,11 @@
 {
   "name": "switch",
+  "description": "A switch component for toggling between two states. Official Shadcn UI component.",
+  "categories": [
+    "switch",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-switch"

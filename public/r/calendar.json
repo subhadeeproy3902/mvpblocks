@@ -1,5 +1,11 @@
 {
   "name": "calendar",
+  "description": "A calendar component for date selection. Official Shadcn UI component.",
+  "categories": [
+    "calendar",
+    "date-picker",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "react-day-picker@8.10.1",

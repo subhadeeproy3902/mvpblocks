@@ -1,5 +1,6 @@
 {
   "name": "gradient-bars",
+  "description": "Animated gradient bars background base UI component",
   "type": "registry:ui",
   "dependencies": [],
   "registryDependencies": [],
@@ -10,5 +11,8 @@
       "path": "/components/ui/gradient-bars.tsx",
       "target": "components/ui/gradient-bars.tsx"
     }
+  ],
+  "categories": [
+    "background"
   ]
 }

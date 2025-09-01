@@ -1,5 +1,10 @@
 {
   "name": "hero-1",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A simple yet awesome looking hero section with a image or video being the perfect showcase of any useful product with the immediate details of it. Used for SaaS products, hero sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

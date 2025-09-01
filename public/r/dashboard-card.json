@@ -1,5 +1,10 @@
 {
   "name": "dashboard-card",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A dashboard card component that shows key metrics with icons and values. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

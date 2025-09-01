@@ -1,5 +1,9 @@
 {
   "name": "circular-text",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "A circular text animation using framer motion. Used for showcasing text animations.",
   "type": "registry:block",
   "author": "nuelst",
   "dependencies": [

@@ -1,5 +1,11 @@
 {
   "name": "select",
+  "description": "A select component for choosing from a list of options. Official Shadcn UI component.",
+  "categories": [
+    "select",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-select"

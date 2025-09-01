@@ -39,7 +39,7 @@ export default function Gallery() {
           width={100}
           height={100}
           className="brightness-[0.95] dark:opacity-5"
-          src="/trending1.png"
+          src="https://i.postimg.cc/tCMMGjDB/trending1.png"
         />
       </div>
       <div className="absolute top-1/2 right-0 hidden -translate-y-1/2 lg:block">
@@ -48,7 +48,7 @@ export default function Gallery() {
           width={100}
           height={100}
           className="brightness-[0.95] dark:opacity-5"
-          src="/trending2.png"
+          src="https://i.postimg.cc/zfm23FsW/trending2.png"
         />
       </div>
       <div className="mx-auto px-2">

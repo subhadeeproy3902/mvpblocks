@@ -1,5 +1,11 @@
 {
   "name": "textarea",
+  "description": "A textarea component for multi-line text input. Official Shadcn UI component.",
+  "categories": [
+    "textarea",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

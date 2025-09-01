@@ -1,5 +1,6 @@
 {
   "name": "spotlight",
+  "description": "Spotlight effect which is a nice touch to any landing page which needs a stunning hero section",
   "type": "registry:ui",
   "dependencies": [
     "react"
@@ -12,5 +13,9 @@
       "path": "/components/ui/spotlight.tsx",
       "target": "components/ui/spotlight.tsx"
     }
+  ],
+  "categories": [
+    "background",
+    "hero"
   ]
 }

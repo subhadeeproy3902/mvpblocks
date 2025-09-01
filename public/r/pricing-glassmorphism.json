@@ -1,5 +1,10 @@
 {
   "name": "pricing-glassmorphism",
+  "description": "A glassmorphism styled pricing section with 3 pricing tiers. Used for SaaS products, pricing sections, etc.",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
   "author": "surya10102000",
   "type": "registry:block",
   "dependencies": [

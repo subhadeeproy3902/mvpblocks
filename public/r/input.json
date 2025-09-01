@@ -1,5 +1,11 @@
 {
   "name": "input",
+  "description": "An input component for user text input. Official Shadcn UI component.",
+  "categories": [
+    "input",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

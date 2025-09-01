@@ -1,5 +1,11 @@
 {
   "name": "hover-card",
+  "description": "A hover card component for displaying additional information on hover. Official Shadcn UI component.",
+  "categories": [
+    "hover-card",
+    "interactive",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-hover-card"

@@ -1,5 +1,10 @@
 {
   "name": "recent-activity",
+  "description": "A recent activity component that shows a list of recent activities with timestamps. Used a base component for admin-dashboard-1. Used for admin dashboards, activity feeds, etc.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

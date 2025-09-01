@@ -1,5 +1,6 @@
 {
   "name": "multi-step-form",
+  "description": "A multi-step form component with validation and progress tracking",
   "type": "registry:ui",
   "dependencies": [
     "framer-motion",
@@ -22,5 +23,9 @@
       "path": "/components/ui/multi-step-form.tsx",
       "target": "components/ui/multi-step-form.tsx"
     }
+  ],
+  "categories": [
+    "form",
+    "interactive"
   ]
 }

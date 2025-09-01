@@ -1,5 +1,11 @@
 {
   "name": "toggle-group",
+  "description": "A toggle group component for grouping multiple toggle buttons. Official Shadcn UI component.",
+  "categories": [
+    "toggle",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-toggle-group"

@@ -1,5 +1,10 @@
 {
   "name": "waitlist",
+  "categories": [
+    "page",
+    "layout"
+  ],
+  "description": "A complete waitlist page with a form to collect user emails and a sleek design. Used for product launches, waitlisting page, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

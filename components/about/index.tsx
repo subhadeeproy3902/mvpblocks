@@ -50,7 +50,7 @@ export default function AboutUsComponent() {
         </motion.div>
         <ContainerScroll>
           <Image
-            src="/about.webp"
+            src="https://i.postimg.cc/G3YFm1cM/about.webp"
             alt="hero"
             height={720}
             width={1400}

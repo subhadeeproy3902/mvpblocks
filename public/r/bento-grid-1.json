@@ -1,5 +1,10 @@
 {
   "name": "bento-grid-1",
+  "categories": [
+    "grid",
+    "layout"
+  ],
+  "description": "Bento grids are a flexible and responsive layout system that allows you to create complex grid structures with ease. They are designed to adapt to various screen sizes and orientations, making them ideal for modern web applications. This bento grid layout component features a sleek design and hover effects, making it perfect for showcasing features, or small showoffs.",
   "type": "registry:block",
   "author": "Xeven777",
   "dependencies": [

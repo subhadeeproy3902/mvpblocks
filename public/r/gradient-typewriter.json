@@ -1,5 +1,9 @@
 {
   "name": "gradient-typewriter",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "A gradient typewriter text animation using framer motion. Used for showcasing text animations.",
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

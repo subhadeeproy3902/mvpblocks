@@ -1,5 +1,10 @@
 {
   "name": "scroll-area",
+  "description": "A scroll area component smooth overflow scrolling. Official Shadcn UI component.",
+  "categories": [
+    "scrollbar",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-scroll-area"

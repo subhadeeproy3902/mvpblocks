@@ -44,7 +44,7 @@ export function DrawerCodePreview({
   const [codeCopied, setCodeCopied] = useState(false);
 
   const handleCopy = () => {
-    const cli = `npx shadcn@latest add ${siteLink}/r/${name}.json`;
+    const cli = `npx mvpblocks add ${name}`;
     navigator.clipboard.writeText(cli);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);

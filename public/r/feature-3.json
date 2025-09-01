@@ -1,5 +1,10 @@
 {
   "name": "feature-3",
+  "categories": [
+    "features",
+    "mainsection"
+  ],
+  "description": "A modern features section with a sleek design and feature cards. Used for features or services sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

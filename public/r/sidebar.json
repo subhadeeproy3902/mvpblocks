@@ -1,5 +1,11 @@
 {
   "name": "sidebar",
+  "description": "A sidebar component for navigation and additional content areas. Official Shadcn UI component.",
+  "categories": [
+    "sidebar",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-slot",

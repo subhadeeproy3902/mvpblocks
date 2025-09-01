@@ -1,5 +1,10 @@
 {
   "name": "login-form1",
+  "categories": [
+    "form",
+    "authentication"
+  ],
+  "description": "A modern login form component with a sleek design and form validation. Used for authentication forms, login pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

@@ -1,5 +1,11 @@
 {
   "name": "button",
+  "description": "A button component with multiple variants and sizes. Official Shadcn UI component.",
+  "categories": [
+    "button",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-slot"

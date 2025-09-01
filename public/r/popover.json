@@ -1,5 +1,11 @@
 {
   "name": "popover",
+  "description": "A popover component for displaying content in a floating container. Official Shadcn UI component.",
+  "categories": [
+    "popover",
+    "interactive",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-popover"

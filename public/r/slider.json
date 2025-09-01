@@ -1,5 +1,11 @@
 {
   "name": "slider",
+  "description": "A slider component for selecting a value from a range. Official Shadcn UI component.",
+  "categories": [
+    "slider",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-slider"

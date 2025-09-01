@@ -1,5 +1,10 @@
 {
   "name": "bento-grid-2",
+  "categories": [
+    "grid",
+    "layout"
+  ],
+  "description": "A bento grid layout component with a sleek design and hover effects. Used for features, gallery, small showoffs etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

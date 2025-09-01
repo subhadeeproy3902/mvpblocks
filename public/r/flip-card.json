@@ -1,5 +1,11 @@
 {
   "name": "flip-card",
+  "categories": [
+    "card",
+    "interactive",
+    "design"
+  ],
+  "description": "A flip card designer component with a sleek design and hover effects. Used in features, small showoffs etc.",
   "author": "nuelst",
   "type": "registry:block",
   "dependencies": [

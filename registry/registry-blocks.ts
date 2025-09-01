@@ -1,10 +1,12 @@
 import type { Registry } from '@/registry/schema';
 import * as React from 'react';
 
-const siteLink = 'localhost:3000';
 export const blocks: Registry = [
   {
     name: 'text-reveal-1',
+    description:
+      'A text reveal animation that reveals text from the bottom. Used for titles, headings, etc.',
+    categories: ['text-animation'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -23,6 +25,9 @@ export const blocks: Registry = [
   },
   {
     name: 'text-reveal-2',
+    description:
+      'A text reveal animation that reveals text from the bottom with a gradient effect with word split. Used for titles, headings, etc.',
+    categories: ['text-animation'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -41,6 +46,9 @@ export const blocks: Registry = [
   },
   {
     name: 'gradient-bars-preview',
+    description:
+      'A background with animated gradient bars component. Used for sections, cards, etc as a sleek awesome background.',
+    categories: ['background'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -60,6 +68,9 @@ export const blocks: Registry = [
   },
   {
     name: 'masonry-grid-1',
+    description:
+      'A responsive masonry grid layout component. Used for galleries, portfolios, image grids, etc.',
+    categories: ['grid', 'layout'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -75,6 +86,9 @@ export const blocks: Registry = [
   },
   {
     name: 'glow-card',
+    description:
+      'A card component with a glowing inner box shadow effect whose colors can be changed as well. Used for showcasing products, features, etc.',
+    categories: ['card', 'design'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -90,6 +104,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-5',
+    description:
+      'A modern pricing section with 4 pricing tiers. Used for SaaS products, pricing sections, etc.',
+    categories: ['pricing', 'mainsection'],
     type: 'registry:block',
     dependencies: ['lucide-react', 'react', '@number-flow/react'],
     registryDependencies: [
@@ -109,6 +126,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-glassmorphism',
+    description:
+      'A glassmorphism styled pricing section with 3 pricing tiers. Used for SaaS products, pricing sections, etc.',
+    categories: ['pricing', 'mainsection'],
     author: 'surya10102000',
     type: 'registry:block',
     dependencies: ['lucide-react', 'framer-motion'],
@@ -133,6 +153,9 @@ export const blocks: Registry = [
   },
   {
     name: 'login-form-3',
+    description:
+      'A modern login form with social login options and a sleek design with a nice image background. Used for authentication pages, login sections, etc.',
+    categories: ['form', 'authentication'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [],
@@ -148,6 +171,9 @@ export const blocks: Registry = [
   },
   {
     name: 'product-1',
+    description:
+      'A Learn and grow card component with a sleek design and hover effects. Used for showcasing products, features, etc.',
+    categories: ['card', 'design'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -163,6 +189,9 @@ export const blocks: Registry = [
   },
   {
     name: 'code-block-1',
+    description:
+      'A code block component with syntax highlighting and a sleek design. Used for showcasing code snippets, tutorials, etc.',
+    categories: ['code', 'design', 'technical'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -178,6 +207,9 @@ export const blocks: Registry = [
   },
   {
     name: 'ellipsis-block',
+    description:
+      'A code block component that shows an ellipsis animation to indicate loading or more content. Used for showcasing code snippets, tutorials, etc.',
+    categories: ['code', 'design', 'technical'],
     type: 'registry:block',
     dependencies: ['react', 'lucide-react', 'framer-motion'],
     registryDependencies: [],
@@ -193,6 +225,9 @@ export const blocks: Registry = [
   },
   {
     name: 'web3-hero',
+    description:
+      'A futuristic web3 themed hero section with a sleek design and hover effects. Used for SaaS products, Web3 related page heroes, hero sections, etc.',
+    categories: ['hero', 'mainsection'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -208,6 +243,9 @@ export const blocks: Registry = [
   },
   {
     name: 'technical-pricing',
+    description:
+      'A technical pricing section with a sleek design and hover effects. Used for SaaS products, pricing sections, etc.',
+    categories: ['pricing', 'mainsection'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -226,6 +264,9 @@ export const blocks: Registry = [
   },
   {
     name: 'meshy-cards',
+    description:
+      'A set of cards with a meshy gradient background. Used for showcasing products, features, etc.',
+    categories: ['card', 'design'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -241,6 +282,9 @@ export const blocks: Registry = [
   },
   {
     name: 'login-form-2',
+    description:
+      'A sleek login form with a nice logo in the left and the form in the right with responsiveness. Used for authentication pages, login sections, etc.',
+    categories: ['form', 'authentication'],
     author: 'Xeven777',
     type: 'registry:block',
     dependencies: ['framer-motion'],
@@ -263,6 +307,9 @@ export const blocks: Registry = [
   },
   {
     name: 'footer-newsletter',
+    description:
+      'A modern footer with a newsletter subscription form and social media links. Used for website footers, etc.',
+    categories: ['footer', 'mainsection'],
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -279,6 +326,9 @@ export const blocks: Registry = [
   },
   {
     name: 'designer-pricing',
+    description:
+      'A modern designer pricing section with 3 pricing tiers. Used for SaaS products, pricing sections, etc.',
+    categories: ['pricing', 'mainsection'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -295,6 +345,9 @@ export const blocks: Registry = [
   },
   {
     name: 'minimal-hero',
+    description:
+      'A cool looking minimal hero section with a sleek design and animation. Used for SaaS products, hero sections, etc.',
+    categories: ['hero', 'mainsection'],
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [],
@@ -310,6 +363,9 @@ export const blocks: Registry = [
   },
   {
     name: 'footer-glow',
+    description:
+      'A modern footer with a glowing effect and social media links. Used for website footers, etc.',
+    categories: ['footer', 'mainsection', 'design'],
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -325,6 +381,9 @@ export const blocks: Registry = [
   },
   {
     name: 'admin-dashboard-1',
+    description:
+      'A complete and professional admin dashboard layout with sidebar, header, cards, charts, tables, and more. Used for admin panels, analytics dashboards, etc.',
+    categories: ['dashboard', 'layout', 'page'],
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
     registryDependencies: [
@@ -361,6 +420,9 @@ export const blocks: Registry = [
   },
   {
     name: 'dashboard-header',
+    description:
+      'A dashboard header component with a title, subtitle, and action buttons. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.',
+    categories: ['dashboard', 'layout'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -393,6 +455,9 @@ export const blocks: Registry = [
   },
   {
     name: 'recent-activity',
+    description:
+      'A recent activity component that shows a list of recent activities with timestamps. Used a base component for admin-dashboard-1. Used for admin dashboards, activity feeds, etc.',
+    categories: ['dashboard', 'layout'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [],
@@ -413,6 +478,9 @@ export const blocks: Registry = [
   },
   {
     name: 'system-status',
+    description:
+      'A system status component that shows the status of various system components with indicators. Used a base component for admin-dashboard-1. Used for admin dashboards, system monitoring pages, etc.',
+    categories: ['dashboard', 'layout'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [],
@@ -433,6 +501,9 @@ export const blocks: Registry = [
   },
   {
     name: 'quick-actions',
+    categories: ['dashboard', 'layout'],
+    description:
+      'A quick actions component that shows a set of action buttons for quick access. Used a base component for admin-dashboard-1. Used for admin dashboards, action panels, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -456,6 +527,9 @@ export const blocks: Registry = [
   },
   {
     name: 'users-table',
+    categories: ['dashboard', 'layout'],
+    description:
+      'A users table component that shows a list of users with details and actions. Used a base component for admin-dashboard-1. Used for admin dashboards, user management pages, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -479,6 +553,9 @@ export const blocks: Registry = [
   },
   {
     name: 'dashboard-card',
+    categories: ['dashboard', 'layout'],
+    description:
+      'A dashboard card component that shows key metrics with icons and values. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [],
@@ -499,6 +576,9 @@ export const blocks: Registry = [
   },
   {
     name: 'revenue-chart',
+    categories: ['dashboard', 'layout'],
+    description:
+      'A revenue chart component that shows revenue data over time with a line chart. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -522,6 +602,9 @@ export const blocks: Registry = [
   },
   {
     name: 'admin-sidebar',
+    categories: ['dashboard', 'layout'],
+    description:
+      'A responsive admin sidebar component with navigation links and a collapsible design. Used a base component for admin-dashboard-1. Used for admin dashboards, side navigation, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react', 'next-themes', 'react'],
     registryDependencies: [
@@ -552,6 +635,9 @@ export const blocks: Registry = [
   },
   {
     name: 'header-2',
+    description:
+      'A modern header with navigation links and a call-to-action button. Used for website headers, webpages, etc.',
+    categories: ['header', 'mainsection'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [],
@@ -567,6 +653,9 @@ export const blocks: Registry = [
   },
   {
     name: 'header-1',
+    description:
+      'A simple header with navigation links and a call-to-action button. Used for website headers, webpages, etc.',
+    categories: ['header', 'mainsection'],
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'next-themes', 'react'],
     registryDependencies: [],
@@ -582,6 +671,9 @@ export const blocks: Registry = [
   },
   {
     name: 'waitlist',
+    categories: ['page', 'layout'],
+    description:
+      'A complete waitlist page with a form to collect user emails and a sleek design. Used for product launches, waitlisting page, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'next-themes', 'react'],
     registryDependencies: [
@@ -601,6 +693,9 @@ export const blocks: Registry = [
   },
   {
     name: 'basic-pagination',
+    categories: ['pagination', 'navigation'],
+    description:
+      'A basic pagination component with previous and next buttons and page numbers. Used for navigating through pages of content, lists, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -621,6 +716,9 @@ export const blocks: Registry = [
   },
   {
     name: 'congusted-pricing',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A modern pricing section with 3 pricing tiers and a sleek design where pricing cards too close too each other giving it a really good design look. Used for SaaS products, pricing sections, etc.',
     type: 'registry:block',
     dependencies: [
       'framer-motion',
@@ -651,6 +749,9 @@ export const blocks: Registry = [
   },
   {
     name: 'mockup-hero',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern hero section with a phone mockup image which when hovered has a 3D like animation and a sleek design. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'next-themes', 'react'],
     registryDependencies: [
@@ -670,6 +771,9 @@ export const blocks: Registry = [
   },
   {
     name: 'app-hero',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern app hero section with a sleek design and hover effects. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -688,6 +792,9 @@ export const blocks: Registry = [
   },
   {
     name: 'contact-us-2',
+    categories: ['contact', 'mainsection', 'form'],
+    description:
+      'A modern contact us section with a sleek design and a contact form. Used for contact sections, etc.',
     type: 'registry:block',
     author: 'ParnaRoyChowdhury777',
     dependencies: ['lucide-react', 'react'],
@@ -704,6 +811,9 @@ export const blocks: Registry = [
   },
   {
     name: 'sparkles-logo',
+    categories: ['logo-cloud', 'mainsection', 'branding'],
+    description:
+      'A logo cloud section with a sparkle animation effect with the logos. Logo clouds are used to showcase a collection of logos or brands in a visually appealing way. They can be used to highlight partnerships, sponsors, or featured brands.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -722,6 +832,9 @@ export const blocks: Registry = [
   },
   {
     name: 'animated-ai-chat',
+    categories: ['chatbot', 'ai'],
+    description:
+      'An animated AI chat interface component with a sleek design and animations. Used for chatbot interfaces, AI assistants, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -737,6 +850,9 @@ export const blocks: Registry = [
   },
   {
     name: 'multi-step-form-preview',
+    categories: ['form', 'authentication'],
+    description:
+      'A multi-step form component with a progress bar and navigation buttons. Used for signup forms, surveys, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -759,6 +875,9 @@ export const blocks: Registry = [
   },
   {
     name: 'signin-modal',
+    categories: ['modal', 'authentication'],
+    description:
+      'A sign-in modal component with social login options and a sleek design. Used for authentication modals, sign-in forms, etc.',
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [
@@ -781,6 +900,9 @@ export const blocks: Registry = [
   },
   {
     name: 'signup-modal',
+    categories: ['modal', 'authentication'],
+    description:
+      'A sign-up modal component with social sign-up options and a sleek design. Used for authentication modals, sign-up forms, etc.',
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [
@@ -802,6 +924,9 @@ export const blocks: Registry = [
   },
   {
     name: 'delete-project',
+    categories: ['modal', 'confirmation'],
+    description:
+      'A delete project confirmation modal component with a sleek design and confirmation buttons. Used for delete confirmations, modals, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
     registryDependencies: [
@@ -823,6 +948,9 @@ export const blocks: Registry = [
   },
   {
     name: 'toc-dialog',
+    categories: ['modal', 'navigation'],
+    description:
+      'A table of contents dialog component with a sleek design and navigation links. Used for table of contents, modals, etc.',
     type: 'registry:block',
     dependencies: ['react'],
     registryDependencies: [
@@ -842,6 +970,9 @@ export const blocks: Registry = [
   },
   {
     name: 'working-chatbot',
+    categories: ['chatbot', 'ai'],
+    description:
+      'A working chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react', 'react-markdown', 'sonner'],
     registryDependencies: [
@@ -861,6 +992,9 @@ export const blocks: Registry = [
   },
   {
     name: 'notebook',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern cool looking hero section for documentations or notebook or study related websites. Used for Documented products like APIs, educational hero sections, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [
@@ -879,6 +1013,9 @@ export const blocks: Registry = [
   },
   {
     name: 'geometric-hero',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern geometric hero section with abstract shapes and a sleek design. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react'],
     registryDependencies: [
@@ -897,6 +1034,9 @@ export const blocks: Registry = [
   },
   {
     name: 'faq-2',
+    categories: ['faq', 'mainsection'],
+    description:
+      'A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -915,6 +1055,9 @@ export const blocks: Registry = [
   },
   {
     name: 'testimonials-marquee',
+    categories: ['testimonials', 'mainsection'],
+    description:
+      'A testimonials section with a marquee style scrolling effect and a sleek design. Used for testimonials sections, reviews, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react'],
     registryDependencies: [
@@ -936,6 +1079,9 @@ export const blocks: Registry = [
   },
   {
     name: 'bento-grid-2',
+    categories: ['grid', 'layout'],
+    description:
+      'A bento grid layout component with a sleek design and hover effects. Used for features, gallery, small showoffs etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -954,6 +1100,9 @@ export const blocks: Registry = [
   },
   {
     name: 'faq-3',
+    categories: ['faq', 'mainsection'],
+    description:
+      'A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -972,6 +1121,9 @@ export const blocks: Registry = [
   },
   {
     name: 'scrollbasedvelocity-demo',
+    categories: ['scroll-animation', 'design'],
+    description:
+      'A demo of scroll based velocity text animation using framer motion. Used for showcasing text animations.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -993,6 +1145,9 @@ export const blocks: Registry = [
   },
   {
     name: 'gradient-typewriter',
+    categories: ['text-animation'],
+    description:
+      'A gradient typewriter text animation using framer motion. Used for showcasing text animations.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/typewriter.json'],
@@ -1009,6 +1164,9 @@ export const blocks: Registry = [
   },
   {
     name: 'typewriter-demo',
+    categories: ['text-animation'],
+    description:
+      'A simple typewriter text animation using framer motion. Used for showcasing text animations.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/typewriter.json'],
@@ -1024,6 +1182,9 @@ export const blocks: Registry = [
   },
   {
     name: 'circular-text',
+    categories: ['text-animation'],
+    description:
+      'A circular text animation using framer motion. Used for showcasing text animations.',
     type: 'registry:block',
     author: 'nuelst',
     dependencies: ['framer-motion', 'react'],
@@ -1040,6 +1201,9 @@ export const blocks: Registry = [
   },
   {
     name: 'trading',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A simple yet awesome looking hero section with a image or video being the perfect showcase of any useful product with the immediate details of it. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react'],
     registryDependencies: [
@@ -1060,6 +1224,9 @@ export const blocks: Registry = [
   },
   {
     name: 'cta-3',
+    categories: ['cta', 'mainsection'],
+    description:
+      'A modern call-to-action section. Used for call-to-action sections, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1075,6 +1242,9 @@ export const blocks: Registry = [
   },
   {
     name: 'faq-1',
+    categories: ['faq', 'mainsection'],
+    description:
+      'A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.',
     type: 'registry:block',
     dependencies: [
       '@radix-ui/react-accordion',
@@ -1097,6 +1267,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-with-modals',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A modern pricing section with 3 pricing tiers and modals for payment options. Best use for actual payment options stuffs',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [
@@ -1123,6 +1296,9 @@ export const blocks: Registry = [
   },
   {
     name: '3dglobe',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern hero section with a 3D globe animation and a sleek design. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion'],
     registryDependencies: [],
@@ -1138,6 +1314,9 @@ export const blocks: Registry = [
   },
   {
     name: 'interactive-tooltip',
+    categories: ['tooltip', 'interactive', 'design'],
+    description:
+      'A dynamic tooltip component with mouse-following animations and spring physics. Perfect for displaying user profiles or team member information with engaging hover effects.',
     author: 'nuelst',
     type: 'registry:block',
     dependencies: ['motion/react', 'react'],
@@ -1154,6 +1333,9 @@ export const blocks: Registry = [
   },
   {
     name: 'about-us-1',
+    categories: ['about', 'mainsection'],
+    description:
+      'About sections provide a brief overview of your product or service, highlighting its key features and benefits. They help users understand what your product is about and why they should use it.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -1173,6 +1355,9 @@ export const blocks: Registry = [
   },
   {
     name: 'about-us-2',
+    categories: ['about', 'mainsection'],
+    description:
+      'About sections provide a brief overview of your product or service, highlighting its key features and benefits. They help users understand what your product is about and why they should use it.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'next-themes', 'react'],
     registryDependencies: [
@@ -1193,6 +1378,8 @@ export const blocks: Registry = [
   },
   {
     name: 'animated-btn1',
+    categories: ['button', 'interactive'],
+    description: 'Just a simple animated button with hover effects.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1208,6 +1395,9 @@ export const blocks: Registry = [
   },
   {
     name: 'bento-grid-1',
+    categories: ['grid', 'layout'],
+    description:
+      'Bento grids are a flexible and responsive layout system that allows you to create complex grid structures with ease. They are designed to adapt to various screen sizes and orientations, making them ideal for modern web applications. This bento grid layout component features a sleek design and hover effects, making it perfect for showcasing features, or small showoffs.',
     type: 'registry:block',
     author: 'Xeven777',
     dependencies: ['lucide-react', 'framer-motion'],
@@ -1224,6 +1414,9 @@ export const blocks: Registry = [
   },
   {
     name: 'bolt',
+    categories: ['chatbot', 'ai'],
+    description:
+      'A bolt.new like chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/button.json'],
@@ -1239,6 +1432,9 @@ export const blocks: Registry = [
   },
   {
     name: 'bouncing-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A simple bouncing loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1254,6 +1450,8 @@ export const blocks: Registry = [
   },
   {
     name: 'btn-gradient1',
+    categories: ['button', 'interactive'],
+    description: 'A cool looking button with hover effects.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/button.json'],
@@ -1269,6 +1467,9 @@ export const blocks: Registry = [
   },
   {
     name: 'classic-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A classic loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1284,6 +1485,9 @@ export const blocks: Registry = [
   },
   {
     name: 'concentric-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A concentric loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1299,6 +1503,9 @@ export const blocks: Registry = [
   },
   {
     name: 'contact-us-1',
+    categories: ['contact', 'mainsection', 'form'],
+    description:
+      'A modern contact us section with a sleek modern and designer style. Used for contact sections, designer landing pages etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: [
@@ -1321,6 +1528,9 @@ export const blocks: Registry = [
   },
   {
     name: 'conversation1',
+    categories: ['chatbot', 'ai'],
+    description:
+      'A simple chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
     registryDependencies: [
@@ -1340,6 +1550,9 @@ export const blocks: Registry = [
   },
   {
     name: 'cta-1',
+    categories: ['cta', 'mainsection'],
+    description:
+      'A modern call-to-action section. Used for call-to-action sections, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1355,6 +1568,9 @@ export const blocks: Registry = [
   },
   {
     name: 'cta-2',
+    categories: ['cta', 'mainsection'],
+    description:
+      'A modern call-to-action section. Used for call-to-action sections, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1370,6 +1586,9 @@ export const blocks: Registry = [
   },
   {
     name: 'dot-card',
+    categories: ['card', 'design'],
+    description:
+      'A minimal grid card with a dot design element used normally for showing a info. Used in features, small showoffs etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1385,6 +1604,9 @@ export const blocks: Registry = [
   },
   {
     name: 'flip-card',
+    categories: ['card', 'interactive', 'design'],
+    description:
+      'A flip card designer component with a sleek design and hover effects. Used in features, small showoffs etc.',
     author: 'nuelst',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react', 'cn'],
@@ -1401,6 +1623,9 @@ export const blocks: Registry = [
   },
   {
     name: 'feature-1',
+    categories: ['features', 'mainsection'],
+    description:
+      'A modern features section with a sleek design and feature cards. Used for features or services sections, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1416,6 +1641,9 @@ export const blocks: Registry = [
   },
   {
     name: 'feature-2',
+    categories: ['features', 'mainsection'],
+    description:
+      'A modern features section with a sleek design and feature cards. Used for features or services sections, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -1431,6 +1659,9 @@ export const blocks: Registry = [
   },
   {
     name: 'feature-3',
+    categories: ['features', 'mainsection'],
+    description:
+      'A modern features section with a sleek design and feature cards. Used for features or services sections, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1446,6 +1677,9 @@ export const blocks: Registry = [
   },
   {
     name: 'fitness-hero',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern fitness hero section with a sleek design and vibrant colors. Used for fitness products, health services, hero sections, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/button.json'],
@@ -1461,6 +1695,9 @@ export const blocks: Registry = [
   },
   {
     name: 'footer-4col',
+    categories: ['footer', 'required'],
+    description:
+      'A modern footer section with 4 columns for links and information. Used for website footers, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1476,6 +1713,9 @@ export const blocks: Registry = [
   },
   {
     name: 'globe1',
+    categories: ['3d', 'design'],
+    description:
+      'A 3D globe animation component with a sleek design and interactive features. Used for showcasing global reach, locations, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/globe.json'],
@@ -1491,6 +1731,9 @@ export const blocks: Registry = [
   },
   {
     name: 'globe2',
+    categories: ['3d', 'design'],
+    description:
+      'A 3D globe animation component with a sleek design and interactive features. Used for showcasing global reach, locations, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/globe.json'],
@@ -1506,6 +1749,9 @@ export const blocks: Registry = [
   },
   {
     name: 'gradient-hero',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A modern gradient hero section with vibrant colors and a sleek design. Used for SaaS products, hero sections, etc.',
     author: 'Xeven777',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react'],
@@ -1525,6 +1771,9 @@ export const blocks: Registry = [
   },
   {
     name: 'hero-1',
+    categories: ['hero', 'mainsection'],
+    description:
+      'A simple yet awesome looking hero section with a image or video being the perfect showcase of any useful product with the immediate details of it. Used for SaaS products, hero sections, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1540,6 +1789,9 @@ export const blocks: Registry = [
   },
   {
     name: 'login-form1',
+    categories: ['form', 'authentication'],
+    description:
+      'A modern login form component with a sleek design and form validation. Used for authentication forms, login pages, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [],
@@ -1555,6 +1807,9 @@ export const blocks: Registry = [
   },
   {
     name: 'modified-classic-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A modified classic loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1573,6 +1828,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pulsating-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A pulsating loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion'],
     registryDependencies: [],
@@ -1588,6 +1846,9 @@ export const blocks: Registry = [
   },
   {
     name: 'retro-card',
+    categories: ['card', 'design'],
+    description:
+      'A retro styled card with a sleek design and hover effects. Used in features, small showoffs etc.',
     type: 'registry:block',
     dependencies: [],
     registryDependencies: [],
@@ -1603,6 +1864,9 @@ export const blocks: Registry = [
   },
   {
     name: 'ripple-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A ripple loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion'],
     registryDependencies: [],
@@ -1618,6 +1882,9 @@ export const blocks: Registry = [
   },
   {
     name: 'simple-pricing',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A modern pricing section with 3 pricing tiers and a sleek design. Used for pricing sections, etc.',
     type: 'registry:block',
     dependencies: [
       'framer-motion',
@@ -1645,6 +1912,9 @@ export const blocks: Registry = [
   },
   {
     name: 'spiral-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A spiral loader animation component with a sleek design. Used for loading animations, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion'],
     registryDependencies: [],
@@ -1660,6 +1930,9 @@ export const blocks: Registry = [
   },
   {
     name: 'star-on-github',
+    categories: ['button', 'interactive'],
+    description:
+      'A star on GitHub button component with a sleek design and hover effects. Used for GitHub repositories, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/button.json'],
@@ -1675,6 +1948,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-1',
+    categories: ['team', 'mainsection'],
+    description:
+      'A modern team section with team member cards with their location, name, designation, description and social icons. Used in team sections, about us pages, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -1690,6 +1966,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-2',
+    categories: ['team', 'mainsection'],
+    description:
+      'A modern simple team section with team member cards with their name, designation and social icons. Used in team sections, about us pages, etc.',
     type: 'registry:block',
     dependencies: ['framer-motion', 'lucide-react', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -1705,6 +1984,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-3',
+    categories: ['team', 'mainsection'],
+    description:
+      'A modern team section with team member cards with their name, role and social icons. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1721,6 +2003,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-4',
+    categories: ['team', 'mainsection', 'interactive'],
+    description:
+      'A designer team section with team member cards with their name, and role. Also has filtering options as well to filter team members based on their roles. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1737,6 +2022,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-5',
+    categories: ['team', 'mainsection'],
+    description:
+      'A simple team section with team member cards with their name and designation. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1753,6 +2041,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-6',
+    categories: ['team', 'mainsection'],
+    description:
+      'A professional team section with team member cards with their name and designation,. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1769,6 +2060,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-7',
+    categories: ['team', 'mainsection'],
+    description:
+      'A modern and technical team section with team member cards with their name, designation, small description and social icons. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1785,6 +2079,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-8',
+    categories: ['team', 'mainsection'],
+    description:
+      'A creative designer team section with team member cards with their name, designation and social icons along with hover animations. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1801,6 +2098,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-9',
+    categories: ['team', 'mainsection'],
+    description:
+      'A unique team section with team member cards with their name, designation and animated description entrance effect. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1817,6 +2117,9 @@ export const blocks: Registry = [
   },
   {
     name: 'team-10',
+    categories: ['team', 'mainsection'],
+    description:
+      'A modern team section with team member cards with their name and designation but in a carousel format. Used in team sections, about us pages, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1833,6 +2136,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-2',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A modern pricing section with 3 pricing tiers and a sleek design. Used for pricing sections, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1853,6 +2159,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-3',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A basic pricing section with 2 pricing tiers and a simple design. Used for pricing sections, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1872,6 +2181,9 @@ export const blocks: Registry = [
   },
   {
     name: 'pricing-4',
+    categories: ['pricing', 'mainsection'],
+    description:
+      'A beautiful descriptive pricing section with a single pricing tiers and a sleek design. Used for pricing sections, etc.',
     author: 'mosespace',
     type: 'registry:block',
     dependencies: ['lucide-react', 'react'],
@@ -1891,6 +2203,9 @@ export const blocks: Registry = [
   },
   {
     name: 'testimonials-carousel',
+    categories: ['testimonials', 'mainsection', 'interactive'],
+    description:
+      'A modern testimonials section with a sleek design and carousel functionality. Used for testimonials sections, reviews, etc.',
     type: 'registry:block',
     dependencies: [
       'embla-carousel-react',
@@ -1915,9 +2230,11 @@ export const blocks: Registry = [
         ),
     ),
   },
-
   {
     name: 'twittercard',
+    categories: ['card', 'design'],
+    description:
+      'A twitter like card with a sleek design and hover effects. Used in reviews, small showoffs etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -1933,6 +2250,9 @@ export const blocks: Registry = [
   },
   {
     name: 'v0-chat',
+    categories: ['chatbot', 'ai'],
+    description:
+      'A v0.dev like chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.',
     type: 'registry:block',
     dependencies: ['lucide-react'],
     registryDependencies: [
@@ -1953,6 +2273,9 @@ export const blocks: Registry = [
   },
   {
     name: 'skeleton-card-one',
+    categories: ['shimmer', 'skeleton', 'loader'],
+    description:
+      'A simple skeleton card component with a sleek design and shimmer effect. Used for loading states, etc.',
     author: 'midhunkalarikkal',
     type: 'registry:block',
     dependencies: [],
@@ -1969,6 +2292,9 @@ export const blocks: Registry = [
   },
   {
     name: 'skeleton-table-one',
+    categories: ['shimmer', 'skeleton', 'loader'],
+    description:
+      'A simple skeleton table component with a sleek design and shimmer effect. Used for loading states, etc.',
     author: 'midhunkalarikkal',
     type: 'registry:block',
     dependencies: [],
@@ -1985,6 +2311,9 @@ export const blocks: Registry = [
   },
   {
     name: 'skeleton-table-two',
+    categories: ['shimmer', 'skeleton', 'loader'],
+    description:
+      'A detailed skeleton table component with a sleek design and shimmer effect. Used for loading states, etc.',
     author: 'midhunkalarikkal',
     type: 'registry:block',
     dependencies: [],
@@ -2005,6 +2334,9 @@ export const blocks: Registry = [
   },
   {
     name: 'download-animated-btn',
+    categories: ['button', 'interactive'],
+    description:
+      'A download button with an animated download icon and hover effects.',
     author: 'Smalakargh',
     type: 'registry:block',
     dependencies: ['tailwindcss', 'react', 'lucide-react'],

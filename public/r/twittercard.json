@@ -1,5 +1,10 @@
 {
   "name": "twittercard",
+  "categories": [
+    "card",
+    "design"
+  ],
+  "description": "A twitter like card with a sleek design and hover effects. Used in reviews, small showoffs etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

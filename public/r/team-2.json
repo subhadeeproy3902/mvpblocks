@@ -1,5 +1,10 @@
 {
   "name": "team-2",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A modern simple team section with team member cards with their name, designation and social icons. Used in team sections, about us pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

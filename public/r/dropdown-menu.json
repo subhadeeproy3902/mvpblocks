@@ -1,5 +1,11 @@
 {
   "name": "dropdown-menu",
+  "description": "A dropdown menu component for additional options. Official Shadcn UI component.",
+  "categories": [
+    "dropdown",
+    "menu",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-dropdown-menu"

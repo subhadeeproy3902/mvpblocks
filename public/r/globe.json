@@ -1,5 +1,10 @@
 {
   "name": "globe",
+  "description": "A 3D globe component used for a design element. Mostly used in Bento grids",
+  "categories": [
+    "3d",
+    "design"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "lucide-react",

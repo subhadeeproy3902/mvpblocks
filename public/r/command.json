@@ -1,5 +1,11 @@
 {
   "name": "command",
+  "description": "A command palette component for quick navigation and actions. Official Shadcn UI component.",
+  "categories": [
+    "command-palette",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "cmdk"

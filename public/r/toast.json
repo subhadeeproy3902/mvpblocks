@@ -1,5 +1,11 @@
 {
   "name": "toast",
+  "description": "A toast notification component. Official Shadcn UI component.",
+  "categories": [
+    "toast",
+    "notification",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-toast"

@@ -1,5 +1,11 @@
 {
   "name": "testimonials-carousel",
+  "categories": [
+    "testimonials",
+    "mainsection",
+    "interactive"
+  ],
+  "description": "A modern testimonials section with a sleek design and carousel functionality. Used for testimonials sections, reviews, etc.",
   "type": "registry:block",
   "dependencies": [
     "embla-carousel-react",

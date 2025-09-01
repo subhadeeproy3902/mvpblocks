@@ -1,5 +1,10 @@
 {
   "name": "system-status",
+  "description": "A system status component that shows the status of various system components with indicators. Used a base component for admin-dashboard-1. Used for admin dashboards, system monitoring pages, etc.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

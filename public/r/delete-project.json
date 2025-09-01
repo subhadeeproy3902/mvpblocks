@@ -1,5 +1,10 @@
 {
   "name": "delete-project",
+  "categories": [
+    "modal",
+    "confirmation"
+  ],
+  "description": "A delete project confirmation modal component with a sleek design and confirmation buttons. Used for delete confirmations, modals, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

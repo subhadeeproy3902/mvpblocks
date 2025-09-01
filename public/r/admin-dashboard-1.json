@@ -1,5 +1,11 @@
 {
   "name": "admin-dashboard-1",
+  "description": "A complete and professional admin dashboard layout with sidebar, header, cards, charts, tables, and more. Used for admin panels, analytics dashboards, etc.",
+  "categories": [
+    "dashboard",
+    "layout",
+    "page"
+  ],
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

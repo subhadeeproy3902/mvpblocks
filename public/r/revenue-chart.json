@@ -1,5 +1,10 @@
 {
   "name": "revenue-chart",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A revenue chart component that shows revenue data over time with a line chart. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

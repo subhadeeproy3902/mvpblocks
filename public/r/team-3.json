@@ -1,5 +1,10 @@
 {
   "name": "team-3",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A modern team section with team member cards with their name, role and social icons. Used in team sections, about us pages, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

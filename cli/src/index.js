@@ -18,7 +18,6 @@ import fs from 'fs';
 import path from 'path';
 import { execa } from 'execa';
 import fetch from 'node-fetch';
-import chalk from 'chalk';
 import gradient from 'gradient-string';
 import { AVAILABLE_COMPONENTS, REGISTRY_METADATA } from './constants.js';
 

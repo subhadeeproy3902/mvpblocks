@@ -1,5 +1,10 @@
 {
   "name": "resizable",
+  "description": "A resizable component for creating resizable panels. Official Shadcn UI component.",
+  "categories": [
+    "layout",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "react-resizable-panels"

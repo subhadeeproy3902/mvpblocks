@@ -6,12 +6,12 @@ full: true
 new: true
 ---
 
-import {ComponentPreview} from "@/components/preview/component-preview";
-import {extractSourceCode} from "@/lib/code";
-import { ComponentSource } from "@/components/preview/component-source";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Step, Steps } from "fumadocs-ui/components/steps";
-import { TypeTable } from "fumadocs-ui/components/type-table";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
+import { ComponentSource } from '@/components/preview/component-source';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
 <ComponentPreview
@@ -28,14 +28,38 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
   <Folder name="components" defaultOpen>
     <Folder name="mvpblocks" defaultOpen>
       <Folder name="ui" defaultOpen>
-        <File name="admin-sidebar.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="dashboard-card.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="dashboard-header.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="quick-actions.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="recent-activity.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="revenue-chart.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="system-status.tsx" className="hover:bg-secondary/50 cursor-pointer" />
-        <File name="users-table.tsx" className="hover:bg-secondary/50 cursor-pointer" />
+        <File
+          name="admin-sidebar.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="dashboard-card.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="dashboard-header.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="quick-actions.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="recent-activity.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="revenue-chart.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="system-status.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
+        <File
+          name="users-table.tsx"
+          className="hover:bg-secondary/50 cursor-pointer"
+        />
       </Folder>
       <File name="index.tsx" className="hover:bg-secondary/50" />
     </Folder>
@@ -44,7 +68,7 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
       <File name="button.tsx" className="hover:bg-secondary/50" />
       <File name="dropdown-menu.tsx" className="hover:bg-secondary/50" />
       <File name="input.tsx" className="hover:bg-secondary/50" />
-      <File name="separator.tsx" className="hover:bg-secondary/50" /> 
+      <File name="separator.tsx" className="hover:bg-secondary/50" />
       <File name="sheet.tsx" className="hover:bg-secondary/50" />
       <File name="sidebar.tsx" className="hover:bg-secondary/50" />
       <File name="skeleton.tsx" className="hover:bg-secondary/50" />
@@ -63,20 +87,11 @@ To set up the Admin Dashboard, follow these steps:
 
     <Tabs items={['CLI', 'Manual']}>
       <Tab>
-            Run the following command to install the necessary components:
-            <Tabs items={['npm', 'bun']}>
-              <Tab>
-                ```bash
-                npx shadcn@latest add https://blocks.mvp-subha.me/r/admin-sidebar.json https://blocks.mvp-subha.me/r/dashboard-card.json https://blocks.mvp-subha.me/r/dashboard-header.json https://blocks.mvp-subha.me/r/quick-actions.json https://blocks.mvp-subha.me/r/recent-activity.json https://blocks.mvp-subha.me/r/revenue-chart.json https://blocks.mvp-subha.me/r/system-status.json https://blocks.mvp-subha.me/r/user-table.json
-                ```
-              </Tab>
+        Run the following command to install the necessary components:
 
-              <Tab>
-                ```bash
-                bunx --bun shadcn@latest add https://blocks.mvp-subha.me/r/admin-sidebar.json https://blocks.mvp-subha.me/r/dashboard-card.json https://blocks.mvp-subha.me/r/dashboard-header.json https://blocks.mvp-subha.me/r/quick-actions.json https://blocks.mvp-subha.me/r/recent-activity.json https://blocks.mvp-subha.me/r/revenue-chart.json https://blocks.mvp-subha.me/r/system-status.json https://blocks.mvp-subha.me/r/users-table.json
-                ```
-              </Tab>
-            </Tabs>
+        ```bash
+        npx mvpblocks add admin-sidebar dashboard-card dashboard-header quick-actions recent-activity revenue-chart system-status users-table
+        ```
       </Tab>
       <Tab>
         <Steps>
@@ -155,5 +170,6 @@ To set up the Admin Dashboard, follow these steps:
         </Steps>
       </Tab>
     </Tabs>
+
   </Step>
 </Steps>

@@ -1,5 +1,10 @@
 {
   "name": "team-1",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A modern team section with team member cards with their location, name, designation, description and social icons. Used in team sections, about us pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

@@ -1,5 +1,9 @@
 {
   "name": "text-reveal-2",
+  "description": "A text reveal animation that reveals text from the bottom with a gradient effect with word split. Used for titles, headings, etc.",
+  "categories": [
+    "text-animation"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

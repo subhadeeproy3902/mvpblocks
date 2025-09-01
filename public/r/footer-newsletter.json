@@ -1,5 +1,10 @@
 {
   "name": "footer-newsletter",
+  "description": "A modern footer with a newsletter subscription form and social media links. Used for website footers, etc.",
+  "categories": [
+    "footer",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

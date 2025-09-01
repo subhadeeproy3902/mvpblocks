@@ -1,5 +1,6 @@
 {
   "name": "pulse-card",
+  "description": "An interactive card component with smooth hover animations, glowing borders, and variant colors.",
   "type": "registry:ui",
   "dependencies": [
     "framer-motion",
@@ -15,5 +16,9 @@
       "path": "/components/ui/pulse-card.tsx",
       "target": "components/ui/pulse-card.tsx"
     }
+  ],
+  "categories": [
+    "card",
+    "interactive"
   ]
 }

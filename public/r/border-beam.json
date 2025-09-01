@@ -1,5 +1,6 @@
 {
   "name": "border-beam",
+  "description": "An animated border beam effect component used in a card or div",
   "type": "registry:ui",
   "dependencies": [],
   "registryDependencies": [
@@ -12,5 +13,9 @@
       "path": "/components/ui/border-beam.tsx",
       "target": "components/ui/border-beam.tsx"
     }
+  ],
+  "categories": [
+    "card",
+    "interactive"
   ]
 }

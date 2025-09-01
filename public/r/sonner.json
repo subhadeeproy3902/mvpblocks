@@ -1,5 +1,10 @@
 {
   "name": "sonner",
+  "description": "A toast notification component using Sonner library",
+  "categories": [
+    "toast",
+    "notification"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "sonner",

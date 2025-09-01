@@ -1,5 +1,10 @@
 {
   "name": "pricing-3",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
+  "description": "A basic pricing section with 2 pricing tiers and a simple design. Used for pricing sections, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

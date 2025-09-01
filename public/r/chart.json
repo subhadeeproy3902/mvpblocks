@@ -1,5 +1,11 @@
 {
   "name": "chart",
+  "description": "A chart component for data visualization. Official Shadcn UI component.",
+  "categories": [
+    "chart",
+    "data-visualization",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

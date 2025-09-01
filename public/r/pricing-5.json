@@ -1,5 +1,10 @@
 {
   "name": "pricing-5",
+  "description": "A modern pricing section with 4 pricing tiers. Used for SaaS products, pricing sections, etc.",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

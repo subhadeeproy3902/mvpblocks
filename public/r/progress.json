@@ -1,5 +1,11 @@
 {
   "name": "progress",
+  "description": "A progress bar component for indicating task progress. Official Shadcn UI component.",
+  "categories": [
+    "progress",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-progress"

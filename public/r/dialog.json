@@ -1,5 +1,11 @@
 {
   "name": "dialog",
+  "description": "A dialog component for modal interactions. Official Shadcn UI component.",
+  "categories": [
+    "dialog",
+    "modal",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-dialog"

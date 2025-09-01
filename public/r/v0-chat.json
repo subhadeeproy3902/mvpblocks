@@ -1,5 +1,10 @@
 {
   "name": "v0-chat",
+  "categories": [
+    "chatbot",
+    "ai"
+  ],
+  "description": "A v0.dev like chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

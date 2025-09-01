@@ -1,5 +1,11 @@
 {
   "name": "ellipsis-block",
+  "description": "A code block component that shows an ellipsis animation to indicate loading or more content. Used for showcasing code snippets, tutorials, etc.",
+  "categories": [
+    "code",
+    "design",
+    "technical"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react",

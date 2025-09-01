@@ -1,5 +1,6 @@
 {
   "name": "typewriter",
+  "description": "Typewriter animations simulate the effect of text being typed out in real-time. This technique can be used to create a sense of anticipation and engagement as users watch the text appear on the screen.",
   "type": "registry:ui",
   "dependencies": [
     "framer-motion",
@@ -13,5 +14,8 @@
       "path": "/components/ui/typewriter.tsx",
       "target": "components/ui/typewriter.tsx"
     }
+  ],
+  "categories": [
+    "text-animation"
   ]
 }

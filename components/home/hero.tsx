@@ -92,7 +92,7 @@ export default function Hero() {
       className="bg-background relative min-h-screen w-full overflow-x-hidden py-32 md:px-6"
     >
       <Image
-        src="/vector1.webp"
+        src="https://i.postimg.cc/9FdVdN2J/vector1.webp"
         alt="Vector"
         width={300}
         draggable={false}
@@ -100,7 +100,7 @@ export default function Hero() {
         className="absolute top-0 right-0 z-[2] object-cover object-center select-none"
       />
       <Image
-        src="/vector2.png"
+        src="https://i.postimg.cc/qR6Hz1Qc/vector2.png"
         alt="Vector"
         width={300}
         height={300}
@@ -108,7 +108,7 @@ export default function Hero() {
         className="absolute top-0 left-0 z-[2] object-cover object-center select-none"
       />
       <Image
-        src="/vector5.webp"
+        src="https://i.postimg.cc/25Kfksd8/vector5.webp"
         alt="Vector"
         width={300}
         draggable={false}
@@ -116,7 +116,7 @@ export default function Hero() {
         className="absolute bottom-0 -left-44 z-[2] -rotate-90 object-cover object-center select-none"
       />
       <Image
-        src="/vector6.png"
+        src="https://i.postimg.cc/bvJhjytB/vector6.png"
         alt="Vector"
         width={300}
         draggable={false}
@@ -145,7 +145,7 @@ export default function Hero() {
           >
             Prebuilt UI
             <Image
-              src="/rose.webp"
+              src="https://i.postimg.cc/Bb5yKkFF/rose.webp"
               alt="Logo"
               width={500}
               height={500}
@@ -194,7 +194,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 1.25 }}
-            src="/vector4.webp"
+            src="https://i.postimg.cc/13RxpmJ3/vector4.webp"
             alt="Next.js"
             className="mt-4 mr-2 hidden w-96 brightness-[4] select-none xl:block"
           />
@@ -202,7 +202,7 @@ export default function Hero() {
             We use industry standards like{' '}
           </span>
           <Image
-            src="/nextjs.webp"
+            src="https://i.postimg.cc/httwXCtJ/nextjs.webp"
             draggable={false}
             alt="Next.js"
             width={28}
@@ -210,7 +210,7 @@ export default function Hero() {
             className="h-7 w-7 select-none"
           />
           <Image
-            src="/tailwind.webp"
+            src="https://i.postimg.cc/RZpYKcWg/tailwind.webp"
             alt="Tailwind CSS"
             width={28}
             height={28}
@@ -218,7 +218,7 @@ export default function Hero() {
             draggable={false}
           />
           <Image
-            src="/framer.webp"
+            src="https://i.postimg.cc/8CqnnNBW/framer.webp"
             alt="Framer Motion"
             width={24}
             height={24}
@@ -232,7 +232,7 @@ export default function Hero() {
             className="mt-4 ml-2 hidden w-96 select-none xl:block"
           >
             <Image
-              src="/vector3.webp"
+              src="https://i.postimg.cc/SKjwvZ00/vector3.webp"
               alt="Vector graphic"
               width={384}
               height={100}

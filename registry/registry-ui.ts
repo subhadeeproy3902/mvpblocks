@@ -5,6 +5,7 @@ export const ui: Registry = [
   {
     name: 'text-reveal',
     type: 'registry:ui',
+    description: 'Text reveal animation multiuse base component',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
     files: [
@@ -18,9 +19,11 @@ export const ui: Registry = [
         default: mod.TextReveal,
       })),
     ),
+    categories: ['text-animation'],
   },
   {
     name: 'gradient-bars',
+    description: 'Animated gradient bars background base UI component',
     type: 'registry:ui',
     dependencies: [],
     registryDependencies: [],
@@ -35,9 +38,12 @@ export const ui: Registry = [
         default: mod.GradientBars,
       })),
     ),
+    categories: ['background'],
   },
   {
     name: 'sparkles',
+    description:
+      'Sparkles effect component using tsparticles making the background magical and sparkly',
     type: 'registry:ui',
     dependencies: [
       '@tsparticles/engine',
@@ -57,9 +63,12 @@ export const ui: Registry = [
         default: mod.SparklesCore,
       })),
     ),
+    categories: ['background'],
   },
   {
     name: 'particles',
+    description:
+      'Particles effect component making the background lively and interactive on mouse move',
     type: 'registry:ui',
     dependencies: ['react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -74,9 +83,12 @@ export const ui: Registry = [
         default: mod.Particles,
       })),
     ),
+    categories: ['background'],
   },
   {
     name: 'spotlight',
+    description:
+      'Spotlight effect which is a nice touch to any landing page which needs a stunning hero section',
     type: 'registry:ui',
     dependencies: ['react'],
     registryDependencies: [],
@@ -91,9 +103,12 @@ export const ui: Registry = [
         default: mod.Spotlight,
       })),
     ),
+    categories: ['background', 'hero'],
   },
   {
     name: 'pulse-card',
+    description:
+      'An interactive card component with smooth hover animations, glowing borders, and variant colors.',
     type: 'registry:ui',
     dependencies: ['framer-motion', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -108,9 +123,12 @@ export const ui: Registry = [
         default: mod.CardHoverEffect,
       })),
     ),
+    categories: ['card', 'interactive'],
   },
   {
     name: 'border-beam',
+    description:
+      'An animated border beam effect component used in a card or div',
     type: 'registry:ui',
     dependencies: [],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -125,9 +143,11 @@ export const ui: Registry = [
         default: mod.BorderBeam,
       })),
     ),
+    categories: ['card', 'interactive'],
   },
   {
     name: 'phone-mockup',
+    description: 'A phone mockup component to showcase app screenshots',
     type: 'registry:ui',
     dependencies: ['framer-motion', 'next-themes', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -138,9 +158,12 @@ export const ui: Registry = [
       },
     ],
     component: React.lazy(() => import('../components/ui/phone-mockup')),
+    categories: ['mockup'],
   },
   {
     name: 'multi-step-form',
+    description:
+      'A multi-step form component with validation and progress tracking',
     type: 'registry:ui',
     dependencies: [
       'framer-motion',
@@ -163,9 +186,13 @@ export const ui: Registry = [
       },
     ],
     component: React.lazy(() => import('../components/ui/multi-step-form')),
+    categories: ['form', 'interactive'],
   },
   {
     name: 'marquee',
+    description:
+      'A marquee component for scrolling text or elements horizontally or vertically',
+    categories: ['carousel', 'animation'],
     type: 'registry:ui',
     dependencies: ['react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -206,6 +233,9 @@ export const ui: Registry = [
   },
   {
     name: 'scrollbasedvelocity',
+    description:
+      'Scroll velocity animations create a dynamic and engaging effect as elements move on the screen. This technique can be used to draw attention to specific content or enhance the overall user experience.',
+    categories: ['scroll-animation', 'design'],
     type: 'registry:ui',
     dependencies: ['framer-motion', 'react'],
     registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
@@ -223,6 +253,8 @@ export const ui: Registry = [
   },
   {
     name: 'typewriter',
+    description:
+      'Typewriter animations simulate the effect of text being typed out in real-time. This technique can be used to create a sense of anticipation and engagement as users watch the text appear on the screen.',
     type: 'registry:ui',
     dependencies: ['framer-motion', 'react'],
     registryDependencies: [],
@@ -233,6 +265,7 @@ export const ui: Registry = [
       },
     ],
     component: React.lazy(() => import('../components/ui/typewriter')),
+    categories: ['text-animation'],
   },
   {
     name: 'pricing-card',
@@ -257,9 +290,12 @@ export const ui: Registry = [
         default: mod.PricingCard,
       })),
     ),
+    categories: ['card', 'pricing-section'],
   },
   {
     name: 'payment-modal',
+    description:
+      'A payment modal component with multiple payment options and smooth animations',
     type: 'registry:ui',
     dependencies: ['react'],
     registryDependencies: [
@@ -280,10 +316,14 @@ export const ui: Registry = [
         default: mod.PaymentModal,
       })),
     ),
+    categories: ['modal', 'interactive'],
   },
   {
     name: 'accordion',
     type: 'registry:ui',
+    description:
+      'An accordion component for expanding and collapsing content sections. Official Shadcn UI component.',
+    categories: ['accordion', 'interactive', 'shadcn'],
     dependencies: ['@radix-ui/react-accordion'],
     files: [
       {
@@ -316,6 +356,9 @@ export const ui: Registry = [
   },
   {
     name: 'alert',
+    description:
+      'An alert component for displaying important messages to users. Official Shadcn UI component.',
+    categories: ['alert', 'notification', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -326,6 +369,8 @@ export const ui: Registry = [
   },
   {
     name: 'alert-dialog',
+    description: 'An alert dialog component for critical messages. Official Shadcn UI component.',
+    categories: ['dialog', 'modal', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-alert-dialog'],
     registryDependencies: ['button'],
@@ -338,6 +383,8 @@ export const ui: Registry = [
   },
   {
     name: 'aspect-ratio',
+    description: 'A component for maintaining a consistent aspect ratio. Official Shadcn UI component.',
+    categories: ['layout', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-aspect-ratio'],
     files: [
@@ -349,6 +396,8 @@ export const ui: Registry = [
   },
   {
     name: 'avatar',
+    description: 'An avatar component for displaying user profile images. Official Shadcn UI component.',
+    categories: ['avatar', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-avatar'],
     files: [
@@ -360,6 +409,8 @@ export const ui: Registry = [
   },
   {
     name: 'badge',
+    description: 'A badge component for displaying small status descriptors. Official Shadcn UI component.',
+    categories: ['badge', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-slot'],
     files: [
@@ -371,6 +422,8 @@ export const ui: Registry = [
   },
   {
     name: 'breadcrumb',
+    description: 'A breadcrumb component for displaying navigation hierarchy. Official Shadcn UI component.',
+    categories: ['breadcrumb', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-slot'],
     files: [
@@ -382,6 +435,8 @@ export const ui: Registry = [
   },
   {
     name: 'button',
+    description: 'A button component with multiple variants and sizes. Official Shadcn UI component.',
+    categories: ['button', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-slot'],
     files: [
@@ -393,6 +448,8 @@ export const ui: Registry = [
   },
   {
     name: 'calendar',
+    description: 'A calendar component for date selection. Official Shadcn UI component.',
+    categories: ['calendar', 'date-picker', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['react-day-picker@8.10.1', 'date-fns'],
     registryDependencies: ['button'],
@@ -405,6 +462,8 @@ export const ui: Registry = [
   },
   {
     name: 'card',
+    description: 'A card component for displaying content in a structured layout. Official Shadcn UI component.',
+    categories: ['card', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -415,6 +474,8 @@ export const ui: Registry = [
   },
   {
     name: 'carousel',
+    description: 'A carousel component for cycling through content. Official Shadcn UI component.',
+    categories: ['carousel', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -427,6 +488,8 @@ export const ui: Registry = [
   },
   {
     name: 'chart',
+    description: 'A chart component for data visualization. Official Shadcn UI component.',
+    categories: ['chart', 'data-visualization', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -439,6 +502,8 @@ export const ui: Registry = [
   },
   {
     name: 'checkbox',
+    description: 'A checkbox component for selecting options. Official Shadcn UI component.',
+    categories: ['checkbox', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-checkbox'],
     files: [
@@ -450,6 +515,8 @@ export const ui: Registry = [
   },
   {
     name: 'collapsible',
+    description: 'A collapsible component for showing and hiding content. Official Shadcn UI component.',
+    categories: ['collapsible', 'interactive', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-collapsible'],
     files: [
@@ -461,6 +528,8 @@ export const ui: Registry = [
   },
   {
     name: 'command',
+    description: 'A command palette component for quick navigation and actions. Official Shadcn UI component.',
+    categories: ['command-palette', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['cmdk'],
     registryDependencies: ['dialog'],
@@ -473,6 +542,8 @@ export const ui: Registry = [
   },
   {
     name: 'context-menu',
+    description: 'A context menu component for right-click actions. Official Shadcn UI component.',
+    categories: ['context-menu', 'interactive', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-context-menu'],
     files: [
@@ -484,6 +555,8 @@ export const ui: Registry = [
   },
   {
     name: 'dialog',
+    description: 'A dialog component for modal interactions. Official Shadcn UI component.',
+    categories: ['dialog', 'modal', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-dialog'],
     files: [
@@ -495,6 +568,8 @@ export const ui: Registry = [
   },
   {
     name: 'drawer',
+    description: 'A drawer component for side panel interactions. Official Shadcn UI component.',
+    categories: ['drawer', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['vaul', '@radix-ui/react-dialog'],
     files: [
@@ -506,6 +581,8 @@ export const ui: Registry = [
   },
   {
     name: 'dropdown-menu',
+    description: 'A dropdown menu component for additional options. Official Shadcn UI component.',
+    categories: ['dropdown', 'menu', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-dropdown-menu'],
     files: [
@@ -517,6 +594,9 @@ export const ui: Registry = [
   },
   {
     name: 'form',
+    description:
+      'A form component with validation and error handling. Official Shadcn UI component.',
+    categories: ['form', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: [
       '@radix-ui/react-label',
@@ -535,6 +615,8 @@ export const ui: Registry = [
   },
   {
     name: 'globe',
+    description: 'A 3D globe component used for a design element. Mostly used in Bento grids',
+    categories: ['3d', 'design'],
     type: 'registry:ui',
     dependencies: ['lucide-react', 'cobe'],
     files: [
@@ -547,6 +629,8 @@ export const ui: Registry = [
   },
   {
     name: 'hover-card',
+    description: 'A hover card component for displaying additional information on hover. Official Shadcn UI component.',
+    categories: ['hover-card', 'interactive', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-hover-card'],
     files: [
@@ -558,6 +642,8 @@ export const ui: Registry = [
   },
   {
     name: 'input',
+    description: 'An input component for user text input. Official Shadcn UI component.',
+    categories: ['input', 'form-element', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -568,6 +654,8 @@ export const ui: Registry = [
   },
   {
     name: 'input-otp',
+    description: 'An OTP input component for entering one-time passwords. Official Shadcn UI component.',
+    categories: ['input', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['input-otp'],
     files: [
@@ -579,6 +667,8 @@ export const ui: Registry = [
   },
   {
     name: 'label',
+    description: 'A label component for form elements. Official Shadcn UI component.',
+    categories: ['label', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-label'],
     files: [
@@ -590,6 +680,8 @@ export const ui: Registry = [
   },
   {
     name: 'menubar',
+    description: 'A menubar component for navigation. Official Shadcn UI component.',
+    categories: ['menubar', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-menubar'],
     files: [
@@ -601,6 +693,8 @@ export const ui: Registry = [
   },
   {
     name: 'navigation-menu',
+    description: 'A navigation menu component for site navigation. Official Shadcn UI component.',
+    categories: ['navigation-menu', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-navigation-menu'],
     files: [
@@ -612,6 +706,8 @@ export const ui: Registry = [
   },
   {
     name: 'pagination',
+    description: 'A pagination component for navigating through pages of content. Official Shadcn UI component.',
+    categories: ['pagination', 'navigation', 'shadcn'],
     type: 'registry:ui',
     registryDependencies: ['button'],
     files: [
@@ -623,6 +719,8 @@ export const ui: Registry = [
   },
   {
     name: 'popover',
+    description: 'A popover component for displaying content in a floating container. Official Shadcn UI component.',
+    categories: ['popover', 'interactive', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-popover'],
     files: [
@@ -634,6 +732,8 @@ export const ui: Registry = [
   },
   {
     name: 'progress',
+    description: 'A progress bar component for indicating task progress. Official Shadcn UI component.',
+    categories: ['progress', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-progress'],
     files: [
@@ -645,6 +745,8 @@ export const ui: Registry = [
   },
   {
     name: 'radio-group',
+    description: 'A radio group component for selecting one option from a set. Official Shadcn UI component.',
+    categories: ['radio', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-radio-group'],
     files: [
@@ -656,6 +758,8 @@ export const ui: Registry = [
   },
   {
     name: 'resizable',
+    description: 'A resizable component for creating resizable panels. Official Shadcn UI component.',
+    categories: ['layout', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['react-resizable-panels'],
     files: [
@@ -667,6 +771,8 @@ export const ui: Registry = [
   },
   {
     name: 'scroll-area',
+    description: 'A scroll area component smooth overflow scrolling. Official Shadcn UI component.',
+    categories: ['scrollbar', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-scroll-area'],
     files: [
@@ -678,6 +784,8 @@ export const ui: Registry = [
   },
   {
     name: 'select',
+    description: 'A select component for choosing from a list of options. Official Shadcn UI component.',
+    categories: ['select', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-select'],
     files: [
@@ -689,6 +797,8 @@ export const ui: Registry = [
   },
   {
     name: 'separator',
+    description: 'A separator component for dividing content. Official Shadcn UI component.',
+    categories: ['separator', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-separator'],
     files: [
@@ -700,6 +810,8 @@ export const ui: Registry = [
   },
   {
     name: 'sheet',
+    description: 'A sheet component for displaying content in a sliding panel. Official Shadcn UI component.',
+    categories: ['sheet', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-dialog'],
     files: [
@@ -711,6 +823,8 @@ export const ui: Registry = [
   },
   {
     name: 'sidebar',
+    description: 'A sidebar component for navigation and additional content areas. Official Shadcn UI component.',
+    categories: ['sidebar', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: [
       '@radix-ui/react-slot',
@@ -777,6 +891,8 @@ export const ui: Registry = [
   },
   {
     name: 'skeleton',
+    description: 'A skeleton component for displaying loading placeholders. Official Shadcn UI component.',
+    categories: ['skeleton', 'loading', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -787,6 +903,8 @@ export const ui: Registry = [
   },
   {
     name: 'slider',
+    description: 'A slider component for selecting a value from a range. Official Shadcn UI component.',
+    categories: ['slider', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-slider'],
     files: [
@@ -798,6 +916,8 @@ export const ui: Registry = [
   },
   {
     name: 'sonner',
+    description: 'A toast notification component using Sonner library',
+    categories: ['toast', 'notification'],
     type: 'registry:ui',
     dependencies: ['sonner', 'next-themes'],
     files: [
@@ -809,6 +929,8 @@ export const ui: Registry = [
   },
   {
     name: 'switch',
+    description: 'A switch component for toggling between two states. Official Shadcn UI component.',
+    categories: ['switch', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-switch'],
     files: [
@@ -820,6 +942,8 @@ export const ui: Registry = [
   },
   {
     name: 'table',
+    description: 'A table component for displaying tabular data. Official Shadcn UI component.',
+    categories: ['table', 'data-visualization', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -830,6 +954,8 @@ export const ui: Registry = [
   },
   {
     name: 'tabs',
+    description: 'A tabs component for switching between content sections. Official Shadcn UI component.',
+    categories: ['tabs', 'navigation', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-tabs'],
     files: [
@@ -841,6 +967,8 @@ export const ui: Registry = [
   },
   {
     name: 'textarea',
+    description: 'A textarea component for multi-line text input. Official Shadcn UI component.',
+    categories: ['textarea', 'form-element', 'shadcn'],
     type: 'registry:ui',
     files: [
       {
@@ -851,6 +979,8 @@ export const ui: Registry = [
   },
   {
     name: 'toast',
+    description: 'A toast notification component. Official Shadcn UI component.',
+    categories: ['toast', 'notification', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-toast'],
     files: [
@@ -870,6 +1000,8 @@ export const ui: Registry = [
   },
   {
     name: 'toggle',
+    description: 'A toggle component for switching between two states. Official Shadcn UI component.',
+    categories: ['toggle', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-toggle'],
     files: [
@@ -881,6 +1013,8 @@ export const ui: Registry = [
   },
   {
     name: 'toggle-group',
+    description: 'A toggle group component for grouping multiple toggle buttons. Official Shadcn UI component.',
+    categories: ['toggle', 'form-element', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-toggle-group'],
     registryDependencies: ['toggle'],
@@ -893,6 +1027,8 @@ export const ui: Registry = [
   },
   {
     name: 'tooltip',
+    description: 'A tooltip component for displaying additional information on hover. Official Shadcn UI component.',
+    categories: ['tooltip', 'interactive', 'shadcn'],
     type: 'registry:ui',
     dependencies: ['@radix-ui/react-tooltip'],
     files: [

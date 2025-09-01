@@ -1,5 +1,10 @@
 {
   "name": "signin-modal",
+  "categories": [
+    "modal",
+    "authentication"
+  ],
+  "description": "A sign-in modal component with social login options and a sleek design. Used for authentication modals, sign-in forms, etc.",
   "type": "registry:block",
   "dependencies": [
     "react"

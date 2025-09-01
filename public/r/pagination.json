@@ -1,5 +1,11 @@
 {
   "name": "pagination",
+  "description": "A pagination component for navigating through pages of content. Official Shadcn UI component.",
+  "categories": [
+    "pagination",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "registryDependencies": [
     "button"

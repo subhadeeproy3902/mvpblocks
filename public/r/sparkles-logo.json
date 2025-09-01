@@ -1,5 +1,11 @@
 {
   "name": "sparkles-logo",
+  "categories": [
+    "logo-cloud",
+    "mainsection",
+    "branding"
+  ],
+  "description": "A logo cloud section with a sparkle animation effect with the logos. Logo clouds are used to showcase a collection of logos or brands in a visually appealing way. They can be used to highlight partnerships, sponsors, or featured brands.",
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

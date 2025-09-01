@@ -1,6 +1,12 @@
 {
   "name": "accordion",
   "type": "registry:ui",
+  "description": "An accordion component for expanding and collapsing content sections. Official Shadcn UI component.",
+  "categories": [
+    "accordion",
+    "interactive",
+    "shadcn"
+  ],
   "dependencies": [
     "@radix-ui/react-accordion"
   ],

@@ -1,5 +1,10 @@
 {
   "name": "mockup-hero",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A modern hero section with a phone mockup image which when hovered has a 3D like animation and a sleek design. Used for SaaS products, hero sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

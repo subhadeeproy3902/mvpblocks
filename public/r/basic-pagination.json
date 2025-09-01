@@ -1,5 +1,10 @@
 {
   "name": "basic-pagination",
+  "categories": [
+    "pagination",
+    "navigation"
+  ],
+  "description": "A basic pagination component with previous and next buttons and page numbers. Used for navigating through pages of content, lists, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

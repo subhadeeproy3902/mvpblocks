@@ -1,5 +1,10 @@
 {
   "name": "card",
+  "description": "A card component for displaying content in a structured layout. Official Shadcn UI component.",
+  "categories": [
+    "card",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

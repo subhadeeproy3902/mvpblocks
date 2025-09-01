@@ -1,5 +1,10 @@
 {
   "name": "separator",
+  "description": "A separator component for dividing content. Official Shadcn UI component.",
+  "categories": [
+    "separator",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-separator"

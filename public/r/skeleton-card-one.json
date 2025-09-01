@@ -1,5 +1,11 @@
 {
   "name": "skeleton-card-one",
+  "categories": [
+    "shimmer",
+    "skeleton",
+    "loader"
+  ],
+  "description": "A simple skeleton card component with a sleek design and shimmer effect. Used for loading states, etc.",
   "author": "midhunkalarikkal",
   "type": "registry:block",
   "dependencies": [],

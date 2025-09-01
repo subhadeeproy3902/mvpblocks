@@ -34,7 +34,7 @@ const getComponentCode = async (item: any) => {
       dependencies: item.dependencies || [],
       registryDependencies: item.registryDependencies || [],
       link: `https://blocks.mvp-subha.me/r/${item.name}.json`,
-      installCommand: `npx shadcn@latest add https://blocks.mvp-subha.me/r/${item.name}.json`,
+      installCommand: `npx mvpblocks add ${item.name}`,
     };
   } catch (error) {
     console.error(`Error reading file ${fullPath}:`, error);
@@ -213,7 +213,7 @@ When a user asks about a component:
   - Properly indent nested elements with tabs, not spaces
 
 📦 For Registry Dependencies:
-  - Provide CLI installation commands: \`npx shadcn@latest add [component-link]\`
+  - Provide CLI installation commands: \`npx mvpblocks add [component-name]\`
   - Include links to dependency components when relevant
   - Offer to show the code for dependencies if requested
 
@@ -544,7 +544,7 @@ export async function POST(req: Request) {
                 path: item.files?.[0]?.path || null,
                 categories: detectedCategories,
                 link: `https://blocks.mvp-subha.me/r/${item.name}.json`,
-                installCommand: `npx shadcn@latest add https://blocks.mvp-subha.me/r/${item.name}.json`,
+                installCommand: `npx mvpblocks add ${item.name}`,
                 dependencies: item.dependencies || [],
                 registryDependencies: item.registryDependencies || [],
               };

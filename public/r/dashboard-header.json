@@ -1,5 +1,10 @@
 {
   "name": "dashboard-header",
+  "description": "A dashboard header component with a title, subtitle, and action buttons. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

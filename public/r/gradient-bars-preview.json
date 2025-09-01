@@ -1,5 +1,9 @@
 {
   "name": "gradient-bars-preview",
+  "description": "A background with animated gradient bars component. Used for sections, cards, etc as a sleek awesome background.",
+  "categories": [
+    "background"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

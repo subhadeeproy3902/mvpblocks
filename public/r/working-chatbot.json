@@ -1,5 +1,10 @@
 {
   "name": "working-chatbot",
+  "categories": [
+    "chatbot",
+    "ai"
+  ],
+  "description": "A working chatbot UI component with a sleek design and chat functionality. Used for chatbot interfaces, AI assistants, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

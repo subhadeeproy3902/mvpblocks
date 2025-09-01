@@ -1,5 +1,11 @@
 {
   "name": "sheet",
+  "description": "A sheet component for displaying content in a sliding panel. Official Shadcn UI component.",
+  "categories": [
+    "sheet",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-dialog"

@@ -1,5 +1,10 @@
 {
   "name": "signup-modal",
+  "categories": [
+    "modal",
+    "authentication"
+  ],
+  "description": "A sign-up modal component with social sign-up options and a sleek design. Used for authentication modals, sign-up forms, etc.",
   "type": "registry:block",
   "dependencies": [
     "react"

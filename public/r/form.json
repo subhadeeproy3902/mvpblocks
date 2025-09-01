@@ -1,5 +1,11 @@
 {
   "name": "form",
+  "description": "A form component with validation and error handling. Official Shadcn UI component.",
+  "categories": [
+    "form",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-label",

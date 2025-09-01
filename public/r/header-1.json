@@ -1,5 +1,10 @@
 {
   "name": "header-1",
+  "description": "A simple header with navigation links and a call-to-action button. Used for website headers, webpages, etc.",
+  "categories": [
+    "header",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

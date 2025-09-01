@@ -1,5 +1,10 @@
 {
   "name": "cta-1",
+  "categories": [
+    "cta",
+    "mainsection"
+  ],
+  "description": "A modern call-to-action section. Used for call-to-action sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react"

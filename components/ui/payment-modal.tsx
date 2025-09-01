@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 interface PaymentMethod {
   id: string;
@@ -24,19 +23,19 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: 'paypal',
     name: 'PayPal',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.webp',
+    logo: 'https://i.postimg.cc/66GB3pms/paypal-3384015-640.webp',
     description: 'Pay with your PayPal account',
   },
   {
     id: 'stripe',
     name: 'Stripe',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQGluJhW7I1NYU7jF77E-9K9I46_ib_DUNHw&s',
+    logo: 'https://i.postimg.cc/bYKNHttN/images.jpg',
     description: 'Pay with credit card',
   },
   {
     id: 'razorpay',
     name: 'Razorpay',
-    logo: 'https://cdn.prod.website-files.com/62979cdcff90ad6bae40b3ef/62d855876f4add6e152a5567_unnamed.webp',
+    logo: 'https://i.postimg.cc/TYMfWvzK/razorpay-payment-gateway-software-500x500.webp',
     description: 'Pay with Indian payment methods',
   },
 ];
@@ -111,9 +110,7 @@ export function PaymentModal({ isOpen, onClose, plan }: PaymentModalProps) {
                     </div>
                   </div>
                   <div className="relative h-8 w-20">
-                    <Image
-                      width={80}
-                      height={32}
+                    <img
                       src={method.logo || '/placeholder.svg'}
                       alt={method.name}
                       className="object-contain"

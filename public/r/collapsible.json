@@ -1,5 +1,11 @@
 {
   "name": "collapsible",
+  "description": "A collapsible component for showing and hiding content. Official Shadcn UI component.",
+  "categories": [
+    "collapsible",
+    "interactive",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-collapsible"

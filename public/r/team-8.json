@@ -1,5 +1,10 @@
 {
   "name": "team-8",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A creative designer team section with team member cards with their name, designation and social icons along with hover animations. Used in team sections, about us pages, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

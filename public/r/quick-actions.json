@@ -1,5 +1,10 @@
 {
   "name": "quick-actions",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A quick actions component that shows a set of action buttons for quick access. Used a base component for admin-dashboard-1. Used for admin dashboards, action panels, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

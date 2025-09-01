@@ -1,5 +1,10 @@
 {
   "name": "meshy-cards",
+  "description": "A set of cards with a meshy gradient background. Used for showcasing products, features, etc.",
+  "categories": [
+    "card",
+    "design"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [],

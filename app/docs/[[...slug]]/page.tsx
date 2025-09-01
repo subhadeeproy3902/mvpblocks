@@ -14,8 +14,6 @@ import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
 import { type ComponentProps, type FC } from 'react';
-import type { Metadata } from 'next';
-import { createMetadata } from '@/lib/metadata';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';

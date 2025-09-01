@@ -1,5 +1,10 @@
 {
   "name": "login-form-2",
+  "description": "A sleek login form with a nice logo in the left and the form in the right with responsiveness. Used for authentication pages, login sections, etc.",
+  "categories": [
+    "form",
+    "authentication"
+  ],
   "author": "Xeven777",
   "type": "registry:block",
   "dependencies": [

@@ -1,5 +1,11 @@
 {
   "name": "team-4",
+  "categories": [
+    "team",
+    "mainsection",
+    "interactive"
+  ],
+  "description": "A designer team section with team member cards with their name, and role. Also has filtering options as well to filter team members based on their roles. Used in team sections, about us pages, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

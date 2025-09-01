@@ -1,5 +1,10 @@
 {
   "name": "toc-dialog",
+  "categories": [
+    "modal",
+    "navigation"
+  ],
+  "description": "A table of contents dialog component with a sleek design and navigation links. Used for table of contents, modals, etc.",
   "type": "registry:block",
   "dependencies": [
     "react"

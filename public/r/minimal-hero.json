@@ -1,5 +1,10 @@
 {
   "name": "minimal-hero",
+  "description": "A cool looking minimal hero section with a sleek design and animation. Used for SaaS products, hero sections, etc.",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

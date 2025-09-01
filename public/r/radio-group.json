@@ -1,5 +1,11 @@
 {
   "name": "radio-group",
+  "description": "A radio group component for selecting one option from a set. Official Shadcn UI component.",
+  "categories": [
+    "radio",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-radio-group"

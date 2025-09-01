@@ -1,5 +1,10 @@
 {
   "name": "login-form-3",
+  "description": "A modern login form with social login options and a sleek design with a nice image background. Used for authentication pages, login sections, etc.",
+  "categories": [
+    "form",
+    "authentication"
+  ],
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

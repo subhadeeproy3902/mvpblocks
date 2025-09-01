@@ -1,6 +1,3 @@
-export const dynamic = 'force-static';
-export const revalidate = false;
-
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -98,3 +95,10 @@ export default function NotFound() {
     </div>
   );
 }
+
+export function generateStaticParams() {
+  return [{}];
+}
+
+export const dynamic = 'force-static';
+export const revalidate = false;

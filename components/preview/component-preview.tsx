@@ -28,7 +28,7 @@ export function ComponentPreview({
   const [isTerminalCopied, setIsTerminalCopied] = useState(false);
 
   const handleTerminalClick = () => {
-    const COPY = `npx shadcn@latest add ${siteLink}/r/${name}.json`;
+    const COPY = `npx mvpblocks add ${name}`;
     navigator.clipboard.writeText(COPY);
     setIsTerminalCopied(true);
     setTimeout(() => {
@@ -81,7 +81,7 @@ export function ComponentPreview({
                   />
                 </>
               )}
-              <span className="font-mono">npx shadcn add {name}</span>{' '}
+              <span className="font-mono">npx mvpblocks add {name}</span>{' '}
             </Button>
             <OpenInV0Button url={`${siteLink}/r/${name}.json`} />
           </div>

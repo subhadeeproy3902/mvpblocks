@@ -1,5 +1,10 @@
 {
   "name": "admin-sidebar",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A responsive admin sidebar component with navigation links and a collapsible design. Used a base component for admin-dashboard-1. Used for admin dashboards, side navigation, etc.",
   "type": "registry:block",
   "dependencies": [
     "lucide-react",

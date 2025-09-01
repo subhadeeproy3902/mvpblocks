@@ -1,5 +1,10 @@
 {
   "name": "team-6",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A professional team section with team member cards with their name and designation,. Used in team sections, about us pages, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

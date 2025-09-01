@@ -1,5 +1,11 @@
 {
   "name": "skeleton",
+  "description": "A skeleton component for displaying loading placeholders. Official Shadcn UI component.",
+  "categories": [
+    "skeleton",
+    "loading",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

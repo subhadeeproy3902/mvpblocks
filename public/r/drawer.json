@@ -1,5 +1,11 @@
 {
   "name": "drawer",
+  "description": "A drawer component for side panel interactions. Official Shadcn UI component.",
+  "categories": [
+    "drawer",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "vaul",

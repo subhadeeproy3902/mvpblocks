@@ -1,5 +1,11 @@
 {
   "name": "footer-glow",
+  "description": "A modern footer with a glowing effect and social media links. Used for website footers, etc.",
+  "categories": [
+    "footer",
+    "mainsection",
+    "design"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [],

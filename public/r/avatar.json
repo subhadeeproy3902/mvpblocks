@@ -1,5 +1,10 @@
 {
   "name": "avatar",
+  "description": "An avatar component for displaying user profile images. Official Shadcn UI component.",
+  "categories": [
+    "avatar",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-avatar"

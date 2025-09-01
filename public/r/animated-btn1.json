@@ -1,5 +1,10 @@
 {
   "name": "animated-btn1",
+  "categories": [
+    "button",
+    "interactive"
+  ],
+  "description": "Just a simple animated button with hover effects.",
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [],

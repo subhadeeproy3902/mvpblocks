@@ -1,5 +1,11 @@
 {
   "name": "context-menu",
+  "description": "A context menu component for right-click actions. Official Shadcn UI component.",
+  "categories": [
+    "context-menu",
+    "interactive",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-context-menu"

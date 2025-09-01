@@ -1,5 +1,10 @@
 {
   "name": "users-table",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "description": "A users table component that shows a list of users with details and actions. Used a base component for admin-dashboard-1. Used for admin dashboards, user management pages, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

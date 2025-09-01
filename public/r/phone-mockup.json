@@ -1,5 +1,6 @@
 {
   "name": "phone-mockup",
+  "description": "A phone mockup component to showcase app screenshots",
   "type": "registry:ui",
   "dependencies": [
     "framer-motion",
@@ -16,5 +17,8 @@
       "path": "/components/ui/phone-mockup.tsx",
       "target": "components/ui/phone-mockup.tsx"
     }
+  ],
+  "categories": [
+    "mockup"
   ]
 }

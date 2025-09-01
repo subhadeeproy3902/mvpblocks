@@ -20,5 +20,9 @@
       "path": "/components/ui/pricing-card.tsx",
       "target": "components/ui/pricing-card.tsx"
     }
+  ],
+  "categories": [
+    "card",
+    "pricing-section"
   ]
 }

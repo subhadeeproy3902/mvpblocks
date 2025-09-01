@@ -1,5 +1,11 @@
 {
   "name": "navigation-menu",
+  "description": "A navigation menu component for site navigation. Official Shadcn UI component.",
+  "categories": [
+    "navigation-menu",
+    "navigation",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-navigation-menu"

@@ -1,5 +1,10 @@
 {
   "name": "designer-pricing",
+  "description": "A modern designer pricing section with 3 pricing tiers. Used for SaaS products, pricing sections, etc.",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

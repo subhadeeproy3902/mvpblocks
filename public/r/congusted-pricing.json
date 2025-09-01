@@ -1,5 +1,10 @@
 {
   "name": "congusted-pricing",
+  "categories": [
+    "pricing",
+    "mainsection"
+  ],
+  "description": "A modern pricing section with 3 pricing tiers and a sleek design where pricing cards too close too each other giving it a really good design look. Used for SaaS products, pricing sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

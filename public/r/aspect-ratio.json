@@ -1,5 +1,10 @@
 {
   "name": "aspect-ratio",
+  "description": "A component for maintaining a consistent aspect ratio. Official Shadcn UI component.",
+  "categories": [
+    "layout",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-aspect-ratio"

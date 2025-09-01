@@ -1,5 +1,10 @@
 {
   "name": "team-9",
+  "categories": [
+    "team",
+    "mainsection"
+  ],
+  "description": "A unique team section with team member cards with their name, designation and animated description entrance effect. Used in team sections, about us pages, etc.",
   "author": "mosespace",
   "type": "registry:block",
   "dependencies": [

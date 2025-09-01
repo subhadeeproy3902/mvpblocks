@@ -1,6 +1,7 @@
 {
   "name": "text-reveal",
   "type": "registry:ui",
+  "description": "Text reveal animation multiuse base component",
   "dependencies": [],
   "registryDependencies": [
     "https://blocks.mvp-subha.me/r/utils.json"
@@ -12,5 +13,8 @@
       "path": "/components/ui/text-reveal.tsx",
       "target": "components/ui/text-reveal.tsx"
     }
+  ],
+  "categories": [
+    "text-animation"
   ]
 }

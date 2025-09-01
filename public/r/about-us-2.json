@@ -1,5 +1,10 @@
 {
   "name": "about-us-2",
+  "categories": [
+    "about",
+    "mainsection"
+  ],
+  "description": "About sections provide a brief overview of your product or service, highlighting its key features and benefits. They help users understand what your product is about and why they should use it.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

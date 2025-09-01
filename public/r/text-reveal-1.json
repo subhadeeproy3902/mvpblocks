@@ -1,5 +1,9 @@
 {
   "name": "text-reveal-1",
+  "description": "A text reveal animation that reveals text from the bottom. Used for titles, headings, etc.",
+  "categories": [
+    "text-animation"
+  ],
   "type": "registry:block",
   "dependencies": [],
   "registryDependencies": [

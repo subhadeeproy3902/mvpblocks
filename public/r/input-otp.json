@@ -1,5 +1,11 @@
 {
   "name": "input-otp",
+  "description": "An OTP input component for entering one-time passwords. Official Shadcn UI component.",
+  "categories": [
+    "input",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "input-otp"

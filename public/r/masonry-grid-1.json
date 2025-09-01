@@ -1,5 +1,10 @@
 {
   "name": "masonry-grid-1",
+  "description": "A responsive masonry grid layout component. Used for galleries, portfolios, image grids, etc.",
+  "categories": [
+    "grid",
+    "layout"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

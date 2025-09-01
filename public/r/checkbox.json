@@ -1,5 +1,11 @@
 {
   "name": "checkbox",
+  "description": "A checkbox component for selecting options. Official Shadcn UI component.",
+  "categories": [
+    "checkbox",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-checkbox"

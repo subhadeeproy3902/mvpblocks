@@ -1,5 +1,11 @@
 {
   "name": "alert",
+  "description": "An alert component for displaying important messages to users. Official Shadcn UI component.",
+  "categories": [
+    "alert",
+    "notification",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "files": [
     {

@@ -1,5 +1,11 @@
 {
   "name": "label",
+  "description": "A label component for form elements. Official Shadcn UI component.",
+  "categories": [
+    "label",
+    "form-element",
+    "shadcn"
+  ],
   "type": "registry:ui",
   "dependencies": [
     "@radix-ui/react-label"

@@ -1,5 +1,11 @@
 {
   "name": "code-block-1",
+  "description": "A code block component with syntax highlighting and a sleek design. Used for showcasing code snippets, tutorials, etc.",
+  "categories": [
+    "code",
+    "design",
+    "technical"
+  ],
   "type": "registry:block",
   "dependencies": [
     "react"

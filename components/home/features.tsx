@@ -92,14 +92,14 @@ export default function Features() {
                           height={765}
                           draggable={false}
                           className="select-none"
-                          src="/mobile-light.webp"
+                          src="https://i.postimg.cc/L6NQFz3m/mobile-light.webp"
                         />
                       ) : (
                         <Image
                           alt="Mobile UI dark theme"
                           width={350}
                           height={765}
-                          src="/mobile-dark.webp"
+                          src="https://i.postimg.cc/D0cjZsVd/mobile-dark.webp"
                           draggable={false}
                           className="select-none"
                         />
@@ -145,7 +145,7 @@ export default function Features() {
                       <div className="text-light relative z-10">
                         {theme === 'dark' ? (
                           <Image
-                            src="/features-nextjs-dark.webp"
+                            src="https://i.postimg.cc/CKG0K1Qh/features-nextjs-dark.webp"
                             alt="Next.js logo dark"
                             width={32}
                             height={32}
@@ -154,7 +154,7 @@ export default function Features() {
                           />
                         ) : (
                           <Image
-                            src="/features-nextjs-light.webp"
+                            src="https://i.postimg.cc/J4FM6SXL/features-nextjs-light.webp"
                             alt="Next.js logo light"
                             width={32}
                             height={32}

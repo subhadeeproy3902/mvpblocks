@@ -1,5 +1,10 @@
 {
   "name": "app-hero",
+  "categories": [
+    "hero",
+    "mainsection"
+  ],
+  "description": "A modern app hero section with a sleek design and hover effects. Used for SaaS products, hero sections, etc.",
   "type": "registry:block",
   "dependencies": [
     "framer-motion",

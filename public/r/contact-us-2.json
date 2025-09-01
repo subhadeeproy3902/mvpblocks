@@ -1,5 +1,11 @@
 {
   "name": "contact-us-2",
+  "categories": [
+    "contact",
+    "mainsection",
+    "form"
+  ],
+  "description": "A modern contact us section with a sleek design and a contact form. Used for contact sections, etc.",
   "type": "registry:block",
   "author": "ParnaRoyChowdhury777",
   "dependencies": [
