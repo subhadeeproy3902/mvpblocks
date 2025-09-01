@@ -13,13 +13,426 @@ import { format } from 'prettier/standalone';
 import babel from 'prettier/plugins/babel';
 import estree from 'prettier/plugins/estree';
 import ts from 'typescript';
+import { execSync } from 'child_process';
 import colors from 'picocolors';
 import fs from 'fs';
 import path from 'path';
 import { execa } from 'execa';
 import fetch from 'node-fetch';
 import gradient from 'gradient-string';
-import { AVAILABLE_COMPONENTS, REGISTRY_METADATA } from './constants.js';
+import { AVAILABLE_COMPONENTS, REGISTRY_METADATA, THEME_CONSTANT } from './constants.js';
+import { Zinc, Red, Rose, Orange, Green, Blue } from './colors.js';
+
+// Project Management Class for Smart Detection and Initialization
+class ProjectManager {
+  constructor() {
+    this.cwd = process.cwd();
+    this.projectConfig = null;
+  }
+
+  // Detect project type and configuration
+  async detectProject() {
+    const packageJsonPath = path.join(this.cwd, 'package.json');
+    const tsconfigPath = path.join(this.cwd, 'tsconfig.json');
+    
+    // Check if package.json exists
+    const hasPackageJson = fs.existsSync(packageJsonPath);
+    
+    if (!hasPackageJson) {
+      return {
+        type: 'empty',
+        hasPackageJson: false,
+        hasTypeScript: false,
+        paths: null,
+        framework: null
+      };
+    }
+
+    // Read package.json
+    let packageJson = {};
+    try {
+      packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    } catch (error) {
+      // Invalid package.json, treat as basic project
+      packageJson = { name: 'unknown-project', version: '1.0.0' };
+    }
+    
+    // Detect framework
+    const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+    let framework = 'unknown';
+    
+    if (dependencies.next) framework = 'nextjs';
+    else if (dependencies.vite) framework = 'vite';
+    else if (dependencies['react-scripts']) framework = 'cra';
+    
+    // Check TypeScript
+    const hasTypeScript = fs.existsSync(tsconfigPath) || 
+                         !!dependencies.typescript || 
+                         !!dependencies['@types/react'];
+
+    // Read tsconfig.json for path mappings
+    let paths = null;
+    if (fs.existsSync(tsconfigPath)) {
+      try {
+        const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, 'utf8'));
+        paths = tsconfig.compilerOptions?.paths || null;
+      } catch (e) {
+        // Invalid tsconfig, ignore
+      }
+    }
+
+    this.projectConfig = {
+      type: 'existing',
+      hasPackageJson: true,
+      hasTypeScript,
+      paths,
+      framework,
+      packageJson
+    };
+
+    return this.projectConfig;
+  }
+
+  // Initialize a new project
+  async initializeProject(projectName, framework, useTypeScript) {
+    console.log(`🚀 Creating ${framework} project with official tools...`);
+    
+    try {
+      if (framework === 'nextjs') {
+        // Use create-next-app with user's package manager
+        const pm = this.detectPackageManager();
+        const cmd = useTypeScript 
+          ? `${pm === 'npm' ? 'npx' : pm} create-next-app@latest ${projectName} --typescript --tailwind`
+          : `${pm === 'npm' ? 'npx' : pm} create-next-app@latest ${projectName} --javascript --tailwind`;
+        
+        console.log('Running:', cmd);
+        execSync(cmd, { stdio: 'inherit', cwd: this.cwd });
+        
+        // Debug: List directories after project creation
+        console.log('🔍 Debug: Folders created after Next.js initialization:');
+        const createdFolders = fs.readdirSync(this.cwd).filter(item => 
+          fs.statSync(path.join(this.cwd, item)).isDirectory()
+        );
+        console.log(`  Available folders: ${createdFolders.join(', ')}`);
+        
+        // Only change directory if we created a subdirectory
+        const currentDirName = path.basename(this.cwd);
+        const initInCurrentDir = projectName === currentDirName || projectName === '.';
+        if (!initInCurrentDir) {
+          this.cwd = path.join(this.cwd, projectName);
+          console.log(`🔍 Debug: Attempting to change to: ${this.cwd}`);
+          process.chdir(this.cwd);
+        }
+        
+        // Setup theme for Next.js
+        console.log('🎨 Setting up theme...');
+        const selectedPalette = await selectColorPalette();
+        const colorCSS = getColorPaletteCSS(selectedPalette);
+        
+        // Find globals.css in Next.js project
+        const possibleGlobalsPaths = [
+          path.join(this.cwd, 'src/app/globals.css'),
+          path.join(this.cwd, 'app/globals.css'),
+          path.join(this.cwd, 'src/styles/globals.css'),
+          path.join(this.cwd, 'styles/globals.css'),
+          path.join(this.cwd, 'src/globals.css'),
+          path.join(this.cwd, 'globals.css'),
+        ];
+        
+        let globalsPath = null;
+        for (const possiblePath of possibleGlobalsPaths) {
+          if (fs.existsSync(possiblePath)) {
+            globalsPath = possiblePath;
+            console.log(`🔍 Found globals.css at: ${path.relative(this.cwd, globalsPath)}`);
+            break;
+          }
+        }
+        
+        if (globalsPath) {
+          const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
+          fs.writeFileSync(globalsPath, finalCSS);
+          console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, globalsPath)}`);
+        } else {
+          console.log('⚠️  Could not find globals.css file to apply theme');
+        }
+        
+      } else if (framework === 'vite') {
+        // Use create vite with user's package manager
+        const pm = this.detectPackageManager();
+        const template = useTypeScript ? 'react-ts' : 'react';
+        const cmd = `${pm === 'npm' ? 'npm' : pm} create vite@latest ${projectName} -- --template ${template}`;
+        
+        console.log('Running:', cmd);
+        execSync(cmd, { stdio: 'inherit', cwd: this.cwd });
+        
+        // Debug: List directories after project creation
+        console.log('🔍 Debug: Folders created after Vite initialization:');
+        const createdFolders = fs.readdirSync(this.cwd).filter(item => 
+          fs.statSync(path.join(this.cwd, item)).isDirectory()
+        );
+        console.log(`  Available folders: ${createdFolders.join(', ')}`);
+        
+        // Only change directory if we created a subdirectory
+        const currentDirName = path.basename(this.cwd);
+        const initInCurrentDir = projectName === currentDirName || projectName === '.';
+        if (!initInCurrentDir) {
+          this.cwd = path.join(this.cwd, projectName);
+          console.log(`🔍 Debug: Attempting to change to: ${this.cwd}`);
+          process.chdir(this.cwd);
+        }
+        
+        // Install dependencies with user's package manager
+        console.log('Installing dependencies...');
+        const installCmd = pm === 'npm' ? 'npm install' : `${pm} install`;
+        execSync(installCmd, { stdio: 'inherit', cwd: this.cwd });
+        
+        // Install Tailwind CSS v4 with user's package manager
+        console.log('Setting up Tailwind CSS v4...');
+        const addTailwindCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
+        execSync(`${addTailwindCmd} tailwindcss @tailwindcss/vite`, { stdio: 'inherit', cwd: this.cwd });
+        
+        // Update vite.config.ts/js with Tailwind CSS v4
+        const viteConfigPath = useTypeScript 
+          ? path.join(this.cwd, 'vite.config.ts')
+          : path.join(this.cwd, 'vite.config.js');
+        
+        const viteConfigContent = `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})`;
+        
+        fs.writeFileSync(viteConfigPath, viteConfigContent);
+        console.log(`🔧 Updated ${useTypeScript ? 'vite.config.ts' : 'vite.config.js'} with Tailwind CSS v4`);
+        
+        // Setup theme for Vite
+        console.log('🎨 Setting up theme...');
+        const selectedPalette = await selectColorPalette();
+        const colorCSS = getColorPaletteCSS(selectedPalette);
+        
+        // Find CSS file in Vite project (index.css, App.css, or main.css)
+        const possibleCSSPaths = [
+          path.join(this.cwd, 'src/index.css'),
+          path.join(this.cwd, 'src/App.css'),
+          path.join(this.cwd, 'src/main.css'),
+          path.join(this.cwd, 'src/style.css'),
+          path.join(this.cwd, 'src/styles.css'),
+          path.join(this.cwd, 'index.css'),
+          path.join(this.cwd, 'App.css'),
+        ];
+        
+        let cssPath = null;
+        for (const possiblePath of possibleCSSPaths) {
+          if (fs.existsSync(possiblePath)) {
+            cssPath = possiblePath;
+            console.log(`🔍 Found CSS file at: ${path.relative(this.cwd, cssPath)}`);
+            break;
+          }
+        }
+        
+        if (cssPath) {
+          const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
+          fs.writeFileSync(cssPath, finalCSS);
+          console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, cssPath)}`);
+        } else {
+          console.log('⚠️  Could not find CSS file to apply theme');
+        }
+      }
+      
+      // Add shadcn/ui dependencies with user's package manager
+      console.log('📦 Adding shadcn/ui dependencies...');
+      const pm = this.detectPackageManager();
+      const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
+      execSync(`${addCmd} clsx tailwind-merge`, { stdio: 'inherit', cwd: this.cwd });
+      
+      // Create utils file in the appropriate location
+      const isNextApp = fs.existsSync(path.join(this.cwd, 'src')) || framework === 'nextjs';
+      const utilsDir = isNextApp ? (fs.existsSync(path.join(this.cwd, 'src')) ? path.join(this.cwd, 'src/lib') : path.join(this.cwd, 'lib')) : path.join(this.cwd, 'src/lib');
+      const utilsPath = path.join(utilsDir, useTypeScript ? 'utils.ts' : 'utils.js');
+      
+      if (!fs.existsSync(utilsDir)) {
+        fs.mkdirSync(utilsDir, { recursive: true });
+      }
+      
+      const utilsContent = `import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
+  return twMerge(clsx(inputs))
+}`;
+      
+      fs.writeFileSync(utilsPath, utilsContent);
+      console.log(`🛠️  Created ${utilsPath}`);
+      
+      // Re-detect the project now that it's initialized
+      await this.detectProject();
+      
+      return true;
+    } catch (error) {
+      console.error('❌ Error creating project:', error.message);
+      throw error;
+    }
+  }
+
+  // Detect package manager from current environment
+  detectPackageManager() {
+    // Check if user is running with specific package manager
+    if (process.env.npm_config_user_agent) {
+      if (process.env.npm_config_user_agent.includes('bun')) return 'bun';
+      if (process.env.npm_config_user_agent.includes('pnpm')) return 'pnpm';
+      if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
+    }
+    
+    // Check for lock files in current directory
+    if (fs.existsSync(path.join(this.cwd, 'bun.lockb'))) return 'bun';
+    if (fs.existsSync(path.join(this.cwd, 'pnpm-lock.yaml'))) return 'pnpm';
+    if (fs.existsSync(path.join(this.cwd, 'yarn.lock'))) return 'yarn';
+    
+    return 'npm'; // fallback
+  }
+
+  // Get resolved path for components based on project structure
+  getResolvedPath(type = 'components') {
+    if (!this.projectConfig) {
+      // Fallback to basic structure
+      return path.join(this.cwd, type);
+    }
+
+    const { framework, paths } = this.projectConfig;
+    
+    // Check for custom paths in tsconfig.json
+    if (paths) {
+      if (type === 'components' && paths['@/components/*']) {
+        const pathPattern = paths['@/components/*'][0];
+        return path.join(this.cwd, pathPattern.replace('/*', ''));
+      }
+      if (type === 'lib' && paths['@/lib/*']) {
+        const pathPattern = paths['@/lib/*'][0];
+        return path.join(this.cwd, pathPattern.replace('/*', ''));
+      }
+      if (type === 'hooks' && paths['@/hooks/*']) {
+        const pathPattern = paths['@/hooks/*'][0];
+        return path.join(this.cwd, pathPattern.replace('/*', ''));
+      }
+    }
+
+    // Check for existing directories
+    const possiblePaths = [
+      path.join(this.cwd, 'src', type),
+      path.join(this.cwd, type),
+      path.join(this.cwd, 'app', type),
+    ];
+
+    for (const possiblePath of possiblePaths) {
+      if (fs.existsSync(possiblePath)) {
+        return possiblePath;
+      }
+    }
+
+    // Default based on framework
+    if (framework === 'nextjs') {
+      // Check if src directory exists
+      if (fs.existsSync(path.join(this.cwd, 'src'))) {
+        return path.join(this.cwd, 'src', type);
+      }
+      // Check if app directory exists (App Router)
+      if (fs.existsSync(path.join(this.cwd, 'app'))) {
+        return path.join(this.cwd, type); // Place at root for App Router
+      }
+    }
+
+    // Default fallback
+    return path.join(this.cwd, type);
+  }
+
+  // Auto-detect TypeScript preference
+  shouldUseTypeScript() {
+    if (!this.projectConfig) return false;
+    return this.projectConfig.hasTypeScript;
+  }
+}
+
+// Standalone package manager detection function
+function detectPackageManager() {
+  const cwd = process.cwd();
+  
+  // Check if user is running with specific package manager
+  if (process.env.npm_config_user_agent) {
+    if (process.env.npm_config_user_agent.includes('bun')) return 'bun';
+    if (process.env.npm_config_user_agent.includes('pnpm')) return 'pnpm';
+    if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
+  }
+  
+  // Check for lock files in current directory
+  if (fs.existsSync(path.join(cwd, 'bun.lockb'))) return 'bun';
+  if (fs.existsSync(path.join(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
+  if (fs.existsSync(path.join(cwd, 'yarn.lock'))) return 'yarn';
+  
+  return 'npm'; // fallback
+}
+
+// Color palette selection function
+async function selectColorPalette() {
+  const colorPalette = await select({
+    message: `${colors.cyan('🎨')} Choose your color palette:`,
+    options: [
+      {
+        label: `${colors.dim('⚫')} Zinc (Default)`,
+        value: 'zinc',
+        hint: 'Clean neutral gray theme',
+      },
+      {
+        label: `${colors.red('🔴')} Red`,
+        value: 'red', 
+        hint: 'Bold red accent theme',
+      },
+      {
+        label: `${colors.magenta('🌹')} Rose`,
+        value: 'rose',
+        hint: 'Elegant rose accent theme',
+      },
+      {
+        label: `${colors.yellow('🟠')} Orange`,
+        value: 'orange',
+        hint: 'Warm orange accent theme',
+      },
+      {
+        label: `${colors.green('🟢')} Green`,
+        value: 'green',
+        hint: 'Fresh green accent theme',
+      },
+      {
+        label: `${colors.blue('🔵')} Blue`,
+        value: 'blue',
+        hint: 'Professional blue accent theme',
+      },
+    ],
+  });
+
+  if (isCancel(colorPalette)) {
+    return 'zinc'; // default fallback
+  }
+
+  return colorPalette;
+}
+
+// Get color palette CSS
+function getColorPaletteCSS(palette) {
+  switch (palette) {
+    case 'red': return Red;
+    case 'rose': return Rose;
+    case 'orange': return Orange;
+    case 'green': return Green;
+    case 'blue': return Blue;
+    case 'zinc':
+    default: return Zinc;
+  }
+}
 
 // MVPBlocks Configuration - Simple and direct!
 const MVPBLOCKS_BASE_URL = 'https://blocks.mvp-subha.me';
@@ -85,10 +498,16 @@ ${colors.bold('Commands:')}
   ${colors.green('help')}              Show this help message
 
 ${colors.bold('Examples:')}
-  ${colors.dim('npx mvpblocks list')}
-  ${colors.dim('npx mvpblocks add button')}
-  ${colors.dim('npx mvpblocks search hero')}
-  ${colors.dim('npx mvpblocks info hero-1')}
+  ${colors.dim('mvpblocks list')}
+  ${colors.dim('mvpblocks add button')}
+  ${colors.dim('mvpblocks search hero')}
+  ${colors.dim('mvpblocks info hero-1')}
+
+${colors.dim('💡 Run with your preferred package manager:')}
+  ${colors.dim('npx mvpblocks add button')}     ${colors.dim('# npm')}
+  ${colors.dim('bun x mvpblocks add button')}    ${colors.dim('# bun (or bunx)')}
+  ${colors.dim('yarn dlx mvpblocks add button')} ${colors.dim('# yarn')}
+  ${colors.dim('pnpm dlx mvpblocks add button')} ${colors.dim('# pnpm')}
 
 ${colors.bold('Options:')}
   ${colors.yellow('--ts, --typescript')}   Force TypeScript output
@@ -122,7 +541,7 @@ if (command === 'search') {
   if (!componentName) {
     cancel(
       colors.red(
-        '❌ Please provide a search query. Usage: npx mvpblocks search <query>',
+        '❌ Please provide a search query. Usage: mvpblocks search <query>',
       ),
     );
     process.exit(1);
@@ -142,7 +561,7 @@ if (command === 'info') {
   if (!componentName) {
     cancel(
       colors.red(
-        '❌ Please provide a component name. Usage: npx mvpblocks info <component>',
+        '❌ Please provide a component name. Usage: mvpblocks info <component>',
       ),
     );
     process.exit(1);
@@ -190,12 +609,12 @@ if (command === 'list') {
 
     console.log(
       colors.dim(
-        `\n💡 Use 'npx mvpblocks add <component-name>' to add a component`,
+        `\n💡 Use 'mvpblocks add <component-name>' to add a component`,
       ),
     );
     console.log(
       colors.dim(
-        `💡 Use 'npx mvpblocks info <component-name>' for detailed information`,
+        `💡 Use 'mvpblocks info <component-name>' for detailed information`,
       ),
     );
 
@@ -250,6 +669,132 @@ if (process.argv.includes('--ts') || process.argv.includes('--typescript')) {
   }
 }
 
+// Initialize Project Manager and detect project  
+const projectManager = new ProjectManager();
+const projectInfo = await projectManager.detectProject();
+
+console.log(colors.dim(`🔍 Debug: Project detection result:`));
+console.log(colors.dim(`  - hasPackageJson: ${projectInfo.hasPackageJson}`));
+console.log(colors.dim(`  - cwd: ${projectManager.cwd}`));
+console.log(colors.dim(`  - files in cwd: ${fs.readdirSync(projectManager.cwd).join(', ')}`));
+
+// Handle empty directory (no package.json)
+if (!projectInfo.hasPackageJson) {
+  console.log(colors.cyan('\n📂 No package.json found in current directory.'));
+  console.log(colors.dim('Let\'s set up a new project for you!\n'));
+
+  const shouldInitialize = await confirm({
+    message: 'Would you like to start a new project?',
+    initialValue: true,
+  });
+
+  if (isCancel(shouldInitialize) || !shouldInitialize) {
+    cancel(colors.red('Cannot install components without a project. Please create a package.json or initialize a project first.'));
+    process.exit(0);
+  }
+
+  // Select framework
+  const framework = await select({
+    message: 'Which framework would you like to use?',
+    options: [
+      {
+        label: `${colors.green('⚡')} Next.js`,
+        value: 'nextjs',
+        hint: 'React framework with SSR/SSG',
+      },
+      {
+        label: `${colors.cyan('⚡')} Vite + React`,
+        value: 'vite',
+        hint: 'Fast build tool with React',
+      },
+    ],
+  });
+
+  if (isCancel(framework)) {
+    cancel(colors.red('Operation cancelled.'));
+    process.exit(0);
+  }
+
+  // Get project name
+  const currentDirName = path.basename(process.cwd());
+  const isEmpty = fs.readdirSync(process.cwd()).length === 0;
+  
+  const projectName = await text({
+    message: isEmpty ? 'What is your project named?' : 'What is your project named?',
+    initialValue: isEmpty ? currentDirName : 'my-app',
+    validate: (value) => {
+      if (!value) return 'Project name is required';
+      if (value === '.' || value === currentDirName) return undefined; // Allow '.' for current directory
+      if (!/^[a-z0-9-]+$/.test(value)) return 'Project name must be lowercase, numbers, and dashes only';
+      return undefined;
+    },
+  });
+
+  if (isCancel(projectName)) {
+    cancel(colors.red('Operation cancelled.'));
+    process.exit(0);
+  }
+
+  // Auto-detect TypeScript preference if not specified
+  let useTypeScript;
+  if (language) {
+    useTypeScript = language === 'ts';
+  } else {
+    useTypeScript = await confirm({
+      message: 'Would you like to use TypeScript?',
+      initialValue: true,
+    });
+
+    if (isCancel(useTypeScript)) {
+      cancel(colors.red('Operation cancelled.'));
+      process.exit(0);
+    }
+
+    // Set language based on choice
+    language = useTypeScript ? 'ts' : 'js';
+  }
+
+  // Initialize the project
+  await projectManager.initializeProject(projectName, framework, useTypeScript);
+  
+  console.log(colors.green('✅ Project created successfully!'));
+  
+  // Re-detect project after creation
+  projectManager.cwd = process.cwd();
+  await projectManager.detectProject();
+}
+
+// If language wasn't set yet, auto-detect or prompt
+if (!language) {
+  // Auto-detect based on project
+  if (projectManager.shouldUseTypeScript()) {
+    language = 'ts';
+    console.log(colors.dim('🔍 Auto-detected TypeScript project'));
+  } else {
+    // Interactive language selection
+    language = await select({
+      message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentName)}:`,
+      options: [
+        {
+          label: `${colors.green('⚡')} TypeScript (.tsx)`,
+          value: 'ts',
+          hint: 'Recommended for type safety',
+        },
+        {
+          label: `${colors.yellow('⚡')} JavaScript (.jsx)`,
+          value: 'js',
+          hint: 'Simpler setup',
+        },
+      ],
+    });
+
+    if (isCancel(language)) {
+      cancel(colors.red('Operation cancelled.'));
+      process.exit(0);
+    }
+  }
+}
+
 // Simple registry fetching - using constants from auto-generated file!
 // 🔄 Components are automatically synced by running: bun run build:registry
 async function fetchRegistry() {
@@ -289,7 +834,6 @@ async function fetchRegistry() {
   );
   return { items: validComponents };
 }
-
 // Remove all the complex parsing functions - we don't need them anymore!
 
 async function fetchComponentData(componentName) {
@@ -298,7 +842,7 @@ async function fetchComponentData(componentName) {
 
   if (!response.ok) {
     throw new Error(
-      `Component '${componentName}' not found. Use 'npx mvpblocks list' to see available components.`,
+      `Component '${componentName}' not found. Use 'mvpblocks list' to see available components.`,
     );
   }
 
@@ -405,7 +949,7 @@ async function convertTsxToJsx(code) {
   });
 }
 
-async function downloadFileFromGitHub(file, componentData) {
+async function downloadFileFromGitHub(file, componentData, projectManager) {
   const fileContent = file.content;
   const targetPath = file.target || file.path;
 
@@ -418,21 +962,23 @@ async function downloadFileFromGitHub(file, componentData) {
   const isHook = targetPath.includes('/hooks/');
   const isLib = targetPath.includes('/lib/');
 
-  // Determine target directory based on file type and path
+  // Use ProjectManager for smart path resolution
   let targetDir;
   if (isCss) {
-    targetDir = path.join(process.cwd(), 'components', 'mvpblocks', 'styles');
+    const componentsDir = projectManager.getResolvedPath('components');
+    targetDir = path.join(componentsDir, 'mvpblocks', 'styles');
   } else if (isHook) {
-    targetDir = path.join(process.cwd(), 'hooks');
+    targetDir = projectManager.getResolvedPath('hooks');
   } else if (isLib) {
-    targetDir = path.join(process.cwd(), 'lib');
+    targetDir = projectManager.getResolvedPath('lib');
   } else if (targetPath.includes('/ui/')) {
-    targetDir = path.join(process.cwd(), 'components', 'ui');
+    const componentsDir = projectManager.getResolvedPath('components');
+    targetDir = path.join(componentsDir, 'ui');
   } else {
     // For block components, use a more organized structure
-    const componentType =
-      componentData.type === 'registry:block' ? 'mvpblocks' : 'ui';
-    targetDir = path.join(process.cwd(), 'components', componentType);
+    const componentsDir = projectManager.getResolvedPath('components');
+    const componentType = componentData.type === 'registry:block' ? 'mvpblocks' : 'ui';
+    targetDir = path.join(componentsDir, componentType);
   }
 
   const finalTargetPath = path.join(targetDir, fileName);
@@ -459,14 +1005,6 @@ async function downloadFileFromGitHub(file, componentData) {
   }
 }
 
-function detectPackageManager() {
-  const cwd = process.cwd();
-  if (fs.existsSync(path.join(cwd, 'yarn.lock'))) return 'yarn';
-  if (fs.existsSync(path.join(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
-  if (fs.existsSync(path.join(cwd, 'bun.lockb'))) return 'bun';
-  return 'npm';
-}
-
 // Main component installation logic
 const s = spinner();
 s.start(colors.white(`🚀 Installing ${colors.bold(componentName)}...`));
@@ -477,17 +1015,17 @@ try {
   if (!componentData) {
     s.stop(colors.red(`❌ Component '${componentName}' not found.`));
     console.log(
-      colors.yellow(`💡 Use 'npx mvpblocks list' to see available components`),
+      colors.yellow(`💡 Use 'mvpblocks list' to see available components`),
     );
     console.log(
       colors.yellow(
-        `💡 Use 'npx mvpblocks search <query>' to search for components`,
+        `💡 Use 'mvpblocks search <query>' to search for components`,
       ),
     );
     process.exit(1);
   }
 
-  // Create utils file if it doesn't exist
+  // Create utils file if it doesn't exist using smart path resolution
   const cnContent = {
     ts: `import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -503,7 +1041,7 @@ export function cn(...inputs) {
 }`,
   };
 
-  const utilsPath = path.join(process.cwd(), 'lib');
+  const utilsPath = projectManager.getResolvedPath('lib');
   const cnPath = path.join(
     utilsPath,
     `utils.${language === 'js' ? 'js' : 'ts'}`,
@@ -514,7 +1052,7 @@ export function cn(...inputs) {
     await fs.promises.writeFile(cnPath, cnContent[language], 'utf8');
     console.log(
       colors.green(
-        `🛠️  Created ${colors.dim(`lib/utils.${language === 'js' ? 'js' : 'ts'}`)}`,
+        `🛠️  Created ${colors.dim(path.relative(process.cwd(), cnPath))}`,
       ),
     );
   }
@@ -522,7 +1060,7 @@ export function cn(...inputs) {
   // Download component files
   if (componentData.files && componentData.files.length > 0) {
     for (const file of componentData.files) {
-      await downloadFileFromGitHub(file, componentData);
+      await downloadFileFromGitHub(file, componentData, projectManager);
     }
   } else {
     console.log(colors.yellow('⚠️  No files found for this component.'));
@@ -591,11 +1129,11 @@ ${colors.dim('Happy coding! 🚀')}
     console.log(colors.yellow(`\n💡 Suggestions:`));
     console.log(colors.yellow(`  • Check the component name spelling`));
     console.log(
-      colors.yellow(`  • Use 'npx mvpblocks list' to see available components`),
+      colors.yellow(`  • Use 'mvpblocks list' to see available components`),
     );
     console.log(
       colors.yellow(
-        `  • Use 'npx mvpblocks search <query>' to find similar components`,
+        `  • Use 'mvpblocks search <query>' to find similar components`,
       ),
     );
   }

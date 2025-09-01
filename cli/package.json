@@ -1,9 +1,9 @@
 {
   "name": "mvpblocks",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "🚀 Official CLI for MVPBlocks - Copy, paste, customize—and launch your idea faster than ever!",
   "bin": {
-    "mvpblocks": "./src/index.js"
+    "mvpblocks": "bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -54,7 +54,6 @@
   "dependencies": {
     "@clack/prompts": "^0.11.0",
     "@radix-ui/react-slot": "^1.2.3",
-    "chalk": "^5.6.0",
     "execa": "^9.6.0",
     "gradient-string": "^3.0.0",
     "node-fetch": "^3.3.2",
