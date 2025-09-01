@@ -32,7 +32,6 @@ export const REGISTRY_LAST_UPDATED = REGISTRY_METADATA.lastUpdated;
 
 export const THEME_CONSTANT = `
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
