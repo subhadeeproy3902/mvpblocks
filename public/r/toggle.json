@@ -8,7 +8,8 @@
   ],
   "type": "registry:ui",
   "dependencies": [
-    "@radix-ui/react-toggle"
+    "@radix-ui/react-toggle",
+    "class-variance-authority"
   ],
   "files": [
     {

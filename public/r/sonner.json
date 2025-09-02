@@ -8,7 +8,8 @@
   "type": "registry:ui",
   "dependencies": [
     "sonner",
-    "next-themes"
+    "next-themes",
+    "class-variance-authority"
   ],
   "files": [
     {
