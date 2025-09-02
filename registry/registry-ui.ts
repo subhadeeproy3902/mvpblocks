@@ -360,6 +360,7 @@ export const ui: Registry = [
       'An alert component for displaying important messages to users. Official Shadcn UI component.',
     categories: ['alert', 'notification', 'shadcn'],
     type: 'registry:ui',
+    dependencies: ['class-variance-authority'],
     files: [
       {
         path: '@/components/ui/alert.tsx',
@@ -438,7 +439,7 @@ export const ui: Registry = [
     description: 'A button component with multiple variants and sizes. Official Shadcn UI component.',
     categories: ['button', 'form-element', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-slot'],
+    dependencies: ['@radix-ui/react-slot', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/button.tsx',
@@ -670,7 +671,7 @@ export const ui: Registry = [
     description: 'A label component for form elements. Official Shadcn UI component.',
     categories: ['label', 'form-element', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-label'],
+    dependencies: ['@radix-ui/react-label', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/label.tsx',
@@ -696,7 +697,7 @@ export const ui: Registry = [
     description: 'A navigation menu component for site navigation. Official Shadcn UI component.',
     categories: ['navigation-menu', 'navigation', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-navigation-menu'],
+    dependencies: ['@radix-ui/react-navigation-menu', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/navigation-menu.tsx',
@@ -919,7 +920,7 @@ export const ui: Registry = [
     description: 'A toast notification component using Sonner library',
     categories: ['toast', 'notification'],
     type: 'registry:ui',
-    dependencies: ['sonner', 'next-themes'],
+    dependencies: ['sonner', 'next-themes', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/sonner.tsx',
@@ -982,7 +983,7 @@ export const ui: Registry = [
     description: 'A toast notification component. Official Shadcn UI component.',
     categories: ['toast', 'notification', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-toast'],
+    dependencies: ['@radix-ui/react-toast', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/toast.tsx',
@@ -1003,7 +1004,7 @@ export const ui: Registry = [
     description: 'A toggle component for switching between two states. Official Shadcn UI component.',
     categories: ['toggle', 'form-element', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-toggle'],
+    dependencies: ['@radix-ui/react-toggle', 'class-variance-authority'],
     files: [
       {
         path: '@/components/ui/toggle.tsx',
@@ -1016,7 +1017,7 @@ export const ui: Registry = [
     description: 'A toggle group component for grouping multiple toggle buttons. Official Shadcn UI component.',
     categories: ['toggle', 'form-element', 'shadcn'],
     type: 'registry:ui',
-    dependencies: ['@radix-ui/react-toggle-group'],
+    dependencies: ['@radix-ui/react-toggle-group', 'class-variance-authority'],
     registryDependencies: ['toggle'],
     files: [
       {

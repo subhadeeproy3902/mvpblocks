@@ -101,7 +101,13 @@ const models = [
   { id: 'claude-opus-4-20250514', name: 'Claude 4 Opus' },
 ];
 
-const InputDemo = () => {
+export default function AIConversationPanel ({
+  hide,
+  setHide,
+}:{
+  hide: boolean;
+  setHide: (hide: boolean) => void;
+}) {
   const [text, setText] = useState<string>('');
   const [model, setModel] = useState<string>(models[0].id);
 
@@ -166,7 +172,7 @@ const InputDemo = () => {
   ) as WeatherToolUIPart | undefined;
 
   return (
-    <>
+    <div className={`w-full h-full ${hide ? 'hidden' : 'block'}`}>
       <Conversation className='h-[calc(100vh-12rem)]'>
         <ConversationContent>
           {messages.map((message) => (
@@ -273,8 +279,6 @@ const InputDemo = () => {
           </PromptInputToolbar>
         </PromptInput>
       </div>
-    </>
+    </div>
   );
 };
-
-export default InputDemo;

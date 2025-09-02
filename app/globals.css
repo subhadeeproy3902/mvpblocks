@@ -9,6 +9,20 @@ html {
 /* Default scrollbar styles for all pages */
 ::-webkit-scrollbar {
   width: 4px !important;
+  height: 4px !important;
+}
+
+.noscrollbar::-webkit-scrollbar {
+  width: -1px !important;
+  height: -1px !important;
+}
+
+.noscrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent !important;
+}
+
+.noscrollbar::-webkit-scrollbar-track {
+  background-color: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
