@@ -23,7 +23,10 @@
   "dependencies": {
     "@ai-sdk/groq": "^2.0.16",
     "@ai-sdk/react": "^2.0.28",
+    "@headless-tree/core": "^1.4.0",
+    "@headless-tree/react": "^1.4.0",
     "@hookform/resolvers": "^5.1.1",
+    "@icons-pack/react-simple-icons": "^13.7.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/bundle-analyzer": "^15.5.0",
@@ -95,6 +98,7 @@
     "next-themes": "^0.4.6",
     "octokit": "^5.0.3",
     "posthog-js": "^1.260.1",
+    "radix-ui": "^1.4.3",
     "razorpay": "^2.9.6",
     "react": "^19.1.0",
     "react-day-picker": "9.8.0",

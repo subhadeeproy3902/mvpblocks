@@ -1,13 +1,14 @@
 import createBundleAnalyzer from '@next/bundle-analyzer';
 import { createMDX } from 'fumadocs-mdx/next';
+import { NextConfig } from 'next';
 
 const withAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-/** @type {import('next').NextConfig} */
-const config = {
+const config: NextConfig = {
   reactStrictMode: true,
+  output: 'standalone', // Optimizes for Docker containers
   logging: {
     fetches: {
       fullUrl: true,
@@ -16,9 +17,8 @@ const config = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes'],
-    serverComponents: true,
   },
-  serverExternalPackages: ['ts-morph', 'typescript', 'twoslash', 'shiki'],
+  serverExternalPackages: ['ts-morph', 'typescript', 'twoslash'],
   images: {
     remotePatterns: [{ hostname: '*' }],
     unoptimized: true, // <--- disables Next.js image optimizer as per your current config
