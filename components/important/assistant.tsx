@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
-import { MemoizedMarkdown } from '@/components/memoized-markdown';
+import { MemoizedMarkdown } from '@/components/important/memoized-markdown';
 import {
   CornerDownLeftIcon,
   FileCodeIcon,
@@ -37,7 +37,7 @@ import {
   AlertTriangleIcon,
   RefreshCwIcon,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import Image from 'next/image';
 import {
   convertToModelMessages,

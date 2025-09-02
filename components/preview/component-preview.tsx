@@ -13,7 +13,7 @@ import { CheckCheck, Ellipsis, Fullscreen, Terminal } from 'lucide-react';
 import { useState, useRef } from 'react';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { ComponentLoader } from './component-loader';
-import { OpenInV0Button } from '../v0';
+import { OpenInV0Button } from '../important/v0';
 
 export function ComponentPreview({
   classNameComponentContainer,

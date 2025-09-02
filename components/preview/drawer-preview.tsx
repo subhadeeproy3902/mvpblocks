@@ -12,7 +12,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCheck, Code, Copy, Terminal, X } from 'lucide-react';
 import { ComponentLoader } from './component-loader';
-import { OpenInV0Button } from '../v0';
+import { OpenInV0Button } from '../important/v0';
 import { siteLink } from '@/config/site';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { cn } from '@/lib/utils';

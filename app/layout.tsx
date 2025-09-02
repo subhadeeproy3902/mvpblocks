@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { dm } from '@/lib/fonts';
 import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
-import { PreviewPageDetector } from '@/components/preview-page-detector';
+import { ThemeProvider } from '@/components/important/theme-provider';
+import { PreviewPageDetector } from '@/components/important/preview-page-detector';
 import { Toaster } from '@/components/ui/sonner';
-import Clarity from '@/components/Clarity';
+import Clarity from '@/components/important/Clarity';
 import Script from 'next/script';
 
 export const metadata: Metadata = {

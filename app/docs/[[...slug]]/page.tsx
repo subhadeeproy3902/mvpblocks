@@ -17,7 +17,7 @@ import { type ComponentProps, type FC } from 'react';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
-import { LLMCopyButton, ViewOptions } from '@/components/Actions';
+import { LLMCopyButton, ViewOptions } from '@/components/important/Actions';
 import { createGenerator } from 'fumadocs-typescript';
 import { metadataImage } from '@/lib/metadata-image';
 

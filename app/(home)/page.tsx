@@ -1,4 +1,4 @@
-import Advertisement from '@/components/Advertisement';
+import Advertisement from '@/components/important/Advertisement';
 import Features from '@/components/home/features';
 import Gallery from '@/components/home/gallery';
 import Hero from '@/components/home/hero';

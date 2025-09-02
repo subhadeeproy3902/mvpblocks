@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { Banner } from 'fumadocs-ui/components/banner';
 import Link from 'next/link';
 
-const Assistant = dynamic(() => import('@/components/assistant'));
+const Assistant = dynamic(() => import('@/components/important/assistant'));
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

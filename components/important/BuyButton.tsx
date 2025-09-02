@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/dialog';
 import { useState } from 'react';
 import { initiatePayment } from '@/lib/razorpay';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 import { toast } from 'sonner';
 import ThankYou from './ThankYou';
 import Image from 'next/image';

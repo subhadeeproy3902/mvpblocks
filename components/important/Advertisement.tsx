@@ -2,7 +2,7 @@
 
 import { MoveRight, X } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 

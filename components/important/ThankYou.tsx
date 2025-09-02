@@ -6,8 +6,8 @@ import {
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
-} from './ui/alert-dialog';
-import { Button } from './ui/button';
+} from '../ui/alert-dialog';
+import { Button } from '../ui/button';
 import { confetti } from 'tsparticles-confetti';
 import { useEffect } from 'react';
 import Image from 'next/image';
