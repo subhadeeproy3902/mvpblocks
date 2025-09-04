@@ -4,6 +4,7 @@ export const siteLink =
     : 'http://localhost:3001';
 export const siteName = 'MVPBlocks';
 export const launched = true;
+export const v4 = false
 export const siteConfig = {
   name: 'MVPBlocks',
   url: 'https://blocks.mvp-subha.me',
