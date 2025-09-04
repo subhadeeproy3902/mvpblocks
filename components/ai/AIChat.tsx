@@ -34,7 +34,6 @@ import {
   TaskTrigger,
   TaskContent,
 } from '@/components/ai-elements/task';
-import { tasksSchema } from '@/app/api/ai/tasks/route';
 import {
   SiReact,
   SiTypescript,

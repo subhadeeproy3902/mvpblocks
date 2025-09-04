@@ -220,12 +220,17 @@ class ProjectManager {
   getCreateCommand(pm, framework, projectName, useTypeScript) {
     if (framework === 'nextjs') {
       const tsFlag = useTypeScript ? '--typescript' : '--javascript';
-      if (pm === 'bun') {
+      if (pm === 'bun' || pm === 'bunx') {
         return `bun x create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else if (pm === 'npm') {
         return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
+      } else if (pm === 'pnpm') {
+        return `pnpm create next-app@latest ${projectName} ${tsFlag} --tailwind`;
+      } else if (pm === 'yarn') {
+        return `yarn create next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else {
-        return `${pm} create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
+        // Fallback - assume npm if unknown package manager
+        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
       }
     } else if (framework === 'vite') {
       const template = useTypeScript ? 'react-ts' : 'react';
