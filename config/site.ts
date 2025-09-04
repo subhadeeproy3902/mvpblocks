@@ -1,7 +1,7 @@
 export const siteLink =
   process.env.NODE_ENV !== 'development'
     ? 'https://blocks.mvp-subha.me'
-    : 'http://localhost:3001';
+    : 'http://localhost:3000';
 export const siteName = 'MVPBlocks';
 export const launched = true;
 export const v4 = true
