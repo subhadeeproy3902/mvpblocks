@@ -30,25 +30,6 @@ export function TopNav() {
 
           <span className="text-foreground/40">/</span>
 
-          <div className="hidden items-center gap-1 sm:flex">
-            <Avatar className="h-8 w-8">
-              <AvatarImage
-                src="https://i.pravatar.cc"
-                alt="Workspace avatar"
-              />
-              <AvatarFallback>WS</AvatarFallback>
-            </Avatar>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6 p-0 flex flex-col items-center justify-center gap-0"
-              aria-label="Open workspace switcher"
-            >
-              <ChevronUp className="h-3.5 w-3.5" />
-              <ChevronDown className="h-3.5 w-3.5" />
-            </Button>
-          </div>
-
           <div className="min-w-0">
             <div className="flex items-center gap-1">
               <h1 className="truncate text-xs font-semibold md:text-sm text-balance break-words line-clamp-1">Dashboard redesign</h1>

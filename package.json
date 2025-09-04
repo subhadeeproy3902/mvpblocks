@@ -18,7 +18,8 @@
     "optimise-image": "bun run ./scripts/convert-to-webp.js",
     "github-contribution": "bun run ./scripts/github-contribution.ts",
     "optimize-build": "bun run ./scripts/optimize-build.ts",
-    "build-optimized": "bun run optimize-build && next build"
+    "build-optimized": "bun run optimize-build && next build",
+    "generate-categories": "bun run ./scripts/generate-categories.ts"
   },
   "dependencies": {
     "@ai-sdk/groq": "^2.0.16",
