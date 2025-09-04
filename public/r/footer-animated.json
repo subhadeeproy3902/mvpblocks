@@ -1,0 +1,16 @@
+{
+  "name": "footer-animated",
+  "type": "registry:block",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\n\r\nconst FooterAnimated = () => {\r\n  const links = [\r\n    { name: \"Home\", href: \"#\" },\r\n    { name: \"About\", href: \"#\" },\r\n    { name: \"Contact\", href: \"#\" },\r\n    { name: \"Blog\", href: \"#\" },\r\n  ];\r\n\r\n  return (\r\n    <footer className=\"w-full bg-secondary/50 text-foreground py-6 mt-auto h-fit rounded-t-2xl\">\r\n      <div className=\"max-w-6xl mx-auto flex flex-wrap justify-center gap-8\">\r\n        {links.map((link) => (\r\n          <a\r\n            key={link.name}\r\n            href={link.href}\r\n            className=\"relative group text-lg transition-colors duration-300 hover:text-primary\"\r\n          >\r\n            {link.name}\r\n            <span className=\"absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full\"></span>\r\n          </a>\r\n        ))}\r\n      </div>\r\n      <p className=\"text-center text-sm text-muted-foreground mt-4\">\r\n        © 2025 MVPBlocks. All rights reserved.\r\n      </p>\r\n    </footer>\r\n  );\r\n};\r\n\r\nexport default FooterAnimated;\r\n",
+      "path": "/components/mvpblocks/required/footers/footer-animated.tsx",
+      "target": "components/mvpblocks/footer-animated.tsx"
+    }
+  ]
+}

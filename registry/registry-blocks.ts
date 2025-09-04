@@ -1,8 +1,22 @@
 import type { Registry } from '@/registry/schema';
-import FooterAnimated from "@/components/FooterAnimated";
 import * as React from 'react';
 
 export const blocks: Registry = [
+  {
+    name: "footer-animated",
+    type: "registry:block",
+    dependencies: ["react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/mvpblocks/required/footers/footer-animated.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/mvpblocks/required/footers/footer-animated"),
+    ),
+  },
   {
     name: 'text-reveal-1',
     description:
@@ -325,29 +339,6 @@ export const blocks: Registry = [
         import('../components/mvpblocks/required/footers/footer-newsletter'),
     ),
   },
-  {
-  name: 'footer-animated',
-  HEAD
-  author: 'Siddhi-121',
-  f8ca622 (fix: suppress hydration warning for Next.js logo image)
-  type: 'registry:block',
-  dependencies: ['react', 'framer-motion'],
-  registryDependencies: [],
-  files: [
-    {
-      path: '@/components/mvpblocks/required/footers/footer-animated.tsx',
-      type: 'registry:block',
-    },
-  ],
-  component: React.lazy(
- HEAD
-    () =>
-      import('../components/mvpblocks/required/footers/footer-animated'),
-
-    () => import('../components/mvpblocks/required/footers/footer-animated'),
- f8ca622 (fix: suppress hydration warning for Next.js logo image)
-  ),
-},
   {
     name: 'designer-pricing',
     description:
