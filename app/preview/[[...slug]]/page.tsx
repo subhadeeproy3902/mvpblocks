@@ -1,5 +1,5 @@
 import { ComponentLoader } from '@/components/preview/component-loader';
-import { notFound } from 'next/navigation';
+import NotFound from '@/components/shared/notfound';
 
 export default async function PreviewPage({
   params,
@@ -7,7 +7,6 @@ export default async function PreviewPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  if (!slug.length) return notFound();
   const componentName = slug.join('/');
 
   return (
