@@ -20,7 +20,7 @@ import { execa } from 'execa';
 import fetch from 'node-fetch';
 import gradient from 'gradient-string';
 import { AVAILABLE_COMPONENTS, REGISTRY_METADATA, THEME_CONSTANT } from './constants.js';
-import { Zinc, Red, Rose, Orange, Green, Blue } from './colors.js';
+import { Zinc, Red, Rose, Orange, Green, Blue, Yellow, Purple } from './colors.js';
 
 // Project Management Class for Smart Detection and Initialization
 class ProjectManager {
@@ -97,176 +97,88 @@ class ProjectManager {
     console.log(`🚀 Creating ${framework} project with official tools...`);
     
     try {
+      const pm = this.detectPackageManager();
+      const cmd = this.getCreateCommand(pm, framework, projectName, useTypeScript);
+      
+      console.log('Running:', cmd);
+      execSync(cmd, { stdio: 'inherit' });
+      
+      // Always change to the created project directory
+      const projectPath = path.join(this.cwd, projectName);
+      if (fs.existsSync(projectPath)) {
+        this.cwd = projectPath;
+        process.chdir(this.cwd);
+        console.log(`� Changed to project directory: ${this.cwd}`);
+      } else {
+        throw new Error(`Project directory ${projectPath} was not created`);
+      }
+      
       if (framework === 'nextjs') {
-        // Use create-next-app with user's package manager
-        const pm = this.detectPackageManager();
-        const cmd = useTypeScript 
-          ? `${pm === 'npm' ? 'npx' : pm} create-next-app@latest ${projectName} --typescript --tailwind`
-          : `${pm === 'npm' ? 'npx' : pm} create-next-app@latest ${projectName} --javascript --tailwind`;
+        // Install additional dependencies
+        console.log('📦 Installing additional dependencies...');
+        const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
+        execSync(`${addCmd} class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`, { stdio: 'inherit' });
         
-        console.log('Running:', cmd);
-        execSync(cmd, { stdio: 'inherit' });
+        // Detect project structure
+        const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
+        const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
+        const configFile = useTypeScript ? 'tsconfig.json' : 'jsconfig.json';
         
-        // Debug: List directories after project creation
-        console.log('🔍 Debug: Folders created after Next.js initialization:');
-        const createdFolders = fs.readdirSync(this.cwd).filter(item => 
-          fs.statSync(path.join(this.cwd, item)).isDirectory()
-        );
-        console.log(`  Available folders: ${createdFolders.join(', ')}`);
+        console.log(`📋 Detected Next.js structure: src=${hasSrc}, app=${hasApp}, config=${configFile}`);
         
-        // Only change directory if we created a subdirectory
-        const currentDirName = path.basename(this.cwd);
-        const initInCurrentDir = projectName === currentDirName || projectName === '.';
-        if (!initInCurrentDir) {
-          this.cwd = path.join(this.cwd, projectName);
-          console.log(`🔍 Debug: Attempting to change to: ${this.cwd}`);
-          process.chdir(this.cwd);
-        }
+        // Update config file with path aliases
+        await this.updateProjectConfig(configFile, framework, useTypeScript);
         
-        // Setup theme for Next.js
+        // Create components.json
+        await this.createComponentsJson(framework, useTypeScript, hasSrc);
+        
+        // Setup theme
         console.log('🎨 Setting up theme...');
         const selectedPalette = await selectColorPalette();
         const colorCSS = getColorPaletteCSS(selectedPalette);
         
-        // Find globals.css in Next.js project
-        const possibleGlobalsPaths = [
-          path.join(this.cwd, 'src/app/globals.css'),
-          path.join(this.cwd, 'app/globals.css'),
-          path.join(this.cwd, 'src/styles/globals.css'),
-          path.join(this.cwd, 'styles/globals.css'),
-          path.join(this.cwd, 'src/globals.css'),
-          path.join(this.cwd, 'globals.css'),
-        ];
+        // Create/update CSS file
+        await this.setupThemeCSS(framework, selectedPalette, colorCSS, hasSrc);
         
-        let globalsPath = null;
-        for (const possiblePath of possibleGlobalsPaths) {
-          if (fs.existsSync(possiblePath)) {
-            globalsPath = possiblePath;
-            console.log(`🔍 Found globals.css at: ${path.relative(this.cwd, globalsPath)}`);
-            break;
-          }
-        }
-        
-        if (globalsPath) {
-          const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
-          fs.writeFileSync(globalsPath, finalCSS);
-          console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, globalsPath)}`);
-        } else {
-          console.log('⚠️  Could not find globals.css file to apply theme');
-        }
+        // Create utils file
+        await this.createUtilsFile(framework, useTypeScript, hasSrc);
         
       } else if (framework === 'vite') {
-        // Use create vite with user's package manager
-        const pm = this.detectPackageManager();
-        const template = useTypeScript ? 'react-ts' : 'react';
-        const cmd = `${pm === 'npm' ? 'npm' : pm} create vite@latest ${projectName} -- --template ${template}`;
-        
-        console.log('Running:', cmd);
-        execSync(cmd, { stdio: 'inherit' });
-        
-        // Debug: List directories after project creation
-        console.log('🔍 Debug: Folders created after Vite initialization:');
-        const createdFolders = fs.readdirSync(this.cwd).filter(item => 
-          fs.statSync(path.join(this.cwd, item)).isDirectory()
-        );
-        console.log(`  Available folders: ${createdFolders.join(', ')}`);
-        
-        // Only change directory if we created a subdirectory
-        const currentDirName = path.basename(this.cwd);
-        const initInCurrentDir = projectName === currentDirName || projectName === '.';
-        if (!initInCurrentDir) {
-          this.cwd = path.join(this.cwd, projectName);
-          console.log(`🔍 Debug: Attempting to change to: ${this.cwd}`);
-          process.chdir(this.cwd);
-        }
-        
-        // Install dependencies with user's package manager
+        // Install dependencies first
         console.log('Installing dependencies...');
         const installCmd = pm === 'npm' ? 'npm install' : `${pm} install`;
         execSync(installCmd, { stdio: 'inherit' });
         
-        // Install Tailwind CSS v4 with user's package manager
-        console.log('Setting up Tailwind CSS v4...');
-        const addTailwindCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-        execSync(`${addTailwindCmd} tailwindcss @tailwindcss/vite`, { stdio: 'inherit' });
+        // Install additional dependencies
+        console.log('Setting up Tailwind CSS and additional dependencies...');
+        const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
+        execSync(`${addCmd} tailwindcss @tailwindcss/vite class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`, { stdio: 'inherit' });
         
-        // Update vite.config.ts/js with Tailwind CSS v4
-        const viteConfigPath = useTypeScript 
-          ? path.join(this.cwd, 'vite.config.ts')
-          : path.join(this.cwd, 'vite.config.js');
+        // Update vite.config
+        await this.updateViteConfig(useTypeScript);
         
-        const viteConfigContent = `import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-})`;
+        // Update tsconfig files
+        const configFile = useTypeScript ? 'tsconfig.json' : 'jsconfig.json';
+        await this.updateProjectConfig(configFile, framework, useTypeScript);
         
-        fs.writeFileSync(viteConfigPath, viteConfigContent);
-        console.log(`🔧 Updated ${useTypeScript ? 'vite.config.ts' : 'vite.config.js'} with Tailwind CSS v4`);
+        if (useTypeScript && fs.existsSync(path.join(this.cwd, 'tsconfig.app.json'))) {
+          await this.updateProjectConfig('tsconfig.app.json', framework, useTypeScript);
+        }
         
-        // Setup theme for Vite
+        // Create components.json
+        await this.createComponentsJson(framework, useTypeScript, true); // Vite always uses src
+        
+        // Setup theme
         console.log('🎨 Setting up theme...');
         const selectedPalette = await selectColorPalette();
         const colorCSS = getColorPaletteCSS(selectedPalette);
         
-        // Find CSS file in Vite project (index.css, App.css, or main.css)
-        const possibleCSSPaths = [
-          path.join(this.cwd, 'src/index.css'),
-          path.join(this.cwd, 'src/App.css'),
-          path.join(this.cwd, 'src/main.css'),
-          path.join(this.cwd, 'src/style.css'),
-          path.join(this.cwd, 'src/styles.css'),
-          path.join(this.cwd, 'index.css'),
-          path.join(this.cwd, 'App.css'),
-        ];
+        // Create/update CSS files
+        await this.setupThemeCSS(framework, selectedPalette, colorCSS, true);
         
-        let cssPath = null;
-        for (const possiblePath of possibleCSSPaths) {
-          if (fs.existsSync(possiblePath)) {
-            cssPath = possiblePath;
-            console.log(`🔍 Found CSS file at: ${path.relative(this.cwd, cssPath)}`);
-            break;
-          }
-        }
-        
-        if (cssPath) {
-          const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
-          fs.writeFileSync(cssPath, finalCSS);
-          console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, cssPath)}`);
-        } else {
-          console.log('⚠️  Could not find CSS file to apply theme');
-        }
+        // Create utils file
+        await this.createUtilsFile(framework, useTypeScript, true);
       }
-      
-      // Add shadcn/ui dependencies with user's package manager
-      console.log('📦 Adding shadcn/ui dependencies...');
-      const pm = this.detectPackageManager();
-      const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-      execSync(`${addCmd} clsx tailwind-merge`, { stdio: 'inherit' });
-      
-      // Create utils file in the appropriate location
-      const isNextApp = fs.existsSync(path.join(this.cwd, 'src')) || framework === 'nextjs';
-      const utilsDir = isNextApp ? (fs.existsSync(path.join(this.cwd, 'src')) ? path.join(this.cwd, 'src/lib') : path.join(this.cwd, 'lib')) : path.join(this.cwd, 'src/lib');
-      const utilsPath = path.join(utilsDir, useTypeScript ? 'utils.ts' : 'utils.js');
-      
-      if (!fs.existsSync(utilsDir)) {
-        fs.mkdirSync(utilsDir, { recursive: true });
-      }
-      
-      const utilsContent = `import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
-  return twMerge(clsx(inputs))
-}`;
-      
-      fs.writeFileSync(utilsPath, utilsContent);
-      console.log(`🛠️  Created ${utilsPath}`);
       
       // Re-detect the project now that it's initialized
       await this.detectProject();
@@ -278,13 +190,14 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     }
   }
 
-  // Detect package manager from current environment
+  // Detect package manager from current environment - respect how CLI was invoked
   detectPackageManager() {
-    // Check if user is running with specific package manager
+    // First check if user is running with specific package manager (most accurate)
     if (process.env.npm_config_user_agent) {
       if (process.env.npm_config_user_agent.includes('bun')) return 'bun';
       if (process.env.npm_config_user_agent.includes('pnpm')) return 'pnpm';
       if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
+      if (process.env.npm_config_user_agent.includes('npm')) return 'npm';
     }
     
     // Check for lock files in current directory
@@ -292,19 +205,223 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     if (fs.existsSync(path.join(this.cwd, 'pnpm-lock.yaml'))) return 'pnpm';
     if (fs.existsSync(path.join(this.cwd, 'yarn.lock'))) return 'yarn';
     
+    // Only fallback to checking if bun is available if no other indicators
+    try {
+      execSync('bun --version', { stdio: 'pipe' });
+      return 'bun';
+    } catch (error) {
+      // Bun not available, use npm as final fallback
+    }
+    
     return 'npm'; // fallback
+  }
+
+  // Get the appropriate create command for the package manager
+  getCreateCommand(pm, framework, projectName, useTypeScript) {
+    if (framework === 'nextjs') {
+      const tsFlag = useTypeScript ? '--typescript' : '--javascript';
+      if (pm === 'bun' || pm === 'bunx') {
+        return `bunx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+      } else if (pm === 'npm') {
+        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+      } else if (pm === 'pnpm') {
+        return `pnpm create next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+      } else if (pm === 'yarn') {
+        return `yarn create next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+      } else {
+        // Fallback - assume npm if unknown package manager
+        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+      }
+    } else if (framework === 'vite') {
+      const template = useTypeScript ? 'react-ts' : 'react';
+      if (pm === 'bun') {
+        return `bun create vite ${projectName} --template ${template}`;
+      } else if (pm === 'npm') {
+        return `npm create vite@latest ${projectName} -- --template ${template}`;
+      } else {
+        return `${pm} create vite@latest ${projectName} -- --template ${template}`;
+      }
+    }
+  }
+
+  // Create components.json file
+  async createComponentsJson(framework, useTypeScript, hasSrc = true) {
+    const cssPath = hasSrc ? 'src/styles/globals.css' : 'styles/globals.css';
+    
+    const componentsConfig = {
+      "$schema": "https://ui.shadcn.com/schema.json",
+      "style": "new-york",
+      "rsc": false,
+      "tsx": useTypeScript,
+      "tailwind": {
+        "config": "",
+        "css": cssPath,
+        "baseColor": "neutral",
+        "cssVariables": true,
+        "prefix": ""
+      },
+      "aliases": {
+        "components": "@/components",
+        "utils": "@/lib/utils",
+        "ui": "@/components/ui",
+        "lib": "@/lib",
+        "hooks": "@/hooks"
+      },
+      "iconLibrary": "lucide"
+    };
+
+    const componentsJsonPath = path.join(this.cwd, 'components.json');
+    await fs.promises.writeFile(componentsJsonPath, JSON.stringify(componentsConfig, null, 2));
+    console.log(`🔧 Created components.json`);
+  }
+
+  // Update project configuration file (tsconfig.json, jsconfig.json)
+  async updateProjectConfig(configFile, framework, useTypeScript) {
+    const configPath = path.join(this.cwd, configFile);
+    const pathPrefix = framework === 'vite' ? './src/*' : './*';
+    
+    if (fs.existsSync(configPath)) {
+      try {
+        const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        
+        if (!config.compilerOptions) {
+          config.compilerOptions = {};
+        }
+        
+        config.compilerOptions.baseUrl = '.';
+        config.compilerOptions.paths = {
+          '@/*': [pathPrefix]
+        };
+        
+        fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+        console.log(`🔧 Updated ${configFile} with path aliases`);
+      } catch (error) {
+        console.log(`⚠️  Could not update ${configFile}:`, error.message);
+      }
+    }
+  }
+
+  // Update Vite configuration
+  async updateViteConfig(useTypeScript) {
+    const viteConfigPath = useTypeScript 
+      ? path.join(this.cwd, 'vite.config.ts')
+      : path.join(this.cwd, 'vite.config.js');
+    
+    const viteConfigContent = `import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})`;
+    
+    fs.writeFileSync(viteConfigPath, viteConfigContent);
+    console.log(`🔧 Updated ${useTypeScript ? 'vite.config.ts' : 'vite.config.js'} with Tailwind CSS and path aliases`);
+  }
+
+  // Setup theme CSS
+  async setupThemeCSS(framework, selectedPalette, colorCSS, hasSrc) {
+    let cssPath;
+    
+    if (framework === 'nextjs') {
+      // For Next.js, try to find existing globals.css or create one
+      const possiblePaths = [
+        path.join(this.cwd, 'src/app/globals.css'),
+        path.join(this.cwd, 'app/globals.css'),
+        path.join(this.cwd, 'src/styles/globals.css'),
+        path.join(this.cwd, 'styles/globals.css')
+      ];
+      
+      cssPath = possiblePaths.find(p => fs.existsSync(p));
+      
+      if (!cssPath) {
+        // Create in appropriate location
+        const stylesDir = hasSrc 
+          ? path.join(this.cwd, 'src/styles')
+          : path.join(this.cwd, 'styles');
+        
+        if (!fs.existsSync(stylesDir)) {
+          fs.mkdirSync(stylesDir, { recursive: true });
+        }
+        cssPath = path.join(stylesDir, 'globals.css');
+      }
+    } else {
+      // For Vite, always use src/styles/globals.css and also update index.css
+      const stylesDir = path.join(this.cwd, 'src/styles');
+      if (!fs.existsSync(stylesDir)) {
+        fs.mkdirSync(stylesDir, { recursive: true });
+      }
+      cssPath = path.join(stylesDir, 'globals.css');
+      
+      // Also update index.css
+      const indexCssPath = path.join(this.cwd, 'src/index.css');
+      if (fs.existsSync(indexCssPath)) {
+        const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
+        fs.writeFileSync(indexCssPath, finalCSS);
+        console.log(`🎨 Updated ${path.relative(this.cwd, indexCssPath)} with ${selectedPalette} theme`);
+      }
+    }
+    
+    const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
+    fs.writeFileSync(cssPath, finalCSS);
+    console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, cssPath)}`);
+  }
+
+  // Create utils file
+  async createUtilsFile(framework, useTypeScript, hasSrc) {
+    const utilsDir = hasSrc 
+      ? path.join(this.cwd, 'src/lib') 
+      : path.join(this.cwd, 'lib');
+    
+    if (!fs.existsSync(utilsDir)) {
+      fs.mkdirSync(utilsDir, { recursive: true });
+    }
+    
+    // Check for existing utils files (both .ts and .js)
+    const tsUtilsPath = path.join(utilsDir, 'utils.ts');
+    const jsUtilsPath = path.join(utilsDir, 'utils.js');
+    
+    if (fs.existsSync(tsUtilsPath) || fs.existsSync(jsUtilsPath)) {
+      console.log(`🛠️  Utils file already exists, skipping creation`);
+      return;
+    }
+    
+    const utilsPath = path.join(utilsDir, useTypeScript ? 'utils.ts' : 'utils.js');
+    
+    const utilsContent = `import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
+  return twMerge(clsx(inputs))
+}`;
+    
+    fs.writeFileSync(utilsPath, utilsContent);
+    console.log(`🛠️  Created ${path.relative(this.cwd, utilsPath)}`);
   }
 
   // Get resolved path for components based on project structure
   getResolvedPath(type = 'components') {
     if (!this.projectConfig) {
-      // Fallback to basic structure
-      return path.join(this.cwd, type);
+      // Fallback to basic structure - check if src exists
+      const srcPath = path.join(this.cwd, 'src', type);
+      const rootPath = path.join(this.cwd, type);
+      
+      if (fs.existsSync(path.join(this.cwd, 'src'))) {
+        return srcPath;
+      }
+      return rootPath;
     }
 
     const { framework, paths } = this.projectConfig;
     
-    // Check for custom paths in tsconfig.json
+    // Check for custom paths in tsconfig.json/jsconfig.json
     if (paths) {
       if (type === 'components' && paths['@/components/*']) {
         const pathPattern = paths['@/components/*'][0];
@@ -320,25 +437,7 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
       }
     }
 
-    // Special handling for Vite projects - keep lib and hooks consistent with components
-    if (framework === 'vite') {
-      // Check if components are in src (standard Vite setup)
-      const srcComponentsPath = path.join(this.cwd, 'src', 'components');
-      const rootComponentsPath = path.join(this.cwd, 'components');
-      
-      if (fs.existsSync(srcComponentsPath)) {
-        // Components are in src, put everything in src
-        return path.join(this.cwd, 'src', type);
-      } else if (fs.existsSync(rootComponentsPath)) {
-        // Components are at root, put everything at root
-        return path.join(this.cwd, type);
-      } else {
-        // No components folder exists yet, default to root for Vite
-        return path.join(this.cwd, type);
-      }
-    }
-
-    // Check for existing directories
+    // Check for existing directories first
     const possiblePaths = [
       path.join(this.cwd, 'src', type),
       path.join(this.cwd, type),
@@ -351,20 +450,23 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
       }
     }
 
-    // Default based on framework
+    // Default based on framework and existing structure
+    const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
+    const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
+    
     if (framework === 'nextjs') {
-      // Check if src directory exists
-      if (fs.existsSync(path.join(this.cwd, 'src'))) {
+      if (hasSrc) {
         return path.join(this.cwd, 'src', type);
+      } else if (hasApp) {
+        return path.join(this.cwd, type); // Place at root for App Router without src
       }
-      // Check if app directory exists (App Router)
-      if (fs.existsSync(path.join(this.cwd, 'app'))) {
-        return path.join(this.cwd, type); // Place at root for App Router
-      }
+    } else if (framework === 'vite') {
+      // Vite projects almost always use src
+      return path.join(this.cwd, 'src', type);
     }
 
-    // Default fallback
-    return path.join(this.cwd, type);
+    // Final fallback
+    return hasSrc ? path.join(this.cwd, 'src', type) : path.join(this.cwd, type);
   }
 
   // Auto-detect TypeScript preference
@@ -378,17 +480,26 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
 function detectPackageManager() {
   const cwd = process.cwd();
   
-  // Check if user is running with specific package manager
+  // First check if user is running with specific package manager (most accurate)
   if (process.env.npm_config_user_agent) {
     if (process.env.npm_config_user_agent.includes('bun')) return 'bun';
     if (process.env.npm_config_user_agent.includes('pnpm')) return 'pnpm';
     if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
+    if (process.env.npm_config_user_agent.includes('npm')) return 'npm';
   }
   
   // Check for lock files in current directory
   if (fs.existsSync(path.join(cwd, 'bun.lockb'))) return 'bun';
   if (fs.existsSync(path.join(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
   if (fs.existsSync(path.join(cwd, 'yarn.lock'))) return 'yarn';
+  
+  // Only fallback to checking if bun is available if no other indicators
+  try {
+    execSync('bun --version', { stdio: 'pipe' });
+    return 'bun';
+  } catch (error) {
+    // Bun not available, use npm as final fallback
+  }
   
   return 'npm'; // fallback
 }
@@ -428,6 +539,16 @@ async function selectColorPalette() {
         value: 'blue',
         hint: 'Professional blue accent theme',
       },
+      {
+        label: `${colors.cyan('🟡')} Yellow`,
+        value: 'yellow',
+        hint: 'Bright yellow accent theme',
+      },
+      {
+        label: `${colors.magenta('🟣')} Purple`,
+        value: 'purple',
+        hint: 'Vibrant purple accent theme',
+      }
     ],
   });
 
@@ -446,6 +567,8 @@ function getColorPaletteCSS(palette) {
     case 'orange': return Orange;
     case 'green': return Green;
     case 'blue': return Blue;
+    case 'yellow': return Yellow;
+    case 'purple': return Purple;
     case 'zinc':
     default: return Zinc;
   }
@@ -595,54 +718,9 @@ if (command === 'info') {
 }
 
 if (command === 'list') {
-  const s = spinner();
-  s.start(colors.white('🔍 Fetching available components...'));
-  try {
-    const registry = await fetchRegistry();
-    s.stop();
-    console.log(
-      colors.green(`\n🎯 Found ${registry.items.length} components:\n`),
-    );
-
-    // Group components by type for better organization
-    const componentsByType = {};
-    registry.items.forEach((item) => {
-      const type = item.type || 'other';
-      if (!componentsByType[type]) {
-        componentsByType[type] = [];
-      }
-      componentsByType[type].push(item);
-    });
-
-    // Display components grouped by type
-    Object.entries(componentsByType).forEach(([type, components]) => {
-      console.log(colors.bold(colors.cyan(`\n${type.toUpperCase()}:`)));
-      components.forEach((item) => {
-        console.log(
-          `${colors.green('*')} ${colors.bold(item.name)} ${item.description ? colors.dim(`- ${item.description}`) : ''}`,
-        );
-      });
-    });
-
-    console.log(
-      colors.dim(
-        `\n💡 Use 'mvpblocks add <component-name>' to add a component`,
-      ),
-    );
-    console.log(
-      colors.dim(
-        `💡 Use 'mvpblocks info <component-name>' for detailed information`,
-      ),
-    );
-
-    console.log(colors.bold(colors.green('\n✨ Complete list displayed!')));
-    process.exit(0);
-  } catch (err) {
-    s.stop();
-    console.error(colors.red('❌ Failed to fetch registry.'));
-    console.error(err.message);
-    process.exit(1);
-  }
+  console.log(colors.green('🚀 Loading interactive components list...'));
+  await showInteractiveComponentsList();
+  process.exit(0);
 }
 if (command !== 'add' || !componentName) {
   console.log(colors.yellow('⚠️  No command specified or invalid usage.'));
@@ -810,6 +888,113 @@ if (!language) {
       process.exit(0);
     }
   }
+}
+
+// Fast Interactive Components List with Pagination
+async function showInteractiveComponentsList() {
+  // Prepare components data with categories (fast - no network requests!)
+  const components = AVAILABLE_COMPONENTS.map(name => {
+    let category = 'Other';
+    
+    // Categorize based on component name patterns (fast local categorization)
+    if (['accordion', 'alert', 'alert-dialog', 'aspect-ratio', 'avatar', 'badge', 'border-beam', 'breadcrumb', 'button', 'calendar', 'card', 'carousel', 'chart', 'checkbox', 'collapsible', 'command', 'context-menu', 'dialog', 'drawer', 'dropdown-menu', 'form', 'globe', 'gradient-bars', 'hover-card', 'input', 'input-otp', 'label', 'marquee', 'menubar', 'multi-step-form', 'navigation-menu', 'pagination', 'particles', 'payment-modal', 'phone-mockup', 'popover', 'pricing-card', 'progress', 'pulse-card', 'radio-group', 'resizable', 'scroll-area', 'scrollbasedvelocity', 'select', 'separator', 'sheet', 'sidebar', 'skeleton', 'slider', 'sonner', 'sparkles', 'spotlight', 'switch', 'table', 'tabs', 'text-reveal', 'textarea', 'toast', 'toggle', 'toggle-group', 'tooltip', 'typewriter'].includes(name)) {
+      category = 'UI Components';
+    } else if (['use-auto-resize-textarea', 'use-mobile', 'use-toast'].includes(name)) {
+      category = 'Hooks';
+    } else if (name === 'utils') {
+      category = 'Utils/Lib';
+    } else {
+      category = 'Blocks';
+    }
+    
+    return { name, category };
+  });
+
+  const ITEMS_PER_PAGE = 10;
+  let currentPage = 0;
+  const totalPages = Math.ceil(components.length / ITEMS_PER_PAGE);
+
+  const displayPage = (page) => {
+    // Clear the screen properly
+    process.stdout.write('\x1bc'); // Reset terminal completely
+    
+    // Header
+    console.log(colors.bold(colors.green('\n🎯 MVPBlocks Components Library')));
+    console.log(colors.dim(`📦 ${components.length} components available\n`));
+    
+    // Table header
+    console.log(colors.bold(colors.cyan('┌─────┬───────────────────────────────────┬─────────────────┐')));
+    console.log(colors.bold(colors.cyan('│ No. │ Component Name                    │ Category        │')));
+    console.log(colors.bold(colors.cyan('├─────┼───────────────────────────────────┼─────────────────┤')));
+    
+    // Table rows
+    const startIdx = page * ITEMS_PER_PAGE;
+    const endIdx = Math.min(startIdx + ITEMS_PER_PAGE, components.length);
+    
+    for (let i = startIdx; i < endIdx; i++) {
+      const component = components[i];
+      const rowNum = String(i + 1).padStart(3);
+      const name = component.name.padEnd(33);
+      const category = component.category.padEnd(15);
+      
+      console.log(colors.white(`│ ${colors.yellow(rowNum)} │ ${colors.green(name)} │ ${colors.blue(category)} │`));
+    }
+    
+    // Fill empty rows if needed
+    const remainingRows = ITEMS_PER_PAGE - (endIdx - startIdx);
+    for (let i = 0; i < remainingRows; i++) {
+      console.log(colors.dim('│     │                                   │                 │'));
+    }
+    
+    // Table footer
+    console.log(colors.bold(colors.cyan('└─────┴───────────────────────────────────┴─────────────────┘')));
+    
+    // Pagination info
+    console.log(colors.dim(`\nPage ${page + 1} of ${totalPages} (showing ${startIdx + 1}-${endIdx} of ${components.length})`));
+    
+    // Controls
+    console.log(colors.bold(colors.yellow('\n📋 Navigation:')));
+    console.log(colors.dim('  A - Previous page, D - Next page, ESC - Exit'));
+    console.log(colors.dim(`\n💡 Use 'mvpblocks add <component-name>' to install a component`));
+  };
+
+  displayPage(currentPage);
+
+  // Simple single-character input handling
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+  process.stdin.setEncoding('utf8');
+
+  return new Promise((resolve) => {
+    const handleInput = (chunk) => {
+      const key = chunk.toString();
+      
+      // ESC key
+      if (key === '\u001b') {
+        process.stdin.setRawMode(false);
+        process.stdin.removeListener('data', handleInput);
+        process.stdout.write('\x1bc'); // Reset terminal
+        resolve();
+        return;
+      }
+      
+      // Handle navigation - only accept single key presses
+      if (key === 'a' || key === 'A') {
+        if (currentPage > 0) {
+          currentPage--;
+          displayPage(currentPage);
+        }
+      } else if (key === 'd' || key === 'D') {
+        if (currentPage < totalPages - 1) {
+          currentPage++;
+          displayPage(currentPage);
+        }
+      }
+      // Ignore all other keys
+    };
+
+    process.stdin.on('data', handleInput);
+  });
 }
 
 // Simple registry fetching - using constants from auto-generated file!
@@ -1130,12 +1315,12 @@ export function cn(...inputs) {
   };
 
   const utilsPath = projectManager.getResolvedPath('lib');
-  const cnPath = path.join(
-    utilsPath,
-    `utils.${language === 'js' ? 'js' : 'ts'}`,
-  );
-
-  if (!fs.existsSync(cnPath)) {
+  const tsUtilsPath = path.join(utilsPath, 'utils.ts');
+  const jsUtilsPath = path.join(utilsPath, 'utils.js');
+  
+  // Check if any utils file already exists
+  if (!fs.existsSync(tsUtilsPath) && !fs.existsSync(jsUtilsPath)) {
+    const cnPath = path.join(utilsPath, `utils.${language === 'js' ? 'js' : 'ts'}`);
     await fs.promises.mkdir(utilsPath, { recursive: true });
     await fs.promises.writeFile(cnPath, cnContent[language], 'utf8');
     console.log(

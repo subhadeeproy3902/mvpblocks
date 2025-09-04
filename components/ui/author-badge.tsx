@@ -32,11 +32,11 @@ export function AuthorBadge({ username, className }: AuthorBadgeProps) {
     >
       <Badge
         variant="outline"
-        className="border-secondary/50 bg-background/80 hover:bg-background/95 relative flex items-center gap-1.5 px-3.5 py-1.5 shadow-[0px_0px_10px_0px_#ff005c40_inset] backdrop-blur-sm transition-colors"
+        className="border-secondary/50 bg-background/80 hover:bg-background/95 relative flex items-center gap-1.5 px-3.5 py-1.5 shadow-[0px_0px_10px_0px_#ff005c40_inset] backdrop-blur-sm transition-colors rounded-full"
       >
         <Avatar className="border-secondary/50 h-5 w-5 border">
           <AvatarImage
-            src={`https://github.com/${username}.webp`}
+            src={`https://github.com/${username}.png`}
             alt={username}
           />
           <AvatarFallback className="text-[8px]">{initials}</AvatarFallback>
