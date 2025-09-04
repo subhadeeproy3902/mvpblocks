@@ -231,7 +231,7 @@ export default function LucyHero() {
               }}
             >
               <PhoneMockup
-                imageUrl={isDark ? '/mobile-dark.webp' : '/mobile-light.webp'}
+                imageUrl={isDark ? 'https://i.postimg.cc/D0cjZsVd/mobile-dark.webp' : 'https://i.postimg.cc/L6NQFz3m/mobile-light.webp'}
                 alt="LU-cy mobile app"
                 glowColor={
                   isDark ? 'rgba(229, 62, 62, 0.5)' : 'rgba(229, 62, 62, 0.25)'

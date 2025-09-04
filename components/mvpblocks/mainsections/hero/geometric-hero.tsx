@@ -103,7 +103,7 @@ export default function HeroGeometric({
 
   return (
     <div className="bg-background relative flex min-h-screen w-full items-center justify-center overflow-hidden dark:bg-black">
-      <div className="from-primary/20 dark:from-primary/30 absolute inset-0 bg-gradient-to-br via-transparent to-rose-500/20 blur-3xl dark:to-rose-500/30" />
+      <div className="from-primary/20 dark:from-primary/30 absolute inset-0 bg-gradient-to-br via-transparent to-primary/20 blur-3xl dark:to-primary/30" />
 
       <div className="absolute inset-0 overflow-hidden">
         <ElegantShape
@@ -184,7 +184,7 @@ export default function HeroGeometric({
               <br />
               <span
                 className={cn(
-                  'from-primary via-primary/90 bg-gradient-to-r to-rose-500 bg-clip-text p-4 text-transparent',
+                  'from-primary via-primary/90 bg-gradient-to-r to-primary bg-clip-text p-4 text-transparent',
                   pacifico.className,
                   'font-bold',
                 )}
@@ -215,7 +215,7 @@ export default function HeroGeometric({
           >
             <Button
               size="lg"
-              className="from-primary shadow-primary/10 hover:from-primary/90 rounded-full border-none bg-gradient-to-r to-rose-500 shadow-md hover:to-rose-500/90"
+              className="from-primary shadow-primary/10 hover:from-primary/90 rounded-full border-none bg-gradient-to-r to-primary shadow-md hover:to-primary/90"
             >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />

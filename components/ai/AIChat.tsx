@@ -34,7 +34,6 @@ import {
   TaskTrigger,
   TaskContent,
 } from '@/components/ai-elements/task';
-import { tasksSchema } from '@/app/api/ai/tasks/route';
 import {
   SiReact,
   SiTypescript,
@@ -101,14 +100,15 @@ const models = [
   { id: 'claude-opus-4-20250514', name: 'Claude 4 Opus' },
 ];
 
-const InputDemo = () => {
+export default function AIConversationPanel ({
+  hide,
+  setHide,
+}:{
+  hide: boolean;
+  setHide: (hide: boolean) => void;
+}) {
   const [text, setText] = useState<string>('');
   const [model, setModel] = useState<string>(models[0].id);
-
-  const { object, submit, isLoading } = useObject({
-    api: '/api/ai/tasks',
-    schema: tasksSchema,
-  });
 
   const renderTaskItem = (item: any, index: number) => {
     if (item?.type === 'file' && item.file) {
@@ -156,7 +156,6 @@ const InputDemo = () => {
         },
       },
     );
-    submit({ prompt: text });
     setText('');
   };
 
@@ -166,7 +165,7 @@ const InputDemo = () => {
   ) as WeatherToolUIPart | undefined;
 
   return (
-    <>
+    <div className={`w-full h-full ${hide ? 'hidden' : 'block'}`}>
       <Conversation className='h-[calc(100vh-12rem)]'>
         <ConversationContent>
           {messages.map((message) => (
@@ -198,22 +197,22 @@ const InputDemo = () => {
               </MessageContent>
             </Message>
           ))}
-          {isLoading && !object && (
+          {/* {isLoading && !object && (
             <div className="text-muted-foreground">Generating tasks...</div>
-          )}
+          )} */}
 
-          {object?.tasks?.map((task: any, taskIndex: number) => (
-            <Task key={taskIndex} defaultOpen={taskIndex === 0}>
-              <TaskTrigger title={task.title || 'Loading...'} />
-              <TaskContent>
-                {task.items?.map((item: any, itemIndex: number) => (
-                  <TaskItem key={itemIndex}>
-                    {renderTaskItem(item, itemIndex)}
-                  </TaskItem>
-                ))}
-              </TaskContent>
-            </Task>
-          ))}
+          {/* // {object?.tasks?.map((task: any, taskIndex: number) => (
+          //   <Task key={taskIndex} defaultOpen={taskIndex === 0}>
+          //     <TaskTrigger title={task.title || 'Loading...'} />
+          //     <TaskContent>
+          //       {task.items?.map((item: any, itemIndex: number) => (
+          //         <TaskItem key={itemIndex}>
+          //           {renderTaskItem(item, itemIndex)}
+          //         </TaskItem>
+          //       ))}
+          //     </TaskContent>
+          //   </Task>
+          // ))} */}
 
           {weatherTool && (
             <Tool defaultOpen={true}>
@@ -273,8 +272,6 @@ const InputDemo = () => {
           </PromptInputToolbar>
         </PromptInput>
       </div>
-    </>
+    </div>
   );
 };
-
-export default InputDemo;

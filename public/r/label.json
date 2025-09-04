@@ -8,7 +8,8 @@
   ],
   "type": "registry:ui",
   "dependencies": [
-    "@radix-ui/react-label"
+    "@radix-ui/react-label",
+    "class-variance-authority"
   ],
   "files": [
     {

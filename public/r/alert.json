@@ -7,6 +7,9 @@
     "shadcn"
   ],
   "type": "registry:ui",
+  "dependencies": [
+    "class-variance-authority"
+  ],
   "files": [
     {
       "type": "registry:ui",

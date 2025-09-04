@@ -52,7 +52,7 @@ export const CodeBlock = ({
             margin: 0,
             padding: '1rem',
             fontSize: '0.875rem',
-            background: 'hsl(var(--background))',
+            background: 'transparent',
             color: 'hsl(var(--foreground))',
           }}
           language={language}
@@ -75,7 +75,7 @@ export const CodeBlock = ({
             margin: 0,
             padding: '1rem',
             fontSize: '0.875rem',
-            background: 'hsl(var(--background))',
+            background: 'transaprent',
             color: 'hsl(var(--foreground))',
           }}
           language={language}
