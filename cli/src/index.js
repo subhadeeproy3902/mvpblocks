@@ -133,42 +133,6 @@ class ProjectManager {
         await this.createComponentsJson(framework, useTypeScript, hasSrc);
         
         // Setup theme
-      const pm = this.detectPackageManager();
-      const cmd = this.getCreateCommand(pm, framework, projectName, useTypeScript);
-      
-      console.log('Running:', cmd);
-      execSync(cmd, { stdio: 'inherit' });
-      
-      // Always change to the created project directory
-      const projectPath = path.join(this.cwd, projectName);
-      if (fs.existsSync(projectPath)) {
-        this.cwd = projectPath;
-        process.chdir(this.cwd);
-        console.log(`� Changed to project directory: ${this.cwd}`);
-      } else {
-        throw new Error(`Project directory ${projectPath} was not created`);
-      }
-      
-      if (framework === 'nextjs') {
-        // Install additional dependencies
-        console.log('📦 Installing additional dependencies...');
-        const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-        execSync(`${addCmd} class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`, { stdio: 'inherit' });
-        
-        // Detect project structure
-        const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
-        const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
-        const configFile = useTypeScript ? 'tsconfig.json' : 'jsconfig.json';
-        
-        console.log(`📋 Detected Next.js structure: src=${hasSrc}, app=${hasApp}, config=${configFile}`);
-        
-        // Update config file with path aliases
-        await this.updateProjectConfig(configFile, framework, useTypeScript);
-        
-        // Create components.json
-        await this.createComponentsJson(framework, useTypeScript, hasSrc);
-        
-        // Setup theme
         console.log('🎨 Setting up theme...');
         const selectedPalette = await selectColorPalette();
         const colorCSS = getColorPaletteCSS(selectedPalette);
@@ -349,38 +313,7 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 // https://vite.dev/config/
-        config.compilerOptions.baseUrl = '.';
-        config.compilerOptions.paths = {
-          '@/*': [pathPrefix]
-        };
-        
-        fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
-        console.log(`🔧 Updated ${configFile} with path aliases`);
-      } catch (error) {
-        console.log(`⚠️  Could not update ${configFile}:`, error.message);
-      }
-    }
-  }
-
-  // Update Vite configuration
-  async updateViteConfig(useTypeScript) {
-    const viteConfigPath = useTypeScript 
-      ? path.join(this.cwd, 'vite.config.ts')
-      : path.join(this.cwd, 'vite.config.js');
-    
-    const viteConfigContent = `import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
-
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -471,9 +404,6 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     
     fs.writeFileSync(utilsPath, utilsContent);
     console.log(`🛠️  Created ${path.relative(this.cwd, utilsPath)}`);
-    
-    fs.writeFileSync(utilsPath, utilsContent);
-    console.log(`🛠️  Created ${path.relative(this.cwd, utilsPath)}`);
   }
 
   // Get resolved path for components based on project structure
@@ -487,19 +417,10 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
         return srcPath;
       }
       return rootPath;
-      // Fallback to basic structure - check if src exists
-      const srcPath = path.join(this.cwd, 'src', type);
-      const rootPath = path.join(this.cwd, type);
-      
-      if (fs.existsSync(path.join(this.cwd, 'src'))) {
-        return srcPath;
-      }
-      return rootPath;
     }
 
     const { framework, paths } = this.projectConfig;
     
-    // Check for custom paths in tsconfig.json/jsconfig.json
     // Check for custom paths in tsconfig.json/jsconfig.json
     if (paths) {
       if (type === 'components' && paths['@/components/*']) {
@@ -517,7 +438,6 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     }
 
     // Check for existing directories first
-    // Check for existing directories first
     const possiblePaths = [
       path.join(this.cwd, 'src', type),
       path.join(this.cwd, type),
@@ -534,26 +454,12 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
     const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
     
-    // Default based on framework and existing structure
-    const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
-    const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
-    
     if (framework === 'nextjs') {
-      if (hasSrc) {
       if (hasSrc) {
         return path.join(this.cwd, 'src', type);
       } else if (hasApp) {
         return path.join(this.cwd, type); // Place at root for App Router without src
-      } else if (hasApp) {
-        return path.join(this.cwd, type); // Place at root for App Router without src
       }
-    } else if (framework === 'vite') {
-      // Vite projects almost always use src
-      return path.join(this.cwd, 'src', type);
-    }
-
-    // Final fallback
-    return hasSrc ? path.join(this.cwd, 'src', type) : path.join(this.cwd, type);
     } else if (framework === 'vite') {
       // Vite projects almost always use src
       return path.join(this.cwd, 'src', type);
@@ -633,16 +539,6 @@ async function selectColorPalette() {
         value: 'blue',
         hint: 'Professional blue accent theme',
       },
-      {
-        label: `${colors.cyan('🟡')} Yellow`,
-        value: 'yellow',
-        hint: 'Bright yellow accent theme',
-      },
-      {
-        label: `${colors.magenta('🟣')} Purple`,
-        value: 'purple',
-        hint: 'Vibrant purple accent theme',
-      }
       {
         label: `${colors.cyan('🟡')} Yellow`,
         value: 'yellow',
@@ -825,9 +721,6 @@ if (command === 'list') {
   console.log(colors.green('🚀 Loading interactive components list...'));
   await showInteractiveComponentsList();
   process.exit(0);
-  console.log(colors.green('🚀 Loading interactive components list...'));
-  await showInteractiveComponentsList();
-  process.exit(0);
 }
 if (command !== 'add' || !componentName) {
   console.log(colors.yellow('⚠️  No command specified or invalid usage.'));
@@ -995,113 +888,6 @@ if (!language) {
       process.exit(0);
     }
   }
-}
-
-// Fast Interactive Components List with Pagination
-async function showInteractiveComponentsList() {
-  // Prepare components data with categories (fast - no network requests!)
-  const components = AVAILABLE_COMPONENTS.map(name => {
-    let category = 'Other';
-    
-    // Categorize based on component name patterns (fast local categorization)
-    if (['accordion', 'alert', 'alert-dialog', 'aspect-ratio', 'avatar', 'badge', 'border-beam', 'breadcrumb', 'button', 'calendar', 'card', 'carousel', 'chart', 'checkbox', 'collapsible', 'command', 'context-menu', 'dialog', 'drawer', 'dropdown-menu', 'form', 'globe', 'gradient-bars', 'hover-card', 'input', 'input-otp', 'label', 'marquee', 'menubar', 'multi-step-form', 'navigation-menu', 'pagination', 'particles', 'payment-modal', 'phone-mockup', 'popover', 'pricing-card', 'progress', 'pulse-card', 'radio-group', 'resizable', 'scroll-area', 'scrollbasedvelocity', 'select', 'separator', 'sheet', 'sidebar', 'skeleton', 'slider', 'sonner', 'sparkles', 'spotlight', 'switch', 'table', 'tabs', 'text-reveal', 'textarea', 'toast', 'toggle', 'toggle-group', 'tooltip', 'typewriter'].includes(name)) {
-      category = 'UI Components';
-    } else if (['use-auto-resize-textarea', 'use-mobile', 'use-toast'].includes(name)) {
-      category = 'Hooks';
-    } else if (name === 'utils') {
-      category = 'Utils/Lib';
-    } else {
-      category = 'Blocks';
-    }
-    
-    return { name, category };
-  });
-
-  const ITEMS_PER_PAGE = 10;
-  let currentPage = 0;
-  const totalPages = Math.ceil(components.length / ITEMS_PER_PAGE);
-
-  const displayPage = (page) => {
-    // Clear the screen properly
-    process.stdout.write('\x1bc'); // Reset terminal completely
-    
-    // Header
-    console.log(colors.bold(colors.green('\n🎯 MVPBlocks Components Library')));
-    console.log(colors.dim(`📦 ${components.length} components available\n`));
-    
-    // Table header
-    console.log(colors.bold(colors.cyan('┌─────┬───────────────────────────────────┬─────────────────┐')));
-    console.log(colors.bold(colors.cyan('│ No. │ Component Name                    │ Category        │')));
-    console.log(colors.bold(colors.cyan('├─────┼───────────────────────────────────┼─────────────────┤')));
-    
-    // Table rows
-    const startIdx = page * ITEMS_PER_PAGE;
-    const endIdx = Math.min(startIdx + ITEMS_PER_PAGE, components.length);
-    
-    for (let i = startIdx; i < endIdx; i++) {
-      const component = components[i];
-      const rowNum = String(i + 1).padStart(3);
-      const name = component.name.padEnd(33);
-      const category = component.category.padEnd(15);
-      
-      console.log(colors.white(`│ ${colors.yellow(rowNum)} │ ${colors.green(name)} │ ${colors.blue(category)} │`));
-    }
-    
-    // Fill empty rows if needed
-    const remainingRows = ITEMS_PER_PAGE - (endIdx - startIdx);
-    for (let i = 0; i < remainingRows; i++) {
-      console.log(colors.dim('│     │                                   │                 │'));
-    }
-    
-    // Table footer
-    console.log(colors.bold(colors.cyan('└─────┴───────────────────────────────────┴─────────────────┘')));
-    
-    // Pagination info
-    console.log(colors.dim(`\nPage ${page + 1} of ${totalPages} (showing ${startIdx + 1}-${endIdx} of ${components.length})`));
-    
-    // Controls
-    console.log(colors.bold(colors.yellow('\n📋 Navigation:')));
-    console.log(colors.dim('  A - Previous page, D - Next page, ESC - Exit'));
-    console.log(colors.dim(`\n💡 Use 'mvpblocks add <component-name>' to install a component`));
-  };
-
-  displayPage(currentPage);
-
-  // Simple single-character input handling
-  process.stdin.setRawMode(true);
-  process.stdin.resume();
-  process.stdin.setEncoding('utf8');
-
-  return new Promise((resolve) => {
-    const handleInput = (chunk) => {
-      const key = chunk.toString();
-      
-      // ESC key
-      if (key === '\u001b') {
-        process.stdin.setRawMode(false);
-        process.stdin.removeListener('data', handleInput);
-        process.stdout.write('\x1bc'); // Reset terminal
-        resolve();
-        return;
-      }
-      
-      // Handle navigation - only accept single key presses
-      if (key === 'a' || key === 'A') {
-        if (currentPage > 0) {
-          currentPage--;
-          displayPage(currentPage);
-        }
-      } else if (key === 'd' || key === 'D') {
-        if (currentPage < totalPages - 1) {
-          currentPage++;
-          displayPage(currentPage);
-        }
-      }
-      // Ignore all other keys
-    };
-
-    process.stdin.on('data', handleInput);
-  });
 }
 
 // Fast Interactive Components List with Pagination
