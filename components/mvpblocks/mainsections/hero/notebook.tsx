@@ -8,12 +8,12 @@ export default function NotebookHero() {
   return (
     <div className="min-h-screen py-6 sm:py-14">
       <div className="pointer-events-none absolute inset-0 top-0 z-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-rose-500/30 via-rose-500/20 to-transparent opacity-50 blur-[100px]" />
-        <div className="absolute -top-40 -right-20 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-red-500/30 via-red-500/20 to-transparent opacity-50 blur-[100px]" />
-        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-gradient-to-tr from-amber-500/20 via-amber-500/10 to-transparent opacity-30 blur-[80px]" />
+        <div className="absolute -top-20 -left-20 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-primary/30 via-primary/20 to-transparent opacity-50 blur-[100px]" />
+        <div className="absolute -top-40 -right-20 h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-primary/30 via-primary/20 to-transparent opacity-50 blur-[100px]" />
+        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-gradient-to-tr from-primary/20 via-primary/10 to-transparent opacity-30 blur-[80px]" />
       </div>
 
-      <main className="relative container mt-4 max-w-[1100px] px-2 py-4 lg:py-8">
+      <main className="relative container mt-4 max-w-[1100px] px-2 py-4 lg:py-8 mx-auto">
         <div className="relative sm:overflow-hidden">
           <div className="border-primary/20 bg-background/70 shadow-primary/10 relative flex flex-col items-start justify-start rounded-xl border px-4 pt-12 shadow-xl backdrop-blur-md max-md:text-center md:px-12 md:pt-16">
             <div
@@ -163,7 +163,7 @@ export default function NotebookHero() {
 
             <div className="relative z-10 mt-16 w-full">
               <img
-                src="/assets/bg.webp"
+                src="https://i.postimg.cc/KjvHrBH0/bg.webp"
                 alt="MVPBlocks component library preview"
                 width={1000}
                 height={600}
