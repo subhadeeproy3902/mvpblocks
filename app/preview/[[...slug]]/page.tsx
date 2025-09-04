@@ -36,5 +36,3 @@ export async function generateStaticParams() {
 
   return allComponents;
 }
-
-export const dynamic = 'force-static';
