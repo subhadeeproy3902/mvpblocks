@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT MANUALLY
-// Generated on: 2025-09-04T12:25:43.172Z
+// Generated on: 2025-09-04T17:24:45.654Z
 // Total categories: 86
 
 import { registry } from '@/registry';
