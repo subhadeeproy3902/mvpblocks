@@ -110,11 +110,6 @@ export default function AIConversationPanel ({
   const [text, setText] = useState<string>('');
   const [model, setModel] = useState<string>(models[0].id);
 
-  const { object, submit, isLoading } = useObject({
-    api: '/api/ai/tasks',
-    schema: tasksSchema,
-  });
-
   const renderTaskItem = (item: any, index: number) => {
     if (item?.type === 'file' && item.file) {
       const iconInfo = iconMap[item.file.icon as keyof typeof iconMap];
@@ -161,7 +156,6 @@ export default function AIConversationPanel ({
         },
       },
     );
-    submit({ prompt: text });
     setText('');
   };
 
@@ -203,22 +197,22 @@ export default function AIConversationPanel ({
               </MessageContent>
             </Message>
           ))}
-          {isLoading && !object && (
+          {/* {isLoading && !object && (
             <div className="text-muted-foreground">Generating tasks...</div>
-          )}
+          )} */}
 
-          {object?.tasks?.map((task: any, taskIndex: number) => (
-            <Task key={taskIndex} defaultOpen={taskIndex === 0}>
-              <TaskTrigger title={task.title || 'Loading...'} />
-              <TaskContent>
-                {task.items?.map((item: any, itemIndex: number) => (
-                  <TaskItem key={itemIndex}>
-                    {renderTaskItem(item, itemIndex)}
-                  </TaskItem>
-                ))}
-              </TaskContent>
-            </Task>
-          ))}
+          {/* // {object?.tasks?.map((task: any, taskIndex: number) => (
+          //   <Task key={taskIndex} defaultOpen={taskIndex === 0}>
+          //     <TaskTrigger title={task.title || 'Loading...'} />
+          //     <TaskContent>
+          //       {task.items?.map((item: any, itemIndex: number) => (
+          //         <TaskItem key={itemIndex}>
+          //           {renderTaskItem(item, itemIndex)}
+          //         </TaskItem>
+          //       ))}
+          //     </TaskContent>
+          //   </Task>
+          // ))} */}
 
           {weatherTool && (
             <Tool defaultOpen={true}>
