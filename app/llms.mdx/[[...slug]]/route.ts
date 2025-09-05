@@ -12,7 +12,10 @@ export async function GET(
 ) {
   const slug = (await props.params).slug;
   const page = source.getPage(slug);
-  if (!page) return {}
+
+  if (!page) {
+    return NextResponse.json({ error: 'Page not found' }, { status: 404 });
+  }
 
   return new NextResponse(await getLLMText(page));
 }
