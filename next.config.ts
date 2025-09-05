@@ -8,7 +8,6 @@ const withAnalyzer = createBundleAnalyzer({
 
 const config: NextConfig = {
   reactStrictMode: true,
-  output: 'standalone', // Optimizes for Docker containers
   logging: {
     fetches: {
       fullUrl: true,
