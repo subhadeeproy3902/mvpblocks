@@ -50,3 +50,7 @@ package-lock.json"filelist.txt"
 "filelist.txt" 
 "filelist.txt" 
 "package-lock.json" 
+
+bun.lock
+
+bun.lockb
