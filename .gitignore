@@ -49,8 +49,5 @@ next-env.d.ts
 package-lock.json"filelist.txt" 
 "filelist.txt" 
 "filelist.txt" 
-"package-lock.json" 
-
+"package-lock.json" bun.lockb
 bun.lock
-
-bun.lockb
