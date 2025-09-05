@@ -1,8 +1,7 @@
-import { ColorConfig } from "@/types/theme";
+import { ColorConfig, Theme, ThemeConfig } from "@/types/theme";
 
 export function generateHarmonizedColors(
-  baseHue: number,
-  isDarkMode: boolean = false
+  baseHue: number
 ): ColorConfig {
   const complementaryHue = (baseHue + 180) % 360;
   const analogous1 = (baseHue + 30) % 360;
@@ -215,4 +214,22 @@ export function calculateForegroundColor(hslString: string): string {
   if (!hslString) return "0 0% 100%";
   const [, , l] = hslString.split(" ").map((v) => parseFloat(v));
   return l > 52 ? "240 10% 3.9%" : "0 0% 98%";
+}
+
+export function jsonToCss(theme: ThemeConfig): string {
+  const camelToKebab = (str: string) =>
+    str.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)
+
+  const toCssVars = (obj: Theme, selector: string) => {
+    const vars = Object.entries(obj)
+      .filter(([_, value]) => value !== undefined && value !== null && value !== "")
+      .map(([key, value]) => `  --${camelToKebab(key)}: ${value};`)
+      .join("\n")
+    return `${selector} {\n${vars}\n}`
+  }
+
+  return [
+    toCssVars(theme.light, ":root"),
+    toCssVars(theme.dark, ".dark")
+  ].join("\n\n")
 }

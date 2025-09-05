@@ -11,7 +11,9 @@ import {
   generateInput,
   calculateForegroundColor,
   generateRing,
+  jsonToCss,
 } from '@/utils/colors';
+import { ThemeConfig } from '@/types/theme';
 
 export async function POST(req: NextRequest) {
   try {
@@ -31,76 +33,79 @@ export async function POST(req: NextRequest) {
     const primaryHue = result.object.primaryHue;
 
     // Generate harmonized colors using the AI-provided hue
-    const lightColors = generateHarmonizedColors(primaryHue, false);
-    const darkColors = generateHarmonizedColors(primaryHue, true);
+    const colors = generateHarmonizedColors(primaryHue);
 
     // Generate complete theme configuration
-    const themeConfig = {
+    const themeConfig: ThemeConfig = {
       light: {
-        background: generateBackground(lightColors.primary, false),
+        background: generateBackground(colors.primary, false),
         foreground: "240 10% 3.9%",
-        card: generateCard(lightColors.primary, false),
+        card: generateCard(colors.primary, false),
         cardForeground: "240 10% 3.9%",
-        popover: generatePopover(lightColors.primary, false),
+        popover: generatePopover(colors.primary, false),
         popoverForeground: "240 10% 3.9%",
-        primary: lightColors.primary,
-        primaryForeground: calculateForegroundColor(lightColors.primary),
-        secondary: lightColors.secondary,
-        secondaryForeground: calculateForegroundColor(lightColors.secondary),
-        muted: lightColors.muted || generateBackground(lightColors.primary, false),
-        mutedForeground: lightColors["muted-foreground"] || "240 3.8% 46.1%",
-        accent: lightColors.accent,
-        accentForeground: calculateForegroundColor(lightColors.accent),
-        destructive: lightColors.destructive,
-        destructiveForeground: calculateForegroundColor(lightColors.destructive),
-        border: generateBorder(lightColors.primary, false),
-        input: generateInput(lightColors.primary, false),
-        ring: generateRing(lightColors.primary),
-        sidebar: generateCard(lightColors.primary, false),
+        primary: colors.primary,
+        primaryForeground: calculateForegroundColor(colors.primary),
+        secondary: colors.secondary,
+        secondaryForeground: calculateForegroundColor(colors.secondary),
+        muted: colors.muted || generateBackground(colors.primary, false),
+        mutedForeground: "240 3.8% 46.1%",
+        accent: colors.accent,
+        accentForeground: calculateForegroundColor(colors.accent),
+        destructive: colors.destructive,
+        destructiveForeground: calculateForegroundColor(colors.destructive),
+        border: generateBorder(colors.primary, false),
+        input: generateInput(colors.primary, false),
+        ring: generateRing(colors.primary),
+        sidebar: generateCard(colors.primary, false),
         sidebarForeground: "240 10% 3.9%",
-        sidebarPrimary: lightColors.primary,
-        sidebarPrimaryForeground: calculateForegroundColor(lightColors.primary),
-        sidebarAccent: lightColors.accent,
-        sidebarAccentForeground: calculateForegroundColor(lightColors.accent),
-        sidebarBorder: generateBorder(lightColors.primary, false),
-        sidebarRing: generateRing(lightColors.primary),
+        sidebarPrimary: colors.primary,
+        sidebarPrimaryForeground: calculateForegroundColor(colors.primary),
+        sidebarAccent: colors.accent,
+        sidebarAccentForeground: calculateForegroundColor(colors.accent),
+        sidebarBorder: generateBorder(colors.primary, false),
+        sidebarRing: generateRing(colors.primary),
         radius: "0.5rem",
+        shadowColor: "0 0% 0%",
       },
       dark: {
-        background: generateBackground(darkColors.primary, true),
+        background: generateBackground(colors.primary, true),
         foreground: "0 0% 98%",
-        card: generateCard(darkColors.primary, true),
+        card: generateCard(colors.primary, true),
         cardForeground: "0 0% 98%",
-        popover: generatePopover(darkColors.primary, true),
+        popover: generatePopover(colors.primary, true),
         popoverForeground: "0 0% 98%",
-        primary: darkColors.primary,
-        primaryForeground: calculateForegroundColor(darkColors.primary),
-        secondary: darkColors.secondary,
-        secondaryForeground: calculateForegroundColor(darkColors.secondary),
-        muted: darkColors.muted || generateBackground(darkColors.primary, true),
-        mutedForeground: darkColors["muted-foreground"] || "0 0% 63.9%",
-        accent: darkColors.accent,
-        accentForeground: calculateForegroundColor(darkColors.accent),
-        destructive: darkColors.destructive,
-        destructiveForeground: calculateForegroundColor(darkColors.destructive),
-        border: generateBorder(darkColors.primary, true),
-        input: generateInput(darkColors.primary, true),
-        ring: generateRing(darkColors.primary),
-        sidebar: generateCard(darkColors.primary, true),
+        primary: colors["primary-dark"],
+        primaryForeground: calculateForegroundColor(colors["primary-dark"]),
+        secondary: colors["secondary-dark"],
+        secondaryForeground: calculateForegroundColor(colors["secondary-dark"]),
+        muted: colors["muted-dark"],
+        mutedForeground: "0 0% 63.9%",
+        accent: colors["accent-dark"],
+        accentForeground: calculateForegroundColor(colors["accent-dark"]),
+        destructive: colors.destructive,
+        destructiveForeground: "0 0% 98%",
+        border: generateBorder(colors.primary, true),
+        input: generateInput(colors.primary, true),
+        ring: generateRing(colors.primary),
+        sidebar: generateCard(colors.primary, true),
         sidebarForeground: "0 0% 98%",
-        sidebarPrimary: darkColors.primary,
-        sidebarPrimaryForeground: calculateForegroundColor(darkColors.primary),
-        sidebarAccent: darkColors.accent,
-        sidebarAccentForeground: calculateForegroundColor(darkColors.accent),
-        sidebarBorder: generateBorder(darkColors.primary, true),
-        sidebarRing: generateRing(darkColors.primary),
+        sidebarPrimary: colors["primary-dark"],
+        sidebarPrimaryForeground: calculateForegroundColor(colors["primary-dark"]),
+        sidebarAccent: colors["accent-dark"],
+        sidebarAccentForeground: calculateForegroundColor(colors["accent-dark"]),
+        sidebarBorder: generateBorder(colors.primary, true),
+        sidebarRing: generateRing(colors.primary),
         radius: "0.5rem",
         shadowColor: "0 0% 0%",
       },
     };
 
-    return NextResponse.json(themeConfig, {
-      headers: { 'Content-Type': 'application/json' },
+    const cssText = jsonToCss(themeConfig);
+
+    return new NextResponse(cssText, {
+      status: 200,
+      headers: { 'Content-Type': 'text/css; charset=utf-8' },
     });
 
   } catch (error) {
