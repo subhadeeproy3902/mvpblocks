@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 

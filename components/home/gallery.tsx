@@ -1,6 +1,6 @@
 'use client';
 
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 import { Spotlight } from '../ui/spotlight';
 import { useTheme } from 'next-themes';

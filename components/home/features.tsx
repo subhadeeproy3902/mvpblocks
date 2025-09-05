@@ -5,7 +5,7 @@ import Earth from '../ui/globe';
 import ScrambleHover from '../ui/scramble';
 import { motion, useInView } from 'framer-motion';
 import { Suspense, useEffect, useRef, useState } from 'react';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 

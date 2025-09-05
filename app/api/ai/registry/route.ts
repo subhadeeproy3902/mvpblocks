@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { registry } from '@/registry';
+import type { 
+  RegistryComponentDetails,
+  RegistryComponentBasic,
+  RegistryErrorResponse
+} from '@/types/api/registry';
 
 // Extract categories directly from registry to avoid the broken categories file
 const getAllCategories = () => {
@@ -28,7 +33,7 @@ export async function GET(request: NextRequest) {
       
       if (!item) {
         return NextResponse.json(
-          { error: `Component with name '${name}' not found` },
+          { error: `Component with name '${name}' not found` } satisfies RegistryErrorResponse,
           { status: 404 }
         );
       }
@@ -44,7 +49,7 @@ export async function GET(request: NextRequest) {
           type: file.type,
           content: file.content || ''
         })) || []
-      });
+      } satisfies RegistryComponentDetails);
     }
 
     // Case 2: Request by both category and type -> Return desc, name, categories
@@ -52,12 +57,12 @@ export async function GET(request: NextRequest) {
       // Validate if the category exists in our registry
       if (!REGISTRY_CATEGORIES.includes(category)) {
         return NextResponse.json(
-          { error: `Invalid category: ${category}` },
+          { error: `Invalid category: ${category}` } satisfies RegistryErrorResponse,
           { status: 400 }
         );
       }
 
-      const filteredItems = registry
+      const filteredItems: RegistryComponentBasic[] = registry
         .filter((item) => 
           item.categories?.includes(category) && item.type === type
         )
@@ -73,7 +78,7 @@ export async function GET(request: NextRequest) {
 
     // Case 3: Request by type only -> Return desc, name, categories
     if (type) {
-      const filteredItems = registry
+      const filteredItems: RegistryComponentBasic[] = registry
         .filter((item) => item.type === type)
         .map((item) => ({
           name: item.name,
@@ -90,12 +95,12 @@ export async function GET(request: NextRequest) {
       // Validate if the category exists in our registry
       if (!REGISTRY_CATEGORIES.includes(category)) {
         return NextResponse.json(
-          { error: `Invalid category: ${category}` },
+          { error: `Invalid category: ${category}` } satisfies RegistryErrorResponse,
           { status: 400 }
         );
       }
 
-      const filteredItems = registry
+      const filteredItems: RegistryComponentBasic[] = registry
         .filter((item) => item.categories?.includes(category))
         .map((item) => ({
           name: item.name,
@@ -113,63 +118,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error fetching registry items:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 },
-    );
-  }
-}
-
-// Optional: Handle POST requests for more complex filtering
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { categories, includeType } = body;
-    const REGISTRY_CATEGORIES = getAllCategories();
-
-    if (!categories || !Array.isArray(categories)) {
-      return NextResponse.json(
-        { error: 'Categories array is required in request body' },
-        { status: 400 },
-      );
-    }
-
-    // Validate all categories exist
-    const invalidCategories = categories.filter(
-      (cat: string) => !REGISTRY_CATEGORIES.includes(cat),
-    );
-
-    if (invalidCategories.length > 0) {
-      return NextResponse.json(
-        {
-          error: `Invalid categories: ${invalidCategories.join(', ')}`,
-          availableCategories: REGISTRY_CATEGORIES,
-        },
-        { status: 400 },
-      );
-    }
-
-    // Filter registry items by multiple categories
-    const filteredItems = registry
-      .filter((item) =>
-        categories.some((category) => item.categories?.includes(category)),
-      )
-      .map((item) => ({
-        name: item.name,
-        description: item.description || '',
-        dependencies: item.dependencies || [],
-        registryDependencies: item.registryDependencies || [],
-        ...(includeType && { type: item.type }),
-      }));
-
-    return NextResponse.json({
-      categories,
-      items: filteredItems,
-      count: filteredItems.length,
-    });
-  } catch (error) {
-    console.error('Error fetching registry items:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error' } satisfies RegistryErrorResponse,
       { status: 500 },
     );
   }

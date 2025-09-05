@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { AlertCircle, Home, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { Spotlight } from '@/components/ui/spotlight';
 
 export default function NotFound() {

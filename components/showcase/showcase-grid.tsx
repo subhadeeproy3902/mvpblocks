@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ShowcaseCard } from './showcase-card';
-import { showcaseData } from '@/lib/showcase';
+import { showcaseData } from '@/utils/showcase';
 import { AddCard } from './add-card';
 
 export function ShowcaseGrid() {

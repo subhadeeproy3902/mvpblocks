@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import { AnimationPlaybackControls, motion, useAnimate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { bricolage } from '@/lib/fonts';
+import { bricolage } from '@/utils/fonts';
 import Image from 'next/image';
 
 export default function EndSlider() {

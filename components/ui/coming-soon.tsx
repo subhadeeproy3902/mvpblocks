@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Clock, Sparkles, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 
 interface ComingSoonProps {
   title?: string;

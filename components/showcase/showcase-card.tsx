@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
-import { ShowcaseItem } from '@/lib/showcase';
+import { ShowcaseItem } from '@/utils/showcase';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 

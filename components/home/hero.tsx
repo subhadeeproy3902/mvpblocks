@@ -1,7 +1,7 @@
 'use client';
 
 import { PixelCard } from '../ui/pixelcards';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 import { CloudLightning, MoveRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';

@@ -1,5 +1,5 @@
 import { Spotlight } from '@/components/ui/spotlight';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 
 export default function PrivacyPage() {

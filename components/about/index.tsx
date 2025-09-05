@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import LocData from './loc';
 import { Card, CardHeader } from '@/components/ui/card';

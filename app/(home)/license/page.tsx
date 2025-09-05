@@ -1,7 +1,7 @@
 import { Spotlight } from '@/components/ui/spotlight';
 import { Shield, Check, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 import { CopyButton } from '@/components/ui/copy-button';
 

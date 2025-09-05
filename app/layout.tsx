@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { dm } from '@/lib/fonts';
+import { dm } from '@/utils/fonts';
 import './globals.css';
 import { ThemeProvider } from '@/components/important/theme-provider';
 import { PreviewPageDetector } from '@/components/important/preview-page-detector';

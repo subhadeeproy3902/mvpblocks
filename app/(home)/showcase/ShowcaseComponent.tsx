@@ -4,7 +4,7 @@ import { Spotlight } from '@/components/ui/spotlight';
 import { motion } from 'framer-motion';
 import { ExternalLink, Globe } from 'lucide-react';
 import { ShowcaseGrid } from '@/components/showcase/showcase-grid';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import { cn } from '@/lib/utils';
 
 export default function ShowCaseComponent() {

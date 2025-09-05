@@ -5,7 +5,7 @@ import { Compare } from '../ui/compare';
 import { useTheme } from 'next-themes';
 import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { geist } from '@/lib/fonts';
+import { geist } from '@/utils/fonts';
 import Keyboard from './keyboard';
 
 export default function HowToUse() {

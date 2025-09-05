@@ -1,5 +1,9 @@
 declare module 'tailwindcss/lib/util/flattenColorPalette';
 
+// API Types
+export * from './api/get-code';
+export * from './api/registry';
+
 type UserStats = Record<string, number>;
 
 type CodeFrequencyStats = Record<
