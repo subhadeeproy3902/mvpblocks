@@ -221,16 +221,16 @@ class ProjectManager {
     if (framework === 'nextjs') {
       const tsFlag = useTypeScript ? '--typescript' : '--javascript';
       if (pm === 'bun' || pm === 'bunx') {
-        return `bunx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+        return `bunx create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else if (pm === 'npm') {
-        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else if (pm === 'pnpm') {
-        return `pnpm create next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+        return `pnpm create next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else if (pm === 'yarn') {
-        return `yarn create next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+        return `yarn create next-app@latest ${projectName} ${tsFlag} --tailwind`;
       } else {
         // Fallback - assume npm if unknown package manager
-        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind --eslint --app --src-dir --import-alias "@/*"`;
+        return `npx create-next-app@latest ${projectName} ${tsFlag} --tailwind`;
       }
     } else if (framework === 'vite') {
       const template = useTypeScript ? 'react-ts' : 'react';
@@ -579,7 +579,9 @@ const MVPBLOCKS_BASE_URL = 'https://blocks.mvp-subha.me';
 const COMPONENTS_BASE_URL = `${MVPBLOCKS_BASE_URL}/r`;
 
 // CLI args
-const [command, componentName, ...additionalArgs] = process.argv.slice(2);
+const [command, ...args] = process.argv.slice(2);
+const componentNames = command === 'add' ? args.filter(arg => !arg.startsWith('--')) : [];
+const componentName = componentNames[0]; // For backward compatibility
 
 const logoLines = [
   '███╗   ███╗██╗   ██╗██████╗ ██████╗ ██╗      ██████╗  ██████╗██╗  ██╗███████╗',
@@ -631,15 +633,17 @@ function showHelp() {
 ${colors.bold(colors.cyan('📚 MVPBlocks CLI Usage:'))}
 
 ${colors.bold('Commands:')}
-  ${colors.green('list')}              List all available components
-  ${colors.green('add <component>')}   Add a component to your project
-  ${colors.green('search <query>')}    Search for components
-  ${colors.green('info <component>')}  Get detailed information about a component
-  ${colors.green('help')}              Show this help message
+  ${colors.green('list')}                        List all available components
+  ${colors.green('add <component> [components...]')} Add one or more components to your project
+  ${colors.green('search <query>')}              Search for components
+  ${colors.green('info <component>')}            Get detailed information about a component
+  ${colors.green('help')}                        Show this help message
 
 ${colors.bold('Examples:')}
   ${colors.dim('mvpblocks list')}
   ${colors.dim('mvpblocks add button')}
+  ${colors.dim('mvpblocks add button sidebar footer-4col')}
+  ${colors.dim('mvpblocks add notebook sidebar footer-4col header-1')}
   ${colors.dim('mvpblocks search hero')}
   ${colors.dim('mvpblocks info hero-1')}
 
@@ -722,7 +726,7 @@ if (command === 'list') {
   await showInteractiveComponentsList();
   process.exit(0);
 }
-if (command !== 'add' || !componentName) {
+if (command !== 'add' || componentNames.length === 0) {
   console.log(colors.yellow('⚠️  No command specified or invalid usage.'));
   showHelp();
   process.exit(0);
@@ -742,8 +746,9 @@ if (process.argv.includes('--ts') || process.argv.includes('--typescript')) {
   language = 'js';
 } else {
   // Interactive language selection
+  const componentText = componentNames.length > 1 ? `${componentNames.length} components` : componentNames[0];
   language = await select({
-    message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentName)}:`,
+    message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentText)}:`,
     options: [
       {
         label: `${colors.green('⚡')} TypeScript (.tsx)`,
@@ -867,8 +872,9 @@ if (!language) {
     console.log(colors.dim('🔍 Auto-detected TypeScript project'));
   } else {
     // Interactive language selection
+    const componentText = componentNames.length > 1 ? `${componentNames.length} components` : componentNames[0];
     language = await select({
-      message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentName)}:`,
+      message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentText)}:`,
       options: [
         {
           label: `${colors.green('⚡')} TypeScript (.tsx)`,
@@ -1278,24 +1284,12 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
   }
 }
 
-// Main component installation logic
-const s = spinner();
-s.start(colors.white(`🚀 Installing ${colors.bold(componentName)}...`));
-
-try {
+// Function to install a single component
+async function installSingleComponent(componentName, projectManager, language) {
   const componentData = await fetchComponentData(componentName);
 
   if (!componentData) {
-    s.stop(colors.red(`❌ Component '${componentName}' not found.`));
-    console.log(
-      colors.yellow(`💡 Use 'mvpblocks list' to see available components`),
-    );
-    console.log(
-      colors.yellow(
-        `💡 Use 'mvpblocks search <query>' to search for components`,
-      ),
-    );
-    process.exit(1);
+    throw new Error(`Component '${componentName}' not found. Use 'mvpblocks list' to see available components.`);
   }
 
   // Create utils file if it doesn't exist using smart path resolution
@@ -1336,56 +1330,99 @@ export function cn(...inputs) {
       await downloadFileFromGitHub(file, componentData, projectManager);
     }
   } else {
-    console.log(colors.yellow('⚠️  No files found for this component.'));
+    console.log(colors.yellow(`⚠️  No files found for ${componentName}.`));
   }
-
-  s.stop(
-    colors.green(`✅ ${colors.bold(componentName)} installed successfully!`),
-  );
 
   // Install registry dependencies first (recursively install other components)
   if (componentData.registryDependencies?.length) {
     await processRegistryDependencies(componentData.registryDependencies, projectManager, language);
   }
 
-  // Install regular npm dependencies
-  if (componentData.dependencies?.length) {
-    const npmDependencies = componentData.dependencies.filter(Boolean);
+  return componentData;
+}
 
-    if (npmDependencies.length > 0) {
-      const pm = detectPackageManager();
-      const s2 = spinner();
-      s2.start(
-        colors.white(
-          `📦 Installing npm dependencies with ${colors.bold(pm)}: ${colors.dim(npmDependencies.join(', '))}`,
-        ),
-      );
+// Function to install multiple components
+async function installMultipleComponents(componentNames, projectManager, language) {
+  const allDependencies = new Set();
+  const installedComponents = [];
 
-      try {
-        const cmd =
-          pm === 'npm'
-            ? ['install', ...npmDependencies]
-            : ['add', ...npmDependencies];
-        await execa(pm, cmd, { stdio: 'inherit' });
-        s2.stop(colors.green('✅ Dependencies installed successfully!'));
-      } catch (err) {
-        s2.stop(colors.red('❌ Failed to install dependencies.'));
-        console.error(colors.dim('You may need to install them manually:'));
-        console.error(
-          colors.yellow(
-            `${pm} ${pm === 'npm' ? 'install' : 'add'} ${npmDependencies.join(' ')}`,
-          ),
-        );
+  console.log(colors.blue(`📦 Installing ${componentNames.length} components: ${componentNames.join(', ')}`));
+
+  for (const componentName of componentNames) {
+    const s = spinner();
+    s.start(colors.white(`🚀 Installing ${colors.bold(componentName)}...`));
+
+    try {
+      const componentData = await installSingleComponent(componentName, projectManager, language);
+      
+      // Collect dependencies
+      if (componentData.dependencies?.length) {
+        componentData.dependencies.forEach(dep => allDependencies.add(dep));
       }
+
+      installedComponents.push(componentName);
+      s.stop(colors.green(`✅ ${colors.bold(componentName)} installed successfully!`));
+    } catch (err) {
+      s.stop(colors.red(`❌ Failed to install ${componentName}`));
+      console.error(colors.red(`Error installing ${componentName}:`), err.message);
+      
+      if (err.message.includes('not found')) {
+        console.log(colors.yellow(`💡 Check the spelling of '${componentName}' or use 'mvpblocks list' to see available components`));
+      }
+      
+      // Continue with other components instead of stopping
+      continue;
     }
   }
 
+  // Install all collected npm dependencies at once
+  if (allDependencies.size > 0) {
+    const npmDependencies = Array.from(allDependencies).filter(Boolean);
+    const pm = detectPackageManager();
+    const s2 = spinner();
+    s2.start(
+      colors.white(
+        `📦 Installing npm dependencies with ${colors.bold(pm)}: ${colors.dim(npmDependencies.join(', '))}`,
+      ),
+    );
+
+    try {
+      const cmd =
+        pm === 'npm'
+          ? ['install', ...npmDependencies]
+          : ['add', ...npmDependencies];
+      await execa(pm, cmd, { stdio: 'inherit' });
+      s2.stop(colors.green('✅ Dependencies installed successfully!'));
+    } catch (err) {
+      s2.stop(colors.red('❌ Failed to install dependencies.'));
+      console.error(colors.dim('You may need to install them manually:'));
+      console.error(
+        colors.yellow(
+          `${pm} ${pm === 'npm' ? 'install' : 'add'} ${npmDependencies.join(' ')}`,
+        ),
+      );
+    }
+  }
+
+  return installedComponents;
+}
+
+// Main component installation logic
+try {
+  const installedComponents = await installMultipleComponents(componentNames, projectManager, language);
+
+  if (installedComponents.length === 0) {
+    console.log(colors.red('❌ No components were installed successfully.'));
+    process.exit(1);
+  }
+
   // Success message with additional info
+  const componentText = installedComponents.length === 1 ? installedComponents[0] : `${installedComponents.length} components`;
   console.log(`
 ${colors.bold(colors.green('🎉 Installation Complete!'))}
 
 ${colors.bold("What's next?")}
-${colors.green('*')} Import and use ${colors.bold(componentName)} in your project
+${colors.green('*')} Import and use ${colors.bold(componentText)} in your project
 ${colors.green('*')} Check the component files in your ${colors.dim('components/')} directory
 ${colors.green('*')} Visit ${colors.underline(colors.cyan('https://blocks.mvp-subha.me'))} for documentation
 
@@ -1394,21 +1431,6 @@ ${colors.dim('Happy coding! 🚀')}
 
   console.log(colors.bold(colors.green('✨ Done!')));
 } catch (err) {
-  s.stop(colors.red('❌ Installation failed.'));
-  console.error(colors.red('Error:'), err.message);
-
-  if (err.message.includes('not found')) {
-    console.log(colors.yellow(`\n💡 Suggestions:`));
-    console.log(colors.yellow(`  • Check the component name spelling`));
-    console.log(
-      colors.yellow(`  • Use 'mvpblocks list' to see available components`),
-    );
-    console.log(
-      colors.yellow(
-        `  • Use 'mvpblocks search <query>' to find similar components`,
-      ),
-    );
-  }
-
+  console.error(colors.red('❌ Installation failed:'), err.message);
   process.exit(1);
 }
