@@ -1,51 +1,25 @@
+import { groq } from '@ai-sdk/groq';
 import { streamText, UIMessage, convertToModelMessages } from 'ai';
-import z from 'zod';
 
-// Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { model, messages }: { messages: UIMessage[]; model: string } =
-    await req.json();
+  const { messages }: { messages: UIMessage[] } = await req.json();
 
   const result = streamText({
-    model: 'deepseek/deepseek-r1',
+    model: groq('openai/gpt-oss-20b'),
     messages: convertToModelMessages(messages),
-    tools: {
-      fetch_weather_data: {
-        description: 'Fetch weather information for a specific location',
-        parameters: z.object({
-          location: z
-            .string()
-            .describe('The city or location to get weather for'),
-          units: z
-            .enum(['celsius', 'fahrenheit'])
-            .default('celsius')
-            .describe('Temperature units'),
-        }),
-        inputSchema: z.object({
-          location: z.string(),
-          units: z.enum(['celsius', 'fahrenheit']).default('celsius'),
-        }),
-        execute: async ({ location, units }) => {
-          await new Promise((resolve) => setTimeout(resolve, 1500));
+    system: `
+    You are the Basic Replier Phase of an AI Website Generator. Your role is to analyze the user's prompt and provide a basic reply. You do not write any code. You should give more time to thinking. Like what even the user is trying to accomplish, but alreay you should reply casually like yeah on it, awesome, I would do that. You should not include any technical terms as well.
 
-          const temp =
-            units === 'celsius'
-              ? Math.floor(Math.random() * 35) + 5
-              : Math.floor(Math.random() * 63) + 41;
+    Respond the user a solid overview and vision for their site. Keep it clear, actionable, and engaging.
 
-          return {
-            location,
-            temperature: `${temp}°${units === 'celsius' ? 'C' : 'F'}`,
-            conditions: 'Sunny',
-            humidity: `12%`,
-            windSpeed: `35 ${units === 'celsius' ? 'km/h' : 'mph'}`,
-            lastUpdated: new Date().toLocaleString(),
-          };
-        },
-      },
-    },
+    Also do not reply too big. Keep it simple and under 70 words.
+
+    At the end of your response, always include:
+    "I will create a plan for you."
+    `,
+    maxRetries: 3,
   });
 
   return result.toUIMessageStreamResponse({

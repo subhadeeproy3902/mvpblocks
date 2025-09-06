@@ -1,5 +1,5 @@
 // Auto-generated file - DO NOT EDIT MANUALLY
-// Generated on: 2025-09-04T17:24:45.654Z
+// Generated on: 2025-09-05T21:10:22.031Z
 // Total categories: 86
 
 import { registry } from '@/registry';
@@ -153,7 +153,7 @@ export const CATEGORIES_BY_DOMAIN = {
     'toggle',
     'toggle-group',
     'tooltip',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Layout & Structure
   LAYOUT: [
@@ -166,7 +166,7 @@ export const CATEGORIES_BY_DOMAIN = {
     'navigation',
     'page',
     'sidebar',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Animations & Effects
   ANIMATION: [
@@ -174,41 +174,41 @@ export const CATEGORIES_BY_DOMAIN = {
     'background',
     'scroll-animation',
     'text-animation',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Business Components
   BUSINESS: [
     'authentication',
     'pricing',
     'pricing-section',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Interactive Elements
   INTERACTIVE: [
     'interactive',
     'modal',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Technical & Development
   TECHNICAL: [
     'code',
     'technical',
     'mockup',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Design & Visual
   DESIGN: [
     'design',
     'grid',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // External Libraries
   SHADCN: [
     'shadcn',
-  ].filter(cat => sortedCategories.includes(cat)),
+  ].filter((cat: string): cat is RegistryCategory => REGISTRY_CATEGORIES.includes(cat as RegistryCategory)),
   
   // Miscellaneous
-  OTHER: sortedCategories.filter(cat => 
+  OTHER: REGISTRY_CATEGORIES.filter((cat: RegistryCategory) => 
     ![
       'accordion', 'alert', 'avatar', 'badge', 'breadcrumb', 'button', 'calendar',
       'card', 'carousel', 'chart', 'checkbox', 'collapsible', 'command', 'context-menu',

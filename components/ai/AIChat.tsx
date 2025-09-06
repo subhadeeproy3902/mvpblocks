@@ -35,21 +35,13 @@ import {
   TaskContent,
 } from '@/components/ai-elements/task';
 import {
-  SiReact,
-  SiTypescript,
-  SiJavascript,
-  SiCss,
-  SiHtml5,
-  SiJson,
-  SiMarkdown,
-} from '@icons-pack/react-simple-icons';
-import {
   Tool,
   ToolContent,
   ToolHeader,
   ToolInput,
   ToolOutput,
 } from '@/components/ai-elements/tool';
+import { planSchema } from '@/app/api/ai/plan/route';
 
 type WeatherToolInput = {
   location: string;
@@ -71,17 +63,6 @@ type WeatherToolUIPart = ToolUIPart<{
     output: WeatherToolOutput;
   };
 }>;
-
-
-const iconMap = {
-  react: { component: SiReact, color: '#149ECA' },
-  typescript: { component: SiTypescript, color: '#3178C6' },
-  javascript: { component: SiJavascript, color: '#F7DF1E' },
-  css: { component: SiCss, color: '#1572B6' },
-  html: { component: SiHtml5, color: '#E34F26' },
-  json: { component: SiJson, color: '#000000' },
-  markdown: { component: SiMarkdown, color: '#000000' },
-};
 
 function formatWeatherResult(result: WeatherToolOutput | undefined): string {
   if (!result) return 'No weather data available.';
@@ -110,28 +91,6 @@ export default function AIConversationPanel ({
   const [text, setText] = useState<string>('');
   const [model, setModel] = useState<string>(models[0].id);
 
-  const renderTaskItem = (item: any, index: number) => {
-    if (item?.type === 'file' && item.file) {
-      const iconInfo = iconMap[item.file.icon as keyof typeof iconMap];
-      if (iconInfo) {
-        const IconComponent = iconInfo.component;
-        return (
-          <span className="inline-flex items-center gap-1" key={index}>
-            {item.text}
-            <TaskItemFile>
-              <IconComponent
-                color={item.file.color || iconInfo.color}
-                className="size-4"
-              />
-              <span>{item.file.name}</span>
-            </TaskItemFile>
-          </span>
-        );
-      }
-    }
-    return item?.text || '';
-  };
-
   const transport = useMemo(
     () =>
       new DefaultChatTransport({
@@ -139,6 +98,11 @@ export default function AIConversationPanel ({
       }),
     [],
   );
+
+  const { object, submit, isLoading } = useObject({
+    api: '/api/ai/plan',
+    schema: planSchema,
+  });
 
   const { messages, status, sendMessage } = useChat(
     {
@@ -156,6 +120,10 @@ export default function AIConversationPanel ({
         },
       },
     );
+    
+    submit({
+      prompt: text,
+    });
     setText('');
   };
 
@@ -197,22 +165,19 @@ export default function AIConversationPanel ({
               </MessageContent>
             </Message>
           ))}
-          {/* {isLoading && !object && (
+          
+          {isLoading && !object && (
             <div className="text-muted-foreground">Generating tasks...</div>
-          )} */}
+          )}
 
-          {/* // {object?.tasks?.map((task: any, taskIndex: number) => (
-          //   <Task key={taskIndex} defaultOpen={taskIndex === 0}>
-          //     <TaskTrigger title={task.title || 'Loading...'} />
-          //     <TaskContent>
-          //       {task.items?.map((item: any, itemIndex: number) => (
-          //         <TaskItem key={itemIndex}>
-          //           {renderTaskItem(item, itemIndex)}
-          //         </TaskItem>
-          //       ))}
-          //     </TaskContent>
-          //   </Task>
-          // ))} */}
+          {object?.planSteps?.map((task, taskIndex: number) => (
+            <Task key={taskIndex} defaultOpen={taskIndex === 0}>
+              <TaskTrigger title={task?.task || 'Loading...'} />
+              <TaskContent>
+                {task?.description}
+              </TaskContent>
+            </Task>
+          ))}
 
           {weatherTool && (
             <Tool defaultOpen={true}>
