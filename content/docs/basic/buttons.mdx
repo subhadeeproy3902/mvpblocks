@@ -37,4 +37,11 @@ import { extractSourceCode } from "@/lib/code";
     lang="tsx"
     classNameComponentContainer="p-16 pt-24"
   />
+  <DrawerCodePreview
+    name="premium-btn"
+    responsive
+    code={(await extractSourceCode("premium-btn")).code}
+    lang="tsx"
+    classNameComponentContainer="p-18 pt-24"
+  />
 </div>
