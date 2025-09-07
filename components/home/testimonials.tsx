@@ -124,7 +124,7 @@ const Testimonials = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const handleShareClick = () => {
-    const tweets = require('@/lib/tweet-contents').tweetContents;
+    const tweets = require('@/utils/tweet-contents').tweetContents;
     const randomTweet = tweets[Math.floor(Math.random() * tweets.length)];
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(randomTweet)}`,

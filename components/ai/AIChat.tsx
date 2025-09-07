@@ -99,9 +99,24 @@ export default function AIConversationPanel ({
     [],
   );
 
+  async function getColorPalette(
+    text: string
+  ) {
+    const csstext = await fetch('/api/ai/color-palette', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: text }),
+    });
+
+    console.log('css text', await csstext.text());
+  }
+
   const { object, submit, isLoading } = useObject({
     api: '/api/ai/plan',
     schema: planSchema,
+    onFinish: async () => {
+      await getColorPalette(text);
+    }
   });
 
   const { messages, status, sendMessage } = useChat(

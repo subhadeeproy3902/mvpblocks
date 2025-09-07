@@ -25,11 +25,11 @@ export async function POST(req: NextRequest) {
         primaryHue: z.number().min(0).max(360),
       }),
       system: `You are a Color Palette Generator, an expert shadcn/ui theme creator. Your job is to generate a primary color hue that defines the main brand identity of the entire website. The hue must be chosen based on the given website vibe (e.g., modern, playful, corporate, minimal, futuristic, elegant, bold, calming). Return only an integer between 0 and 360, representing the hue on the HSL color wheel (0 = red, 120 = green, 240 = blue, etc.). Do not return text or explanations—only the number.`,
-      prompt: `${prompt}. Return only the number in JSON format.`,
+      prompt: `Website vibe: ${prompt}. 
+      
+      Return only the primary hue number in JSON format.`,
     });
-
-    console.log(result)
-
+    
     const primaryHue = result.object.primaryHue;
 
     // Generate harmonized colors using the AI-provided hue
