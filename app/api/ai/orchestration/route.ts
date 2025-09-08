@@ -1,63 +1,72 @@
-import { NextRequest } from 'next/server';
-import { chatLogic } from '../chat/logic';
-import { planLogic } from '../plan/logic';
-import { registryLogic } from '../registry/logic';
-import { selectComponentsLogic } from '../select-components/logic';
-import { getCodeLogic } from '../get-code/logic';
-import { editCodeLogic } from '../edit-code/logic';
-import { generateCodeLogic } from '../generate-code/logic';
-import { colorPaletteLogic } from '../color-palette/logic';
-import { UIMessage } from 'ai';
+import {NextRequest} from 'next/server';
+import {UIMessage, streamUI} from 'ai/rsc';
+import {ReactNode} from 'react';
+import {chatLogic} from '../chat/logic';
+import {planLogic} from '../plan/logic';
+import {registryLogic} from '../registry/logic';
+import {selectComponentsLogic} from '../select-components/logic';
+import {getCodeLogic} from '../get-code/logic';
+import {editCodeLogic} from '../edit-code/logic';
+import {generateCodeLogic} from '../generate-code/logic';
+import {colorPaletteLogic} from '../color-palette/logic';
 
-// Helper to pipe AI streams to our response stream
-async function pipeStream(stream: ReadableStream<any>, controller: ReadableStreamDefaultController, type: string, encoder: TextEncoder) {
-  const reader = stream.getReader();
-  const decoder = new TextDecoder();
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    const chunk = decoder.decode(value, { stream: true });
-    controller.enqueue(encoder.encode(JSON.stringify({ type, data: chunk }) + '\n'));
-  }
+// Helper components to be rendered on the client
+function PlanComponent({data}: {data: any}) {
+  return (
+    <div>
+      <h2>Plan</h2>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
 }
 
-export async function POST(req: NextRequest) {
-  const { messages: uiMessages }: { messages: UIMessage[] } = await req.json();
-  const lastMessage = uiMessages[uiMessages.length - 1];
-  const prompt = lastMessage.text;
+function CodeComponent({data}: {data: any}) {
+  return (
+    <div>
+      <h2>Code</h2>
+      <pre>{data}</pre>
+    </div>
+  );
+}
 
-  const stream = new ReadableStream({
-    async start(controller) {
-      const encoder = new TextEncoder();
+async function* orchestrator(
+  uiMessages: UIMessage[],
+): AsyncGenerator<ReactNode> {
+  const prompt = uiMessages[uiMessages.length - 1].parts[0].text;
 
-      try {
-        // 1. Chat API
-        const chatStream = chatLogic(uiMessages);
-        await pipeStream(chatStream.textStream, controller, 'chat', encoder);
+  // 1. Chat API
+  const chatResult = chatLogic(uiMessages);
+  for await (const delta of chatResult.textStream) {
+    yield delta;
+  }
 
-        // 2. Plan API
-        const plan = await planLogic(prompt);
-        controller.enqueue(encoder.encode(JSON.stringify({ type: 'plan', data: plan }) + '\n'));
+  // 2. Plan API
+  const plan = await planLogic(prompt);
+  yield <PlanComponent data={plan} />;
 
-        // 3. Orchestration Logic
-        for (const category of plan.categories) {
-          const components = registryLogic(category);
+  // 3. Orchestration Logic
+  for (const category of plan.categories) {
+    const components = registryLogic(category);
 
-          if (!('error' in components) && components.length > 0) {
-            const selectionResult = await selectComponentsLogic({
-              prompt,
-              selectionCategory: category,
-              components,
-            });
+    if (!('error' in components) && components.length > 0) {
+      const selectionResult = await selectComponentsLogic({
+        prompt,
+        selectionCategory: category,
+        components,
+      });
 
-            if (selectionResult.success && selectionResult.selectedComponents) {
-              for (const selectedComponentName of selectionResult.selectedComponents) {
-                const componentCode = await getCodeLogic(selectedComponentName);
-                if (!('error' in componentCode)) {
-                  const editMessages: UIMessage[] = [
-                    {
-                      role: 'user',
-                      text: `## Original Code:
+      if (selectionResult.success && selectionResult.selectedComponents) {
+        for (const selectedComponentName of selectionResult.selectedComponents) {
+          const componentCode = await getCodeLogic(selectedComponentName);
+          if (!('error' in componentCode)) {
+            const editMessages: UIMessage[] = [
+              {
+                id: '1',
+                role: 'user',
+                parts: [
+                  {
+                    type: 'text',
+                    text: `## Original Code:
                       \`\`\`tsx
                       ${componentCode.code}
                       \`\`\`
@@ -68,91 +77,93 @@ export async function POST(req: NextRequest) {
                       ## Component: ${selectedComponentName}
 
                       ## Instructions:
-                      Please enhance the above code according to the enhancement request. Follow all the rules in the system prompt, especially:
-                      - Only modify hardcoded color values (hex, rgb, hsl, named colors)
-                      - Never change CSS custom properties or theme variables
-                      - Improve content and structure as requested
-                      - Ensure the component is more polished and professional
-                      - Maintain all original functionality
-                      - Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
-
-                      Return only the enhanced code without any explanations or markdown formatting.`,
-                    },
-                  ];
-                  const editStream = editCodeLogic(editMessages);
-                  await pipeStream(editStream.textStream, controller, 'code', encoder);
-                }
-              }
-            } else {
-              const generateMessages: UIMessage[] = [
-                {
-                  role: 'user',
-                  text: `## Component Generation Request:
-
-                  **Category**: ${category}
-
-                  **Website generation Prompt**: ${prompt}
-
-                  ## Requirements:
-                  1. Generate a complete React/Next.js component for the "${category}" category
-                  2. Follow the prompt requirements closely while staying within the category scope
-                  3. Use Shadcn/ui components and theme variables whenever possible
-                  4. Create an aesthetically pleasing design with gradients, blur effects, or modern visual elements
-                  5. Ensure responsive design that works on all screen sizes
-                  6. Include proper TypeScript types and interfaces
-                  7. Add subtle animations or hover effects where appropriate
-                  8. Use semantic HTML and accessibility best practices
-                  9. Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
-
-                  Return only the complete component code with proper imports and TypeScript types. Make it production-ready and visually stunning with modern design patterns.`,
-                },
-              ];
-              const generateStream = generateCodeLogic(generateMessages);
-              await pipeStream(generateStream.textStream, controller, 'code', encoder);
+                      Please enhance the above code according to the enhancement request. Follow all the rules in the system prompt.`,
+                  },
+                ],
+              },
+            ];
+            const editResult = editCodeLogic(editMessages);
+            let code = '';
+            for await (const delta of editResult.textStream) {
+              code += delta;
             }
-          } else {
-            const generateMessages: UIMessage[] = [
-                {
-                  role: 'user',
-                  text: `## Component Generation Request:
-
-                  **Category**: ${category}
-
-                  **Website generation Prompt**: ${prompt}
-
-                  ## Requirements:
-                  1. Generate a complete React/Next.js component for the "${category}" category
-                  2. Follow the prompt requirements closely while staying within the category scope
-                  3. Use Shadcn/ui components and theme variables whenever possible
-                  4. Create an aesthetically pleasing design with gradients, blur effects, or modern visual elements
-                  5. Ensure responsive design that works on all screen sizes
-                  6. Include proper TypeScript types and interfaces
-                  7. Add subtle animations or hover effects where appropriate
-                  8. Use semantic HTML and accessibility best practices
-                  9. Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
-
-                  Return only the complete component code with proper imports and TypeScript types. Make it production-ready and visually stunning with modern design patterns.`,
-                },
-              ];
-            const generateStream = generateCodeLogic(generateMessages);
-            await pipeStream(generateStream.textStream, controller, 'code', encoder);
+            yield <CodeComponent data={code} />;
           }
         }
+      } else {
+        const generateMessages: UIMessage[] = [
+          {
+            id: '1',
+            role: 'user',
+            parts: [
+              {
+                type: 'text',
+                text: `## Component Generation Request:
 
-        // 4. Color Palette API
-        if (plan.colorThemePrompt) {
-            const colorPalette = await colorPaletteLogic(plan.colorThemePrompt);
-            controller.enqueue(encoder.encode(JSON.stringify({ type: 'color-palette', data: colorPalette }) + '\n'));
+                  **Category**: ${category}
+
+                  **Website generation Prompt**: ${prompt}
+
+                  ## Requirements:
+                  Generate a complete React/Next.js component for the "${category}" category.`,
+              },
+            ],
+          },
+        ];
+        const generateResult = generateCodeLogic(generateMessages);
+        let code = '';
+        for await (const delta of generateResult.textStream) {
+          code += delta;
         }
-
-        controller.close();
-      } catch (error) {
-        controller.error(error);
+        yield <CodeComponent data={code} />;
       }
+    } else {
+        const generateMessages: UIMessage[] = [
+            {
+              id: '1',
+              role: 'user',
+              parts: [
+                {
+                  type: 'text',
+                  text: `## Component Generation Request:
+
+                    **Category**: ${category}
+
+                    **Website generation Prompt**: ${prompt}
+
+                    ## Requirements:
+                    Generate a complete React/Next.js component for the "${category}" category.`,
+                },
+              ],
+            },
+          ];
+          const generateResult = generateCodeLogic(generateMessages);
+          let code = '';
+          for await (const delta of generateResult.textStream) {
+            code += delta;
+          }
+          yield <CodeComponent data={code} />;
+    }
+  }
+
+  // 4. Color Palette API
+  if (plan.colorThemePrompt) {
+    const colorPalette = await colorPaletteLogic(plan.colorThemePrompt);
+    yield <CodeComponent data={colorPalette} />;
+  }
+}
+
+export async function POST(req: NextRequest) {
+  const {messages} = await req.json();
+  const stream = streamUI({
+    model: 'openai/gpt-oss-20b', // This model is not used, but required by streamUI
+    messages,
+    async *render() {
+      yield* orchestrator(messages);
     },
   });
 
-  return new Response(stream, {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  return new Response(stream.value, {
+    headers: {'Content-Type': 'text/html; charset=utf-8'},
   });
 }
