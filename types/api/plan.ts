@@ -16,3 +16,5 @@ export const planSchema = z.object({
     .string()
     .describe('Text prompt for another AI to generate the website color theme'),
 });
+
+export type Plan = z.infer<typeof planSchema>;
