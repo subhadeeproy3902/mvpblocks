@@ -1,6 +1,10 @@
 import { groq } from '@ai-sdk/groq';
-import { streamText } from 'ai';
-import { NextRequest } from 'next/server';
+import {
+  convertToModelMessages,
+  smoothStream,
+  streamText,
+  UIMessage,
+} from 'ai';
 
 export const maxDuration = 60;
 
@@ -63,54 +67,23 @@ Generate components that naturally fit the provided category. For each category,
 
 Focus on creating components that are not just functional but truly beautiful and engaging, following modern design trends while maintaining excellent usability.`;
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { prompt, category, websiteContext, componentName } = body;
-
-    const userPrompt = `
-## Component Generation Request:
-
-**Category**: ${category}
-**Prompt**: ${prompt}
-
-${websiteContext ? `**Website Context**: ${websiteContext}` : ''}
-
-## Requirements:
-1. Generate a complete React/Next.js component for the "${category}" category
-2. Follow the prompt requirements closely while staying within the category scope
-3. Use Shadcn/ui components and theme variables whenever possible
-4. Create an aesthetically pleasing design with gradients, blur effects, or modern visual elements
-5. Ensure responsive design that works on all screen sizes
-6. Include proper TypeScript types and interfaces
-7. Add subtle animations or hover effects where appropriate
-8. Use semantic HTML and accessibility best practices
-9. Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
-
-Return only the complete component code with proper imports and TypeScript types. Make it production-ready and visually stunning with modern design patterns.`;
+    const { messages }: { messages: UIMessage[] } = await req.json();
 
     const result = streamText({
-      model: groq('qwen-qwq-32b'),
+      model: groq('qwen/qwen3-32b'),
       system: SYSTEM_PROMPT,
-      prompt: userPrompt,
-      maxRetries: 3,
-      temperature: 0.4,
+      messages: convertToModelMessages(messages),
+      experimental_transform: smoothStream({
+        chunking: 'word',
+      }),
     });
 
-    return result.toTextStreamResponse();
-
+    return result.toUIMessageStreamResponse();
   } catch (error) {
-    console.error('Error in generate-code route:', error);
-    
-    return new Response(
-      JSON.stringify({ 
-        error: 'Failed to generate code',
-        message: error instanceof Error ? error.message : 'Unknown error'
-      }),
-      { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    console.error('Error in edit-code route:', error);
+
+    throw error;
   }
 }

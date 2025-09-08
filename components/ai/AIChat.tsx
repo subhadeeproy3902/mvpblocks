@@ -2,18 +2,9 @@
 
 import {
   PromptInput,
-  PromptInputButton,
-  PromptInputModelSelect,
-  PromptInputModelSelectContent,
-  PromptInputModelSelectItem,
-  PromptInputModelSelectTrigger,
-  PromptInputModelSelectValue,
   PromptInputSubmit,
   PromptInputTextarea,
-  PromptInputToolbar,
-  PromptInputTools,
 } from '@/components/ai-elements/prompt-input';
-import { GlobeIcon, MicIcon } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import {
@@ -23,75 +14,27 @@ import {
 } from '@/components/ai-elements/conversation';
 import { Message, MessageContent } from '@/components/ai-elements/message';
 import { Response } from '@/components/ai-elements/response';
-import { Reasoning, ReasoningContent, ReasoningTrigger } from '../ai-elements/reasoning';
+import {
+  Reasoning,
+  ReasoningContent,
+  ReasoningTrigger,
+} from '../ai-elements/reasoning';
 import { Loader } from '../ai-elements/loader';
-import { DefaultChatTransport, type ToolUIPart } from 'ai';
+import { DefaultChatTransport } from 'ai';
 import { experimental_useObject as useObject } from '@ai-sdk/react';
+import { Task, TaskTrigger, TaskContent } from '@/components/ai-elements/task';
+import { planSchema } from '@/types/api/plan';
 import {
-  Task,
-  TaskItem,
-  TaskItemFile,
-  TaskTrigger,
-  TaskContent,
-} from '@/components/ai-elements/task';
-import {
-  Tool,
-  ToolContent,
-  ToolHeader,
-  ToolInput,
-  ToolOutput,
-} from '@/components/ai-elements/tool';
-import { planSchema } from '@/app/api/ai/plan/route';
+  getColorPalette,
+  getRegistryComponents,
+  getComponentCode,
+  selectComponents,
+} from '@/utils/api';
 
-type WeatherToolInput = {
-  location: string;
-  units: 'celsius' | 'fahrenheit';
-};
-
-type WeatherToolOutput = {
-  location: string;
-  temperature: string;
-  conditions: string;
-  humidity: string;
-  windSpeed: string;
-  lastUpdated: string;
-};
-
-type WeatherToolUIPart = ToolUIPart<{
-  fetch_weather_data: {
-    input: WeatherToolInput;
-    output: WeatherToolOutput;
-  };
-}>;
-
-function formatWeatherResult(result: WeatherToolOutput | undefined): string {
-  if (!result) return 'No weather data available.';
-  return `**Weather for ${result.location}**
-
-**Temperature:** ${result.temperature}  
-**Conditions:** ${result.conditions}  
-**Humidity:** ${result.humidity}  
-**Wind Speed:** ${result.windSpeed}  
-
-*Last updated: ${result.lastUpdated}*`;
-}
-
-const models = [
-  { id: 'gpt-4o', name: 'GPT-4o' },
-  { id: 'claude-opus-4-20250514', name: 'Claude 4 Opus' },
-];
-
-export default function AIConversationPanel ({
-  hide,
-  setHide,
-}:{
-  hide: boolean;
-  setHide: (hide: boolean) => void;
-}) {
+export default function AIConversationPanel({ hide }: { hide: boolean }) {
   const [text, setText] = useState<string>('');
-  const [model, setModel] = useState<string>(models[0].id);
 
-  const transport = useMemo(
+  const simpleChatTransport = useMemo(
     () =>
       new DefaultChatTransport({
         api: '/api/ai/chat',
@@ -99,57 +42,155 @@ export default function AIConversationPanel ({
     [],
   );
 
-  async function getColorPalette(
-    text: string
-  ) {
-    const csstext = await fetch('/api/ai/color-palette', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: text }),
-    });
+  const editChatTransport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: '/api/ai/edit-code',
+      }),
+    [],
+  );
 
-    console.log('css text', await csstext.text());
-  }
+  const generateCodeTransport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: '/api/ai/generate-code',
+      }),
+    [],
+  );
 
-  const { object, submit, isLoading } = useObject({
-    api: '/api/ai/plan',
-    schema: planSchema,
-    onFinish: async () => {
-      await getColorPalette(text);
-    }
+  const {
+    messages: editMessages,
+    sendMessage: editSendMessage,
+    status: editStatus,
+  } = useChat({
+    transport: editChatTransport,
   });
 
-  const { messages, status, sendMessage } = useChat(
-    {
-      transport
-    }
-  );
+  const {
+    messages: generateCodeMessages,
+    sendMessage: generateCodeSendMessage,
+    status: generateCodeStatus,
+  } = useChat({
+    transport: generateCodeTransport,
+  });
+
+  const { object, submit } = useObject({
+    api: '/api/ai/plan',
+    schema: planSchema,
+    onFinish: async (result) => {
+      if (result.object?.categories) {
+        try {
+          await getColorPalette(text);
+
+          for (const category of result.object.categories) {
+            const components = await getRegistryComponents(
+              category || 'shadcn',
+            );
+
+            // If components are found, use select-components API to choose the best ones
+            if (
+              components &&
+              Array.isArray(components) &&
+              components.length > 0
+            ) {
+              const selectionResult = await selectComponents(
+                text, // the original prompt
+                category || 'shadcn',
+                components,
+              );
+
+              if (
+                selectionResult.success &&
+                selectionResult.selectedComponents &&
+                selectionResult.selectedComponents.length > 0
+              ) {
+                for (const selectedComponentName of selectionResult.selectedComponents) {
+                  const componentCode = await getComponentCode(
+                    selectedComponentName,
+                  );
+
+                  editSendMessage({
+                    text: `## Original Code:
+                    \`\`\`tsx
+                    ${componentCode}
+                    \`\`\`
+
+                    ## Website Requested by user:
+                    ${text}
+
+                    ## Component: ${selectedComponentName}
+
+                    ## Instructions:
+                    Please enhance the above code according to the enhancement request. Follow all the rules in the system prompt, especially:
+                    - Only modify hardcoded color values (hex, rgb, hsl, named colors)
+                    - Never change CSS custom properties or theme variables
+                    - Improve content and structure as requested
+                    - Ensure the component is more polished and professional
+                    - Maintain all original functionality
+                    - Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
+
+                    Return only the enhanced code without any explanations or markdown formatting.`,
+                  });
+
+                  // Small delay between component code requests
+                  await new Promise((resolve) => setTimeout(resolve, 500));
+                }
+              }
+            } else {
+              generateCodeSendMessage({
+                text: `## Component Generation Request:
+
+                **Category**: ${category}
+
+                **Website generation Prompt**: ${text}
+
+                ## Requirements:
+                1. Generate a complete React/Next.js component for the "${category}" category
+                2. Follow the prompt requirements closely while staying within the category scope
+                3. Use Shadcn/ui components and theme variables whenever possible
+                4. Create an aesthetically pleasing design with gradients, blur effects, or modern visual elements
+                5. Ensure responsive design that works on all screen sizes
+                6. Include proper TypeScript types and interfaces
+                7. Add subtle animations or hover effects where appropriate
+                8. Use semantic HTML and accessibility best practices
+                9. Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
+
+                Return only the complete component code with proper imports and TypeScript types. Make it production-ready and visually stunning with modern design patterns.`,
+              });
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+          }
+        } catch (error) { }
+      }
+    },
+  });
+
+  const { messages, status, sendMessage } = useChat({
+    transport: simpleChatTransport,
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    sendMessage(
-      { text: text },
-      {
-        body: {
-          model: model,
-        },
-      },
-    );
-    
+    sendMessage({ text: text });
+
     submit({
       prompt: text,
     });
     setText('');
   };
 
-  const latestMessage = messages[messages.length - 1];
-  const weatherTool = latestMessage?.parts?.find(
-    (part) => part.type === 'tool-fetch_weather_data',
-  ) as WeatherToolUIPart | undefined;
+  console.log (
+    editMessages
+  )
+
+  console.log (
+    generateCodeMessages
+  )
 
   return (
-    <div className={`w-full h-full ${hide ? 'hidden' : 'block'}`}>
-      <Conversation className='h-[calc(100vh-12rem)]'>
+    <div className={`h-full w-full ${hide ? 'hidden' : 'block'}`}>
+      <Conversation className="h-[calc(100vh-12rem)]">
         <ConversationContent>
           {messages.map((message) => (
             <Message from={message.role} key={message.id}>
@@ -159,9 +200,7 @@ export default function AIConversationPanel ({
                     case 'text':
                       return (
                         <Response key={`${message.id}-${i}`}>
-                          {
-                            part.text.replace(/<\/?think>/g, '')
-                          }
+                          {part.text.replace(/<\/?think>/g, '')}
                         </Response>
                       );
                     case 'reasoning':
@@ -180,78 +219,97 @@ export default function AIConversationPanel ({
               </MessageContent>
             </Message>
           ))}
-          
-          {isLoading && !object && (
-            <div className="text-muted-foreground">Generating tasks...</div>
-          )}
+
+          {editMessages.map((message) => (
+            <Message from={message.role} key={message.id}>
+              <MessageContent>
+                {message.parts.map((part, i) => {
+                  switch (part.type) {
+                    case 'text':
+                      return (
+                        <Response key={`${message.id}-${i}`}>
+                          {part.text.replace(/<\/?think>/g, '')}
+                        </Response>
+                      );
+                    case 'reasoning':
+                      return (
+                        <Reasoning
+                          key={`${message.id}-${i}`}
+                          className="w-full"
+                          isStreaming={editStatus === 'streaming'}
+                        >
+                          <ReasoningTrigger />
+                          <ReasoningContent>{part.text}</ReasoningContent>
+                        </Reasoning>
+                      );
+                  }
+                })}
+              </MessageContent>
+            </Message>
+          ))}
+
+          {generateCodeMessages.map((message) => (
+            <Message from={message.role} key={message.id}>
+              <MessageContent>
+                {message.parts.map((part, i) => {
+                  switch (part.type) {
+                    case 'text':
+                      return (
+                        <Response key={`${message.id}-${i}`}>
+                          {part.text.replace(/<\/?think>/g, '')}
+                        </Response>
+                      );
+                    case 'reasoning':
+                      return (
+                        <Reasoning
+                          key={`${message.id}-${i}`}
+                          className="w-full"
+                          isStreaming={generateCodeStatus === 'streaming'}
+                        >
+                          <ReasoningTrigger />
+                          <ReasoningContent>{part.text}</ReasoningContent>
+                        </Reasoning>
+                      );
+                  }
+                })}
+              </MessageContent>
+            </Message>
+          ))}
 
           {object?.planSteps?.map((task, taskIndex: number) => (
             <Task key={taskIndex} defaultOpen={taskIndex === 0}>
               <TaskTrigger title={task?.task || 'Loading...'} />
-              <TaskContent>
-                {task?.description}
-              </TaskContent>
+              <TaskContent>{task?.description}</TaskContent>
             </Task>
           ))}
 
-          {weatherTool && (
-            <Tool defaultOpen={true}>
-              <ToolHeader type="tool-fetch_weather_data" state={weatherTool.state} />
-              <ToolContent>
-                <ToolInput input={weatherTool.input} />
-                <ToolOutput
-                  output={
-                    <Response>
-                      {formatWeatherResult(weatherTool.output)}
-                    </Response>
-                  }
-                  errorText={weatherTool.errorText}
-                />
-              </ToolContent>
-            </Tool>
+          {object?.colorThemePrompt && (
+            <Reasoning>
+              <ReasoningTrigger />
+              <ReasoningContent>{object?.colorThemePrompt}</ReasoningContent>
+            </Reasoning>
           )}
-          {status === 'submitted' && <Loader />}
+
+          {status === 'submitted' || 
+            editStatus === 'submitted' ||
+            generateCodeStatus === 'submitted'
+          && <Loader />}
         </ConversationContent>
         <ConversationScrollButton />
       </Conversation>
 
-      <div className='px-4'>
-        <PromptInput onSubmit={handleSubmit} className="mt-4 w-full h-fit">
+      <div className="px-4">
+        <PromptInput onSubmit={handleSubmit} className="mt-4 h-fit w-full">
           <PromptInputTextarea
             onChange={(e) => setText(e.target.value)}
             value={text}
           />
-          <PromptInputToolbar>
-            <PromptInputTools>
-              <PromptInputButton>
-                <MicIcon size={16} />
-              </PromptInputButton>
-              <PromptInputButton>
-                <GlobeIcon size={16} />
-                <span>Search</span>
-              </PromptInputButton>
-              <PromptInputModelSelect
-                onValueChange={(value) => {
-                  setModel(value);
-                }}
-                value={model}
-              >
-                <PromptInputModelSelectTrigger>
-                  <PromptInputModelSelectValue />
-                </PromptInputModelSelectTrigger>
-                <PromptInputModelSelectContent>
-                  {models.map((model) => (
-                    <PromptInputModelSelectItem key={model.id} value={model.id}>
-                      {model.name}
-                    </PromptInputModelSelectItem>
-                  ))}
-                </PromptInputModelSelectContent>
-              </PromptInputModelSelect>
-            </PromptInputTools>
-            <PromptInputSubmit disabled={!text} status={status} />
-          </PromptInputToolbar>
+          <PromptInputSubmit
+            disabled={!text}
+            status={status || editStatus || generateCodeStatus}
+          />
         </PromptInput>
       </div>
     </div>
   );
-};
+}

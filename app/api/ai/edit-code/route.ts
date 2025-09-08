@@ -1,6 +1,11 @@
 import { groq } from '@ai-sdk/groq';
-import { streamText } from 'ai';
-import { NextRequest } from 'next/server';
+import {
+  convertToModelMessages,
+  generateText,
+  smoothStream,
+  streamText,
+  UIMessage,
+} from 'ai';
 
 export const maxDuration = 60;
 
@@ -44,56 +49,22 @@ const SYSTEM_PROMPT = `You are an Expert Code Editor specialized in React/Next.j
 
 Focus on creating beautiful, functional, and theme-consistent components that elevate the overall user experience.`;
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { code, userRequest, websiteContext, componentName } = body;
-
-    const userPrompt = `
-## Original Code:
-\`\`\`tsx
-${code}
-\`\`\`
-
-## Enhancement Request:
-${userRequest}
-
-${websiteContext ? `## Website Context:\n${websiteContext}` : ''}
-
-${componentName ? `## Component: ${componentName}` : ''}
-
-## Instructions:
-Please enhance the above code according to the enhancement request. Follow all the rules in the system prompt, especially:
-- Only modify hardcoded color values (hex, rgb, hsl, named colors)
-- Never change CSS custom properties or theme variables
-- Improve content and structure as requested
-- Ensure the component is more polished and professional
-- Maintain all original functionality
-- Make the UI design absolutely aesthetic with nice gradient blurry blobs, nice content and ensure responsiveness
-
-Return only the enhanced code without any explanations or markdown formatting.`;
+    const { messages }: { messages: UIMessage[] } = await req.json();
 
     const result = streamText({
-      model: groq('qwen-qwq-32b'),
+      model: groq('qwen/qwen3-32b'),
       system: SYSTEM_PROMPT,
-      prompt: userPrompt,
-      maxRetries: 3,
-      temperature: 0.3,
+      messages: convertToModelMessages(messages),
+      experimental_transform: smoothStream({
+        chunking: 'word',
+      }),
     });
-
-    return result.toTextStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error('Error in edit-code route:', error);
-    
-    return new Response(
-      JSON.stringify({ 
-        error: 'Failed to enhance code',
-        message: error instanceof Error ? error.message : 'Unknown error'
-      }),
-      { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+
+    throw error;
   }
 }

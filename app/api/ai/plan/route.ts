@@ -1,6 +1,7 @@
 import { REGISTRY_CATEGORIES } from '@/constants/categories';
+import { planSchema } from '@/types/api/plan';
 import { groq } from '@ai-sdk/groq';
-import { streamObject } from 'ai';
+import { generateObject } from 'ai';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -36,44 +37,20 @@ You can add up your own set of categories as well but make sure to use ours 70% 
 The current set of categories we support are: ${JSON.stringify(REGISTRY_CATEGORIES)}.
 `;
 
-export const planSchema = z.object({
-  planSteps: z.array(
-    z.object({
-      task: z.string().describe('To be done section/task'),
-      description: z.string().describe('Purpose and goal of this section/task'),
-    }),
-  ),
-  categories: z
-    .array(z.string())
-    .describe(
-      'Array of single-word categories relevant to the website that can be used to generate the website.',
-    ),
-  colorThemePrompt: z
-    .string()
-    .describe('Text prompt for another AI to generate the website color theme'),
-});
 
 export async function POST(req: NextRequest) {
   try {
     const { prompt } = await req.json();
 
-    const result = streamObject({
+    const result = await generateObject({
       model: groq('moonshotai/kimi-k2-instruct'),
       schema: planSchema,
       system: SYSTEM,
       prompt: prompt,
     });
-
-    return result.toTextStreamResponse();
+    return NextResponse.json(result.object);
   } catch (error) {
     console.error('Plan generation error:', error);
-    return NextResponse.json(
-      {
-        error: 'Failed to generate plan',
-        message:
-          error instanceof Error ? error.message : 'Internal server error',
-      },
-      { status: 500, headers: { 'Content-Type': 'application/json' } },
-    );
+    throw error;
   }
 }

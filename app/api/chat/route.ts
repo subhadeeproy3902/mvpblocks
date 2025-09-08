@@ -601,7 +601,7 @@ export async function POST(req: Request) {
         }),
       },
       experimental_transform: smoothStream({
-        chunking: 'word',
+        chunking: 'line',
       }),
     });
 

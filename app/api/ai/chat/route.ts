@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { streamText, UIMessage, convertToModelMessages } from 'ai';
+import { streamText, UIMessage, convertToModelMessages, smoothStream } from 'ai';
 
 export const maxDuration = 30;
 
@@ -20,6 +20,9 @@ export async function POST(req: Request) {
     "I will create a plan for you."
     `,
     maxRetries: 3,
+    experimental_transform: smoothStream(
+      { chunking: 'line' }
+    )
   });
 
   return result.toUIMessageStreamResponse({

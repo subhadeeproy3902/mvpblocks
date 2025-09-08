@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       stopWhen: stepCountIs(6),
       maxOutputTokens: 8192,
       experimental_transform: smoothStream({
-        chunking: 'word',
+        chunking: 'line',
       }),
     });
     return result.toUIMessageStreamResponse();

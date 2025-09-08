@@ -13,7 +13,6 @@ export default function AiGenerationComponent({ id }: { id: string }) {
       <div className={`border-r py-2 h-full flex flex-col justify-between transition-all duration-500 ease-in-out will-change-transform  ${hide ? 'hidden' : 'block'}`}>
         <AIConversationPanel
           hide={hide}
-          setHide={setHide}
         />
       </div>
       <div className={`h-full transition-all duration-500 ease-in-out will-change-transform ${hide ? 'col-span-3 translate-x-0' : 'col-span-2 translate-x-0'
