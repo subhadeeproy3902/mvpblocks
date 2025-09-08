@@ -10,14 +10,14 @@ import { colorPaletteLogic } from '../color-palette/logic';
 import { UIMessage } from 'ai';
 
 // Helper to pipe AI streams to our response stream
-async function pipeStream(stream: ReadableStream<any>, writer: WritableStreamDefaultWriter<Uint8Array>, type: string, encoder: TextEncoder) {
+async function pipeStream(stream: ReadableStream<any>, controller: ReadableStreamDefaultController, type: string, encoder: TextEncoder) {
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
     const chunk = decoder.decode(value, { stream: true });
-    writer.write(encoder.encode(JSON.stringify({ type, data: chunk }) + '\n'));
+    controller.enqueue(encoder.encode(JSON.stringify({ type, data: chunk }) + '\n'));
   }
 }
 
@@ -28,17 +28,16 @@ export async function POST(req: NextRequest) {
 
   const stream = new ReadableStream({
     async start(controller) {
-      const writer = controller.writable.getWriter();
       const encoder = new TextEncoder();
 
       try {
         // 1. Chat API
         const chatStream = chatLogic(uiMessages);
-        await pipeStream(chatStream.textStream, writer, 'chat', encoder);
+        await pipeStream(chatStream.textStream, controller, 'chat', encoder);
 
         // 2. Plan API
         const plan = await planLogic(prompt);
-        writer.write(encoder.encode(JSON.stringify({ type: 'plan', data: plan }) + '\n'));
+        controller.enqueue(encoder.encode(JSON.stringify({ type: 'plan', data: plan }) + '\n'));
 
         // 3. Orchestration Logic
         for (const category of plan.categories) {
@@ -81,7 +80,7 @@ export async function POST(req: NextRequest) {
                     },
                   ];
                   const editStream = editCodeLogic(editMessages);
-                  await pipeStream(editStream.textStream, writer, 'code', encoder);
+                  await pipeStream(editStream.textStream, controller, 'code', encoder);
                 }
               }
             } else {
@@ -109,7 +108,7 @@ export async function POST(req: NextRequest) {
                 },
               ];
               const generateStream = generateCodeLogic(generateMessages);
-              await pipeStream(generateStream.textStream, writer, 'code', encoder);
+              await pipeStream(generateStream.textStream, controller, 'code', encoder);
             }
           } else {
             const generateMessages: UIMessage[] = [
@@ -136,14 +135,14 @@ export async function POST(req: NextRequest) {
                 },
               ];
             const generateStream = generateCodeLogic(generateMessages);
-            await pipeStream(generateStream.textStream, writer, 'code', encoder);
+            await pipeStream(generateStream.textStream, controller, 'code', encoder);
           }
         }
 
         // 4. Color Palette API
         if (plan.colorThemePrompt) {
             const colorPalette = await colorPaletteLogic(plan.colorThemePrompt);
-            writer.write(encoder.encode(JSON.stringify({ type: 'color-palette', data: colorPalette }) + '\n'));
+            controller.enqueue(encoder.encode(JSON.stringify({ type: 'color-palette', data: colorPalette }) + '\n'));
         }
 
         controller.close();
