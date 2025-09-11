@@ -1426,6 +1426,23 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'progress-download-btn',
+    categories: ['button', 'interactive'],
+    description: 'Just a download button with progress indicator.',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/buttons/progress-download-btn.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/buttons/progress-download-btn'),
+    ),
+  },
+  {
     name: 'bento-grid-1',
     categories: ['grid', 'layout'],
     description:
