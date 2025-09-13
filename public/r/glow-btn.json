@@ -1,0 +1,16 @@
+{
+  "name": "glow-btn",
+  "categories": ["button", "interactive"],
+  "description": "A glowing neon-style button with hover and active effects.",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport React from \"react\";\n\ninterface GlowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  children: React.ReactNode;\n}\n\nexport default function GlowButton({ children, ...props }: GlowButtonProps) {\n  return (\n    <button\n      {...props}\n      className={`\n        relative px-12 py-4 font-bold text-[15px] rounded-2xl cursor-pointer \n        border-[0.25em] border-[rgb(217,176,255)] \n        text-[rgb(217,176,255)] bg-[rgb(100,61,136)] \n        shadow-[0_0_1em_0.25em_rgb(217,176,255),0_0_4em_1em_rgba(191,123,255,0.78),inset_0_0_0.74em_0.25em_rgb(217,176,255)]\n        transition-all duration-300\n        after:content-[''] after:pointer-events-none \n        after:absolute after:top-[120%] after:left-0 after:w-full after:h-full \n        after:bg-[rgba(191,123,255,0.78)] after:blur-[2em] after:opacity-70 \n        after:[transform:perspective(1.5em)_rotateX(35deg)_scale(1,0.6)]\n        hover:text-[rgb(100,61,136)] hover:bg-[rgb(217,176,255)]\n        hover:shadow-[0_0_1em_0.25em_rgb(217,176,255),0_0_4em_2em_rgba(191,123,255,0.78),inset_0_0_0.75em_0.25em_rgb(217,176,255)]\n        active:shadow-[0_0_0.6em_0.25em_rgb(217,176,255),0_0_2.5em_2em_rgba(191,123,255,0.78),inset_0_0_0.5em_0.25em_rgb(217,176,255)]\n      `}\n    >\n      {children}\n    </button>\n  );\n}\n",
+      "path": "/components/mvpblocks/basics/buttons/glow-btn.tsx",
+      "target": "components/mvpblocks/basics/buttons/glow-btn.tsx"
+    }
+  ]
+}

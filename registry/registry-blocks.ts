@@ -1443,6 +1443,23 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'glow-btn',
+    categories: ['button', 'interactive'],
+    description: 'A fancy glow button with hover effects.',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/buttons/glow-btn.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/buttons/glow-btn'),
+    ),
+  },
+  {
     name: 'bento-grid-1',
     categories: ['grid', 'layout'],
     description:
