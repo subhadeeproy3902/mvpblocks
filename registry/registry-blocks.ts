@@ -1515,6 +1515,24 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'ball-bouncing-loader',
+    categories: ['loader', 'animation'],
+    description:
+      'A ball bouncing loader animation with five animated bars and a bouncing ball. Ideal for loading states.',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/loaders/ball-bouncing-loader.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/loaders/ball-bouncing-loader'),
+    ),
+  },
+  {
     name: 'btn-gradient1',
     categories: ['button', 'interactive'],
     description: 'A cool looking button with hover effects.',
