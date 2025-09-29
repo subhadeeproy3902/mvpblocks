@@ -2418,4 +2418,22 @@ export const blocks: Registry = [
         import('../components/mvpblocks/basics/buttons/download-animated-btn'),
     ),
   },
+{
+  name: "preloader-1",
+  author: "twilightgoblin",
+  type: "registry:block",
+  description: "A curtain-style animated preloader that cycles through words and reveals content.",
+  dependencies: ["framer-motion"],
+  registryDependencies: [],
+  files: [
+    {
+      path: "@/components/mvpblocks/preloaders/preloader-1/preloader-1.tsx",
+      type: "registry:block",
+    },
+  ],
+  component: React.lazy(
+    () => import("../components/mvpblocks/preloaders/preloader-1/preloader-1")
+  ),
+}
+
 ];
