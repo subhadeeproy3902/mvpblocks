@@ -3,7 +3,6 @@ title: Preloaders
 description: A collection of preloaders for smooth page transitions
 ---
 
-import Preloader1 from "@/components/mvpblocks/preloaders/preloader-1/preloader-1";
 import { ComponentPreview } from "@/components/preview/component-preview";
 import { extractSourceCode } from "@/lib/code";
 
@@ -11,8 +10,7 @@ import { extractSourceCode } from "@/lib/code";
 
 <ComponentPreview
   name="preloader-1"
-  classNameComponentContainer="w-full h-[400px] bg-black flex items-center justify-center p-0 rounded-none"
+  classNameComponentContainer="h-[400px] bg-black flex items-center justify-center p-0 rounded-none"
   code={(await extractSourceCode('preloader-1')).code}
   lang="tsx"
 />
-

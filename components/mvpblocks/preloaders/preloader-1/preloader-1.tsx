@@ -2,47 +2,37 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const words = [
-  "Welcome",
-  "Bienvenido",
-  "Willkommen",
-  "Benvenuto",
-  "ようこそ",
-];
+const words = ["Welcome", "Bienvenido", "Willkommen", "Bienvenue", "Benvenuto", "ようこそ", "환영합니다"];
 
 export default function Preloader1({ onFinish }: { onFinish?: () => void }) {
   const [index, setIndex] = useState(0);
-  const [exiting, setExiting] = useState(false);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     if (index < words.length - 1) {
-      const t = setTimeout(() => setIndex(i => i + 1), 450);
-      return () => clearTimeout(t);
+      const timer = setTimeout(() => setIndex(index + 1), 400);
+      return () => clearTimeout(timer);
     } else {
-      const t = setTimeout(() => {
-        setExiting(true);
+      const exitTimer = setTimeout(() => {
+        setDone(true);
         onFinish?.();
-      }, 700);
-      return () => clearTimeout(t);
+      }, 800);
+      return () => clearTimeout(exitTimer);
     }
-  }, [index, onFinish]);
+  }, [index]);
 
   return (
     <motion.div
-      className="relative w-full h-64 flex items-center justify-center bg-black"
+      className="w-full h-full flex items-center justify-center bg-black"
       initial={{ y: 0, opacity: 1 }}
-      animate={exiting ? { y: "-100%", opacity: 0 } : { y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      animate={done ? { y: "-100%", opacity: 0 } : { y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
     >
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="text-3xl md:text-5xl font-semibold text-white tracking-wide select-none"
-      >
-        {words[index]}
-      </motion.div>
+      {!done && (
+        <div className="text-3xl md:text-5xl font-semibold bg-gradient-to-r from-zinc-900 to to-zinc-500 bg-clip-text text-transparent tracking-wide">
+          {words[index]}
+        </div>
+      )}
     </motion.div>
   );
 }
