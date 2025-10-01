@@ -7,10 +7,16 @@ const githubGraphql = async ({
   query: string;
   variables: Record<string, any>;
 }) => {
+  // Check if GitHub token is available
+  if (!process.env.GITHUB_TOKEN) {
+    console.warn('GITHUB_TOKEN not set - GitHub API features will be unavailable');
+    return null;
+  }
+
   const response = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN!}`,
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       Accept: 'application/vnd.github+json',
       'Content-Type': 'application/json',
     },
@@ -18,7 +24,8 @@ const githubGraphql = async ({
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API request failed with status ${response.status}`);
+    console.error(`GitHub API request failed with status ${response.status}`);
+    return null; // Return null instead of throwing for better local dev experience
   }
 
   const result = await response.json();
@@ -57,10 +64,16 @@ const getAllCommitDates = async (
   let cursor: string | null = null;
 
   while (true) {
-    const response: GitHubResponse = await githubGraphql({
+    const response: GitHubResponse | null = await githubGraphql({
       query,
       variables: { login, name, cursor },
     });
+
+    // Handle null response (no token or API error)
+    if (!response) {
+      console.warn('GitHub API unavailable - returning empty commit data');
+      return [];
+    }
 
     const history = response.repository?.defaultBranchRef?.target?.history;
     if (!history) break;
@@ -127,7 +140,7 @@ export const fetchCodeFrequency = async (): Promise<{
   const frequencyMap: CodeFrequencyStats = {};
 
   while (true) {
-    const data: GitHubResponse2 = await githubGraphql({
+    const data: GitHubResponse2 | null = await githubGraphql({
       query: commitQuery,
       variables: {
         login: 'subhadeeproy3902',
@@ -135,6 +148,12 @@ export const fetchCodeFrequency = async (): Promise<{
         cursor,
       },
     });
+
+    // Handle null response (no token or API error)
+    if (!data) {
+      console.warn('GitHub API unavailable - returning empty code frequency data');
+      return { codeFrequency: {} };
+    }
 
     const history = data.repository?.defaultBranchRef?.target?.history;
     if (!history) break;
