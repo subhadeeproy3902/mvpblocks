@@ -10,6 +10,7 @@ export default function LoginForm1() {
         <div className="text-center">
           <img
             src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+            alt="MVPBlocks Logo"
             width={80}
             className="mx-auto"
           />
@@ -30,7 +31,10 @@ export default function LoginForm1() {
         </div>
         <div className="space-y-6 p-4 py-6 shadow sm:rounded-lg sm:p-6">
           <div className="grid grid-cols-3 gap-x-3">
-            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
+            <button
+              aria-label="Sign in with Google"
+              className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150"
+            >
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
@@ -62,7 +66,10 @@ export default function LoginForm1() {
                 </defs>
               </svg>
             </button>
-            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
+            <button
+              aria-label="Sign in with Twitter"
+              className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150"
+            >
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 48 48"
@@ -75,7 +82,10 @@ export default function LoginForm1() {
                 />
               </svg>
             </button>
-            <button className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150">
+            <button
+              aria-label="Sign in with GitHub"
+              className="hover:bg-secondary active:bg-secondary/40 flex items-center justify-center rounded-lg border py-2.5 duration-150"
+            >
               <Github size={24} />
             </button>
           </div>
@@ -106,6 +116,7 @@ export default function LoginForm1() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                   className="absolute inset-y-0 right-0 mt-2 mr-3 flex items-center"
                 >
                   {showPassword ? (
