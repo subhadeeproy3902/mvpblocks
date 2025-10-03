@@ -2,7 +2,7 @@ import { DocsLayout, type DocsLayoutProps } from 'fumadocs-ui/layouts/notebook';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/app/layout.config';
 import { source } from '@/lib/source';
-import { RootProvider } from 'fumadocs-ui/provider';
+import { RootProvider } from '@/components/shared/root-provider';
 import dynamic from 'next/dynamic';
 import { Banner } from 'fumadocs-ui/components/banner';
 import Link from 'next/link';
