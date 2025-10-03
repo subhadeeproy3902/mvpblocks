@@ -1,0 +1,16 @@
+---
+title: Preloaders
+description: A collection of preloaders for smooth page transitions
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+
+## Preloader 1
+
+<ComponentPreview
+  name="preloader-1"
+  classNameComponentContainer="h-[400px] bg-black flex items-center justify-center p-0 rounded-none"
+  code={(await extractSourceCode('preloader-1')).code}
+  lang="tsx"
+/>
