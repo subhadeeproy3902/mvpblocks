@@ -42,7 +42,7 @@ const data = {
     name: 'Mvpblocks',
     description:
       'Building beautiful and functional web experiences with modern technologies. We help startups and businesses create their digital presence.',
-    logo: 'https://i.postimg.cc/2SRcktkT/Mvpblocks.webp',
+    logo: 'https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp',
   },
 };
 

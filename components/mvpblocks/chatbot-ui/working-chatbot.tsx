@@ -130,7 +130,7 @@ export default function WorkingChatbot() {
                     <img
                       alt="user"
                       className="mr-2 flex size-6 rounded-full sm:mr-4 md:size-8"
-                      src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+                      src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
                       width={32}
                       height={32}
                     />

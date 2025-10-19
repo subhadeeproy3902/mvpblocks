@@ -9,7 +9,7 @@ export default function LoginForm1() {
       <div className="w-full space-y-4 sm:max-w-md">
         <div className="text-center">
           <img
-            src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+            src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
             alt="MVPBlocks Logo"
             width={80}
             className="mx-auto"

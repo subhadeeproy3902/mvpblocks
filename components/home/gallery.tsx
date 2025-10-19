@@ -100,7 +100,7 @@ export default function Gallery() {
                   <Image
                     width={500}
                     height={500}
-                    src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+                    src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
                     alt=""
                     className="spin h-8 w-8"
                   />
