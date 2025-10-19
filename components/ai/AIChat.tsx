@@ -53,9 +53,6 @@ export default function AIConversationPanel({ hide }: { hide: boolean }) {
                       </Response>
                     );
                   }
-                  if (part.type === 'ui') {
-                    return <div key={`${message.id}-${i}`}>{part.ui}</div>;
-                  }
                 })}
               </MessageContent>
             </Message>
