@@ -28,9 +28,9 @@ export default function DesignerPortfolioComponents() {
   };
 
   const themeDownloadUrls = {
-    rose: process.env.NEXT_PUBLIC_DESIGNER_PORTFOLIO_ROSE_DOWNLOAD_URL || '',
-    green: process.env.NEXT_PUBLIC_DESIGNER_PORTFOLIO_GREEN_DOWNLOAD_URL || '',
-    blue: process.env.NEXT_PUBLIC_DESIGNER_PORTFOLIO_BLUE_DOWNLOAD_URL || '',
+    rose: process.env.DESIGNER_PORTFOLIO_ROSE_DOWNLOAD_URL!,
+    green: process.env.DESIGNER_PORTFOLIO_GREEN_DOWNLOAD_URL!,
+    blue: process.env.DESIGNER_PORTFOLIO_BLUE_DOWNLOAD_URL!,
   };
 
   return (
