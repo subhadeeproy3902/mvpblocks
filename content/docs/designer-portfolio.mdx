@@ -11,7 +11,13 @@ import DesignerPortfolioComponents from '@/components/important/DesignerPortfoli
 
 <VideoPlayer src="https://9o0poboblj.ufs.sh/f/vsatf5J1TVQG9pLgWTlAqbWfnNOzStueC6PQ12UXaG7D8JM0" />
 
-<DesignerPortfolioComponents />
+<DesignerPortfolioComponents
+  downloadUrls={{
+    rose: process.env.DESIGNER_PORTFOLIO_ROSE_DOWNLOAD_URL,
+    green: process.env.DESIGNER_PORTFOLIO_GREEN_DOWNLOAD_URL,
+    blue: process.env.DESIGNER_PORTFOLIO_BLUE_DOWNLOAD_URL,
+  }}
+/>
 
 
 ## 💎 A Designer Portfolio That Speaks Luxury

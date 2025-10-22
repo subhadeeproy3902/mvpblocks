@@ -6,7 +6,17 @@ import LiveDemo from '@/components/important/LiveDemo';
 import { type PortfolioTheme } from '@/components/important/ThemeSelector';
 import InternationalBuyButton from './InternationalBuyButton';
 
-export default function DesignerPortfolioComponents() {
+interface DesignerPortfolioComponentsProps {
+  downloadUrls: {
+    rose: string;
+    green: string;
+    blue: string;
+  };
+}
+
+export default function DesignerPortfolioComponents({
+  downloadUrls,
+}: DesignerPortfolioComponentsProps) {
   const [selectedTheme, setSelectedTheme] = useState<PortfolioTheme>('rose');
 
   const themeUrls = {
@@ -25,12 +35,6 @@ export default function DesignerPortfolioComponents() {
     rose: '/designer-portfolio-rose.png',
     green: '/designer-portfolio-green.png',
     blue: '/designer-portfolio-blue.png',
-  };
-
-  const themeDownloadUrls = {
-    rose: process.env.DESIGNER_PORTFOLIO_ROSE_DOWNLOAD_URL!,
-    green: process.env.DESIGNER_PORTFOLIO_GREEN_DOWNLOAD_URL!,
-    blue: process.env.DESIGNER_PORTFOLIO_BLUE_DOWNLOAD_URL!,
   };
 
   return (
@@ -56,7 +60,7 @@ export default function DesignerPortfolioComponents() {
           onThemeChange: setSelectedTheme,
           prices: themePrices,
           images: themeImages,
-          downloadUrls: themeDownloadUrls,
+          downloadUrls: downloadUrls,
         }}
       />
 
