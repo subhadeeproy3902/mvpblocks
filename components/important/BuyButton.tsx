@@ -14,6 +14,7 @@ import { Input } from '../ui/input';
 import { toast } from 'sonner';
 import ThankYou from './ThankYou';
 import Image from 'next/image';
+import { ThemeSelector, type PortfolioTheme } from './ThemeSelector';
 
 interface BuyDialogProps {
   title: string;
@@ -22,6 +23,13 @@ interface BuyDialogProps {
   image: string;
   productId: string;
   downloadUrl: string;
+  themeSelector?: {
+    selectedTheme: PortfolioTheme;
+    onThemeChange: (theme: PortfolioTheme) => void;
+    prices: Record<PortfolioTheme, number>;
+    images: Record<PortfolioTheme, string>;
+    downloadUrls: Record<PortfolioTheme, string>;
+  };
 }
 
 export function BuyDialog({
@@ -31,11 +39,17 @@ export function BuyDialog({
   image,
   productId,
   downloadUrl,
+  themeSelector,
 }: BuyDialogProps) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+
+  // Use theme-specific values if themeSelector is provided
+  const currentPrice = themeSelector ? themeSelector.prices[themeSelector.selectedTheme] : price;
+  const currentImage = themeSelector ? themeSelector.images[themeSelector.selectedTheme] : image;
+  const currentDownloadUrl = themeSelector ? themeSelector.downloadUrls[themeSelector.selectedTheme] : downloadUrl;
 
   const handleCheckout = async () => {
     if (!email) {
@@ -53,7 +67,7 @@ export function BuyDialog({
     try {
       await initiatePayment({
         email,
-        amount: price,
+        amount: currentPrice,
         currency,
         title,
         productId,
@@ -61,7 +75,7 @@ export function BuyDialog({
           setIsDialogOpen(false);
           setShowThankYou(true);
         },
-        downloadUrl: downloadUrl,
+        downloadUrl: currentDownloadUrl,
       });
     } catch (err) {
       console.error('Checkout error:', err);
@@ -77,18 +91,18 @@ export function BuyDialog({
         <DialogTrigger asChild>
           <Button>
             Buy Now {currencySymbol(currency)}
-            {price}
+            {currentPrice}
           </Button>
         </DialogTrigger>
 
         <DialogContent className="flex max-w-md flex-col gap-2 overflow-hidden rounded-xl bg-neutral-100 p-0 shadow-lg dark:bg-neutral-900">
           <div className="relative px-6 py-10">
-            <div className="bg-primary/30 absolute -top-10 left-0 h-16 w-full blur-2xl"></div>
+            <div className="absolute -top-10 left-0 h-16 w-full bg-primary/30 blur-2xl"></div>
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between rounded-md p-4">
                 <div className="flex w-full gap-2">
                   <Image
-                    src={image}
+                    src={currentImage}
                     alt="Product Preview"
                     width={200}
                     height={200}
@@ -96,12 +110,12 @@ export function BuyDialog({
                   />
                   <div className="ml-2 flex w-full items-start justify-between">
                     <div>
-                      <p className="text-md text-foreground font-medium">
+                      <p className="text-foreground text-md font-medium">
                         {title}
                       </p>
                       <p className="text-foreground/60 flex items-center gap-2 text-xl">
                         {currencySymbol(currency)}
-                        {price}
+                        {currentPrice}
                       </p>
                     </div>
                   </div>
@@ -110,12 +124,12 @@ export function BuyDialog({
             </div>
 
             <div className="flex items-center justify-center">
-              <span className="text-md text-foreground/50 flex flex-col items-center text-center">
+              <span className="text-foreground/50 text-md flex flex-col items-center text-center">
                 <span className="flex gap-1">
                   Paying a total of
                   <span className="text-foreground font-bold">
                     {currencySymbol(currency)}
-                    {price}
+                    {currentPrice}
                   </span>
                   for <span className="font-bold">1 product</span>
                 </span>
@@ -126,6 +140,13 @@ export function BuyDialog({
                 </span>
               </span>
             </div>
+
+            {themeSelector && (
+              <ThemeSelector
+                selectedTheme={themeSelector.selectedTheme}
+                onThemeChange={themeSelector.onThemeChange}
+              />
+            )}
 
             <div className="mt-4 flex flex-col items-center justify-center gap-4">
               <Input
