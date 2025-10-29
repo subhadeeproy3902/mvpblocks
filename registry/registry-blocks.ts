@@ -3,18 +3,18 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
-    name: "footer-animated",
-    type: "registry:block",
-    dependencies: ["react"],
+    name: 'footer-animated',
+    type: 'registry:block',
+    dependencies: ['react'],
     registryDependencies: [],
     files: [
       {
-        path: "@/components/mvpblocks/required/footers/footer-animated.tsx",
-        type: "registry:block",
+        path: '@/components/mvpblocks/required/footers/footer-animated.tsx',
+        type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/required/footers/footer-animated"),
+      () => import('../components/mvpblocks/required/footers/footer-animated'),
     ),
   },
   {
@@ -431,6 +431,37 @@ export const blocks: Registry = [
     component: React.lazy(
       () =>
         import('../components/mvpblocks/dashboards/admin-dashboard-1/index'),
+    ),
+  },
+  {
+    name: 'personal-finance-dashboard-1',
+    description:
+      'Personal Finance Dashboard with budget tracking, expense analytics, savings goals, and transaction management micro UI components.',
+    categories: ['dashboard', 'layout', 'page'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'recharts'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/chart.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/progress.json',
+      'https://blocks.mvp-subha.me/r/BudgetProgress.json',
+    ],
+    files: [
+      {
+        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          '../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'
+        ),
     ),
   },
   {
@@ -1439,7 +1470,8 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/buttons/progress-download-btn'),
+      () =>
+        import('../components/mvpblocks/basics/buttons/progress-download-btn'),
     ),
   },
   {
@@ -1529,7 +1561,8 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/loaders/ball-bouncing-loader'),
+      () =>
+        import('../components/mvpblocks/basics/loaders/ball-bouncing-loader'),
     ),
   },
   {
@@ -2436,22 +2469,23 @@ export const blocks: Registry = [
         import('../components/mvpblocks/basics/buttons/download-animated-btn'),
     ),
   },
-{
-  name: "preloader-1",
-  author: "twilightgoblin",
-  type: "registry:block",
-  description: "A curtain-style animated preloader that cycles through words and reveals content.",
-  dependencies: ["framer-motion"],
-  registryDependencies: [],
-  files: [
-    {
-      path: "@/components/mvpblocks/preloaders/preloader-1/preloader-1.tsx",
-      type: "registry:block",
-    },
-  ],
-  component: React.lazy(
-    () => import("../components/mvpblocks/preloaders/preloader-1/preloader-1")
-  ),
-}
-
+  {
+    name: 'preloader-1',
+    author: 'twilightgoblin',
+    type: 'registry:block',
+    description:
+      'A curtain-style animated preloader that cycles through words and reveals content.',
+    dependencies: ['framer-motion'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/preloaders/preloader-1/preloader-1.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/preloaders/preloader-1/preloader-1'),
+    ),
+  },
 ];
