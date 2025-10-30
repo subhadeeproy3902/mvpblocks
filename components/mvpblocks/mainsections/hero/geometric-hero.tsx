@@ -162,7 +162,7 @@ export default function HeroGeometric({
             className="border-primary/30 bg-card/50 mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 shadow-sm backdrop-blur-sm md:mb-12"
           >
             <img
-              src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+              src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
               alt="logo"
               className="h-6 w-6"
             />

@@ -11,7 +11,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "// components/GlowButton.tsx\n\"use client\";\n\nimport React from \"react\";\n\ninterface GlowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  children: React.ReactNode;\n}\n\nconst GlowButton: React.FC<GlowButtonProps> = ({ children, ...props }) => {\n  return (\n    <button\n      {...props}\n      className={`\n        relative px-12 py-4 font-bold text-[15px] rounded-2xl cursor-pointer\n        border-[0.25em] border-[rgb(217,176,255)]\n        text-[rgb(217,176,255)] bg-[rgb(100,61,136)]\n        transition-all duration-300\n        hover:text-[rgb(100,61,136)] hover:bg-[rgb(217,176,255)]\n      `}\n    >\n      {children || \"Button\"}\n    </button>\n  );\n};\n\nexport default GlowButton;\n",
+      "content": "// components/GlowButton.tsx\r\n\"use client\";\r\n\r\nimport React from \"react\";\r\n\r\ninterface GlowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  children: React.ReactNode;\r\n}\r\n\r\nconst GlowButton: React.FC<GlowButtonProps> = ({ children, ...props }) => {\r\n  return (\r\n    <button\r\n      {...props}\r\n      className={`\r\n        relative px-12 py-4 font-bold text-[15px] rounded-2xl cursor-pointer\r\n        border-[0.25em] border-[rgb(217,176,255)]\r\n        text-[rgb(217,176,255)] bg-[rgb(100,61,136)]\r\n        transition-all duration-300\r\n        hover:text-[rgb(100,61,136)] hover:bg-[rgb(217,176,255)]\r\n      `}\r\n    >\r\n      {children || \"Button\"}\r\n    </button>\r\n  );\r\n};\r\n\r\nexport default GlowButton;\r\n",
       "path": "/components/mvpblocks/basics/buttons/glow-btn.tsx",
       "target": "components/mvpblocks/glow-btn.tsx"
     }

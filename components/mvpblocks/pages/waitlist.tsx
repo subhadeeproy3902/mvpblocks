@@ -67,7 +67,7 @@ export default function WaitlistPage() {
           className="border-primary/10 from-primary/15 to-primary/5 mb-8 inline-flex items-center gap-2 rounded-full border bg-gradient-to-r px-4 py-2 backdrop-blur-sm"
         >
           <img
-            src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+            src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
             alt="logo"
             className="spin h-6 w-6"
           />

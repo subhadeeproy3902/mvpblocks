@@ -245,7 +245,7 @@ export const NavbarLogo = () => {
       <Image
         width={32}
         height={32}
-        src="https://i.postimg.cc/2SRcktkT/Mvpblocks.webp"
+        src="https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp"
         alt="logo"
         className="h-8 w-8 rounded-full"
       />
