@@ -4,8 +4,11 @@ description: Footers are used to provide additional information or context at th
 root: required
 ---
 
-import {ComponentPreview} from "@/components/preview/component-preview";
-import {extractSourceCode} from "@/lib/code";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
+import { ComponentSource } from '@/components/preview/component-source';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## 4 Column Footer
 
@@ -44,3 +47,102 @@ import {extractSourceCode} from "@/lib/code";
   code={(await extractSourceCode('footer-animated')).code}
   lang="tsx"
 />
+
+## Modern Footer
+
+<ComponentPreview
+  name="footer-modern"
+  classNameComponentContainer="h-[500px]"
+  code={(await extractSourceCode('footer-modern')).code}
+  lang="tsx"
+/>
+
+## Installation and Setup
+
+To set up this Footer component, follow these steps
+
+<Steps>
+  <Step>
+    <Tabs items={['CLI', 'Manual']}>
+      <Tab>
+        Run the following command to install all modern footer component
+
+        ```bash
+        npx mvpblocks add footer-modern
+        ```
+      </Tab>
+      <Tab>
+        <Steps>
+          <Step>
+            Install required dependencies
+
+            ```bash
+            npm install react-icons --save next-themes
+            ```
+          </Step>
+          <Step>
+            Copy the following components and paste them into your project
+          </Step>
+
+          <Step>
+            <ComponentSource
+              code={(await extractSourceCode('footer-modern')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
+          <Step>
+            Paste code in globals.css
+
+            ```bash
+            /* Modern Footer */
+            @layer utilities {
+              /* ===== Animation Presets ===== */
+              .animate-float {
+                animation: float 6s ease-in-out infinite;
+              }
+              .animate-rotate-3d {
+                animation: rotate3d 8s linear infinite;
+              }
+
+              /* ===== Keyframes ===== */
+              @keyframes float {
+                0%,
+                100% {
+                  transform: translateY(0);
+                }
+                50% {
+                  transform: translateY(-12px);
+                }
+              }
+              @keyframes rotate3d {
+                0% {
+                  transform: rotateY(0);
+                }
+                100% {
+                  transform: rotateY(360deg);
+                }
+              }
+
+              .animate-energy-flow {
+                animation: energy-flow 4s linear infinite;
+                background-size: 200% 100%;
+              }
+
+              @keyframes energy-flow {
+                0% {
+                  background-position: -100% 0;
+                }
+                100% {
+                  background-position: 100% 0;
+                }
+              }
+            }
+            ```
+          </Step>
+        </Steps>
+      </Tab>
+    </Tabs>
+
+  </Step>
+</Steps>
