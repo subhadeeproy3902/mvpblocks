@@ -449,37 +449,6 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'personal-finance-dashboard-1',
-    description:
-      'Personal Finance Dashboard with budget tracking, expense analytics, savings goals, and transaction management micro UI components.',
-    categories: ['dashboard', 'layout', 'page'],
-    type: 'registry:block',
-    dependencies: ['lucide-react', 'react', 'recharts'],
-    registryDependencies: [
-      'https://blocks.mvp-subha.me/r/utils.json',
-      'https://blocks.mvp-subha.me/r/button.json',
-      'https://blocks.mvp-subha.me/r/badge.json',
-      'https://blocks.mvp-subha.me/r/card.json',
-      'https://blocks.mvp-subha.me/r/chart.json',
-      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
-      'https://blocks.mvp-subha.me/r/input.json',
-      'https://blocks.mvp-subha.me/r/progress.json',
-      'https://blocks.mvp-subha.me/r/BudgetProgress.json',
-    ],
-    files: [
-      {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
-        type: 'registry:block',
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          '../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'
-        ),
-    ),
-  },
-  {
     name: 'dashboard-header',
     description:
       'A dashboard header component with a title, subtitle, and action buttons. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.',
