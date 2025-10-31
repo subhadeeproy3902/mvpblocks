@@ -3,11 +3,17 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { FaDiscord, FaGithub, FaXTwitter, FaLinkedin } from 'react-icons/fa6';
 import { useTheme } from 'next-themes';
-import { LuMoon, LuSun } from 'react-icons/lu';
-import { CgArrowBottomLeft } from 'react-icons/cg';
 import { Input } from '@/components/ui/input';
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Moon,
+  Sun,
+  ArrowDownLeft,
+  MessageCircle,
+} from 'lucide-react';
 
 function useThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -57,10 +63,10 @@ export default function FooterModern() {
   const { theme, toggleTheme, mounted } = useThemeToggle();
 
   const socialLinks = [
-    { icon: FaXTwitter, label: 'Twitter', href: '#' },
-    { icon: FaGithub, label: 'GitHub', href: '#' },
-    { icon: FaDiscord, label: 'Discord', href: '#' },
-    { icon: FaLinkedin, label: 'LinkedIn', href: '#' },
+    { icon: Twitter, label: 'Twitter', href: '#' },
+    { icon: Github, label: 'GitHub', href: '#' },
+    { icon: MessageCircle, label: 'Discord', href: '#' },
+    { icon: Linkedin, label: 'LinkedIn', href: '#' },
   ];
 
   if (!mounted) return null;
@@ -116,9 +122,9 @@ export default function FooterModern() {
                 className="hover:bg-primary dark:hover:bg-primary !border-primary/30 !hover:border-primary cursor-pointer shadow-none transition-all duration-1000 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
               >
                 {theme === 'dark' ? (
-                  <LuSun className="h-4 w-4" />
+                  <Sun className="h-4 w-4" />
                 ) : (
-                  <LuMoon className="h-4 w-4" />
+                  <Moon className="h-4 w-4" />
                 )}
                 <span className="sr-only">Toggle theme</span>
               </Button>
@@ -169,7 +175,7 @@ export default function FooterModern() {
                           href={item.href}
                           className="group text-muted-foreground hover:text-foreground decoration-primary -ml-5 inline-flex items-center gap-2 underline-offset-8 transition-all duration-500 hover:pl-5 hover:underline"
                         >
-                          <CgArrowBottomLeft className="text-primary rotate-[225deg] opacity-30 transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 sm:group-hover:rotate-[225deg] md:rotate-0" />
+                          <ArrowDownLeft className="text-primary rotate-[225deg] opacity-30 transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 sm:group-hover:rotate-[225deg] md:rotate-0" />
                           {item.name}
                         </Link>
                       </li>
@@ -195,7 +201,7 @@ export default function FooterModern() {
             ))}
           </div>
         </div>
-        <span className="absolute inset-x-0 bottom-0 left-0 bg-gradient-to-t from-primary/20 -z-10 h-1/3 w-full" />
+        <span className="from-primary/20 absolute inset-x-0 bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t" />
       </div>
     </footer>
   );
