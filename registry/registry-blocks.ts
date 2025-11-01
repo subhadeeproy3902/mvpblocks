@@ -3,18 +3,18 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
-    name: "footer-animated",
-    type: "registry:block",
-    dependencies: ["react"],
+    name: 'footer-animated',
+    type: 'registry:block',
+    dependencies: ['react'],
     registryDependencies: [],
     files: [
       {
-        path: "@/components/mvpblocks/required/footers/footer-animated.tsx",
-        type: "registry:block",
+        path: '@/components/mvpblocks/required/footers/footer-animated.tsx',
+        type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import("../components/mvpblocks/required/footers/footer-animated"),
+      () => import('../components/mvpblocks/required/footers/footer-animated'),
     ),
   },
   {
@@ -1114,6 +1114,24 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'bento-grid-3',
+    categories: ['grid', 'layout'],
+    description:
+      'A modern bento grid showcase featuring key platform capabilities. Each card highlights a different feature with icons, metrics, and tags, creating an engaging overview of AI-powered analytics, automation, security, and collaboration tools.',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/grids/bento-grid-3.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/grids/bento-grid-3'),
+    ),
+  },
+  {
     name: 'faq-3',
     categories: ['faq', 'mainsection'],
     description:
@@ -1439,7 +1457,8 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/buttons/progress-download-btn'),
+      () =>
+        import('../components/mvpblocks/basics/buttons/progress-download-btn'),
     ),
   },
   {
@@ -1529,7 +1548,8 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/loaders/ball-bouncing-loader'),
+      () =>
+        import('../components/mvpblocks/basics/loaders/ball-bouncing-loader'),
     ),
   },
   {
@@ -2436,22 +2456,23 @@ export const blocks: Registry = [
         import('../components/mvpblocks/basics/buttons/download-animated-btn'),
     ),
   },
-{
-  name: "preloader-1",
-  author: "twilightgoblin",
-  type: "registry:block",
-  description: "A curtain-style animated preloader that cycles through words and reveals content.",
-  dependencies: ["framer-motion"],
-  registryDependencies: [],
-  files: [
-    {
-      path: "@/components/mvpblocks/preloaders/preloader-1/preloader-1.tsx",
-      type: "registry:block",
-    },
-  ],
-  component: React.lazy(
-    () => import("../components/mvpblocks/preloaders/preloader-1/preloader-1")
-  ),
-}
-
+  {
+    name: 'preloader-1',
+    author: 'twilightgoblin',
+    type: 'registry:block',
+    description:
+      'A curtain-style animated preloader that cycles through words and reveals content.',
+    dependencies: ['framer-motion'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/preloaders/preloader-1/preloader-1.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/preloaders/preloader-1/preloader-1'),
+    ),
+  },
 ];
