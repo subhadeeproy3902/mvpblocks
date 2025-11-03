@@ -18,6 +18,21 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'footer-standard',
+    type: 'registry:block',
+    dependencies: ['react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/required/footers/footer-standard.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/required/footers/footer-standard'),
+    ),
+  },
+  {
     name: 'text-reveal-1',
     description:
       'A text reveal animation that reveals text from the bottom. Used for titles, headings, etc.',
