@@ -1145,6 +1145,24 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'bento-grid-3',
+    categories: ['grid', 'layout'],
+    description:
+      'A modern bento grid showcase featuring key platform capabilities. Each card highlights a different feature with icons, metrics, and tags, creating an engaging overview of AI-powered analytics, automation, security, and collaboration tools.',
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/grids/bento-grid-3.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/grids/bento-grid-3'),
+    ),
+  },
+  {
     name: 'faq-3',
     categories: ['faq', 'mainsection'],
     description:
