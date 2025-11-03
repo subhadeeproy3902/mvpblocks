@@ -1184,6 +1184,24 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'faq-4',
+    categories: ['faq', 'mainsection'],
+    description:
+      'A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'lucide-react', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/faqs/faq-4.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/mainsections/faqs/faq-4'),
+    ),
+  },
+  {
     name: 'scrollbasedvelocity-demo',
     categories: ['scroll-animation', 'design'],
     description:
