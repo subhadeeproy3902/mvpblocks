@@ -7,9 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Button } from '@/components/ui/button';
 import { Webhook } from 'lucide-react';
 import Image from 'next/image';
+import { BorderBeam } from '@/components/ui/border-beam';
 
 const data = [
   {
@@ -225,23 +225,57 @@ export default function Faq4() {
 
         {/* CTA Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="from-primary m-auto flex h-60 w-full flex-col items-center justify-center rounded-md bg-linear-to-br p-6 text-white"
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="from-primary/30 via-primary/10 to-primary/5 border-primary/30 group relative m-auto mt-10 flex w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-gradient-to-tl px-8 py-12 text-center shadow-[0_0_45px_10px_hsl(var(--primary)/0.15)] transition-all duration-500 hover:shadow-[0_0_45px_10px_hsl(var(--primary)/0.2)]"
         >
-          <h3 className="mb-2 text-3xl">Still have questions ?</h3>
-          <p className="mb-4">
-            Can&apos;t find the answer you&apos;re looking for ? Please chat
-            with our friendly team.
-          </p>
-          <Button
-            size="lg"
-            className="mt-5 cursor-pointer rounded-sm bg-white! px-8 py-6 font-semibold text-black! transition-all duration-700 hover:scale-105 hover:px-14 hover:shadow-lg"
-          >
-            Get in Touch
-          </Button>
+          <BorderBeam
+            duration={12}
+            size={300}
+            className="via-primary from-transparent to-transparent"
+          />
+          <BorderBeam
+            duration={12}
+            size={300}
+            reverse={true}
+            className="via-primary from-transparent to-transparent"
+          />
+          <div className="z-10">
+            <h3 className="text-primary mb-3 text-3xl font-semibold md:text-4xl">
+              Still have questions ?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-xl text-base md:text-lg">
+              Can&apos;t find the answer you&apos;re looking for ?{' '}
+              <br className="hidden md:block" />
+              Reach out to our friendly support team we&apos;re here to help.
+            </p>
+            <button className="from-primary to-primary/60 relative z-[1] cursor-pointer overflow-hidden rounded-md bg-linear-to-tl px-8 py-3 font-medium text-white transition-all duration-700 before:absolute before:top-0 before:left-[-100%] before:h-full before:w-full before:rotate-45 before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)] before:transition-all before:duration-700 hover:scale-110 hover:px-12 hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] hover:before:left-[100%]">
+              Get in Touch
+            </button>
+          </div>
+
+          {(() => {
+            const glowLines = [
+              { bottom: 'bottom-0', right: 'right-10' },
+              { bottom: '-bottom-10', right: 'right-20' },
+              { bottom: '-bottom-20', right: 'right-30' },
+              { bottom: '-bottom-30', right: 'right-40' },
+              { bottom: '-bottom-40', right: 'right-50' },
+            ];
+            return (
+              <div className="absolute right-0 bottom-0 flex h-full w-full items-center justify-end">
+                {glowLines.map((line, index) => (
+                  <div
+                    key={index}
+                    className={`absolute ${line.bottom} ${line.right} bg-primary/90 h-60 w-2 rounded-full transition-all duration-1000 group-hover:-translate-y-full`}
+                    style={{ transitionDelay: `${index * 0.1}s` }}
+                  />
+                ))}
+              </div>
+            );
+          })()}
         </motion.div>
       </div>
       <div className="fixed top-0 left-0 -z-10 m-auto flex h-screen w-full items-center justify-center">
