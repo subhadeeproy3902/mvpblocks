@@ -1,8 +1,8 @@
 'use client';
 import { ReactNode, useState } from 'react';
-import Sidebar from './Sidebar';
-import Header from './Header';
-import Footer from './Footer';
+import PersonalSidebar from './personal-sidebar';
+import PersonalHeader from './personal-header';
+import PersonalFooter from './personal-footer';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -19,12 +19,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         }`}
       >
         <div>
-          <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+          <PersonalSidebar collapsed={collapsed} setCollapsed={setCollapsed} />
         </div>
         <div className="flex w-full flex-col transition-all duration-500">
-          <Header />
+          <PersonalHeader />
           <main className="flex-1 overflow-y-auto p-3 md:p-6">{children}</main>
-          <Footer />
+          <PersonalFooter />
         </div>
       </div>
     </div>

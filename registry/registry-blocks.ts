@@ -19,9 +19,13 @@ export const blocks: Registry = [
   },
   {
     name: 'footer-standard',
+    author: 'thevinayakgore',
     type: 'registry:block',
-    dependencies: ['react'],
-    registryDependencies: [],
+    dependencies: ['react', 'next-themes', 'lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/input.json',
+    ],
     files: [
       {
         path: '@/components/mvpblocks/required/footers/footer-standard.tsx',
@@ -449,37 +453,6 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'personal-finance-dashboard-1',
-    description:
-      'Personal Finance Dashboard with budget tracking, expense analytics, savings goals, and transaction management micro UI components.',
-    categories: ['dashboard', 'layout', 'page'],
-    type: 'registry:block',
-    dependencies: ['lucide-react', 'react', 'recharts'],
-    registryDependencies: [
-      'https://blocks.mvp-subha.me/r/utils.json',
-      'https://blocks.mvp-subha.me/r/button.json',
-      'https://blocks.mvp-subha.me/r/badge.json',
-      'https://blocks.mvp-subha.me/r/card.json',
-      'https://blocks.mvp-subha.me/r/chart.json',
-      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
-      'https://blocks.mvp-subha.me/r/input.json',
-      'https://blocks.mvp-subha.me/r/progress.json',
-      'https://blocks.mvp-subha.me/r/BudgetProgress.json',
-    ],
-    files: [
-      {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
-        type: 'registry:block',
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          '../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'
-        ),
-    ),
-  },
-  {
     name: 'dashboard-header',
     description:
       'A dashboard header component with a title, subtitle, and action buttons. Used a base component for admin-dashboard-1. Used for admin dashboards, analytics pages, etc.',
@@ -691,6 +664,308 @@ export const blocks: Registry = [
         '../components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar'
       ).then((mod) => ({
         default: mod.AdminSidebar,
+      })),
+    ),
+  },
+  {
+    name: 'personal-finance-dashboard-1',
+    author: 'thevinayakgore',
+    description:
+      'Personal Finance Dashboard with budget tracking, expense analytics, savings goals, and transaction management micro UI components.',
+    categories: ['dashboard', 'layout', 'page'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'recharts', 'next-themes'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/chart.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
+      'https://blocks.mvp-subha.me/r/input.json',
+      'https://blocks.mvp-subha.me/r/progress.json',
+      'https://blocks.mvp-subha.me/r/budget-progress.json',
+      'https://blocks.mvp-subha.me/r/dashboard-layout.json',
+      'https://blocks.mvp-subha.me/r/personal-header.json',
+      'https://blocks.mvp-subha.me/r/personal-footer.json',
+      'https://blocks.mvp-subha.me/r/income-expense-chart.json',
+      'https://blocks.mvp-subha.me/r/monthly-spending-chart.json',
+      'https://blocks.mvp-subha.me/r/recent-transactions.json',
+      'https://blocks.mvp-subha.me/r/savings-goals.json',
+      'https://blocks.mvp-subha.me/r/personal-sidebar.json',
+      'https://blocks.mvp-subha.me/r/stats-cards.json',
+    ],
+    files: [
+      {
+        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          '../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'
+        ),
+    ),
+  },
+  {
+    name: 'budget-progress',
+    description:
+      'A visual budget tracking widget that displays spending progress using icons and progress bars. Perfect for personal finance, analytics, or dashboard UIs.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/progress.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/budget-progress.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/budget-progress.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/budget-progress'
+      ).then((mod) => ({
+        default: mod.default, // because the file exports default function
+      })),
+    ),
+  },
+  {
+    name: 'dashboard-layout',
+    description:
+      'A responsive dashboard layout with collapsible sidebar, header, and footer. Includes main content area for dynamic children components. Ideal for admin, analytics, or finance dashboards.',
+    categories: ['dashboard', 'layout'],
+    type: 'registry:block',
+    dependencies: ['react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/personal-sidebar.json',
+      'https://blocks.mvp-subha.me/r/personal-header.json',
+      'https://blocks.mvp-subha.me/r/personal-footer.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/dashboard-layout.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/dashboard-layout.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/dashboard-layout'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'personal-header',
+    description:
+      'A responsive dashboard header component with date display, theme toggling, user menu, and notification button. Designed for finance or admin dashboards with support for dark/light mode and dropdown menus.',
+    categories: ['dashboard', 'layout'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react', 'next-themes'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/dropdown-menu.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-header.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/personal-header.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-header'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'personal-footer',
+    description:
+      'A clean, responsive dashboard footer with social media links and copyright text. Ideal for finance, admin, and analytics dashboards.',
+    categories: ['dashboard', 'layout'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react', 'next'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/button.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-footer.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/personal-footer.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-footer'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'income-expense-chart',
+    description:
+      'An interactive bar chart comparing monthly income, expenses, and net balance. Built with Recharts and MVPBlocks chart components for analytics dashboards.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'recharts'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/chart.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/income-expense-chart.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/income-expense-chart.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/income-expense-chart'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'monthly-spending-chart',
+    description:
+      'A colorful pie chart visualization showing monthly spending by category with tooltips, legends, and a total/remaining budget summary. Ideal for personal finance dashboards or analytics pages.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'recharts'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/chart.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/monthly-spending-chart.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/monthly-spending-chart.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/monthly-spending-chart'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'recent-transactions',
+    description:
+      'A detailed transaction list displaying recent income and expense records with category badges, icons, and color-coded indicators for gains and spends. Ideal for personal finance or analytics dashboards.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/recent-transactions.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/recent-transactions.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/recent-transactions'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'savings-goals',
+    description:
+      'A savings goals tracker displaying progress towards multiple financial targets with progress bars, deadlines, and status indicators. Ideal for personal finance dashboards and analytics pages.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/progress.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/savings-goals.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/savings-goals.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/savings-goals'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'personal-sidebar',
+    description:
+      'A responsive, collapsible sidebar navigation for finance or analytics dashboards. Includes dynamic links, mobile toggle, and interactive states for modern layouts.',
+    categories: ['dashboard', 'layout', 'navigation'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react', 'next'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-sidebar.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/personal-sidebar.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-sidebar'
+      ).then((mod) => ({
+        default: mod.default,
+      })),
+    ),
+  },
+  {
+    name: 'stats-cards',
+    description:
+      'A responsive grid of financial statistic cards displaying key metrics like balance, income, expenses, and savings rate. Each card includes icons, gradients, and change indicators for a clean analytics dashboard view.',
+    categories: ['dashboard', 'finance', 'analytics'],
+    type: 'registry:block',
+    dependencies: ['react', 'lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/card.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards.tsx',
+        type: 'registry:block',
+        target: 'components/mvpblocks/ui/stats-cards.tsx',
+      },
+    ],
+    component: React.lazy(() =>
+      import(
+        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards'
+      ).then((mod) => ({
+        default: mod.default,
       })),
     ),
   },
@@ -1200,12 +1475,21 @@ export const blocks: Registry = [
   },
   {
     name: 'faq-4',
+    author: 'thevinayakgore',
     categories: ['faq', 'mainsection'],
     description:
       'A modern FAQ section with accordion style questions and answers. Used for FAQ sections, help centers, etc.',
     type: 'registry:block',
-    dependencies: ['framer-motion', 'lucide-react', 'react'],
-    registryDependencies: [],
+    dependencies: [
+      '@radix-ui/react-accordion',
+      'framer-motion',
+      'lucide-react',
+    ],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/accordion.json',
+      'https://blocks.mvp-subha.me/r/border-beam.json',
+    ],
     files: [
       {
         path: '@/components/mvpblocks/mainsections/faqs/faq-4.tsx',
