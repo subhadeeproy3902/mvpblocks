@@ -1,14 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Twitter, Facebook, Linkedin } from "lucide-react";
+import React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Twitter, Facebook, Linkedin } from 'lucide-react';
 
-const Footer = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col md:flex-row items-center justify-between gap-1 border-t mt-8 p-5 text-center w-full h-20">
-      <span className="text-xs text-muted-foreground">
+    <footer className="mt-8 flex h-20 w-full flex-col items-center justify-between gap-1 border-t p-5 text-center md:flex-row">
+      <span className="text-muted-foreground text-xs">
         © {currentYear} FinDash Pro. All rights reserved.
       </span>
       <div className="flex justify-center gap-1">
@@ -16,7 +16,7 @@ const Footer = () => {
           variant="ghost"
           size="icon"
           asChild
-          className="rounded text-muted-foreground hover:!bg-primary hover:text-white hover:scale-105 transition-all duration-500"
+          className="text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white"
         >
           <Link
             href="https://twitter.com"
@@ -31,7 +31,7 @@ const Footer = () => {
           variant="ghost"
           size="icon"
           asChild
-          className="rounded text-muted-foreground hover:!bg-primary hover:text-white hover:scale-105 transition-all duration-500"
+          className="text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white"
         >
           <Link
             href="https://facebook.com"
@@ -46,7 +46,7 @@ const Footer = () => {
           variant="ghost"
           size="icon"
           asChild
-          className="rounded text-muted-foreground hover:!bg-primary hover:text-white hover:scale-105 transition-all duration-500"
+          className="text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white"
         >
           <Link
             href="https://linkedin.com"
@@ -60,6 +60,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

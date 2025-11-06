@@ -26,19 +26,15 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
 <Files className="bg-fd-secondary/50">
   <Folder name="components" defaultOpen>
-    <Folder name="dashboards" defaultOpen>
+    <Folder name="mvpblocks" defaultOpen>
       <Folder name="personal-finance-dashboard-1" defaultOpen>
         <Folder name="ui" defaultOpen>
           <File
-            name="BudgetProgress.tsx"
+            name="budget-progress.tsx"
             className="hover:bg-secondary/50 cursor-pointer"
           />
           <File
-            name="DashboardLayout.tsx"
-            className="hover:bg-secondary/50 cursor-pointer"
-          />
-          <File
-            name="Footer.tsx"
+            name="dashboard-layout.tsx"
             className="hover:bg-secondary/50 cursor-pointer"
           />
           <File
@@ -62,7 +58,7 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files';
             className="hover:bg-secondary/50 cursor-pointer"
           />
           <File
-            name="Sidebar.tsx"
+            name="Footer.tsx"
             className="hover:bg-secondary/50 cursor-pointer"
           />
           <File
@@ -106,87 +102,121 @@ To set up the Personal Finance Dashboard, follow these steps
       </Tab>
       <Tab>
         <Steps>
+          {/* 1️⃣ Basic setup */}
           <Step>
             Install required dependencies
 
             ```bash
-            npm install recharts lucide-react
+            npm install recharts lucide-react next-theme
             ```
 
             or
 
             ```bash
-            yarn add recharts lucide-react
+            yarn add recharts lucide-react next-theme
             ```
-
           </Step>
+
+          {/* 2️⃣ Base structure setup */}
           <Step>
             Copy the following components and paste them into your project
           </Step>
 
           <Step>
-            Add BudgetProgress.tsx
-
-            <ComponentSource
-              code={(await extractSourceCode('BudgetProgress')).code}
-              className="bg-fd-secondary/50"
-            />
-
+            Add index.tsx => Copy the code from the above on clicking the "Code" tab which is present corresponding to "Preview tab" after the component title.
           </Step>
 
           <Step>
-            Add layout components:
+            Add dashboard-layout.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('DashboardLayout')).code}
+              code={(await extractSourceCode('dashboard-layout')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
 
           <Step>
-            Add overview components
+            Add personal-sidebar.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('mvpblocks/dashboards/personal-finance-dashboard-1/overview/StatsCards')).code}
+              code={(await extractSourceCode('personal-sidebar')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
 
           <Step>
-            Add budget tracking components
+            Add personal-header.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('mvpblocks/dashboards/personal-finance-dashboard-1/budget/BudgetProgress')).code}
+              code={(await extractSourceCode('personal-header')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
 
           <Step>
-            Add transaction management
+            Add personal-footer.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('mvpblocks/dashboards/personal-finance-dashboard-1/transactions/RecentTransactions')).code}
+              code={(await extractSourceCode('personal-footer')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
+          {/* 3️⃣ Dashboard content components */}
+          <Step>
+            Add stats-cards.tsx
+
+            <ComponentSource
+              code={(await extractSourceCode('stats-cards')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
 
           <Step>
-            Add savings goals component
+            Add budget-progress.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('mvpblocks/dashboards/personal-finance-dashboard-1/goals/SavingsGoals')).code}
+              code={(await extractSourceCode('budget-progress')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
 
           <Step>
-            Add chart components
+            Add income-expense-chart.tsx
 
             <ComponentSource
-              code={(await extractSourceCode('mvpblocks/dashboards/personal-finance-dashboard-1/charts/MonthlySpendingChart')).code}
+              code={(await extractSourceCode('income-expense-chart')).code}
               className="bg-fd-secondary/50"
             />
           </Step>
+
+          <Step>
+            Add monthly-spending-chart.tsx
+
+            <ComponentSource
+              code={(await extractSourceCode('monthly-spending-chart')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
+          <Step>
+            Add recent-transactions.tsx
+
+            <ComponentSource
+              code={(await extractSourceCode('recent-transactions')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
+          <Step>
+            Add savings-goals.tsx
+
+            <ComponentSource
+              code={(await extractSourceCode('savings-goals')).code}
+              className="bg-fd-secondary/50"
+            />
+          </Step>
+
         </Steps>
       </Tab>
     </Tabs>
@@ -197,7 +227,7 @@ To set up the Personal Finance Dashboard, follow these steps
     Import and use the dashboard in your application
 
     ```tsx
-    import PersonalFinanceDashboard from '@/components/dashboards/personal-finance-dashboard-1/page';
+    import PersonalFinanceDashboard from '@/components/dashboards/personal-finance-dashboard-1/index';
 
     export default function FinancePage() {
       return <PersonalFinanceDashboard />;

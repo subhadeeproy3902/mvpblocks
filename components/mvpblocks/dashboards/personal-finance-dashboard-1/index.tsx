@@ -1,10 +1,10 @@
-import BudgetProgress from './ui/BudgetProgress';
-import DashboardLayout from './ui/DashboardLayout';
-import IncomeExpenseChart from './ui/IncomeExpenseChart';
-import MonthlySpendingChart from './ui/MonthlySpendingChart';
-import RecentTransactions from './ui/RecentTransactions';
-import SavingsGoals from './ui/SavingsGoals';
-import StatsCards from './ui/StatsCards';
+import BudgetProgress from './ui/budget-progress';
+import DashboardLayout from './ui/dashboard-layout';
+import IncomeExpenseChart from './ui/income-expense-chart';
+import MonthlySpendingChart from './ui/monthly-spending-chart';
+import RecentTransactions from './ui/recent-transactions';
+import SavingsGoals from './ui/savings-goals';
+import StatsCards from './ui/stats-cards';
 
 export default function PersonalFinanceDashboard() {
   return (
