@@ -1039,4 +1039,24 @@ export const ui: Registry = [
       },
     ],
   },
+  {
+    name: 'floating-dock',
+    type: 'registry:ui',
+    description:
+      'A floating dock navigation component with smooth hover animations. Features desktop and mobile variants with interactive icon scaling.',
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/ui/floating-dock.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/floating-dock').then((mod) => ({
+        default: mod.FloatingDock,
+      })),
+    ),
+    categories: ['ui', 'navigation', 'animation'],
+  },
 ];
