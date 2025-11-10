@@ -2845,4 +2845,26 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/basics/floating-dock-demo'),
     ),
   },
+  {
+    name: 'pointer-highlight-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the pointer highlight component showcasing animated border and pointer effects around text. Perfect for highlighting important words or phrases.',
+    categories: ['animation', 'text', 'highlight'],
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/pointer-highlight.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/pointer-highlight-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/pointer-highlight-demo'),
+    ),
+  },
 ];

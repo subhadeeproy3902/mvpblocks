@@ -1059,4 +1059,24 @@ export const ui: Registry = [
     ),
     categories: ['ui', 'navigation', 'animation'],
   },
+  {
+    name: 'pointer-highlight',
+    type: 'registry:ui',
+    description:
+      'A pointer highlight component that animates a border and pointer around text or content. Perfect for highlighting important text with smooth animations.',
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/ui/pointer-highlight.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/pointer-highlight').then((mod) => ({
+        default: mod.PointerHighlight,
+      })),
+    ),
+    categories: ['ui', 'animation', 'highlight'],
+  },
 ];
