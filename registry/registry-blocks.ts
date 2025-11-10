@@ -2888,4 +2888,27 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/basics/text-type-demo'),
     ),
   },
+  {
+    name: 'target-cursor-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the target cursor component showcasing custom animated cursor with corner tracking. Hover over elements to see the interactive cursor effect.',
+    categories: ['animation', 'cursor', 'interactive'],
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/target-cursor.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/target-cursor-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/target-cursor-demo'),
+    ),
+  },
 ];

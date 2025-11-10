@@ -1099,4 +1099,24 @@ export const ui: Registry = [
     ),
     categories: ['ui', 'animation', 'text'],
   },
+  {
+    name: 'target-cursor',
+    type: 'registry:ui',
+    description:
+      'A custom animated cursor component with GSAP. Features spinning animation, corner tracking on hover, and parallax effects. Perfect for interactive websites.',
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/target-cursor.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/target-cursor').then((mod) => ({
+        default: mod.TargetCursor,
+      })),
+    ),
+    categories: ['ui', 'animation', 'cursor'],
+  },
 ];
