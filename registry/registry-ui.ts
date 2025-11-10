@@ -1039,4 +1039,23 @@ export const ui: Registry = [
       },
     ],
   },
+  {
+    name: 'expandable',
+    type: 'registry:ui',
+    description: 'Expandable card component with smooth animations and customizable presets',
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/ui/expandable.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/expandable').then((mod) => ({
+        default: mod.Expandable,
+      })),
+    ),
+    categories: ['ui', 'animation'],
+  },
 ];

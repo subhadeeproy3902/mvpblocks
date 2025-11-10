@@ -697,7 +697,7 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
         type: 'registry:block',
       },
     ],
@@ -2821,6 +2821,33 @@ export const blocks: Registry = [
     component: React.lazy(
       () =>
         import('../components/mvpblocks/preloaders/preloader-1/preloader-1'),
+    ),
+  },
+  {
+    name: 'expandable-cards-showcase',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A showcase of interactive expandable cards with smooth animations. Features meeting cards, product showcases, and weather forecasts with expandable content.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/avatar.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/tooltip.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/expandable-cards-showcase.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/expandable-cards-showcase'),
     ),
   },
 ];
