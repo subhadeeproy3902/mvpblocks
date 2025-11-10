@@ -2867,4 +2867,25 @@ export const blocks: Registry = [
       () => import('../components/mvpblocks/basics/pointer-highlight-demo'),
     ),
   },
+  {
+    name: 'text-type-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the text typing animation component. Showcases typing, deleting, and looping text effects with customizable speed and cursor.',
+    categories: ['animation', 'text', 'typing'],
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/text-type.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/text-type-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/text-type-demo'),
+    ),
+  },
 ];

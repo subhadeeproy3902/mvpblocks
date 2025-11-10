@@ -1079,4 +1079,24 @@ export const ui: Registry = [
     ),
     categories: ['ui', 'animation', 'highlight'],
   },
+  {
+    name: 'text-type',
+    type: 'registry:ui',
+    description:
+      'A text typing animation component with GSAP. Features typing, deleting, looping, and customizable cursor effects. Perfect for hero sections and landing pages.',
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/text-type.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/text-type').then((mod) => ({
+        default: mod.TextType,
+      })),
+    ),
+    categories: ['ui', 'animation', 'text'],
+  },
 ];
