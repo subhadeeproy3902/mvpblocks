@@ -697,7 +697,7 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
         type: 'registry:block',
       },
     ],
@@ -2821,6 +2821,94 @@ export const blocks: Registry = [
     component: React.lazy(
       () =>
         import('../components/mvpblocks/preloaders/preloader-1/preloader-1'),
+    ),
+  },
+  {
+    name: 'floating-dock-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A floating dock navigation demo with smooth hover animations. Features interactive icons that scale on hover, with separate desktop and mobile layouts.',
+    categories: ['navigation', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/floating-dock.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/floating-dock-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/floating-dock-demo'),
+    ),
+  },
+  {
+    name: 'pointer-highlight-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the pointer highlight component showcasing animated border and pointer effects around text. Perfect for highlighting important words or phrases.',
+    categories: ['animation', 'text', 'highlight'],
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/pointer-highlight.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/pointer-highlight-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/pointer-highlight-demo'),
+    ),
+  },
+  {
+    name: 'text-type-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the text typing animation component. Showcases typing, deleting, and looping text effects with customizable speed and cursor.',
+    categories: ['animation', 'text', 'typing'],
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/text-type.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/text-type-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/text-type-demo'),
+    ),
+  },
+  {
+    name: 'target-cursor-demo',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A demo of the target cursor component showcasing custom animated cursor with corner tracking. Hover over elements to see the interactive cursor effect.',
+    categories: ['animation', 'cursor', 'interactive'],
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/target-cursor.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/target-cursor-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/target-cursor-demo'),
     ),
   },
 ];

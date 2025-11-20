@@ -1039,4 +1039,84 @@ export const ui: Registry = [
       },
     ],
   },
+  {
+    name: 'floating-dock',
+    type: 'registry:ui',
+    description:
+      'A floating dock navigation component with smooth hover animations. Features desktop and mobile variants with interactive icon scaling.',
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/ui/floating-dock.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/floating-dock').then((mod) => ({
+        default: mod.FloatingDock,
+      })),
+    ),
+    categories: ['ui', 'navigation', 'animation'],
+  },
+  {
+    name: 'pointer-highlight',
+    type: 'registry:ui',
+    description:
+      'A pointer highlight component that animates a border and pointer around text or content. Perfect for highlighting important text with smooth animations.',
+    dependencies: ['motion/react', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/utils.json'],
+    files: [
+      {
+        path: '@/components/ui/pointer-highlight.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/pointer-highlight').then((mod) => ({
+        default: mod.PointerHighlight,
+      })),
+    ),
+    categories: ['ui', 'animation', 'highlight'],
+  },
+  {
+    name: 'text-type',
+    type: 'registry:ui',
+    description:
+      'A text typing animation component with GSAP. Features typing, deleting, looping, and customizable cursor effects. Perfect for hero sections and landing pages.',
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/text-type.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/text-type').then((mod) => ({
+        default: mod.TextType,
+      })),
+    ),
+    categories: ['ui', 'animation', 'text'],
+  },
+  {
+    name: 'target-cursor',
+    type: 'registry:ui',
+    description:
+      'A custom animated cursor component with GSAP. Features spinning animation, corner tracking on hover, and parallax effects. Perfect for interactive websites.',
+    dependencies: ['gsap', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/target-cursor.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/target-cursor').then((mod) => ({
+        default: mod.TargetCursor,
+      })),
+    ),
+    categories: ['ui', 'animation', 'cursor'],
+  },
 ];
