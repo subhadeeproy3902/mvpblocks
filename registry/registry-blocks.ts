@@ -697,7 +697,7 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
         type: 'registry:block',
       },
     ],
@@ -1824,6 +1824,28 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import('../components/mvpblocks/basics/buttons/glow-btn'),
+    ),
+  },
+  {
+    name: 'attract-button',
+    author: 'nuelst',
+    categories: ['button', 'interactive', 'animation'],
+    description:
+      'An interactive button with magnetic particle effects. Particles attract to the center on hover, creating a mesmerizing visual effect.',
+    type: 'registry:block',
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/basics/buttons/attract-button.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/basics/buttons/attract-button'),
     ),
   },
   {
