@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, useMotionValue, transform } from "framer-motion"
 
 const ICON_CONFIG = {
@@ -8,13 +8,14 @@ const ICON_CONFIG = {
   size: 100,
 }
 
-const DEVICE_CONFIG = {
+const CONTAINER_CONFIG = {
   width: 420,
   height: 420,
 }
 
 const GRID_SIZE = 10
 const COLS = 12
+
 function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
   x: any
   y: any
@@ -26,15 +27,13 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
 }) {
   const xScale = useRef(1)
   const yScale = useRef(1)
-
   const createScreenRange = (axis: "width" | "height") => [
     -60,
     80,
-    DEVICE_CONFIG[axis] - (ICON_CONFIG.size + ICON_CONFIG.margin) / 2 - 80,
-    DEVICE_CONFIG[axis] - (ICON_CONFIG.size + ICON_CONFIG.margin) / 2 + 60,
+    CONTAINER_CONFIG[axis] - (ICON_CONFIG.size + ICON_CONFIG.margin) / 2 - 80,
+    CONTAINER_CONFIG[axis] - (ICON_CONFIG.size + ICON_CONFIG.margin) / 2 + 60,
   ]
 
-  // Precompute transforms
   const xRange = createScreenRange("width")
   const yRange = createScreenRange("height")
 
@@ -43,13 +42,11 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
   const mapScreenXToScale = transform(xRange, [0, 1, 1, 0])
   const mapScreenYToScale = transform(yRange, [0, 1, 1, 0])
 
-  // Generic logic reused for X & Y
-  const updateScale = () => {
+  const updateScale = useCallback(() => {
     const newScale = Math.min(xScale.current, yScale.current)
     scale.set(newScale)
-  }
+  }, [scale])
 
-  // Listen to X plane movement
   useEffect(() => {
     return planeX.onChange((v: number) => {
       const screen = v + xOffset + 20
@@ -58,9 +55,8 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
       x.set(mapScreenToXOffset(screen))
       updateScale()
     })
-  }, [planeX, x, scale, xOffset])
+  }, [planeX, x, scale, xOffset, mapScreenXToScale, mapScreenToXOffset, updateScale])
 
-  // Listen to Y plane movement
   useEffect(() => {
     return planeY.onChange((v: number) => {
       const screen = v + yOffset + 20
@@ -69,7 +65,7 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
       y.set(mapScreenToYOffset(screen))
       updateScale()
     })
-  }, [planeY, y, scale, yOffset])
+  }, [planeY, y, scale, yOffset, mapScreenYToScale, mapScreenToYOffset, updateScale])
 }
 
 function BubbleItem({ row, col, planeX, planeY, colorIndex, }: {
@@ -83,16 +79,14 @@ function BubbleItem({ row, col, planeX, planeY, colorIndex, }: {
   const y = useMotionValue(0)
   const scale = useMotionValue(1)
 
-  const xOffset =
-    col * (ICON_CONFIG.size + ICON_CONFIG.margin) + (row % 2) * ((ICON_CONFIG.size + ICON_CONFIG.margin) / 2)
+  const length = ICON_CONFIG.size + ICON_CONFIG.margin
+  const xOffset = col * length + (row % 2) * (length / 2)
   const yOffset = row * ICON_CONFIG.size
 
   useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset })
 
-  // Color palette using design tokens
   const colors = ["bg-chart-1", "bg-chart-2", "bg-chart-3", "bg-chart-4", "bg-chart-5"]
   const colorClass = colors[colorIndex % colors.length]
-
   return (
     <motion.div
       style={{
@@ -112,7 +106,7 @@ function BubbleItem({ row, col, planeX, planeY, colorIndex, }: {
 
 export default function BubbleBoard() {
   const GRID_SIZE_PX = 1000;
-  const DEVICE_SIZE = DEVICE_CONFIG.width;
+  const DEVICE_SIZE = CONTAINER_CONFIG.width;
 
   const initialOffset = -(GRID_SIZE_PX - DEVICE_SIZE) / 2;
   const x = useMotionValue(initialOffset);
@@ -123,12 +117,15 @@ export default function BubbleBoard() {
   }, [])
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background">
       <div
-        className="relative overflow-hidden rounded-3xl bg-secondary shadow-2xl"
+        className="relative overflow-hidden rounded-3xl border border-4 bg-cover bg-center"
         style={{
-          width: DEVICE_CONFIG.width,
-          height: DEVICE_CONFIG.height,
+          width: CONTAINER_CONFIG.width,
+          height: CONTAINER_CONFIG.height,
+          backgroundImage: 'url("https://api.svgl.app/svg/google.svg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          boxShadow: "inset 0 0 30px 20px rgba(0,0,0,0.0001)",  
         }}
       >
         <motion.div
@@ -162,6 +159,5 @@ export default function BubbleBoard() {
           )}
         </motion.div>
       </div>
-    </div>
   )
 }
