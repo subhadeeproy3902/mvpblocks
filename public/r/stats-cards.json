@@ -1,0 +1,26 @@
+{
+  "name": "stats-cards",
+  "description": "A responsive grid of financial statistic cards displaying key metrics like balance, income, expenses, and savings rate. Each card includes icons, gradients, and change indicators for a clean analytics dashboard view.",
+  "categories": [
+    "dashboard",
+    "finance",
+    "analytics"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/card.json",
+    "https://blocks.mvp-subha.me/r/badge.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport {\n  ArrowUpIcon,\n  ArrowDownIcon,\n  Wallet,\n  Target,\n  TrendingUp,\n} from 'lucide-react';\nimport { Badge } from '@/components/ui/badge';\n\nconst stats = [\n  {\n    title: 'Total Balance',\n    value: '$12,456',\n    change: '+12.4%',\n    trend: 'up',\n    icon: Wallet,\n    description: 'From last month',\n    gradient: 'from-green-500 to-emerald-500',\n  },\n  {\n    title: 'Monthly Income',\n    value: '$4,200',\n    change: '+8.2%',\n    trend: 'up',\n    icon: ArrowUpIcon,\n    description: 'This month',\n    gradient: 'from-blue-500 to-cyan-500',\n  },\n  {\n    title: 'Monthly Expenses',\n    value: '$2,843',\n    change: '-3.1%',\n    trend: 'down',\n    icon: ArrowDownIcon,\n    description: 'This month',\n    gradient: 'from-orange-500 to-red-500',\n  },\n  {\n    title: 'Savings Rate',\n    value: '32.4%',\n    change: '+5.7%',\n    trend: 'up',\n    icon: Target,\n    description: 'Of total income',\n    gradient: 'from-purple-500 to-pink-500',\n  },\n];\n\nexport default function StatsCards() {\n  return (\n    <div className=\"grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 xl:grid-cols-4\">\n      {stats.map((stat) => (\n        <Card\n          key={stat.title}\n          className=\"bg-gradient-to-br from-secondary/30 gap-2 overflow-hidden rounded-lg shadow-none transition-all duration-500 hover:scale-105\"\n        >\n          <CardHeader className=\"flex w-full flex-row items-center justify-between\">\n            <CardTitle className=\"text-lg font-medium\">{stat.title}</CardTitle>\n            <div\n              className={`rounded-sm bg-gradient-to-br p-2 ${stat.gradient}`}\n            >\n              <stat.icon className=\"size-5 text-white\" />\n            </div>\n          </CardHeader>\n          <CardContent>\n            <div className=\"mb-3 text-2xl font-bold\">{stat.value}</div>\n            <div className=\"flex items-center justify-between\">\n              <Badge\n                variant=\"secondary\"\n                className=\"rounded px-3 py-1.5 text-xs\"\n              >\n                <TrendingUp className=\"mr-1 size-3\" />\n                {stat.change}\n              </Badge>\n              <span className=\"text-muted-foreground text-xs\">\n                {stat.description}\n              </span>\n            </div>\n          </CardContent>\n        </Card>\n      ))}\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards.tsx",
+      "target": "components/mvpblocks/ui/stats-cards.tsx"
+    }
+  ]
+}

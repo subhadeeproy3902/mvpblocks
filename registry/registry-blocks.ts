@@ -2823,4 +2823,23 @@ export const blocks: Registry = [
         import('../components/mvpblocks/preloaders/preloader-1/preloader-1'),
     ),
   },
+  {
+    name: 'bubble-board',
+    author: 'ecolash',
+    type: 'registry:block',
+    description:
+      'Draggable bubble grid with smooth Framer Motion animations',
+    dependencies: ['framer-motion'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/creative/bubble-board.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/creative/bubble-board'),
+    ),
+  },
 ];
