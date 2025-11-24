@@ -24,7 +24,7 @@ export const REGISTRY_METADATA = {
   hooks: 3,
   utils: 1,
   other: 0,
-  lastUpdated: '2025-11-24T18:58:06.076Z'
+  lastUpdated: '2025-11-24T20:14:52.598Z'
 };
 
 // Legacy export for backward compatibility
