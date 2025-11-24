@@ -118,14 +118,14 @@ export default function BubbleBoard() {
 
   return (
       <div
-        className="relative overflow-hidden rounded-3xl border border-4 bg-cover bg-center"
+        className="relative overflow-hidden rounded-3xl border-4 border-foreground bg-cover bg-center"
         style={{
           width: CONTAINER_CONFIG.width,
           height: CONTAINER_CONFIG.height,
           backgroundImage: 'url("https://api.svgl.app/svg/google.svg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
-          boxShadow: "inset 0 0 30px 20px rgba(0,0,0,0.0001)",  
+          boxShadow: "inset 0 0 75px 75px rgb(--bg-muted/80%)",
         }}
       >
         <motion.div
