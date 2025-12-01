@@ -1,0 +1,26 @@
+{
+  "name": "budget-progress",
+  "description": "A visual budget tracking widget that displays spending progress using icons and progress bars. Perfect for personal finance, analytics, or dashboard UIs.",
+  "categories": [
+    "dashboard",
+    "finance",
+    "analytics"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/card.json",
+    "https://blocks.mvp-subha.me/r/progress.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Progress } from '@/components/ui/progress';\nimport { AlertTriangle, CheckCircle2, FileText } from \"lucide-react\";\n\nconst categories = [\n  {\n    name: \"Food & Dining\",\n    spent: 320,\n    budget: 500,\n    color: \"bg-blue-500\",\n    icon: \"🍔\",\n  },\n  {\n    name: \"Transportation\",\n    spent: 180,\n    budget: 300,\n    color: \"bg-green-500\",\n    icon: \"🚗\",\n  },\n  {\n    name: \"Entertainment\",\n    spent: 120,\n    budget: 200,\n    color: \"bg-purple-500\",\n    icon: \"🎬\",\n  },\n  {\n    name: \"Shopping\",\n    spent: 450,\n    budget: 400,\n    color: \"bg-red-500\",\n    icon: \"🛍️\",\n  },\n  {\n    name: \"Utilities\",\n    spent: 220,\n    budget: 250,\n    color: \"bg-yellow-500\",\n    icon: \"💡\",\n  },\n  {\n    name: \"Healthcare\",\n    spent: 150,\n    budget: 200,\n    color: \"bg-pink-500\",\n    icon: \"🏥\",\n  },\n];\n\nexport default function BudgetProgress() {\n  const totalSpent = categories.reduce((sum, cat) => sum + cat.spent, 0);\n  const totalBudget = categories.reduce((sum, cat) => sum + cat.budget, 0);\n\n  return (\n    <Card className=\"bg-background rounded-lg p-0 gap-0 overflow-hidden shadow-none max-h-[30rem]\">\n      <CardHeader className=\"p-3 !pb-2 flex items-center justify-center text-center m-auto bg-background border-b h-16 w-full\">\n        <CardTitle className=\"flex items-center justify-between text-center m-auto w-full h-full\">\n          <div className=\"flex items-center gap-2\">\n            <FileText className=\"size-6 text-primary\" />\n            <span>Budget Tracking</span>\n          </div>\n          <span className=\"text-base md:text-lg font-medium\">\n            ${totalSpent} / ${totalBudget}\n          </span>\n        </CardTitle>\n      </CardHeader>\n      <CardContent className=\"space-y-3 p-3 overflow-auto bg-background h-full\">\n        {categories.map((category) => {\n          const percentage = (category.spent / category.budget) * 100;\n          const isOverBudget = category.spent > category.budget;\n          const isCloseToBudget = percentage > 80 && !isOverBudget;\n\n          return (\n            <div\n              key={category.name}\n              className=\"space-y-3 p-5 rounded-md border bg-gradient-to-tl from-secondary/30\"\n            >\n              <div className=\"flex items-center justify-between\">\n                <div className=\"flex items-center gap-2 font-medium\">\n                  <span>{category.icon}</span>\n                  <span>{category.name}</span>\n                </div>\n                <div className=\"flex items-center space-x-2\">\n                  {isOverBudget && (\n                    <AlertTriangle className=\"size-5 text-red-500\" />\n                  )}\n                  {!isOverBudget && percentage >= 100 && (\n                    <CheckCircle2 className=\"size-5 text-green-500\" />\n                  )}\n                  <span\n                    className={`text-sm font-semibold ${\n                      isOverBudget ? \"text-red-500\" : \"\"\n                    }`}\n                  >\n                    ${category.spent} / ${category.budget}\n                  </span>\n                </div>\n              </div>\n\n              <Progress\n                value={percentage > 100 ? 100 : percentage}\n                className={`h-2 ${\n                  isOverBudget\n                    ? \"bg-red-500/30 [&>div]:bg-red-500\"\n                    : isCloseToBudget\n                    ? \"bg-yellow-400/30 [&>div]:bg-yellow-400\"\n                    : \"bg-green-500/30 [&>div]:bg-green-500\"\n                }`}\n              />\n\n              <div className=\"flex justify-between text-xs\">\n                <span>{percentage.toFixed(1)}% of budget</span>\n                {isOverBudget && (\n                  <span className=\"text-red-500 font-semibold\">\n                    Over by ${category.spent - category.budget}\n                  </span>\n                )}\n                {isCloseToBudget && !isOverBudget && (\n                  <span className=\"text-yellow-400 font-semibold\">\n                    Close to limit\n                  </span>\n                )}\n              </div>\n            </div>\n          );\n        })}\n      </CardContent>\n    </Card>\n  );\n}\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/budget-progress.tsx",
+      "target": "components/mvpblocks/ui/budget-progress.tsx"
+    }
+  ]
+}

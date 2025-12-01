@@ -1,0 +1,25 @@
+{
+  "name": "personal-footer",
+  "description": "A clean, responsive dashboard footer with social media links and copyright text. Ideal for finance, admin, and analytics dashboards.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "lucide-react",
+    "next"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import React from 'react';\nimport Link from 'next/link';\nimport { Button } from '@/components/ui/button';\nimport { Twitter, Facebook, Linkedin } from 'lucide-react';\n\nexport default function Footer() {\n  const currentYear = new Date().getFullYear();\n\n  return (\n    <footer className=\"mt-8 flex h-20 w-full flex-col items-center justify-between gap-1 border-t p-5 text-center md:flex-row\">\n      <span className=\"text-muted-foreground text-xs\">\n        © {currentYear} FinDash Pro. All rights reserved.\n      </span>\n      <div className=\"flex justify-center gap-1\">\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          asChild\n          className=\"text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white\"\n        >\n          <Link\n            href=\"https://twitter.com\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            aria-label=\"Twitter\"\n          >\n            <Twitter className=\"size-4\" />\n          </Link>\n        </Button>\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          asChild\n          className=\"text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white\"\n        >\n          <Link\n            href=\"https://facebook.com\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            aria-label=\"Facebook\"\n          >\n            <Facebook className=\"size-4\" />\n          </Link>\n        </Button>\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          asChild\n          className=\"text-muted-foreground hover:!bg-primary rounded transition-all duration-500 hover:scale-105 hover:text-white\"\n        >\n          <Link\n            href=\"https://linkedin.com\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n            aria-label=\"LinkedIn\"\n          >\n            <Linkedin className=\"size-4\" />\n          </Link>\n        </Button>\n      </div>\n    </footer>\n  );\n}\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-footer.tsx",
+      "target": "components/mvpblocks/ui/personal-footer.tsx"
+    }
+  ]
+}
