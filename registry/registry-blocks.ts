@@ -697,7 +697,7 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: '@components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
+        path: '@/components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx',
         type: 'registry:block',
       },
     ],
@@ -2825,7 +2825,7 @@ export const blocks: Registry = [
   },
   {
     name: 'bubble-board',
-    author: 'ecolash',
+    author: 'Ecolash',
     type: 'registry:block',
     description:
       'Draggable bubble grid with smooth Framer Motion animations',

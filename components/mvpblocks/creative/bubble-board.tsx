@@ -48,6 +48,11 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
   }, [scale])
 
   useEffect(() => {
+    // Calculate initial position
+    const initialX = planeX.get() + xOffset + 20
+    xScale.current = mapScreenXToScale(initialX)
+    x.set(mapScreenToXOffset(initialX))
+    
     return planeX.onChange((v: number) => {
       const screen = v + xOffset + 20
       xScale.current = mapScreenXToScale(screen)
@@ -58,6 +63,11 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
   }, [planeX, x, scale, xOffset, mapScreenXToScale, mapScreenToXOffset, updateScale])
 
   useEffect(() => {
+    // Calculate initial position
+    const initialY = planeY.get() + yOffset + 20
+    yScale.current = mapScreenYToScale(initialY)
+    y.set(mapScreenToYOffset(initialY))
+    
     return planeY.onChange((v: number) => {
       const screen = v + yOffset + 20
       yScale.current = mapScreenYToScale(screen)
@@ -66,6 +76,11 @@ function useIconTransform({ x, y, scale, planeX, planeY, xOffset, yOffset, }: {
       updateScale()
     })
   }, [planeY, y, scale, yOffset, mapScreenYToScale, mapScreenToYOffset, updateScale])
+
+  // Initial scale update
+  useEffect(() => {
+    updateScale()
+  }, [updateScale])
 }
 
 function BubbleItem({ row, col, planeX, planeY, colorIndex, }: {
@@ -117,47 +132,45 @@ export default function BubbleBoard() {
   }, [])
 
   return (
-      <div
-        className="relative overflow-hidden rounded-3xl border-4 border-foreground bg-cover bg-center"
-        style={{
-          width: CONTAINER_CONFIG.width,
-          height: CONTAINER_CONFIG.height,
-          backgroundImage: 'url("https://api.svgl.app/svg/google.svg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          boxShadow: "inset 0 0 75px 75px rgb(--bg-muted/80%)",
+    <div
+      className="relative overflow-hidden rounded-3xl m-8"
+      style={{
+        width: CONTAINER_CONFIG.width,
+        height: CONTAINER_CONFIG.height,
+        boxShadow: "inset 0 0 50px 0px hsl(var(--foreground) / 30%)",
+      }}
+    >
+
+      <motion.div
+        drag
+        dragConstraints={{
+          left: -650,
+          right: 50,
+          top: -600,
+          bottom: 50,
         }}
+        style={{
+          width: 1000,
+          height: 1000,
+          x,
+          y,
+          background: "transparent",
+        }}
+        className="cursor-grab active:cursor-grabbing"
       >
-        <motion.div
-          drag
-          dragConstraints={{
-            left: -650,
-            right: 50,
-            top: -600,
-            bottom: 50,
-          }}
-          style={{
-            width: 1000,
-            height: 1000,
-            x,
-            y,
-            background: "transparent",
-          }}
-          className="cursor-grab active:cursor-grabbing"
-        >
-          {grid.map((rows, rowIndex) =>
-            rows.map((colIndex) => (
-              <BubbleItem
-                key={`${rowIndex}-${colIndex}`}
-                row={rowIndex}
-                col={colIndex}
-                planeX={x}
-                planeY={y}
-                colorIndex={rowIndex * COLS + colIndex}
-              />
-            )),
-          )}
-        </motion.div>
-      </div>
+        {grid.map((rows, rowIndex) =>
+          rows.map((colIndex) => (
+            <BubbleItem
+              key={`${rowIndex}-${colIndex}`}
+              row={rowIndex}
+              col={colIndex}
+              planeX={x}
+              planeY={y}
+              colorIndex={rowIndex * COLS + colIndex}
+            />
+          )),
+        )}
+      </motion.div>
+    </div>
   )
 }

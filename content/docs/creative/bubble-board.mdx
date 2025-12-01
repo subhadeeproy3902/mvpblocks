@@ -1,0 +1,22 @@
+---
+title: Bubble Board
+description: A draggable animated bubble grid powered by Framer Motion.
+root: creative
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+
+<ComponentPreview
+  name="bubble-board"
+  classNameComponentContainer="min-h-[350px]"
+  code={(await extractSourceCode('bubble-board')).code}
+  lang="tsx"
+/>
+
+## Behavior
+
+- Drag the board in any direction.
+- Bubbles react to the cursor by scaling smoothly based on distance.
+- Includes staggered grid alignment for a dimensional feel.
