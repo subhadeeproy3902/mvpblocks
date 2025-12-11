@@ -2824,22 +2824,81 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'bubble-board',
-    author: 'Ecolash',
+    name: 'expandable-meeting-card',
+    author: 'nuelst',
     type: 'registry:block',
     description:
-      'Draggable bubble grid with smooth Framer Motion animations',
-    dependencies: ['framer-motion'],
-    registryDependencies: [],
+      'An interactive meeting card that expands to show attendees, location, and meeting details with smooth blur animations.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/avatar.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/tooltip.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
     files: [
       {
-        path: '@/components/mvpblocks/creative/bubble-board.tsx',
+        path: '@/components/mvpblocks/cards/expandable-meeting-card.tsx',
         type: 'registry:block',
       },
     ],
     component: React.lazy(
       () =>
-        import('../components/mvpblocks/creative/bubble-board'),
+        import('../components/mvpblocks/cards/expandable-meeting-card'),
+    ),
+  },
+  {
+    name: 'expandable-product-card',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A product card that expands to reveal detailed features, specifications, and purchase options with smooth animations.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/expandable-product-card.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/expandable-product-card'),
+    ),
+  },
+  {
+    name: 'expandable-weather-card',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A weather card that expands to show detailed weather information and 5-day forecast with smooth blur animations.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/expandable-weather-card.tsx',
+
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/expandable-weather-card'),
+
     ),
   },
 ];

@@ -1,0 +1,93 @@
+---
+title: Expandable Meeting Card
+description: An interactive meeting card that expands to show attendees, location, and meeting details with smooth blur animations.
+root: cards
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="expandable-meeting-card"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode("expandable-meeting-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("expandable-meeting-card")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import ExpandableMeetingCard from "@/components/mvpblocks/cards/expandable-meeting-card";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ExpandableMeetingCard />
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Interactive Card**: Click to expand and collapse with smooth animations
+- 🎨 **Blur Animations**: Smooth blur effects for content reveal
+- 👥 **Attendees Display**: Shows meeting attendees with avatars
+- 📅 **Calendar Integration**: Quick add to calendar button
+- 📱 **Responsive**: Adapts beautifully to different screen sizes
+- 🌙 **Dark Mode**: Seamlessly works with light and dark themes
+- ⚡ **Smooth Animations**: Powered by motion/react for fluid transitions
+
+## Customization
+
+The component uses the `Expandable` UI component which provides:
+
+- **Presets**: `blur-md`, `slide-up` for different animation effects
+- **Delays**: Custom expand/collapse delays (200ms expand, 500ms collapse)
+- **Sizes**: Collapsed (320x240) and expanded (420x480) sizes
+- **Stagger**: Staggered animations for child elements
+
+## Author
+
+Created by [@nuelst](https://github.com/nuelst)
+

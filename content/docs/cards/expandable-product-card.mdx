@@ -1,0 +1,94 @@
+---
+title: Expandable Product Card
+description: A product card that expands to reveal detailed features, specifications, and purchase options with smooth animations.
+root: cards
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="expandable-product-card"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode("expandable-product-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("expandable-product-card")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import ExpandableProductCard from "@/components/mvpblocks/cards/expandable-product-card";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ExpandableProductCard />
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Interactive Card**: Click to expand and collapse with smooth animations
+- 🎨 **Fade Animations**: Smooth fade effects for content reveal
+- ⭐ **Rating Display**: Dynamic star rating with review count
+- 🛍️ **Product Features**: Displays key product features with icons
+- 📱 **Responsive**: Adapts beautifully to different screen sizes
+- 🌙 **Dark Mode**: Seamlessly works with light and dark themes
+- ⚡ **Smooth Animations**: Powered by motion/react for fluid transitions
+- 🖼️ **Dynamic Image**: Image resizes smoothly on expand/collapse
+
+## Customization
+
+The component uses the `Expandable` UI component which provides:
+
+- **Presets**: `fade`, `slide-up` for different animation effects
+- **Delays**: Custom expand/collapse delays (500ms expand, 700ms collapse)
+- **Sizes**: Collapsed (330x220) and expanded (500x520) sizes
+- **Spring Animations**: Custom spring animations for smooth transitions
+
+## Author
+
+Created by [@nuelst](https://github.com/nuelst)
+
