@@ -8,7 +8,7 @@ export default function PointerHighlightDemo() {
       <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-4xl">
         The best way to grow is to{' '}
         <PointerHighlight>
-          <span className="text-primary">collaborate</span>
+          <span>collaborate</span>
         </PointerHighlight>
       </h1>
     </div>
