@@ -1,0 +1,44 @@
+{
+  "name": "personal-finance-dashboard-1",
+  "author": "thevinayakgore",
+  "description": "Personal Finance Dashboard with budget tracking, expense analytics, savings goals, and transaction management micro UI components.",
+  "categories": [
+    "dashboard",
+    "layout",
+    "page"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "recharts",
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/utils.json",
+    "https://blocks.mvp-subha.me/r/badge.json",
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/card.json",
+    "https://blocks.mvp-subha.me/r/chart.json",
+    "https://blocks.mvp-subha.me/r/dropdown-menu.json",
+    "https://blocks.mvp-subha.me/r/input.json",
+    "https://blocks.mvp-subha.me/r/progress.json",
+    "https://blocks.mvp-subha.me/r/budget-progress.json",
+    "https://blocks.mvp-subha.me/r/dashboard-layout.json",
+    "https://blocks.mvp-subha.me/r/personal-header.json",
+    "https://blocks.mvp-subha.me/r/personal-footer.json",
+    "https://blocks.mvp-subha.me/r/income-expense-chart.json",
+    "https://blocks.mvp-subha.me/r/monthly-spending-chart.json",
+    "https://blocks.mvp-subha.me/r/recent-transactions.json",
+    "https://blocks.mvp-subha.me/r/savings-goals.json",
+    "https://blocks.mvp-subha.me/r/personal-sidebar.json",
+    "https://blocks.mvp-subha.me/r/stats-cards.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import BudgetProgress from './ui/budget-progress';\nimport DashboardLayout from './ui/dashboard-layout';\nimport IncomeExpenseChart from './ui/income-expense-chart';\nimport MonthlySpendingChart from './ui/monthly-spending-chart';\nimport RecentTransactions from './ui/recent-transactions';\nimport SavingsGoals from './ui/savings-goals';\nimport StatsCards from './ui/stats-cards';\n\nexport default function PersonalFinanceDashboard() {\n  return (\n    <DashboardLayout>\n      <div className=\"space-y-3 md:space-y-6\">\n        {/* Stats Overview */}\n        <StatsCards />\n\n        {/* Charts Section */}\n        <div className=\"grid grid-cols-1 gap-3 md:gap-6 xl:grid-cols-2\">\n          <IncomeExpenseChart />\n          <MonthlySpendingChart />\n        </div>\n\n        {/* Bottom Grid */}\n        <div className=\"grid grid-cols-1 gap-3 md:gap-6 lg:grid-cols-2\">\n          <BudgetProgress />\n          <SavingsGoals />\n        </div>\n        <RecentTransactions />\n      </div>\n    </DashboardLayout>\n  );\n}\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/index.tsx",
+      "target": "components/mvpblocks/index.tsx"
+    }
+  ]
+}
