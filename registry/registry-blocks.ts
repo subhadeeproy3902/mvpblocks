@@ -2891,12 +2891,14 @@ export const blocks: Registry = [
     files: [
       {
         path: '@/components/mvpblocks/cards/expandable-weather-card.tsx',
+
         type: 'registry:block',
       },
     ],
     component: React.lazy(
       () =>
         import('../components/mvpblocks/cards/expandable-weather-card'),
+
     ),
   },
 ];
