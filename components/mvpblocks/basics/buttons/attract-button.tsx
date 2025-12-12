@@ -29,13 +29,17 @@ export default function AttractButton({
   const particlesControl = useAnimation();
 
   useEffect(() => {
-    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
-      id: i,
-      x: Math.random() * 360 - 180,
-      y: Math.random() * 360 - 180,
-    }));
+    const newParticles = Array.from({ length: particleCount }, (_, i) => {
+      const angle = (i / particleCount) * Math.PI * 2;
+      const radius = attractRadius * (0.7 + Math.random() * 0.3);
+      return {
+        id: i,
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+      };
+    });
     setParticles(newParticles);
-  }, [particleCount]);
+  }, [particleCount, attractRadius]);
 
   const handleInteractionStart = useCallback(async () => {
     setIsAttracting(true);
@@ -84,6 +88,11 @@ export default function AttractButton({
           custom={particle.id}
           initial={{ x: particle.x, y: particle.y }}
           animate={particlesControl}
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
           className={cn(
             'absolute w-1.5 h-1.5 rounded-full',
             'bg-primary',
