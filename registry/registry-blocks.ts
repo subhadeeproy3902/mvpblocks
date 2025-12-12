@@ -2904,11 +2904,13 @@ export const blocks: Registry = [
     files: [
       {
         path: '@/components/mvpblocks/basics/target-cursor-demo.tsx',
+
         type: 'registry:block',
       },
     ],
     component: React.lazy(
       () => import('../components/mvpblocks/basics/target-cursor-demo'),
+
     ),
   },
 ];

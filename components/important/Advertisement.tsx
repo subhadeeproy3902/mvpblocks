@@ -32,11 +32,11 @@ export default function Advertisement() {
 
         <div className="flex flex-col gap-8 px-8 py-12 sm:px-16 sm:py-16">
           <h2 className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent sm:text-3xl dark:bg-gradient-to-b">
-            The most awesome AI SaaS Template Dirt Cheap!
+            Top notch Designer Portfolio available in RGB!
           </h2>
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
             <Image
-              src="https://i.postimg.cc/XqM9ksgc/ai-saas-marketing.webp"
+              src="/designer-portfolio-rose.png"
               alt="Template preview"
               width={300}
               height={300}
@@ -45,22 +45,21 @@ export default function Advertisement() {
 
             <div className="space-y-2 text-center sm:text-left">
               <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                AI SaaS Marketing Template
+                Designer Portfolio (RGB variation)
               </p>
               <p className="text-sm text-neutral-400">
-                ⚡ Launch faster with the most elegant & high-performing AI SaaS
-                template - fully responsive, conversion-optimized, and dirt
+                ⚡ A stunning, high-end portfolio template crafted for designers, artists, and creatives.
                 cheap!
               </p>
               <p className="text-3xl font-semibold tracking-tight">
-                <span className="text-primary">₹2199</span>{' '}
+                <span className="text-primary">₹3400</span>{' '}
                 <span className="text-sm text-neutral-400">INR</span>
               </p>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <Link prefetch={false} href="/docs/ai-saas-marketing">
+            <Link prefetch={false} href="/docs/designer-portfolio">
               <Button className="cursor-pointer rounded-lg">
                 Explore Docs
                 <MoveRight className="ml-2 inline-block h-4 w-4" />
