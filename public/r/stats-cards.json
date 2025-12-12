@@ -1,0 +1,26 @@
+{
+  "name": "stats-cards",
+  "description": "A responsive grid of financial statistic cards displaying key metrics like balance, income, expenses, and savings rate. Each card includes icons, gradients, and change indicators for a clean analytics dashboard view.",
+  "categories": [
+    "dashboard",
+    "finance",
+    "analytics"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/card.json",
+    "https://blocks.mvp-subha.me/r/badge.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\r\nimport {\r\n  ArrowUpIcon,\r\n  ArrowDownIcon,\r\n  Wallet,\r\n  Target,\r\n  TrendingUp,\r\n} from 'lucide-react';\r\nimport { Badge } from '@/components/ui/badge';\r\n\r\nconst stats = [\r\n  {\r\n    title: 'Total Balance',\r\n    value: '$12,456',\r\n    change: '+12.4%',\r\n    trend: 'up',\r\n    icon: Wallet,\r\n    description: 'From last month',\r\n    gradient: 'from-green-500 to-emerald-500',\r\n  },\r\n  {\r\n    title: 'Monthly Income',\r\n    value: '$4,200',\r\n    change: '+8.2%',\r\n    trend: 'up',\r\n    icon: ArrowUpIcon,\r\n    description: 'This month',\r\n    gradient: 'from-blue-500 to-cyan-500',\r\n  },\r\n  {\r\n    title: 'Monthly Expenses',\r\n    value: '$2,843',\r\n    change: '-3.1%',\r\n    trend: 'down',\r\n    icon: ArrowDownIcon,\r\n    description: 'This month',\r\n    gradient: 'from-orange-500 to-red-500',\r\n  },\r\n  {\r\n    title: 'Savings Rate',\r\n    value: '32.4%',\r\n    change: '+5.7%',\r\n    trend: 'up',\r\n    icon: Target,\r\n    description: 'Of total income',\r\n    gradient: 'from-purple-500 to-pink-500',\r\n  },\r\n];\r\n\r\nexport default function StatsCards() {\r\n  return (\r\n    <div className=\"grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-6 xl:grid-cols-4\">\r\n      {stats.map((stat) => (\r\n        <Card\r\n          key={stat.title}\r\n          className=\"bg-gradient-to-br from-secondary/30 gap-2 overflow-hidden rounded-lg shadow-none transition-all duration-500 hover:scale-105\"\r\n        >\r\n          <CardHeader className=\"flex w-full flex-row items-center justify-between\">\r\n            <CardTitle className=\"text-lg font-medium\">{stat.title}</CardTitle>\r\n            <div\r\n              className={`rounded-sm bg-gradient-to-br p-2 ${stat.gradient}`}\r\n            >\r\n              <stat.icon className=\"size-5 text-white\" />\r\n            </div>\r\n          </CardHeader>\r\n          <CardContent>\r\n            <div className=\"mb-3 text-2xl font-bold\">{stat.value}</div>\r\n            <div className=\"flex items-center justify-between\">\r\n              <Badge\r\n                variant=\"secondary\"\r\n                className=\"rounded px-3 py-1.5 text-xs\"\r\n              >\r\n                <TrendingUp className=\"mr-1 size-3\" />\r\n                {stat.change}\r\n              </Badge>\r\n              <span className=\"text-muted-foreground text-xs\">\r\n                {stat.description}\r\n              </span>\r\n            </div>\r\n          </CardContent>\r\n        </Card>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards.tsx",
+      "target": "components/mvpblocks/ui/stats-cards.tsx"
+    }
+  ]
+}

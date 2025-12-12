@@ -14,7 +14,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { GradientBars } from '@/components/ui/gradient-bars';\r\nimport { TextReveal } from '@/components/ui/text-reveal';\r\n\r\nexport default function GradientBarsPreview() {\r\n  return (\r\n    <div className=\"flex h-full w-full flex-col items-center justify-center\">\r\n      <GradientBars />\r\n      <TextReveal className=\"text-foreground text-center text-4xl\">\r\n        Awesome backgrounds :)\r\n      </TextReveal>\r\n    </div>\r\n  );\r\n}\r\n",
+      "content": "import { GradientBars } from '@/components/ui/gradient-bars';\nimport { TextReveal } from '@/components/ui/text-reveal';\n\nexport default function GradientBarsPreview() {\n  return (\n    <div className=\"flex h-full w-full flex-col items-center justify-center\">\n      <GradientBars />\n      <TextReveal className=\"text-foreground text-center text-4xl\">\n        Awesome backgrounds :)\n      </TextReveal>\n    </div>\n  );\n}\n",
       "path": "/components/mvpblocks/backgrounds/gradient-bars-preview.tsx",
       "target": "components/mvpblocks/gradient-bars-preview.tsx"
     }

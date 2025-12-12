@@ -1,0 +1,25 @@
+{
+  "name": "dashboard-layout",
+  "description": "A responsive dashboard layout with collapsible sidebar, header, and footer. Includes main content area for dynamic children components. Ideal for admin, analytics, or finance dashboards.",
+  "categories": [
+    "dashboard",
+    "layout"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/personal-sidebar.json",
+    "https://blocks.mvp-subha.me/r/personal-header.json",
+    "https://blocks.mvp-subha.me/r/personal-footer.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\nimport { ReactNode, useState } from 'react';\r\nimport PersonalSidebar from './personal-sidebar';\r\nimport PersonalHeader from './personal-header';\r\nimport PersonalFooter from './personal-footer';\r\n\r\ninterface DashboardLayoutProps {\r\n  children: ReactNode;\r\n}\r\n\r\nexport default function DashboardLayout({ children }: DashboardLayoutProps) {\r\n  const [collapsed, setCollapsed] = useState<boolean>(false);\r\n\r\n  return (\r\n    <div className=\"min-h-screen w-full overflow-hidden\">\r\n      <div\r\n        className={`mt-16 grid min-h-screen grid-cols-1 transition-all duration-500 ${\r\n          collapsed ? 'ml-20 lg:grid-cols-[1fr]' : 'lg:grid-cols-[16rem_1fr]'\r\n        }`}\r\n      >\r\n        <div>\r\n          <PersonalSidebar collapsed={collapsed} setCollapsed={setCollapsed} />\r\n        </div>\r\n        <div className=\"flex w-full flex-col transition-all duration-500\">\r\n          <PersonalHeader />\r\n          <main className=\"flex-1 overflow-y-auto p-3 md:p-6\">{children}</main>\r\n          <PersonalFooter />\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/dashboard-layout.tsx",
+      "target": "components/mvpblocks/ui/dashboard-layout.tsx"
+    }
+  ]
+}

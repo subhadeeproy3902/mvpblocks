@@ -1,0 +1,26 @@
+{
+  "name": "income-expense-chart",
+  "description": "An interactive bar chart comparing monthly income, expenses, and net balance. Built with Recharts and MVPBlocks chart components for analytics dashboards.",
+  "categories": [
+    "dashboard",
+    "finance",
+    "analytics"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "react",
+    "recharts"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/card.json",
+    "https://blocks.mvp-subha.me/r/chart.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\r\nimport { BarChart, Bar, CartesianGrid, XAxis, YAxis } from 'recharts';\r\nimport {\r\n  ChartContainer,\r\n  ChartTooltip,\r\n  ChartTooltipContent,\r\n} from '@/components/ui/chart';\r\n\r\nconst data = [\r\n  { month: 'Jan', income: 4200, expenses: 2843, net: 1357 },\r\n  { month: 'Feb', income: 3800, expenses: 2950, net: 850 },\r\n  { month: 'Mar', income: 5200, expenses: 3100, net: 2100 },\r\n  { month: 'Apr', income: 4800, expenses: 2650, net: 2150 },\r\n  { month: 'May', income: 5100, expenses: 2900, net: 2200 },\r\n  { month: 'Jun', income: 4700, expenses: 2750, net: 1950 },\r\n  { month: 'Jul', income: 5300, expenses: 3000, net: 2300 },\r\n];\r\n\r\nexport default function IncomeExpenseChart() {\r\n  return (\r\n    <Card className=\"bg-gradient-to-t from-secondary/30 rounded-lg shadow-none\">\r\n      <CardHeader className=\"flex flex-col items-center justify-between gap-3 md:flex-row\">\r\n        <CardTitle>Income vs Expenses</CardTitle>\r\n        <div className=\"flex items-center justify-center gap-2\">\r\n          <div className=\"flex items-center gap-2\">\r\n            <div className=\"size-3 rounded-full bg-green-500\"></div>\r\n            <span>Income</span>\r\n          </div>\r\n          <div className=\"flex items-center gap-2\">\r\n            <div className=\"size-3 rounded-full bg-red-500\"></div>\r\n            <span>Expenses</span>\r\n          </div>\r\n          <div className=\"flex items-center gap-2\">\r\n            <div className=\"size-3 rounded-full bg-blue-500\"></div>\r\n            <span>Net</span>\r\n          </div>\r\n        </div>\r\n      </CardHeader>\r\n      <CardContent className=\"px-0\">\r\n        <ChartContainer\r\n          config={{\r\n            income: { label: 'Income', color: '#10b981' },\r\n            expenses: { label: 'Expenses', color: '#ef4444' },\r\n            net: { label: 'Net', color: '#3b82f6' },\r\n          }}\r\n          className=\"h-[15rem] md:h-[20rem] w-full\"\r\n        >\r\n          <BarChart data={data}>\r\n            <CartesianGrid vertical={true} />\r\n            <XAxis dataKey=\"month\" />\r\n            <YAxis />\r\n            <ChartTooltip content={<ChartTooltipContent />} />\r\n            <Bar\r\n              dataKey=\"income\"\r\n              fill=\"var(--color-income)\"\r\n              radius={[4, 4, 0, 0]}\r\n            />\r\n            <Bar\r\n              dataKey=\"expenses\"\r\n              fill=\"var(--color-expenses)\"\r\n              radius={[4, 4, 0, 0]}\r\n            />\r\n            <Bar dataKey=\"net\" fill=\"var(--color-net)\" radius={[4, 4, 0, 0]} />\r\n          </BarChart>\r\n        </ChartContainer>\r\n      </CardContent>\r\n    </Card>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/income-expense-chart.tsx",
+      "target": "components/mvpblocks/ui/income-expense-chart.tsx"
+    }
+  ]
+}

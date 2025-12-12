@@ -8,7 +8,6 @@ export const AVAILABLE_COMPONENTS = [
   
   // Block Components (133 items)
   '3dglobe', 'about-us-1', 'about-us-2', 'admin-dashboard-1', 'admin-sidebar', 'animated-ai-chat', 'animated-btn1', 'app-hero', 'attract-button', 'ball-bouncing-loader', 'basic-pagination', 'bento-grid-1', 'bento-grid-2', 'bento-grid-3', 'bolt', 'bouncing-loader', 'btn-gradient1', 'budget-progress', 'circular-text', 'classic-loader', 'code-block-1', 'concentric-loader', 'congusted-pricing', 'contact-us-1', 'contact-us-2', 'conversation1', 'cta-1', 'cta-2', 'cta-3', 'dashboard-card', 'dashboard-header', 'dashboard-layout', 'delete-project', 'designer-pricing', 'dot-card', 'download-animated-btn', 'ellipsis-block', 'faq-1', 'faq-2', 'faq-3', 'faq-4', 'feature-1', 'feature-2', 'feature-3', 'fitness-hero', 'flip-card', 'footer-4col', 'footer-animated', 'footer-glow', 'footer-newsletter', 'footer-standard', 'geometric-hero', 'globe1', 'globe2', 'glow-btn', 'glow-card', 'gradient-bars-preview', 'gradient-hero', 'gradient-typewriter', 'header-1', 'header-2', 'hero-1', 'income-expense-chart', 'interactive-tooltip', 'login-form-2', 'login-form-3', 'login-form1', 'masonry-grid-1', 'meshy-cards', 'minimal-hero', 'mockup-hero', 'modified-classic-loader', 'monthly-spending-chart', 'multi-step-form-preview', 'notebook', 'personal-finance-dashboard-1', 'personal-footer', 'personal-header', 'personal-sidebar', 'preloader-1', 'premium-btn', 'pricing-2', 'pricing-3', 'pricing-4', 'pricing-5', 'pricing-glassmorphism', 'pricing-with-modals', 'product-1', 'progress-download-btn', 'pulsating-loader', 'quick-actions', 'recent-activity', 'recent-transactions', 'retro-card', 'revenue-chart', 'ripple-loader', 'savings-goals', 'scrollbasedvelocity-demo', 'signin-modal', 'signup-modal', 'simple-pricing', 'skeleton-card-one', 'skeleton-table-one', 'skeleton-table-two', 'sparkles-logo', 'spiral-loader', 'star-on-github', 'stats-cards', 'system-status', 'team-1', 'team-10', 'team-2', 'team-3', 'team-4', 'team-5', 'team-6', 'team-7', 'team-8', 'team-9', 'technical-pricing', 'testimonials-carousel', 'testimonials-marquee', 'text-reveal-1', 'text-reveal-2', 'toc-dialog', 'trading', 'twittercard', 'typewriter-demo', 'users-table', 'v0-chat', 'waitlist', 'web3-hero', 'working-chatbot',
-  
   // Hooks (3 items)
   'use-auto-resize-textarea', 'use-mobile', 'use-toast',
   
@@ -24,7 +23,8 @@ export const REGISTRY_METADATA = {
   hooks: 3,
   utils: 1,
   other: 0,
-  lastUpdated: '2025-11-10T10:53:51.654Z'
+
+  lastUpdated: '2025-12-01T22:00:33.585Z'
 };
 
 // Legacy export for backward compatibility
