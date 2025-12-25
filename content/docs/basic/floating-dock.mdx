@@ -1,0 +1,156 @@
+---
+title: Floating Dock
+description: A floating dock navigation component with smooth hover animations. Features desktop and mobile variants with interactive icon scaling.
+root: basic
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="floating-dock-demo"
+  classNameComponentContainer="min-h-[600px]"
+  code={(await extractSourceCode("floating-dock-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("floating-dock-demo")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import { FloatingDock } from "@/components/ui/floating-dock";
+import { Home, Github, Twitter } from "lucide-react";
+
+export default function MyComponent() {
+  const links = [
+    {
+      title: "Home",
+      icon: <Home className="h-full w-full" />,
+      href: "/",
+    },
+    {
+      title: "GitHub",
+      icon: <Github className="h-full w-full" />,
+      href: "https://github.com",
+    },
+    {
+      title: "Twitter",
+      icon: <Twitter className="h-full w-full" />,
+      href: "https://twitter.com",
+    },
+  ];
+
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <FloatingDock items={links} />
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Interactive Icons**: Icons scale smoothly on hover with spring animations
+- 📱 **Responsive**: Separate desktop and mobile layouts
+- 🎨 **Smooth Animations**: Powered by motion/react for fluid transitions
+- 🌙 **Dark Mode**: Seamlessly works with light and dark themes
+- 🖱️ **Hover Effects**: Icons expand based on mouse position
+- 📱 **Mobile Menu**: Collapsible menu for mobile devices
+
+## Positioning
+
+The component supports custom positioning via className props:
+
+```tsx
+<FloatingDock
+  desktopClassName="fixed bottom-4 left-1/2 -translate-x-1/2"
+  mobileClassName="fixed bottom-4 right-4"
+  items={links}
+/>
+```
+
+**Note**: 
+- Desktop navbar is better positioned at the bottom
+- Mobile navbar is better positioned at bottom right
+
+## Customization
+
+You can customize the dock by:
+
+- **Icons**: Use any React node as icons (lucide-react, custom SVGs, images)
+- **Colors**: Modify Tailwind classes for background and text colors
+- **Sizes**: Adjust the dock height and icon sizes via className
+- **Animations**: The spring animations are configurable in the component
+
+## Examples
+
+### Custom Icons with Images
+```tsx
+const links = [
+  {
+    title: "Logo",
+    icon: (
+      <img
+        src="/logo.png"
+        width={20}
+        height={20}
+        alt="Logo"
+        className="rounded-full"
+      />
+    ),
+    href: "/",
+  },
+];
+```
+
+### Fixed Position Dock
+```tsx
+<FloatingDock
+  desktopClassName="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+  items={links}
+/>
+```
+
+## Author
+
+Created by [@nuelst](https://github.com/nuelst)
+
