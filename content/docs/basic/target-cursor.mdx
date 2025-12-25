@@ -1,0 +1,147 @@
+---
+title: Target Cursor
+description: A custom animated cursor component with GSAP. Features spinning animation, corner tracking on hover, and parallax effects. Perfect for interactive websites.
+root: basic
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="target-cursor-demo"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode("target-cursor-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add gsap react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("target-cursor-demo")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import { TargetCursor } from "@/components/ui/target-cursor";
+
+export default function MyComponent() {
+  return (
+    <div>
+      <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+      />
+      
+      <button className="cursor-target">Hover me!</button>
+      <div className="cursor-target">Another target</div>
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Custom Cursor**: Replaces default cursor with animated custom cursor
+- 🔄 **Spinning Animation**: Continuous rotation animation when idle
+- 📐 **Corner Tracking**: Corners expand to frame hovered elements
+- 🎨 **Parallax Effect**: Smooth parallax movement of corners
+- 📱 **Mobile Detection**: Automatically disabled on mobile devices
+- ⚡ **GSAP Powered**: Smooth animations powered by GSAP
+- 🎭 **Click Animation**: Scale animation on mouse down/up
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `targetSelector` | `string` | `".cursor-target"` | CSS selector for target elements |
+| `spinDuration` | `number` | `2` | Duration of spin animation in seconds |
+| `hideDefaultCursor` | `boolean` | `true` | Hide the default browser cursor |
+| `hoverDuration` | `number` | `0.2` | Duration of hover animation |
+| `parallaxOn` | `boolean` | `true` | Enable parallax effect on corners |
+
+## Examples
+
+### Basic Usage
+```tsx
+<TargetCursor />
+<button className="cursor-target">Hover me</button>
+```
+
+### Custom Selector
+```tsx
+<TargetCursor targetSelector=".my-custom-target" />
+<div className="my-custom-target">Custom target</div>
+```
+
+### Faster Spin
+```tsx
+<TargetCursor spinDuration={1} />
+```
+
+### Without Parallax
+```tsx
+<TargetCursor parallaxOn={false} />
+```
+
+### Keep Default Cursor
+```tsx
+<TargetCursor hideDefaultCursor={false} />
+```
+
+## Styling Targets
+
+Add the `cursor-target` class (or your custom selector) to any element you want the cursor to interact with:
+
+```tsx
+<button className="cursor-target">Button</button>
+<div className="cursor-target">Div</div>
+<a href="#" className="cursor-target">Link</a>
+```
+
+## Mobile Support
+
+The component automatically detects mobile devices and returns `null` to avoid conflicts with touch interactions. It checks for:
+- Touch screen capability
+- Screen size (≤768px)
+- User agent string
+
+## Author
+
+Created by [@nuelst](https://github.com/nuelst)
+

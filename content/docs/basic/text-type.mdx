@@ -1,0 +1,164 @@
+---
+title: Text Type
+description: A text typing animation component with GSAP. Features typing, deleting, looping, and customizable cursor effects. Perfect for hero sections and landing pages.
+root: basic
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="text-type-demo"
+  classNameComponentContainer="min-h-[300px]"
+  code={(await extractSourceCode("text-type-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add gsap react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add gsap react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("text-type-demo")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import { TextType } from "@/components/ui/text-type";
+
+export default function MyComponent() {
+  return (
+    <div className="text-4xl font-bold">
+      <TextType
+        text={["Text typing effect", "for your websites", "Happy coding!"]}
+        typingSpeed={75}
+        pauseDuration={1500}
+        showCursor={true}
+        cursorCharacter="|"
+      />
+    </div>
+  );
+}
+```
+
+## Features
+
+- ⌨️ **Typing Animation**: Smooth character-by-character typing effect
+- 🗑️ **Auto Delete**: Automatically deletes text before typing next phrase
+- 🔄 **Looping**: Seamlessly loops through multiple text strings
+- 🎨 **Customizable Cursor**: Custom cursor character and blink animation
+- ⚡ **GSAP Powered**: Smooth animations powered by GSAP
+- 📱 **Responsive**: Works on all screen sizes
+- 🎯 **Intersection Observer**: Start animation when element is visible
+- 🎨 **Color Support**: Custom colors for each text string
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `text` | `string \| string[]` | Required | Text or array of texts to type |
+| `typingSpeed` | `number` | `50` | Speed of typing in milliseconds |
+| `deletingSpeed` | `number` | `30` | Speed of deleting in milliseconds |
+| `pauseDuration` | `number` | `2000` | Pause between typing and deleting |
+| `initialDelay` | `number` | `0` | Initial delay before starting |
+| `loop` | `boolean` | `true` | Whether to loop through texts |
+| `showCursor` | `boolean` | `true` | Show/hide cursor |
+| `cursorCharacter` | `string \| ReactNode` | `"\|"` | Cursor character |
+| `cursorBlinkDuration` | `number` | `0.5` | Cursor blink speed |
+| `startOnVisible` | `boolean` | `false` | Start when element is visible |
+| `reverseMode` | `boolean` | `false` | Type text in reverse |
+| `textColors` | `string[]` | `[]` | Array of colors for each text |
+| `variableSpeed` | `{min: number, max: number}` | - | Random speed range |
+| `onSentenceComplete` | `function` | - | Callback when sentence completes |
+
+## Examples
+
+### Basic Usage
+```tsx
+<TextType
+  text="Hello, World!"
+  typingSpeed={100}
+  showCursor={true}
+/>
+```
+
+### Multiple Texts
+```tsx
+<TextType
+  text={["Welcome", "to MVPBlocks", "Start building!"]}
+  typingSpeed={75}
+  pauseDuration={2000}
+  loop={true}
+/>
+```
+
+### Custom Colors
+```tsx
+<TextType
+  text={["Red text", "Blue text", "Green text"]}
+  textColors={["#ef4444", "#3b82f6", "#22c55e"]}
+/>
+```
+
+### Variable Speed
+```tsx
+<TextType
+  text="Variable speed typing"
+  variableSpeed={{ min: 50, max: 150 }}
+/>
+```
+
+### Start on Visible
+```tsx
+<TextType
+  text="Starts when visible"
+  startOnVisible={true}
+/>
+```
+
+### Custom Cursor
+```tsx
+<TextType
+  text="Custom cursor"
+  cursorCharacter="▊"
+  cursorBlinkDuration={0.8}
+/>
+```
+
+## Author
+
+Created by [@nuelst](https://github.com/nuelst)
+
