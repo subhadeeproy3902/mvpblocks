@@ -4,7 +4,7 @@ import {
   frontmatterSchema,
 } from 'fumadocs-mdx/config';
 import { remarkInstall } from 'fumadocs-docgen';
-
+import remarkGfm from 'remark-gfm';
 import { z } from 'zod';
 
 export const { docs, meta } = defineDocs({
@@ -21,6 +21,6 @@ export const { docs, meta } = defineDocs({
 export default defineConfig({
   lastModifiedTime: 'git',
   mdxOptions: {
-    remarkPlugins: [remarkInstall],
+    remarkPlugins: [remarkInstall, remarkGfm],
   },
 });
