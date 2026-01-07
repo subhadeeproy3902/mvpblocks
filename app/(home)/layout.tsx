@@ -2,6 +2,8 @@ import { NavbarDemo } from '@/components/shared/navbar';
 import ReactLenis from 'lenis/react';
 import EndSlider from '@/components/shared/comeagain';
 import Footer from '@/components/shared/footer';
+import CTA from '@/components/shared/cta';
+import Faqs from '@/components/shared/faq';
 
 export default function RootLayout({
   children,
@@ -12,6 +14,8 @@ export default function RootLayout({
     <ReactLenis root>
       <NavbarDemo />
       {children}
+      <CTA />
+      <Faqs />
       <EndSlider />
       <Footer />
     </ReactLenis>

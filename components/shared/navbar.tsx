@@ -27,8 +27,8 @@ export function NavbarDemo() {
       link: '/about',
     },
     {
-      name: 'Features',
-      link: '/#features',
+      name: 'Templates',
+      link: '/templates',
     },
     {
       name: 'Showcase',
@@ -81,6 +81,13 @@ export function NavbarDemo() {
               className="relative text-neutral-600 dark:text-neutral-300"
             >
               <span className="block">{item.name}</span>
+              {
+                item.name === "Templates" && (
+                  <span className="inline-flex items-center rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold text-white">
+                    New
+                  </span>
+                )
+              }
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
