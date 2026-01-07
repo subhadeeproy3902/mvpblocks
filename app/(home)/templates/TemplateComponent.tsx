@@ -4,11 +4,11 @@ import { Spotlight } from '@/components/ui/spotlight';
 import { motion } from 'framer-motion';
 import { ExternalLink, Globe } from 'lucide-react';
 import { geist } from '@/lib/fonts';
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { products } from '@/constants/templates';
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function TemplateComponent() {
   return (
@@ -31,7 +31,7 @@ export default function TemplateComponent() {
               geist.className,
             )}
           >
-            Premium Web {' '}
+            Premium Web{' '}
             <span className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text dark:bg-gradient-to-b">
               Templates
             </span>
@@ -44,7 +44,9 @@ export default function TemplateComponent() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-muted-foreground mx-auto mb-12 max-w-3xl text-lg sm:text-xl"
           >
-            Explore our collection of professionally designed templates to kickstart your next project. Crafted with care and attention to detail, our templates are ready to use and easy to customize.
+            Explore our collection of professionally designed templates to
+            kickstart your next project. Crafted with care and attention to
+            detail, our templates are ready to use and easy to customize.
           </motion.p>
 
           {/* CTA */}
@@ -75,17 +77,20 @@ export default function TemplateComponent() {
 
 const ProductSection = () => {
   return (
-    <div className="space-y-8 z-50">
-      <motion.div initial={{ opacity: 0, y: 20 }}
+    <div className="z-50 space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.6 }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
         {products.map((product, i) => (
           <motion.a
             href={`/templates/${product.id}`}
             key={product.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: (i * 0.3) + 0.8 }}
+            transition={{ duration: 0.5, delay: i * 0.3 + 0.8 }}
           >
             <ProductCard
               image={product.image}
@@ -106,10 +111,10 @@ interface ProductCardProps {
   delay?: string;
 }
 
-function ProductCard({ image, name, price, delay = "" }: ProductCardProps) {
+function ProductCard({ image, name, price, delay = '' }: ProductCardProps) {
   return (
     <Card
-      className={`group overflow-hidden cursor-pointer pt-0 gap-2! animate-fade-in-up bg-transparent! border-0 ${delay}`}
+      className={`group animate-fade-in-up cursor-pointer gap-2! overflow-hidden border-0 bg-transparent! pt-0 ${delay}`}
     >
       <div className="relative aspect-4/3 overflow-hidden rounded-xl">
         <Image
@@ -121,35 +126,27 @@ function ProductCard({ image, name, price, delay = "" }: ProductCardProps) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <p className="text-sm font-semibold absolute bottom-2 right-2 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full text-white transition-all duration-300">
-          {
-            price > 0 ? (
-              <>
-                <del className="px-2 line-through text-muted-foreground group-hover:text-red-300/60">
-                  ${price * 2}
-                </del>{" "}
-                <span className="group-hover:text-emerald-300">${price}</span>
-              </>
-            ) : (
-              <span className="group-hover:text-emerald-300">FREE</span>
-            )
-          }
+        <p className="absolute right-2 bottom-2 rounded-full bg-black/30 px-3 py-1 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300">
+          {price > 0 ? (
+            <>
+              <del className="text-muted-foreground px-2 line-through group-hover:text-red-300/60">
+                ${price * 2}
+              </del>{' '}
+              <span className="group-hover:text-emerald-300">${price}</span>
+            </>
+          ) : (
+            <span className="group-hover:text-emerald-300">FREE</span>
+          )}
         </p>
       </div>
       <CardContent className="p-0!">
         <div className="space-y-2">
-          <h3 className="text-lg text-foreground group-hover:font-bold transition-all duration-500 ease-in-out">
+          <h3 className="text-foreground text-lg transition-all duration-500 ease-in-out group-hover:font-bold">
             {name}
           </h3>
           <div className="flex items-center gap-10">
-            <p className="text-sm uppercase tracking-wider text-muted-foreground">
-              {
-                price > 0 ? (
-                  <>PREMIUM</>
-                ) : (
-                  <>FREE</>
-                )
-              }
+            <p className="text-muted-foreground text-sm tracking-wider uppercase">
+              {price > 0 ? <>PREMIUM</> : <>FREE</>}
             </p>
           </div>
         </div>

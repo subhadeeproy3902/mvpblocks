@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import React, { useState } from "react"
+import React, { useState } from 'react';
 import {
   createOnDropHandler,
   dragAndDropFeature,
@@ -8,106 +8,106 @@ import {
   keyboardDragAndDropFeature,
   selectionFeature,
   syncDataLoaderFeature,
-} from "@headless-tree/core"
-import { AssistiveTreeDescription, useTree } from "@headless-tree/react"
-import { Tree, TreeItem, TreeItemLabel } from "@/components/ui/tree"
-import { FileCode2 } from "lucide-react"
+} from '@headless-tree/core';
+import { AssistiveTreeDescription, useTree } from '@headless-tree/react';
+import { Tree, TreeItem, TreeItemLabel } from '@/components/ui/tree';
+import { FileCode2 } from 'lucide-react';
 
 interface Item {
-  name: string
-  children?: string[]
-  fileExtension?: string
+  name: string;
+  children?: string[];
+  fileExtension?: string;
 }
 
 const initialItems: Record<string, Item> = {
   app: {
-    name: "app",
-    children: ["app/layout.tsx", "app/page.tsx", "app/(dashboard)", "app/api"],
+    name: 'app',
+    children: ['app/layout.tsx', 'app/page.tsx', 'app/(dashboard)', 'app/api'],
   },
-  "app/layout.tsx": { name: "layout.tsx", fileExtension: "tsx" },
-  "app/page.tsx": { name: "page.tsx", fileExtension: "tsx" },
-  "app/(dashboard)": {
-    name: "(dashboard)",
-    children: ["app/(dashboard)/dashboard"],
+  'app/layout.tsx': { name: 'layout.tsx', fileExtension: 'tsx' },
+  'app/page.tsx': { name: 'page.tsx', fileExtension: 'tsx' },
+  'app/(dashboard)': {
+    name: '(dashboard)',
+    children: ['app/(dashboard)/dashboard'],
   },
-  "app/(dashboard)/dashboard": {
-    name: "dashboard",
-    children: ["app/(dashboard)/dashboard/page.tsx"],
+  'app/(dashboard)/dashboard': {
+    name: 'dashboard',
+    children: ['app/(dashboard)/dashboard/page.tsx'],
   },
-  "app/(dashboard)/dashboard/page.tsx": {
-    name: "page.tsx",
-    fileExtension: "tsx",
+  'app/(dashboard)/dashboard/page.tsx': {
+    name: 'page.tsx',
+    fileExtension: 'tsx',
   },
-  "app/api": { name: "api", children: ["app/api/hello"] },
-  "app/api/hello": { name: "hello", children: ["app/api/hello/route.ts"] },
-  "app/api/hello/route.ts": { name: "route.ts", fileExtension: "ts" },
+  'app/api': { name: 'api', children: ['app/api/hello'] },
+  'app/api/hello': { name: 'hello', children: ['app/api/hello/route.ts'] },
+  'app/api/hello/route.ts': { name: 'route.ts', fileExtension: 'ts' },
   components: {
-    name: "components",
-    children: ["components/button.tsx", "components/card.tsx"],
+    name: 'components',
+    children: ['components/button.tsx', 'components/card.tsx'],
   },
-  "components/button.tsx": { name: "button.tsx", fileExtension: "tsx" },
-  "components/card.tsx": { name: "card.tsx", fileExtension: "tsx" },
-  lib: { name: "lib", children: ["lib/utils.ts"] },
-  "lib/utils.ts": { name: "utils.ts", fileExtension: "ts" },
+  'components/button.tsx': { name: 'button.tsx', fileExtension: 'tsx' },
+  'components/card.tsx': { name: 'card.tsx', fileExtension: 'tsx' },
+  lib: { name: 'lib', children: ['lib/utils.ts'] },
+  'lib/utils.ts': { name: 'utils.ts', fileExtension: 'ts' },
   public: {
-    name: "public",
-    children: ["public/favicon.ico", "public/vercel.svg"],
+    name: 'public',
+    children: ['public/favicon.ico', 'public/vercel.svg'],
   },
-  "public/favicon.ico": { name: "favicon.ico", fileExtension: "ico" },
-  "public/vercel.svg": { name: "vercel.svg", fileExtension: "svg" },
-  "package.json": { name: "package.json", fileExtension: "json" },
-  "tailwind.config.ts": { name: "tailwind.config.ts", fileExtension: "ts" },
-  "tsconfig.json": { name: "tsconfig.json", fileExtension: "json" },
-  "next.config.mjs": { name: "next.config.mjs", fileExtension: "mjs" },
-  "README.md": { name: "README.md", fileExtension: "md" },
+  'public/favicon.ico': { name: 'favicon.ico', fileExtension: 'ico' },
+  'public/vercel.svg': { name: 'vercel.svg', fileExtension: 'svg' },
+  'package.json': { name: 'package.json', fileExtension: 'json' },
+  'tailwind.config.ts': { name: 'tailwind.config.ts', fileExtension: 'ts' },
+  'tsconfig.json': { name: 'tsconfig.json', fileExtension: 'json' },
+  'next.config.mjs': { name: 'next.config.mjs', fileExtension: 'mjs' },
+  'README.md': { name: 'README.md', fileExtension: 'md' },
   root: {
-    name: "Project Root",
+    name: 'Project Root',
     children: [
-      "app",
-      "components",
-      "lib",
-      "public",
-      "package.json",
-      "tailwind.config.ts",
-      "tsconfig.json",
-      "next.config.mjs",
-      "README.md",
+      'app',
+      'components',
+      'lib',
+      'public',
+      'package.json',
+      'tailwind.config.ts',
+      'tsconfig.json',
+      'next.config.mjs',
+      'README.md',
     ],
   },
-}
+};
 
-const indent = 20
+const indent = 20;
 
 export default function FileTree() {
-  const [items, setItems] = useState(initialItems)
+  const [items, setItems] = useState(initialItems);
 
   const tree = useTree<Item>({
     initialState: {
-      expandedItems: ["app", "app/(dashboard)", "app/(dashboard)/dashboard"],
-      selectedItems: ["components"],
+      expandedItems: ['app', 'app/(dashboard)', 'app/(dashboard)/dashboard'],
+      selectedItems: ['components'],
     },
     indent,
-    rootItemId: "root",
-    getItemName: (item) => item.getItemData()?.name ?? "Unknown",
+    rootItemId: 'root',
+    getItemName: (item) => item.getItemData()?.name ?? 'Unknown',
     isItemFolder: (item) => (item.getItemData()?.children?.length ?? 0) > 0,
     canReorder: false,
     onDrop: createOnDropHandler((parentItem, newChildrenIds) => {
       setItems((prevItems) => {
         // Sort the children alphabetically
         const sortedChildren = [...newChildrenIds].sort((a, b) => {
-          const itemA = prevItems[a]
-          const itemB = prevItems[b]
+          const itemA = prevItems[a];
+          const itemB = prevItems[b];
 
           // First sort folders before files
-          const isAFolder = (itemA?.children?.length ?? 0) > 0
-          const isBFolder = (itemB?.children?.length ?? 0) > 0
+          const isAFolder = (itemA?.children?.length ?? 0) > 0;
+          const isBFolder = (itemB?.children?.length ?? 0) > 0;
 
-          if (isAFolder && !isBFolder) return -1
-          if (!isAFolder && isBFolder) return 1
+          if (isAFolder && !isBFolder) return -1;
+          if (!isAFolder && isBFolder) return 1;
 
           // Then sort alphabetically by name
-          return (itemA?.name ?? "").localeCompare(itemB?.name ?? "")
-        })
+          return (itemA?.name ?? '').localeCompare(itemB?.name ?? '');
+        });
 
         return {
           ...prevItems,
@@ -115,8 +115,8 @@ export default function FileTree() {
             ...prevItems[parentItem.getId()],
             children: sortedChildren,
           },
-        }
-      })
+        };
+      });
     }),
     dataLoader: {
       getItem: (itemId) => items[itemId],
@@ -129,7 +129,7 @@ export default function FileTree() {
       dragAndDropFeature,
       keyboardDragAndDropFeature,
     ],
-  })
+  });
 
   return (
     <div className="flex h-full flex-col gap-2 *:first:grow">
@@ -152,10 +152,10 @@ export default function FileTree() {
                   </span>
                 </TreeItemLabel>
               </TreeItem>
-            )
+            );
           })}
         </Tree>
       </div>
     </div>
-  )
+  );
 }

@@ -15,7 +15,12 @@ const config: NextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['framer-motion', 'lucide-react', 'next-themes', 'shiki'],
+    optimizePackageImports: [
+      'framer-motion',
+      'lucide-react',
+      'next-themes',
+      'shiki',
+    ],
   },
   serverExternalPackages: ['ts-morph', 'typescript', 'twoslash'],
   images: {

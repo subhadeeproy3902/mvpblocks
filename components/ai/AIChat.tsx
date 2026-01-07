@@ -23,7 +23,11 @@ import {
 } from '@/components/ai-elements/conversation';
 import { Message, MessageContent } from '@/components/ai-elements/message';
 import { Response } from '@/components/ai-elements/response';
-import { Reasoning, ReasoningContent, ReasoningTrigger } from '../ai-elements/reasoning';
+import {
+  Reasoning,
+  ReasoningContent,
+  ReasoningTrigger,
+} from '../ai-elements/reasoning';
 import { Loader } from '../ai-elements/loader';
 import { DefaultChatTransport, type ToolUIPart } from 'ai';
 import { experimental_useObject as useObject } from '@ai-sdk/react';
@@ -72,7 +76,6 @@ type WeatherToolUIPart = ToolUIPart<{
   };
 }>;
 
-
 const iconMap = {
   react: { component: SiReact, color: '#149ECA' },
   typescript: { component: SiTypescript, color: '#3178C6' },
@@ -100,10 +103,10 @@ const models = [
   { id: 'claude-opus-4-20250514', name: 'Claude 4 Opus' },
 ];
 
-export default function AIConversationPanel ({
+export default function AIConversationPanel({
   hide,
   setHide,
-}:{
+}: {
   hide: boolean;
   setHide: (hide: boolean) => void;
 }) {
@@ -140,11 +143,9 @@ export default function AIConversationPanel ({
     [],
   );
 
-  const { messages, status, sendMessage } = useChat(
-    {
-      transport
-    }
-  );
+  const { messages, status, sendMessage } = useChat({
+    transport,
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -165,8 +166,8 @@ export default function AIConversationPanel ({
   ) as WeatherToolUIPart | undefined;
 
   return (
-    <div className={`w-full h-full ${hide ? 'hidden' : 'block'}`}>
-      <Conversation className='h-[calc(100vh-12rem)]'>
+    <div className={`h-full w-full ${hide ? 'hidden' : 'block'}`}>
+      <Conversation className="h-[calc(100vh-12rem)]">
         <ConversationContent>
           {messages.map((message) => (
             <Message from={message.role} key={message.id}>
@@ -176,9 +177,7 @@ export default function AIConversationPanel ({
                     case 'text':
                       return (
                         <Response key={`${message.id}-${i}`}>
-                          {
-                            part.text.replace(/<\/?think>/g, '')
-                          }
+                          {part.text.replace(/<\/?think>/g, '')}
                         </Response>
                       );
                     case 'reasoning':
@@ -216,7 +215,10 @@ export default function AIConversationPanel ({
 
           {weatherTool && (
             <Tool defaultOpen={true}>
-              <ToolHeader type="tool-fetch_weather_data" state={weatherTool.state} />
+              <ToolHeader
+                type="tool-fetch_weather_data"
+                state={weatherTool.state}
+              />
               <ToolContent>
                 <ToolInput input={weatherTool.input} />
                 <ToolOutput
@@ -235,8 +237,8 @@ export default function AIConversationPanel ({
         <ConversationScrollButton />
       </Conversation>
 
-      <div className='px-4'>
-        <PromptInput onSubmit={handleSubmit} className="mt-4 w-full h-fit">
+      <div className="px-4">
+        <PromptInput onSubmit={handleSubmit} className="mt-4 h-fit w-full">
           <PromptInputTextarea
             onChange={(e) => setText(e.target.value)}
             value={text}
@@ -274,4 +276,4 @@ export default function AIConversationPanel ({
       </div>
     </div>
   );
-};
+}

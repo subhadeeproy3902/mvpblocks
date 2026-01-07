@@ -1,9 +1,9 @@
-import { products } from "@/constants/templates";
-import { Button } from "@/components/ui/button";
-import { notFound } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Metadata } from "next";
-import { bricolage } from "@/lib/fonts";
+import { products } from '@/constants/templates';
+import { Button } from '@/components/ui/button';
+import { notFound } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { Metadata } from 'next';
+import { bricolage } from '@/lib/fonts';
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -21,12 +21,12 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product not found",
+      title: 'Product not found',
     };
   }
 
   return {
-    title: product.name + " - Aurasites",
+    title: product.name + ' - Aurasites',
     description: product.description,
   };
 }
@@ -44,45 +44,51 @@ export default async function ProductPage({
   }
 
   return (
-    <div className="min-h-screen overflow-hidden relative pt-20 flex flex-col justify-end items-center mb-32">
-      <video width={1400}
-        height={900} autoPlay muted preload="auto" className="absolute inset-0 size-full object-cover object-center pointer-events-none select-none">
+    <div className="relative mb-32 flex min-h-screen flex-col items-center justify-end overflow-hidden pt-20">
+      <video
+        width={1400}
+        height={900}
+        autoPlay
+        muted
+        preload="auto"
+        className="pointer-events-none absolute inset-0 size-full object-cover object-center select-none"
+      >
         <source src={product.video} type="video/webm" />
       </video>
-      <div className="absolute inset-0 size-full bg-linear-to-b from-black via-transparent to-background to-95% pointer-events-none select-none"></div>
+      <div className="to-background pointer-events-none absolute inset-0 size-full bg-linear-to-b from-black via-transparent to-95% select-none"></div>
 
       {/* <div className="absolute top-0 left-1/4 w-125 h-125 bg-purple-600/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-150 h-150 bg-blue-600/5 blur-[150px] rounded-full pointer-events-none" /> */}
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-4">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-24 relative">
-          <div className="flex flex-col gap-2 md:gap-4 items-start justify-start z-20">
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pb-4 lg:px-12">
+        <div className="relative grid gap-6 lg:grid-cols-2 lg:gap-24">
+          <div className="z-20 flex flex-col items-start justify-start gap-2 md:gap-4">
             {/* Title */}
             <h1
               className={cn(
                 bricolage.className,
-                "text-5xl md:text-8xl tracking-tighter text-white uppercase"
+                'text-5xl tracking-tighter text-white uppercase md:text-8xl',
               )}
             >
-              {product.name.split(" ")[0]}
+              {product.name.split(' ')[0]}
             </h1>
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 animate-fade-in-up">
-              <div className="w-4 h-4 rounded-full bg-linear-to-br from-yellow-500 via-pink-500 to-indigo-500" />
+            <div className="animate-fade-in-up inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
+              <div className="h-4 w-4 rounded-full bg-linear-to-br from-yellow-500 via-pink-500 to-indigo-500" />
               <span className="text-xs font-bold tracking-wider text-white/70 uppercase">
                 Made for {product.source}
               </span>
             </div>
           </div>
 
-          <div className="space-y-4 z-20 animate-fade-in-up delay-300">
+          <div className="animate-fade-in-up z-20 space-y-4 delay-300">
             {/* Actions */}
-            <div className="flex flex-wrap gap-4 animate-fade-in-up delay-200">
+            <div className="animate-fade-in-up flex flex-wrap gap-4 delay-200">
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full sm:px-8 sm:py-4 h-auto text-xs font-bold tracking-widest  border-white/10 hover:bg-white/10 transition-all uppercase bg-transparent backdrop-blur-sm"
+                className="h-auto rounded-full border-white/10 bg-transparent text-xs font-bold tracking-widest uppercase backdrop-blur-sm transition-all hover:bg-white/10 sm:px-8 sm:py-4"
               >
                 <a target="_blank" href={product.previewLink}>
                   Preview
@@ -90,14 +96,14 @@ export default async function ProductPage({
               </Button>
               <Button
                 asChild
-                className="rounded-full sm:px-8 sm:py-4 h-auto text-xs font-bold tracking-widest  bg-white text-black hover:bg-zinc-200 transition-all uppercase"
+                className="h-auto rounded-full bg-white text-xs font-bold tracking-widest text-black uppercase transition-all hover:bg-zinc-200 sm:px-8 sm:py-4"
               >
                 <a target="_blank" href={product.buyLink}>
                   Get the remix link
                 </a>
               </Button>
             </div>
-            <p className="text-sm sm:text-lg lg:text-xl text-white/50 max-w-lg lg:ml-auto pb-6">
+            <p className="max-w-lg pb-6 text-sm text-white/50 sm:text-lg lg:ml-auto lg:text-xl">
               {product.description}
             </p>
           </div>
@@ -105,11 +111,11 @@ export default async function ProductPage({
       </main>
 
       {/* Decorative dots/stars */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 w-1.5 h-1.5 bg-white rounded-full opacity-40 blur-[1px]" />
-        <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-60 blur-[1px]" />
-        <div className="absolute bottom-1/3 left-1/5 w-2 h-2 bg-purple-400 rounded-full opacity-20" />
-        <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-yellow-200 rounded-full opacity-40" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 left-1/3 h-1.5 w-1.5 rounded-full bg-white opacity-40 blur-[1px]" />
+        <div className="absolute top-1/2 right-1/4 h-1 w-1 rounded-full bg-blue-400 opacity-60 blur-[1px]" />
+        <div className="absolute bottom-1/3 left-1/5 h-2 w-2 rounded-full bg-purple-400 opacity-20" />
+        <div className="absolute top-2/3 right-1/3 h-1 w-1 rounded-full bg-yellow-200 opacity-40" />
       </div>
     </div>
   );

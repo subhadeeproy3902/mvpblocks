@@ -9,7 +9,9 @@ const githubGraphql = async ({
 }) => {
   // Check if GitHub token is available
   if (!process.env.GITHUB_TOKEN) {
-    console.warn('GITHUB_TOKEN not set - GitHub API features will be unavailable');
+    console.warn(
+      'GITHUB_TOKEN not set - GitHub API features will be unavailable',
+    );
     return null;
   }
 
@@ -151,7 +153,9 @@ export const fetchCodeFrequency = async (): Promise<{
 
     // Handle null response (no token or API error)
     if (!data) {
-      console.warn('GitHub API unavailable - returning empty code frequency data');
+      console.warn(
+        'GitHub API unavailable - returning empty code frequency data',
+      );
       return { codeFrequency: {} };
     }
 

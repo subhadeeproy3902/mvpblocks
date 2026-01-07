@@ -22,7 +22,6 @@ export default async function PreviewPage({
       </div>
     </section>
   );
-
 }
 
 export async function generateStaticParams() {
@@ -33,4 +32,4 @@ export async function generateStaticParams() {
   return allComponents;
 }
 
-export const dynamic = "force-static"
+export const dynamic = 'force-static';

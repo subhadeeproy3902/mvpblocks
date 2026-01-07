@@ -131,7 +131,7 @@ export default function RecentTransactions() {
             {transactions.map((transaction) => (
               <div
                 key={transaction.id}
-                className="group flex items-center justify-between rounded-md border bg-gradient-to-r from-secondary/30 hover:border-primary/50 p-2"
+                className="group from-secondary/30 hover:border-primary/50 flex items-center justify-between rounded-md border bg-gradient-to-r p-2"
               >
                 <div className="flex items-center gap-3">
                   <div

@@ -1,0 +1,28 @@
+{
+  "name": "attract-button",
+  "author": "nuelst",
+  "categories": [
+    "button",
+    "interactive",
+    "animation"
+  ],
+  "description": "An interactive button with magnetic particle effects. Particles attract to the center on hover, creating a mesmerizing visual effect.",
+  "type": "registry:block",
+  "dependencies": [
+    "motion/react",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport { cn } from '@/lib/utils';\nimport { Magnet } from 'lucide-react';\nimport { motion, useAnimation } from 'motion/react';\nimport { useCallback, useEffect, useState } from 'react';\n\ninterface AttractButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  readonly particleCount?: number;\n  readonly attractRadius?: number;\n}\n\ninterface Particle {\n  id: number;\n  x: number;\n  y: number;\n}\n\nexport default function AttractButton({\n  className,\n  particleCount = 12,\n  attractRadius = 50,\n  ...props\n}: AttractButtonProps) {\n  const [isAttracting, setIsAttracting] = useState(false);\n  const [particles, setParticles] = useState<Particle[]>([]);\n  const particlesControl = useAnimation();\n\n  useEffect(() => {\n    const newParticles = Array.from({ length: particleCount }, (_, i) => {\n      const angle = (i / particleCount) * Math.PI * 2;\n      const radius = attractRadius * (0.7 + Math.random() * 0.3);\n      return {\n        id: i,\n        x: Math.cos(angle) * radius,\n        y: Math.sin(angle) * radius,\n      };\n    });\n    setParticles(newParticles);\n  }, [particleCount, attractRadius]);\n\n  const handleInteractionStart = useCallback(async () => {\n    setIsAttracting(true);\n    await particlesControl.start({\n      x: 0,\n      y: 0,\n      transition: {\n        type: 'spring',\n        stiffness: 50,\n        damping: 10,\n      },\n    });\n  }, [particlesControl]);\n\n  const handleInteractionEnd = useCallback(async () => {\n    setIsAttracting(false);\n    await particlesControl.start((i) => ({\n      x: particles[i].x,\n      y: particles[i].y,\n      transition: {\n        type: 'spring',\n        stiffness: 100,\n        damping: 15,\n      },\n    }));\n  }, [particlesControl, particles]);\n\n  return (\n    <Button\n      className={cn(\n        'relative min-w-40 touch-none',\n        'bg-primary/10 hover:bg-primary/20',\n        'text-primary border-primary/30 border',\n        'transition-all duration-300',\n        className,\n      )}\n      onMouseEnter={handleInteractionStart}\n      onMouseLeave={handleInteractionEnd}\n      onTouchStart={handleInteractionStart}\n      onTouchEnd={handleInteractionEnd}\n      {...props}\n    >\n      {particles.map((particle) => (\n        <motion.div\n          key={particle.id}\n          custom={particle.id}\n          initial={{ x: particle.x, y: particle.y }}\n          animate={particlesControl}\n          style={{\n            left: '50%',\n            top: '50%',\n            transform: 'translate(-50%, -50%)',\n          }}\n          className={cn(\n            'absolute h-1.5 w-1.5 rounded-full',\n            'bg-primary',\n            'transition-opacity duration-300',\n            isAttracting ? 'opacity-100' : 'opacity-40',\n          )}\n        />\n      ))}\n      <span className=\"relative flex w-full items-center justify-center gap-2\">\n        <Magnet\n          className={cn(\n            'h-4 w-4 transition-transform duration-300',\n            isAttracting && 'scale-110',\n          )}\n        />\n        {isAttracting ? 'Attracting' : 'Hover me'}\n      </span>\n    </Button>\n  );\n}\n",
+      "path": "/components/mvpblocks/basics/buttons/attract-button.tsx",
+      "target": "components/mvpblocks/attract-button.tsx"
+    }
+  ]
+}

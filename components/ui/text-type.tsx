@@ -131,7 +131,7 @@ export const TextType = ({
 
         setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
         setCurrentCharIndex(0);
-        timeout = setTimeout(() => { }, pauseDuration);
+        timeout = setTimeout(() => {}, pauseDuration);
       } else {
         timeout = setTimeout(() => {
           setDisplayedText((prev) => prev.slice(0, -1));
@@ -143,9 +143,7 @@ export const TextType = ({
       if (currentCharIndex < processedText.length) {
         timeout = setTimeout(
           () => {
-            setDisplayedText(
-              (prev) => prev + processedText[currentCharIndex],
-            );
+            setDisplayedText((prev) => prev + processedText[currentCharIndex]);
             setCurrentCharIndex((prev) => prev + 1);
           },
           variableSpeed ? getRandomSpeed() : typingSpeed,
@@ -202,7 +200,7 @@ export const TextType = ({
       ...props,
     },
     <span
-      className="inline text-foreground"
+      className="text-foreground inline"
       style={{ color: getCurrentTextColor() || undefined }}
     >
       {displayedText}
@@ -210,12 +208,12 @@ export const TextType = ({
     showCursor && (
       <span
         ref={cursorRef}
-        className={`ml-1 inline-block opacity-100 text-primary ${shouldHideCursor ? 'hidden' : ''
-          } ${cursorClassName}`}
+        className={`text-primary ml-1 inline-block opacity-100 ${
+          shouldHideCursor ? 'hidden' : ''
+        } ${cursorClassName}`}
       >
         {cursorCharacter}
       </span>
     ),
   );
 };
-

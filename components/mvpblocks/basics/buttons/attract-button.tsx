@@ -70,9 +70,9 @@ export default function AttractButton({
   return (
     <Button
       className={cn(
-        'min-w-40 relative touch-none',
+        'relative min-w-40 touch-none',
         'bg-primary/10 hover:bg-primary/20',
-        'text-primary border border-primary/30',
+        'text-primary border-primary/30 border',
         'transition-all duration-300',
         className,
       )}
@@ -94,17 +94,17 @@ export default function AttractButton({
             transform: 'translate(-50%, -50%)',
           }}
           className={cn(
-            'absolute w-1.5 h-1.5 rounded-full',
+            'absolute h-1.5 w-1.5 rounded-full',
             'bg-primary',
             'transition-opacity duration-300',
             isAttracting ? 'opacity-100' : 'opacity-40',
           )}
         />
       ))}
-      <span className="relative w-full flex items-center justify-center gap-2">
+      <span className="relative flex w-full items-center justify-center gap-2">
         <Magnet
           className={cn(
-            'w-4 h-4 transition-transform duration-300',
+            'h-4 w-4 transition-transform duration-300',
             isAttracting && 'scale-110',
           )}
         />
@@ -113,4 +113,3 @@ export default function AttractButton({
     </Button>
   );
 }
-

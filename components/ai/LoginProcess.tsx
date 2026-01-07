@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Steps } from "./Steps";
-import { Login } from "./LoginStep";
-import { Processing } from "./Processing";
-import { Security } from "./Security";
-import Complete from "./Success";
+import { useState } from 'react';
+import { Steps } from './Steps';
+import { Login } from './LoginStep';
+import { Processing } from './Processing';
+import { Security } from './Security';
+import Complete from './Success';
 
 export default function LoginContainer({
   setLoggedIn,
@@ -38,24 +38,22 @@ export default function LoginContainer({
   return (
     <>
       {showModal && (
-        <div className="absolute w-full z-50 h-screen flex items-center justify-center bg-black/80">
-          <div className="relative rounded-xl before:absolute before:inset-[-1px] before:rounded-xl before:bg-[linear-gradient(to_bottom_right,_#525252,_transparent,_#262626)] before:z-[-1] max-w-2xl z-20 min-w-md">
-            <div className="rounded-xl overflow-hidden bg-background shadow-xl">
-              <div className="p-6 border-b">
-                <div className="flex justify-between items-center">
+        <div className="absolute z-50 flex h-screen w-full items-center justify-center bg-black/80">
+          <div className="relative z-20 max-w-2xl min-w-md rounded-xl before:absolute before:inset-[-1px] before:z-[-1] before:rounded-xl before:bg-[linear-gradient(to_bottom_right,_#525252,_transparent,_#262626)]">
+            <div className="bg-background overflow-hidden rounded-xl shadow-xl">
+              <div className="border-b p-6">
+                <div className="flex items-center justify-between">
                   <h2
-                    className={`text-xl font-semibold text-foreground
-              ${currentStep === 1 ? "mx-auto" : ""}
-              `}
+                    className={`text-foreground text-xl font-semibold ${currentStep === 1 ? 'mx-auto' : ''} `}
                   >
-                    {currentStep === 1 && "Login with Slack"}
-                    {currentStep === 3 && "Complete Your Account Setup"}
-                    {currentStep === 4 && "Setup Complete"}
+                    {currentStep === 1 && 'Login with Slack'}
+                    {currentStep === 3 && 'Complete Your Account Setup'}
+                    {currentStep === 4 && 'Setup Complete'}
                   </h2>
                   {showCloseButton && (
                     <button
                       onClick={handleClose}
-                      className="text-neutral-400 hover:text-foreground transition"
+                      className="hover:text-foreground text-neutral-400 transition"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

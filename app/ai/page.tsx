@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import LoginContainer from "@/components/ai/LoginProcess";
-import SendComponent from "@/components/ai/SendComponent";
-import SuccessModal from "@/components/ai/Success";
-import { useState } from "react";
+import LoginContainer from '@/components/ai/LoginProcess';
+import SendComponent from '@/components/ai/SendComponent';
+import SuccessModal from '@/components/ai/Success';
+import { useState } from 'react';
 
 export default function Home() {
   const [generating, setGenerating] = useState(false);
@@ -11,7 +11,7 @@ export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div className="h-screen overflow-hidden flex items-center justify-center bg-background">
+    <div className="bg-background flex h-screen items-center justify-center overflow-hidden">
       <SendComponent
         setGenerating={setGenerating}
         setShowModal={setShowModal}
