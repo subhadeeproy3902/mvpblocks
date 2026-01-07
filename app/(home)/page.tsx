@@ -7,7 +7,7 @@ import Testimonials from '@/components/home/testimonials';
 export default function Homepage() {
   return (
     <>
-      <Advertisement />
+      {/* <Advertisement /> */}
       <Hero />
       <Features />
       <Gallery />

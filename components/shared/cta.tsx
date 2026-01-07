@@ -23,7 +23,7 @@ export default function CTA() {
               <Link
                 prefetch={false}
                 className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md"
-                href="https://cal.com/subhadeep3902/15min"
+                href="https://cal.com/aura-devs/15min"
               >
                 Hire Us Now
               </Link>

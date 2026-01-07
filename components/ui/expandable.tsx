@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, easeInOut, motion } from 'motion/react';
 import * as React from 'react';
 
 interface ExpandableContextValue {
@@ -15,8 +15,8 @@ const ExpandableContext = React.createContext<ExpandableContextValue | null>(
 
 interface ExpandableProps {
   readonly children:
-    | React.ReactNode
-    | ((props: { isExpanded: boolean }) => React.ReactNode);
+  | React.ReactNode
+  | ((props: { isExpanded: boolean }) => React.ReactNode);
   readonly expandDirection?: 'both' | 'horizontal' | 'vertical';
   readonly expandBehavior?: 'replace' | 'push';
   readonly initialDelay?: number;
@@ -94,7 +94,9 @@ export function ExpandableTrigger({
   );
 }
 
-interface ExpandableCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ExpandableCardProps {
+  readonly children?: React.ReactNode;
+  readonly className?: string;
   readonly collapsedSize: { width: number; height: number };
   readonly expandedSize: { width: number; height: number };
   readonly hoverToExpand?: boolean;
@@ -110,7 +112,6 @@ export function ExpandableCard({
   hoverToExpand = false,
   expandDelay = 0,
   collapseDelay = 0,
-  ...props
 }: ExpandableCardProps) {
   const { isExpanded } = useExpandable();
 
@@ -128,9 +129,8 @@ export function ExpandableCard({
       transition={{
         duration: 0.3,
         delay: isExpanded ? expandDelay / 1000 : collapseDelay / 1000,
-        ease: [0.4, 0, 0.2, 1],
+        ease: easeInOut,
       }}
-      {...props}
     >
       {children}
     </motion.div>
@@ -169,7 +169,9 @@ export function ExpandableCardFooter(
   return <CardSection className="border-t" {...props} />;
 }
 
-interface ExpandableContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ExpandableContentProps {
+  readonly children?: React.ReactNode;
+  readonly className?: string;
   readonly preset?: 'fade' | 'blur-sm' | 'blur-md' | 'slide-up' | 'slide-down';
   readonly stagger?: boolean;
   readonly staggerChildren?: number;
@@ -177,6 +179,7 @@ interface ExpandableContentProps extends React.HTMLAttributes<HTMLDivElement> {
   readonly animateIn?: {
     initial?: Record<string, any>;
     animate?: Record<string, any>;
+    exit?: Record<string, any>;
     transition?: Record<string, any>;
   };
 }
@@ -189,7 +192,6 @@ export function ExpandableContent({
   staggerChildren = 0.1,
   keepMounted = false,
   animateIn,
-  ...props
 }: ExpandableContentProps) {
   const { isExpanded } = useExpandable();
 
@@ -250,8 +252,7 @@ export function ExpandableContent({
           initial={styles.initial}
           animate={styles.animate}
           exit={styles.exit}
-          transition={styles.transition || { duration: 0.3 }}
-          {...props}
+          transition={'transition' in styles ? styles.transition : { duration: 0.3 }}
         >
           {children}
         </motion.div>

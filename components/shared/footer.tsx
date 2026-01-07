@@ -166,7 +166,7 @@ export default function Footer() {
               <li>
                 <Link
                   prefetch={false}
-                  href="https://cal.com/subhadeep3902/15min"
+                  href="https://cal.com/aura-devs/15min"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Hire Me
