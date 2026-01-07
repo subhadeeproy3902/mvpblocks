@@ -43,8 +43,6 @@ next-env.d.ts
 
 .vercel
 
-.source
-
 # package-lock
 package-lock.json"filelist.txt" 
 "filelist.txt" 
