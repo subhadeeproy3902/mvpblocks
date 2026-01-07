@@ -84,7 +84,6 @@
     "fumadocs-docgen": "^2.1.0",
     "fumadocs-mdx": "^11.6.11",
     "fumadocs-twoslash": "^3.1.4",
-    "fumadocs-typescript": "^4.0.6",
     "fumadocs-ui": "^15.6.4",
     "gsap": "^3.14.2",
     "hsl-to-hex": "^1.0.0",

@@ -71,7 +71,6 @@ const KNOWN_NPM_DEPENDENCIES = [
   'fumadocs-docgen',
   'fumadocs-mdx',
   'fumadocs-twoslash',
-  'fumadocs-typescript',
   'fumadocs-ui',
   'gsap',
   'hsl-to-hex',
