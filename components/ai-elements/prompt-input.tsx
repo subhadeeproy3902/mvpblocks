@@ -24,8 +24,8 @@ export type PromptInputProps = HTMLAttributes<HTMLFormElement>;
 export const PromptInput = ({ className, ...props }: PromptInputProps) => (
   <form
     className={cn(
-      'w-full divide-y overflow-hidden rounded-xl border bg-background shadow-sm',
-      className
+      'bg-background w-full divide-y overflow-hidden rounded-xl border shadow-sm',
+      className,
     )}
     {...props}
   />
@@ -68,10 +68,10 @@ export const PromptInputTextarea = ({
   return (
     <Textarea
       className={cn(
-        'w-full resize-none rounded-none border-none p-3 shadow-none outline-none ring-0',
+        'w-full resize-none rounded-none border-none p-3 shadow-none ring-0 outline-none',
         'field-sizing-content max-h-[6lh] bg-transparent dark:bg-transparent',
         'focus-visible:ring-0',
-        className
+        className,
       )}
       name="message"
       onChange={(e) => {
@@ -106,7 +106,7 @@ export const PromptInputTools = ({
     className={cn(
       'flex items-center gap-1',
       '[&_button:first-child]:rounded-bl-xl',
-      className
+      className,
     )}
     {...props}
   />
@@ -129,7 +129,7 @@ export const PromptInputButton = ({
         'shrink-0 gap-1.5 rounded-lg',
         variant === 'ghost' && 'text-muted-foreground',
         newSize === 'default' && 'px-3',
-        className
+        className,
       )}
       size={newSize}
       type="button"
@@ -190,9 +190,9 @@ export const PromptInputModelSelectTrigger = ({
 }: PromptInputModelSelectTriggerProps) => (
   <SelectTrigger
     className={cn(
-      'border-none bg-transparent font-medium text-muted-foreground shadow-none transition-colors',
+      'text-muted-foreground border-none bg-transparent font-medium shadow-none transition-colors',
       'hover:bg-accent hover:text-foreground [&[aria-expanded="true"]]:bg-accent [&[aria-expanded="true"]]:text-foreground',
-      className
+      className,
     )}
     {...props}
   />

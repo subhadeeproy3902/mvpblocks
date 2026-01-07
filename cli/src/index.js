@@ -19,8 +19,21 @@ import path from 'path';
 import { execa } from 'execa';
 import fetch from 'node-fetch';
 import gradient from 'gradient-string';
-import { AVAILABLE_COMPONENTS, REGISTRY_METADATA, THEME_CONSTANT } from './constants.js';
-import { Zinc, Red, Rose, Orange, Green, Blue, Yellow, Purple } from './colors.js';
+import {
+  AVAILABLE_COMPONENTS,
+  REGISTRY_METADATA,
+  THEME_CONSTANT,
+} from './constants.js';
+import {
+  Zinc,
+  Red,
+  Rose,
+  Orange,
+  Green,
+  Blue,
+  Yellow,
+  Purple,
+} from './colors.js';
 
 // Project Management Class for Smart Detection and Initialization
 class ProjectManager {
@@ -33,17 +46,17 @@ class ProjectManager {
   async detectProject() {
     const packageJsonPath = path.join(this.cwd, 'package.json');
     const tsconfigPath = path.join(this.cwd, 'tsconfig.json');
-    
+
     // Check if package.json exists
     const hasPackageJson = fs.existsSync(packageJsonPath);
-    
+
     if (!hasPackageJson) {
       return {
         type: 'empty',
         hasPackageJson: false,
         hasTypeScript: false,
         paths: null,
-        framework: null
+        framework: null,
       };
     }
 
@@ -55,19 +68,23 @@ class ProjectManager {
       // Invalid package.json, treat as basic project
       packageJson = { name: 'unknown-project', version: '1.0.0' };
     }
-    
+
     // Detect framework
-    const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+    const dependencies = {
+      ...packageJson.dependencies,
+      ...packageJson.devDependencies,
+    };
     let framework = 'unknown';
-    
+
     if (dependencies.next) framework = 'nextjs';
     else if (dependencies.vite) framework = 'vite';
     else if (dependencies['react-scripts']) framework = 'cra';
-    
+
     // Check TypeScript
-    const hasTypeScript = fs.existsSync(tsconfigPath) || 
-                         !!dependencies.typescript || 
-                         !!dependencies['@types/react'];
+    const hasTypeScript =
+      fs.existsSync(tsconfigPath) ||
+      !!dependencies.typescript ||
+      !!dependencies['@types/react'];
 
     // Read tsconfig.json for path mappings
     let paths = null;
@@ -86,7 +103,7 @@ class ProjectManager {
       hasTypeScript,
       paths,
       framework,
-      packageJson
+      packageJson,
     };
 
     return this.projectConfig;
@@ -95,14 +112,19 @@ class ProjectManager {
   // Initialize a new project
   async initializeProject(projectName, framework, useTypeScript) {
     console.log(`🚀 Creating ${framework} project with official tools...`);
-    
+
     try {
       const pm = this.detectPackageManager();
-      const cmd = this.getCreateCommand(pm, framework, projectName, useTypeScript);
-      
+      const cmd = this.getCreateCommand(
+        pm,
+        framework,
+        projectName,
+        useTypeScript,
+      );
+
       console.log('Running:', cmd);
       execSync(cmd, { stdio: 'inherit' });
-      
+
       // Always change to the created project directory
       const projectPath = path.join(this.cwd, projectName);
       if (fs.existsSync(projectPath)) {
@@ -112,77 +134,91 @@ class ProjectManager {
       } else {
         throw new Error(`Project directory ${projectPath} was not created`);
       }
-      
+
       if (framework === 'nextjs') {
         // Install additional dependencies
         console.log('📦 Installing additional dependencies...');
         const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-        execSync(`${addCmd} class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`, { stdio: 'inherit' });
-        
+        execSync(
+          `${addCmd} class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`,
+          { stdio: 'inherit' },
+        );
+
         // Detect project structure
         const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
         const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
         const configFile = useTypeScript ? 'tsconfig.json' : 'jsconfig.json';
-        
-        console.log(`📋 Detected Next.js structure: src=${hasSrc}, app=${hasApp}, config=${configFile}`);
-        
+
+        console.log(
+          `📋 Detected Next.js structure: src=${hasSrc}, app=${hasApp}, config=${configFile}`,
+        );
+
         // Update config file with path aliases
         await this.updateProjectConfig(configFile, framework, useTypeScript);
-        
+
         // Create components.json
         await this.createComponentsJson(framework, useTypeScript, hasSrc);
-        
+
         // Setup theme
         console.log('🎨 Setting up theme...');
         const selectedPalette = await selectColorPalette();
         const colorCSS = getColorPaletteCSS(selectedPalette);
-        
+
         // Create/update CSS file
         await this.setupThemeCSS(framework, selectedPalette, colorCSS, hasSrc);
-        
+
         // Create utils file
         await this.createUtilsFile(framework, useTypeScript, hasSrc);
-        
       } else if (framework === 'vite') {
         // Install dependencies first
         console.log('Installing dependencies...');
         const installCmd = pm === 'npm' ? 'npm install' : `${pm} install`;
         execSync(installCmd, { stdio: 'inherit' });
-        
+
         // Install additional dependencies
         console.log('Setting up Tailwind CSS and additional dependencies...');
         const addCmd = pm === 'npm' ? 'npm install' : `${pm} add`;
-        execSync(`${addCmd} tailwindcss @tailwindcss/vite class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`, { stdio: 'inherit' });
-        
+        execSync(
+          `${addCmd} tailwindcss @tailwindcss/vite class-variance-authority clsx tailwind-merge lucide-react tw-animate-css`,
+          { stdio: 'inherit' },
+        );
+
         // Update vite.config
         await this.updateViteConfig(useTypeScript);
-        
+
         // Update tsconfig files
         const configFile = useTypeScript ? 'tsconfig.json' : 'jsconfig.json';
         await this.updateProjectConfig(configFile, framework, useTypeScript);
-        
-        if (useTypeScript && fs.existsSync(path.join(this.cwd, 'tsconfig.app.json'))) {
-          await this.updateProjectConfig('tsconfig.app.json', framework, useTypeScript);
+
+        if (
+          useTypeScript &&
+          fs.existsSync(path.join(this.cwd, 'tsconfig.app.json'))
+        ) {
+          await this.updateProjectConfig(
+            'tsconfig.app.json',
+            framework,
+            useTypeScript,
+          );
         }
-        
+
         // Create components.json
         await this.createComponentsJson(framework, useTypeScript, true); // Vite always uses src
-        
+
         // Setup theme
         console.log('🎨 Setting up theme...');
         const selectedPalette = await selectColorPalette();
         const colorCSS = getColorPaletteCSS(selectedPalette);
-        
+
         // Create/update CSS files
         await this.setupThemeCSS(framework, selectedPalette, colorCSS, true);
-        
+
         // Create utils file
         await this.createUtilsFile(framework, useTypeScript, true);
       }
-      
+
       // Re-detect the project now that it's initialized
       await this.detectProject();
-      
+
       return true;
     } catch (error) {
       console.error('❌ Error creating project:', error.message);
@@ -199,12 +235,12 @@ class ProjectManager {
       if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
       if (process.env.npm_config_user_agent.includes('npm')) return 'npm';
     }
-    
+
     // Check for lock files in current directory
     if (fs.existsSync(path.join(this.cwd, 'bun.lockb'))) return 'bun';
     if (fs.existsSync(path.join(this.cwd, 'pnpm-lock.yaml'))) return 'pnpm';
     if (fs.existsSync(path.join(this.cwd, 'yarn.lock'))) return 'yarn';
-    
+
     // Only fallback to checking if bun is available if no other indicators
     try {
       execSync('bun --version', { stdio: 'pipe' });
@@ -212,7 +248,7 @@ class ProjectManager {
     } catch (error) {
       // Bun not available, use npm as final fallback
     }
-    
+
     return 'npm'; // fallback
   }
 
@@ -247,31 +283,34 @@ class ProjectManager {
   // Create components.json file
   async createComponentsJson(framework, useTypeScript, hasSrc = true) {
     const cssPath = hasSrc ? 'src/styles/globals.css' : 'styles/globals.css';
-    
+
     const componentsConfig = {
-      "$schema": "https://ui.shadcn.com/schema.json",
-      "style": "new-york",
-      "rsc": false,
-      "tsx": useTypeScript,
-      "tailwind": {
-        "config": "",
-        "css": cssPath,
-        "baseColor": "neutral",
-        "cssVariables": true,
-        "prefix": ""
+      $schema: 'https://ui.shadcn.com/schema.json',
+      style: 'new-york',
+      rsc: false,
+      tsx: useTypeScript,
+      tailwind: {
+        config: '',
+        css: cssPath,
+        baseColor: 'neutral',
+        cssVariables: true,
+        prefix: '',
       },
-      "aliases": {
-        "components": "@/components",
-        "utils": "@/lib/utils",
-        "ui": "@/components/ui",
-        "lib": "@/lib",
-        "hooks": "@/hooks"
+      aliases: {
+        components: '@/components',
+        utils: '@/lib/utils',
+        ui: '@/components/ui',
+        lib: '@/lib',
+        hooks: '@/hooks',
       },
-      "iconLibrary": "lucide"
+      iconLibrary: 'lucide',
     };
 
     const componentsJsonPath = path.join(this.cwd, 'components.json');
-    await fs.promises.writeFile(componentsJsonPath, JSON.stringify(componentsConfig, null, 2));
+    await fs.promises.writeFile(
+      componentsJsonPath,
+      JSON.stringify(componentsConfig, null, 2),
+    );
     console.log(`🔧 Created components.json`);
   }
 
@@ -279,20 +318,20 @@ class ProjectManager {
   async updateProjectConfig(configFile, framework, useTypeScript) {
     const configPath = path.join(this.cwd, configFile);
     const pathPrefix = framework === 'vite' ? './src/*' : './*';
-    
+
     if (fs.existsSync(configPath)) {
       try {
         const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-        
+
         if (!config.compilerOptions) {
           config.compilerOptions = {};
         }
-        
+
         config.compilerOptions.baseUrl = '.';
         config.compilerOptions.paths = {
-          '@/*': [pathPrefix]
+          '@/*': [pathPrefix],
         };
-        
+
         fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
         console.log(`🔧 Updated ${configFile} with path aliases`);
       } catch (error) {
@@ -303,10 +342,10 @@ class ProjectManager {
 
   // Update Vite configuration
   async updateViteConfig(useTypeScript) {
-    const viteConfigPath = useTypeScript 
+    const viteConfigPath = useTypeScript
       ? path.join(this.cwd, 'vite.config.ts')
       : path.join(this.cwd, 'vite.config.js');
-    
+
     const viteConfigContent = `import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
@@ -321,32 +360,34 @@ export default defineConfig({
     },
   },
 })`;
-    
+
     fs.writeFileSync(viteConfigPath, viteConfigContent);
-    console.log(`🔧 Updated ${useTypeScript ? 'vite.config.ts' : 'vite.config.js'} with Tailwind CSS and path aliases`);
+    console.log(
+      `🔧 Updated ${useTypeScript ? 'vite.config.ts' : 'vite.config.js'} with Tailwind CSS and path aliases`,
+    );
   }
 
   // Setup theme CSS
   async setupThemeCSS(framework, selectedPalette, colorCSS, hasSrc) {
     let cssPath;
-    
+
     if (framework === 'nextjs') {
       // For Next.js, try to find existing globals.css or create one
       const possiblePaths = [
         path.join(this.cwd, 'src/app/globals.css'),
         path.join(this.cwd, 'app/globals.css'),
         path.join(this.cwd, 'src/styles/globals.css'),
-        path.join(this.cwd, 'styles/globals.css')
+        path.join(this.cwd, 'styles/globals.css'),
       ];
-      
-      cssPath = possiblePaths.find(p => fs.existsSync(p));
-      
+
+      cssPath = possiblePaths.find((p) => fs.existsSync(p));
+
       if (!cssPath) {
         // Create in appropriate location
-        const stylesDir = hasSrc 
+        const stylesDir = hasSrc
           ? path.join(this.cwd, 'src/styles')
           : path.join(this.cwd, 'styles');
-        
+
         if (!fs.existsSync(stylesDir)) {
           fs.mkdirSync(stylesDir, { recursive: true });
         }
@@ -359,49 +400,56 @@ export default defineConfig({
         fs.mkdirSync(stylesDir, { recursive: true });
       }
       cssPath = path.join(stylesDir, 'globals.css');
-      
+
       // Also update index.css
       const indexCssPath = path.join(this.cwd, 'src/index.css');
       if (fs.existsSync(indexCssPath)) {
         const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
         fs.writeFileSync(indexCssPath, finalCSS);
-        console.log(`🎨 Updated ${path.relative(this.cwd, indexCssPath)} with ${selectedPalette} theme`);
+        console.log(
+          `🎨 Updated ${path.relative(this.cwd, indexCssPath)} with ${selectedPalette} theme`,
+        );
       }
     }
-    
+
     const finalCSS = THEME_CONSTANT + '\n' + colorCSS;
     fs.writeFileSync(cssPath, finalCSS);
-    console.log(`🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, cssPath)}`);
+    console.log(
+      `🎨 Applied ${selectedPalette} theme to ${path.relative(this.cwd, cssPath)}`,
+    );
   }
 
   // Create utils file
   async createUtilsFile(framework, useTypeScript, hasSrc) {
-    const utilsDir = hasSrc 
-      ? path.join(this.cwd, 'src/lib') 
+    const utilsDir = hasSrc
+      ? path.join(this.cwd, 'src/lib')
       : path.join(this.cwd, 'lib');
-    
+
     if (!fs.existsSync(utilsDir)) {
       fs.mkdirSync(utilsDir, { recursive: true });
     }
-    
+
     // Check for existing utils files (both .ts and .js)
     const tsUtilsPath = path.join(utilsDir, 'utils.ts');
     const jsUtilsPath = path.join(utilsDir, 'utils.js');
-    
+
     if (fs.existsSync(tsUtilsPath) || fs.existsSync(jsUtilsPath)) {
       console.log(`🛠️  Utils file already exists, skipping creation`);
       return;
     }
-    
-    const utilsPath = path.join(utilsDir, useTypeScript ? 'utils.ts' : 'utils.js');
-    
+
+    const utilsPath = path.join(
+      utilsDir,
+      useTypeScript ? 'utils.ts' : 'utils.js',
+    );
+
     const utilsContent = `import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
   return twMerge(clsx(inputs))
 }`;
-    
+
     fs.writeFileSync(utilsPath, utilsContent);
     console.log(`🛠️  Created ${path.relative(this.cwd, utilsPath)}`);
   }
@@ -412,7 +460,7 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
       // Fallback to basic structure - check if src exists
       const srcPath = path.join(this.cwd, 'src', type);
       const rootPath = path.join(this.cwd, type);
-      
+
       if (fs.existsSync(path.join(this.cwd, 'src'))) {
         return srcPath;
       }
@@ -420,7 +468,7 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     }
 
     const { framework, paths } = this.projectConfig;
-    
+
     // Check for custom paths in tsconfig.json/jsconfig.json
     if (paths) {
       if (type === 'components' && paths['@/components/*']) {
@@ -453,7 +501,7 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     // Default based on framework and existing structure
     const hasSrc = fs.existsSync(path.join(this.cwd, 'src'));
     const hasApp = fs.existsSync(path.join(this.cwd, 'app'));
-    
+
     if (framework === 'nextjs') {
       if (hasSrc) {
         return path.join(this.cwd, 'src', type);
@@ -466,7 +514,9 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
     }
 
     // Final fallback
-    return hasSrc ? path.join(this.cwd, 'src', type) : path.join(this.cwd, type);
+    return hasSrc
+      ? path.join(this.cwd, 'src', type)
+      : path.join(this.cwd, type);
   }
 
   // Auto-detect TypeScript preference
@@ -479,7 +529,7 @@ export function cn(...inputs${useTypeScript ? ': ClassValue[]' : ''}) {
 // Standalone package manager detection function
 function detectPackageManager() {
   const cwd = process.cwd();
-  
+
   // First check if user is running with specific package manager (most accurate)
   if (process.env.npm_config_user_agent) {
     if (process.env.npm_config_user_agent.includes('bun')) return 'bun';
@@ -487,12 +537,12 @@ function detectPackageManager() {
     if (process.env.npm_config_user_agent.includes('yarn')) return 'yarn';
     if (process.env.npm_config_user_agent.includes('npm')) return 'npm';
   }
-  
+
   // Check for lock files in current directory
   if (fs.existsSync(path.join(cwd, 'bun.lockb'))) return 'bun';
   if (fs.existsSync(path.join(cwd, 'pnpm-lock.yaml'))) return 'pnpm';
   if (fs.existsSync(path.join(cwd, 'yarn.lock'))) return 'yarn';
-  
+
   // Only fallback to checking if bun is available if no other indicators
   try {
     execSync('bun --version', { stdio: 'pipe' });
@@ -500,7 +550,7 @@ function detectPackageManager() {
   } catch (error) {
     // Bun not available, use npm as final fallback
   }
-  
+
   return 'npm'; // fallback
 }
 
@@ -516,7 +566,7 @@ async function selectColorPalette() {
       },
       {
         label: `${colors.red('🔴')} Red`,
-        value: 'red', 
+        value: 'red',
         hint: 'Bold red accent theme',
       },
       {
@@ -548,7 +598,7 @@ async function selectColorPalette() {
         label: `${colors.magenta('🟣')} Purple`,
         value: 'purple',
         hint: 'Vibrant purple accent theme',
-      }
+      },
     ],
   });
 
@@ -562,15 +612,23 @@ async function selectColorPalette() {
 // Get color palette CSS
 function getColorPaletteCSS(palette) {
   switch (palette) {
-    case 'red': return Red;
-    case 'rose': return Rose;
-    case 'orange': return Orange;
-    case 'green': return Green;
-    case 'blue': return Blue;
-    case 'yellow': return Yellow;
-    case 'purple': return Purple;
+    case 'red':
+      return Red;
+    case 'rose':
+      return Rose;
+    case 'orange':
+      return Orange;
+    case 'green':
+      return Green;
+    case 'blue':
+      return Blue;
+    case 'yellow':
+      return Yellow;
+    case 'purple':
+      return Purple;
     case 'zinc':
-    default: return Zinc;
+    default:
+      return Zinc;
   }
 }
 
@@ -580,7 +638,8 @@ const COMPONENTS_BASE_URL = `${MVPBLOCKS_BASE_URL}/r`;
 
 // CLI args
 const [command, ...args] = process.argv.slice(2);
-const componentNames = command === 'add' ? args.filter(arg => !arg.startsWith('--')) : [];
+const componentNames =
+  command === 'add' ? args.filter((arg) => !arg.startsWith('--')) : [];
 const componentName = componentNames[0]; // For backward compatibility
 
 const logoLines = [
@@ -746,7 +805,10 @@ if (process.argv.includes('--ts') || process.argv.includes('--typescript')) {
   language = 'js';
 } else {
   // Interactive language selection
-  const componentText = componentNames.length > 1 ? `${componentNames.length} components` : componentNames[0];
+  const componentText =
+    componentNames.length > 1
+      ? `${componentNames.length} components`
+      : componentNames[0];
   language = await select({
     message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentText)}:`,
     options: [
@@ -769,19 +831,23 @@ if (process.argv.includes('--ts') || process.argv.includes('--typescript')) {
   }
 }
 
-// Initialize Project Manager and detect project  
+// Initialize Project Manager and detect project
 const projectManager = new ProjectManager();
 const projectInfo = await projectManager.detectProject();
 
 console.log(colors.dim(`🔍 Debug: Project detection result:`));
 console.log(colors.dim(`  - hasPackageJson: ${projectInfo.hasPackageJson}`));
 console.log(colors.dim(`  - cwd: ${projectManager.cwd}`));
-console.log(colors.dim(`  - files in cwd: ${fs.readdirSync(projectManager.cwd).join(', ')}`));
+console.log(
+  colors.dim(
+    `  - files in cwd: ${fs.readdirSync(projectManager.cwd).join(', ')}`,
+  ),
+);
 
 // Handle empty directory (no package.json)
 if (!projectInfo.hasPackageJson) {
   console.log(colors.cyan('\n📂 No package.json found in current directory.'));
-  console.log(colors.dim('Let\'s set up a new project for you!\n'));
+  console.log(colors.dim("Let's set up a new project for you!\n"));
 
   const shouldInitialize = await confirm({
     message: 'Would you like to start a new project?',
@@ -789,7 +855,11 @@ if (!projectInfo.hasPackageJson) {
   });
 
   if (isCancel(shouldInitialize) || !shouldInitialize) {
-    cancel(colors.red('Cannot install components without a project. Please create a package.json or initialize a project first.'));
+    cancel(
+      colors.red(
+        'Cannot install components without a project. Please create a package.json or initialize a project first.',
+      ),
+    );
     process.exit(0);
   }
 
@@ -818,14 +888,17 @@ if (!projectInfo.hasPackageJson) {
   // Get project name
   const currentDirName = path.basename(process.cwd());
   const isEmpty = fs.readdirSync(process.cwd()).length === 0;
-  
+
   const projectName = await text({
-    message: isEmpty ? 'What is your project named?' : 'What is your project named?',
+    message: isEmpty
+      ? 'What is your project named?'
+      : 'What is your project named?',
     initialValue: isEmpty ? currentDirName : 'my-app',
     validate: (value) => {
       if (!value) return 'Project name is required';
       if (value === '.' || value === currentDirName) return undefined; // Allow '.' for current directory
-      if (!/^[a-z0-9-]+$/.test(value)) return 'Project name must be lowercase, numbers, and dashes only';
+      if (!/^[a-z0-9-]+$/.test(value))
+        return 'Project name must be lowercase, numbers, and dashes only';
       return undefined;
     },
   });
@@ -856,9 +929,9 @@ if (!projectInfo.hasPackageJson) {
 
   // Initialize the project
   await projectManager.initializeProject(projectName, framework, useTypeScript);
-  
+
   console.log(colors.green('✅ Project created successfully!'));
-  
+
   // Re-detect project after creation
   projectManager.cwd = process.cwd();
   await projectManager.detectProject();
@@ -872,7 +945,10 @@ if (!language) {
     console.log(colors.dim('🔍 Auto-detected TypeScript project'));
   } else {
     // Interactive language selection
-    const componentText = componentNames.length > 1 ? `${componentNames.length} components` : componentNames[0];
+    const componentText =
+      componentNames.length > 1
+        ? `${componentNames.length} components`
+        : componentNames[0];
     language = await select({
       message: `${colors.cyan('🎨')} Select the language for ${colors.bold(componentText)}:`,
       options: [
@@ -899,20 +975,87 @@ if (!language) {
 // Fast Interactive Components List with Pagination
 async function showInteractiveComponentsList() {
   // Prepare components data with categories (fast - no network requests!)
-  const components = AVAILABLE_COMPONENTS.map(name => {
+  const components = AVAILABLE_COMPONENTS.map((name) => {
     let category = 'Other';
-    
+
     // Categorize based on component name patterns (fast local categorization)
-    if (['accordion', 'alert', 'alert-dialog', 'aspect-ratio', 'avatar', 'badge', 'border-beam', 'breadcrumb', 'button', 'calendar', 'card', 'carousel', 'chart', 'checkbox', 'collapsible', 'command', 'context-menu', 'dialog', 'drawer', 'dropdown-menu', 'form', 'globe', 'gradient-bars', 'hover-card', 'input', 'input-otp', 'label', 'marquee', 'menubar', 'multi-step-form', 'navigation-menu', 'pagination', 'particles', 'payment-modal', 'phone-mockup', 'popover', 'pricing-card', 'progress', 'pulse-card', 'radio-group', 'resizable', 'scroll-area', 'scrollbasedvelocity', 'select', 'separator', 'sheet', 'sidebar', 'skeleton', 'slider', 'sonner', 'sparkles', 'spotlight', 'switch', 'table', 'tabs', 'text-reveal', 'textarea', 'toast', 'toggle', 'toggle-group', 'tooltip', 'typewriter'].includes(name)) {
+    if (
+      [
+        'accordion',
+        'alert',
+        'alert-dialog',
+        'aspect-ratio',
+        'avatar',
+        'badge',
+        'border-beam',
+        'breadcrumb',
+        'button',
+        'calendar',
+        'card',
+        'carousel',
+        'chart',
+        'checkbox',
+        'collapsible',
+        'command',
+        'context-menu',
+        'dialog',
+        'drawer',
+        'dropdown-menu',
+        'form',
+        'globe',
+        'gradient-bars',
+        'hover-card',
+        'input',
+        'input-otp',
+        'label',
+        'marquee',
+        'menubar',
+        'multi-step-form',
+        'navigation-menu',
+        'pagination',
+        'particles',
+        'payment-modal',
+        'phone-mockup',
+        'popover',
+        'pricing-card',
+        'progress',
+        'pulse-card',
+        'radio-group',
+        'resizable',
+        'scroll-area',
+        'scrollbasedvelocity',
+        'select',
+        'separator',
+        'sheet',
+        'sidebar',
+        'skeleton',
+        'slider',
+        'sonner',
+        'sparkles',
+        'spotlight',
+        'switch',
+        'table',
+        'tabs',
+        'text-reveal',
+        'textarea',
+        'toast',
+        'toggle',
+        'toggle-group',
+        'tooltip',
+        'typewriter',
+      ].includes(name)
+    ) {
       category = 'UI Components';
-    } else if (['use-auto-resize-textarea', 'use-mobile', 'use-toast'].includes(name)) {
+    } else if (
+      ['use-auto-resize-textarea', 'use-mobile', 'use-toast'].includes(name)
+    ) {
       category = 'Hooks';
     } else if (name === 'utils') {
       category = 'Utils/Lib';
     } else {
       category = 'Blocks';
     }
-    
+
     return { name, category };
   });
 
@@ -923,45 +1066,85 @@ async function showInteractiveComponentsList() {
   const displayPage = (page) => {
     // Clear the screen properly
     process.stdout.write('\x1bc'); // Reset terminal completely
-    
+
     // Header
     console.log(colors.bold(colors.green('\n🎯 MVPBlocks Components Library')));
     console.log(colors.dim(`📦 ${components.length} components available\n`));
-    
+
     // Table header
-    console.log(colors.bold(colors.cyan('┌─────┬───────────────────────────────────┬─────────────────┐')));
-    console.log(colors.bold(colors.cyan('│ No. │ Component Name                    │ Category        │')));
-    console.log(colors.bold(colors.cyan('├─────┼───────────────────────────────────┼─────────────────┤')));
-    
+    console.log(
+      colors.bold(
+        colors.cyan(
+          '┌─────┬───────────────────────────────────┬─────────────────┐',
+        ),
+      ),
+    );
+    console.log(
+      colors.bold(
+        colors.cyan(
+          '│ No. │ Component Name                    │ Category        │',
+        ),
+      ),
+    );
+    console.log(
+      colors.bold(
+        colors.cyan(
+          '├─────┼───────────────────────────────────┼─────────────────┤',
+        ),
+      ),
+    );
+
     // Table rows
     const startIdx = page * ITEMS_PER_PAGE;
     const endIdx = Math.min(startIdx + ITEMS_PER_PAGE, components.length);
-    
+
     for (let i = startIdx; i < endIdx; i++) {
       const component = components[i];
       const rowNum = String(i + 1).padStart(3);
       const name = component.name.padEnd(33);
       const category = component.category.padEnd(15);
-      
-      console.log(colors.white(`│ ${colors.yellow(rowNum)} │ ${colors.green(name)} │ ${colors.blue(category)} │`));
+
+      console.log(
+        colors.white(
+          `│ ${colors.yellow(rowNum)} │ ${colors.green(name)} │ ${colors.blue(category)} │`,
+        ),
+      );
     }
-    
+
     // Fill empty rows if needed
     const remainingRows = ITEMS_PER_PAGE - (endIdx - startIdx);
     for (let i = 0; i < remainingRows; i++) {
-      console.log(colors.dim('│     │                                   │                 │'));
+      console.log(
+        colors.dim(
+          '│     │                                   │                 │',
+        ),
+      );
     }
-    
+
     // Table footer
-    console.log(colors.bold(colors.cyan('└─────┴───────────────────────────────────┴─────────────────┘')));
-    
+    console.log(
+      colors.bold(
+        colors.cyan(
+          '└─────┴───────────────────────────────────┴─────────────────┘',
+        ),
+      ),
+    );
+
     // Pagination info
-    console.log(colors.dim(`\nPage ${page + 1} of ${totalPages} (showing ${startIdx + 1}-${endIdx} of ${components.length})`));
-    
+    console.log(
+      colors.dim(
+        `\nPage ${page + 1} of ${totalPages} (showing ${startIdx + 1}-${endIdx} of ${components.length})`,
+      ),
+    );
+
     // Controls
     console.log(colors.bold(colors.yellow('\n📋 Navigation:')));
     console.log(colors.dim('  A - Previous page, D - Next page, ESC - Exit'));
-    console.log(colors.dim(`\n💡 Use 'mvpblocks add <component-name>' to install a component`));
+    console.log(
+      colors.dim(
+        `\n💡 Use 'mvpblocks add <component-name>' to install a component`,
+      ),
+    );
   };
 
   displayPage(currentPage);
@@ -974,7 +1157,7 @@ async function showInteractiveComponentsList() {
   return new Promise((resolve) => {
     const handleInput = (chunk) => {
       const key = chunk.toString();
-      
+
       // ESC key
       if (key === '\u001b') {
         process.stdin.setRawMode(false);
@@ -983,7 +1166,7 @@ async function showInteractiveComponentsList() {
         resolve();
         return;
       }
-      
+
       // Handle navigation - only accept single key presses
       if (key === 'a' || key === 'A') {
         if (currentPage > 0) {
@@ -1058,17 +1241,25 @@ async function fetchComponentData(componentName) {
 }
 
 // Helper function to process registry dependencies recursively
-async function processRegistryDependencies(registryDependencies, projectManager, targetLanguage) {
+async function processRegistryDependencies(
+  registryDependencies,
+  projectManager,
+  targetLanguage,
+) {
   if (!registryDependencies?.length) return;
-  
-  console.log(colors.blue(`📦 Processing ${registryDependencies.length} registry dependencies...`));
-  
+
+  console.log(
+    colors.blue(
+      `📦 Processing ${registryDependencies.length} registry dependencies...`,
+    ),
+  );
+
   for (const registryItem of registryDependencies) {
     try {
       // Handle both full URLs and component names
       let registryUrl;
       let componentName;
-      
+
       if (registryItem.startsWith('http')) {
         // Full URL like "https://blocks.mvp-subha.me/r/sidebar.json"
         registryUrl = registryItem;
@@ -1078,45 +1269,73 @@ async function processRegistryDependencies(registryDependencies, projectManager,
         componentName = registryItem;
         registryUrl = `${COMPONENTS_BASE_URL}/${componentName}.json`;
       }
-      
+
       console.log(colors.dim(`  → Fetching ${registryUrl}`));
       const response = await fetch(registryUrl);
       if (!response.ok) {
-        console.log(colors.yellow(`  ⚠️  Warning: Could not fetch ${registryUrl} (${response.status})`));
+        console.log(
+          colors.yellow(
+            `  ⚠️  Warning: Could not fetch ${registryUrl} (${response.status})`,
+          ),
+        );
         continue;
       }
-      
+
       const registryComponentData = await response.json();
-      
-      console.log(colors.dim(`  → Installing registry component: ${componentName}`));
-      
+
+      console.log(
+        colors.dim(`  → Installing registry component: ${componentName}`),
+      );
+
       // Install files for this registry component
       if (registryComponentData.files?.length) {
         for (const file of registryComponentData.files) {
-          await downloadFileFromGitHub(file, registryComponentData, projectManager);
+          await downloadFileFromGitHub(
+            file,
+            registryComponentData,
+            projectManager,
+          );
         }
       }
-      
+
       // Recursively process its registry dependencies
       if (registryComponentData.registryDependencies?.length) {
-        await processRegistryDependencies(registryComponentData.registryDependencies, projectManager, targetLanguage);
+        await processRegistryDependencies(
+          registryComponentData.registryDependencies,
+          projectManager,
+          targetLanguage,
+        );
       }
-      
+
       // Install its npm dependencies
       if (registryComponentData.dependencies?.length) {
         const pm = detectPackageManager();
-        console.log(colors.dim(`  → Installing npm dependencies for ${componentName}: ${registryComponentData.dependencies.join(', ')}`));
-        
+        console.log(
+          colors.dim(
+            `  → Installing npm dependencies for ${componentName}: ${registryComponentData.dependencies.join(', ')}`,
+          ),
+        );
+
         try {
-          const cmd = pm === 'npm' ? ['install', ...registryComponentData.dependencies] : ['add', ...registryComponentData.dependencies];
+          const cmd =
+            pm === 'npm'
+              ? ['install', ...registryComponentData.dependencies]
+              : ['add', ...registryComponentData.dependencies];
           await execa(pm, cmd, { stdio: 'pipe' }); // Use pipe to avoid spam
         } catch (err) {
-          console.log(colors.yellow(`  ⚠️  Warning: Failed to install dependencies for ${componentName}`));
+          console.log(
+            colors.yellow(
+              `  ⚠️  Warning: Failed to install dependencies for ${componentName}`,
+            ),
+          );
         }
       }
-      
     } catch (error) {
-      console.log(colors.yellow(`  ⚠️  Warning: Failed to process registry dependency ${registryItem}: ${error.message}`));
+      console.log(
+        colors.yellow(
+          `  ⚠️  Warning: Failed to process registry dependency ${registryItem}: ${error.message}`,
+        ),
+      );
     }
   }
 }
@@ -1232,7 +1451,10 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
   const fileName = path.basename(targetPath);
   const isCss = fileName.endsWith('.css');
   const isHook = targetPath.includes('/hooks/') || fileName.startsWith('use-');
-  const isLib = targetPath.includes('/lib/') || fileName === 'utils.ts' || fileName === 'utils.js';
+  const isLib =
+    targetPath.includes('/lib/') ||
+    fileName === 'utils.ts' ||
+    fileName === 'utils.js';
 
   // Use ProjectManager for smart path resolution
   let targetDir;
@@ -1243,7 +1465,7 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
     targetDir = projectManager.getResolvedPath('hooks');
   } else if (isLib) {
     targetDir = projectManager.getResolvedPath('lib');
-    
+
     // Skip utils.ts/utils.js if it already exists
     const utilsPath = path.join(targetDir, fileName);
     if (fs.existsSync(utilsPath)) {
@@ -1256,7 +1478,8 @@ async function downloadFileFromGitHub(file, componentData, projectManager) {
   } else {
     // For block components, use a more organized structure
     const componentsDir = projectManager.getResolvedPath('components');
-    const componentType = componentData.type === 'registry:block' ? 'mvpblocks' : 'ui';
+    const componentType =
+      componentData.type === 'registry:block' ? 'mvpblocks' : 'ui';
     targetDir = path.join(componentsDir, componentType);
   }
 
@@ -1289,7 +1512,9 @@ async function installSingleComponent(componentName, projectManager, language) {
   const componentData = await fetchComponentData(componentName);
 
   if (!componentData) {
-    throw new Error(`Component '${componentName}' not found. Use 'mvpblocks list' to see available components.`);
+    throw new Error(
+      `Component '${componentName}' not found. Use 'mvpblocks list' to see available components.`,
+    );
   }
 
   // Create utils file if it doesn't exist using smart path resolution
@@ -1311,10 +1536,13 @@ export function cn(...inputs) {
   const utilsPath = projectManager.getResolvedPath('lib');
   const tsUtilsPath = path.join(utilsPath, 'utils.ts');
   const jsUtilsPath = path.join(utilsPath, 'utils.js');
-  
+
   // Check if any utils file already exists
   if (!fs.existsSync(tsUtilsPath) && !fs.existsSync(jsUtilsPath)) {
-    const cnPath = path.join(utilsPath, `utils.${language === 'js' ? 'js' : 'ts'}`);
+    const cnPath = path.join(
+      utilsPath,
+      `utils.${language === 'js' ? 'js' : 'ts'}`,
+    );
     await fs.promises.mkdir(utilsPath, { recursive: true });
     await fs.promises.writeFile(cnPath, cnContent[language], 'utf8');
     console.log(
@@ -1335,41 +1563,68 @@ export function cn(...inputs) {
 
   // Install registry dependencies first (recursively install other components)
   if (componentData.registryDependencies?.length) {
-    await processRegistryDependencies(componentData.registryDependencies, projectManager, language);
+    await processRegistryDependencies(
+      componentData.registryDependencies,
+      projectManager,
+      language,
+    );
   }
 
   return componentData;
 }
 
 // Function to install multiple components
-async function installMultipleComponents(componentNames, projectManager, language) {
+async function installMultipleComponents(
+  componentNames,
+  projectManager,
+  language,
+) {
   const allDependencies = new Set();
   const installedComponents = [];
 
-  console.log(colors.blue(`📦 Installing ${componentNames.length} components: ${componentNames.join(', ')}`));
+  console.log(
+    colors.blue(
+      `📦 Installing ${componentNames.length} components: ${componentNames.join(', ')}`,
+    ),
+  );
 
   for (const componentName of componentNames) {
     const s = spinner();
     s.start(colors.white(`🚀 Installing ${colors.bold(componentName)}...`));
 
     try {
-      const componentData = await installSingleComponent(componentName, projectManager, language);
-      
+      const componentData = await installSingleComponent(
+        componentName,
+        projectManager,
+        language,
+      );
+
       // Collect dependencies
       if (componentData.dependencies?.length) {
-        componentData.dependencies.forEach(dep => allDependencies.add(dep));
+        componentData.dependencies.forEach((dep) => allDependencies.add(dep));
       }
 
       installedComponents.push(componentName);
-      s.stop(colors.green(`✅ ${colors.bold(componentName)} installed successfully!`));
+      s.stop(
+        colors.green(
+          `✅ ${colors.bold(componentName)} installed successfully!`,
+        ),
+      );
     } catch (err) {
       s.stop(colors.red(`❌ Failed to install ${componentName}`));
-      console.error(colors.red(`Error installing ${componentName}:`), err.message);
-      
+      console.error(
+        colors.red(`Error installing ${componentName}:`),
+        err.message,
+      );
+
       if (err.message.includes('not found')) {
-        console.log(colors.yellow(`💡 Check the spelling of '${componentName}' or use 'mvpblocks list' to see available components`));
+        console.log(
+          colors.yellow(
+            `💡 Check the spelling of '${componentName}' or use 'mvpblocks list' to see available components`,
+          ),
+        );
       }
-      
+
       // Continue with other components instead of stopping
       continue;
     }
@@ -1409,7 +1664,11 @@ async function installMultipleComponents(componentNames, projectManager, languag
 
 // Main component installation logic
 try {
-  const installedComponents = await installMultipleComponents(componentNames, projectManager, language);
+  const installedComponents = await installMultipleComponents(
+    componentNames,
+    projectManager,
+    language,
+  );
 
   if (installedComponents.length === 0) {
     console.log(colors.red('❌ No components were installed successfully.'));
@@ -1417,7 +1676,10 @@ try {
   }
 
   // Success message with additional info
-  const componentText = installedComponents.length === 1 ? installedComponents[0] : `${installedComponents.length} components`;
+  const componentText =
+    installedComponents.length === 1
+      ? installedComponents[0]
+      : `${installedComponents.length} components`;
   console.log(`
 ${colors.bold(colors.green('🎉 Installation Complete!'))}
 

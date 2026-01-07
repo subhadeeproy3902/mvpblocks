@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import type { UIMessage } from 'ai';
 import type { ComponentProps, HTMLAttributes } from 'react';
@@ -17,7 +13,7 @@ export const Message = ({ className, from, ...props }: MessageProps) => (
       'group flex w-full items-end justify-end gap-2 py-4',
       from === 'user' ? 'is-user' : 'is-assistant flex-row-reverse justify-end',
       '[&>div]:max-w-[80%]',
-      className
+      className,
     )}
     {...props}
   />
@@ -32,11 +28,11 @@ export const MessageContent = ({
 }: MessageContentProps) => (
   <div
     className={cn(
-      'flex flex-col gap-2 overflow-hidden rounded-lg px-4 py-3 text-foreground text-sm',
+      'text-foreground flex flex-col gap-2 overflow-hidden rounded-lg px-4 py-3 text-sm',
       'group-[.is-user]:bg-secondary/50 group-[.is-user]:text-primary-foreground',
       'group-[.is-assistant]:bg-background group-[.is-assistant]:text-foreground',
       'is-user:dark',
-      className
+      className,
     )}
     {...props}
   >
@@ -55,7 +51,7 @@ export const MessageAvatar = ({
   className,
   ...props
 }: MessageAvatarProps) => (
-  <Avatar className={cn('size-8 ring-1 ring-border', className)} {...props}>
+  <Avatar className={cn('ring-border size-8 ring-1', className)} {...props}>
     <AvatarImage alt="" className="mt-0 mb-0" src={src} />
     <AvatarFallback>{name?.slice(0, 2) || 'ME'}</AvatarFallback>
   </Avatar>

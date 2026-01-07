@@ -2846,93 +2846,77 @@ export const blocks: Registry = [
     ),
   },
   {
-    name: 'floating-dock-demo',
+    name: 'expandable-meeting-card',
     author: 'nuelst',
     type: 'registry:block',
     description:
-      'A floating dock navigation demo with smooth hover animations. Features interactive icons that scale on hover, with separate desktop and mobile layouts.',
-    categories: ['navigation', 'interactive', 'animation'],
+      'An interactive meeting card that expands to show attendees, location, and meeting details with smooth blur animations.',
+    categories: ['card', 'interactive', 'animation'],
     dependencies: ['motion/react', 'lucide-react', 'react'],
     registryDependencies: [
-      'https://blocks.mvp-subha.me/r/floating-dock.json',
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/avatar.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/tooltip.json',
       'https://blocks.mvp-subha.me/r/utils.json',
     ],
     files: [
       {
-        path: '@/components/mvpblocks/basics/floating-dock-demo.tsx',
+        path: '@/components/mvpblocks/cards/expandable-meeting-card.tsx',
         type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/floating-dock-demo'),
+      () => import('../components/mvpblocks/cards/expandable-meeting-card'),
     ),
   },
   {
-    name: 'pointer-highlight-demo',
+    name: 'expandable-product-card',
     author: 'nuelst',
     type: 'registry:block',
     description:
-      'A demo of the pointer highlight component showcasing animated border and pointer effects around text. Perfect for highlighting important words or phrases.',
-    categories: ['animation', 'text', 'highlight'],
-    dependencies: ['motion/react', 'react'],
+      'A product card that expands to reveal detailed features, specifications, and purchase options with smooth animations.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
     registryDependencies: [
-      'https://blocks.mvp-subha.me/r/pointer-highlight.json',
-      'https://blocks.mvp-subha.me/r/utils.json',
-    ],
-    files: [
-      {
-        path: '@/components/mvpblocks/basics/pointer-highlight-demo.tsx',
-        type: 'registry:block',
-      },
-    ],
-    component: React.lazy(
-      () => import('../components/mvpblocks/basics/pointer-highlight-demo'),
-    ),
-  },
-  {
-    name: 'text-type-demo',
-    author: 'nuelst',
-    type: 'registry:block',
-    description:
-      'A demo of the text typing animation component. Showcases typing, deleting, and looping text effects with customizable speed and cursor.',
-    categories: ['animation', 'text', 'typing'],
-    dependencies: ['gsap', 'react'],
-    registryDependencies: [
-      'https://blocks.mvp-subha.me/r/text-type.json',
-    ],
-    files: [
-      {
-        path: '@/components/mvpblocks/basics/text-type-demo.tsx',
-        type: 'registry:block',
-      },
-    ],
-    component: React.lazy(
-      () => import('../components/mvpblocks/basics/text-type-demo'),
-    ),
-  },
-  {
-    name: 'target-cursor-demo',
-    author: 'nuelst',
-    type: 'registry:block',
-    description:
-      'A demo of the target cursor component showcasing custom animated cursor with corner tracking. Hover over elements to see the interactive cursor effect.',
-    categories: ['animation', 'cursor', 'interactive'],
-    dependencies: ['gsap', 'react'],
-    registryDependencies: [
-      'https://blocks.mvp-subha.me/r/target-cursor.json',
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
       'https://blocks.mvp-subha.me/r/button.json',
       'https://blocks.mvp-subha.me/r/utils.json',
     ],
     files: [
       {
-        path: '@/components/mvpblocks/basics/target-cursor-demo.tsx',
+        path: '@/components/mvpblocks/cards/expandable-product-card.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/cards/expandable-product-card'),
+    ),
+  },
+  {
+    name: 'expandable-weather-card',
+    author: 'nuelst',
+    type: 'registry:block',
+    description:
+      'A weather card that expands to show detailed weather information and 5-day forecast with smooth blur animations.',
+    categories: ['card', 'interactive', 'animation'],
+    dependencies: ['motion/react', 'lucide-react', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/expandable-weather-card.tsx',
 
         type: 'registry:block',
       },
     ],
     component: React.lazy(
-      () => import('../components/mvpblocks/basics/target-cursor-demo'),
-
+      () => import('../components/mvpblocks/cards/expandable-weather-card'),
     ),
   },
 ];

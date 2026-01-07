@@ -13,18 +13,18 @@ export default function TargetCursorDemo() {
       />
 
       <div className="mx-auto max-w-2xl space-y-8 text-center">
-        <h1 className="text-3xl font-bold text-foreground md:text-4xl">
+        <h1 className="text-foreground text-3xl font-bold md:text-4xl">
           Hover over the elements below
         </h1>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button className="cursor-target">Click me!</Button>
-          <div className="cursor-target flex h-20 w-40 items-center justify-center rounded-lg border-2 border-primary bg-secondary text-foreground">
+          <div className="cursor-target border-primary bg-secondary text-foreground flex h-20 w-40 items-center justify-center rounded-lg border-2">
             Hover target
           </div>
           <button
             type="button"
-            className="cursor-target rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+            className="cursor-target bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2"
           >
             Link target
           </button>
@@ -38,4 +38,3 @@ export default function TargetCursorDemo() {
     </div>
   );
 }
-

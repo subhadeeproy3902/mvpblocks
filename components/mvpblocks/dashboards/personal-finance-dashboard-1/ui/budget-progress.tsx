@@ -1,50 +1,50 @@
-"use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { AlertTriangle, CheckCircle2, FileText } from "lucide-react";
+'use client';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { AlertTriangle, CheckCircle2, FileText } from 'lucide-react';
 
 const categories = [
   {
-    name: "Food & Dining",
+    name: 'Food & Dining',
     spent: 320,
     budget: 500,
-    color: "bg-blue-500",
-    icon: "🍔",
+    color: 'bg-blue-500',
+    icon: '🍔',
   },
   {
-    name: "Transportation",
+    name: 'Transportation',
     spent: 180,
     budget: 300,
-    color: "bg-green-500",
-    icon: "🚗",
+    color: 'bg-green-500',
+    icon: '🚗',
   },
   {
-    name: "Entertainment",
+    name: 'Entertainment',
     spent: 120,
     budget: 200,
-    color: "bg-purple-500",
-    icon: "🎬",
+    color: 'bg-purple-500',
+    icon: '🎬',
   },
   {
-    name: "Shopping",
+    name: 'Shopping',
     spent: 450,
     budget: 400,
-    color: "bg-red-500",
-    icon: "🛍️",
+    color: 'bg-red-500',
+    icon: '🛍️',
   },
   {
-    name: "Utilities",
+    name: 'Utilities',
     spent: 220,
     budget: 250,
-    color: "bg-yellow-500",
-    icon: "💡",
+    color: 'bg-yellow-500',
+    icon: '💡',
   },
   {
-    name: "Healthcare",
+    name: 'Healthcare',
     spent: 150,
     budget: 200,
-    color: "bg-pink-500",
-    icon: "🏥",
+    color: 'bg-pink-500',
+    icon: '🏥',
   },
 ];
 
@@ -53,19 +53,19 @@ export default function BudgetProgress() {
   const totalBudget = categories.reduce((sum, cat) => sum + cat.budget, 0);
 
   return (
-    <Card className="bg-background rounded-lg p-0 gap-0 overflow-hidden shadow-none max-h-[30rem]">
-      <CardHeader className="p-3 !pb-2 flex items-center justify-center text-center m-auto bg-background border-b h-16 w-full">
-        <CardTitle className="flex items-center justify-between text-center m-auto w-full h-full">
+    <Card className="bg-background max-h-[30rem] gap-0 overflow-hidden rounded-lg p-0 shadow-none">
+      <CardHeader className="bg-background m-auto flex h-16 w-full items-center justify-center border-b p-3 !pb-2 text-center">
+        <CardTitle className="m-auto flex h-full w-full items-center justify-between text-center">
           <div className="flex items-center gap-2">
-            <FileText className="size-6 text-primary" />
+            <FileText className="text-primary size-6" />
             <span>Budget Tracking</span>
           </div>
-          <span className="text-base md:text-lg font-medium">
+          <span className="text-base font-medium md:text-lg">
             ${totalSpent} / ${totalBudget}
           </span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 p-3 overflow-auto bg-background h-full">
+      <CardContent className="bg-background h-full space-y-3 overflow-auto p-3">
         {categories.map((category) => {
           const percentage = (category.spent / category.budget) * 100;
           const isOverBudget = category.spent > category.budget;
@@ -74,7 +74,7 @@ export default function BudgetProgress() {
           return (
             <div
               key={category.name}
-              className="space-y-3 p-5 rounded-md border bg-gradient-to-tl from-secondary/30"
+              className="from-secondary/30 space-y-3 rounded-md border bg-gradient-to-tl p-5"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 font-medium">
@@ -90,7 +90,7 @@ export default function BudgetProgress() {
                   )}
                   <span
                     className={`text-sm font-semibold ${
-                      isOverBudget ? "text-red-500" : ""
+                      isOverBudget ? 'text-red-500' : ''
                     }`}
                   >
                     ${category.spent} / ${category.budget}
@@ -102,22 +102,22 @@ export default function BudgetProgress() {
                 value={percentage > 100 ? 100 : percentage}
                 className={`h-2 ${
                   isOverBudget
-                    ? "bg-red-500/30 [&>div]:bg-red-500"
+                    ? 'bg-red-500/30 [&>div]:bg-red-500'
                     : isCloseToBudget
-                    ? "bg-yellow-400/30 [&>div]:bg-yellow-400"
-                    : "bg-green-500/30 [&>div]:bg-green-500"
+                      ? 'bg-yellow-400/30 [&>div]:bg-yellow-400'
+                      : 'bg-green-500/30 [&>div]:bg-green-500'
                 }`}
               />
 
               <div className="flex justify-between text-xs">
                 <span>{percentage.toFixed(1)}% of budget</span>
                 {isOverBudget && (
-                  <span className="text-red-500 font-semibold">
+                  <span className="font-semibold text-red-500">
                     Over by ${category.spent - category.budget}
                   </span>
                 )}
                 {isCloseToBudget && !isOverBudget && (
-                  <span className="text-yellow-400 font-semibold">
+                  <span className="font-semibold text-yellow-400">
                     Close to limit
                   </span>
                 )}

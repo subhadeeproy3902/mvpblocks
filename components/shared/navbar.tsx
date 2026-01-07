@@ -31,7 +31,7 @@ export function NavbarDemo() {
       link: '/templates',
     },
     {
-      name: "Hire Us",
+      name: 'Hire Us',
       link: 'https://aura-devs.netlify.app',
     },
     {
@@ -82,18 +82,16 @@ export function NavbarDemo() {
               key={`mobile-link-${idx}`}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="relative text-neutral-600 dark:text-neutral-300 flex items-center justify-between"
+              className="relative flex items-center justify-between text-neutral-600 dark:text-neutral-300"
             >
               <span className="block">{item.name}</span>
-              {
-            item.name === "Templates" && (
-              <button className="z-50 group relative rounded-md border-2 border-primary bg-primary px-1 py-0.5 font-medium text-white duration-1000 hover:shadow-lg hover:shadow-red-500/50 text-[9px] ml-1 inline-block cursor-pointer select-none pointer-events-none">
-                <span className="absolute left-0 top-0 size-full rounded-sm border border-dashed border-white shadow-inner shadow-white/30 group-active:shadow-white/10"></span>
-                <span className="absolute left-0 top-0 size-full rotate-180 rounded-sm border-white shadow-inner shadow-black/30 group-active:shadow-black/10"></span>
-                New
-              </button>
-            )
-          }
+              {item.name === 'Templates' && (
+                <button className="group border-primary bg-primary pointer-events-none relative z-50 ml-1 inline-block cursor-pointer rounded-md border-2 px-1 py-0.5 text-[9px] font-medium text-white duration-1000 select-none hover:shadow-lg hover:shadow-red-500/50">
+                  <span className="absolute top-0 left-0 size-full rounded-sm border border-dashed border-white shadow-inner shadow-white/30 group-active:shadow-white/10"></span>
+                  <span className="absolute top-0 left-0 size-full rotate-180 rounded-sm border-white shadow-inner shadow-black/30 group-active:shadow-black/10"></span>
+                  New
+                </button>
+              )}
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">

@@ -44,10 +44,10 @@ export function PointerHighlight({
 
   return (
     <div
-      className={cn('relative w-fit inline-block', containerClassName)}
+      className={cn('relative inline-block w-fit', containerClassName)}
       ref={containerRef}
     >
-      <div className="relative z-10 text-foreground px-1 py-0.5">
+      <div className="text-foreground relative z-10 px-1 py-0.5">
         {children}
       </div>
       {dimensions.width > 0 && dimensions.height > 0 && (
@@ -59,7 +59,7 @@ export function PointerHighlight({
         >
           <motion.div
             className={cn(
-              'absolute inset-0 border border-primary bg-primary rounded-sm',
+              'border-primary bg-primary absolute inset-0 rounded-sm border',
               rectangleClassName,
             )}
             initial={{
@@ -92,9 +92,7 @@ export function PointerHighlight({
               ease: 'easeInOut',
             }}
           >
-            <Pointer
-              className={cn('h-5 w-5 text-primary', pointerClassName)}
-            />
+            <Pointer className={cn('text-primary h-5 w-5', pointerClassName)} />
           </motion.div>
         </motion.div>
       )}
@@ -120,4 +118,3 @@ const Pointer = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
     </svg>
   );
 };
-

@@ -75,7 +75,7 @@ export default function SavingsGoals() {
           return (
             <div
               key={goal.name}
-              className="space-y-3 rounded-md border bg-gradient-to-tl from-secondary/30 p-5"
+              className="from-secondary/30 space-y-3 rounded-md border bg-gradient-to-tl p-5"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">

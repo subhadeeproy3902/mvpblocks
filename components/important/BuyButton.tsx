@@ -47,9 +47,15 @@ export function BuyDialog({
   const [showThankYou, setShowThankYou] = useState(false);
 
   // Use theme-specific values if themeSelector is provided
-  const currentPrice = themeSelector ? themeSelector.prices[themeSelector.selectedTheme] : price;
-  const currentImage = themeSelector ? themeSelector.images[themeSelector.selectedTheme] : image;
-  const currentDownloadUrl = themeSelector ? themeSelector.downloadUrls[themeSelector.selectedTheme] : downloadUrl;
+  const currentPrice = themeSelector
+    ? themeSelector.prices[themeSelector.selectedTheme]
+    : price;
+  const currentImage = themeSelector
+    ? themeSelector.images[themeSelector.selectedTheme]
+    : image;
+  const currentDownloadUrl = themeSelector
+    ? themeSelector.downloadUrls[themeSelector.selectedTheme]
+    : downloadUrl;
 
   const handleCheckout = async () => {
     if (!email) {
@@ -97,7 +103,7 @@ export function BuyDialog({
 
         <DialogContent className="flex max-w-md flex-col gap-2 overflow-hidden rounded-xl bg-neutral-100 p-0 shadow-lg dark:bg-neutral-900">
           <div className="relative px-6 py-10">
-            <div className="absolute -top-10 left-0 h-16 w-full bg-primary/30 blur-2xl"></div>
+            <div className="bg-primary/30 absolute -top-10 left-0 h-16 w-full blur-2xl"></div>
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between rounded-md p-4">
                 <div className="flex w-full gap-2">

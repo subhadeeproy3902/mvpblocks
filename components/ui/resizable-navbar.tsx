@@ -78,9 +78,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-            child as React.ReactElement<{ visible?: boolean }>,
-            { visible },
-          )
+              child as React.ReactElement<{ visible?: boolean }>,
+              { visible },
+            )
           : child,
       )}
     </motion.div>
@@ -133,7 +133,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           prefetch={false}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 flex items-center justify-between"
+          className="relative flex items-center justify-between px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
         >
@@ -144,15 +144,13 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             />
           )}
           <span className="relative z-20">{item.name}</span>
-          {
-            item.name === "Templates" && (
-              <button className="z-50 group relative rounded-md border-2 border-primary bg-primary px-1 py-0.5 font-medium text-white duration-1000 hover:shadow-lg hover:shadow-red-500/50 text-[9px] ml-1 inline-block cursor-pointer select-none pointer-events-none">
-                <span className="absolute left-0 top-0 size-full rounded-sm border border-dashed border-white shadow-inner shadow-white/30 group-active:shadow-white/10"></span>
-                <span className="absolute left-0 top-0 size-full rotate-180 rounded-sm border-white shadow-inner shadow-black/30 group-active:shadow-black/10"></span>
-                New
-              </button>
-            )
-          }
+          {item.name === 'Templates' && (
+            <button className="group border-primary bg-primary pointer-events-none relative z-50 ml-1 inline-block cursor-pointer rounded-md border-2 px-1 py-0.5 text-[9px] font-medium text-white duration-1000 select-none hover:shadow-lg hover:shadow-red-500/50">
+              <span className="absolute top-0 left-0 size-full rounded-sm border border-dashed border-white shadow-inner shadow-white/30 group-active:shadow-white/10"></span>
+              <span className="absolute top-0 left-0 size-full rotate-180 rounded-sm border-white shadow-inner shadow-black/30 group-active:shadow-black/10"></span>
+              New
+            </button>
+          )}
         </Link>
       ))}
     </motion.div>
@@ -279,9 +277,9 @@ export const NavbarButton = ({
   className?: string;
   variant?: 'primary' | 'secondary' | 'dark' | 'gradient';
 } & (
-    | React.ComponentPropsWithoutRef<'a'>
-    | React.ComponentPropsWithoutRef<'button'>
-  )) => {
+  | React.ComponentPropsWithoutRef<'a'>
+  | React.ComponentPropsWithoutRef<'button'>
+)) => {
   const baseStyles =
     'px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center';
 

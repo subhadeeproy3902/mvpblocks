@@ -40,7 +40,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
         <Button
           size="icon"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-sm !bg-primary text-white hover:!bg-primary"
+          className="!bg-primary hover:!bg-primary rounded-sm text-white"
           aria-label="Toggle sidebar"
         >
           <Menu className="size-5" />
@@ -69,7 +69,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
                   collapsed ? 'm-auto justify-center' : 'justify-start',
                 )}
               >
-                <DollarSign className="size-8 text-primary" />
+                <DollarSign className="text-primary size-8" />
                 {!collapsed && (
                   <h1 className="text-2xl font-medium">FinDash Pro</h1>
                 )}
@@ -92,8 +92,8 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
                 className={cn(
                   'group flex items-center rounded-sm border border-transparent p-3 text-sm font-medium transition-all duration-300 hover:scale-105',
                   item.current
-                    ? 'border-primary/30 bg-gradient-to-br from-primary/10 text-primary'
-                    : 'text-muted-foreground from-primary/10 hover:border-primary/30 hover:bg-gradient-to-br hover:text-primary',
+                    ? 'border-primary/30 from-primary/10 text-primary bg-gradient-to-br'
+                    : 'text-muted-foreground from-primary/10 hover:border-primary/30 hover:text-primary hover:bg-gradient-to-br',
                 )}
                 onClick={() => setMobileOpen(false)}
               >
@@ -115,7 +115,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
             <button
               className={cn(
                 'group flex items-center rounded-sm border border-transparent px-3 py-3 text-sm font-medium transition-all duration-300 hover:scale-105',
-                'border-primary/30 bg-gradient-to-br from-primary/10 text-primary',
+                'border-primary/30 from-primary/10 text-primary bg-gradient-to-br',
               )}
               aria-label="Notifications"
               onClick={() => setMobileOpen(false)}
@@ -131,7 +131,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
             <button
               className={cn(
                 'group flex items-center rounded-sm border border-transparent px-3 py-3 text-sm font-medium transition-all duration-300 hover:scale-105',
-                'border-primary/30 bg-gradient-to-br from-primary/10 text-primary',
+                'border-primary/30 from-primary/10 text-primary bg-gradient-to-br',
               )}
               aria-label="Profile"
               onClick={() => setMobileOpen(false)}
@@ -149,7 +149,7 @@ export default function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
           {/* Footer */}
           {!collapsed && (
             <div className="h-20 w-full border-t p-5">
-              <div className="w-full rounded-sm border border-primary/30 bg-gradient-to-b from-primary/20 p-3 text-center text-xs text-primary">
+              <div className="border-primary/30 from-primary/20 text-primary w-full rounded-sm border bg-gradient-to-b p-3 text-center text-xs">
                 💰 Save more this month !
               </div>
             </div>

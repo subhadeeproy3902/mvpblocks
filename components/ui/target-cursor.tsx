@@ -58,8 +58,9 @@ export const TargetCursor: React.FC<TargetCursorProps> = ({
     }
 
     const cursor = cursorRef.current;
-    cornersRef.current =
-      cursor.querySelectorAll<HTMLDivElement>('.target-cursor-corner');
+    cornersRef.current = cursor.querySelectorAll<HTMLDivElement>(
+      '.target-cursor-corner',
+    );
 
     let activeTarget: Element | null = null;
     let currentLeaveHandler: (() => void) | null = null;
@@ -83,13 +84,11 @@ export const TargetCursor: React.FC<TargetCursorProps> = ({
       if (spinTl.current) {
         spinTl.current.kill();
       }
-      spinTl.current = gsap
-        .timeline({ repeat: -1 })
-        .to(cursor, {
-          rotation: '+=360',
-          duration: spinDuration,
-          ease: 'none',
-        });
+      spinTl.current = gsap.timeline({ repeat: -1 }).to(cursor, {
+        rotation: '+=360',
+        duration: spinDuration,
+        ease: 'none',
+      });
     };
 
     createSpinTimeline();
@@ -110,10 +109,8 @@ export const TargetCursor: React.FC<TargetCursorProps> = ({
       corners.forEach((corner, i) => {
         const currentX = gsap.getProperty(corner, 'x') as number;
         const currentY = gsap.getProperty(corner, 'y') as number;
-        const targetX =
-          targetCornerPositionsRef.current![i].x - cursorX;
-        const targetY =
-          targetCornerPositionsRef.current![i].y - cursorY;
+        const targetX = targetCornerPositionsRef.current![i].x - cursorX;
+        const targetY = targetCornerPositionsRef.current![i].y - cursorY;
         const finalX = currentX + (targetX - currentX) * strength;
         const finalY = currentY + (targetY - currentY) * strength;
         const duration = strength >= 0.99 ? (parallaxOn ? 0.2 : 0) : 0.05;
@@ -326,13 +323,11 @@ export const TargetCursor: React.FC<TargetCursorProps> = ({
     if (isMobile || !cursorRef.current || !spinTl.current) return;
     if (spinTl.current.isActive()) {
       spinTl.current.kill();
-      spinTl.current = gsap
-        .timeline({ repeat: -1 })
-        .to(cursorRef.current, {
-          rotation: '+=360',
-          duration: spinDuration,
-          ease: 'none',
-        });
+      spinTl.current = gsap.timeline({ repeat: -1 }).to(cursorRef.current, {
+        rotation: '+=360',
+        duration: spinDuration,
+        ease: 'none',
+      });
     }
   }, [spinDuration, isMobile]);
 
@@ -343,31 +338,30 @@ export const TargetCursor: React.FC<TargetCursorProps> = ({
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-0 h-0 pointer-events-none z-[9999]"
+      className="pointer-events-none fixed top-0 left-0 z-[9999] h-0 w-0"
       style={{ willChange: 'transform' }}
     >
       <div
         ref={dotRef}
-        className="absolute top-1/2 left-1/2 w-1 h-1 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2"
+        className="bg-primary absolute top-1/2 left-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{ willChange: 'transform' }}
       />
       <div
-        className="target-cursor-corner absolute top-1/2 left-1/2 w-3 h-3 border-[3px] border-primary -translate-x-[150%] -translate-y-[150%] border-r-0 border-b-0"
+        className="target-cursor-corner border-primary absolute top-1/2 left-1/2 h-3 w-3 -translate-x-[150%] -translate-y-[150%] border-[3px] border-r-0 border-b-0"
         style={{ willChange: 'transform' }}
       />
       <div
-        className="target-cursor-corner absolute top-1/2 left-1/2 w-3 h-3 border-[3px] border-primary translate-x-1/2 -translate-y-[150%] border-l-0 border-b-0"
+        className="target-cursor-corner border-primary absolute top-1/2 left-1/2 h-3 w-3 translate-x-1/2 -translate-y-[150%] border-[3px] border-b-0 border-l-0"
         style={{ willChange: 'transform' }}
       />
       <div
-        className="target-cursor-corner absolute top-1/2 left-1/2 w-3 h-3 border-[3px] border-primary translate-x-1/2 translate-y-1/2 border-l-0 border-t-0"
+        className="target-cursor-corner border-primary absolute top-1/2 left-1/2 h-3 w-3 translate-x-1/2 translate-y-1/2 border-[3px] border-t-0 border-l-0"
         style={{ willChange: 'transform' }}
       />
       <div
-        className="target-cursor-corner absolute top-1/2 left-1/2 w-3 h-3 border-[3px] border-primary -translate-x-[150%] translate-y-1/2 border-r-0 border-t-0"
+        className="target-cursor-corner border-primary absolute top-1/2 left-1/2 h-3 w-3 -translate-x-[150%] translate-y-1/2 border-[3px] border-t-0 border-r-0"
         style={{ willChange: 'transform' }}
       />
     </div>
   );
 };
-
