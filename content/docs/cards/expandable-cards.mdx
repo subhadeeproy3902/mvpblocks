@@ -1,0 +1,176 @@
+---
+title: Expandable Cards
+description: Interactive cards that expand to reveal detailed information with smooth animations. Available in multiple variants including product, weather, and meeting cards.
+root: cards
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+## Product Card
+
+A product card that expands to reveal detailed features, specifications, and purchase options with smooth animations.
+
+<ComponentPreview
+  name="expandable-product-card"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode("expandable-product-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    ### Copy the Product Card Component
+
+    <ComponentSource
+      code={(await extractSourceCode("expandable-product-card")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import ExpandableProductCard from "@/components/mvpblocks/cards/expandable-product-card";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ExpandableProductCard />
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Interactive Card**: Click to expand and collapse with smooth animations
+- 🎨 **Fade Animations**: Smooth fade effects for content reveal
+- ⭐ **Rating Display**: Dynamic star rating with review count
+- 🛍️ **Product Features**: Displays key product features with icons
+- 📱 **Responsive**: Adapts beautifully to different screen sizes
+- 🌙 **Dark Mode**: Seamlessly works with light and dark themes
+- ⚡ **Smooth Animations**: Powered by motion/react for fluid transitions
+- 🖼️ **Dynamic Image**: Image resizes smoothly on expand/collapse
+
+## Customization
+
+The component uses the `Expandable` UI component which provides:
+
+- **Presets**: `fade`, `slide-up` for different animation effects
+- **Delays**: Custom expand/collapse delays (500ms expand, 700ms collapse)
+- **Sizes**: Collapsed (330x220) and expanded (500x520) sizes
+- **Spring Animations**: Custom spring animations for smooth transitions
+
+## Examples
+
+### Weather Card
+
+A weather card that expands to show detailed weather information and 5-day forecast with smooth blur animations.
+
+<ComponentPreview
+  name="expandable-weather-card"
+  classNameComponentContainer="min-h-[450px]"
+  code={(await extractSourceCode("expandable-weather-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+#### Copy the Weather Card Component
+
+<ComponentSource
+  code={(await extractSourceCode("expandable-weather-card")).code}
+  className="bg-fd-secondary/50"
+/>
+
+#### Usage
+
+```tsx
+import ExpandableWeatherCard from "@/components/mvpblocks/cards/expandable-weather-card";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ExpandableWeatherCard />
+    </div>
+  );
+}
+```
+
+#### Key Features
+
+- 🌤️ **Weather Details**: Shows temperature, humidity, wind, and precipitation
+- 📅 **5-Day Forecast**: Displays upcoming weather forecast
+- 🎨 **Blur Animations**: Smooth blur effects for content reveal
+- 🔄 **Staggered Animations**: Staggered reveal of weather details
+
+### Meeting Card
+
+An interactive meeting card that expands to show attendees, location, and meeting details with smooth blur animations.
+
+<ComponentPreview
+  name="expandable-meeting-card"
+  classNameComponentContainer="min-h-[500px]"
+  code={(await extractSourceCode("expandable-meeting-card")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+#### Copy the Meeting Card Component
+
+<ComponentSource
+  code={(await extractSourceCode("expandable-meeting-card")).code}
+  className="bg-fd-secondary/50"
+/>
+
+#### Usage
+
+```tsx
+import ExpandableMeetingCard from "@/components/mvpblocks/cards/expandable-meeting-card";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ExpandableMeetingCard />
+    </div>
+  );
+}
+```
+
+#### Key Features
+
+- 👥 **Attendees Display**: Shows meeting attendees with avatars
+- 📅 **Calendar Integration**: Quick add to calendar button
+- 🎨 **Blur Animations**: Smooth blur effects for content reveal

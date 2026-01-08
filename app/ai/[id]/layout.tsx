@@ -1,4 +1,4 @@
-import { TopNav } from "@/components/ai/TopNav";
+import { TopNav } from '@/components/ai/TopNav';
 
 export default function AIGenPageLayout({
   children,
@@ -8,7 +8,9 @@ export default function AIGenPageLayout({
   return (
     <>
       <TopNav />
-      <main className="h-screen overflow-hidden pt-12 flex relative">{children}</main>
+      <main className="relative flex h-screen overflow-hidden pt-12">
+        {children}
+      </main>
     </>
   );
 }

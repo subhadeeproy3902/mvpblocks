@@ -1,0 +1,138 @@
+---
+title: Pointer Highlight
+description: A pointer highlight component that animates a border and pointer around text or content. Perfect for highlighting important text with smooth animations.
+root: basic
+new: true
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+<ComponentPreview
+  name="pointer-highlight-demo"
+  classNameComponentContainer="min-h-[400px]"
+  code={(await extractSourceCode("pointer-highlight-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add motion/react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add motion/react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode("pointer-highlight-demo")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Usage
+
+```tsx
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
+
+export default function MyComponent() {
+  return (
+    <div className="text-2xl font-bold">
+      The best way to grow is to{' '}
+      <PointerHighlight>
+        <span className="text-primary">collaborate</span>
+      </PointerHighlight>
+    </div>
+  );
+}
+```
+
+## Features
+
+- 🎯 **Animated Border**: Smooth border animation that expands around content
+- 📍 **Pointer Indicator**: Animated pointer icon that appears at the corner
+- 📱 **Responsive**: Automatically adjusts to content size changes
+- 🎨 **Customizable**: Customize colors, borders, and pointer styles
+- 🌙 **Dark Mode**: Works seamlessly with light and dark themes
+- ⚡ **Smooth Animations**: Powered by motion/react for fluid transitions
+
+## Customization
+
+### Custom Colors
+```tsx
+<PointerHighlight
+  rectangleClassName="border-blue-500"
+  pointerClassName="text-blue-500"
+>
+  <span>Highlighted text</span>
+</PointerHighlight>
+```
+
+### Custom Container
+```tsx
+<PointerHighlight
+  containerClassName="inline-block mx-2"
+  rectangleClassName="border-2 border-primary rounded-lg"
+>
+  <span className="text-primary font-bold">Custom styled</span>
+</PointerHighlight>
+```
+
+## Examples
+
+### Highlighting Multiple Words
+```tsx
+<div className="text-xl">
+  Build{' '}
+  <PointerHighlight>
+    <span className="text-primary">faster</span>
+  </PointerHighlight>
+  {' '}with MVPBlocks
+</div>
+```
+
+### With Custom Styling
+```tsx
+<PointerHighlight
+  rectangleClassName="border-2 border-primary rounded-md"
+  pointerClassName="text-primary h-6 w-6"
+>
+  <span className="text-primary font-semibold text-2xl">
+    Important Text
+  </span>
+</PointerHighlight>
+```
+
+### In Headings
+```tsx
+<h1 className="text-4xl font-bold">
+  Welcome to{' '}
+  <PointerHighlight>
+    <span className="text-primary">MVPBlocks</span>
+  </PointerHighlight>
+</h1>
+```
