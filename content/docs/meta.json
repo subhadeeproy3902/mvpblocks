@@ -11,7 +11,6 @@
     "---Foundation---",
     "foundation/colors",
     "[Theming][Theming](https://shadcnthemes.vercel.app)",
-    "contributions",
     "---Components---",
     "basic",
     "required",
