@@ -15,8 +15,8 @@ const ExpandableContext = React.createContext<ExpandableContextValue | null>(
 
 interface ExpandableProps {
   readonly children:
-  | React.ReactNode
-  | ((props: { isExpanded: boolean }) => React.ReactNode);
+    | React.ReactNode
+    | ((props: { isExpanded: boolean }) => React.ReactNode);
   readonly expandDirection?: 'both' | 'horizontal' | 'vertical';
   readonly expandBehavior?: 'replace' | 'push';
   readonly initialDelay?: number;
@@ -252,7 +252,9 @@ export function ExpandableContent({
           initial={styles.initial}
           animate={styles.animate}
           exit={styles.exit}
-          transition={'transition' in styles ? styles.transition : { duration: 0.3 }}
+          transition={
+            'transition' in styles ? styles.transition : { duration: 0.3 }
+          }
         >
           {children}
         </motion.div>

@@ -1,9 +1,7 @@
-import NotFound from "@/components/shared/notfound";
+import NotFound from '@/components/shared/notfound';
 
 export default function NotFoundPage() {
-  return (
-    <NotFound />
-  );
+  return <NotFound />;
 }
 
 export function generateStaticParams() {

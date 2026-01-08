@@ -43,8 +43,16 @@ export default function HowToUse() {
         <Keyboard />
         {mounted && (
           <Compare
-            firstImage={theme === 'dark' ? 'https://i.postimg.cc/K89v24wd/abt2.webp' : 'https://i.postimg.cc/CKzMLSVd/abt2-dark.webp'}
-            secondImage={theme === 'dark' ? 'https://i.postimg.cc/7YnZKKVP/abt1-dark.webp' : 'https://i.postimg.cc/SKN26Bbp/abt1.webp'}
+            firstImage={
+              theme === 'dark'
+                ? 'https://i.postimg.cc/K89v24wd/abt2.webp'
+                : 'https://i.postimg.cc/CKzMLSVd/abt2-dark.webp'
+            }
+            secondImage={
+              theme === 'dark'
+                ? 'https://i.postimg.cc/7YnZKKVP/abt1-dark.webp'
+                : 'https://i.postimg.cc/SKN26Bbp/abt1.webp'
+            }
             firstImageClassName="object-cover object-left-top w-full"
             secondImageClassname="object-cover object-left-top w-full"
             className="absolute -top-16 -right-32 z-0 hidden rounded-[22px] md:rounded-lg xl:block"

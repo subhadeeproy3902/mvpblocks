@@ -1,0 +1,16 @@
+{
+  "name": "text-type-demo",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/text-type.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { TextType } from '@/components/ui/text-type';\r\n\r\nexport default function TextTypeDemo() {\r\n  return (\r\n    <div className=\"flex min-h-[200px] items-center justify-center\">\r\n      <div className=\"text-center\">\r\n        <h1 className=\"text-foreground text-3xl font-bold md:text-5xl\">\r\n          <TextType\r\n            text={['Text typing effect', 'for your websites', 'Happy coding!']}\r\n            typingSpeed={75}\r\n            pauseDuration={1500}\r\n            showCursor={true}\r\n            cursorCharacter=\"|\"\r\n            className=\"text-foreground\"\r\n          />\r\n        </h1>\r\n      </div>\r\n    </div>\r\n  );\r\n}",
+      "path": "/./components/mvpblocks/text-animations/text-type-demo.tsx",
+      "target": "components/mvpblocks/text-type-demo.tsx"
+    }
+  ]
+}

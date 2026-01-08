@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Download, Check } from "lucide-react";
+import { useState } from 'react';
+import { Download, Check } from 'lucide-react';
 
 export default function ProgressDownloadBtn() {
   const [active, setActive] = useState(false);
@@ -35,21 +35,19 @@ export default function ProgressDownloadBtn() {
     <div className="relative flex flex-col items-center">
       <button
         onClick={handleClick}
-        className={`relative flex items-center justify-center gap-3 w-56 h-14 rounded-xl 
-        shadow-lg overflow-hidden transition-all duration-300
-        ${done 
-          ? "bg-green-500 hover:bg-green-600" 
-          : "bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:opacity-90"}
-        `}
+        className={`relative flex h-14 w-56 items-center justify-center gap-3 overflow-hidden rounded-xl shadow-lg transition-all duration-300 ${
+          done
+            ? 'bg-green-500 hover:bg-green-600'
+            : 'bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 hover:opacity-90'
+        } `}
       >
         {/* Icon */}
         <div className="relative flex h-6 w-6 items-center justify-center">
           {done ? (
-            <Check className="h-6 w-6 text-white scale-110 transition-transform duration-300" />
+            <Check className="h-6 w-6 scale-110 text-white transition-transform duration-300" />
           ) : (
             <Download
-              className={`h-6 w-6 text-white transition-transform duration-300
-              ${active ? "animate-spin-slow" : ""}`}
+              className={`h-6 w-6 text-white transition-transform duration-300 ${active ? 'animate-spin-slow' : ''}`}
             />
           )}
         </div>
@@ -57,10 +55,10 @@ export default function ProgressDownloadBtn() {
         {/* Label */}
         <span className="text-base font-semibold text-white">
           {done
-            ? "Completed"
+            ? 'Completed'
             : active
-            ? `Downloading ${Math.round(progress)}%`
-            : "Download"}
+              ? `Downloading ${Math.round(progress)}%`
+              : 'Download'}
         </span>
 
         {/* Progress bar overlay */}
@@ -71,8 +69,6 @@ export default function ProgressDownloadBtn() {
           />
         )}
       </button>
-
-     
     </div>
   );
 }

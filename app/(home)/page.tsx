@@ -9,7 +9,7 @@ import Faqs from '@/components/shared/faq';
 export default function Homepage() {
   return (
     <>
-      <Advertisement />
+      {/* <Advertisement /> */}
       <Hero />
       <Features />
       <Gallery />

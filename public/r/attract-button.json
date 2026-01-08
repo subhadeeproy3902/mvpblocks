@@ -1,0 +1,28 @@
+{
+  "name": "attract-button",
+  "author": "nuelst",
+  "categories": [
+    "button",
+    "interactive",
+    "animation"
+  ],
+  "description": "An interactive button with magnetic particle effects. Particles attract to the center on hover, creating a mesmerizing visual effect.",
+  "type": "registry:block",
+  "dependencies": [
+    "motion/react",
+    "lucide-react",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/button.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { Button } from '@/components/ui/button';\r\nimport { cn } from '@/lib/utils';\r\nimport { Magnet } from 'lucide-react';\r\nimport { motion, useAnimation } from 'motion/react';\r\nimport { useCallback, useEffect, useState } from 'react';\r\n\r\ninterface AttractButtonProps\r\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  readonly particleCount?: number;\r\n  readonly attractRadius?: number;\r\n}\r\n\r\ninterface Particle {\r\n  id: number;\r\n  x: number;\r\n  y: number;\r\n}\r\n\r\nexport default function AttractButton({\r\n  className,\r\n  particleCount = 12,\r\n  attractRadius = 50,\r\n  ...props\r\n}: AttractButtonProps) {\r\n  const [isAttracting, setIsAttracting] = useState(false);\r\n  const [particles, setParticles] = useState<Particle[]>([]);\r\n  const particlesControl = useAnimation();\r\n\r\n  useEffect(() => {\r\n    const newParticles = Array.from({ length: particleCount }, (_, i) => {\r\n      const angle = (i / particleCount) * Math.PI * 2;\r\n      const radius = attractRadius * (0.7 + Math.random() * 0.3);\r\n      return {\r\n        id: i,\r\n        x: Math.cos(angle) * radius,\r\n        y: Math.sin(angle) * radius,\r\n      };\r\n    });\r\n    setParticles(newParticles);\r\n  }, [particleCount, attractRadius]);\r\n\r\n  const handleInteractionStart = useCallback(async () => {\r\n    setIsAttracting(true);\r\n    await particlesControl.start({\r\n      x: 0,\r\n      y: 0,\r\n      transition: {\r\n        type: 'spring',\r\n        stiffness: 50,\r\n        damping: 10,\r\n      },\r\n    });\r\n  }, [particlesControl]);\r\n\r\n  const handleInteractionEnd = useCallback(async () => {\r\n    setIsAttracting(false);\r\n    await particlesControl.start((i) => ({\r\n      x: particles[i].x,\r\n      y: particles[i].y,\r\n      transition: {\r\n        type: 'spring',\r\n        stiffness: 100,\r\n        damping: 15,\r\n      },\r\n    }));\r\n  }, [particlesControl, particles]);\r\n\r\n  return (\r\n    <Button\r\n      className={cn(\r\n        'min-w-40 relative touch-none',\r\n        'bg-primary/10 hover:bg-primary/20',\r\n        'text-primary border border-primary/30',\r\n        'transition-all duration-300',\r\n        className,\r\n      )}\r\n      onMouseEnter={handleInteractionStart}\r\n      onMouseLeave={handleInteractionEnd}\r\n      onTouchStart={handleInteractionStart}\r\n      onTouchEnd={handleInteractionEnd}\r\n      {...props}\r\n    >\r\n      {particles.map((particle) => (\r\n        <motion.div\r\n          key={particle.id}\r\n          custom={particle.id}\r\n          initial={{ x: particle.x, y: particle.y }}\r\n          animate={particlesControl}\r\n          style={{\r\n            left: '50%',\r\n            top: '50%',\r\n            transform: 'translate(-50%, -50%)',\r\n          }}\r\n          className={cn(\r\n            'absolute w-1.5 h-1.5 rounded-full',\r\n            'bg-primary',\r\n            'transition-opacity duration-300',\r\n            isAttracting ? 'opacity-100' : 'opacity-40',\r\n          )}\r\n        />\r\n      ))}\r\n      <span className=\"relative w-full flex items-center justify-center gap-2\">\r\n        <Magnet\r\n          className={cn(\r\n            'w-4 h-4 transition-transform duration-300',\r\n            isAttracting && 'scale-110',\r\n          )}\r\n        />\r\n        {isAttracting ? 'Attracting' : 'Hover me'}\r\n      </span>\r\n    </Button>\r\n  );\r\n}\r\n\r\n",
+      "path": "/components/mvpblocks/basics/buttons/attract-button.tsx",
+      "target": "components/mvpblocks/attract-button.tsx"
+    }
+  ]
+}

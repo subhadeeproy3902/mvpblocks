@@ -23,9 +23,9 @@ export default function CTA() {
               <Link
                 prefetch={false}
                 className="flex h-10 w-fit items-center justify-center rounded-full bg-white px-4 text-sm font-semibold text-black shadow-md"
-                href="/docs/introduction"
+                href="https://cal.com/aura-devs/15min"
               >
-                Start with Mvpblocks Today
+                Hire Us Now
               </Link>
               <span className="text-sm text-white">
                 Built to keep you hooked.

@@ -19,7 +19,7 @@ const data = [
 
 export default function IncomeExpenseChart() {
   return (
-    <Card className="bg-gradient-to-t from-secondary/30 rounded-lg shadow-none">
+    <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader className="flex flex-col items-center justify-between gap-3 md:flex-row">
         <CardTitle>Income vs Expenses</CardTitle>
         <div className="flex items-center justify-center gap-2">
@@ -44,7 +44,7 @@ export default function IncomeExpenseChart() {
             expenses: { label: 'Expenses', color: '#ef4444' },
             net: { label: 'Net', color: '#3b82f6' },
           }}
-          className="h-[15rem] md:h-[20rem] w-full"
+          className="h-[15rem] w-full md:h-[20rem]"
         >
           <BarChart data={data}>
             <CartesianGrid vertical={true} />

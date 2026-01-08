@@ -32,7 +32,7 @@ export function AuthorBadge({ username, className }: AuthorBadgeProps) {
     >
       <Badge
         variant="outline"
-        className="border-secondary/50 bg-background/80 hover:bg-background/95 relative flex items-center gap-1.5 px-3.5 py-1.5 shadow-[0px_0px_10px_0px_#ff005c40_inset] backdrop-blur-sm transition-colors rounded-full"
+        className="border-secondary/50 bg-background/80 hover:bg-background/95 relative flex items-center gap-1.5 rounded-full px-3.5 py-1.5 shadow-[0px_0px_10px_0px_#ff005c40_inset] backdrop-blur-sm transition-colors"
       >
         <Avatar className="border-secondary/50 h-5 w-5 border">
           <AvatarImage

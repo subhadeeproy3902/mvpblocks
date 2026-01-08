@@ -1,5 +1,5 @@
-"use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+'use client';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   PieChart,
   Pie,
@@ -7,15 +7,15 @@ import {
   ResponsiveContainer,
   Tooltip,
   Legend,
-} from "recharts";
+} from 'recharts';
 
 const data = [
-  { name: "Food & Dining", value: 320, color: "#3b82f6" },
-  { name: "Transportation", value: 180, color: "#10b981" },
-  { name: "Entertainment", value: 120, color: "#8b5cf6" },
-  { name: "Shopping", value: 450, color: "#ef4444" },
-  { name: "Utilities", value: 220, color: "#f59e0b" },
-  { name: "Healthcare", value: 150, color: "#ec4899" },
+  { name: 'Food & Dining', value: 320, color: '#3b82f6' },
+  { name: 'Transportation', value: 180, color: '#10b981' },
+  { name: 'Entertainment', value: 120, color: '#8b5cf6' },
+  { name: 'Shopping', value: 450, color: '#ef4444' },
+  { name: 'Utilities', value: 220, color: '#f59e0b' },
+  { name: 'Healthcare', value: 150, color: '#ec4899' },
 ];
 
 interface CustomTooltipProps {
@@ -32,7 +32,7 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     const data = payload[0]; // directly access payload[0] instead of payload[0].payload
     return (
-      <div className="bg-background p-3 border border-green-500/70 rounded-md shadow-xl">
+      <div className="bg-background rounded-md border border-green-500/70 p-3 shadow-xl">
         <p className="font-medium">{data.name}</p>
         <p className="text-sm" style={{ color: data.color }}>
           Amount : <span className="font-bold">${data.value}</span>
@@ -48,7 +48,7 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 
 export default function MonthlySpendingChart() {
   return (
-    <Card className="bg-gradient-to-t from-secondary/30 rounded-lg shadow-none">
+    <Card className="from-secondary/30 rounded-lg bg-gradient-to-t shadow-none">
       <CardHeader>
         <CardTitle>Monthly Spending by Category</CardTitle>
       </CardHeader>
@@ -66,7 +66,11 @@ export default function MonthlySpendingChart() {
                 dataKey="value"
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} className="ml-10" />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.color}
+                    className="ml-10"
+                  />
                 ))}
               </Pie>
               <Tooltip content={<CustomTooltip />} />
@@ -75,14 +79,14 @@ export default function MonthlySpendingChart() {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t">
+        <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
           <div className="text-center">
             <p className="text-2xl font-bold">$1,440</p>
-            <p className="text-sm text-muted-foreground">Total Spent</p>
+            <p className="text-muted-foreground text-sm">Total Spent</p>
           </div>
           <div className="text-center">
             <p className="text-2xl font-bold text-green-500">$760</p>
-            <p className="text-sm text-muted-foreground">Remaining Budget</p>
+            <p className="text-muted-foreground text-sm">Remaining Budget</p>
           </div>
         </div>
       </CardContent>

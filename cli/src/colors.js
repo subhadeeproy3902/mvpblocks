@@ -53,7 +53,7 @@ export const Zinc = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Red = `
 :root {
@@ -110,7 +110,7 @@ export const Red = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Rose = `
 :root {
@@ -167,7 +167,7 @@ export const Rose = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Orange = `
 :root {
@@ -224,7 +224,7 @@ export const Orange = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Green = `
 :root {
@@ -281,7 +281,7 @@ export const Green = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Blue = `
 :root {
@@ -338,7 +338,7 @@ export const Blue = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Yellow = `
 :root {
@@ -395,7 +395,7 @@ export const Yellow = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;
 
 export const Purple = `
 :root {
@@ -452,4 +452,4 @@ export const Purple = `
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-`
+`;

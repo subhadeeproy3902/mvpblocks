@@ -172,7 +172,9 @@ export default function SignInPage() {
                       />
                       <button
                         type="button"
-                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        aria-label={
+                          showPassword ? 'Hide password' : 'Show password'
+                        }
                         className="absolute inset-y-0 right-0 flex items-center pr-3"
                         onClick={() => setShowPassword(!showPassword)}
                       >

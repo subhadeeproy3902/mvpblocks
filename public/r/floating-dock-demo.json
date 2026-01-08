@@ -1,0 +1,19 @@
+{
+  "name": "floating-dock-demo",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/floating-dock.json",
+    "https://blocks.mvp-subha.me/r/utils.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { FloatingDock } from '@/components/ui/floating-dock';\r\nimport {\r\n  Github,\r\n  Home,\r\n  Layers,\r\n  RefreshCw,\r\n  Terminal,\r\n  Twitter,\r\n} from 'lucide-react';\r\n\r\nexport default function FloatingDockDemo() {\r\n  const links = [\r\n    {\r\n      title: 'Home',\r\n      icon: (\r\n        <Home className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'Products',\r\n      icon: (\r\n        <Terminal className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'Components',\r\n      icon: (\r\n        <Layers className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'MVPBlocks',\r\n      icon: (\r\n        <img\r\n          src=\"https://i.postimg.cc/j5dW4vFd/Mvpblocks.webp\"\r\n          width={20}\r\n          height={20}\r\n          alt=\"MVPBlocks Logo\"\r\n          className=\"rounded-full\"\r\n        />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'Changelog',\r\n      icon: (\r\n        <RefreshCw className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'Twitter',\r\n      icon: (\r\n        <Twitter className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n    {\r\n      title: 'GitHub',\r\n      icon: (\r\n        <Github className=\"h-full w-full text-neutral-500 dark:text-neutral-300\" />\r\n      ),\r\n      href: '#',\r\n    },\r\n  ];\r\n  return (\r\n    <div className=\"flex h-[35rem] w-full items-center justify-center\">\r\n      <FloatingDock mobileClassName=\"translate-y-20\" items={links} />\r\n    </div>\r\n  );\r\n}",
+      "path": "/./components/mvpblocks/creative/floating-dock-demo.tsx",
+      "target": "components/mvpblocks/floating-dock-demo.tsx"
+    }
+  ]
+}

@@ -3,6 +3,146 @@ import * as React from 'react';
 
 export const blocks: Registry = [
   {
+    name: 'pointer-highlight-demo',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/pointer-highlight.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/creative/pointer-highlight-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/creative/pointer-highlight-demo'),
+    ),
+  },
+  {
+    name: 'target-cursor-demo',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/target-cursor.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/creative/target-cursor-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/creative/target-cursor-demo'),
+    ),
+  },
+  {
+    name: 'floating-dock-demo',
+    type: 'registry:block',
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/floating-dock.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/creative/floating-dock-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/creative/floating-dock-demo'),
+    ),
+  },
+  {
+    name: 'text-type-demo',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/text-type.json'],
+    files: [
+      {
+        path: '@/./components/mvpblocks/text-animations/text-type-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/text-animations/text-type-demo'),
+    ),
+  },
+  {
+    name: 'expandable-weather-card',
+    type: 'registry:block',
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/expandable.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/cards/expandable/expandable-weather-card.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          '.././components/mvpblocks/cards/expandable/expandable-weather-card'
+        ),
+    ),
+  },
+  {
+    name: 'expandable-product-card',
+    type: 'registry:block',
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/expandable.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/cards/expandable/expandable-product-card.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          '.././components/mvpblocks/cards/expandable/expandable-product-card'
+        ),
+    ),
+  },
+  {
+    name: 'expandable-meeting-card',
+    type: 'registry:block',
+    dependencies: ['lucide-react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/avatar.json',
+      'https://blocks.mvp-subha.me/r/utils.json',
+      'https://blocks.mvp-subha.me/r/badge.json',
+      'https://blocks.mvp-subha.me/r/button.json',
+      'https://blocks.mvp-subha.me/r/expandable.json',
+      'https://blocks.mvp-subha.me/r/tooltip.json',
+    ],
+    files: [
+      {
+        path: '@/./components/mvpblocks/cards/expandable/expandable-meeting-card.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          '.././components/mvpblocks/cards/expandable/expandable-meeting-card'
+        ),
+    ),
+  },
+  {
     name: 'footer-animated',
     type: 'registry:block',
     dependencies: ['react'],
@@ -2849,8 +2989,7 @@ export const blocks: Registry = [
     name: 'bubble-board',
     author: 'Ecolash',
     type: 'registry:block',
-    description:
-      'Draggable bubble grid with smooth Framer Motion animations',
+    description: 'Draggable bubble grid with smooth Framer Motion animations',
     dependencies: ['framer-motion'],
     registryDependencies: [],
     files: [
@@ -2860,8 +2999,7 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(
-      () =>
-        import('../components/mvpblocks/creative/bubble-board'),
+      () => import('../components/mvpblocks/creative/bubble-board'),
     ),
   },
 ];

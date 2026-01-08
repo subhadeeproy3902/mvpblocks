@@ -1,6 +1,6 @@
-"use client"
+'use client';
 
-import { useMemo } from "react"
+import { useMemo } from 'react';
 
 const POACHING_EMAIL_HTML = `<!doctype html>
 <html lang="en">
@@ -28,18 +28,18 @@ const POACHING_EMAIL_HTML = `<!doctype html>
       </div>
     </div>
   </body>
-</html>`
+</html>`;
 
 export default function V0PanePreview() {
-  const srcDoc = useMemo(() => POACHING_EMAIL_HTML, [])
+  const srcDoc = useMemo(() => POACHING_EMAIL_HTML, []);
   return (
     <div className="bg-background h-full overflow-auto">
       <iframe
         title="Live Preview"
-        className="w-full h-full"
+        className="h-full w-full"
         srcDoc={srcDoc}
         sandbox="allow-same-origin"
       />
     </div>
-  )
+  );
 }

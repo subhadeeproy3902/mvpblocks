@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Cloud, Droplets, Sun, Wind } from 'lucide-react';

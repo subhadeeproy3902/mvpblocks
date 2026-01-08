@@ -22,9 +22,7 @@ export function Security({ onContinue }: { onContinue: () => void }) {
               <h4 className="text-foreground font-medium">
                 Two-Factor Authentication
               </h4>
-              <Switch
-                className="relative inline-flex cursor-pointer items-center"
-              />
+              <Switch className="relative inline-flex cursor-pointer items-center" />
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
               Add an extra layer of security to your account by requiring a
@@ -65,9 +63,7 @@ export function Security({ onContinue }: { onContinue: () => void }) {
           <div className="ml-3 flex-1">
             <div className="flex items-center justify-between">
               <h4 className="text-foreground font-medium">Notification</h4>
-              <Switch
-                className="relative inline-flex cursor-pointer items-center"
-              />
+              <Switch className="relative inline-flex cursor-pointer items-center" />
             </div>
             <p className="mt-1 text-sm text-neutral-400">
               Receive email notifications when there are new login attempts from

@@ -1,10 +1,15 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Card } from "@/components/ui/card"
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { Card } from '@/components/ui/card';
 import {
   ChevronsLeft,
   Eye,
@@ -12,34 +17,33 @@ import {
   MoreHorizontal,
   Maximize2,
   Clock,
-} from "lucide-react"
-import V0PaneCode from "./CodePane"
-import V0PanePreview from "./PreviewPane"
-import { cn } from "@/lib/utils"
+} from 'lucide-react';
+import V0PaneCode from './CodePane';
+import V0PanePreview from './PreviewPane';
+import { cn } from '@/lib/utils';
 
-type Tab = "preview" | "code"
+type Tab = 'preview' | 'code';
 
 export default function V0Workspace({
   setHide,
 }: {
   setHide: (hide: boolean) => void;
 }) {
-  const [hidden, setHidden] = useState(false)
-  const [tab, setTab] = useState<Tab>("preview")
-  const [expanded, setExpanded] = useState(false)
+  const [hidden, setHidden] = useState(false);
+  const [tab, setTab] = useState<Tab>('preview');
+  const [expanded, setExpanded] = useState(false);
   return (
-    <div className="relative w-full h-full">
+    <div className="relative h-full w-full">
       <div
         className={cn(
-          "transition-all duration-500 h-full ease-in-out will-change-transform",
-
+          'h-full transition-all duration-500 ease-in-out will-change-transform',
         )}
       >
-        <Card className="border-none gap-0 overflow-hidden shadow-sm p-0 rounded-none bg-background h-full">
+        <Card className="bg-background h-full gap-0 overflow-hidden rounded-none border-none p-0 shadow-sm">
           {/* Header / Toolbar */}
-          <div className="flex items-center justify-between border-b bg-secondary/20 px-2 py-1 h-12">
+          <div className="bg-secondary/20 flex h-12 items-center justify-between border-b px-2 py-1">
             {/* Left controls */}
-            <div className="flex items-center gap-1 h-full">
+            <div className="flex h-full items-center gap-1">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -51,18 +55,24 @@ export default function V0Workspace({
                         setHidden(newHidden);
                         setHide(newHidden);
                       }}
-                      className="rounded-md h-8 w-8"
+                      className="h-8 w-8 rounded-md"
                     >
                       <ChevronsLeft size={16} />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>{expanded ? "Collapse workspace" : "Expand workspace"}</TooltipContent>
+                  <TooltipContent>
+                    {expanded ? 'Collapse workspace' : 'Expand workspace'}
+                  </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
 
               {/* Segmented Preview/Code using Tabs */}
-              <Tabs value={tab} onValueChange={(v) => setTab(v as Tab)} className="items-center h-8">
-                <TabsList className="h-8 p-0 border overflow-hidden bg-secondary/40">
+              <Tabs
+                value={tab}
+                onValueChange={(v) => setTab(v as Tab)}
+                className="h-8 items-center"
+              >
+                <TabsList className="bg-secondary/40 h-8 overflow-hidden border p-0">
                   <TooltipProvider delayDuration={0}>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -143,7 +153,9 @@ export default function V0Workspace({
                       <Maximize2 className="h-4 w-4" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent side="bottom">{expanded ? "Collapse workspace" : "Expand workspace"}</TooltipContent>
+                  <TooltipContent side="bottom">
+                    {expanded ? 'Collapse workspace' : 'Expand workspace'}
+                  </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
 
@@ -154,9 +166,11 @@ export default function V0Workspace({
           </div>
 
           {/* Body */}
-          <div className="bg-background h-full">{tab === "preview" ? <V0PanePreview /> : <V0PaneCode />}</div>
+          <div className="bg-background h-full">
+            {tab === 'preview' ? <V0PanePreview /> : <V0PaneCode />}
+          </div>
         </Card>
       </div>
     </div>
-  )
+  );
 }

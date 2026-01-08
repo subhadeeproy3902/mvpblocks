@@ -163,6 +163,15 @@ export default function Footer() {
                   License
                 </Link>
               </li>
+              <li>
+                <Link
+                  prefetch={false}
+                  href="https://cal.com/aura-devs/15min"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Hire Me
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="col-span-1">

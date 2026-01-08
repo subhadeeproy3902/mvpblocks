@@ -54,7 +54,7 @@ export default function StatsCards() {
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className="bg-gradient-to-br from-secondary/30 gap-2 overflow-hidden rounded-lg shadow-none transition-all duration-500 hover:scale-105"
+          className="from-secondary/30 gap-2 overflow-hidden rounded-lg bg-gradient-to-br shadow-none transition-all duration-500 hover:scale-105"
         >
           <CardHeader className="flex w-full flex-row items-center justify-between">
             <CardTitle className="text-lg font-medium">{stat.title}</CardTitle>

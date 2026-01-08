@@ -48,8 +48,8 @@ export default function Advertisement() {
                 Designer Portfolio (RGB variation)
               </p>
               <p className="text-sm text-neutral-400">
-                ⚡ A stunning, high-end portfolio template crafted for designers, artists, and creatives.
-                cheap!
+                ⚡ A stunning, high-end portfolio template crafted for
+                designers, artists, and creatives. cheap!
               </p>
               <p className="text-3xl font-semibold tracking-tight">
                 <span className="text-primary">₹3400</span>{' '}
