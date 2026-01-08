@@ -8,15 +8,15 @@ export default function Contributors() {
 
   return (
     <div className="my-12">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {contributors.map((contributor) => (
-          <Link key={contributor.id} href={`https://github.com/${contributor.login}`} className="group" target="_blank" rel="noopener noreferrer">
+          <Link key={contributor.id} href={`https://github.com/${contributor.login}`} className="group no-underline" target="_blank" rel="noopener noreferrer">
               <Card className="flex max-w-sm h-80">
                 <CardHeader>
-                  <CardTitle className={`${bricolage.className} font-normal!`}>
+                  <CardTitle className={`${bricolage.className} font-normal! no-underline!`}>
                     {contributor.name}
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="no-underline!">
                     {contributor.contributions} contributions
                   </CardDescription>
                 </CardHeader>
