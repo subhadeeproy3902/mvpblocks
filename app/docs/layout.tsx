@@ -12,7 +12,7 @@ const Assistant = dynamic(() => import('@/components/important/assistant'));
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      <Banner
+      {/* <Banner
         variant="rainbow"
         rainbowColors={[
           'rgba(165, 50, 90, 0.5)',
@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           Launched best Saas Marketing template at cheap —{' '}
           <span className="underline">Check out</span>
         </Link>{' '}
-      </Banner>
+      </Banner> */}
 
       <RootProvider
         search={{

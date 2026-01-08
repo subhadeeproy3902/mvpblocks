@@ -15,10 +15,8 @@ import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
 import { type ComponentProps, type FC } from 'react';
 import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
-import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/important/Actions';
-import { createGenerator } from 'fumadocs-typescript';
 import { metadataImage } from '@/lib/metadata-image';
 
 export default async function Page(props: {
@@ -29,7 +27,6 @@ export default async function Page(props: {
 
   if (!page) redirect('/docs/introduction');
   const MDX = page.data.body;
-  const generator = createGenerator();
 
   const path = `content/docs/${page.file.path}`;
   const lastModified = page.data.lastModified;
@@ -188,10 +185,7 @@ Add any other context or screenshots about the feature request here.`)}`}
               Files,
               blockquote: Callout as unknown as FC<
                 ComponentProps<'blockquote'>
-              >,
-              AutoTypeTable: (props: any) => (
-                <AutoTypeTable {...props} generator={generator} />
-              ),
+              >
             }}
           />
         </DocsBody>
