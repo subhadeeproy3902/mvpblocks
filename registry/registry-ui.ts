@@ -13,7 +13,9 @@ export const ui: Registry = [
         type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import('.././components/ui/target-cursor')),
+    component: React.lazy(() => import('.././components/ui/target-cursor').then((mod) => ({
+      default: mod.TargetCursor,
+    }))),
   },
   {
     name: 'floating-dock',
@@ -26,7 +28,9 @@ export const ui: Registry = [
         type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import('.././components/ui/floating-dock')),
+    component: React.lazy(() => import('.././components/ui/floating-dock').then((mod) => ({
+      default: mod.FloatingDock,
+    }))),
   },
   {
     name: 'text-type',
@@ -39,7 +43,9 @@ export const ui: Registry = [
         type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import('.././components/ui/text-type')),
+    component: React.lazy(() => import('.././components/ui/text-type').then((mod) => ({
+      default: mod.TextType,
+    }))),
   },
   {
     name: 'pointer-highlight',
@@ -52,7 +58,9 @@ export const ui: Registry = [
         type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import('.././components/ui/pointer-highlight')),
+    component: React.lazy(() => import('.././components/ui/pointer-highlight').then((mod) => ({
+      default: mod.PointerHighlight,
+    }))),
   },
   {
     name: 'expandable',
@@ -65,7 +73,9 @@ export const ui: Registry = [
         type: 'registry:ui',
       },
     ],
-    component: React.lazy(() => import('.././components/ui/expandable')),
+    component: React.lazy(() => import('.././components/ui/expandable').then((mod) => ({
+      default: mod.Expandable,
+    }))),
   },
   {
     name: 'text-reveal',
