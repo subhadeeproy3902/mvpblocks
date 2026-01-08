@@ -6,8 +6,6 @@ export default function AboutUsPage() {
   return (
     <>
       <AboutUsComponent />
-      <CTA />
-      <Faqs />
     </>
   );
 }

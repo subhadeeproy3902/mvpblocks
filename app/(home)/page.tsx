@@ -14,8 +14,6 @@ export default function Homepage() {
       <Features />
       <Gallery />
       <Testimonials />
-      <CTA />
-      <Faqs />
     </>
   );
 }
