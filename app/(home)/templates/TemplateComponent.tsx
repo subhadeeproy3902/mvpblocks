@@ -85,7 +85,7 @@ const ProductSection = () => {
       >
         {products.map((product, i) => (
           <motion.a
-            href={`/templates/${product.id}`}
+            href={product.link}
             key={product.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
