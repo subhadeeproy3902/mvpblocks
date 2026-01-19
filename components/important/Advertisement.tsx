@@ -22,47 +22,39 @@ export default function Advertisement() {
         <div className="bg-primary/20 absolute right-0 -bottom-10 h-20 w-full blur-3xl"></div>
 
         <button
-          onClick={() => {
-            setShow(false);
-          }}
+          onClick={() => setShow(false)}
           className="bg-background/50 hover:bg-background/70 focus:ring-primary/50 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-md transition focus:ring-2 focus:outline-none"
         >
           <X className="text-foreground h-4 w-4" />
         </button>
 
         <div className="flex flex-col gap-8 px-8 py-12 sm:px-16 sm:py-16">
-          <h2 className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent sm:text-3xl dark:bg-gradient-to-b">
-            Top notch Designer Portfolio available in RGB!
+          <h2 className="bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent sm:text-4xl dark:bg-gradient-to-b">
+            Premium + Lovable Templates
           </h2>
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8">
+
+          <div className="flex flex-col items-center gap-6">
             <Image
-              src="/designer-portfolio-rose.png"
+              src="/templates.webp"
               alt="Template preview"
-              width={300}
-              height={300}
-              className="max-w-xs rounded-lg object-cover"
+              width={1000}
+              height={1000}
+              className="max-w-md w-full rounded-lg object-cover"
             />
 
-            <div className="space-y-2 text-center sm:text-left">
-              <p className="text-xl font-semibold tracking-tight sm:text-2xl">
-                Designer Portfolio (RGB variation)
-              </p>
+            <div className="space-y-2 text-center max-w-sm mx-auto">
               <p className="text-sm text-neutral-400">
-                ⚡ A stunning, high-end portfolio template crafted for
-                designers, artists, and creatives. cheap!
-              </p>
-              <p className="text-3xl font-semibold tracking-tight">
-                <span className="text-primary">₹3400</span>{' '}
-                <span className="text-sm text-neutral-400">INR</span>
+                ✨ Lovable, premium-quality templates available at the most
+                cheapest prices — built to look elite.
               </p>
             </div>
           </div>
 
           <div className="flex justify-center">
-            <Link prefetch={false} href="/docs/designer-portfolio">
+            <Link prefetch={false} href="/templates">
               <Button className="cursor-pointer rounded-lg">
-                Explore Docs
-                <MoveRight className="ml-2 inline-block h-4 w-4" />
+                View Templates
+                <MoveRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
