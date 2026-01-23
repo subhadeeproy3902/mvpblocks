@@ -1,0 +1,23 @@
+{
+  "name": "fuzzy-text-fast",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Quick tune-in effect without scanlines.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/fuzzy-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\n\nexport default function FuzzyTextFast() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8\">\n      <FuzzyText\n        text=\"404 NOT FOUND\"\n        fontSize=\"clamp(2rem, 8vw, 4rem)\"\n        noiseIntensity={1.5}\n        enableHover={false}\n        baseColor=\"#ff0040\"\n        glowColor=\"#ff0040\"\n        speed={30}\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/fuzzy-text-fast.tsx",
+      "target": "components/mvpblocks/fuzzy-text-fast.tsx"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+---
+title: Glitch Text
+description: Cyberpunk-style glitch effect with RGB color splitting, position jittering, and scanlines. Perfect for gaming, tech, and edgy brand aesthetics.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Continuous Glitch
+
+Periodic glitch effect that fires at regular intervals.
+
+<ComponentPreview
+  name="glitch-text-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("glitch-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover Activated
+
+Intense glitch effect that triggers on hover.
+
+<ComponentPreview
+  name="glitch-text-hover"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("glitch-text-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Subtle Glitch
+
+Softer, more refined glitch for professional designs.
+
+<ComponentPreview
+  name="glitch-text-subtle"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("glitch-text-subtle")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("glitch-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to animate.",
+      type: "string",
+      default: "required",
+    },
+    intensity: {
+      description: "Glitch displacement amount in pixels.",
+      type: "number",
+      default: "5",
+    },
+    colors: {
+      description: "RGB split colors [left, right].",
+      type: "[string, string]",
+      default: "['#ff0000', '#00ffff']",
+    },
+    duration: {
+      description: "Duration of each glitch burst in seconds.",
+      type: "number",
+      default: "0.2",
+    },
+    glitchInterval: {
+      description: "Time between glitches in milliseconds.",
+      type: "number",
+      default: "3000",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'mount' | 'hover' | 'inView' | 'continuous'",
+      default: "'continuous'",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Intense cyberpunk glitch
+<GlitchText
+  text="CYBERPUNK"
+  intensity={10}
+  colors={['#ff0000', '#00ffff']}
+  glitchInterval={1500}
+/>
+
+// Vaporwave aesthetic
+<GlitchText
+  text="AESTHETIC"
+  colors={['#ff71ce', '#01cdfe']}
+  intensity={6}
+/>
+
+// Gaming style
+<GlitchText
+  text="GAME OVER"
+  trigger="hover"
+  intensity={8}
+  duration={0.5}
+/>
+```

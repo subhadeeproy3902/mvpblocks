@@ -1,0 +1,23 @@
+{
+  "name": "shiny-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Premium Apple-style shine effect that sweeps across text.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/shiny-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ShinyText } from '@/components/ui/shiny-text';\n\nexport default function ShinyTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8 rounded-lg\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <ShinyText\n          text=\"Premium Quality\"\n          shineColor=\"rgba(255, 255, 255, 1)\"\n          duration={3}\n          shimmerWidth={200}\n          trigger=\"loop\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/shiny-text-demo.tsx",
+      "target": "components/mvpblocks/shiny-text-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "fade-in-up-text",
+  "description": "Elegant text entrance that fades in while floating from any direction with stagger support.",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { useRef } from 'react';\nimport { motion, useInView, Variants } from 'framer-motion';\n\ninterface FadeInUpTextProps {\n  text: string;\n  className?: string;\n  duration?: number;\n  delay?: number;\n  stagger?: number;\n  distance?: number;\n  direction?: 'up' | 'down' | 'left' | 'right';\n  split?: 'letter' | 'word' | 'none';\n  trigger?: 'mount' | 'inView';\n  once?: boolean;\n}\n\nexport const FadeInUpText = ({\n  text,\n  className = '',\n  duration = 0.5,\n  delay = 0,\n  stagger = 0.03,\n  distance = 30,\n  direction = 'up',\n  split = 'word',\n  trigger = 'mount',\n  once = true,\n}: Readonly<FadeInUpTextProps>) => {\n  const containerRef = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(containerRef, { once, amount: 0.3 });\n\n  const shouldAnimate = () => {\n    switch (trigger) {\n      case 'mount':\n        return true;\n      case 'inView':\n        return isInView;\n      default:\n        return false;\n    }\n  };\n\n  const getInitialPosition = () => {\n    switch (direction) {\n      case 'up':\n        return { y: distance, x: 0 };\n      case 'down':\n        return { y: -distance, x: 0 };\n      case 'left':\n        return { x: distance, y: 0 };\n      case 'right':\n        return { x: -distance, y: 0 };\n      default:\n        return { y: distance, x: 0 };\n    }\n  };\n\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        staggerChildren: split === 'none' ? 0 : stagger,\n        delayChildren: delay,\n      },\n    },\n  };\n\n  const itemVariants: Variants = {\n    hidden: {\n      opacity: 0,\n      ...getInitialPosition(),\n    },\n    visible: {\n      opacity: 1,\n      x: 0,\n      y: 0,\n      transition: {\n        duration,\n        ease: [0.25, 0.46, 0.45, 0.94],\n      },\n    },\n  };\n\n  const getElements = () => {\n    if (split === 'none') {\n      return [text];\n    } else if (split === 'word') {\n      return text.split(' ');\n    } else {\n      return text.split('');\n    }\n  };\n\n  const elements = getElements();\n\n  return (\n    <motion.span\n      ref={containerRef}\n      className={`inline-block ${className}`}\n      variants={containerVariants}\n      initial=\"hidden\"\n      animate={shouldAnimate() ? 'visible' : 'hidden'}\n    >\n      {elements.map((element, index) => (\n        <motion.span\n          key={`${element}-${index}`}\n          className=\"inline-block\"\n          variants={itemVariants}\n          style={{\n            whiteSpace: element === ' ' ? 'pre' : 'normal',\n          }}\n        >\n          {element}\n          {split === 'word' && index < elements.length - 1 && '\\u00A0'}\n        </motion.span>\n      ))}\n    </motion.span>\n  );\n};\n\nexport default FadeInUpText;\n",
+      "path": "/components/ui/fade-in-up-text.tsx",
+      "target": "components/ui/fade-in-up-text.tsx"
+    }
+  ],
+  "categories": [
+    "text-animation"
+  ]
+}

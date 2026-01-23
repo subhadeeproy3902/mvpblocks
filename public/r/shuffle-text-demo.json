@@ -1,0 +1,23 @@
+{
+  "name": "shuffle-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "A text scramble/shuffle animation that decodes text with random characters. Reveals text letter by letter from left to right.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/shuffle-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\n\nexport default function ShuffleTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <ShuffleText\n          text=\"Decode the Future\"\n          scrambleSpeed={50}\n          revealDelay={150}\n          trigger=\"mount\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/shuffle-text-demo.tsx",
+      "target": "components/mvpblocks/shuffle-text-demo.tsx"
+    }
+  ]
+}

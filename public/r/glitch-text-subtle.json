@@ -1,0 +1,23 @@
+{
+  "name": "glitch-text-subtle",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Subtle, professional glitch effect.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/glitch-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GlitchText } from '@/components/ui/glitch-text';\n\nexport default function GlitchTextSubtle() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <GlitchText\n          text=\"Subtle Glitch\"\n          intensity={3}\n          colors={['#6366f1', '#ec4899']}\n          duration={0.15}\n          glitchInterval={4000}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/glitch-text-subtle.tsx",
+      "target": "components/mvpblocks/glitch-text-subtle.tsx"
+    }
+  ]
+}

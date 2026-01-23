@@ -1,0 +1,175 @@
+---
+title: Fuzzy Text
+description: CRT television static noise effect with chromatic aberration, scanlines, and jitter. Text appears fuzzy with VHS/old TV static look, clearing on hover.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Classic Fuzzy Static
+
+Text with continuous noise/static effect that clears on hover.
+
+<ComponentPreview
+  name="fuzzy-text-demo"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("fuzzy-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover to Clear
+
+Green terminal style - hover to clear the static and reveal clean text.
+
+<ComponentPreview
+  name="fuzzy-text-hover"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("fuzzy-text-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## 404 Error Style
+
+High intensity noise that never clears - perfect for error pages.
+
+<ComponentPreview
+  name="fuzzy-text-fast"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("fuzzy-text-fast")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("fuzzy-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to display with fuzzy effect.",
+      type: "string",
+      default: "required",
+    },
+    fontSize: {
+      description: "Font size of the text.",
+      type: "string",
+      default: "'4rem'",
+    },
+    noiseIntensity: {
+      description: "Intensity of the noise effect (0-2).",
+      type: "number",
+      default: "1",
+    },
+    enableHover: {
+      description: "Whether hovering clears the noise effect.",
+      type: "boolean",
+      default: "true",
+    },
+    baseColor: {
+      description: "Base color of the text.",
+      type: "string",
+      default: "'#fff'",
+    },
+    glowColor: {
+      description: "Color of the glow effect.",
+      type: "string",
+      default: "'#fff'",
+    },
+    speed: {
+      description: "Speed of noise update in milliseconds.",
+      type: "number",
+      default: "50",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// White text on black background
+<FuzzyText
+  text="STATIC NOISE"
+  baseColor="#ffffff"
+  glowColor="#ffffff"
+  enableHover={true}
+/>
+
+// Green terminal style
+<FuzzyText
+  text="ACCESS DENIED"
+  baseColor="#00ff00"
+  glowColor="#00ff00"
+  noiseIntensity={1.2}
+/>
+
+// Red error/warning
+<FuzzyText
+  text="404 NOT FOUND"
+  baseColor="#ff0040"
+  glowColor="#ff0040"
+  enableHover={false}
+/>
+
+// Subtle effect
+<FuzzyText
+  text="Subtle Glitch"
+  noiseIntensity={0.5}
+  speed={80}
+/>
+
+// Fast intense noise
+<FuzzyText
+  text="CHAOS"
+  noiseIntensity={2}
+  speed={20}
+/>
+```

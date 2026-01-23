@@ -1,0 +1,23 @@
+{
+  "name": "variable-proximity-exponential",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Variable proximity text with exponential falloff effect.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/variable-proximity-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\n\nimport { useRef } from 'react';\nimport { VariableProximityText } from '@/components/ui/variable-proximity-text';\n\nexport default function VariableProximityExponential() {\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  return (\n    <>\n      <link\n        href=\"https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap\"\n        rel=\"stylesheet\"\n      />\n      <div\n        ref={containerRef}\n        className=\"relative flex min-h-[300px] w-full items-center justify-center p-8\"\n      >\n        <p className=\"text-4xl md:text-6xl\">\n          <VariableProximityText\n            label=\"Exponential Falloff\"\n            fromFontVariationSettings=\"'wght' 200, 'opsz' 9\"\n            toFontVariationSettings=\"'wght' 900, 'opsz' 40\"\n            containerRef={containerRef}\n            radius={120}\n            falloff=\"exponential\"\n          />\n        </p>\n      </div>\n    </>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/variable-proximity-exponential.tsx",
+      "target": "components/mvpblocks/variable-proximity-exponential.tsx"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+---
+title: Scroll Reveal Text
+description: Text animation tied to scroll position - reveals as you scroll, reverses when scrolling back up. Creates dynamic, interactive text effects perfect for storytelling and hero sections.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Blur Reveal
+
+Text blurs into clarity as you scroll down, and blurs back out when scrolling up.
+
+<ComponentPreview
+  name="scroll-reveal-demo"
+  classNameComponentContainer="h-[400px] overflow-y-auto"
+  code={(await extractSourceCode("scroll-reveal-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Character Reveal
+
+Each character reveals individually based on scroll progress.
+
+<ComponentPreview
+  name="scroll-reveal-characters"
+  classNameComponentContainer="h-[400px] overflow-y-auto"
+  code={(await extractSourceCode("scroll-reveal-characters")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Slide Reveal
+
+Text slides into view tied to scroll position.
+
+<ComponentPreview
+  name="scroll-reveal-slide"
+  classNameComponentContainer="h-[400px] overflow-y-auto"
+  code={(await extractSourceCode("scroll-reveal-slide")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("scroll-reveal-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to display with scroll reveal effect.",
+      type: "string",
+      default: "required",
+    },
+    revealType: {
+      description: "Type of reveal animation.",
+      type: "'blur' | 'fade' | 'slide' | 'scale' | 'characters'",
+      default: "'blur'",
+    },
+    scrollOffset: {
+      description: "Scroll trigger points [start, end] using Framer Motion offset syntax.",
+      type: "[string, string]",
+      default: "['start 0.9', 'start 0.3']",
+    },
+    staggerDelay: {
+      description: "Delay between each character reveal (for 'characters' type).",
+      type: "number",
+      default: "0.03",
+    },
+    blurAmount: {
+      description: "Maximum blur amount in pixels.",
+      type: "number",
+      default: "10",
+    },
+    slideDistance: {
+      description: "Distance to slide from (for 'slide' type).",
+      type: "number",
+      default: "30",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Blur reveal (default)
+<ScrollRevealText
+  text="As you scroll, I reveal"
+  revealType="blur"
+  blurAmount={15}
+/>
+
+// Character-by-character reveal
+<ScrollRevealText
+  text="Character by character"
+  revealType="characters"
+  staggerDelay={0.02}
+/>
+
+// Slide in from below
+<ScrollRevealText
+  text="Sliding into view"
+  revealType="slide"
+  slideDistance={50}
+/>
+
+// Fade in
+<ScrollRevealText
+  text="Fading in"
+  revealType="fade"
+/>
+
+// Scale in
+<ScrollRevealText
+  text="Scaling up"
+  revealType="scale"
+/>
+
+// Custom scroll trigger points
+<ScrollRevealText
+  text="Earlier trigger"
+  scrollOffset={['start 0.95', 'start 0.5']}
+/>
+```

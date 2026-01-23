@@ -1,0 +1,23 @@
+{
+  "name": "fade-in-up-letter",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Each letter animates individually.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/fade-in-up-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\n\nexport default function FadeInUpLetter() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <FadeInUpText\n          text=\"Letter by Letter\"\n          duration={0.4}\n          stagger={0.04}\n          distance={25}\n          direction=\"up\"\n          split=\"letter\"\n          trigger=\"mount\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/fade-in-up-letter.tsx",
+      "target": "components/mvpblocks/fade-in-up-letter.tsx"
+    }
+  ]
+}

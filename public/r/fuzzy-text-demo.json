@@ -1,0 +1,23 @@
+{
+  "name": "fuzzy-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Retro CRT TV static effect with progressive reveal.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/fuzzy-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\n\nexport default function FuzzyTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8\">\n      <FuzzyText\n        text=\"FUZZY STATIC\"\n        fontSize=\"clamp(2rem, 8vw, 5rem)\"\n        noiseIntensity={1}\n        enableHover={true}\n        baseColor=\"#ffffff\"\n        glowColor=\"#ffffff\"\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/fuzzy-text-demo.tsx",
+      "target": "components/mvpblocks/fuzzy-text-demo.tsx"
+    }
+  ]
+}

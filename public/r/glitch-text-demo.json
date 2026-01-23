@@ -1,0 +1,23 @@
+{
+  "name": "glitch-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Cyberpunk-style glitch effect with RGB splitting.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/glitch-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GlitchText } from '@/components/ui/glitch-text';\n\nexport default function GlitchTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <GlitchText\n          text=\"SYSTEM ERROR\"\n          intensity={6}\n          colors={['#ff0040', '#00ffff']}\n          duration={0.3}\n          glitchInterval={2500}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/glitch-text-demo.tsx",
+      "target": "components/mvpblocks/glitch-text-demo.tsx"
+    }
+  ]
+}

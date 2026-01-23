@@ -1,0 +1,23 @@
+{
+  "name": "wave-text-hover",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Wave animation triggered on hover.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/wave-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { WaveText } from '@/components/ui/wave-text';\n\nexport default function WaveTextHover() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground cursor-pointer text-4xl font-bold md:text-6xl\">\n        <WaveText\n          text=\"Hover to Wave\"\n          amplitude={25}\n          frequency={0.5}\n          speed={1.5}\n          trigger=\"hover\"\n          direction=\"both\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/wave-text-hover.tsx",
+      "target": "components/mvpblocks/wave-text-hover.tsx"
+    }
+  ]
+}

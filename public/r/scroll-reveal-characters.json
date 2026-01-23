@@ -1,0 +1,23 @@
+{
+  "name": "scroll-reveal-characters",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Character-by-character scroll reveal effect.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/scroll-reveal-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ScrollRevealText } from '@/components/ui/scroll-reveal-text';\n\nexport default function ScrollRevealCharacters() {\n  return (\n    <div className=\"flex min-h-[400px] items-center justify-center p-8\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <ScrollRevealText\n          text=\"Character by Character\"\n          revealType=\"characters\"\n          staggerDelay={0.02}\n          blurAmount={8}\n          scrollOffset={['start 0.9', 'start 0.2']}\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/scroll-reveal-characters.tsx",
+      "target": "components/mvpblocks/scroll-reveal-characters.tsx"
+    }
+  ]
+}

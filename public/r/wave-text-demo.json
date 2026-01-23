@@ -1,0 +1,23 @@
+{
+  "name": "wave-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Letters dance in a smooth sine wave pattern.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/wave-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { WaveText } from '@/components/ui/wave-text';\n\nexport default function WaveTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <WaveText\n          text=\"Ride the Wave\"\n          amplitude={15}\n          frequency={0.4}\n          speed={2}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/wave-text-demo.tsx",
+      "target": "components/mvpblocks/wave-text-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+---
+title: Fade In Up Text
+description: Elegant text entrance animation that fades in while floating from any direction. Perfect for hero headlines, section titles, and page transitions.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Word by Word
+
+Words fade in and float upward one at a time.
+
+<ComponentPreview
+  name="fade-in-up-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("fade-in-up-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Letter by Letter
+
+Each letter animates individually for a more dramatic effect.
+
+<ComponentPreview
+  name="fade-in-up-letter"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("fade-in-up-letter")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Slide from Side
+
+Text slides in from the right with word staggering.
+
+<ComponentPreview
+  name="fade-in-up-left"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("fade-in-up-left")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("fade-in-up-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to animate.",
+      type: "string",
+      default: "required",
+    },
+    duration: {
+      description: "Animation duration per element in seconds.",
+      type: "number",
+      default: "0.5",
+    },
+    delay: {
+      description: "Initial delay before animation starts.",
+      type: "number",
+      default: "0",
+    },
+    stagger: {
+      description: "Delay between each element animating.",
+      type: "number",
+      default: "0.03",
+    },
+    distance: {
+      description: "Distance to travel in pixels.",
+      type: "number",
+      default: "30",
+    },
+    direction: {
+      description: "Direction of the animation.",
+      type: "'up' | 'down' | 'left' | 'right'",
+      default: "'up'",
+    },
+    split: {
+      description: "How to split the text for animation.",
+      type: "'letter' | 'word' | 'none'",
+      default: "'word'",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'mount' | 'inView'",
+      default: "'mount'",
+    },
+    once: {
+      description: "Only animate once when in view.",
+      type: "boolean",
+      default: "true",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Classic fade up
+<FadeInUpText
+  text="Welcome to our site"
+  direction="up"
+  split="word"
+/>
+
+// Dramatic letter animation
+<FadeInUpText
+  text="HELLO"
+  split="letter"
+  stagger={0.1}
+  distance={50}
+/>
+
+// Slide from left
+<FadeInUpText
+  text="Sliding In"
+  direction="right"
+  duration={0.8}
+/>
+
+// Scroll triggered
+<FadeInUpText
+  text="Scroll to reveal"
+  trigger="inView"
+  distance={40}
+/>
+```

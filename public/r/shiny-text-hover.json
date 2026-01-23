@@ -1,0 +1,23 @@
+{
+  "name": "shiny-text-hover",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Shine effect triggered on hover.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/shiny-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ShinyText } from '@/components/ui/shiny-text';\n\nexport default function ShinyTextHover() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8 rounded-lg\">\n      <h1 className=\"cursor-pointer text-4xl font-bold md:text-6xl\">\n        <ShinyText\n          text=\"Hover for Shine\"\n          shineColor=\"rgba(255, 215, 0, 1)\"\n          duration={2}\n          trigger=\"hover\"\n          shimmerWidth={180}\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/shiny-text-hover.tsx",
+      "target": "components/mvpblocks/shiny-text-hover.tsx"
+    }
+  ]
+}

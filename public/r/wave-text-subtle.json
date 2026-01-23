@@ -1,0 +1,23 @@
+{
+  "name": "wave-text-subtle",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Gentle, subtle wave motion.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/wave-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { WaveText } from '@/components/ui/wave-text';\n\nexport default function WaveTextSubtle() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <WaveText\n          text=\"Gentle Motion\"\n          amplitude={8}\n          frequency={0.2}\n          speed={3}\n          trigger=\"continuous\"\n          direction=\"up\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/wave-text-subtle.tsx",
+      "target": "components/mvpblocks/wave-text-subtle.tsx"
+    }
+  ]
+}

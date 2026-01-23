@@ -1,0 +1,21 @@
+{
+  "name": "gradient-flow-text",
+  "description": "Mesmerizing animated gradient that flows through text like liquid colors.",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport { useState, useRef } from 'react';\nimport { motion, useInView } from 'framer-motion';\n\ninterface GradientFlowTextProps {\n  text: string;\n  className?: string;\n  colors?: string[];\n  speed?: number;\n  angle?: number;\n  trigger?: 'continuous' | 'hover' | 'inView';\n}\n\nexport const GradientFlowText = ({\n  text,\n  className = '',\n  colors = ['#ff0080', '#7928ca', '#ff0080'],\n  speed = 3,\n  angle = 90,\n  trigger = 'continuous',\n}: Readonly<GradientFlowTextProps>) => {\n  const containerRef = useRef<HTMLSpanElement>(null);\n  const isInView = useInView(containerRef, { once: false, amount: 0.5 });\n  const [isHovering, setIsHovering] = useState(false);\n\n  const shouldAnimate = () => {\n    switch (trigger) {\n      case 'continuous':\n        return true;\n      case 'inView':\n        return isInView;\n      case 'hover':\n        return isHovering;\n      default:\n        return false;\n    }\n  };\n\n  const gradientColors = colors.join(', ');\n\n  return (\n    <motion.span\n      ref={containerRef}\n      className={`inline-block bg-clip-text text-transparent ${className}`}\n      onMouseEnter={() => setIsHovering(true)}\n      onMouseLeave={() => setIsHovering(false)}\n      style={{\n        backgroundImage: `linear-gradient(${angle}deg, ${gradientColors})`,\n        backgroundSize: '200% 200%',\n      }}\n      animate={\n        shouldAnimate()\n          ? {\n              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],\n            }\n          : { backgroundPosition: '0% 50%' }\n      }\n      transition={\n        shouldAnimate()\n          ? {\n              duration: speed,\n              ease: 'linear',\n              repeat: Infinity,\n            }\n          : {}\n      }\n    >\n      {text}\n    </motion.span>\n  );\n};\n\nexport default GradientFlowText;\n",
+      "path": "/components/ui/gradient-flow-text.tsx",
+      "target": "components/ui/gradient-flow-text.tsx"
+    }
+  ],
+  "categories": [
+    "text-animation"
+  ]
+}

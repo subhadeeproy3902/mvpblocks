@@ -1,0 +1,23 @@
+{
+  "name": "gradient-flow-rainbow",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Full rainbow color cycle gradient flow.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/gradient-flow-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\n\nexport default function GradientFlowRainbow() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <GradientFlowText\n          text=\"Rainbow Flow\"\n          colors={[\n            '#ff0000',\n            '#ff7f00',\n            '#ffff00',\n            '#00ff00',\n            '#0000ff',\n            '#4b0082',\n            '#9400d3',\n            '#ff0000',\n          ]}\n          speed={6}\n          angle={90}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/gradient-flow-rainbow.tsx",
+      "target": "components/mvpblocks/gradient-flow-rainbow.tsx"
+    }
+  ]
+}

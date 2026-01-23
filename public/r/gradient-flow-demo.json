@@ -1,0 +1,23 @@
+{
+  "name": "gradient-flow-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Mesmerizing animated gradient flowing through text.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/gradient-flow-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\n\nexport default function GradientFlowDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <GradientFlowText\n          text=\"Flowing Colors\"\n          colors={['#ff0080', '#7928ca', '#0070f3', '#ff0080']}\n          speed={4}\n          angle={90}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "path": "/components/mvpblocks/text-animations/gradient-flow-demo.tsx",
+      "target": "components/mvpblocks/gradient-flow-demo.tsx"
+    }
+  ]
+}
