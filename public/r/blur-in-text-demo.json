@@ -1,0 +1,24 @@
+{
+  "name": "blur-in-text-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "author": "vedant7007",
+  "description": "Text emerges from blur letter by letter.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/blur-in-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { BlurInText } from '@/components/ui/blur-in-text';\r\n\r\nexport default function BlurInTextDemo() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <BlurInText\r\n          text=\"Clarity Emerges\"\r\n          blurAmount={12}\r\n          duration={1}\r\n          stagger={0.08}\r\n          split=\"letter\"\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/blur-in-text-demo.tsx",
+      "target": "components/mvpblocks/blur-in-text-demo.tsx"
+    }
+  ]
+}

@@ -48,6 +48,206 @@ export const ui: Registry = [
     }))),
   },
   {
+    name: 'shuffle-text',
+    description:
+      'A text scramble/shuffle animation that reveals text with a decode effect. Supports mount, hover, and scroll-based triggers.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/shuffle-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/shuffle-text').then((mod) => ({
+        default: mod.ShuffleText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'shiny-text',
+    description:
+      'Premium Apple-style shine effect that sweeps across text like light reflecting off a glossy surface.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/shiny-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/shiny-text').then((mod) => ({
+        default: mod.ShinyText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'blur-in-text',
+    description:
+      'Text emerges from a soft blur into crystal clarity with staggered letter or word animations.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/blur-in-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/blur-in-text').then((mod) => ({
+        default: mod.BlurInText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'wave-text',
+    description:
+      'Letters dance in a smooth sine wave pattern, creating a playful ocean-like motion.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/wave-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/wave-text').then((mod) => ({
+        default: mod.WaveText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'glitch-text',
+    description:
+      'Cyberpunk-style glitch effect with RGB color splitting, position jittering, and scanlines.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/glitch-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/glitch-text').then((mod) => ({
+        default: mod.GlitchText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'fuzzy-text',
+    description:
+      'Retro CRT television effect with static noise, scanlines, and progressive text reveal.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/fuzzy-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/fuzzy-text').then((mod) => ({
+        default: mod.FuzzyText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'fade-in-up-text',
+    description:
+      'Elegant text entrance that fades in while floating from any direction with stagger support.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/fade-in-up-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/fade-in-up-text').then((mod) => ({
+        default: mod.FadeInUpText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'gradient-flow-text',
+    description:
+      'Mesmerizing animated gradient that flows through text like liquid colors.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/gradient-flow-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/gradient-flow-text').then((mod) => ({
+        default: mod.GradientFlowText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'scroll-reveal-text',
+    description:
+      'Text animation tied to scroll position - reveals as you scroll, reverses when scrolling up.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/scroll-reveal-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/scroll-reveal-text').then((mod) => ({
+        default: mod.ScrollRevealText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
+    name: 'variable-proximity-text',
+    description:
+      'Interactive text where font weight changes based on mouse proximity to each letter.',
+    type: 'registry:ui',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/ui/variable-proximity-text.tsx',
+        type: 'registry:ui',
+      },
+    ],
+    component: React.lazy(() =>
+      import('../components/ui/variable-proximity-text').then((mod) => ({
+        default: mod.VariableProximityText,
+      })),
+    ),
+    categories: ['text-animation'],
+  },
+  {
     name: 'pointer-highlight',
     type: 'registry:ui',
     dependencies: ['react'],

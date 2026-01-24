@@ -1,0 +1,24 @@
+{
+  "name": "shuffle-text-hover",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "A hover-triggered text scramble animation. Text decodes when user hovers over it.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/shuffle-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\r\n\r\nexport default function ShuffleTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground cursor-pointer text-4xl md:text-6xl\">\r\n        <ShuffleText\r\n          text=\"Hover to Decode\"\r\n          scrambleSpeed={40}\r\n          revealDelay={120}\r\n          trigger=\"hover\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/shuffle-text-hover.tsx",
+      "target": "components/mvpblocks/shuffle-text-hover.tsx"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+---
+title: Variable Proximity Text
+description: Interactive text where font weight and optical size change based on mouse proximity to each letter. Uses variable fonts for smooth, fluid transitions.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Linear Falloff
+
+Font weight increases linearly as the cursor approaches each letter.
+
+<ComponentPreview
+  name="variable-proximity-demo"
+  classNameComponentContainer="h-[350px]"
+  code={(await extractSourceCode("variable-proximity-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Gaussian Falloff
+
+Smooth gaussian distribution creates a softer, more natural effect.
+
+<ComponentPreview
+  name="variable-proximity-gaussian"
+  classNameComponentContainer="h-[350px]"
+  code={(await extractSourceCode("variable-proximity-gaussian")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Exponential Falloff
+
+Sharp exponential falloff for more dramatic proximity effect.
+
+<ComponentPreview
+  name="variable-proximity-exponential"
+  classNameComponentContainer="h-[350px]"
+  code={(await extractSourceCode("variable-proximity-exponential")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Add the Google Font
+
+    Add the Roboto Flex variable font to your layout or CSS:
+
+    ```css
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+    ```
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("variable-proximity-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    label: {
+      description: "The text to display.",
+      type: "string",
+      default: "required",
+    },
+    containerRef: {
+      description: "Ref to the container element for mouse position calculation.",
+      type: "RefObject<HTMLElement>",
+      default: "required",
+    },
+    fromFontVariationSettings: {
+      description: "Font variation settings when mouse is far away.",
+      type: "string",
+      default: "'wght' 400, 'opsz' 9",
+    },
+    toFontVariationSettings: {
+      description: "Font variation settings when mouse is closest.",
+      type: "string",
+      default: "'wght' 900, 'opsz' 40",
+    },
+    radius: {
+      description: "Radius of influence in pixels.",
+      type: "number",
+      default: "100",
+    },
+    falloff: {
+      description: "Type of distance falloff function.",
+      type: "'linear' | 'exponential' | 'gaussian'",
+      default: "'linear'",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+'use client';
+
+import { useRef } from 'react';
+import { VariableProximityText } from '@/components/ui/variable-proximity-text';
+
+// Basic usage
+function Example() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div ref={containerRef} className="relative p-8">
+      <VariableProximityText
+        label="Hover over me!"
+        containerRef={containerRef}
+        radius={100}
+        falloff="linear"
+      />
+    </div>
+  );
+}
+
+// With custom font variation settings
+<VariableProximityText
+  label="Custom Weight Range"
+  containerRef={containerRef}
+  fromFontVariationSettings="'wght' 200, 'opsz' 9"
+  toFontVariationSettings="'wght' 1000, 'opsz' 40"
+  radius={150}
+/>
+
+// Gaussian falloff for smoother effect
+<VariableProximityText
+  label="Smooth Gaussian"
+  containerRef={containerRef}
+  falloff="gaussian"
+  radius={120}
+/>
+
+// Exponential falloff for sharp effect
+<VariableProximityText
+  label="Sharp Exponential"
+  containerRef={containerRef}
+  falloff="exponential"
+  radius={80}
+/>
+```
+
+## Variable Font Requirements
+
+This component requires a **variable font** that supports the `wght` (weight) and optionally `opsz` (optical size) axes. The default font is [Roboto Flex](https://fonts.google.com/specimen/Roboto+Flex).
+
+Other compatible variable fonts:
+- [Inter](https://fonts.google.com/specimen/Inter)
+- [Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)
+- [Montserrat](https://fonts.google.com/specimen/Montserrat)

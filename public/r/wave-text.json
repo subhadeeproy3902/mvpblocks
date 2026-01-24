@@ -1,0 +1,21 @@
+{
+  "name": "wave-text",
+  "description": "Letters dance in a smooth sine wave pattern, creating a playful ocean-like motion.",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\r\n\r\nimport { useEffect, useRef, useState } from 'react';\r\nimport { motion, useInView } from 'framer-motion';\r\n\r\ninterface WaveTextProps {\r\n  text: string;\r\n  className?: string;\r\n  amplitude?: number;\r\n  frequency?: number;\r\n  speed?: number;\r\n  direction?: 'up' | 'down' | 'both';\r\n  trigger?: 'mount' | 'hover' | 'inView' | 'continuous';\r\n  duration?: number;\r\n}\r\n\r\nexport const WaveText = ({\r\n  text,\r\n  className = '',\r\n  amplitude = 20,\r\n  frequency = 0.3,\r\n  speed = 2,\r\n  direction = 'both',\r\n  trigger = 'continuous',\r\n  duration = 3,\r\n}: Readonly<WaveTextProps>) => {\r\n  const containerRef = useRef<HTMLSpanElement>(null);\r\n  const isInView = useInView(containerRef, { once: false, amount: 0.5 });\r\n  const [isHovering, setIsHovering] = useState(false);\r\n  const [hasTriggered, setHasTriggered] = useState(false);\r\n\r\n  const shouldAnimate = () => {\r\n    switch (trigger) {\r\n      case 'continuous':\r\n        return true;\r\n      case 'mount':\r\n        return true;\r\n      case 'inView':\r\n        return isInView;\r\n      case 'hover':\r\n        return isHovering;\r\n      default:\r\n        return false;\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    if (trigger === 'mount' && !hasTriggered) {\r\n      setHasTriggered(true);\r\n    }\r\n  }, [trigger, hasTriggered]);\r\n\r\n  const characters = text.split('');\r\n\r\n  const getYAnimation = (index: number) => {\r\n    const baseY = Math.sin(index * frequency) * amplitude;\r\n\r\n    if (direction === 'up') {\r\n      return [0, -Math.abs(baseY), 0];\r\n    } else if (direction === 'down') {\r\n      return [0, Math.abs(baseY), 0];\r\n    } else {\r\n      return [0, baseY, 0, -baseY, 0];\r\n    }\r\n  };\r\n\r\n  return (\r\n    <motion.span\r\n      ref={containerRef}\r\n      className={`inline-block ${className}`}\r\n      onMouseEnter={() => setIsHovering(true)}\r\n      onMouseLeave={() => setIsHovering(false)}\r\n    >\r\n      {characters.map((char, index) => (\r\n        <motion.span\r\n          key={`${char}-${index}`}\r\n          className=\"inline-block\"\r\n          style={{\r\n            whiteSpace: char === ' ' ? 'pre' : 'normal',\r\n          }}\r\n          animate={\r\n            shouldAnimate() && char !== ' '\r\n              ? {\r\n                  y: getYAnimation(index),\r\n                }\r\n              : {}\r\n          }\r\n          transition={\r\n            shouldAnimate()\r\n              ? {\r\n                  duration: speed,\r\n                  ease: 'easeInOut',\r\n                  repeat: trigger === 'continuous' ? Infinity : 0,\r\n                  repeatType: 'loop',\r\n                  delay: index * (frequency / 2),\r\n                }\r\n              : {}\r\n          }\r\n        >\r\n          {char}\r\n        </motion.span>\r\n      ))}\r\n    </motion.span>\r\n  );\r\n};\r\n\r\nexport default WaveText;\r\n",
+      "path": "/components/ui/wave-text.tsx",
+      "target": "components/ui/wave-text.tsx"
+    }
+  ],
+  "categories": [
+    "text-animation"
+  ]
+}

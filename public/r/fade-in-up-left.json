@@ -1,0 +1,24 @@
+{
+  "name": "fade-in-up-left",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Text slides in from the right.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/fade-in-up-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\r\n\r\nexport default function FadeInUpLeft() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <FadeInUpText\r\n          text=\"Slide from Right\"\r\n          duration={0.5}\r\n          stagger={0.1}\r\n          distance={50}\r\n          direction=\"left\"\r\n          split=\"word\"\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/fade-in-up-left.tsx",
+      "target": "components/mvpblocks/fade-in-up-left.tsx"
+    }
+  ]
+}

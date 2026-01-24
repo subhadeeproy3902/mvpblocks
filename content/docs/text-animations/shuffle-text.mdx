@@ -1,0 +1,146 @@
+---
+title: Shuffle Text
+description: A text scramble/decode animation that starts with random characters and gradually reveals the actual text letter by letter. Creates a cipher/decode effect perfect for hero sections, headlines, and interactive elements.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Basic Usage
+
+Text automatically scrambles and decodes on mount.
+
+<ComponentPreview
+  name="shuffle-text-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("shuffle-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover Trigger
+
+Text scrambles when user hovers over it.
+
+<ComponentPreview
+  name="shuffle-text-hover"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("shuffle-text-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Scroll Trigger
+
+Text decodes as you scroll - stops when you stop scrolling!
+
+<ComponentPreview
+  name="shuffle-text-inview"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("shuffle-text-inview")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("shuffle-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The final text to reveal after the scramble animation.",
+      type: "string",
+      default: "required",
+    },
+    trigger: {
+      description: "When to trigger the animation. 'scroll' ties reveal progress to scroll position.",
+      type: "'mount' | 'hover' | 'scroll'",
+      default: "'mount'",
+    },
+    scrambleSpeed: {
+      description: "How fast the random characters shuffle (in ms). Lower = faster scramble.",
+      type: "number",
+      default: "50",
+    },
+    revealDelay: {
+      description: "Delay between each character being revealed (in ms). Higher = slower decode.",
+      type: "number",
+      default: "100",
+    },
+    className: {
+      description: "Optional CSS class for styling.",
+      type: "string",
+      default: "''",
+    },
+    characterSet: {
+      description: "Custom characters to use for the scramble effect.",
+      type: "string",
+      default: "'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'",
+    },
+    sequential: {
+      description: "If true, characters reveal left-to-right. If false, characters randomly lock in place.",
+      type: "boolean",
+      default: "true",
+    },
+    onComplete: {
+      description: "Callback function fired when the animation completes.",
+      type: "() => void",
+      default: "undefined",
+    },
+  }}
+/>
+
+## Speed Examples
+
+```tsx
+// Slow dramatic decode (good for hero sections)
+<ShuffleText text="Welcome" scrambleSpeed={60} revealDelay={200} />
+
+// Fast decode (good for hover effects)
+<ShuffleText text="Click Me" scrambleSpeed={30} revealDelay={80} />
+
+// Ultra slow cinematic decode
+<ShuffleText text="Loading..." scrambleSpeed={80} revealDelay={300} />
+```
