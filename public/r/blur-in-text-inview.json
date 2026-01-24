@@ -3,6 +3,7 @@
   "categories": [
     "text-animation"
   ],
+  "author": "vedant7007",
   "description": "Blur in animation triggered on scroll.",
   "type": "registry:block",
   "dependencies": [
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { BlurInText } from '@/components/ui/blur-in-text';\n\nexport default function BlurInTextInView() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <BlurInText\n          text=\"Scroll to Focus\"\n          blurAmount={10}\n          duration={1.2}\n          stagger={0.06}\n          split=\"letter\"\n          trigger=\"inView\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { BlurInText } from '@/components/ui/blur-in-text';\r\n\r\nexport default function BlurInTextInView() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <BlurInText\r\n          text=\"Scroll to Focus\"\r\n          blurAmount={10}\r\n          duration={1.2}\r\n          stagger={0.06}\r\n          split=\"letter\"\r\n          trigger=\"inView\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/blur-in-text-inview.tsx",
       "target": "components/mvpblocks/blur-in-text-inview.tsx"
     }

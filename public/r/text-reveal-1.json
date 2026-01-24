@@ -13,7 +13,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { TextReveal } from '@/components/ui/text-reveal';\nimport { cn } from '@/lib/utils';\nimport { Geist } from 'next/font/google';\n\nconst geist = Geist({\n  subsets: ['latin'],\n  variable: '--font-geist',\n  weight: '400',\n});\n\nexport default function TextRevealLetters() {\n  return (\n    <TextReveal\n      className={cn(\n        `bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-6xl font-bold text-transparent dark:bg-gradient-to-b`,\n        geist.className,\n      )}\n      from=\"bottom\"\n      split=\"letter\"\n    >\n      Welcome to Mvpblocks!\n    </TextReveal>\n  );\n}\n",
+      "content": "import { TextReveal } from '@/components/ui/text-reveal';\r\nimport { cn } from '@/lib/utils';\r\nimport { Geist } from 'next/font/google';\r\n\r\nconst geist = Geist({\r\n  subsets: ['latin'],\r\n  variable: '--font-geist',\r\n  weight: '400',\r\n});\r\n\r\nexport default function TextRevealLetters() {\r\n  return (\r\n    <TextReveal\r\n      className={cn(\r\n        `bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-6xl text-transparent dark:bg-gradient-to-b`,\r\n        geist.className,\r\n      )}\r\n      from=\"bottom\"\r\n      split=\"letter\"\r\n    >\r\n      Welcome to Mvpblocks!\r\n    </TextReveal>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/text-reveal-1.tsx",
       "target": "components/mvpblocks/text-reveal-1.tsx"
     }

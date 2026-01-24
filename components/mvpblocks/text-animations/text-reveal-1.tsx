@@ -12,7 +12,7 @@ export default function TextRevealLetters() {
   return (
     <TextReveal
       className={cn(
-        `bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-6xl font-bold text-transparent dark:bg-gradient-to-b`,
+        `bg-primary from-foreground to-primary via-rose-200 bg-clip-text text-6xl text-transparent dark:bg-gradient-to-b`,
         geist.className,
       )}
       from="bottom"

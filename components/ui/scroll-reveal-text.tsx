@@ -7,7 +7,7 @@ interface ScrollRevealTextProps {
   text: string;
   className?: string;
   revealType?: 'blur' | 'fade' | 'slide' | 'scale' | 'characters';
-  scrollOffset?: [string, string];
+  scrollOffset?: ['start 0.9', 'start 0.3'] | readonly [string, string];
   staggerDelay?: number;
   blurAmount?: number;
   slideDistance?: number;
@@ -26,7 +26,7 @@ export const ScrollRevealText = ({
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: scrollOffset as unknown as [string, string],
+    offset: scrollOffset as any,
   });
 
   // For word/character-based reveals

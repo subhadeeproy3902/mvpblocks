@@ -1,5 +1,6 @@
 {
   "name": "gradient-flow-rainbow",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\n\nexport default function GradientFlowRainbow() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <GradientFlowText\n          text=\"Rainbow Flow\"\n          colors={[\n            '#ff0000',\n            '#ff7f00',\n            '#ffff00',\n            '#00ff00',\n            '#0000ff',\n            '#4b0082',\n            '#9400d3',\n            '#ff0000',\n          ]}\n          speed={6}\n          angle={90}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\r\n\r\nexport default function GradientFlowRainbow() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-4xl md:text-6xl\">\r\n        <GradientFlowText\r\n          text=\"Rainbow Flow\"\r\n          colors={[\r\n            '#ff0000',\r\n            '#ff7f00',\r\n            '#ffff00',\r\n            '#00ff00',\r\n            '#0000ff',\r\n            '#4b0082',\r\n            '#9400d3',\r\n            '#ff0000',\r\n          ]}\r\n          speed={6}\r\n          angle={90}\r\n          trigger=\"continuous\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/gradient-flow-rainbow.tsx",
       "target": "components/mvpblocks/gradient-flow-rainbow.tsx"
     }

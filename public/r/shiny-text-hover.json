@@ -1,5 +1,6 @@
 {
   "name": "shiny-text-hover",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { ShinyText } from '@/components/ui/shiny-text';\n\nexport default function ShinyTextHover() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8 rounded-lg\">\n      <h1 className=\"cursor-pointer text-4xl font-bold md:text-6xl\">\n        <ShinyText\n          text=\"Hover for Shine\"\n          shineColor=\"rgba(255, 215, 0, 1)\"\n          duration={2}\n          trigger=\"hover\"\n          shimmerWidth={180}\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { ShinyText } from '@/components/ui/shiny-text';\r\n\r\nexport default function ShinyTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center bg-black p-8 rounded-lg\">\r\n      <h1 className=\"cursor-pointer text-4xl md:text-6xl\">\r\n        <ShinyText\r\n          text=\"Hover for Shine\"\r\n          shineColor=\"rgba(255, 215, 0, 1)\"\r\n          duration={2}\r\n          trigger=\"hover\"\r\n          shimmerWidth={180}\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/shiny-text-hover.tsx",
       "target": "components/mvpblocks/shiny-text-hover.tsx"
     }

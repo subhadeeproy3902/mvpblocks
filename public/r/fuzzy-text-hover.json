@@ -1,5 +1,6 @@
 {
   "name": "fuzzy-text-hover",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\n\nexport default function FuzzyTextHover() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8\">\n      <FuzzyText\n        text=\"HOVER ME\"\n        fontSize=\"clamp(2rem, 8vw, 5rem)\"\n        noiseIntensity={1.2}\n        enableHover={true}\n        baseColor=\"#00ff00\"\n        glowColor=\"#00ff00\"\n      />\n    </div>\n  );\n}\n",
+      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\r\n\r\nexport default function FuzzyTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center p-8\">\r\n      <FuzzyText\r\n        text=\"HOVER ME\"\r\n        fontSize=\"clamp(2rem, 8vw, 5rem)\"\r\n        noiseIntensity={1.2}\r\n        enableHover={true}\r\n        baseColor=\"#00ff00\"\r\n        glowColor=\"#00ff00\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/fuzzy-text-hover.tsx",
       "target": "components/mvpblocks/fuzzy-text-hover.tsx"
     }

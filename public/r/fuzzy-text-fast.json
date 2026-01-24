@@ -1,5 +1,6 @@
 {
   "name": "fuzzy-text-fast",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\n\nexport default function FuzzyTextFast() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8\">\n      <FuzzyText\n        text=\"404 NOT FOUND\"\n        fontSize=\"clamp(2rem, 8vw, 4rem)\"\n        noiseIntensity={1.5}\n        enableHover={false}\n        baseColor=\"#ff0040\"\n        glowColor=\"#ff0040\"\n        speed={30}\n      />\n    </div>\n  );\n}\n",
+      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\r\n\r\nexport default function FuzzyTextFast() {\r\n  return (\r\n    <div className=\"flex items-center justify-center p-8\">\r\n      <FuzzyText\r\n        text=\"404 NOT FOUND\"\r\n        fontSize=\"clamp(2rem, 8vw, 4rem)\"\r\n        noiseIntensity={1.5}\r\n        enableHover={false}\r\n        baseColor=\"#ff0040\"\r\n        glowColor=\"#ff0040\"\r\n        speed={30}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/fuzzy-text-fast.tsx",
       "target": "components/mvpblocks/fuzzy-text-fast.tsx"
     }

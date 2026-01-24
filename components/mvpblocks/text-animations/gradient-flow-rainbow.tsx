@@ -3,7 +3,7 @@ import { GradientFlowText } from '@/components/ui/gradient-flow-text';
 export default function GradientFlowRainbow() {
   return (
     <div className="flex items-center justify-center">
-      <h1 className="text-4xl font-bold md:text-6xl">
+      <h1 className="text-4xl md:text-6xl">
         <GradientFlowText
           text="Rainbow Flow"
           colors={[

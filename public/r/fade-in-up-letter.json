@@ -1,5 +1,6 @@
 {
   "name": "fade-in-up-letter",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\n\nexport default function FadeInUpLetter() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <FadeInUpText\n          text=\"Letter by Letter\"\n          duration={0.4}\n          stagger={0.04}\n          distance={25}\n          direction=\"up\"\n          split=\"letter\"\n          trigger=\"mount\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\r\n\r\nexport default function FadeInUpLetter() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <FadeInUpText\r\n          text=\"Letter by Letter\"\r\n          duration={0.4}\r\n          stagger={0.04}\r\n          distance={25}\r\n          direction=\"up\"\r\n          split=\"letter\"\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/fade-in-up-letter.tsx",
       "target": "components/mvpblocks/fade-in-up-letter.tsx"
     }

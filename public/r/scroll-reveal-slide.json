@@ -1,5 +1,6 @@
 {
   "name": "scroll-reveal-slide",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { ScrollRevealText } from '@/components/ui/scroll-reveal-text';\n\nexport default function ScrollRevealSlide() {\n  return (\n    <div className=\"flex min-h-[400px] items-center justify-center p-8\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <ScrollRevealText\n          text=\"Slide Into View\"\n          revealType=\"slide\"\n          slideDistance={50}\n          scrollOffset={['start 0.9', 'start 0.4']}\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { ScrollRevealText } from '@/components/ui/scroll-reveal-text';\r\n\r\nexport default function ScrollRevealSlide() {\r\n  return (\r\n    <div className=\"flex min-h-[400px] items-center justify-center p-8\">\r\n      <h1 className=\"text-4xl md:text-6xl\">\r\n        <ScrollRevealText\r\n          text=\"Slide Into View\"\r\n          revealType=\"slide\"\r\n          slideDistance={50}\r\n          scrollOffset={['start 0.9', 'start 0.4']}\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/scroll-reveal-slide.tsx",
       "target": "components/mvpblocks/scroll-reveal-slide.tsx"
     }

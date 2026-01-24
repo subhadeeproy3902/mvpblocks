@@ -6,7 +6,7 @@ export default function TextTypeDemo() {
   return (
     <div className="flex min-h-[200px] items-center justify-center">
       <div className="text-center">
-        <h1 className="text-foreground text-3xl font-bold md:text-5xl">
+        <h1 className="text-foreground text-3xl md:text-5xl">
           <TextType
             text={['Text typing effect', 'for your websites', 'Happy coding!']}
             typingSpeed={75}

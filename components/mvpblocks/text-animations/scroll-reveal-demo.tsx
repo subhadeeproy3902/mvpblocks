@@ -3,7 +3,7 @@ import { ScrollRevealText } from '@/components/ui/scroll-reveal-text';
 export default function ScrollRevealDemo() {
   return (
     <div className="flex min-h-[400px] items-center justify-center p-8">
-      <h1 className="text-4xl font-bold md:text-6xl">
+      <h1 className="text-4xl md:text-6xl">
         <ScrollRevealText
           text="Scroll to Reveal"
           revealType="blur"

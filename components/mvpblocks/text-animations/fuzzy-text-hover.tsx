@@ -2,7 +2,7 @@ import { FuzzyText } from '@/components/ui/fuzzy-text';
 
 export default function FuzzyTextHover() {
   return (
-    <div className="flex items-center justify-center bg-black p-8">
+    <div className="flex items-center justify-center p-8">
       <FuzzyText
         text="HOVER ME"
         fontSize="clamp(2rem, 8vw, 5rem)"

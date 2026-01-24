@@ -1,5 +1,6 @@
 {
   "name": "shuffle-text-inview",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\n\nexport default function ShuffleTextScroll() {\n  return (\n    <div className=\"flex min-h-[300px] items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <ShuffleText\n          text=\"Scroll to Reveal\"\n          scrambleSpeed={50}\n          trigger=\"scroll\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\r\n\r\nexport default function ShuffleTextScroll() {\r\n  return (\r\n    <div className=\"flex min-h-[300px] items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <ShuffleText\r\n          text=\"Scroll to Reveal\"\r\n          scrambleSpeed={50}\r\n          trigger=\"scroll\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/shuffle-text-inview.tsx",
       "target": "components/mvpblocks/shuffle-text-inview.tsx"
     }

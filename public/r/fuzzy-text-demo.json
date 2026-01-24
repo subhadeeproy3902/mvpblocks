@@ -1,5 +1,6 @@
 {
   "name": "fuzzy-text-demo",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\n\nexport default function FuzzyTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center bg-black p-8\">\n      <FuzzyText\n        text=\"FUZZY STATIC\"\n        fontSize=\"clamp(2rem, 8vw, 5rem)\"\n        noiseIntensity={1}\n        enableHover={true}\n        baseColor=\"#ffffff\"\n        glowColor=\"#ffffff\"\n      />\n    </div>\n  );\n}\n",
+      "content": "import { FuzzyText } from '@/components/ui/fuzzy-text';\r\n\r\nexport default function FuzzyTextDemo() {\r\n  return (\r\n    <div className=\"flex items-center justify-center p-8\">\r\n      <FuzzyText\r\n        text=\"FUZZY STATIC\"\r\n        fontSize=\"clamp(2rem, 8vw, 5rem)\"\r\n        noiseIntensity={1}\r\n        enableHover={true}\r\n        baseColor=\"#ffaaaa\"\r\n        glowColor=\"#ffaaaa\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/fuzzy-text-demo.tsx",
       "target": "components/mvpblocks/fuzzy-text-demo.tsx"
     }

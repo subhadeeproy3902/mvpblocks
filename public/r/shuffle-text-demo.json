@@ -1,5 +1,6 @@
 {
   "name": "shuffle-text-demo",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\n\nexport default function ShuffleTextDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <ShuffleText\n          text=\"Decode the Future\"\n          scrambleSpeed={50}\n          revealDelay={150}\n          trigger=\"mount\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { ShuffleText } from '@/components/ui/shuffle-text';\r\n\r\nexport default function ShuffleTextDemo() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <ShuffleText\r\n          text=\"Decode the Future\"\r\n          scrambleSpeed={50}\r\n          revealDelay={150}\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/shuffle-text-demo.tsx",
       "target": "components/mvpblocks/shuffle-text-demo.tsx"
     }

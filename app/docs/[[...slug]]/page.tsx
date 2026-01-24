@@ -19,7 +19,7 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/important/Actions';
 import { createGenerator } from 'fumadocs-typescript';
-import { metadataImage } from '@/lib/metadata-image';
+import { metadata } from '@/app/layout';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -212,8 +212,9 @@ export async function generateMetadata(props: {
 
   if (!page) return {};
 
-  return metadataImage.withImage(page.slugs, {
-    description: page.data.description,
+  return {
     title: page.data.title,
-  });
+    description: page.data.description,
+    metadataBase: new URL(siteConfig.url),
+  }
 }

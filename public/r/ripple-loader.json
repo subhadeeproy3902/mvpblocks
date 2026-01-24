@@ -13,7 +13,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { motion } from 'framer-motion';\n\nexport default function RippleWaveLoader() {\n  return (\n    <div className=\"flex items-center justify-center space-x-1\">\n      {[...Array(7)].map((_, index) => (\n        <motion.div\n          key={index}\n          className=\"h-8 w-2 rounded-full bg-red-500\"\n          animate={{\n            scaleY: [0.5, 1.5, 0.5],\n            scaleX: [1, 0.8, 1],\n            translateY: ['0%', '-15%', '0%'],\n          }}\n          transition={{\n            duration: 1,\n            repeat: Infinity,\n            ease: 'easeInOut',\n            delay: index * 0.1,\n          }}\n        />\n      ))}\n    </div>\n  );\n}\n",
+      "content": "import { motion } from 'framer-motion';\r\n\r\nexport default function RippleWaveLoader() {\r\n  return (\r\n    <div className=\"flex items-center justify-center space-x-1\">\r\n      {[...Array(7)].map((_, index) => (\r\n        <motion.div\r\n          key={index}\r\n          className=\"h-8 w-2 rounded-full bg-red-500\"\r\n          animate={{\r\n            scaleY: [0.5, 1.5, 0.5],\r\n            scaleX: [1, 0.8, 1],\r\n            translateY: ['0%', '-15%', '0%'],\r\n          }}\r\n          transition={{\r\n            duration: 1,\r\n            repeat: Infinity,\r\n            ease: 'easeInOut',\r\n            delay: index * 0.1,\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/basics/loaders/ripple-loader.tsx",
       "target": "components/mvpblocks/ripple-loader.tsx"
     }

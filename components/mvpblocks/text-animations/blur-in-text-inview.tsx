@@ -3,7 +3,7 @@ import { BlurInText } from '@/components/ui/blur-in-text';
 export default function BlurInTextInView() {
   return (
     <div className="flex items-center justify-center">
-      <h1 className="text-foreground text-4xl font-bold md:text-6xl">
+      <h1 className="text-foreground text-4xl md:text-6xl">
         <BlurInText
           text="Scroll to Focus"
           blurAmount={10}

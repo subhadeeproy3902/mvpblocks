@@ -1,5 +1,6 @@
 {
   "name": "glitch-text-subtle",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { GlitchText } from '@/components/ui/glitch-text';\n\nexport default function GlitchTextSubtle() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <GlitchText\n          text=\"Subtle Glitch\"\n          intensity={3}\n          colors={['#6366f1', '#ec4899']}\n          duration={0.15}\n          glitchInterval={4000}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { GlitchText } from '@/components/ui/glitch-text';\r\n\r\nexport default function GlitchTextSubtle() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <GlitchText\r\n          text=\"Subtle Glitch\"\r\n          intensity={3}\r\n          colors={['#6366f1', '#ec4899']}\r\n          duration={0.15}\r\n          glitchInterval={4000}\r\n          trigger=\"continuous\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/glitch-text-subtle.tsx",
       "target": "components/mvpblocks/glitch-text-subtle.tsx"
     }

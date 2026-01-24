@@ -1,5 +1,6 @@
 {
   "name": "wave-text-hover",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { WaveText } from '@/components/ui/wave-text';\n\nexport default function WaveTextHover() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground cursor-pointer text-4xl font-bold md:text-6xl\">\n        <WaveText\n          text=\"Hover to Wave\"\n          amplitude={25}\n          frequency={0.5}\n          speed={1.5}\n          trigger=\"hover\"\n          direction=\"both\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { WaveText } from '@/components/ui/wave-text';\r\n\r\nexport default function WaveTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground cursor-pointer text-4xl md:text-6xl\">\r\n        <WaveText\r\n          text=\"Hover to Wave\"\r\n          amplitude={25}\r\n          frequency={0.5}\r\n          speed={1.5}\r\n          trigger=\"hover\"\r\n          direction=\"both\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/wave-text-hover.tsx",
       "target": "components/mvpblocks/wave-text-hover.tsx"
     }

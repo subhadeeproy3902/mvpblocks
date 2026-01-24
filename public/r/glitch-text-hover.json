@@ -1,5 +1,6 @@
 {
   "name": "glitch-text-hover",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { GlitchText } from '@/components/ui/glitch-text';\n\nexport default function GlitchTextHover() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground cursor-pointer text-4xl font-bold md:text-6xl\">\n        <GlitchText\n          text=\"HOVER GLITCH\"\n          intensity={8}\n          colors={['#ff00ff', '#00ff00']}\n          duration={0.2}\n          glitchInterval={500}\n          trigger=\"hover\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { GlitchText } from '@/components/ui/glitch-text';\r\n\r\nexport default function GlitchTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground cursor-pointer text-4xl md:text-6xl\">\r\n        <GlitchText\r\n          text=\"HOVER GLITCH\"\r\n          intensity={8}\r\n          colors={['#ff00ff', '#00ff00']}\r\n          duration={0.2}\r\n          glitchInterval={500}\r\n          trigger=\"hover\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/glitch-text-hover.tsx",
       "target": "components/mvpblocks/glitch-text-hover.tsx"
     }

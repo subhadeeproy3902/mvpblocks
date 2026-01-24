@@ -1,5 +1,6 @@
 {
   "name": "gradient-flow-demo",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\n\nexport default function GradientFlowDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-4xl font-bold md:text-6xl\">\n        <GradientFlowText\n          text=\"Flowing Colors\"\n          colors={['#ff0080', '#7928ca', '#0070f3', '#ff0080']}\n          speed={4}\n          angle={90}\n          trigger=\"continuous\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\r\n\r\nexport default function GradientFlowDemo() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-4xl md:text-6xl\">\r\n        <GradientFlowText\r\n          text=\"Flowing Colors\"\r\n          colors={['#ff0080', '#7928ca', '#0070f3', '#ff0080']}\r\n          speed={4}\r\n          angle={90}\r\n          trigger=\"continuous\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/gradient-flow-demo.tsx",
       "target": "components/mvpblocks/gradient-flow-demo.tsx"
     }

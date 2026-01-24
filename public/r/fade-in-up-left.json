@@ -1,5 +1,6 @@
 {
   "name": "fade-in-up-left",
+  "author": "vedant7007",
   "categories": [
     "text-animation"
   ],
@@ -15,7 +16,7 @@
   "files": [
     {
       "type": "registry:block",
-      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\n\nexport default function FadeInUpLeft() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <h1 className=\"text-foreground text-4xl font-bold md:text-6xl\">\n        <FadeInUpText\n          text=\"Slide from Right\"\n          duration={0.5}\n          stagger={0.1}\n          distance={50}\n          direction=\"left\"\n          split=\"word\"\n          trigger=\"mount\"\n        />\n      </h1>\n    </div>\n  );\n}\n",
+      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\r\n\r\nexport default function FadeInUpLeft() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <FadeInUpText\r\n          text=\"Slide from Right\"\r\n          duration={0.5}\r\n          stagger={0.1}\r\n          distance={50}\r\n          direction=\"left\"\r\n          split=\"word\"\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
       "path": "/components/mvpblocks/text-animations/fade-in-up-left.tsx",
       "target": "components/mvpblocks/fade-in-up-left.tsx"
     }
