@@ -1,0 +1,24 @@
+{
+  "name": "glitch-text-hover",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Intense glitch effect on hover.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/glitch-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GlitchText } from '@/components/ui/glitch-text';\r\n\r\nexport default function GlitchTextHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground cursor-pointer text-4xl md:text-6xl\">\r\n        <GlitchText\r\n          text=\"HOVER GLITCH\"\r\n          intensity={8}\r\n          colors={['#ff00ff', '#00ff00']}\r\n          duration={0.2}\r\n          glitchInterval={500}\r\n          trigger=\"hover\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/glitch-text-hover.tsx",
+      "target": "components/mvpblocks/glitch-text-hover.tsx"
+    }
+  ]
+}

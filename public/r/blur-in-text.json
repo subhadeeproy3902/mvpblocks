@@ -1,0 +1,21 @@
+{
+  "name": "blur-in-text",
+  "description": "Text emerges from a soft blur into crystal clarity with staggered letter or word animations.",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "'use client';\r\n\r\nimport { useEffect, useRef, useState } from 'react';\r\nimport { motion, useInView, Variants } from 'framer-motion';\r\n\r\ninterface BlurInTextProps {\r\n  text: string;\r\n  className?: string;\r\n  blurAmount?: number;\r\n  duration?: number;\r\n  delay?: number;\r\n  stagger?: number;\r\n  direction?: 'in' | 'out';\r\n  split?: 'letter' | 'word' | 'none';\r\n  trigger?: 'mount' | 'inView' | 'hover';\r\n  yOffset?: number;\r\n}\r\n\r\nexport const BlurInText = ({\r\n  text,\r\n  className = '',\r\n  blurAmount = 10,\r\n  duration = 0.8,\r\n  delay = 0,\r\n  stagger = 0.05,\r\n  direction = 'in',\r\n  split = 'letter',\r\n  trigger = 'mount',\r\n  yOffset = 20,\r\n}: Readonly<BlurInTextProps>) => {\r\n  const containerRef = useRef<HTMLSpanElement>(null);\r\n  const isInView = useInView(containerRef, { once: true, amount: 0.5 });\r\n  const [isHovering, setIsHovering] = useState(false);\r\n  const [hasAnimated, setHasAnimated] = useState(false);\r\n\r\n  const shouldAnimate = () => {\r\n    switch (trigger) {\r\n      case 'mount':\r\n        return true;\r\n      case 'inView':\r\n        return isInView;\r\n      case 'hover':\r\n        return isHovering;\r\n      default:\r\n        return false;\r\n    }\r\n  };\r\n\r\n  useEffect(() => {\r\n    if (shouldAnimate() && !hasAnimated && trigger !== 'hover') {\r\n      setHasAnimated(true);\r\n    }\r\n  }, [isInView]);\r\n\r\n  const containerVariants: Variants = {\r\n    hidden: {},\r\n    visible: {\r\n      transition: {\r\n        staggerChildren: split === 'none' ? 0 : stagger,\r\n        delayChildren: delay,\r\n      },\r\n    },\r\n  };\r\n\r\n  const itemVariants: Variants = {\r\n    hidden: {\r\n      filter: direction === 'in' ? `blur(${blurAmount}px)` : 'blur(0px)',\r\n      opacity: direction === 'in' ? 0 : 1,\r\n      y: direction === 'in' ? yOffset : 0,\r\n    },\r\n    visible: {\r\n      filter: direction === 'in' ? 'blur(0px)' : `blur(${blurAmount}px)`,\r\n      opacity: direction === 'in' ? 1 : 0,\r\n      y: direction === 'in' ? 0 : yOffset,\r\n      transition: {\r\n        duration,\r\n        ease: [0.25, 0.46, 0.45, 0.94],\r\n      },\r\n    },\r\n  };\r\n\r\n  const getElements = () => {\r\n    if (split === 'none') {\r\n      return [text];\r\n    } else if (split === 'word') {\r\n      return text.split(' ');\r\n    } else {\r\n      return text.split('');\r\n    }\r\n  };\r\n\r\n  const elements = getElements();\r\n\r\n  return (\r\n    <motion.span\r\n      ref={containerRef}\r\n      className={`inline-block ${className}`}\r\n      variants={containerVariants}\r\n      initial=\"hidden\"\r\n      animate={shouldAnimate() || hasAnimated ? 'visible' : 'hidden'}\r\n      onMouseEnter={() => trigger === 'hover' && setIsHovering(true)}\r\n      onMouseLeave={() => trigger === 'hover' && setIsHovering(false)}\r\n    >\r\n      {elements.map((element, index) => (\r\n        <motion.span\r\n          key={`${element}-${index}`}\r\n          className=\"inline-block\"\r\n          variants={itemVariants}\r\n          style={{\r\n            whiteSpace: element === ' ' ? 'pre' : 'normal',\r\n          }}\r\n        >\r\n          {element}\r\n          {split === 'word' && index < elements.length - 1 && '\\u00A0'}\r\n        </motion.span>\r\n      ))}\r\n    </motion.span>\r\n  );\r\n};\r\n\r\nexport default BlurInText;\r\n",
+      "path": "/components/ui/blur-in-text.tsx",
+      "target": "components/ui/blur-in-text.tsx"
+    }
+  ],
+  "categories": [
+    "text-animation"
+  ]
+}

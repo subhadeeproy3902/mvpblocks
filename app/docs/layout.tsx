@@ -4,10 +4,8 @@ import { baseOptions } from '@/app/layout.config';
 import { source } from '@/lib/source';
 import { RootProvider } from '@/components/shared/root-provider';
 import dynamic from 'next/dynamic';
-import { Banner } from 'fumadocs-ui/components/banner';
-import Link from 'next/link';
 
-const Assistant = dynamic(() => import('@/components/important/assistant'));
+// const Assistant = dynamic(() => import('@/components/important/assistant'));
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -116,7 +114,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             }}
           >
             {children}
-            <Assistant />
+            {/* <Assistant /> */}
           </DocsLayout>
         </div>
       </RootProvider>

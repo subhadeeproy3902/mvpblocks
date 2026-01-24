@@ -1,0 +1,24 @@
+{
+  "name": "fade-in-up-demo",
+  "categories": [
+    "text-animation"
+  ],
+  "author": "vedant7007",
+  "description": "Text fades in while floating upward word by word.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/fade-in-up-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { FadeInUpText } from '@/components/ui/fade-in-up-text';\r\n\r\nexport default function FadeInUpDemo() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"text-foreground text-4xl md:text-6xl\">\r\n        <FadeInUpText\r\n          text=\"Rise and Shine\"\r\n          duration={0.6}\r\n          stagger={0.08}\r\n          distance={40}\r\n          direction=\"up\"\r\n          split=\"word\"\r\n          trigger=\"mount\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/fade-in-up-demo.tsx",
+      "target": "components/mvpblocks/fade-in-up-demo.tsx"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "scroll-reveal-demo",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Text reveals with blur effect tied to scroll position.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/scroll-reveal-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { ScrollRevealText } from '@/components/ui/scroll-reveal-text';\r\n\r\nexport default function ScrollRevealDemo() {\r\n  return (\r\n    <div className=\"flex min-h-[400px] items-center justify-center p-8\">\r\n      <h1 className=\"text-4xl md:text-6xl\">\r\n        <ScrollRevealText\r\n          text=\"Scroll to Reveal\"\r\n          revealType=\"blur\"\r\n          blurAmount={12}\r\n          scrollOffset={['start 0.9', 'start 0.3']}\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/scroll-reveal-demo.tsx",
+      "target": "components/mvpblocks/scroll-reveal-demo.tsx"
+    }
+  ]
+}

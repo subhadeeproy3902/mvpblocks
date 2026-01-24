@@ -1,0 +1,173 @@
+---
+title: Shiny Text
+description: A premium Apple-style shine effect that sweeps across text like light reflecting off a glossy surface. Features a bright metallic base with multiple shine layers and glow effect.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Premium Shine
+
+Continuous bright shine animation with glow effect - like Apple product text.
+
+<ComponentPreview
+  name="shiny-text-demo"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("shiny-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover Trigger
+
+Golden shine activates when user hovers over the text.
+
+<ComponentPreview
+  name="shiny-text-hover"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("shiny-text-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Vision Pro Style
+
+Extra wide shine with slow animation for maximum impact.
+
+<ComponentPreview
+  name="shiny-text-gradient"
+  classNameComponentContainer="h-[300px] bg-black"
+  code={(await extractSourceCode("shiny-text-gradient")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("shiny-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to display with shine effect.",
+      type: "string",
+      default: "required",
+    },
+    shineColor: {
+      description: "Color of the shine/reflection effect.",
+      type: "string",
+      default: "'rgba(255, 255, 255, 1)'",
+    },
+    duration: {
+      description: "Duration of the shine animation in seconds.",
+      type: "number",
+      default: "3",
+    },
+    angle: {
+      description: "Angle of the shine gradient in degrees.",
+      type: "number",
+      default: "120",
+    },
+    shimmerWidth: {
+      description: "Width of the shimmer band (higher = wider shine).",
+      type: "number",
+      default: "200",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'hover' | 'loop' | 'inView'",
+      default: "'loop'",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+    disabled: {
+      description: "Disable the animation.",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Premium white shine (default)
+<ShinyText
+  text="Premium Quality"
+  shimmerWidth={200}
+  duration={3}
+/>
+
+// Gold luxury shine
+<ShinyText
+  text="Luxury Gold"
+  shineColor="rgba(255, 215, 0, 1)"
+  shimmerWidth={180}
+  duration={2.5}
+/>
+
+// Interactive hover shine
+<ShinyText
+  text="Hover for Shine"
+  trigger="hover"
+  shimmerWidth={200}
+/>
+
+// Extra wide slow shine
+<ShinyText
+  text="Apple Vision Pro"
+  shimmerWidth={250}
+  duration={4}
+/>
+
+// Diagonal shine
+<ShinyText
+  text="Angled Shine"
+  angle={45}
+  shimmerWidth={150}
+/>
+```

@@ -1,0 +1,156 @@
+---
+title: Gradient Flow Text
+description: Mesmerizing animated gradient that flows through text like liquid colors. Perfect for eye-catching headlines, brand names, and call-to-action elements.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Continuous Flow
+
+Smooth, endless gradient animation that draws the eye.
+
+<ComponentPreview
+  name="gradient-flow-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("gradient-flow-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover Activated
+
+Gradient starts flowing when user hovers over the text.
+
+<ComponentPreview
+  name="gradient-flow-hover"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("gradient-flow-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Rainbow Spectrum
+
+Full rainbow color cycle for maximum visual impact.
+
+<ComponentPreview
+  name="gradient-flow-rainbow"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("gradient-flow-rainbow")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("gradient-flow-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to display with gradient effect.",
+      type: "string",
+      default: "required",
+    },
+    colors: {
+      description: "Array of colors for the gradient. Repeat first color at end for seamless loop.",
+      type: "string[]",
+      default: "['#ff0080', '#7928ca', '#ff0080']",
+    },
+    speed: {
+      description: "Animation cycle duration in seconds.",
+      type: "number",
+      default: "3",
+    },
+    angle: {
+      description: "Gradient angle in degrees.",
+      type: "number",
+      default: "90",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'continuous' | 'hover' | 'inView'",
+      default: "'continuous'",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Brand colors
+<GradientFlowText
+  text="Company Name"
+  colors={['#0066cc', '#00ccff', '#0066cc']}
+  speed={4}
+/>
+
+// Sunset gradient
+<GradientFlowText
+  text="Sunset Vibes"
+  colors={['#ff512f', '#f09819', '#ff512f']}
+  angle={45}
+/>
+
+// Neon party
+<GradientFlowText
+  text="PARTY"
+  colors={['#ff00ff', '#00ffff', '#ffff00', '#ff00ff']}
+  speed={2}
+/>
+
+// Subtle professional
+<GradientFlowText
+  text="Enterprise"
+  colors={['#1a1a2e', '#16213e', '#1a1a2e']}
+  speed={6}
+  trigger="hover"
+/>
+```

@@ -1,0 +1,24 @@
+{
+  "name": "variable-proximity-demo",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Interactive text with font weight changing on mouse proximity.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/variable-proximity-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\r\n\r\nimport { useRef } from 'react';\r\nimport { VariableProximityText } from '@/components/ui/variable-proximity-text';\r\n\r\nexport default function VariableProximityDemo() {\r\n  const containerRef = useRef<HTMLDivElement>(null);\r\n\r\n  return (\r\n    <>\r\n      {/* Load Roboto Flex variable font */}\r\n      <link\r\n        href=\"https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap\"\r\n        rel=\"stylesheet\"\r\n      />\r\n      <div\r\n        ref={containerRef}\r\n        className=\"relative flex min-h-[300px] w-full items-center justify-center p-8\"\r\n      >\r\n        <p className=\"text-4xl md:text-6xl\">\r\n          <VariableProximityText\r\n            label=\"Hover over me!\"\r\n            fromFontVariationSettings=\"'wght' 400, 'opsz' 9\"\r\n            toFontVariationSettings=\"'wght' 900, 'opsz' 40\"\r\n            containerRef={containerRef}\r\n            radius={100}\r\n            falloff=\"linear\"\r\n          />\r\n        </p>\r\n      </div>\r\n    </>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/variable-proximity-demo.tsx",
+      "target": "components/mvpblocks/variable-proximity-demo.tsx"
+    }
+  ]
+}

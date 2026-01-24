@@ -1721,6 +1721,590 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'shuffle-text-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description:
+      'A text scramble/shuffle animation that decodes text with random characters. Reveals text letter by letter from left to right.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shuffle-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shuffle-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/shuffle-text-demo'),
+    ),
+  },
+  {
+    name: 'shuffle-text-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description:
+      'A hover-triggered text scramble animation. Text decodes when user hovers over it.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shuffle-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shuffle-text-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/shuffle-text-hover'),
+    ),
+  },
+  {
+    name: 'shuffle-text-inview',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description:
+      'A scroll-triggered text scramble animation. Text decodes when scrolled into view.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shuffle-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shuffle-text-inview.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/shuffle-text-inview'),
+    ),
+  },
+  // Shiny Text animations
+  {
+    name: 'shiny-text-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Premium Apple-style shine effect that sweeps across text.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shiny-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shiny-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/shiny-text-demo'),
+    ),
+  },
+  {
+    name: 'shiny-text-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Shine effect triggered on hover.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shiny-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shiny-text-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/shiny-text-hover'),
+    ),
+  },
+  {
+    name: 'shiny-text-gradient',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Shine effect combined with gradient text.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/shiny-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/shiny-text-gradient.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/shiny-text-gradient'),
+    ),
+  },
+  // Blur In Text animations
+  {
+    name: 'blur-in-text-demo',
+    categories: ['text-animation'],
+    author: "vedant7007",
+    description: 'Text emerges from blur letter by letter.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/blur-in-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/blur-in-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/blur-in-text-demo'),
+    ),
+  },
+  {
+    name: 'blur-in-text-word',
+    categories: ['text-animation'],
+    author: "vedant7007",
+    description: 'Text emerges from blur word by word.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/blur-in-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/blur-in-text-word.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/blur-in-text-word'),
+    ),
+  },
+  {
+    name: 'blur-in-text-inview',
+    categories: ['text-animation'],
+    author: "vedant7007",
+    description: 'Blur in animation triggered on scroll.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/blur-in-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/blur-in-text-inview.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/blur-in-text-inview'),
+    ),
+  },
+  // Wave Text animations
+  {
+    name: 'wave-text-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Letters dance in a smooth sine wave pattern.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/wave-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/wave-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/wave-text-demo'),
+    ),
+  },
+  {
+    name: 'wave-text-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Wave animation triggered on hover.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/wave-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/wave-text-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/wave-text-hover'),
+    ),
+  },
+  {
+    name: 'wave-text-subtle',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Gentle, subtle wave motion.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/wave-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/wave-text-subtle.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/wave-text-subtle'),
+    ),
+  },
+  // Glitch Text animations
+  {
+    name: 'glitch-text-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Cyberpunk-style glitch effect with RGB splitting.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/glitch-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/glitch-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/glitch-text-demo'),
+    ),
+  },
+  {
+    name: 'glitch-text-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Intense glitch effect on hover.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/glitch-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/glitch-text-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/glitch-text-hover'),
+    ),
+  },
+  {
+    name: 'glitch-text-subtle',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Subtle, professional glitch effect.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/glitch-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/glitch-text-subtle.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/glitch-text-subtle'),
+    ),
+  },
+  // Fuzzy TV Text animations
+  {
+    name: 'fuzzy-text-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Retro CRT TV static effect with progressive reveal.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/fuzzy-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fuzzy-text-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fuzzy-text-demo'),
+    ),
+  },
+  {
+    name: 'fuzzy-text-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Static clears on hover to reveal text.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/fuzzy-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fuzzy-text-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fuzzy-text-hover'),
+    ),
+  },
+  {
+    name: 'fuzzy-text-fast',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Quick tune-in effect without scanlines.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: ['https://blocks.mvp-subha.me/r/fuzzy-text.json'],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fuzzy-text-fast.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fuzzy-text-fast'),
+    ),
+  },
+  // Fade In Up Text animations
+  {
+    name: 'fade-in-up-demo',
+    categories: ['text-animation'],
+    author: "vedant7007",
+    description: 'Text fades in while floating upward word by word.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/fade-in-up-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fade-in-up-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fade-in-up-demo'),
+    ),
+  },
+  {
+    name: 'fade-in-up-letter',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Each letter animates individually.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/fade-in-up-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fade-in-up-letter.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fade-in-up-letter'),
+    ),
+  },
+  {
+    name: 'fade-in-up-left',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Text slides in from the right.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/fade-in-up-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/fade-in-up-left.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/fade-in-up-left'),
+    ),
+  },
+  // Gradient Flow Text animations
+  {
+    name: 'gradient-flow-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Mesmerizing animated gradient flowing through text.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/gradient-flow-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/gradient-flow-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/gradient-flow-demo'),
+    ),
+  },
+  {
+    name: 'gradient-flow-hover',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Gradient starts flowing on hover.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/gradient-flow-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/gradient-flow-hover.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/gradient-flow-hover'),
+    ),
+  },
+  {
+    name: 'gradient-flow-rainbow',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Full rainbow color cycle gradient flow.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/gradient-flow-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/gradient-flow-rainbow.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/gradient-flow-rainbow'),
+    ),
+  },
+  {
+    name: 'scroll-reveal-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Text reveals with blur effect tied to scroll position.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/scroll-reveal-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/scroll-reveal-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/text-animations/scroll-reveal-demo'),
+    ),
+  },
+  {
+    name: 'scroll-reveal-characters',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Character-by-character scroll reveal effect.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/scroll-reveal-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/scroll-reveal-characters.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/scroll-reveal-characters'),
+    ),
+  },
+  {
+    name: 'scroll-reveal-slide',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Slide in text reveal tied to scroll position.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/scroll-reveal-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/scroll-reveal-slide.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/scroll-reveal-slide'),
+    ),
+  },
+  {
+    name: 'variable-proximity-demo',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Interactive text with font weight changing on mouse proximity.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/variable-proximity-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/variable-proximity-demo.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/variable-proximity-demo'),
+    ),
+  },
+  {
+    name: 'variable-proximity-gaussian',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Variable proximity text with smooth gaussian falloff.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/variable-proximity-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/variable-proximity-gaussian.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/variable-proximity-gaussian'),
+    ),
+  },
+  {
+    name: 'variable-proximity-exponential',
+    author: "vedant7007",
+    categories: ['text-animation'],
+    description: 'Variable proximity text with exponential falloff effect.',
+    type: 'registry:block',
+    dependencies: ['framer-motion', 'react'],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/variable-proximity-text.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/text-animations/variable-proximity-exponential.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/text-animations/variable-proximity-exponential'),
+    ),
+  },
+  {
     name: 'trading',
     categories: ['hero', 'mainsection'],
     description:

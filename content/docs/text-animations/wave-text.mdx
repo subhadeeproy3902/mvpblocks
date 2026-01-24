@@ -1,0 +1,156 @@
+---
+title: Wave Text
+description: Letters dance in a smooth sine wave pattern, creating a playful, ocean-like motion. Perfect for adding life to headers and interactive elements.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Continuous Wave
+
+Letters continuously wave up and down in a mesmerizing pattern.
+
+<ComponentPreview
+  name="wave-text-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("wave-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Hover Activated
+
+Wave animation triggers on hover for interactive elements.
+
+<ComponentPreview
+  name="wave-text-hover"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("wave-text-hover")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Subtle Motion
+
+Gentle, barely-there motion for elegant, professional designs.
+
+<ComponentPreview
+  name="wave-text-subtle"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("wave-text-subtle")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("wave-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to animate.",
+      type: "string",
+      default: "required",
+    },
+    amplitude: {
+      description: "Height of the wave in pixels.",
+      type: "number",
+      default: "20",
+    },
+    frequency: {
+      description: "Wave frequency (spacing between peaks).",
+      type: "number",
+      default: "0.3",
+    },
+    speed: {
+      description: "Animation speed in seconds per cycle.",
+      type: "number",
+      default: "2",
+    },
+    direction: {
+      description: "Wave direction.",
+      type: "'up' | 'down' | 'both'",
+      default: "'both'",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'mount' | 'hover' | 'inView' | 'continuous'",
+      default: "'continuous'",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Energetic wave
+<WaveText
+  text="Party Time"
+  amplitude={30}
+  frequency={0.6}
+  speed={1}
+/>
+
+// Calm ocean wave
+<WaveText
+  text="Peaceful"
+  amplitude={10}
+  frequency={0.2}
+  speed={4}
+  direction="up"
+/>
+
+// Interactive hover wave
+<WaveText
+  text="Touch Me"
+  trigger="hover"
+  amplitude={20}
+/>
+```

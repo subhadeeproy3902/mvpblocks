@@ -1,0 +1,170 @@
+---
+title: Blur In Text
+description: Text emerges from a soft blur into crystal clarity. Perfect for hero headlines and section reveals that demand attention with an elegant, cinematic feel.
+root: text-animations
+---
+
+import { ComponentPreview } from "@/components/preview/component-preview";
+import { extractSourceCode } from "@/lib/code";
+import { ComponentSource } from "@/components/preview/component-source";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Letter by Letter
+
+Each letter emerges from blur individually for a dramatic effect.
+
+<ComponentPreview
+  name="blur-in-text-demo"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("blur-in-text-demo")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Word by Word
+
+Words reveal one at a time for a more readable, impactful entrance.
+
+<ComponentPreview
+  name="blur-in-text-word"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("blur-in-text-word")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Scroll Triggered
+
+Animation triggers when the text scrolls into view.
+
+<ComponentPreview
+  name="blur-in-text-inview"
+  classNameComponentContainer="h-[300px]"
+  code={(await extractSourceCode("blur-in-text-inview")).code}
+  lang="tsx"
+  hasReTrigger={true}
+/>
+
+## Installation
+
+<Steps>
+  <Step>
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install framer-motion
+        ```
+      </Tab>
+      <Tab>
+      ```bash
+      pnpm install framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      yarn add framer-motion
+      ```
+      </Tab>
+      <Tab>
+      ```bash
+      bun add framer-motion
+      ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step>
+    #### Copy and paste the following code into your project.
+
+    <ComponentSource
+      code={(await extractSourceCode("blur-in-text")).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+## Props
+
+<TypeTable
+  type={{
+    text: {
+      description: "The text to animate.",
+      type: "string",
+      default: "required",
+    },
+    blurAmount: {
+      description: "Initial blur amount in pixels.",
+      type: "number",
+      default: "10",
+    },
+    duration: {
+      description: "Animation duration per element in seconds.",
+      type: "number",
+      default: "0.8",
+    },
+    delay: {
+      description: "Initial delay before animation starts.",
+      type: "number",
+      default: "0",
+    },
+    stagger: {
+      description: "Delay between each element animating.",
+      type: "number",
+      default: "0.05",
+    },
+    direction: {
+      description: "Animate blur in or out.",
+      type: "'in' | 'out'",
+      default: "'in'",
+    },
+    split: {
+      description: "How to split the text for animation.",
+      type: "'letter' | 'word' | 'none'",
+      default: "'letter'",
+    },
+    trigger: {
+      description: "When to trigger the animation.",
+      type: "'mount' | 'inView' | 'hover'",
+      default: "'mount'",
+    },
+    yOffset: {
+      description: "Vertical offset during animation.",
+      type: "number",
+      default: "20",
+    },
+    className: {
+      description: "Additional CSS classes.",
+      type: "string",
+      default: "''",
+    },
+  }}
+/>
+
+## Examples
+
+```tsx
+// Dramatic blur with slow reveal
+<BlurInText
+  text="Welcome"
+  blurAmount={20}
+  duration={1.5}
+  stagger={0.1}
+/>
+
+// Quick word reveal
+<BlurInText
+  text="Fast and Clean"
+  split="word"
+  duration={0.5}
+  stagger={0.2}
+/>
+
+// Blur out effect
+<BlurInText
+  text="Goodbye"
+  direction="out"
+  trigger="hover"
+/>
+```

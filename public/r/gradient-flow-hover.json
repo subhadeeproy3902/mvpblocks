@@ -1,0 +1,24 @@
+{
+  "name": "gradient-flow-hover",
+  "author": "vedant7007",
+  "categories": [
+    "text-animation"
+  ],
+  "description": "Gradient starts flowing on hover.",
+  "type": "registry:block",
+  "dependencies": [
+    "framer-motion",
+    "react"
+  ],
+  "registryDependencies": [
+    "https://blocks.mvp-subha.me/r/gradient-flow-text.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { GradientFlowText } from '@/components/ui/gradient-flow-text';\r\n\r\nexport default function GradientFlowHover() {\r\n  return (\r\n    <div className=\"flex items-center justify-center\">\r\n      <h1 className=\"cursor-pointer text-4xl md:text-6xl\">\r\n        <GradientFlowText\r\n          text=\"Hover to Flow\"\r\n          colors={['#f97316', '#ec4899', '#8b5cf6', '#f97316']}\r\n          speed={2}\r\n          angle={45}\r\n          trigger=\"hover\"\r\n        />\r\n      </h1>\r\n    </div>\r\n  );\r\n}\r\n",
+      "path": "/components/mvpblocks/text-animations/gradient-flow-hover.tsx",
+      "target": "components/mvpblocks/gradient-flow-hover.tsx"
+    }
+  ]
+}
