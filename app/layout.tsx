@@ -28,24 +28,6 @@ export const metadata: Metadata = {
   creator: 'Subhadeep Roy',
   publisher: 'Subhadeep Roy',
   metadataBase: new URL('https://blocks.mvp-subha.me'),
-  openGraph: {
-    title: 'Mvpblocks',
-    description:
-      'Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.',
-    url: 'https://blocks.mvp-subha.me',
-    siteName: 'Mvpblocks',
-    images: [
-      {
-        url: 'https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Mvpblocks',
-        type: 'image/png',
-      },
-    ],
-    locale: 'en-US',
-    type: 'website',
-  },
 };
 
 export const viewport: Viewport = {
