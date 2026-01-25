@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/important/Clarity';
 import Script from 'next/script';
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Mvpblocks',
   description:
     'Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.',

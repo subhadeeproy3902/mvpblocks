@@ -19,7 +19,7 @@ import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/important/Actions';
 import { createGenerator } from 'fumadocs-typescript';
-import { metadata } from '@/app/layout';
+import { createMetadata, metadataImage } from "@/lib/metadata";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -212,9 +212,21 @@ export async function generateMetadata(props: {
 
   if (!page) return {};
 
-  return {
-    title: page.data.title,
-    description: page.data.description,
-    metadataBase: new URL(siteConfig.url),
-  }
+  return createMetadata(
+    metadataImage.withImage(page.slugs, {
+      title: page.data.title,
+      description: page.data.description,
+      openGraph: {
+        url: `/docs/${page.slugs.join("/")}`,
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@subhadeeproy3902",
+        creator: "@subhadeeproy3902",
+        images: [
+          metadataImage.getImageMeta(page.slugs).url,
+        ]
+      },
+    }),
+  );
 }

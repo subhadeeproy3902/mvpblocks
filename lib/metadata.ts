@@ -1,5 +1,7 @@
 import type { Metadata } from 'next/types';
 import { siteConfig } from '@/config/site';
+import { createMetadataImage } from "fumadocs-core/server";
+import { source } from "@/lib/source";
 
 export function createMetadata(override: Metadata): Metadata {
   const titleStr = override.title
@@ -38,3 +40,8 @@ export function createMetadata(override: Metadata): Metadata {
 }
 
 export const baseUrl = "https://blocks.mvp-subha.me";
+
+export const metadataImage = createMetadataImage({
+  imageRoute: "/api/dynamic-og",
+  source,
+});
