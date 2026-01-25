@@ -7,27 +7,57 @@ import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/important/Clarity';
 import Script from 'next/script';
 
-const metadata: Metadata = {
-  title: 'Mvpblocks',
+export const metadata: Metadata = {
+  title: "Mvpblocks",
   description:
-    'Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.',
+    "Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
+
   keywords: [
-    'UI blocks',
-    'Templates',
-    'Tailwind CSS',
-    'Motion',
-    'Landing Page',
-    'Components',
-    'Next.js',
-    'React',
-    'MVP',
-    'Component Library',
-    'Open Source',
+    "UI blocks",
+    "Templates",
+    "Tailwind CSS",
+    "Motion",
+    "Landing Page",
+    "Components",
+    "Next.js",
+    "React",
+    "MVP",
+    "Component Library",
+    "Open Source",
   ],
-  authors: [{ name: 'Subhadeep Roy' }],
-  creator: 'Subhadeep Roy',
-  publisher: 'Subhadeep Roy',
-  metadataBase: new URL('https://blocks.mvp-subha.me'),
+
+  authors: [{ name: "Subhadeep Roy" }],
+  creator: "Subhadeep Roy",
+  publisher: "Subhadeep Roy",
+
+  metadataBase: new URL("https://blocks.mvp-subha.me"),
+
+  openGraph: {
+    title: "Mvpblocks",
+    description:
+      "Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
+    url: "https://blocks.mvp-subha.me",
+    siteName: "Mvpblocks",
+    images: [
+      {
+        url: "https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp",
+        width: 1200,
+        height: 630,
+        alt: "Mvpblocks Open Graph Image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Mvpblocks",
+    description:
+      "Copy, paste, customize—and launch your idea faster than ever. Mvpblocks is a fully open-source, developer-first component library built using Next.js and TailwindCSS.",
+    images: ["https://i.postimg.cc/Wz9JFxdW/mvpblocksog.webp"],
+    creator: "@mvp_Subha", // optional
+  },
 };
 
 export const viewport: Viewport = {

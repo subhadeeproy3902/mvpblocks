@@ -217,12 +217,12 @@ export async function generateMetadata(props: {
       title: page.data.title,
       description: page.data.description,
       openGraph: {
-        url: `/docs/${page.slugs.join("/")}`,
+        url: `https://blocks.mvp-subha.me/docs/${page.slugs.join("/")}`,
       },
       twitter: {
         card: "summary_large_image",
-        site: "@subhadeeproy3902",
-        creator: "@subhadeeproy3902",
+        site: "@mvp_Subha",
+        creator: "@mvp_Subha",
         images: [
           metadataImage.getImageMeta(page.slugs).url,
         ]

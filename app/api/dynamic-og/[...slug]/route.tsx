@@ -1,8 +1,16 @@
 import { ImageResponse } from 'next/og';
 import { metadataImage } from '@/lib/metadata';
+import { NextRequest } from 'next/server';
 
-export const GET = metadataImage.createAPI((page) => {
-  return new ImageResponse(
+export async function GET(request: NextRequest) {
+  // Reject requests for actual image files
+  const pathname = request.nextUrl.pathname;
+  if (pathname.match(/\.(png|jpg|jpeg|gif|webp|svg|ico|webm|mp4|mov|avi|mkv)$/i)) {
+    return new Response('Not Found', { status: 404 });
+  }
+  
+  const handler = metadataImage.createAPI((page) => {
+    return new ImageResponse(
     (
       <div
         style={{
@@ -387,8 +395,16 @@ export const GET = metadataImage.createAPI((page) => {
       height: 630,
     },
   );
-});
+  });
 
-export function generateStaticParams() {
-  return metadataImage.generateParams();
+  return handler(request, {});
+}
+
+export async function generateStaticParams() {
+  const params = await metadataImage.generateParams();
+  // Filter out image file paths
+  return params.filter((param: { slug: string[] }) => {
+    const lastSegment = param.slug[param.slug.length - 1];
+    return !lastSegment.match(/\.(png|jpg|jpeg|gif|webp|svg|ico|webm|mp4|mov|avi|mkv)$/i);
+  });
 }
