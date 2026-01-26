@@ -1,6 +1,7 @@
 'use client';
 
-import { Github, Heart, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Github, Heart, Instagram, Linkedin } from 'lucide-react';
+import { SiX } from "@icons-pack/react-simple-icons";
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -47,7 +48,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
               >
-                <Twitter className="h-5 w-5" />
+                <SiX className="h-5 w-5" title=""/>
               </Link>
               <Link
                 prefetch={false}
