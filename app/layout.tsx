@@ -6,6 +6,7 @@ import { PreviewPageDetector } from '@/components/important/preview-page-detecto
 import { Toaster } from '@/components/ui/sonner';
 import Clarity from '@/components/important/Clarity';
 import Script from 'next/script';
+import ScrollToTop from "../components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Mvpblocks",
@@ -95,6 +96,7 @@ export default function RootLayout({
           {children}
           <Toaster richColors />
         </ThemeProvider>
+        <ScrollToTop />
       </body>
     </html>
   );
