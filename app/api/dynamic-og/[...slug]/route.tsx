@@ -393,6 +393,9 @@ export const GET = metadataImage.createAPI((page) => {
 
 export async function generateStaticParams() {
   const params = metadataImage.generateParams();
+  if (!Array.isArray(params)) {
+    return [];
+  }
   return params.filter((param: { slug: string[] }) => {
     const lastSegment = param.slug[param.slug.length - 1];
     return !lastSegment.match(/\.(png|jpg|jpeg|gif|webp|svg|ico|webm|mp4|mov|avi|mkv)$/i);

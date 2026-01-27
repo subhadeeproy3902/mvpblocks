@@ -14,12 +14,15 @@ import { TypeTable } from 'fumadocs-ui/components/type-table';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
 import { type ComponentProps, type FC } from 'react';
-import { EditIcon, AlertCircle, Lightbulb } from 'lucide-react';
+import { EditIcon, AlertCircle, Lightbulb, Heart } from 'lucide-react';
 import { AutoTypeTable } from 'fumadocs-typescript/ui';
 import { siteConfig } from '@/config/site';
 import { LLMCopyButton, ViewOptions } from '@/components/important/Actions';
 import { createGenerator } from 'fumadocs-typescript';
-import { createMetadata, metadataImage } from "@/lib/metadata";
+import { createMetadata, metadataImage } from '@/lib/metadata';
+import { Metadata } from 'next';
+import { NavbarButton } from '@/components/ui/resizable-navbar';
+import { SponsorButton } from '@/components/shared/sponsor';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -103,6 +106,8 @@ Add any other context or screenshots about the feature request here.`)}`}
           <EditIcon className="size-4" />
           Edit this page
         </a>
+
+        <SponsorButton />
       </div>
     </div>
   );
@@ -206,7 +211,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
-}) {
+}): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);
 
@@ -217,15 +222,13 @@ export async function generateMetadata(props: {
       title: page.data.title,
       description: page.data.description,
       openGraph: {
-        url: `https://blocks.mvp-subha.me/docs/${page.slugs.join("/")}`,
+        url: `https://blocks.mvp-subha.me/docs/${page.slugs.join('/')}`,
       },
       twitter: {
-        card: "summary_large_image",
-        site: "@mvp_Subha",
-        creator: "@mvp_Subha",
-        images: [
-          metadataImage.getImageMeta(page.slugs).url,
-        ]
+        card: 'summary_large_image',
+        site: '@mvp_Subha',
+        creator: '@mvp_Subha',
+        images: [metadataImage.getImageMeta(page.slugs).url],
       },
     }),
   );
