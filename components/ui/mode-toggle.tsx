@@ -16,7 +16,7 @@ export function ModeToggle() {
       <Button
         variant="outline"
         size="icon"
-        className="text-primary z-50 rounded-full"
+        className="text-foreground z-50 rounded-full"
         disabled
       >
         <div className="h-[1.2rem] w-[1.2rem]" />
@@ -28,7 +28,7 @@ export function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="text-primary z-50 rounded-full"
+      className="text-foreground z-50 rounded-full hover:text-primary"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {resolvedTheme === 'dark' ? <Sun /> : <Moon />}

@@ -15,6 +15,8 @@ import { useState } from 'react';
 import { ModeToggle } from '../ui/mode-toggle';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { Github, Heart } from 'lucide-react';
+import { Button } from '../ui/button';
 
 export function NavbarDemo() {
   const navItems = [
@@ -47,13 +49,28 @@ export function NavbarDemo() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <NavbarButton variant="gradient">
             <Link
               prefetch={false}
-              href="https://github.com/subhadeeproy3902/mvpblocks"
+              href="https://github.com/sponsors/subhadeeproy3902"
+              className="flex items-center justify-center gap-2"
             >
-              Github
+              <Heart className="inline-block h-4 w-4 fill-white text-white" />
+              Sponsor
+            </Link>
+          </NavbarButton>
+
+          <NavbarButton
+            variant="gradient"
+            className="text-foreground hover:text-primary bg-secondary/50 hover:bg-secondary/60 z-50 aspect-square size-9! p-1!"
+          >
+            <Link
+              href="https://github.com/subhadeeproy3902/mvpblocks"
+              prefetch={false}
+              className="h-full w-full"
+            >
+              <Github className="m-auto h-4 w-4" />
             </Link>
           </NavbarButton>
           <ModeToggle />
@@ -97,12 +114,23 @@ export function NavbarDemo() {
           <div className="flex w-full flex-col gap-4">
             <NavbarButton
               variant="gradient"
-              className="w-full"
+              className="bg-secondary/50 hover:bg-secondary/60 w-full"
               onClick={() =>
                 redirect('https://github.com/subhadeeproy3902/mvpblocks')
               }
             >
               Github
+            </NavbarButton>
+
+            <NavbarButton
+              variant="gradient"
+              className="flex w-full items-center justify-center gap-1"
+              onClick={() =>
+                redirect('https://github.com/sponsors/subhadeeproy3902')
+              }
+            >
+              <Heart className="inline-block h-4 w-4 fill-white text-white" />
+              Sponsor
             </NavbarButton>
           </div>
         </MobileNavMenu>
