@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { CopyButton } from '@/components/ui/copy-button';
+import LegalHeader from "@/components/ui/LegalHeader";
 
 const licenseText = `BSD 3-Clause License
     
@@ -40,6 +41,7 @@ export default function LicensePage() {
       <Spotlight />
       <div className="container mx-auto">
         <div className="mx-auto max-w-4xl">
+          <LegalHeader />
           <div className="relative mb-12 text-center">
             <h1
               className={cn(
