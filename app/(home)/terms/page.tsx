@@ -1,6 +1,7 @@
 import { Spotlight } from '@/components/ui/spotlight';
 import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
+import LegalHeader from "@/components/ui/LegalHeader";
 
 export default function TermsPage() {
   return (
@@ -8,6 +9,7 @@ export default function TermsPage() {
       <Spotlight />
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
+          <LegalHeader />
           <div className="relative mb-12 text-center">
             <h1
               className={cn(
