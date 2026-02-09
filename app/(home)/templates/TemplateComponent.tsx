@@ -2,12 +2,13 @@
 
 import { Spotlight } from '@/components/ui/spotlight';
 import { motion } from 'framer-motion';
-import { ExternalLink, Globe } from 'lucide-react';
+import { ExternalLink, Globe, Tags, Cpu, Star } from 'lucide-react';
 import { geist } from '@/lib/fonts';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { products } from '@/constants/templates';
+import { products, Product } from '@/constants/templates';
 
 export default function TemplateComponent() {
   return (
@@ -89,13 +90,9 @@ const ProductSection = () => {
             key={product.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.3 + 0.8 }}
+            transition={{ duration: 0.5, delay: i * 0.1 + 0.8 }}
           >
-            <ProductCard
-              image={product.image}
-              name={product.name}
-              price={product.price}
-            />
+            <ProductCard product={product} />
           </motion.a>
         ))}
       </motion.div>
@@ -104,28 +101,33 @@ const ProductSection = () => {
 };
 
 interface ProductCardProps {
-  image: string;
-  name: string;
-  price: number;
+  product: Product;
   delay?: string;
 }
 
-function ProductCard({ image, name, price, delay = '' }: ProductCardProps) {
+function ProductCard({ product, delay = '' }: ProductCardProps) {
+  const { image, name, price, description, category, techStack, features } = product;
+
   return (
     <Card
-      className={`group animate-fade-in-up cursor-pointer gap-2! overflow-hidden border-0 bg-transparent! pt-0 ${delay}`}
+      className={cn(
+        'group animate-fade-in-up flex h-full flex-col cursor-pointer gap-2! overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10',
+        delay
+      )}
     >
-      <div className="relative aspect-4/3 overflow-hidden rounded-xl">
+      <div className="relative aspect-4/3 overflow-hidden">
         <Image
-          src={
-            image ||
-            `https://xvatar.vercel.app/api/avatar/${name}.svg?rounded=0&size=500`
-          }
+          src={image || `https://xvatar.vercel.app/api/avatar/${name}.svg?rounded=0&size=500`}
           alt={name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <p className="absolute right-2 bottom-2 rounded-full bg-black/30 px-3 py-1 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300">
+        <div className="absolute right-2 top-2">
+          <Badge variant="secondary" className="bg-black/30 text-white backdrop-blur-md">
+            {category}
+          </Badge>
+        </div>
+        <div className="absolute right-2 bottom-2 rounded-full bg-black/30 px-3 py-1 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300">
           {price > 0 ? (
             <>
               <del className="text-muted-foreground px-2 line-through group-hover:text-red-300/60">
@@ -136,17 +138,39 @@ function ProductCard({ image, name, price, delay = '' }: ProductCardProps) {
           ) : (
             <span className="group-hover:text-emerald-300">FREE</span>
           )}
-        </p>
+        </div>
       </div>
-      <CardContent className="p-0!">
-        <div className="space-y-2">
-          <h3 className="text-foreground text-lg transition-all duration-500 ease-in-out group-hover:font-bold">
-            {name}
-          </h3>
-          <div className="flex items-center gap-10">
-            <p className="text-muted-foreground text-sm tracking-wider uppercase">
-              {price > 0 ? <>PREMIUM</> : <>FREE</>}
+      <CardContent className="flex flex-1 flex-col p-4!">
+        <div className="flex flex-col gap-3">
+          <div>
+            <h3 className="text-foreground text-xl font-semibold transition-all duration-500 ease-in-out group-hover:text-primary">
+              {name}
+            </h3>
+            <p className="text-muted-foreground mt-2 line-clamp-2 text-sm">
+              {description}
             </p>
+          </div>
+
+          <div className="flex flex-wrap gap-1.5">
+            {techStack.slice(0, 3).map((tech, index) => (
+              <Badge
+                key={index}
+                variant="outline"
+                className="text-[10px] uppercase md:text-xs"
+              >
+                {tech}
+              </Badge>
+            ))}
+            {techStack.length > 3 && (
+              <Badge variant="outline" className="text-[10px] uppercase md:text-xs">
+                +{techStack.length - 3}
+              </Badge>
+            )}
+          </div>
+
+          <div className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
+            <Star className="h-3.5 w-3.5" />
+            <span>{features.length} features included</span>
           </div>
         </div>
       </CardContent>
