@@ -205,6 +205,9 @@ Add any other context or screenshots about the feature request here.`)}`}
   );
 }
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return source.generateParams();
 }

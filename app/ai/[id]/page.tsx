@@ -1,5 +1,7 @@
 import AiGenerationComponent from '@/components/ai/AiGenerationComponent';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AIGenPage({
   params,
 }: {

@@ -391,6 +391,9 @@ export const GET = metadataImage.createAPI((page) => {
   );
 });
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const params = metadataImage.generateParams();
   if (!Array.isArray(params)) {

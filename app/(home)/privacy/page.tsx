@@ -3,6 +3,8 @@ import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import LegalHeader from "@/components/ui/LegalHeader";
 
+export const dynamic = 'force-static';
+
 export default function PrivacyPage() {
   return (
     <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
