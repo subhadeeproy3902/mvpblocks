@@ -35,6 +35,8 @@ const licenseText = `BSD 3-Clause License
     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`;
 
+export const dynamic = 'force-static';
+
 export default function LicensePage() {
   return (
     <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
