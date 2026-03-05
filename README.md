@@ -100,13 +100,9 @@ Thanks to all contributors for helping this project grow! 🍻
 
 ## ⭐ Star History
 
-<a href="https://www.star-history.com/?repos=mvpblocks%2Fmvpblocks%2Csubhadeeproy3902%2Fmvpblocks&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=mvpblocks/mvpblocks,subhadeeproy3902/mvpblocks&type=timeline&theme=dark&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=mvpblocks/mvpblocks,subhadeeproy3902/mvpblocks&type=timeline&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=mvpblocks/mvpblocks,subhadeeproy3902/mvpblocks&type=timeline&legend=bottom-right" />
- </picture>
-</a>
+## Star History
+
+[![Star History Chart](https://api.star-history.com/image?repos=mvpblocks/mvpblocks,subhadeeproy3902/mvpblocks&type=timeline&legend=bottom-right)](https://www.star-history.com/?repos=mvpblocks%2Fmvpblocks%2Csubhadeeproy3902%2Fmvpblocks&type=timeline&legend=top-left)
 
 ---
 
