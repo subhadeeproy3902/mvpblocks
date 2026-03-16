@@ -1,4 +1,4 @@
-# 🧱 MVPBlocks
+# 🧱 MVPBlocks 
 
 **The Ultimate Open Source Component Library for MVPs.**  
 Copy, paste, customize—and launch your idea faster than ever.
