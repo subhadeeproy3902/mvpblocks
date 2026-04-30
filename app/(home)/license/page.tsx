@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Spotlight } from '@/components/ui/spotlight';
 import { Shield, Check, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -5,6 +6,22 @@ import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { CopyButton } from '@/components/ui/copy-button';
 import LegalHeader from "@/components/ui/LegalHeader";
+import { createMetadata } from '@/lib/metadata';
+import { JsonLd, breadcrumbSchema } from '@/lib/jsonld';
+import { siteConfig } from '@/config/site';
+
+export const metadata: Metadata = createMetadata({
+  title: 'License — BSD 3-Clause',
+  description:
+    'MVPBlocks is released under the BSD 3-Clause License. Free to use in personal and commercial projects, including SaaS apps, MVPs, and client work.',
+  pathname: '/license',
+  extraKeywords: [
+    'MVPBlocks license',
+    'BSD 3-Clause license',
+    'commercial use UI library',
+    'free for commercial use',
+  ],
+});
 
 const licenseText = `BSD 3-Clause License
     
@@ -40,6 +57,12 @@ export const dynamic = 'force-static';
 export default function LicensePage() {
   return (
     <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: siteConfig.url },
+          { name: 'License', url: `${siteConfig.url}/license` },
+        ])}
+      />
       <Spotlight />
       <div className="container mx-auto">
         <div className="mx-auto max-w-4xl">

@@ -34,4 +34,25 @@ export const showcaseData: ShowcaseItem[] = [
     image: '/showcase-images/zapdrop.webp',
     link: 'https://zapdrop.slyde.tech/',
   },
+  {
+    name: 'Shadcn Builder',
+    about:
+      'It helps developers visually create beautiful, accessible forms and export clean, production-ready React + Tailwind CSS code in seconds.',
+    image: '/showcase-images/shadcn-builder.webp',
+    link: 'https://www.shadcn-builder.com',
+  },
+  {
+    name: 'Roomable',
+    about:
+      'Create, join, and share rooms instantly. A new way to connect in real time.',
+    image: '/showcase-images/roomable.webp',
+    link: 'https://roomble.vercel.app',
+  },
+  {
+    name: 'BaseCompose',
+    about:
+      'configures databases, authentication, and essential add-ons so you can start building right away.',
+    image: '/showcase-images/basecompose.webp',
+    link: 'https://bc.impiclabs.com',
+  },
 ];

@@ -95,16 +95,13 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? 'rgba(34, 42, 53, 0.06) 0px 0px 24px, rgba(0, 0, 0, 0.05) 0px 1px 1px, rgba(34, 42, 53, 0.04) 0px 0px 0px 1px, rgba(34, 42, 53, 0.08) 0px 0px 4px, rgb(255, 65, 132, 0.1) 0px 16px 68px, rgba(233, 30, 99, 0.51) 0px 1px 0px inset'
           : 'none',
-        width: visible ? '40%' : '100%',
-        y: visible ? 20 : 0,
+        width: visible ? '65%' : '100%',
+        y: 20,
       }}
       transition={{
         type: 'spring',
         stiffness: 200,
         damping: 50,
-      }}
-      style={{
-        minWidth: '900px',
       }}
       className={cn(
         'relative z-[60] mx-auto hidden w-full max-w-6xl flex-row items-center justify-between self-start rounded-full bg-white/80 px-4 py-2 md:flex dark:bg-neutral-950',

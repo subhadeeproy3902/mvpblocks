@@ -1,42 +1,39 @@
 ---
 title: Developer Portfolio
-description: The cheapest and most stunning Next.js portfolio template to showcase your work, skills, and personality — all at really low price!
+description: A stunning, blazing-fast Next.js portfolio template to showcase your work, skills, and personality — completely free.
 icon: Code
 ---
 
-import { BuyDialog } from '@/components/important/BuyButton';
 import { VideoPlayer } from '@/components/important/VideoPlayer';
 import LiveDemo from '@/components/important/LiveDemo';
-import InternationalBuyButton from '@/components/important/InternationalBuyButton';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Button } from '@/components/ui/button';
 
-<VideoPlayer src="https://smix2ek6kz.ufs.sh/f/SUFvaz1ArBmKx8uF9CneORqNmuf8ktXv675MIPUSBGFVg2iE" />
+<VideoPlayer src="https://9o0poboblj.ufs.sh/f/vsatf5J1TVQGLXfFySqI75juDCedH8UnytAKFaVsWMqp4fkc" />
 
 <div className="flex flex-wrap items-center gap-4">
   <LiveDemo url="https://portfolio-template-1-seven.vercel.app/" />
 
-  <BuyDialog
-    title="Developer Portfolio"
-    price={439}
-    currency="INR"
-    image="https://i.postimg.cc/Dy1PB4md/developer-portfolio.webp"
-    productId="Developer Portfolio"
-    downloadUrl={process.env.DEVELOPER_PORTFOLIO_DOWNLOAD_URL}
-  />
-
-  <InternationalBuyButton />
+  <a
+    href={process.env.DEVELOPER_PORTFOLIO_DOWNLOAD_URL ?? '#'}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button>
+      Download Free
+    </Button>
+  </a>
 </div>
 
-import { Callout } from 'fumadocs-ui/components/callout';
-
-## 🔥 The CHEAPEST Next.js Portfolio Template You'll Ever Find!
+## 🔥 The Most Stunning Next.js Portfolio Template — Free
 
 Why burn hours building a portfolio from scratch — or spend $$$ on bloated templates —  
-when you can grab this **premium-quality, blazing-fast template** made to impress?
+when you can grab this **premium-quality, blazing-fast template** for **$0**?
 
 This template looks and performs like it cost hundreds.  
 Clean UI, fast load times, and fully responsive — it's the real deal for devs, designers, and creatives.
 
-Crazy deal? We know. 💸🔥
+Free? Yep. **Completely free.** 💸🔥
 
 ## 🌟 What Makes It So Good?
 
@@ -73,5 +70,5 @@ Perfect for anyone looking to leave a mark online:
 
 <Callout icon="🚀" title="Ready to Impress?">
   Your portfolio is more than a website — it's your story, your brand, your
-  future. **Start strong with a template built to impress.**
+  future. **Start strong with a template built to impress — and free to use.**
 </Callout>

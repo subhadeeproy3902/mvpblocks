@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       amount,
       currency,
       downloadUrl,
+      autoDownload,
     } = await req.json();
 
     const html = generateThankYouEmail({
@@ -23,6 +24,7 @@ export async function POST(req: NextRequest) {
       downloadUrl: downloadUrl,
       amount: amount,
       currency: currency,
+      autoDownload: autoDownload ?? true,
     });
 
     await resend.emails.send({

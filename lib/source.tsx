@@ -4,6 +4,11 @@ import { loader } from 'fumadocs-core/source';
 import { icons } from 'lucide-react';
 import { createElement } from 'react';
 import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
+import { Lovable } from '@/components/shared/lovable-logo';
+
+const customIcons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  Lovable,
+};
 
 export const source = loader({
   baseUrl: '/docs',
@@ -50,7 +55,9 @@ export const source = loader({
     },
   },
   icon(icon) {
-    if (icon && icon in icons)
+    if (!icon) return;
+    if (icon in customIcons) return createElement(customIcons[icon]);
+    if (icon in icons)
       return createElement(icons[icon as keyof typeof icons]);
   },
 });

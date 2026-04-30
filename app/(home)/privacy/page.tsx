@@ -1,13 +1,31 @@
+import type { Metadata } from 'next';
 import { Spotlight } from '@/components/ui/spotlight';
 import { geist } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import LegalHeader from "@/components/ui/LegalHeader";
+import { createMetadata } from '@/lib/metadata';
+import { JsonLd, breadcrumbSchema } from '@/lib/jsonld';
+import { siteConfig } from '@/config/site';
 
 export const dynamic = 'force-static';
+
+export const metadata: Metadata = createMetadata({
+  title: 'Privacy Policy',
+  description:
+    'Read the MVPBlocks privacy policy: how we collect, use, store, and protect your information when you use our open-source UI library and templates.',
+  pathname: '/privacy',
+  robots: { index: true, follow: true },
+});
 
 export default function PrivacyPage() {
   return (
     <div className="bg-background relative min-h-screen w-full overflow-x-hidden px-2 py-32 md:px-6">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: siteConfig.url },
+          { name: 'Privacy Policy', url: `${siteConfig.url}/privacy` },
+        ])}
+      />
       <Spotlight />
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">

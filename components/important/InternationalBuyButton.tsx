@@ -7,7 +7,7 @@ export default function InternationalBuyButton() {
   return (
     <Link
       prefetch={false}
-      href="https://pro.mvp-subha.me"
+      href="https://sites.auradevs.co"
       className="golden-button"
     >
       <span className="golden-text">

@@ -23,6 +23,11 @@ import { createMetadata, metadataImage } from '@/lib/metadata';
 import { Metadata } from 'next';
 import { NavbarButton } from '@/components/ui/resizable-navbar';
 import { SponsorButton } from '@/components/shared/sponsor';
+import {
+  JsonLd,
+  articleSchema,
+  breadcrumbSchema,
+} from '@/lib/jsonld';
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -133,8 +138,19 @@ Add any other context or screenshots about the feature request here.`)}`}
     }
   }
 
+  const docPathname = `/docs/${params.slug?.join('/') ?? ''}`.replace(/\/$/, '') || '/docs';
+  const article = articleSchema({
+    title: page.data.title,
+    description: page.data.description ?? '',
+    pathname: docPathname,
+    datePublished: lastModified ? new Date(lastModified).toISOString() : undefined,
+    dateModified: lastModified ? new Date(lastModified).toISOString() : undefined,
+  });
+  const breadcrumb = breadcrumbSchema(breadcrumbItems);
+
   return (
     <>
+      <JsonLd data={[article, breadcrumb]} />
       <DocsPage
         article={{
           className: 'max-w-6xl max-sm:pb-16',
@@ -220,12 +236,14 @@ export async function generateMetadata(props: {
 
   if (!page) return {};
 
-  return createMetadata(
-    metadataImage.withImage(page.slugs, {
+  const slugPath = `/docs/${page.slugs.join('/')}`;
+
+  return createMetadata({
+    ...metadataImage.withImage(page.slugs, {
       title: page.data.title,
       description: page.data.description,
       openGraph: {
-        url: `https://blocks.mvp-subha.me/docs/${page.slugs.join('/')}`,
+        url: `${siteConfig.url}${slugPath}`,
       },
       twitter: {
         card: 'summary_large_image',
@@ -234,5 +252,6 @@ export async function generateMetadata(props: {
         images: [metadataImage.getImageMeta(page.slugs).url],
       },
     }),
-  );
+    pathname: slugPath,
+  });
 }

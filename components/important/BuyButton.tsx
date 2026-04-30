@@ -23,6 +23,13 @@ interface BuyDialogProps {
   image: string;
   productId: string;
   downloadUrl: string;
+  /**
+   * When true (default), the delivered link is treated as an auto-downloading
+   * archive (e.g. a zip). When false, the link is treated as an external
+   * project URL (e.g. a Lovable Remix link) and the email/UI copy reflects
+   * that the user will open a project rather than receive a download.
+   */
+  autoDownload?: boolean;
   themeSelector?: {
     selectedTheme: PortfolioTheme;
     onThemeChange: (theme: PortfolioTheme) => void;
@@ -39,6 +46,7 @@ export function BuyDialog({
   image,
   productId,
   downloadUrl,
+  autoDownload = true,
   themeSelector,
 }: BuyDialogProps) {
   const [email, setEmail] = useState('');
@@ -82,6 +90,7 @@ export function BuyDialog({
           setShowThankYou(true);
         },
         downloadUrl: currentDownloadUrl,
+        autoDownload,
       });
     } catch (err) {
       console.error('Checkout error:', err);

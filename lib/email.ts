@@ -5,6 +5,7 @@ export function generateThankYouEmail({
   downloadUrl,
   currency = 'USD',
   amount = '49.00',
+  autoDownload = true,
 }: {
   orderId: string;
   paymentId: string;
@@ -12,7 +13,16 @@ export function generateThankYouEmail({
   downloadUrl: string;
   currency?: string;
   amount?: string;
+  autoDownload?: boolean;
 }) {
+  const accessHeading = autoDownload ? 'Access Your Purchase' : 'Open Your Project';
+  const accessMessage = autoDownload
+    ? 'Your purchase is ready for download. Click the button below to access your content immediately.'
+    : 'Your project is ready to remix. Click the button below to open it in your browser.';
+  const accessButtonLabel = autoDownload ? 'Download Now' : 'Open Project';
+  const accessFooter = autoDownload
+    ? 'This link will expire in 24 hours. For any questions, contact our support team.'
+    : 'Keep this link safe — it grants access to your project. For any questions, contact our support team.';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -274,12 +284,12 @@ body {
             </div>
             
             <div class="download-section">
-                <h3>Access Your Purchase</h3>
-                <p>Your purchase is ready for download. Click the button below to access your content immediately.</p>
+                <h3>${accessHeading}</h3>
+                <p>${accessMessage}</p>
                 <a href="${downloadUrl}" class="download-btn">
-                    Download Now
+                    ${accessButtonLabel}
                 </a>
-                <p class="support-text">This link will expire in 24 hours. For any questions, contact our support team.</p>
+                <p class="support-text">${accessFooter}</p>
             </div>
         </div>
         

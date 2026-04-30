@@ -8,6 +8,7 @@ interface PaymentArgs {
   productId?: string;
   onSuccess: () => void;
   downloadUrl: string;
+  autoDownload?: boolean;
 }
 
 export const initiatePayment = async ({
@@ -18,6 +19,7 @@ export const initiatePayment = async ({
   productId,
   onSuccess,
   downloadUrl,
+  autoDownload = true,
 }: PaymentArgs) => {
   const loadRazorpay = () => {
     return new Promise<void>((resolve, reject) => {
@@ -73,6 +75,7 @@ export const initiatePayment = async ({
               amount: amount,
               currency,
               downloadUrl: downloadUrl,
+              autoDownload,
             }),
           });
 
