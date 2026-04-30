@@ -25,9 +25,9 @@ interface AuraClawComponentsProps {
 }
 
 const PRICES: Record<AuraClawPlan, { inr: number; usd: number }> = {
-  starter: { inr: 1, usd: 69 },
-  pro: { inr: 2, usd: 99 },
-  ultimate: { inr: 3, usd: 149 },
+  starter: { inr: 5999, usd: 69 },
+  pro: { inr: 8999, usd: 99 },
+  ultimate: { inr: 13999, usd: 149 },
 };
 
 const PLAN_META: Record<
