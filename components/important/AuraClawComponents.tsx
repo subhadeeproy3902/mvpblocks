@@ -25,9 +25,9 @@ interface AuraClawComponentsProps {
 }
 
 const PRICES: Record<AuraClawPlan, { inr: number; usd: number }> = {
-  starter: { inr: 5999, usd: 69 },
-  pro: { inr: 8999, usd: 99 },
-  ultimate: { inr: 13999, usd: 149 },
+  starter: { inr: 1, usd: 69 },
+  pro: { inr: 2, usd: 99 },
+  ultimate: { inr: 3, usd: 149 },
 };
 
 const PLAN_META: Record<
@@ -137,7 +137,7 @@ function AuraClawBuyDialog({
               <div className="flex items-center justify-between rounded-md p-4">
                 <div className="flex w-full gap-2">
                   <Image
-                    src={currentImage}
+                    src="/images/auraclaw.webp"
                     alt="Product Preview"
                     width={200}
                     height={200}
