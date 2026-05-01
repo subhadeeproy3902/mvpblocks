@@ -48,19 +48,16 @@ const LOCKED_PERKS: Record<AuraClawPlan, number> = {
 
 const PLAN_META: Record<
   AuraClawPlan,
-  { label: string; tagline: string }
+  { label: string }
 > = {
   starter: {
     label: 'Starter',
-    tagline: 'Lean, fast, no fluff.',
   },
   pro: {
     label: 'Pro',
-    tagline: 'Full text experience.',
   },
   ultimate: {
     label: 'Ultimate',
-    tagline: 'Everything unlocked.',
   },
 };
 
@@ -130,7 +127,7 @@ function AuraClawBuyDialog({
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="flex max-w-md flex-col gap-2 overflow-hidden rounded-xl bg-neutral-100 p-0 shadow-lg dark:bg-neutral-900">
+        <DialogContent className="flex flex-col gap-2 overflow-hidden rounded-xl bg-neutral-100 p-0 shadow-lg max-w-lg dark:bg-neutral-900">
           <div className="relative px-6 py-10">
             <div className="bg-primary/30 absolute -top-10 left-0 h-16 w-full blur-2xl"></div>
             <div className="flex flex-col gap-4">
@@ -147,9 +144,6 @@ function AuraClawBuyDialog({
                     <div>
                       <p className="text-foreground text-md font-medium">
                         {title}
-                      </p>
-                      <p className="text-muted-foreground mt-1 text-xs">
-                        {meta.tagline}
                       </p>
                       <div className="mt-2 flex items-baseline gap-1">
                         <span className="text-foreground text-2xl font-bold">
@@ -172,7 +166,7 @@ function AuraClawBuyDialog({
             <div
               role="radiogroup"
               aria-label="Select AuraClaw plan"
-              className="mt-5 flex flex-col gap-2"
+              className="mt-5 flex gap-2"
             >
               {PLAN_ORDER.map((plan) => {
                 const isSelected = selectedPlan === plan;
@@ -210,30 +204,10 @@ function AuraClawBuyDialog({
                           {planMeta.label}
                         </span>
                         {plan === 'ultimate' && (
-                          <Sparkles className="text-primary h-3 w-3" />
-                        )}
-                        {plan === 'ultimate' && (
                           <span className="bg-primary/15 text-primary rounded-full px-2 py-0.5 text-[10px] font-medium tracking-wide uppercase">
                             Best
                           </span>
                         )}
-                      </span>
-                      <span className="text-muted-foreground text-xs">
-                        {planMeta.tagline}
-                      </span>
-                    </span>
-                    <span className="flex flex-col items-end">
-                      <span
-                        className={cn(
-                          'flex items-baseline text-sm font-semibold',
-                          isSelected ? 'text-primary' : 'text-foreground',
-                        )}
-                      >
-                        ₹
-                        <NumberFlow value={planPrice} />
-                      </span>
-                      <span className="text-muted-foreground text-[10px]">
-                        ${PRICES[plan].usd}
                       </span>
                     </span>
                   </button>
