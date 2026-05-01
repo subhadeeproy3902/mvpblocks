@@ -19,104 +19,107 @@ import AuraClawComponents from '@/components/important/AuraClawComponents';
   }}
 />
 
-## 🚨 Stop Switching Between AI Tools
+## Stop Reinventing the Wheel - Focus on Building What Matters! 🔥
 
-Let’s be real — using AI today feels messy:
+AuraClaw is a production-ready AI chatbot template (with the latest features of ChatGPT, Claude, Gemini and more) powered by the latest Vercel AI SDK. It’s designed to give you a strong head start — whether you're a student experimenting, building real products, or thinking about building a full AI SaaS platform.
 
-❌ Too many tabs  
-❌ Too many APIs  
-❌ No unified workflow  
-❌ Slow, clunky UIs  
-
-So we built **AuraClaw** — a **clean, fast, multi-model AI workspace** that puts everything in one place.
+We built AuraClaw so that you can focus on what truly matters — **your models, your agents, and your product** — while we handle the infrastructure, streaming, UI, and integrations. Instead of spending weeks wiring APIs and designing chat systems, you get a clean, fast, and extensible foundation from day one.
 
 ---
 
-## 🔥 What Makes AuraClaw Different
+## Editions
 
-This isn’t another wrapper.  
-This is a **production-ready AI system** built for real use.
+All editions share the same core architecture. The difference is simply which features are enabled.
 
-- ⚡ **Multi-provider model picker**  
-  GPT-5/4, Claude 4.7/4.6, Gemini 3 Pro/Flash, Grok 4, Llama 4, DeepSeek R1, Mistral, Qwen, Kimi, Perplexity Sonar, Cohere Command R+ — all in one UI.
-
-- 💬 **Streaming markdown**  
-  GitHub-flavoured Markdown, KaTeX math ($inline$ + $$display$$), and syntax-highlighted code — rendered live.
-
-- 🧠 **Persistent chat history**  
-  Every conversation stored in **Neon Postgres**, tied to users via **Clerk auth**.
-
-- ✨ **AI-generated chat titles**  
-  Clean, contextual titles auto-created from your first prompt.
-
-- ⚡ **Optimistic navigation**  
-  Messages appear instantly — no blank loading states.
-
-- 🎙️ **Voice mode (Ultimate)**  
-  Tap, speak, and go hands-free. Whisper transcription + speech playback + auto-listen loop.
-
-- 🔗 **Shareable chats**  
-  Instantly share conversations via X, LinkedIn, WhatsApp, email.
-
-- 🧭 **Powerful sidebar UX**  
-  Smart grouping (Today / Yesterday / Last Week / Older), plus rename, archive, delete, and fuzzy search (Cmd/Ctrl + K).
-
-- 🎨 **Theme + personalization**  
-  Light, dark, system + accent colors, connectors, and preferences.
+| Feature                         | Ultimate | Pro | Starter |
+|--------------------------------|----------|-----|---------|
+| Multi-model support            | Yes      | Yes | Yes     |
+| Streaming responses            | Yes      | Yes | Yes     |
+| Markdown + KaTeX rendering     | Yes      | Yes | Yes     |
+| Persistent chat history        | Yes      | Yes | Limited |
+| Theming & personalization      | Yes      | Yes | Limited |
+| Database (Neon Postgres)       | Yes      | Yes | No      |
+| Authentication (Clerk)         | Yes      | Yes | No      |
+| Shareable chats                | Yes      | Yes | No      |
+| Advanced sidebar (search, org) | Yes      | Yes | No      |
+| Voice mode                     | Yes      | No  | No      |
 
 ---
 
-## 💰 Editions — Pick Your Build
+### 🌟 Ultimate — $149 / ₹13,999
 
-### 🟣 Ultimate — $149 / ₹13,999
-**Everything unlocked. No compromises.**
-
-- Full multi-model system  
-- Streaming + persistence + auth  
-- **Voice mode included**  
-- All UX + sharing + personalization features  
+Everything unlocked. No compromises.
+‣ Best suited for full-scale Agentic AI products and SaaS platforms.
+‣ Real-time, full-duplex voice interaction that feels natural and fluid.  
+‣ Includes **live closed captions**, so you can read along in real time.
 
 ---
 
-### 🔵 Pro — $99 / ₹8,999
-**Balanced. Powerful. Clean.**
+### ⭐️ Pro — $99 / ₹8,999
 
-- Full multi-model text chat  
-- Streaming markdown + KaTeX  
-- Auth + persistent history  
-- Sidebar + sharing + personalization  
-
-❌ No voice mode  
+Core system with all essential features.  
+‣ Ideal for serious projects and production-ready applications  
+‣ Full multi-model chat with streaming, persistence, and rich rendering  
+‣ Clean, scalable foundation without voice features  
 
 ---
 
-### 🟢 Starter — $69 / ₹5,999
-**Minimal. Fast. Straight to the point.**
+### ⚡️ Starter — $69 / ₹5,999
 
-- Multi-model chat (core setup)  
-- Streaming responses  
-- LocalStorage persistence  
-
-❌ No auth  
-❌ No database  
-❌ No advanced features  
+Lightweight version for quick setups and experimentation.  
+‣ Minimal, fast, and easy to deploy  
+‣ Core multi-model chat with streaming support  
+‣ Best for learning, prototyping, and simple use cases  
 
 ---
 
-## 🧩 Built for Builders
+## What Makes AuraClaw Different
 
-Perfect for:
+This is not a thin wrapper.  
+It’s a production-ready system designed for real-world use.
 
-- 🚀 AI SaaS products  
-- 🧠 Multi-model experimentation  
-- 🛠️ Indie hackers & devs  
-- 💸 MVPs & production apps  
-- 🔥 People who want speed + control  
+- **Multi-provider model selection** 
+  〉all accessible from a single interface.
+
+- **Streaming markdown rendering** 
+  〉with KaTeX math (*inline and display*), and syntax-highlighted code — streamed in real time.
+
+- **Persistent chat history**  
+  〉Conversations stored in Neon Postgres and linked to users via Clerk authentication.
+
+- **Automatic chat titles**  
+  〉Context-aware titles generated from your interaction with the chatbot
+
+- **Optimistic UI updates**  
+  〉Messages appear instantly without disruptive loading states.
+
+- **Voice interaction (Ultimate)**  
+  〉Includes Whisper-based transcription, speech playback, and continuous conversation flow.
+
+- **Shareable conversations**  
+  〉Export and share chats across platforms like X, LinkedIn, WhatsApp, and email.
+
+- **Structured sidebar experience**  
+  〉Time-based grouping (Today, Yesterday, Last Week, Older), with rename, archive, delete, and fuzzy search.
+
+- **Theming and personalization**  
+  〉Light, dark, and system themes with customizable accents and preferences.
 
 ---
 
-<Callout icon="⚡" title="One Workspace. Infinite Models.">
-Stop juggling tools and start building faster.  
+## Built for Builders
 
-AuraClaw gives you a **clean foundation**, **powerful features**, and **real scalability** — without the usual complexity.
+AuraClaw fits a wide range of use cases:
+
+- AI SaaS platforms  
+- Multi-model experimentation  
+- Indie projects and developer tools  
+- MVP development and production systems  
+- Rapid prototyping with full control  
+
+---
+
+<Callout title="One Workspace. Multiple Models.">
+AuraClaw provides a clean foundation for building AI products with speed and clarity.  
+Focus on your ideas — not the setup.
 </Callout>

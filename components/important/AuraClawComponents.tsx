@@ -30,36 +30,37 @@ const PRICES: Record<AuraClawPlan, { inr: number; usd: number }> = {
   ultimate: { inr: 13999, usd: 149 },
 };
 
+const ALL_PERKS = [
+  'Multi-model chat',
+  'Streaming responses',
+  'Markdown + KaTeX rendering',
+  'Authentication & user management',
+  'Actual Database (PostgreSQL)',
+  'Voice mode (Whisper + playback)',
+];
+
+// How many perks from the end are locked (strikethrough) per plan
+const LOCKED_PERKS: Record<AuraClawPlan, number> = {
+  starter: 3,
+  pro: 1,
+  ultimate: 0,
+};
+
 const PLAN_META: Record<
   AuraClawPlan,
-  { label: string; tagline: string; perks: string[] }
+  { label: string; tagline: string }
 > = {
   starter: {
     label: 'Starter',
     tagline: 'Lean, fast, no fluff.',
-    perks: [
-      'Multi-model chat (core setup)',
-      'Streaming responses',
-      'LocalStorage persistence',
-    ],
   },
   pro: {
     label: 'Pro',
     tagline: 'Full text experience.',
-    perks: [
-      'Multi-model chat with auth',
-      'Streaming markdown + KaTeX',
-      'Persistent history & sharing',
-    ],
   },
   ultimate: {
     label: 'Ultimate',
     tagline: 'Everything unlocked.',
-    perks: [
-      'Voice mode (Whisper + playback)',
-      'Full multi-model + auth + DB',
-      'All UX, sharing, personalization',
-    ],
   },
 };
 
@@ -125,8 +126,7 @@ function AuraClawBuyDialog({
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <Button>
-            Buy AuraClaw ₹
-            <NumberFlow value={price} />
+            Buy Now ₹5999
           </Button>
         </DialogTrigger>
 
@@ -242,23 +242,33 @@ function AuraClawBuyDialog({
             </div>
 
             <ul className="border-border/60 mt-4 flex flex-col gap-1.5 rounded-lg border border-dashed p-3">
-              {meta.perks.map((perk) => (
-                <li
-                  key={perk}
-                  className="text-foreground/80 flex items-start gap-2 text-xs"
-                >
-                  <Check className="text-primary mt-0.5 h-3.5 w-3.5 shrink-0" />
-                  <span>{perk}</span>
-                </li>
-              ))}
-              {selectedPlan !== 'ultimate' && (
-                <li className="text-muted-foreground flex items-start gap-2 text-xs">
-                  <Mic className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-50" />
-                  <span className="line-through opacity-70">
-                    Voice mode (Ultimate only)
-                  </span>
-                </li>
-              )}
+              {ALL_PERKS.map((perk, i) => {
+                const locked = i >= ALL_PERKS.length - LOCKED_PERKS[selectedPlan];
+                const isVoice = perk.startsWith('Voice mode');
+                return (
+                  <li
+                    key={perk}
+                    className={cn(
+                      'flex items-start gap-2 text-xs',
+                      locked ? 'text-muted-foreground' : 'text-foreground/80',
+                    )}
+                  >
+                    {isVoice && locked ? (
+                      <Mic className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-50" />
+                    ) : (
+                      <Check
+                        className={cn(
+                          'mt-0.5 h-3.5 w-3.5 shrink-0',
+                          locked ? 'opacity-40' : 'text-primary',
+                        )}
+                      />
+                    )}
+                    <span className={locked ? 'line-through opacity-70' : ''}>
+                      {perk}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="mt-4 flex flex-col items-center justify-center gap-3">
