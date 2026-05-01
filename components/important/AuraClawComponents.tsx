@@ -48,16 +48,19 @@ const LOCKED_PERKS: Record<AuraClawPlan, number> = {
 
 const PLAN_META: Record<
   AuraClawPlan,
-  { label: string }
+  { label: string; tagline?: string }
 > = {
   starter: {
     label: 'Starter',
+    tagline: 'Runs totally on local',
   },
   pro: {
     label: 'Pro',
+    tagline: 'Has Auth and DB, but no Voice mode',
   },
   ultimate: {
     label: 'Ultimate',
+    tagline: 'Everything is unlocked',
   },
 };
 
@@ -145,6 +148,11 @@ function AuraClawBuyDialog({
                       <p className="text-foreground text-md font-medium">
                         {title}
                       </p>
+                      {meta.tagline && (
+                        <p className="text-muted-foreground mt-1 text-xs">
+                          {meta.tagline}
+                        </p>
+                      )}
                       <div className="mt-2 flex items-baseline gap-1">
                         <span className="text-foreground text-2xl font-bold">
                           ₹
@@ -180,7 +188,7 @@ function AuraClawBuyDialog({
                     aria-checked={isSelected}
                     onClick={() => setSelectedPlan(plan)}
                     className={cn(
-                      'group relative flex items-center gap-3 rounded-lg border p-3 text-left transition-colors',
+                      'group relative w-full flex items-center gap-3 rounded-lg border p-3 text-left transition-colors',
                       isSelected
                         ? 'border-primary bg-primary/10'
                         : 'border-border bg-secondary/40 hover:bg-secondary',
