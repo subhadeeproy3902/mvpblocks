@@ -1,0 +1,25 @@
+{
+  "name": "product-card-7",
+  "description": "A dark mode product card designed for dark-themed interfaces with excellent contrast and premium dark aesthetics.",
+  "categories": [
+    "card",
+    "design",
+    "product",
+    "ecommerce"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "react",
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\n\nimport { cn } from '@/lib/utils';\nimport { Heart, ShoppingCart, Star } from 'lucide-react';\nimport { useState } from 'react';\n\ninterface ProductCardDarkProps {\n  className?: string;\n}\n\nconst defaultProduct = {\n  title: 'Wireless Headphones',\n  category: 'Audio',\n  price: 299.99,\n  rating: 4.7,\n  reviewCount: 256,\n  image:\n    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80',\n};\n\nexport default function ProductCardDark({\n  className,\n}: ProductCardDarkProps) {\n  const [isWishlisted, setIsWishlisted] = useState(false);\n  const product = defaultProduct;\n\n  return (\n    <article\n      className={cn(\n        'group w-full max-w-sm overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 shadow-lg shadow-black/40 transition-all duration-300 hover:border-zinc-700 hover:shadow-xl hover:shadow-black/50',\n        className,\n      )}\n    >\n      <div className=\"relative overflow-hidden\">\n        <img\n          src={product.image}\n          alt={product.title}\n          className=\"h-64 w-full object-cover transition-all duration-500 group-hover:scale-105\"\n          loading=\"lazy\"\n        />\n        <div className=\"pointer-events-none absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-60\" />\n\n        <button\n          type=\"button\"\n          onClick={() => setIsWishlisted((prev) => !prev)}\n          className=\"absolute top-3 right-3 flex size-9 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900/80 backdrop-blur-sm transition-all duration-300 hover:border-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950\"\n          aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}\n        >\n          <Heart\n            className={cn(\n              'h-4 w-4 transition-colors duration-300',\n              isWishlisted\n                ? 'fill-red-500 text-red-500'\n                : 'text-zinc-400',\n            )}\n          />\n        </button>\n      </div>\n      <div className=\"space-y-3 p-5\">\n        <span className=\"text-xs font-medium tracking-wider uppercase text-zinc-500\">\n          {product.category}\n        </span>\n        <h3 className=\"text-base font-semibold text-zinc-100\">\n          {product.title}\n        </h3>\n        <div className=\"flex items-center gap-3\">\n          <div className=\"flex items-center gap-0.5\">\n            {[1, 2, 3, 4, 5].map((star) => (\n              <Star\n                key={star}\n                className={cn(\n                  'h-4 w-4',\n                  star <= Math.floor(product.rating)\n                    ? 'fill-amber-400 text-amber-400'\n                    : 'fill-zinc-800 text-zinc-700',\n                )}\n                aria-hidden=\"true\"\n              />\n            ))}\n          </div>\n          <span className=\"text-xs text-zinc-500\">\n            ({product.reviewCount})\n          </span>\n        </div>\n        <div className=\"flex items-center justify-between pt-1\">\n          <span className=\"text-xl font-bold text-zinc-100\">\n            ${product.price.toFixed(2)}\n          </span>\n          <button\n            type=\"button\"\n            className=\"inline-flex items-center gap-2 rounded-lg bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 transition-all duration-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950\"\n          >\n            <ShoppingCart className=\"h-4 w-4\" aria-hidden=\"true\" />\n            Add to Cart\n          </button>\n        </div>\n      </div>\n    </article>\n  );\n}\n",
+      "path": "/components/mvpblocks/cards/product/product-card-7.tsx",
+      "target": "components/mvpblocks/product-card-7.tsx"
+    }
+  ]
+}

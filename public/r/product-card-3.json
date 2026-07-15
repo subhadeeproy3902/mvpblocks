@@ -1,0 +1,25 @@
+{
+  "name": "product-card-3",
+  "description": "A premium product card with large image, refined typography, and elegant spacing. Designed for luxury products and high-end brands.",
+  "categories": [
+    "card",
+    "design",
+    "product",
+    "ecommerce"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "react",
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "'use client';\n\nimport { cn } from '@/lib/utils';\nimport { ShoppingCart } from 'lucide-react';\n\ninterface ProductCardPremiumProps {\n  className?: string;\n}\n\nconst defaultProduct = {\n  title: 'Heritage Chronograph',\n  category: 'Luxury Watches',\n  description:\n    'Swiss-made automatic movement with sapphire crystal, genuine leather strap, and a refined sunburst dial. Water-resistant to 100 meters.',\n  price: 1250.0,\n  image:\n    'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80',\n  isPremium: true,\n};\n\nexport default function ProductCardPremium({\n  className,\n}: ProductCardPremiumProps) {\n  const product = defaultProduct;\n\n  return (\n    <article\n      className={cn(\n        'group w-full max-w-sm rounded-xl border bg-card shadow-sm transition-all duration-500 hover:shadow-lg',\n        className,\n      )}\n    >\n      <div className=\"relative overflow-hidden rounded-t-xl\">\n        <img\n          src={product.image}\n          alt={product.title}\n          className=\"h-72 w-full object-cover transition-all duration-700 group-hover:scale-105\"\n          loading=\"lazy\"\n        />\n        <div className=\"pointer-events-none absolute inset-0 bg-linear-to-t from-black/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100\" />\n        {product.isPremium && (\n          <span className=\"absolute right-3 bottom-3 rounded-full border border-white/30 bg-white/10 px-4 py-1 text-xs font-medium tracking-wider uppercase text-white backdrop-blur-md\">\n            Premium\n          </span>\n        )}\n      </div>\n      <div className=\"space-y-4 p-6\">\n        <div className=\"space-y-1.5\">\n          <span className=\"text-xs font-medium tracking-[0.15em] uppercase text-muted-foreground\">\n            {product.category}\n          </span>\n          <h3 className=\"text-xl font-semibold tracking-tight text-foreground\">\n            {product.title}\n          </h3>\n        </div>\n        <p className=\"text-sm leading-relaxed text-muted-foreground\">\n          {product.description}\n        </p>\n        <div className=\"flex items-center justify-between pt-2\">\n          <span className=\"text-2xl font-bold text-foreground\">\n            ${product.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n          </span>\n          <button\n            type=\"button\"\n            className=\"inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\"\n          >\n            <ShoppingCart className=\"h-4 w-4\" aria-hidden=\"true\" />\n            Add to Cart\n          </button>\n        </div>\n      </div>\n    </article>\n  );\n}\n",
+      "path": "/components/mvpblocks/cards/product/product-card-3.tsx",
+      "target": "components/mvpblocks/product-card-3.tsx"
+    }
+  ]
+}

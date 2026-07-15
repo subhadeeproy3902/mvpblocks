@@ -362,6 +362,132 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'product-card-1',
+    description:
+      'A minimal product card with image, category, price, and Add to Cart button. Clean and lightweight design for product grids and catalog pages.',
+    categories: ['card', 'design', 'product'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-1.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-1'),
+    ),
+  },
+  {
+    name: 'product-card-2',
+    description:
+      'A modern product card with large image, ratings, discount badge, wishlist toggle, and rich product details. Suitable for modern e-commerce websites.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-2.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-2'),
+    ),
+  },
+  {
+    name: 'product-card-3',
+    description:
+      'A premium product card with large image, refined typography, and elegant spacing. Designed for luxury products and high-end brands.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-3.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-3'),
+    ),
+  },
+  {
+    name: 'product-card-4',
+    description:
+      'A product card with prominent star ratings and review counts. Designed for e-commerce sites where customer feedback drives purchase decisions.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-4.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-4'),
+    ),
+  },
+  {
+    name: 'product-card-5',
+    description:
+      'A promotional product card with discount badge, strikethrough pricing, and sale indicators. Optimized for seasonal sales and promotions.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-5.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-5'),
+    ),
+  },
+  {
+    name: 'product-card-6',
+    description:
+      'A horizontal product card with image on the left and product details on the right. Ideal for shopping carts, wishlists, and list views.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-6.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-6'),
+    ),
+  },
+  {
+    name: 'product-card-7',
+    description:
+      'A dark mode product card designed for dark-themed interfaces with excellent contrast and premium dark aesthetics.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-7.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('.././components/mvpblocks/cards/product/product-card-7'),
+    ),
+  },
+  {
     name: 'code-block-1',
     description:
       'A code block component with syntax highlighting and a sleek design. Used for showcasing code snippets, tutorials, etc.',
