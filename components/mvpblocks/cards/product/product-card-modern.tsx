@@ -25,12 +25,18 @@ export default function ProductCardModern({
   className,
 }: ProductCardModernProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const product = defaultProduct;
+
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    window.setTimeout(() => setIsAdding(false), 400);
+  };
 
   return (
     <article
       className={cn(
-        'group bg-card w-full max-w-sm rounded-xl border shadow-sm transition-all duration-300 hover:shadow-lg',
+        'group bg-card w-full max-w-sm rounded-xl border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg',
         className,
       )}
     >
@@ -43,27 +49,22 @@ export default function ProductCardModern({
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
+        {/* Wishlist — sole occupant of the image overlay now */}
         <button
           type="button"
           onClick={() => setIsWishlisted((prev) => !prev)}
-          className="focus-visible:ring-ring absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-colors hover:bg-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none dark:bg-zinc-900/80 dark:hover:bg-zinc-900"
+          className="focus-visible:ring-ring absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none dark:bg-zinc-900/80 dark:hover:bg-zinc-900"
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
         >
           <Heart
             className={cn(
-              'h-5 w-5 transition-colors',
+              'h-5 w-5 transition-all duration-200',
               isWishlisted
-                ? 'fill-red-500 text-red-500'
+                ? 'scale-110 fill-red-500 text-red-500'
                 : 'text-zinc-700 dark:text-zinc-300',
             )}
           />
         </button>
-
-        {product.discount > 0 && (
-          <span className="absolute bottom-3 left-3 rounded-md bg-rose-600 px-2.5 py-1 text-xs font-semibold text-white">
-            -{product.discount}%
-          </span>
-        )}
       </div>
 
       <div className="space-y-3 p-4">
@@ -75,7 +76,7 @@ export default function ProductCardModern({
           {product.title}
         </h3>
 
-        <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed text-ellipsis">
           {product.description}
         </p>
 
@@ -84,11 +85,12 @@ export default function ProductCardModern({
             <Star
               key={star}
               className={cn(
-                'h-4 w-4',
+                'h-4 w-4 transition-transform duration-200 group-hover:scale-110',
                 star <= product.rating
                   ? 'fill-yellow-400 text-yellow-400'
                   : 'fill-none text-zinc-300 dark:text-zinc-600',
               )}
+              style={{ transitionDelay: `${star * 40}ms` }}
             />
           ))}
           <span className="text-muted-foreground ml-1 text-xs">
@@ -96,6 +98,7 @@ export default function ProductCardModern({
           </span>
         </div>
 
+        {/* Price + discount now share one visual unit, same accent color */}
         <div className="flex items-baseline gap-2">
           <span className="text-foreground text-xl font-bold">
             ${product.price.toFixed(2)}
@@ -105,14 +108,26 @@ export default function ProductCardModern({
               ${product.previousPrice.toFixed(2)}
             </span>
           )}
+          {product.discount > 0 && (
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400">
+              -{product.discount}%
+            </span>
+          )}
         </div>
 
         <button
           type="button"
-          className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          onClick={handleAddToCart}
+          className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95"
         >
-          <ShoppingCart className="h-4 w-4" aria-hidden="true" />
-          Add to Cart
+          <ShoppingCart
+            className={cn(
+              'h-4 w-4 transition-transform duration-300',
+              isAdding && 'scale-125 -rotate-6',
+            )}
+            aria-hidden="true"
+          />
+          {isAdding ? 'Added' : 'Add to Cart'}
         </button>
       </div>
     </article>
