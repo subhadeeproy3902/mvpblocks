@@ -89,9 +89,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '.././components/mvpblocks/cards/expandable/expandable-weather-card'
-        ),
+        import('.././components/mvpblocks/cards/expandable/expandable-weather-card'),
     ),
   },
   {
@@ -112,9 +110,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '.././components/mvpblocks/cards/expandable/expandable-product-card'
-        ),
+        import('.././components/mvpblocks/cards/expandable/expandable-product-card'),
     ),
   },
   {
@@ -137,9 +133,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '.././components/mvpblocks/cards/expandable/expandable-meeting-card'
-        ),
+        import('.././components/mvpblocks/cards/expandable/expandable-meeting-card'),
     ),
   },
   {
@@ -320,9 +314,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/mainsections/pricing/pricing-glassmorphism'
-        ),
+        import('../components/mvpblocks/mainsections/pricing/pricing-glassmorphism'),
     ),
   },
   {
@@ -359,6 +351,119 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import('.././components/mvpblocks/cards/product/product-1'),
+    ),
+  },
+  {
+    name: 'product-card-minimal',
+    description:
+      'A minimal product card with image, category, price, and Add to Cart button. Clean and lightweight design for product grids and catalog pages.',
+    categories: ['card', 'design', 'product'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-minimal.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/product/product-card-minimal'),
+    ),
+  },
+  {
+    name: 'product-card-modern',
+    description:
+      'A modern product card with large image, ratings, discount badge, wishlist toggle, and rich product details. Suitable for modern e-commerce websites.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-modern.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () => import('../components/mvpblocks/cards/product/product-card-modern'),
+    ),
+  },
+  {
+    name: 'product-card-premium',
+    description:
+      'A premium product card with large image, refined typography, and elegant spacing. Designed for luxury products and high-end brands.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-premium.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/product/product-card-premium'),
+    ),
+  },
+  {
+    name: 'product-card-carrossel',
+    description:
+      'A product card with prominent star ratings and review counts. Designed for e-commerce sites where customer feedback drives purchase decisions.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-carrossel.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/product/product-card-carrossel'),
+    ),
+  },
+  {
+    name: 'product-card-discount',
+    description:
+      'A promotional product card with discount badge, strikethrough pricing, and sale indicators. Optimized for seasonal sales and promotions.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-discount.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/product/product-card-discount'),
+    ),
+  },
+  {
+    name: 'product-card-horinzontal',
+    description:
+      'A horizontal product card with image on the left and product details on the right. Ideal for shopping carts, wishlists, and list views.',
+    categories: ['card', 'design', 'product', 'ecommerce'],
+    type: 'registry:block',
+    dependencies: ['lucide-react', 'react', 'cn'],
+    registryDependencies: [],
+    files: [
+      {
+        path: '@/components/mvpblocks/cards/product/product-card-horinzontal.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/cards/product/product-card-horinzontal'),
     ),
   },
   {
@@ -431,9 +536,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '.././components/mvpblocks/mainsections/pricing/technical-pricing'
-        ),
+        import('.././components/mvpblocks/mainsections/pricing/technical-pricing'),
     ),
   },
   {
@@ -620,11 +723,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header'
-      ).then((mod) => ({
-        default: mod.DashboardHeader,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-header').then(
+        (mod) => ({
+          default: mod.DashboardHeader,
+        }),
+      ),
     ),
   },
   {
@@ -643,11 +746,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity'
-      ).then((mod) => ({
-        default: mod.RecentActivity,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/recent-activity').then(
+        (mod) => ({
+          default: mod.RecentActivity,
+        }),
+      ),
     ),
   },
   {
@@ -666,11 +769,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status'
-      ).then((mod) => ({
-        default: mod.SystemStatus,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/system-status').then(
+        (mod) => ({
+          default: mod.SystemStatus,
+        }),
+      ),
     ),
   },
   {
@@ -692,11 +795,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions'
-      ).then((mod) => ({
-        default: mod.QuickActions,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/quick-actions').then(
+        (mod) => ({
+          default: mod.QuickActions,
+        }),
+      ),
     ),
   },
   {
@@ -718,11 +821,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table'
-      ).then((mod) => ({
-        default: mod.UsersTable,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/users-table').then(
+        (mod) => ({
+          default: mod.UsersTable,
+        }),
+      ),
     ),
   },
   {
@@ -741,11 +844,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card'
-      ).then((mod) => ({
-        default: mod.DashboardCard,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/dashboard-card').then(
+        (mod) => ({
+          default: mod.DashboardCard,
+        }),
+      ),
     ),
   },
   {
@@ -767,11 +870,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart'
-      ).then((mod) => ({
-        default: mod.RevenueChart,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/revenue-chart').then(
+        (mod) => ({
+          default: mod.RevenueChart,
+        }),
+      ),
     ),
   },
   {
@@ -800,11 +903,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar'
-      ).then((mod) => ({
-        default: mod.AdminSidebar,
-      })),
+      import('../components/mvpblocks/dashboards/admin-dashboard-1/ui/admin-sidebar').then(
+        (mod) => ({
+          default: mod.AdminSidebar,
+        }),
+      ),
     ),
   },
   {
@@ -843,9 +946,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'
-        ),
+        import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/index'),
     ),
   },
   {
@@ -867,11 +968,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/budget-progress'
-      ).then((mod) => ({
-        default: mod.default, // because the file exports default function
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/budget-progress').then(
+        (mod) => ({
+          default: mod.default, // because the file exports default function
+        }),
+      ),
     ),
   },
   {
@@ -894,11 +995,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/dashboard-layout'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/dashboard-layout').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -921,11 +1022,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-header'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-header').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -944,11 +1045,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-footer'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-footer').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -970,11 +1071,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/income-expense-chart'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/income-expense-chart').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -996,11 +1097,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/monthly-spending-chart'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/monthly-spending-chart').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -1023,11 +1124,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/recent-transactions'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/recent-transactions').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -1050,11 +1151,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/savings-goals'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/savings-goals').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -1076,11 +1177,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-sidebar'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/personal-sidebar').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -1102,11 +1203,11 @@ export const blocks: Registry = [
       },
     ],
     component: React.lazy(() =>
-      import(
-        '../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards'
-      ).then((mod) => ({
-        default: mod.default,
-      })),
+      import('../components/mvpblocks/dashboards/personal-finance-dashboard-1/ui/stats-cards').then(
+        (mod) => ({
+          default: mod.default,
+        }),
+      ),
     ),
   },
   {
@@ -1218,9 +1319,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/mainsections/pricing/congusted-pricing'
-        ),
+        import('../components/mvpblocks/mainsections/pricing/congusted-pricing'),
     ),
   },
   {
@@ -1548,9 +1647,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/mainsections/testimonials/testimonials-marquee'
-        ),
+        import('../components/mvpblocks/mainsections/testimonials/testimonials-marquee'),
     ),
   },
   {
@@ -1659,9 +1756,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/text-animations/scrollbasedvelocity-demo'
-        ),
+        import('../components/mvpblocks/text-animations/scrollbasedvelocity-demo'),
     ),
   },
   {
@@ -2221,9 +2316,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/text-animations/scroll-reveal-characters'
-        ),
+        import('../components/mvpblocks/text-animations/scroll-reveal-characters'),
     ),
   },
   {
@@ -2266,9 +2359,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/text-animations/variable-proximity-demo'
-        ),
+        import('../components/mvpblocks/text-animations/variable-proximity-demo'),
     ),
   },
   {
@@ -2289,9 +2380,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/text-animations/variable-proximity-gaussian'
-        ),
+        import('../components/mvpblocks/text-animations/variable-proximity-gaussian'),
     ),
   },
   {
@@ -2312,9 +2401,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/text-animations/variable-proximity-exponential'
-        ),
+        import('../components/mvpblocks/text-animations/variable-proximity-exponential'),
     ),
   },
   {
@@ -2407,9 +2494,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/mainsections/pricing/pricing-with-modals'
-        ),
+        import('../components/mvpblocks/mainsections/pricing/pricing-with-modals'),
     ),
   },
   {
@@ -3032,9 +3117,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/basics/loaders/modified-classic-loader'
-        ),
+        import('../components/mvpblocks/basics/loaders/modified-classic-loader'),
     ),
   },
   {
@@ -3436,9 +3519,7 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () =>
-        import(
-          '../components/mvpblocks/mainsections/testimonials/testimonials-carousel'
-        ),
+        import('../components/mvpblocks/mainsections/testimonials/testimonials-carousel'),
     ),
   },
   {
