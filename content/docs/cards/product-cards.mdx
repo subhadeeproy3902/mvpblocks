@@ -1,35 +1,820 @@
 ---
 title: Product Cards
 description: A collection of product card designs, featuring various layouts for showcasing products
+root: cards
+new: true
 ---
 
-import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
-import Link from "next/link";
+import { ComponentPreview } from '@/components/preview/component-preview';
+import { extractSourceCode } from '@/lib/code';
+import { ComponentSource } from '@/components/preview/component-source';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 
-<div className="flex flex-col items-center justify-start space-y-8 py-4 text-center">
-  <div className="space-y-2">
-    <h2 className="text-3xl mt-0 font-bold tracking-tighter sm:text-4xl md:text-5xl">Component In Development</h2>
-    <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-      We're currently working on creating beautiful, responsive pagination components for MVPBlocks.
-    </p>
-  </div>
+## Minimal Card
 
-<div className="w-full max-w-md rounded-lg border border-border bg-card/40 p-6 shadow-sm">
-  <div className="space-y-2">
-    <h3 className="text-xl font-bold">Want to contribute?</h3>
-    <p className="text-sm text-muted-foreground">
-      We welcome contributions from the community! If you have ideas or
-      implementations for pagination components, consider contributing to
-      MVPBlocks.
-    </p>
-  </div>
-</div>
+<ComponentPreview
+  name="product-card-minimal"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode('product-card-minimal')).code}
+  lang="tsx"
+/>
 
-  <Link prefetch={false} href="https://github.com/subhadeeproy3902/mvpblocks" target="_blank" rel="noopener noreferrer">
-    <Button className="gap-2">
-      <Github className="h-4 w-4" />
-      Contribute on GitHub
-    </Button>
-  </Link>
-</div>
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-minimal')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardMinimal from "@/components/mvpblocks/cards/product/product-card-minimal";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ProductCardMinimal
+        title="Wireless Headphones"
+        category="Audio"
+        price={79.99}
+        image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"
+        isNew
+      />
+    </div>
+  );
+}
+```
+
+### Minimal Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Wireless Headphones"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Audio"'
+    },
+    price: {
+      type: "number",
+      description: "Product price.",
+      default: "79.99"
+    },
+    image: {
+      type: "string",
+      description: "Product image URL.",
+      default: '"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"'
+    },
+    isNew: {
+      type: "boolean",
+      description: "Shows a \"New\" badge when true.",
+      default: "true"
+    }
+  }}
+/>
+
+### Features
+
+- **Wishlist toggle** — Heart button appears on hover and persists once activated
+- **"New" badge** — Conditional badge in the top-left corner
+- **Add to Cart** — Animated button with visual feedback on click
+- **Image lazy loading** — Smooth reveal with a skeleton pulse placeholder
+
+### Styling and Animation Details
+
+- **Card lift** — `hover:-translate-y-1` with `hover:shadow-lg` for a subtle elevation effect
+- **Image zoom** — `group-hover:scale-105` on the image for a gentle zoom
+- **Wishlist reveal** — Button transitions from `opacity-0` to `opacity-100` on card hover
+- **Heart fill** — `scale-110` and `fill-red-500` on toggle
+- **Cart feedback** — Cart icon scales and rotates (`scale-125 -rotate-6`) on add
+- **Skeleton loading** — `animate-pulse` placeholder fades out as the image loads
+
+---
+
+## Modern Card
+
+<ComponentPreview
+  name="product-card-modern"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode('product-card-modern')).code}
+  lang="tsx"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-modern')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardModern from "@/components/mvpblocks/cards/product/product-card-modern";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ProductCardModern
+        title="Running Shoes"
+        category="Footwear"
+        price={89.99}
+        previousPrice={129.99}
+        image="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"
+        rating={4}
+        reviewCount={128}
+        discount={31}
+      />
+    </div>
+  );
+}
+```
+
+### Modern Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Running Shoes"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Footwear"'
+    },
+    description: {
+      type: "string",
+      description: "Product description text.",
+      default: '"Lightweight and responsive running shoes..."'
+    },
+    price: {
+      type: "number",
+      description: "Current product price.",
+      default: "89.99"
+    },
+    previousPrice: {
+      type: "number",
+      description: "Original price before discount.",
+      default: "129.99"
+    },
+    image: {
+      type: "string",
+      description: "Product image URL.",
+      default: '"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"'
+    },
+    rating: {
+      type: "number",
+      description: "Product rating (1-5).",
+      default: "4"
+    },
+    reviewCount: {
+      type: "number",
+      description: "Number of reviews.",
+      default: "128"
+    },
+    discount: {
+      type: "number",
+      description: "Discount percentage.",
+      default: "31"
+    }
+  }}
+/>
+
+### Features
+
+- **Star rating display** — Five interactive stars with staggered hover animation
+- **Discount badge** — Percentage-off label next to the strikethrough original price
+- **Product description** — Truncated to 2 lines with `line-clamp-2`
+- **Wishlist toggle** — Heart button with backdrop blur and dark mode support
+- **Add to Cart** — Animated button with visual feedback
+
+### Styling and Animation Details
+
+- **Card lift** — `hover:-translate-y-1` with `hover:shadow-lg` elevation
+- **Image zoom** — `group-hover:scale-105` on hover
+- **Gradient overlay** — `bg-linear-to-t from-black/20` fades in on the image area
+- **Staggered stars** — Each star scales up with a `transitionDelay` of `star * 40ms`
+- **Wishlist** — Backdrop blur (`backdrop-blur-sm`) with dark mode variants
+- **Heart fill** — `scale-110` and `fill-red-500` on activation
+- **Cart feedback** — Icon `scale-125 -rotate-6` on click
+
+---
+
+## Premium Card
+
+<ComponentPreview
+  name="product-card-premium"
+  classNameComponentContainer="min-h-[600px]"
+  code={(await extractSourceCode('product-card-premium')).code}
+  lang="tsx"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-premium')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardPremium from "@/components/mvpblocks/cards/product/product-card-premium";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ProductCardPremium
+        title="Heritage Chronograph"
+        reference="Ref. 5172G-001"
+        category="Luxury Watches"
+        price={1250}
+        image="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80"
+        isPremium
+      />
+    </div>
+  );
+}
+```
+
+### Premium Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Heritage Chronograph"'
+    },
+    reference: {
+      type: "string",
+      description: "Product reference number.",
+      default: '"Ref. 5172G-001"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Luxury Watches"'
+    },
+    description: {
+      type: "string",
+      description: "Product description text.",
+      default: '"Swiss-made automatic movement..."'
+    },
+    price: {
+      type: "number",
+      description: "Product price.",
+      default: "1250"
+    },
+    image: {
+      type: "string",
+      description: "Product image URL.",
+      default: '"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80"'
+    },
+    isPremium: {
+      type: "boolean",
+      description: "Shows a \"Limited Edition\" badge when true.",
+      default: "true"
+    }
+  }}
+/>
+
+### Features
+
+- **"Limited Edition" badge** — Premium border badge in the top-left
+- **Reference number** — Slides up on hover for a catalog-like detail
+- **Discover CTA** — Button with animated arrow that translates on hover
+- **Serif typography** — `font-serif` for the product title, light font weights throughout
+- **Dark mode** — Full dark mode support with `dark:` variants
+
+### Styling and Animation Details
+
+- **Image zoom** — `group-hover:scale-[1.04]` over 1200ms for a slow, cinematic reveal
+- **Gradient overlay** — Fades in over 700ms on hover, from `black/40` to transparent
+- **Reference number** — Translates `translate-y-1` to `translate-y-0` with `opacity-0` to `opacity-100`
+- **Divider line** — Expands from `w-8` to `w-16` on hover over 700ms
+- **Arrow animation** — `group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5` for a diagonal nudge
+- **Button spacing** — `hover:gap-2.5` widens the gap between text and arrow
+- **Rounded corners** — Uses `rounded-sm` for a sharper, more refined look
+
+---
+
+## Carrossel Card
+
+<ComponentPreview
+  name="product-card-carrossel"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode('product-card-carrossel')).code}
+  lang="tsx"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-carrossel')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardCarrossel from "@/components/mvpblocks/cards/product/product-card-carrossel";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ProductCardCarrossel
+        title="Mechanical Keyboard"
+        category="Accessories"
+        price={149.99}
+        rating={4.5}
+        reviewCount={324}
+        images={[
+          "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80",
+          "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=600&q=80",
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+### Carrossel Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Mechanical Keyboard"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Accessories"'
+    },
+    price: {
+      type: "number",
+      description: "Product price.",
+      default: "149.99"
+    },
+    rating: {
+      type: "number",
+      description: "Product rating (1-5).",
+      default: "4.5"
+    },
+    reviewCount: {
+      type: "number",
+      description: "Number of reviews.",
+      default: "324"
+    },
+    images: {
+      type: "string[]",
+      description: "Array of image URLs for the carousel.",
+      default: "['https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80', ...]"
+    }
+  }}
+/>
+
+### Features
+
+- **Image carousel** — Swipeable and arrow-navigable image gallery
+- **Auto-play** — Automatically advances images at 1.6s intervals on hover
+- **3D tilt effect** — Perspective transform follows mouse movement
+- **Star rating** — Supports full, half, and empty star states
+- **Dot indicators** — Active dot stretches into a pill shape
+- **Swipe support** — Pointer events with 40px threshold for touch/click drag
+- **Add to Cart** — Animated button with visual feedback
+
+### Styling and Animation Details
+
+- **3D tilt** — `perspective(1000px) rotateX() rotateY()` computed from mouse position
+- **Slide transition** — `cubic-bezier(0.34, 1.56, 0.64, 1)` for an overshoot easing
+- **Auto-play** — Starts on `mouseenter`, stops on `mouseleave` via `setInterval`
+- **Navigation arrows** — Fade in on hover with `opacity` transition
+- **Dot pill** — Active dot expands from `w-1.5` to `w-5` with `rounded-full`
+- **Cart feedback** — Icon `scale-125 -rotate-6` on add
+
+---
+
+## Discount Card
+
+<ComponentPreview
+  name="product-card-discount"
+  classNameComponentContainer="min-h-[550px]"
+  code={(await extractSourceCode('product-card-discount')).code}
+  lang="tsx"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-discount')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardDiscount from "@/components/mvpblocks/cards/product/product-card-discount";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-8">
+      <ProductCardDiscount
+        title="Running Shoes"
+        category="Footwear"
+        originalPrice={189.99}
+        discountedPrice={132.99}
+        discountPercent={31}
+        image="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80"
+      />
+    </div>
+  );
+}
+```
+
+### Discount Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Running Shoes"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Footwear"'
+    },
+    originalPrice: {
+      type: "number",
+      description: "Original price before discount.",
+      default: "189.99"
+    },
+    discountedPrice: {
+      type: "number",
+      description: "Discounted price.",
+      default: "132.99"
+    },
+    discountPercent: {
+      type: "number",
+      description: "Discount percentage.",
+      default: "31"
+    },
+    image: {
+      type: "string",
+      description: "Product image URL.",
+      default: '"https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80"'
+    }
+  }}
+/>
+
+### Features
+
+- **Full-bleed background image** — Image covers the entire card as a background
+- **Discount badge** — Pulsing `-31%` badge to draw attention
+- **"Sale" badge** — Static amber badge for contrast
+- **Price comparison** — Discounted price, original strikethrough, and "Save $" badge
+- **Animated CTA** — "Shop Now" button slides up from below on hover
+
+### Styling and Animation Details
+
+- **Image zoom** — `group-hover:scale-110` over 700ms for a dramatic reveal
+- **Gradient overlay** — `bg-linear-to-t from-black/90 via-black/40 to-black/10` deepens on hover
+- **Pulsing badge** — `animate-[pulse_2.2s_ease-in-out_infinite]` on the discount percentage
+- **Button reveal** — Slides `translate-y-1` to `translate-y-0` on card hover
+- **Cart feedback** — Icon `scale-125 -rotate-6` on add
+- **Fixed aspect** — Fixed height `h-[520px]` for consistent card sizing
+
+---
+
+## Horizontal Card
+
+<ComponentPreview
+  name="product-card-horinzontal"
+  classNameComponentContainer="min-h-[450px]"
+  code={(await extractSourceCode('product-card-horinzontal')).code}
+  lang="tsx"
+/>
+
+### Installation
+
+<Steps>
+  <Step>
+    Install the required dependencies:
+    <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+      <Tab>
+        ```bash
+        npm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        pnpm install lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        yarn add lucide-react react
+        ```
+      </Tab>
+      <Tab>
+        ```bash
+        bun add lucide-react react
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step>
+    <ComponentSource
+      code={(await extractSourceCode('product-card-horinzontal')).code}
+      className="bg-fd-secondary/50"
+    />
+  </Step>
+</Steps>
+
+### Usage
+
+```tsx
+import ProductCardHorizontal from "@/components/mvpblocks/cards/product/product-card-horinzontal";
+
+export default function MyComponent() {
+  return (
+    <div className="flex items-center justify-center min-h-screen p-4">
+      <ProductCardHorizontal
+        title="Smart Watch"
+        category="Wearables"
+        price={249.99}
+        rating={4.3}
+        reviewCount={87}
+        inStock
+        stockCount={6}
+        image="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"
+        showQuantity
+      />
+    </div>
+  );
+}
+```
+
+### Horizontal Card API
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the card container.",
+      default: "undefined"
+    },
+    showQuantity: {
+      type: "boolean",
+      description: "Shows the quantity selector when true.",
+      default: "false"
+    },
+    title: {
+      type: "string",
+      description: "Product title.",
+      default: '"Smart Watch"'
+    },
+    category: {
+      type: "string",
+      description: "Product category.",
+      default: '"Wearables"'
+    },
+    description: {
+      type: "string",
+      description: "Product description text.",
+      default: '"Track workouts, heart rate, and sleep..."'
+    },
+    price: {
+      type: "number",
+      description: "Product price.",
+      default: "249.99"
+    },
+    rating: {
+      type: "number",
+      description: "Product rating (1-5).",
+      default: "4.3"
+    },
+    reviewCount: {
+      type: "number",
+      description: "Number of reviews.",
+      default: "87"
+    },
+    inStock: {
+      type: "boolean",
+      description: "Shows an \"In stock\" indicator when true.",
+      default: "true"
+    },
+    stockCount: {
+      type: "number",
+      description: "Current stock count.",
+      default: "6"
+    },
+    image: {
+      type: "string",
+      description: "Product image URL.",
+      default: '"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"'
+    }
+  }}
+/>
+
+### Features
+
+- **Horizontal layout** — Image on the left, product details on the right
+- **Quantity selector** — Optional (`showQuantity`) increment/decrement controls
+- **Star rating display** — Five-star visual with review count
+- **Stock indicator** — "In stock" label with a live ping animation
+- **Low stock badge** — `"Only N left"` overlay when stock ≤ 8
+- **Subtotal calculation** — Shows `price × quantity` when quantity selector is active
+- **Add to Cart** — Animated button
+
+### Styling and Animation Details
+
+- **Responsive grid** — `grid-cols-1` on mobile, `sm:grid-cols-[auto_1fr]` on desktop
+- **Image zoom** — `group-hover:scale-105` on hover
+- **Stock ping** — `animate-ping` on the green dot for a live indicator effect
+- **Cart feedback** — Icon `scale-125 -rotate-6` on add
+- **Button active** — `active:scale-95` for press feedback
+- **Tabular numbers** — `tabular-nums` for consistent price digit widths

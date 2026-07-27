@@ -1,0 +1,25 @@
+{
+  "name": "product-card-discount",
+  "description": "A promotional product card with discount badge, strikethrough pricing, and sale indicators. Optimized for seasonal sales and promotions.",
+  "categories": [
+    "card",
+    "design",
+    "product",
+    "ecommerce"
+  ],
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react",
+    "react",
+    "cn"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "/**\n * @author: @fridsonfirmino\n * @description: Product Card Discount - MVP Development Theme\n * @version: 1.1.0\n * @date: 2026-07-27\n * @license: MIT\n * @github: https://github.com/fridsonfirmino\n */\n\n'use client';\n\nimport { cn } from '@/lib/utils';\nimport { ShoppingCart } from 'lucide-react';\nimport { useState } from 'react';\n\ninterface ProductCardDiscountProps {\n  className?: string;\n  title?: string;\n  category?: string;\n  originalPrice?: number;\n  discountedPrice?: number;\n  discountPercent?: number;\n  image?: string;\n}\n\nexport default function ProductCardDiscount({\n  className,\n  title = 'Running Shoes',\n  category = 'Footwear',\n  originalPrice = 189.99,\n  discountedPrice = 132.99,\n  discountPercent = 31,\n  image = 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80',\n}: ProductCardDiscountProps) {\n  const [isAdding, setIsAdding] = useState(false);\n\n  const handleAddToCart = () => {\n    setIsAdding(true);\n    window.setTimeout(() => setIsAdding(false), 400);\n  };\n\n  return (\n    <article\n      className={cn(\n        'group relative h-[520px] w-full max-w-sm overflow-hidden rounded-xl border p-2 shadow-sm transition-all duration-300 hover:shadow-xl',\n        className,\n      )}\n    >\n      {/* Full-bleed image */}\n      <img\n        src={image}\n        alt={title}\n        className=\"absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110\"\n        loading=\"lazy\"\n      />\n\n      {/* Gradient deepens slightly on hover so the copy stays readable as the image moves */}\n      <div className=\"absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-500 group-hover:from-black/95 group-hover:via-black/50\" />\n\n      {/* Badges — discount pulses gently to draw the eye, sale badge stays still for contrast */}\n      <div className=\"absolute top-4 left-4 flex flex-col gap-1.5\">\n        <span className=\"w-fit animate-[pulse_2.2s_ease-in-out_infinite] rounded-md bg-rose-600 px-2.5 py-1 text-xs font-bold text-white shadow-sm\">\n          -{discountPercent}%\n        </span>\n        <span className=\"w-fit rounded-md bg-amber-500 px-2.5 py-1 text-xs font-bold text-white shadow-sm\">\n          Sale\n        </span>\n      </div>\n\n      {/* Content pinned to the bottom, over the gradient */}\n      <div className=\"absolute inset-x-0 bottom-0 space-y-3 p-5\">\n        <span className=\"text-xs font-medium tracking-wider text-white/70 uppercase\">\n          {category}\n        </span>\n        <h3 className=\"text-lg leading-snug font-semibold text-white\">\n          {title}\n        </h3>\n\n        <div className=\"flex items-baseline gap-2.5\">\n          <span className=\"text-2xl font-bold text-white\">\n            ${discountedPrice.toFixed(2)}\n          </span>\n          <span className=\"text-sm text-white/60 line-through\">\n            ${originalPrice.toFixed(2)}\n          </span>\n          <span className=\"rounded bg-green-500/20 px-1.5 py-0.5 text-xs font-semibold text-green-400\">\n            Save ${(originalPrice - discountedPrice).toFixed(0)}\n          </span>\n        </div>\n\n        {/* Button sits low by default, rises into place on hover — reveals itself rather than always occupying space */}\n        <button\n          type=\"button\"\n          onClick={handleAddToCart}\n          className=\"flex w-full translate-y-1 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 opacity-90 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-white/90 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none active:scale-95\"\n        >\n          <ShoppingCart\n            className={cn(\n              'h-4 w-4 transition-transform duration-300',\n              isAdding && 'scale-125 -rotate-6',\n            )}\n            aria-hidden=\"true\"\n          />\n          {isAdding ? 'Added' : 'Shop Now'}\n        </button>\n      </div>\n    </article>\n  );\n}\n",
+      "path": "/components/mvpblocks/cards/product/product-card-discount.tsx",
+      "target": "components/mvpblocks/product-card-discount.tsx"
+    }
+  ]
+}

@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Modern - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -6,27 +15,31 @@ import { useState } from 'react';
 
 interface ProductCardModernProps {
   className?: string;
+  title?: string;
+  category?: string;
+  description?: string;
+  price?: number;
+  previousPrice?: number;
+  image?: string;
+  rating?: number;
+  reviewCount?: number;
+  discount?: number;
 }
-
-const defaultProduct = {
-  title: 'Running Shoes',
-  category: 'Footwear',
-  description:
-    'Lightweight and responsive running shoes with breathable mesh upper and cushioned sole for maximum comfort.',
-  price: 89.99,
-  previousPrice: 129.99,
-  image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80',
-  rating: 4,
-  reviewCount: 128,
-  discount: 31,
-};
 
 export default function ProductCardModern({
   className,
+  title = 'Running Shoes',
+  category = 'Footwear',
+  description = 'Lightweight and responsive running shoes with breathable mesh upper and cushioned sole for maximum comfort.',
+  price = 89.99,
+  previousPrice = 129.99,
+  image = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80',
+  rating = 4,
+  reviewCount = 128,
+  discount = 31,
 }: ProductCardModernProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
-  const product = defaultProduct;
 
   const handleAddToCart = () => {
     setIsAdding(true);
@@ -42,8 +55,8 @@ export default function ProductCardModern({
     >
       <div className="relative overflow-hidden rounded-t-xl">
         <img
-          src={product.image}
-          alt={product.title}
+          src={image}
+          alt={title}
           className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
@@ -69,15 +82,13 @@ export default function ProductCardModern({
 
       <div className="space-y-3 p-4">
         <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-          {product.category}
+          {category}
         </span>
 
-        <h3 className="text-foreground text-base font-semibold">
-          {product.title}
-        </h3>
+        <h3 className="text-foreground text-base font-semibold">{title}</h3>
 
         <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed text-ellipsis">
-          {product.description}
+          {description}
         </p>
 
         <div className="flex items-center gap-1.5">
@@ -86,7 +97,7 @@ export default function ProductCardModern({
               key={star}
               className={cn(
                 'h-4 w-4 transition-transform duration-200 group-hover:scale-110',
-                star <= product.rating
+                star <= rating
                   ? 'fill-yellow-400 text-yellow-400'
                   : 'fill-none text-zinc-300 dark:text-zinc-600',
               )}
@@ -94,23 +105,23 @@ export default function ProductCardModern({
             />
           ))}
           <span className="text-muted-foreground ml-1 text-xs">
-            ({product.reviewCount} reviews)
+            ({reviewCount} reviews)
           </span>
         </div>
 
         {/* Price + discount now share one visual unit, same accent color */}
         <div className="flex items-baseline gap-2">
           <span className="text-foreground text-xl font-bold">
-            ${product.price.toFixed(2)}
+            ${price.toFixed(2)}
           </span>
-          {product.previousPrice && (
+          {previousPrice && (
             <span className="text-muted-foreground text-sm line-through">
-              ${product.previousPrice.toFixed(2)}
+              ${previousPrice.toFixed(2)}
             </span>
           )}
-          {product.discount > 0 && (
+          {discount > 0 && (
             <span className="text-xs font-semibold text-rose-600 dark:text-rose-400">
-              -{product.discount}%
+              -{discount}%
             </span>
           )}
         </div>

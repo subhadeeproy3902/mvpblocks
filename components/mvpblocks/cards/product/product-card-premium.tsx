@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Premium - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -6,24 +15,25 @@ import { useState } from 'react';
 
 interface ProductCardPremiumProps {
   className?: string;
+  title?: string;
+  reference?: string;
+  category?: string;
+  description?: string;
+  price?: number;
+  image?: string;
+  isPremium?: boolean;
 }
-
-const defaultProduct = {
-  title: 'Heritage Chronograph',
-  reference: 'Ref. 5172G-001',
-  category: 'Luxury Watches',
-  description:
-    'Swiss-made automatic movement with sapphire crystal, genuine leather strap, and a refined sunburst dial. Water-resistant to 100 meters.',
-  price: 1250.0,
-  image:
-    'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80',
-  isPremium: true,
-};
 
 export default function ProductCardPremium({
   className,
+  title = 'Heritage Chronograph',
+  reference = 'Ref. 5172G-001',
+  category = 'Luxury Watches',
+  description = 'Swiss-made automatic movement with sapphire crystal, genuine leather strap, and a refined sunburst dial. Water-resistant to 100 meters.',
+  price = 1250.0,
+  image = 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&q=80',
+  isPremium = true,
 }: ProductCardPremiumProps) {
-  const product = defaultProduct;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -37,14 +47,14 @@ export default function ProductCardPremium({
     >
       <div className="relative overflow-hidden">
         <img
-          src={product.image}
-          alt={product.title}
+          src={image}
+          alt={title}
           className="h-80 w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           loading="lazy"
         />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-        {product.isPremium && (
+        {isPremium && (
           <span className="absolute top-5 left-5 border border-white/40 px-3 py-1 text-[10px] font-light tracking-[0.25em] text-white uppercase">
             Limited Edition
           </span>
@@ -57,30 +67,30 @@ export default function ProductCardPremium({
             isHovered ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
           )}
         >
-          {product.reference}
+          {reference}
         </span>
       </div>
 
       <div className="space-y-5 px-7 py-8">
         <div className="space-y-2">
           <span className="text-[10px] font-medium tracking-[0.25em] text-zinc-400 uppercase dark:text-zinc-500">
-            {product.category}
+            {category}
           </span>
           <h3 className="font-serif text-2xl leading-snug font-medium tracking-tight text-zinc-900 dark:text-zinc-50">
-            {product.title}
+            {title}
           </h3>
         </div>
 
         <div className="h-px w-8 bg-zinc-300 transition-all duration-700 group-hover:w-16 dark:bg-zinc-700" />
 
         <p className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-          {product.description}
+          {description}
         </p>
 
         <div className="flex items-end justify-between pt-3">
           <span className="text-lg font-light tracking-tight text-zinc-900 dark:text-zinc-50">
             $
-            {product.price.toLocaleString('en-US', {
+            {price.toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}

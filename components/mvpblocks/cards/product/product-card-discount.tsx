@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Discount - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -6,22 +15,23 @@ import { useState } from 'react';
 
 interface ProductCardDiscountProps {
   className?: string;
+  title?: string;
+  category?: string;
+  originalPrice?: number;
+  discountedPrice?: number;
+  discountPercent?: number;
+  image?: string;
 }
-
-const defaultProduct = {
-  title: 'Running Shoes',
-  category: 'Footwear',
-  originalPrice: 189.99,
-  discountedPrice: 132.99,
-  discountPercent: 31,
-  image:
-    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80',
-};
 
 export default function ProductCardDiscount({
   className,
+  title = 'Running Shoes',
+  category = 'Footwear',
+  originalPrice = 189.99,
+  discountedPrice = 132.99,
+  discountPercent = 31,
+  image = 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80',
 }: ProductCardDiscountProps) {
-  const product = defaultProduct;
   const [isAdding, setIsAdding] = useState(false);
 
   const handleAddToCart = () => {
@@ -38,8 +48,8 @@ export default function ProductCardDiscount({
     >
       {/* Full-bleed image */}
       <img
-        src={product.image}
-        alt={product.title}
+        src={image}
+        alt={title}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
         loading="lazy"
       />
@@ -50,7 +60,7 @@ export default function ProductCardDiscount({
       {/* Badges — discount pulses gently to draw the eye, sale badge stays still for contrast */}
       <div className="absolute top-4 left-4 flex flex-col gap-1.5">
         <span className="w-fit animate-[pulse_2.2s_ease-in-out_infinite] rounded-md bg-rose-600 px-2.5 py-1 text-xs font-bold text-white shadow-sm">
-          -{product.discountPercent}%
+          -{discountPercent}%
         </span>
         <span className="w-fit rounded-md bg-amber-500 px-2.5 py-1 text-xs font-bold text-white shadow-sm">
           Sale
@@ -60,21 +70,21 @@ export default function ProductCardDiscount({
       {/* Content pinned to the bottom, over the gradient */}
       <div className="absolute inset-x-0 bottom-0 space-y-3 p-5">
         <span className="text-xs font-medium tracking-wider text-white/70 uppercase">
-          {product.category}
+          {category}
         </span>
         <h3 className="text-lg leading-snug font-semibold text-white">
-          {product.title}
+          {title}
         </h3>
 
         <div className="flex items-baseline gap-2.5">
           <span className="text-2xl font-bold text-white">
-            ${product.discountedPrice.toFixed(2)}
+            ${discountedPrice.toFixed(2)}
           </span>
           <span className="text-sm text-white/60 line-through">
-            ${product.originalPrice.toFixed(2)}
+            ${originalPrice.toFixed(2)}
           </span>
           <span className="rounded bg-green-500/20 px-1.5 py-0.5 text-xs font-semibold text-green-400">
-            Save ${(product.originalPrice - product.discountedPrice).toFixed(0)}
+            Save ${(originalPrice - discountedPrice).toFixed(0)}
           </span>
         </div>
 

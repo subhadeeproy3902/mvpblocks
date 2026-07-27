@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Minimal - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -6,21 +15,21 @@ import { useState } from 'react';
 
 interface ProductCardMinimalProps {
   className?: string;
+  title?: string;
+  category?: string;
+  price?: number;
+  image?: string;
+  isNew?: boolean;
 }
-
-const defaultProduct = {
-  title: 'Wireless Headphones',
-  category: 'Audio',
-  price: 79.99,
-  image:
-    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80',
-  isNew: true,
-};
 
 export default function ProductCardMinimal({
   className,
+  title = 'Wireless Headphones',
+  category = 'Audio',
+  price = 79.99,
+  image = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80',
+  isNew = true,
 }: ProductCardMinimalProps) {
-  const product = defaultProduct;
   const [isSaved, setIsSaved] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -46,8 +55,8 @@ export default function ProductCardMinimal({
           )}
         />
         <img
-          src={product.image}
-          alt={product.title}
+          src={image}
+          alt={title}
           onLoad={() => setImgLoaded(true)}
           className={cn(
             'h-64 w-full object-cover transition-all duration-500 group-hover:scale-105',
@@ -56,7 +65,7 @@ export default function ProductCardMinimal({
           loading="lazy"
         />
 
-        {product.isNew && (
+        {isNew && (
           <span className="bg-primary text-primary-foreground absolute top-3 left-3 rounded-md px-2.5 py-1 text-xs font-medium shadow-sm">
             New
           </span>
@@ -87,16 +96,14 @@ export default function ProductCardMinimal({
       <div className="space-y-3 p-4">
         <div className="flex items-center justify-between">
           <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-            {product.category}
+            {category}
           </span>
           <span className="text-foreground text-lg font-bold">
-            ${product.price.toFixed(2)}
+            ${price.toFixed(2)}
           </span>
         </div>
 
-        <h3 className="text-foreground text-base font-semibold">
-          {product.title}
-        </h3>
+        <h3 className="text-foreground text-base font-semibold">{title}</h3>
 
         <button
           type="button"

@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Carousel - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -6,26 +15,28 @@ import { useEffect, useRef, useState } from 'react';
 
 interface ProductCardCarrosselProps {
   className?: string;
+  title?: string;
+  category?: string;
+  price?: number;
+  rating?: number;
+  reviewCount?: number;
+  images?: string[];
 }
-
-const defaultProduct = {
-  title: 'Mechanical Keyboard',
-  category: 'Accessories',
-  price: 149.99,
-  rating: 4.5,
-  reviewCount: 324,
-  images: [
-    'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80',
-    'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=600&q=80',
-  ],
-};
 
 const AUTO_PLAY_INTERVAL = 1600;
 
 export default function ProductCardCarrossel({
   className,
+  title = 'Mechanical Keyboard',
+  category = 'Accessories',
+  price = 149.99,
+  rating = 4.5,
+  reviewCount = 324,
+  images = [
+    'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80',
+    'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=600&q=80',
+  ],
 }: ProductCardCarrosselProps) {
-  const product = defaultProduct;
   const [index, setIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -35,20 +46,20 @@ export default function ProductCardCarrossel({
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = (i: number) => {
-    setIndex((i + product.images.length) % product.images.length);
+    setIndex((i + images.length) % images.length);
   };
 
   // Auto-advance only while hovered — the carousel "introduces itself"
   useEffect(() => {
     if (isHovered) {
       autoplayRef.current = setInterval(() => {
-        setIndex((prev) => (prev + 1) % product.images.length);
+        setIndex((prev) => (prev + 1) % images.length);
       }, AUTO_PLAY_INTERVAL);
     }
     return () => {
       if (autoplayRef.current) clearInterval(autoplayRef.current);
     };
-  }, [isHovered, product.images.length]);
+  }, [isHovered, images.length]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!cardRef.current) return;
@@ -106,11 +117,11 @@ export default function ProductCardCarrossel({
           className="flex h-full transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          {product.images.map((src, i) => (
+          {images.map((src, i) => (
             <img
               key={src}
               src={src}
-              alt={`${product.title} — ${i + 1}`}
+              alt={`${title} — ${i + 1}`}
               className="h-64 w-full flex-shrink-0 object-cover"
               loading="lazy"
               draggable={false}
@@ -144,7 +155,7 @@ export default function ProductCardCarrossel({
 
         {/* Dots — active one stretches into a pill instead of just changing color */}
         <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-          {product.images.map((_, i) => (
+          {images.map((_, i) => (
             <button
               key={i}
               type="button"
@@ -161,19 +172,15 @@ export default function ProductCardCarrossel({
 
       <div className="space-y-3 p-4">
         <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-          {product.category}
+          {category}
         </span>
-        <h3 className="text-foreground text-base font-semibold">
-          {product.title}
-        </h3>
+        <h3 className="text-foreground text-base font-semibold">{title}</h3>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-0.5">
             {[1, 2, 3, 4, 5].map((star) => {
-              const filled = star <= Math.floor(product.rating);
+              const filled = star <= Math.floor(rating);
               const half =
-                !filled &&
-                star === Math.ceil(product.rating) &&
-                product.rating % 1 !== 0;
+                !filled && star === Math.ceil(rating) && rating % 1 !== 0;
               return (
                 <Star
                   key={star}
@@ -190,13 +197,11 @@ export default function ProductCardCarrossel({
               );
             })}
           </div>
-          <span className="text-muted-foreground text-xs">
-            ({product.reviewCount})
-          </span>
+          <span className="text-muted-foreground text-xs">({reviewCount})</span>
         </div>
         <div className="flex items-center justify-between pt-1">
           <span className="text-foreground text-xl font-bold">
-            ${product.price.toFixed(2)}
+            ${price.toFixed(2)}
           </span>
           <button
             type="button"

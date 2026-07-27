@@ -1,3 +1,12 @@
+/**
+ * @author: @fridsonfirmino
+ * @description: Product Card Horizontal - MVP Development Theme
+ * @version: 1.1.0
+ * @date: 2026-07-27
+ * @license: MIT
+ * @github: https://github.com/fridsonfirmino
+ */
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -7,27 +16,30 @@ import { useState } from 'react';
 interface ProductCardHorizontalProps {
   className?: string;
   showQuantity?: boolean;
+  title?: string;
+  category?: string;
+  description?: string;
+  price?: number;
+  rating?: number;
+  reviewCount?: number;
+  inStock?: boolean;
+  stockCount?: number;
+  image?: string;
 }
-
-const defaultProduct = {
-  title: 'Smart Watch',
-  category: 'Wearables',
-  description:
-    'Track workouts, heart rate, and sleep with a bright always-on display and up to 5 days of battery life.',
-  price: 249.99,
-  rating: 4.3,
-  reviewCount: 87,
-  inStock: true,
-  stockCount: 6,
-  image:
-    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80',
-};
 
 export default function ProductCardHorizontal({
   className,
   showQuantity = false,
+  title = 'Smart Watch',
+  category = 'Wearables',
+  description = 'Track workouts, heart rate, and sleep with a bright always-on display and up to 5 days of battery life.',
+  price = 249.99,
+  rating = 4.3,
+  reviewCount = 87,
+  inStock = true,
+  stockCount = 6,
+  image = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80',
 }: ProductCardHorizontalProps) {
-  const product = defaultProduct;
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -36,8 +48,8 @@ export default function ProductCardHorizontal({
     window.setTimeout(() => setIsAdding(false), 400);
   };
 
-  const subtotal = (product.price * quantity).toFixed(2);
-  const lowStock = product.inStock && product.stockCount <= 8;
+  const subtotal = (price * quantity).toFixed(2);
+  const lowStock = inStock && stockCount <= 8;
 
   return (
     <article
@@ -51,14 +63,14 @@ export default function ProductCardHorizontal({
     >
       <div className="relative aspect-4/3 w-full shrink-0 overflow-hidden sm:aspect-square sm:w-44 md:w-52">
         <img
-          src={product.image}
-          alt={product.title}
+          src={image}
+          alt={title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
         {lowStock && (
           <span className="absolute bottom-2 left-2 rounded-md bg-orange-500/90 px-2 py-0.5 text-[10px] font-semibold text-white shadow-sm">
-            Only {product.stockCount} left
+            Only {stockCount} left
           </span>
         )}
       </div>
@@ -69,9 +81,9 @@ export default function ProductCardHorizontal({
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                  {product.category}
+                  {category}
                 </span>
-                {product.inStock && (
+                {inStock && (
                   <span className="flex items-center gap-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
                     <span className="relative flex h-1.5 w-1.5">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
@@ -82,13 +94,13 @@ export default function ProductCardHorizontal({
                 )}
               </div>
               <h3 className="text-foreground text-base font-semibold">
-                {product.title}
+                {title}
               </h3>
             </div>
           </div>
 
           <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
-            {product.description}
+            {description}
           </p>
 
           <div className="flex items-center gap-2">
@@ -98,7 +110,7 @@ export default function ProductCardHorizontal({
                   key={star}
                   className={cn(
                     'h-3.5 w-3.5',
-                    star <= Math.floor(product.rating)
+                    star <= Math.floor(rating)
                       ? 'fill-yellow-400 text-yellow-400'
                       : 'fill-none text-zinc-300 dark:text-zinc-600',
                   )}
@@ -107,7 +119,7 @@ export default function ProductCardHorizontal({
               ))}
             </div>
             <span className="text-muted-foreground text-xs">
-              ({product.reviewCount})
+              ({reviewCount})
             </span>
           </div>
         </div>
@@ -131,9 +143,9 @@ export default function ProductCardHorizontal({
                 <button
                   type="button"
                   onClick={() =>
-                    setQuantity((q) => Math.min(product.stockCount, q + 1))
+                    setQuantity((q) => Math.min(stockCount, q + 1))
                   }
-                  disabled={quantity >= product.stockCount}
+                  disabled={quantity >= stockCount}
                   className="text-muted-foreground hover:bg-secondary flex h-8 w-8 items-center justify-center rounded-r-lg transition-colors disabled:cursor-not-allowed disabled:opacity-40"
                   aria-label="Increase quantity"
                 >
@@ -143,7 +155,7 @@ export default function ProductCardHorizontal({
             )}
 
             <span className="text-foreground text-xl font-bold tabular-nums">
-              ${showQuantity ? subtotal : product.price.toFixed(2)}
+              ${showQuantity ? subtotal : price.toFixed(2)}
             </span>
           </div>
 
