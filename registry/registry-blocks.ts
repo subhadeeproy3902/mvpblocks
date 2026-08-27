@@ -1630,6 +1630,7 @@ export const blocks: Registry = [
   },
   {
     name: 'testimonials-hanging-cards',
+    author: 'saahil0708',
     categories: ['testimonials', 'mainsection', 'interactive'],
     description:
       'A tactile testimonials section with cards hanging from an interactive parabolic wire curve with realistic clips and physics.',
