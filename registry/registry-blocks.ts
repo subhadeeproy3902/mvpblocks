@@ -1629,6 +1629,27 @@ export const blocks: Registry = [
     ),
   },
   {
+    name: 'testimonials-hanging-cards',
+    categories: ['testimonials', 'mainsection', 'interactive'],
+    description:
+      'A tactile testimonials section with cards hanging from an interactive parabolic wire curve with realistic clips and physics.',
+    type: 'registry:block',
+    dependencies: [],
+    registryDependencies: [
+      'https://blocks.mvp-subha.me/r/utils.json',
+    ],
+    files: [
+      {
+        path: '@/components/mvpblocks/mainsections/testimonials/testimonials-hanging-cards.tsx',
+        type: 'registry:block',
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import('../components/mvpblocks/mainsections/testimonials/testimonials-hanging-cards'),
+    ),
+  },
+  {
     name: 'testimonials-marquee',
     categories: ['testimonials', 'mainsection'],
     description:
