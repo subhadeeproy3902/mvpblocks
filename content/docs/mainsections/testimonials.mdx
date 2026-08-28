@@ -224,3 +224,89 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
   lang="tsx"
   fromDocs={true}
 />
+
+## Testimonials Hanging Cards
+
+<ComponentPreview
+  name="testimonials-hanging-cards"
+  classNameComponentContainer="h-[650px]"
+  code={(await extractSourceCode('testimonials-hanging-cards')).code}
+  lang="tsx"
+  fromDocs={true}
+/>
+
+### Props
+
+#### TestimonialItem Props
+
+<TypeTable
+  type={{
+    quote: {
+      description: "The primary quote text.",
+      type: "string",
+      default: "undefined",
+    },
+    highlightedText: {
+      description: "Optional highlighted quote segment with punchy accent styling.",
+      type: "string",
+      default: "undefined",
+    },
+    name: {
+      description: "The author's name.",
+      type: "string",
+      default: "undefined",
+    },
+    role: {
+      description: "The author's job title or role.",
+      type: "string",
+      default: "undefined",
+    },
+    image: {
+      description: "The image URL for the author's avatar.",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
+
+#### TestimonialsHangingCards Props
+
+<TypeTable
+  type={{
+    title: {
+      description: "The main section title.",
+      type: "string",
+      default: "'Student Voices'",
+    },
+    subtitle: {
+      description: "The descriptive subtitle.",
+      type: "string",
+      default: "undefined",
+    },
+    highlightSubtitle: {
+      description: "Highlighted accent phrase at the end of the subtitle.",
+      type: "string",
+      default: "'deep-work sanctuary.'",
+    },
+    badgeSymbol: {
+      description: "Leading symbol/badge next to the heading.",
+      type: "string",
+      default: "'*'",
+    },
+    speed: {
+      description: "Horizontal scrolling speed in pixels per second.",
+      type: "number",
+      default: "80",
+    },
+    testimonials: {
+      description: "Array of testimonial items to render along the hanging wire curve.",
+      type: "TestimonialItem[]",
+      default: "defaultTestimonials",
+    },
+    className: {
+      description: "Optional CSS classes to apply to the container.",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>
