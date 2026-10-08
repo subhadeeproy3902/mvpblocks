@@ -1,9 +1,9 @@
 import Razorpay from 'razorpay';
 import { NextResponse } from 'next/server';
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY!,
-  key_secret: process.env.RAZORPAY_SECRET!,
+const getRazorpayClient = () => new Razorpay({
+  key_id: process.env.RAZORPAY_KEY || 'rzp_test_dummykey',
+  key_secret: process.env.RAZORPAY_SECRET || 'dummysecret',
 });
 
 export async function POST(req: Request) {
@@ -26,6 +26,7 @@ export async function POST(req: Request) {
       payment_capture: 1,
     };
 
+    const razorpay = getRazorpayClient();
     const response = await razorpay.orders.create(options);
 
     return NextResponse.json({

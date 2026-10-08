@@ -7,7 +7,8 @@ import {
   type ContactMeta,
 } from '@/lib/email';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Instantiate inside the POST handler or with a fallback to avoid build-time crashes when RESEND_API_KEY is not set.
+const getResendClient = () => new Resend(process.env.RESEND_API_KEY || 're_dummy_key');
 
 const FROM = 'Mvpblocks <blocks@mvp-subha.me>';
 const ADMIN_EMAIL = 'subha9.5roy350@gmail.com';
@@ -94,6 +95,8 @@ export async function POST(req: NextRequest) {
         { status: 503 },
       );
     }
+
+    const resend = getResendClient();
 
     // ── Server-derived request context ──────────────────────────────────────
     const headers = req.headers;
